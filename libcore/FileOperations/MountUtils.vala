@@ -17,7 +17,12 @@
  */
 
 namespace Files.FileOperations {
-    public static async bool unmount_mount (Mount mount, Gtk.Window? parent) {
+    public static async bool unmount_mount (Mount mount, Gtk.Widget? toplevel) {
+        Gtk.Window? parent = null;
+        if (toplevel is Gtk.Window) {
+            parent = (Gtk.Window) toplevel;
+        }
+
         if (mount.can_unmount ()) {
             var mount_op = new Gtk.MountOperation (parent);
             try {
@@ -38,7 +43,12 @@ namespace Files.FileOperations {
         }
     }
 
-    public static async bool eject_mount (Mount mount, Gtk.Window? parent) {
+    public static async bool eject_mount (Mount mount, Gtk.Widget? toplevel) {
+        Gtk.Window? parent = null;
+        if (toplevel is Gtk.Window) {
+            parent = (Gtk.Window) toplevel;
+        }
+
         if (mount.can_eject ()) {
             var mount_op = new Gtk.MountOperation (parent);
             try {
@@ -59,7 +69,11 @@ namespace Files.FileOperations {
         }
     }
 
-    public static async void eject_drive (Drive drive, Gtk.Window? parent) {
+    public static async void eject_drive (Drive drive, Gtk.Widget? toplevel) {
+        Gtk.Window? parent = null;
+        if (toplevel is Gtk.Window) {
+            parent = (Gtk.Window) toplevel;
+        }
         // First unmount any mounted volumes
         foreach (var vol in drive.get_volumes ()) {
             var mount = vol.get_mount ();
@@ -80,14 +94,19 @@ namespace Files.FileOperations {
         }
     }
 
-    public static async void safely_remove_drive (Drive drive, Gtk.Window? parent) {
+    public static async void safely_remove_drive (Drive drive, Gtk.Widget toplevel) {
         // First unmount any mounted volumes
         bool stopped = false;
         foreach (var vol in drive.get_volumes ()) {
             var mount = vol.get_mount ();
-            if (mount != null && !yield unmount_mount (mount, parent)) {
+            if (mount != null && !yield unmount_mount (mount, toplevel)) {
                 return;
             }
+        }
+
+        Gtk.Window? parent = null;
+        if (toplevel is Gtk.Window) {
+            parent = (Gtk.Window) toplevel;
         }
 
         if (drive.can_stop ()) {

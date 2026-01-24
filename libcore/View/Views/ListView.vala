@@ -51,7 +51,7 @@ namespace Files {
         private void append_extra_tree_columns () {
             int fnc = ListModel.ColumnID.FILENAME;
 
-            int preferred_column_width = Files.column_view_settings.get_int ("preferred-column-width");
+            int preferred_column_width = ViewPreferences.get_default ().preferred_column_width;
             for (int k = fnc; k < ListModel.ColumnID.NUM_COLUMNS; k++) {
                 if (k == fnc) {
                     /* name_column already created by AbstractTreeVIew */
@@ -201,8 +201,21 @@ namespace Files {
             return tree as Gtk.Widget;
         }
 
-        public override Settings? get_view_settings () {
-            return Files.list_view_settings;
+        public override void zoom_normal () {
+            zoom_level = ViewPreferences.get_default ().list_default_zoom_level;
+        }
+
+        public override void set_up_zoom_level () {
+            var view_prefs = ViewPreferences.get_default ();
+            minimum_zoom = view_prefs.list_minimum_zoom_level;
+            maximum_zoom = view_prefs.list_maximum_zoom_level;
+            zoom_level = view_prefs.list_zoom_level;
+
+            view_prefs.bind_property (
+                "list-zoom-level",
+                this, "zoom-level",
+                BIDIRECTIONAL | SYNC_CREATE
+            );
         }
 
         private void add_subdirectory_at_path (Gtk.TreePath path) {

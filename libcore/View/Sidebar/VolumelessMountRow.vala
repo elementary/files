@@ -74,7 +74,7 @@ public class Sidebar.VolumelessMountRow : Sidebar.AbstractMountableRow, SidebarI
         if ((mount != null) || uri == Files.ROOT_FS_URI) {
             new Files.View.VolumePropertiesWindow (
                 mount,
-                Files.get_active_window ()
+                get_toplevel ()
             );
         }
     }

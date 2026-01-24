@@ -21,12 +21,6 @@
              Julián Unrrein <junrrein@gmail.com>
 ***/
 
-namespace Files {
-    public Settings app_settings;
-    public Settings icon_view_settings;
-    public Settings list_view_settings;
-    public Settings column_view_settings;
-}
 
 public class Files.Application : Gtk.Application {
 
@@ -41,18 +35,18 @@ public class Files.Application : Gtk.Application {
     public Settings gnome_interface_settings { get; construct; }
     public Settings gnome_privacy_settings { get; construct; }
     public Settings gtk_file_chooser_settings { get; construct; }
+    private Settings app_settings;
+    private Settings icon_view_settings;
+    private Settings list_view_settings;
+    private Settings column_view_settings;
 
     bool quitting = false;
 
-    static construct {
-        /* GSettings parameters */
+    construct {
         app_settings = new Settings ("io.elementary.files.preferences");
         icon_view_settings = new Settings ("io.elementary.files.icon-view");
         list_view_settings = new Settings ("io.elementary.files.list-view");
         column_view_settings = new Settings ("io.elementary.files.column-view");
-    }
-
-    construct {
         gnome_interface_settings = new Settings ("org.gnome.desktop.interface");
         gnome_privacy_settings = new Settings ("org.gnome.desktop.privacy");
         gtk_file_chooser_settings = new Settings ("org.gtk.Settings.FileChooser");
@@ -174,14 +168,6 @@ public class Files.Application : Gtk.Application {
         set_accels_for_action ("app.quit", { "<Ctrl>Q" });
     }
 
-    public unowned ClipboardManager get_clipboard_manager () {
-        return this.clipboard;
-    }
-
-    public unowned Gtk.RecentManager get_recent_manager () {
-        return this.recent;
-    }
-
     public override int command_line (GLib.ApplicationCommandLine cmd) {
         unowned var options = cmd.get_options_dict ();
 
@@ -261,23 +247,16 @@ public class Files.Application : Gtk.Application {
     }
 
     private void init_schemas () {
+        ViewPreferences.set_up_view_preferences (
+            icon_view_settings,
+            list_view_settings,
+            column_view_settings,
+            app_settings
+        );
+
         /* Bind settings with GOFPreferences */
         var prefs = Files.Preferences.get_default ();
-        if (app_settings.settings_schema.has_key ("singleclick-select")) {
-            app_settings.bind ("singleclick-select", prefs, "singleclick-select", GLib.SettingsBindFlags.DEFAULT);
-        }
-
-        Files.app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
-
-        Files.app_settings.bind ("show-remote-thumbnails",
-                                   prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        Files.app_settings.bind ("show-local-thumbnails",
-                                   prefs, "show-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-
-        Files.app_settings.bind ("show-file-preview",
-                                   prefs, "show-file-preview", GLib.SettingsBindFlags.DEFAULT);
-
-        Files.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
+        Files.Preferences.set_up_preferences (app_settings);
 
         gnome_interface_settings.bind ("clock-format",
                                        Files.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);

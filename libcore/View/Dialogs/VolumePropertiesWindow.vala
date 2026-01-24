@@ -21,8 +21,8 @@
 */
 
 public class Files.View.VolumePropertiesWindow : AbstractPropertiesDialog {
-    public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Window parent) {
-        base (_("Disk Properties"), parent);
+    public VolumePropertiesWindow (GLib.Mount? mount, Gtk.Widget toplevel) {
+        base (_("Disk Properties"), toplevel);
 
         GLib.File mount_root;
         string mount_name;

@@ -161,12 +161,21 @@ public class Files.AppMenu : Gtk.Popover {
 
         // Connect to all view settings rather than try to connect and disconnect
         // continuously to current view mode setting.
-        Files.icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
-        Files.list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
-        Files.column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+        var view_prefs = ViewPreferences.get_default ();
+        var prefs = Files.Preferences.get_default ();
+        view_prefs.notify["icon-zoom-level"].connect (
+            () => on_zoom_setting_changed (ViewMode.ICON)
+        );
+        view_prefs.notify["list-zoom-level"].connect (
+            () => on_zoom_setting_changed (ViewMode.LIST)
+        );
+        view_prefs.notify["column-zoom-level"].connect (
+            () => on_zoom_setting_changed (ViewMode.MILLER_COLUMNS)
+        );
 
         // Initialize and connect dateformat buttons
-        switch (app_settings.get_enum ("date-format")) {
+        // switch (app_settings.get_enum ("date-format")) {
+        switch (prefs.date_format) {
             case DateFormatMode.ISO:
                 iso_button.active = true;
                 break;
@@ -185,22 +194,22 @@ public class Files.AppMenu : Gtk.Popover {
 
         iso_button.toggled.connect (() => {
             if (iso_button.active) {
-                app_settings.set_enum ("date-format", DateFormatMode.ISO);
+                prefs.date_format = DateFormatMode.ISO;
             }
         });
         locale_button.toggled.connect (() => {
             if (locale_button.active) {
-                app_settings.set_enum ("date-format", DateFormatMode.LOCALE);
+                prefs.date_format = DateFormatMode.LOCALE;
             }
         });
         informal_button.toggled.connect (() => {
             if (informal_button.active) {
-                app_settings.set_enum ("date-format", DateFormatMode.INFORMAL);
+                prefs.date_format = DateFormatMode.INFORMAL;
             }
         });
         compact_button.toggled.connect (() => {
             if (compact_button.active) {
-                app_settings.set_enum ("date-format", DateFormatMode.COMPACT);
+                prefs.date_format = DateFormatMode.COMPACT;
             }
         });
     }
@@ -224,21 +233,13 @@ public class Files.AppMenu : Gtk.Popover {
         );
     }
 
-    public void on_zoom_setting_changed (Settings settings, string key) {
-        if (settings == null) {
-            critical ("Zoom string from settinggs: Null settings");
-            zoom_default_button.label = "";
-            return;
-        }
+    public void on_zoom_setting_changed (ViewMode mode) {
+        ZoomLevel normal, minimum, maximum, current;
+        ViewPreferences.get_zoom_levels (mode, out normal, out minimum, out maximum, out current);
 
-        var default_zoom = (Files.ZoomLevel)(settings.get_enum ("default-zoom-level"));
-        var zoom_level = (Files.ZoomLevel)(settings.get_enum ("zoom-level"));
-        zoom_default_button.label = ("%.0f%%").printf ((double)(zoom_level.to_icon_size ()) / (double)(default_zoom.to_icon_size ()) * 100);
+        zoom_default_button.label = ("%.0f%%").printf ((double)(current.to_icon_size ()) / (double)(normal.to_icon_size ()) * 100);
 
-        var max_zoom = settings.get_enum ("maximum-zoom-level");
-        var min_zoom = settings.get_enum ("minimum-zoom-level");
-
-        zoom_in_button.sensitive = zoom_level < max_zoom;
-        zoom_out_button.sensitive = zoom_level > min_zoom;
+        zoom_in_button.sensitive = current < maximum;
+        zoom_out_button.sensitive = current > minimum;
     }
 }

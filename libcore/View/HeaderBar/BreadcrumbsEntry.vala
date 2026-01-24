@@ -322,7 +322,7 @@ namespace Files.View.Chrome {
                             drop_file_list,
                             current_actions,
                             current_suggested_action,
-                            (Gtk.ApplicationWindow)Files.get_active_window (),
+                            get_toplevel (),
                             timestamp
                         );
                     }

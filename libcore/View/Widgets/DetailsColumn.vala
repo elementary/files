@@ -246,7 +246,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
         more_info_button.clicked.connect (() => {
             var the_file_in_a_list = new GLib.List<Files.File> ();
             the_file_in_a_list.append (file);
-            new View.PropertiesWindow (the_file_in_a_list, view, Files.get_active_window ());
+            new View.PropertiesWindow (the_file_in_a_list, view);
         });
     }
 

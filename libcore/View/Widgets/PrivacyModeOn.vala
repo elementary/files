@@ -21,27 +21,29 @@
 namespace Files.View {
     public class PrivacyModeOn : Files.View.Welcome {
         public Directory dir_saved;
-        public ViewContainer ctab;
+        public SlotToplevelInterface top_level;
         public bool remember_history {get; set;}
 
-        public PrivacyModeOn (ViewContainer tab) {
+        public PrivacyModeOn (SlotToplevelInterface top_level) {
             base (_("Privacy mode is on"), _("No recent files are remembered"));
 
-            append ("preferences-system-privacy", _("Change security settings"),
-                    _("Open the system security and privacy settings app"));
+            if (top_level.get_files_application () != null) {
+                append ("preferences-system-privacy", _("Change security settings"),
+                        _("Open the system security and privacy settings app"));
 
-            this.activated.connect ((index) => {
-                switch (index) {
-                    case 0:
-                        var ctx = get_window ().get_display ().get_app_launch_context ();
-                        try {
-                            AppInfo.launch_default_for_uri ("settings://security", ctx);
-                        } catch (Error e) {
-                            critical ("No default security app found");
-                        }
-                        break;
-                }
-            });
+                this.activated.connect ((index) => {
+                    switch (index) {
+                        case 0:
+                            var ctx = get_window ().get_display ().get_app_launch_context ();
+                            try {
+                                AppInfo.launch_default_for_uri ("settings://security", ctx);
+                            } catch (Error e) {
+                                critical ("No default security app found");
+                            }
+                            break;
+                    }
+                });
+            }
 
             show_all ();
         }

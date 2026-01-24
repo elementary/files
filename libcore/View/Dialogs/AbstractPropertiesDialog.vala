@@ -31,11 +31,16 @@ protected abstract class Files.View.AbstractPropertiesDialog : Granite.Dialog {
         PERMISSIONS
     }
 
-    protected AbstractPropertiesDialog (string _title, Gtk.Window parent) {
+    protected AbstractPropertiesDialog (string _title, Gtk.Widget toplevel) {
         Object (title: _title,
-                transient_for: parent,
                 destroy_with_parent: true
         );
+
+        if (toplevel is Gtk.Window) {
+            set_transient_for ((Gtk.Window) transient_for);
+        } else {
+            set_transient_for (null);
+        }
     }
 
     construct {

@@ -21,16 +21,16 @@
 namespace Files.View {
     public class DirectoryNotFound : Files.View.Welcome {
         public Directory dir_saved;
-        public ViewContainer ctab;
+        public SlotToplevelInterface top_level;
 
-        public DirectoryNotFound (Directory dir, ViewContainer tab) {
+        public DirectoryNotFound (Directory dir, SlotToplevelInterface _top_level) {
             base (_("This Folder Does Not Exist"),
                   _("The folder \"%s\" can't be found.").printf (dir.location.get_basename ()));
 
             append ("folder-new", _("Create"), _("Create the folder \"%s\"").printf (dir.location.get_basename ()));
 
             dir_saved = dir;
-            ctab = tab;
+            top_level = _top_level;
 
             this.activated.connect ((index) => {
                 bool success = false;
@@ -54,7 +54,8 @@ namespace Files.View {
                 }
 
                 if (success) {
-                    get_action_group ("win").activate_action ("refresh", null);
+                    // get_action_group ("win").activate_action ("refresh", null);
+                    top_level.refresh ();
                 }
             });
 

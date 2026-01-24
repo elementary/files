@@ -266,18 +266,15 @@ namespace Files {
         protected Gtk.ScrolledWindow scrolled_window;
         private Gtk.Label empty_label;
         private Gtk.Overlay overlay;
-        private unowned ClipboardManager clipboard;
+        private ClipboardManager clipboard;
+        private Gtk.RecentManager recent;
+
         protected Files.ListModel model;
         protected Files.IconRenderer icon_renderer;
         protected unowned View.Slot slot; // Must be unowned else cyclic reference stops destruction
-        protected unowned View.Window? window {
-            get {
-                return slot.ctab.window;
-            }
-        }
         protected static DndHandler dnd_handler = new DndHandler ();
 
-        protected unowned Gtk.RecentManager recent;
+
 
         protected Gtk.EventControllerKey key_controller;
         protected Gtk.GestureMultiPress button_controller;
@@ -323,11 +320,14 @@ namespace Files {
 
             child = overlay;
 
-            var app = (Files.Application)(GLib.Application.get_default ());
-            clipboard = app.get_clipboard_manager ();
-            recent = app.get_recent_manager ();
-            app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
-            app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
+            clipboard = ClipboardManager.get_for_display ();
+            recent = new Gtk.RecentManager ();
+
+            var files_app = slot.top_level.get_files_application ();
+            if (files_app != null) {
+                files_app.set_accels_for_action ("common.select-all", {"<Ctrl>A"});
+                files_app.set_accels_for_action ("selection.invert-selection", {"<Shift><Ctrl>A"});
+            }
 
             thumbnailer = Thumbnailer.get ();
             thumbnailer.finished.connect ((req) => {
@@ -441,7 +441,9 @@ namespace Files {
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.notify["date-format"].connect (on_dateformat_changed);
             prefs.bind_property (
-                "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
+                "singleclick-select",
+                this, "singleclick_select",
+                BIDIRECTIONAL | SYNC_CREATE
             );
 
             model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
@@ -474,15 +476,8 @@ namespace Files {
             }
         }
 
-        public void zoom_normal () {
-            var view_settings = get_view_settings ();
-            if (view_settings == null) {
-                zoom_level = ZoomLevel.NORMAL;
-            } else {
-                zoom_level = (ZoomLevel)view_settings.get_enum ("default-zoom-level"); // syncs to settings
-            }
-
-
+        public virtual void zoom_normal () {
+            zoom_level = ZoomLevel.NORMAL;
         }
 
         private uint set_cursor_timeout_id = 0;
@@ -835,7 +830,7 @@ namespace Files {
                             try {
                                 file.execute (null);
                             } catch (Error e) {
-                                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, window);
+                                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, slot.top_level);
                             }
                         }
                     } else {
@@ -847,7 +842,7 @@ namespace Files {
                     ///TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
                     _("“%s” must be moved from Trash before opening").printf (file.basename),
                     _("Files inside Trash cannot be opened. To open this file, it must be moved elsewhere."),
-                    window
+                    slot.top_level
                 );
             }
         }
@@ -855,7 +850,7 @@ namespace Files {
         /* Open all files through this */
         private void open_file (Files.File file, Gdk.Screen? screen, GLib.AppInfo? app_info) {
             if (can_open_file (file, true)) {
-                MimeActions.open_glib_file_request.begin (file.location, this, app_info);
+                MimeActions.open_glib_file_request.begin (file.location, slot.top_level, app_info);
             }
         }
 
@@ -885,7 +880,7 @@ namespace Files {
 
             bool success = err_msg2.length < 1;
             if (!success && show_error_dialog) {
-                PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, window);
+                PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, slot.top_level);
             }
 
             return success;
@@ -914,7 +909,7 @@ namespace Files {
                 slot.directory.block_monitor ();
                 FileOperations.@delete.begin (
                     locations,
-                    window as Gtk.Window,
+                    slot.top_level,
                     !delete_immediately,
                     null,
                     (obj, res) => {
@@ -950,14 +945,14 @@ namespace Files {
             }
         }
 
-        private void handle_free_space_change () requires (window != null) {
+        private void handle_free_space_change () requires (slot.top_level != null) {
             /* Wait at least 250 mS after last space change before signalling to avoid unnecessary updates*/
             if (add_remove_file_timeout_id == 0) {
                 signal_free_space_change = false;
                 add_remove_file_timeout_id = GLib.Timeout.add (250, () => {
                     if (signal_free_space_change) {
                         add_remove_file_timeout_id = 0;
-                        window.free_space_change ();
+                        slot.top_level.free_space_change ();
                         return GLib.Source.REMOVE;
                     } else {
                         signal_free_space_change = true;
@@ -1129,7 +1124,7 @@ namespace Files {
 
             if (selected_files.next != null) {
                 var rename_dialog = new Files.RenamerDialog (selected_files) {
-                    transient_for = slot.window
+                    transient_for = slot.top_level
                 };
                 rename_dialog.present ();
             } else {
@@ -1143,7 +1138,7 @@ namespace Files {
         }
 
         private void on_selection_action_trash (GLib.SimpleAction action, GLib.Variant? param) {
-            trash_or_delete_selected_files (Files.is_admin ());
+            trash_or_delete_selected_files (slot.top_level.is_admin ());
         }
 
         private void on_selection_action_delete (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1152,7 +1147,7 @@ namespace Files {
 
         private void on_selection_action_restore (GLib.SimpleAction action, GLib.Variant? param) {
             GLib.List<Files.File> selection = get_selected_files_for_transfer ();
-            FileUtils.restore_files_from_trash.begin (selection, window);
+            FileUtils.restore_files_from_trash.begin (selection, slot.top_level);
         }
 
         private void on_selection_action_open_executable (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1161,7 +1156,7 @@ namespace Files {
             try {
                 file.execute (null);
             } catch (Error e) {
-                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, window);
+                PF.Dialogs.show_warning_dialog (_("Cannot execute this file"), e.message, slot.top_level);
             }
         }
 
@@ -1179,7 +1174,7 @@ namespace Files {
             open_file (file, null, null);
         }
 
-        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) requires (window != null) {
+        private void on_common_action_bookmark (GLib.SimpleAction action, GLib.Variant? param) requires (slot.top_level != null) {
             GLib.File location;
             if (selected_files != null) {
                 location = selected_files.data.get_target_location ();
@@ -1187,13 +1182,13 @@ namespace Files {
                 location = slot.directory.file.get_target_location ();
             }
 
-            window.bookmark_uri (location.get_uri ());
+            slot.top_level.bookmark_uri (location.get_uri ());
         }
 
         /** Background actions */
 
-        private void change_state_show_hidden (GLib.SimpleAction action) requires (window != null) {
-            window.change_state_show_hidden (action);
+        private void change_state_show_hidden (GLib.SimpleAction action) requires (slot.top_level != null) {
+            slot.top_level.change_state_show_hidden (action);
         }
 
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1269,7 +1264,7 @@ namespace Files {
         }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
-            new View.PropertiesWindow (get_files_for_action (), this, window);
+            new View.PropertiesWindow (get_files_for_action (), this);
         }
 
         private void on_common_action_copy_link (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1603,7 +1598,7 @@ namespace Files {
                     dnd_handler.set_source_uri (context.get_source_window (), uri);
                 } else {
                     PF.Dialogs.show_error_dialog (_("Cannot drop this file"),
-                                                  _("Invalid file name provided"), window);
+                                                  _("Invalid file name provided"), slot.top_level);
 
                     return false;
                 }
@@ -1669,7 +1664,7 @@ namespace Files {
                             destination_drop_file_list,
                             current_actions,
                             current_suggested_action,
-                            (Gtk.ApplicationWindow)Files.get_active_window (),
+                            slot.top_level,
                             timestamp
                         );
 
@@ -1862,7 +1857,7 @@ namespace Files {
 
 
 
-        protected void show_context_menu (Gdk.Event event) requires (window != null) {
+        protected void show_context_menu (Gdk.Event event) requires (slot.top_level != null) {
             /* select selection or background context menu */
             update_menu_actions ();
 
@@ -2196,7 +2191,7 @@ namespace Files {
                         }
 
                         menu.add (new Gtk.SeparatorMenuItem ());
-                        if (slot.directory.has_trash_dirs && !Files.is_admin ()) {
+                        if (slot.directory.has_trash_dirs && !slot.top_level.is_admin ()) {
                             menu.add (trash_menuitem);
                         } else {
                             menu.add (delete_menuitem);
@@ -2207,7 +2202,7 @@ namespace Files {
 
                     /* Do  not offer to bookmark if location is already bookmarked */
                     if (common_actions.get_action_enabled ("bookmark") &&
-                        window.can_bookmark_uri (selected_files.data.uri)) {
+                        slot.top_level.can_bookmark_uri (selected_files.data.uri)) {
 
                         menu.add (bookmark_menuitem);
                     }
@@ -2267,7 +2262,7 @@ namespace Files {
 
                     /* Do  not offer to bookmark if location is already bookmarked */
                     if (common_actions.get_action_enabled ("bookmark") &&
-                        window.can_bookmark_uri (slot.directory.file.uri)) {
+                        slot.top_level.can_bookmark_uri (slot.directory.file.uri)) {
 
                         menu.add (bookmark_menuitem);
                     }
@@ -2673,7 +2668,7 @@ namespace Files {
         }
 
         private void open_files_with (GLib.AppInfo app, GLib.List<Files.File> files) {
-            MimeActions.open_multiple_gof_files_request (files, this, app);
+            MimeActions.open_multiple_gof_files_request (files, slot.top_level, app);
         }
 
 
@@ -2827,7 +2822,7 @@ namespace Files {
             model.row_deleted.connect (on_row_deleted);
         }
 
-        private void start_drag_scroll_timer (Gdk.Device pointer) requires (window != null) {
+        private void start_drag_scroll_timer (Gdk.Device pointer) requires (slot.top_level != null) {
             drag_scroll_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                           50,
                                                           () => {
@@ -2948,9 +2943,9 @@ namespace Files {
                     if (!is_writable) {
                         PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
                                                         _("You do not have permission to change this location"),
-                                                        window as Gtk.Window);
+                                                        slot.top_level);
                     } else if (!renaming) {
-                        trash_or_delete_selected_files (in_trash || Files.is_admin () || only_shift_pressed);
+                        trash_or_delete_selected_files (in_trash || slot.top_level.is_admin () || only_shift_pressed);
                         res = true;
                     }
 
@@ -3052,16 +3047,16 @@ namespace Files {
                     }
 
                     res = move_cursor (keyval, only_shift_pressed, control_pressed);
-                    if ((this is ColumnView) && no_mods) {
-                        ((Files.View.Miller)(slot.ctab.view)).on_miller_key_pressed (keyval, keycode, state);
-                    }
                     break;
 
                 case Gdk.Key.Left:
                 case Gdk.Key.Right:
                 case Gdk.Key.BackSpace:
-                    if ((this is ColumnView) && no_mods) {
-                        ((Files.View.Miller)(slot.ctab.view)).on_miller_key_pressed (keyval, keycode, state);
+                    var toplevel_view = slot.top_level.get_view ();
+                    if (no_mods && (toplevel_view is MultiSlotInterface)) {
+                        ((MultiSlotInterface) (toplevel_view)).on_miller_key_pressed (
+                            keyval, keycode, state
+                        );
                         res = true;
                         break;
                     }
@@ -3095,7 +3090,7 @@ namespace Files {
                             if (in_trash) {
                                 PF.Dialogs.show_warning_dialog (_("Cannot copy files that are in the trash"),
                                                                 _("Cutting the selection instead"),
-                                                                window as Gtk.Window);
+                                                                slot.top_level);
 
                                 selection_actions.activate_action ("cut", null);
                             } else {
@@ -3126,7 +3121,7 @@ namespace Files {
                             } else {
                                 PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
                                                                 _("You do not have permission to change this location"),
-                                                                window as Gtk.Window);
+                                                                slot.top_level);
                             }
 
                             res = true;
@@ -3137,7 +3132,7 @@ namespace Files {
                             } else {
                                 PF.Dialogs.show_warning_dialog (_("Cannot paste files here"),
                                                                 _("You do not have permission to change this location"),
-                                                                window as Gtk.Window);
+                                                                slot.top_level);
                             }
 
                             res = true;
@@ -3154,7 +3149,7 @@ namespace Files {
                         } else {
                             PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
                                                             _("You do not have permission to change this location"),
-                                                            window as Gtk.Window);
+                                                            slot.top_level);
                         }
 
                         res = true;
@@ -3676,7 +3671,7 @@ namespace Files {
             Gtk.SortType sort_order = 0;
 
             /* Setting file attributes fails when root */
-            if (Files.is_admin ()) {
+            if (slot.top_level.is_admin ()) {
                 return;
             }
 
@@ -3701,7 +3696,7 @@ namespace Files {
             dir.file.sort_column_id = sort_column_id;
             dir.file.sort_order = sort_order;
 
-            if (!Files.is_admin ()) {
+            if (!slot.top_level.is_admin ()) {
                 dir.location.set_attributes_async.begin (info,
                                                    GLib.FileQueryInfoFlags.NONE,
                                                    GLib.Priority.DEFAULT,
@@ -3827,24 +3822,10 @@ namespace Files {
         public virtual void highlight_path (Gtk.TreePath? path) {}
         protected virtual Gtk.TreePath up (Gtk.TreePath path) {path.up (); return path;}
         protected virtual Gtk.TreePath down (Gtk.TreePath path) {path.down (); return path;}
-        protected virtual Settings? get_view_settings () { return null; }
         protected virtual void set_up_zoom_level () {
-            var view_settings = get_view_settings ();
-            if (view_settings == null) {
-                minimum_zoom = ZoomLevel.SMALLEST;
-                maximum_zoom = ZoomLevel.LARGEST;
-                zoom_level = ZoomLevel.NORMAL;
-            } else {
-                minimum_zoom = (ZoomLevel)view_settings.get_enum ("minimum-zoom-level");
-                maximum_zoom = (ZoomLevel)view_settings.get_enum ("maximum-zoom-level");
-                zoom_level = (ZoomLevel)view_settings.get_enum ("zoom-level");
-
-                view_settings.bind (
-                    "zoom-level",
-                    this, "zoom-level",
-                    GLib.SettingsBindFlags.SET
-                );
-            }
+            minimum_zoom = ZoomLevel.SMALLEST;
+            maximum_zoom = ZoomLevel.LARGEST;
+            zoom_level = ZoomLevel.NORMAL;
         }
 
         protected virtual bool view_has_focus () {

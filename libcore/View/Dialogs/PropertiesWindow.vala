@@ -112,8 +112,8 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
     /* Count of files current including top level (selected) files other than folders */
     private uint file_count;
 
-    public PropertiesWindow (GLib.List<Files.File> _files, Files.AbstractDirectoryView _view, Gtk.Window parent) {
-        base (_("Properties"), parent);
+    public PropertiesWindow (GLib.List<Files.File> _files, Files.AbstractDirectoryView _view) {
+        base (_("Properties"), _view.get_toplevel ());
 
         if (_files == null) {
             critical ("Properties Window constructor called with null file list");
