@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-31 04:08+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2020-03-17 15:09+0000\n"
 "Last-Translator: Shtonchjo <shtonchjo@gmail.com>\n"
 "Language-Team: Esperanto <https://l10n.elementary.io/projects/files/files/eo/"
@@ -28,9 +28,9 @@ msgstr "Antaŭa"
 msgid "Next"
 msgstr "Sekvanta"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:166
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -90,120 +90,10 @@ msgstr "Ĉu anstataŭigi dosieron „%s“?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Anstataŭigo surskribos la enhavon."
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Anstataŭigi"
-
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "Publika FTP"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "FTP (necesas ensaluti)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "SSH"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (ret-komunika protokolo de Apple)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "Vindoza kunhavigo"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "WebDAV sekura (HTTPS)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "Servilaj detaloj"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr "Servila nomo aŭ IP-adreso"
-
-#: libcore/ConnectServerDialog.vala:119
-msgid "Server:"
-msgstr "Servilo:"
-
-#: libcore/ConnectServerDialog.vala:129
-msgid "Port:"
-msgstr "Pordo:"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
-#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "Tipo:"
-
-#: libcore/ConnectServerDialog.vala:161
-#, fuzzy
-msgid "Name of share on server (Optional)"
-msgstr "Servila nomo de la kunhavigo"
-
-#: libcore/ConnectServerDialog.vala:164
-msgid "Share:"
-msgstr "Kunhavigi:"
-
-#: libcore/ConnectServerDialog.vala:167
-#, fuzzy
-msgid "Path of shared folder on server (Optional)"
-msgstr "Servila dosierindiko de kunhaviga dosierujo"
-
-#: libcore/ConnectServerDialog.vala:171
-msgid "Folder:"
-msgstr "Dosierujo:"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "Uzanto-detaloj"
-
-#: libcore/ConnectServerDialog.vala:180
-msgid "Name of Windows domain"
-msgstr "Nomo de vindoza retregiono"
-
-#: libcore/ConnectServerDialog.vala:182
-msgid "Domain name:"
-msgstr "Retregiona nomo:"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr "Servila uzantonomo"
-
-#: libcore/ConnectServerDialog.vala:189
-msgid "User name:"
-msgstr "Uzantonomo:"
-
-#: libcore/ConnectServerDialog.vala:197
-msgid "Password:"
-msgstr "Pasvorto:"
-
-#: libcore/ConnectServerDialog.vala:199
-msgid "Remember this password"
-msgstr "Memori ĉi pasvorton"
-
-#: libcore/ConnectServerDialog.vala:209
-msgid "Connect"
-msgstr "Konekti"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "Daŭrigi"
-
-#: libcore/ConnectServerDialog.vala:266
-msgid "Connecting…"
-msgstr "Konektanta…"
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "Bonvolu kontroli viajn uzanto-detalojn."
 
 #: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
@@ -368,125 +258,6 @@ msgstr[1] "%'d minutoj"
 #, c-format
 msgid "link to %s"
 msgstr "ligo al  %s"
-
-#: libcore/FileConflictDialog.vala:64
-msgid "File conflict"
-msgstr "Dosierkonflikto"
-
-#: libcore/FileConflictDialog.vala:77
-msgid "Original file"
-msgstr "Originala dosiero"
-
-#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
-msgid "Size:"
-msgstr "Grando:"
-
-#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
-msgid "Last modified:"
-msgstr "Laste modifita:"
-
-#: libcore/FileConflictDialog.vala:111
-msgid "Replace with"
-msgstr "Anstataŭigi per"
-
-#: libcore/FileConflictDialog.vala:145
-msgid "Reset"
-msgstr "Restarigi"
-
-#: libcore/FileConflictDialog.vala:154
-msgid "_Select a new name for the destination"
-msgstr "_Elekti alian nomon por la celo"
-
-#: libcore/FileConflictDialog.vala:158
-msgid "Apply this action to all files"
-msgstr "Apliki tion al ĉiuj dosieroj"
-
-#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "_Preterpasi"
-
-#: libcore/FileConflictDialog.vala:161
-msgid "Re_name"
-msgstr "_Alinomi"
-
-#: libcore/FileConflictDialog.vala:163
-msgid "Keep Newest"
-msgstr "Konservi la plej freŝdatan"
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Skip if original was modified more recently"
-msgstr "Preterpasi originalan pli freŝdata"
-
-#: libcore/FileConflictDialog.vala:281
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Ĉu kunigi dosierujon „%s“?"
-
-#: libcore/FileConflictDialog.vala:282
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Kunfando petas konfirmon pri anstataŭigo konflikta je kopio de dosiero en la "
-"dosierujo."
-
-#: libcore/FileConflictDialog.vala:284
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli malnova samnoma dosierujo en „%s“."
-
-#: libcore/FileConflictDialog.vala:286
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli nova samnoma dosierujo en „%s“."
-
-#: libcore/FileConflictDialog.vala:288
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas samnoma dosierujo en „%s“."
-
-#: libcore/FileConflictDialog.vala:291
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Ĉu anstataŭigi dosierujon „%s“?"
-
-#: libcore/FileConflictDialog.vala:292
-msgid "Replacing it will remove all files in the folder."
-msgstr "Anstataŭo de ĝi kaŭzas forigon de ĉiuj dosieroj en la dosierujo."
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas samnoma dosierujo en „%s“."
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Ĉu anstataŭigi dosieron „%s“?"
-
-#: libcore/FileConflictDialog.vala:297
-msgid "Replacing it will overwrite its content."
-msgstr "Anstataŭigo surskribos la enhavon."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli malnova dosiero kun la sama nomo en „%s“."
-
-#: libcore/FileConflictDialog.vala:302
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas pli nova dosiero kun la sama nomo en „%s“."
-
-#: libcore/FileConflictDialog.vala:304
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Jam ekzistas alia dosiero kun la sama nomo en „%s“."
-
-#: libcore/FileConflictDialog.vala:336
-msgid "Merge"
-msgstr "Kunfandi"
 
 #: libcore/FileUtils.vala:80
 #, fuzzy, c-format
@@ -986,50 +757,6 @@ msgstr ""
 msgid "File System"
 msgstr "Dosiersistemo"
 
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr "_Rezigni"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-msgid "Delete"
-msgstr "Forigi"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "_Preterpasi ĉiujn"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "_Reprovi"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "_Forigi ĉiujn"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "_Anstataŭigi"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "_Anstataŭigi ĉiujn"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "_Kunfandi"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "Kunf_andi ĉion"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "Kopii t_amen"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "Malplenigi _Rubujon"
-
 #: libcore/UndoManager.vala:22
 #, fuzzy
 msgid "Undo Copy"
@@ -1518,33 +1245,313 @@ msgid_plural "%'d files left to trash"
 msgstr[0] "%'d dosiero enrubujigota"
 msgstr[1] "%'d dosieroj enrubujigotaj"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "Publika FTP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "FTP (necesas ensaluti)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "SSH"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (ret-komunika protokolo de Apple)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "Vindoza kunhavigo"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "WebDAV sekura (HTTPS)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "Servilaj detaloj"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr "Servila nomo aŭ IP-adreso"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+msgid "Server:"
+msgstr "Servilo:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+msgid "Port:"
+msgstr "Pordo:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "Tipo:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+#, fuzzy
+msgid "Name of share on server (Optional)"
+msgstr "Servila nomo de la kunhavigo"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+msgid "Share:"
+msgstr "Kunhavigi:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+#, fuzzy
+msgid "Path of shared folder on server (Optional)"
+msgstr "Servila dosierindiko de kunhaviga dosierujo"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+msgid "Folder:"
+msgstr "Dosierujo:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "Uzanto-detaloj"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+msgid "Name of Windows domain"
+msgstr "Nomo de vindoza retregiono"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+msgid "Domain name:"
+msgstr "Retregiona nomo:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr "Servila uzantonomo"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+msgid "User name:"
+msgstr "Uzantonomo:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+msgid "Password:"
+msgstr "Pasvorto:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+msgid "Remember this password"
+msgstr "Memori ĉi pasvorton"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+msgid "Connect"
+msgstr "Konekti"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "Daŭrigi"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+msgid "Connecting…"
+msgstr "Konektanta…"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "Bonvolu kontroli viajn uzanto-detalojn."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr "Dosierkonflikto"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "Originala dosiero"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "Grando:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "Laste modifita:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "Anstataŭigi per"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "Restarigi"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "_Elekti alian nomon por la celo"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "Apliki tion al ĉiuj dosieroj"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "_Preterpasi"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "_Alinomi"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr "Konservi la plej freŝdatan"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr "Preterpasi originalan pli freŝdata"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Ĉu kunigi dosierujon „%s“?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Kunfando petas konfirmon pri anstataŭigo konflikta je kopio de dosiero en la "
+"dosierujo."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Jam ekzistas pli malnova samnoma dosierujo en „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Jam ekzistas pli nova samnoma dosierujo en „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Jam ekzistas samnoma dosierujo en „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Ĉu anstataŭigi dosierujon „%s“?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr "Anstataŭo de ĝi kaŭzas forigon de ĉiuj dosieroj en la dosierujo."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Jam ekzistas samnoma dosierujo en „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Ĉu anstataŭigi dosieron „%s“?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr "Anstataŭigo surskribos la enhavon."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Jam ekzistas pli malnova dosiero kun la sama nomo en „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Jam ekzistas pli nova dosiero kun la sama nomo en „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Jam ekzistas alia dosiero kun la sama nomo en „%s“."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "Kunfandi"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr "_Rezigni"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+msgid "Delete"
+msgstr "Forigi"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "_Preterpasi ĉiujn"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "_Reprovi"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "_Forigi ĉiujn"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Anstataŭigi"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "_Anstataŭigi ĉiujn"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "_Kunfandi"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "Kunf_andi ĉion"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "Kopii t_amen"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Malplenigi _Rubujon"
+
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "Navigi al %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "Iri al %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
 msgstr "Tajpu dosierindikon"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "Tajpi dosierindikon"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Prezenti laŭ krado"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Prezenti laŭ listo"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Prezenti laŭ kolumnoj"
 
@@ -1673,7 +1680,7 @@ msgstr "Kapacito:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
+#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
 msgid "Unknown"
 msgstr "Nekonata"
 
@@ -1835,31 +1842,31 @@ msgstr "Tio povas esti efektive pli granda"
 msgid "unknown"
 msgstr "nekonata"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
 msgid "Loading…"
 msgstr "Ŝargiĝanta…"
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
 msgid "Could not be determined"
 msgstr "Ne eblis determini"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
 msgid "Created:"
 msgstr "Kreita:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
 msgid "Modified:"
 msgstr "Modifita:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
 msgid "Deleted:"
 msgstr "Forigita:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
 msgid "Media type:"
 msgstr "Aŭdvida tipo:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
 msgid "Resolution:"
 msgstr "Distingivo:"
 
@@ -1868,11 +1875,11 @@ msgstr "Distingivo:"
 msgid "Location:"
 msgstr "Loko:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
 msgid "Target:"
 msgstr "Celo:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
 msgid "Original Location:"
 msgstr "Devena loko:"
 
@@ -1912,7 +1919,7 @@ msgid_plural "%u files"
 msgstr[0] "%u dosiero"
 msgstr[1] "%u dosieroj"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2179,17 +2186,17 @@ msgstr "Eltondi la elektaĵon anstataŭe"
 msgid "Cannot paste files here"
 msgstr "Neeblas alglui dosierojn ĉi tien"
 
-#: src/View/DetailsColumn.vala:119
+#: src/View/DetailsColumn.vala:118
 #, fuzzy
 #| msgid "Name"
 msgid "Name:"
 msgstr "Nomo"
 
-#: src/View/DetailsColumn.vala:213
+#: src/View/DetailsColumn.vala:211
 #, fuzzy
-#| msgid "More Results …"
-msgid "More Details…"
-msgstr "Ceteraj rezultatoj…"
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "Atributoj"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2586,29 +2593,29 @@ msgstr "Reŝargi la dosierujon"
 msgid "Searching…"
 msgstr "Serĉanta…"
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:173
 #, c-format
 msgid "%u folders"
 msgstr "%u dosierujoj"
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
 #, fuzzy, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " kaj %u alia elemento (%s) elektita(j)"
 msgstr[1] " kaj %u alia elemento (%s) elektita(j)"
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
 msgid " selected"
 msgstr " elektita(j)"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:192
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u elementoj elektitaj (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:237
 #, fuzzy, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -2616,7 +2623,7 @@ msgstr[0] "%u subdosierujo, "
 msgstr[1] "%u subdosierujo, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:243
 #, fuzzy, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -2624,18 +2631,18 @@ msgstr[0] "%u dosiero, "
 msgstr[1] "%u dosiero, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:253
 #, c-format
 msgid "%s approx."
 msgstr "%s proksim."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:256
 msgid "unknown size"
 msgstr "nekonata grando"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:260
 #, fuzzy, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
@@ -2670,6 +2677,11 @@ msgstr "Sub ĉi dosierujo"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Freŝdate uzitaj"
+
+#, fuzzy
+#~| msgid "More Results …"
+#~ msgid "More Details…"
+#~ msgstr "Ceteraj rezultatoj…"
 
 #~ msgid "File not Found"
 #~ msgstr "Netrovita dosiero"

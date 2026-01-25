@@ -24,7 +24,6 @@ namespace Files {
         public static void report_event (string uri, string interpretation) {
 #if HAVE_ZEITGEIST
             var file = GLib.File.new_for_commandline_arg (uri);
-
             file.query_info_async.begin (ATTRS, 0, Priority.DEFAULT, null, (obj, res) => {
                 FileInfo info;
                 try {

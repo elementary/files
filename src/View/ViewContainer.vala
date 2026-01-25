@@ -591,8 +591,11 @@ namespace Files.View {
             }
         }
 
-        private void on_slot_selection_changed (GLib.List<unowned Files.File> files) {
-            overlay_statusbar.selection_changed (files);
+        private void on_slot_selection_changed (
+            AbstractSlot aslot,
+            GLib.List<unowned Files.File> files
+        ) {
+            overlay_statusbar.selection_changed (files, aslot is Miller);
         }
 
         private void on_button_pressed_event (int n_press, double x, double y) {

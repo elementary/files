@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-31 04:08+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2026-01-01 04:55+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/extra/"
@@ -36,7 +36,7 @@ msgstr "carpeta;gestor;explora;disc;sistema de fitxers;"
 msgid "New Window"
 msgstr "Finestra nova"
 
-#: data/io.elementary.files.desktop.in.in:29
+#: data/io.elementary.files.desktop.in.in:30
 msgid "New Window As Administrator"
 msgstr "Finestra nova com a administrador"
 

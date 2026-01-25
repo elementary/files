@@ -85,7 +85,7 @@ namespace Files {
             {"copy", on_common_action_copy},
             {"paste-into", on_common_action_paste_into}, // Paste into selected folder
             {"paste", on_common_action_paste}, // Paste into background folder
-            {"open-in", on_common_action_open_in, "s"},
+            {"open-in", on_common_action_open_in, "i"},
             {"bookmark", on_common_action_bookmark},
             {"properties", on_common_action_properties},
             {"copy-link", on_common_action_copy_link},
@@ -1263,21 +1263,9 @@ namespace Files {
             portal.set_wallpaper.begin (parent, file.uri, NONE, null);
         }
 
-        private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) {
+        private void on_common_action_open_in (GLib.SimpleAction action, GLib.Variant? param) requires (param != null) {
             default_app = null;
-
-            switch (param.get_string ()) {
-                case "TAB":
-                    activate_selected_items (Files.OpenFlag.NEW_TAB, get_files_for_action ());
-                    break;
-
-                case "WINDOW":
-                    activate_selected_items (Files.OpenFlag.NEW_WINDOW, get_files_for_action ());
-                    break;
-
-                default:
-                    break;
-            }
+            activate_selected_items ((Files.OpenFlag) param, get_files_for_action ());
         }
 
         private void on_common_action_properties (GLib.SimpleAction action, GLib.Variant? param) {
@@ -1893,15 +1881,15 @@ namespace Files {
                         "<Shift>Return"
                     ));
                     new_tab_menuitem.action_name = "common.open-in";
+                    new_tab_menuitem.action_target = Files.OpenFlag.NEW_TAB;
                 } else {
                     new_tab_menuitem.add (new Granite.AccelLabel.from_action_name (
                         _("New Tab"),
                         "win.tab::TAB"
                     ));
                     new_tab_menuitem.action_name = "win.tab";
+                    new_tab_menuitem.action_target = "TAB";
                 }
-
-                new_tab_menuitem.action_target = "TAB";
 
                 var new_window_menuitem = new Gtk.MenuItem ();
                 if (selected_files != null) {
@@ -1910,14 +1898,15 @@ namespace Files {
                         "<Shift><Ctrl>Return"
                     ));
                     new_window_menuitem.action_name = "common.open-in";
+                    new_window_menuitem.action_target = Files.OpenFlag.NEW_WINDOW;
                 } else {
                     new_window_menuitem.add (new Granite.AccelLabel.from_action_name (
                         _("New Window"),
                         "win.tab::WINDOW"
                     ));
                     new_window_menuitem.action_name = "win.tab";
+                    new_window_menuitem.action_target = "WINDOW";
                 }
-                new_window_menuitem.action_target = "WINDOW";
 
                 open_submenu.add (new_tab_menuitem);
                 open_submenu.add (new_window_menuitem);

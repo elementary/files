@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-31 04:08+0000\n"
-"PO-Revision-Date: 2026-01-01 04:55+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
+"PO-Revision-Date: 2026-01-23 22:55+0000\n"
 "Last-Translator: Bas Ernst <50556177+ErnstBas@users.noreply.github.com>\n"
 "Language-Team: Dutch <https://l10n.elementaryos.org/projects/files/files/nl/>"
 "\n"
@@ -28,9 +28,9 @@ msgstr "Vorige"
 msgid "Next"
 msgstr "Volgende"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:166
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -88,118 +88,10 @@ msgstr "“%s” vervangen?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Door dit bestand te vervangen zal de inhoud worden overschreven"
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Vervang"
-
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "Openbare FTP"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "FTP (met aanmelden)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "SSH"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "Windows-netwerk"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Beveiligde WebDAV (HTTPS)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "Serverdetails"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr "Servernaam of IP-adres"
-
-#: libcore/ConnectServerDialog.vala:119
-msgid "Server:"
-msgstr "Server:"
-
-#: libcore/ConnectServerDialog.vala:129
-msgid "Port:"
-msgstr "Poort:"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
-#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "Type:"
-
-#: libcore/ConnectServerDialog.vala:161
-msgid "Name of share on server (Optional)"
-msgstr "Naam van share op server (Optioneel)"
-
-#: libcore/ConnectServerDialog.vala:164
-msgid "Share:"
-msgstr "Share:"
-
-#: libcore/ConnectServerDialog.vala:167
-msgid "Path of shared folder on server (Optional)"
-msgstr "Pad naar de gedeelde map op de server (Optioneel)"
-
-#: libcore/ConnectServerDialog.vala:171
-msgid "Folder:"
-msgstr "Map:"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "Gebruikerdetails"
-
-#: libcore/ConnectServerDialog.vala:180
-msgid "Name of Windows domain"
-msgstr "Naam van Windows-domein"
-
-#: libcore/ConnectServerDialog.vala:182
-msgid "Domain name:"
-msgstr "Domeinnaam:"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr "Gebruikersnaam voor de server"
-
-#: libcore/ConnectServerDialog.vala:189
-msgid "User name:"
-msgstr "Gebruikersnaam:"
-
-#: libcore/ConnectServerDialog.vala:197
-msgid "Password:"
-msgstr "Wachtwoord:"
-
-#: libcore/ConnectServerDialog.vala:199
-msgid "Remember this password"
-msgstr "Dit wachtwoord onthouden"
-
-#: libcore/ConnectServerDialog.vala:209
-msgid "Connect"
-msgstr "Verbinden"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "Ga verder"
-
-#: libcore/ConnectServerDialog.vala:266
-msgid "Connecting…"
-msgstr "Verbinden…"
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "Controleer de gebruikersgegevens."
 
 #: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
@@ -353,126 +245,6 @@ msgstr[1] "%'d items"
 #, c-format
 msgid "link to %s"
 msgstr "link naar %s"
-
-#: libcore/FileConflictDialog.vala:64
-msgid "File conflict"
-msgstr "Bestandsconflict"
-
-#: libcore/FileConflictDialog.vala:77
-msgid "Original file"
-msgstr "Origineel bestand"
-
-#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
-msgid "Size:"
-msgstr "Grootte:"
-
-#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
-msgid "Last modified:"
-msgstr "Laatst bewerkt:"
-
-#: libcore/FileConflictDialog.vala:111
-msgid "Replace with"
-msgstr "Vervang met"
-
-#: libcore/FileConflictDialog.vala:145
-msgid "Reset"
-msgstr "Herstel"
-
-#: libcore/FileConflictDialog.vala:154
-msgid "_Select a new name for the destination"
-msgstr "_Selecteer een nieuwe naam voor de bestemming"
-
-#: libcore/FileConflictDialog.vala:158
-msgid "Apply this action to all files"
-msgstr "Pas deze actie toe op alle bestanden"
-
-#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "_Overslaan"
-
-#: libcore/FileConflictDialog.vala:161
-msgid "Re_name"
-msgstr "Her_noemen"
-
-#: libcore/FileConflictDialog.vala:163
-msgid "Keep Newest"
-msgstr "Nieuwste behouden"
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Skip if original was modified more recently"
-msgstr "Overslaan als het origineel recenter gewijzigd is"
-
-#: libcore/FileConflictDialog.vala:281
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Map \"%s\" samenvoegen?"
-
-#: libcore/FileConflictDialog.vala:282
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Bij samenvoegen zal eerst om bevestiging gevraagd worden voordat bestanden "
-"in de map die conflicteren met de verplaatste bestanden, vervangen worden."
-
-#: libcore/FileConflictDialog.vala:284
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Een oudere map met dezelfde naam bestaat al in \"%s\"."
-
-#: libcore/FileConflictDialog.vala:286
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Een nieuwere map met dezelfde naam bestaat al in\"%s\"."
-
-#: libcore/FileConflictDialog.vala:288
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een andere map met dezelfde naam in \"%s\"."
-
-#: libcore/FileConflictDialog.vala:291
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Vervang map \"%s\"?"
-
-#: libcore/FileConflictDialog.vala:292
-msgid "Replacing it will remove all files in the folder."
-msgstr ""
-"Bij het vervangen ervan zullen alle bestanden in de map verwijderd worden."
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een map met dezelfde naam in \"%s\"."
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Vervang bestand \"%s\"?"
-
-#: libcore/FileConflictDialog.vala:297
-msgid "Replacing it will overwrite its content."
-msgstr "Vervangen zal de inhoud overschrijven."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een ouder bestand met dezelfde naam in \"%s\"."
-
-#: libcore/FileConflictDialog.vala:302
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een nieuwer bestand met dezelfde naam in \"%s\"."
-
-#: libcore/FileConflictDialog.vala:304
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Er bestaat al een ander bestand met dezelfde naam in \"%s\"."
-
-#: libcore/FileConflictDialog.vala:336
-msgid "Merge"
-msgstr "Samenvoegen"
 
 #: libcore/FileUtils.vala:80
 #, c-format
@@ -989,50 +761,6 @@ msgstr "GPHOTO2"
 msgid "File System"
 msgstr "Bestandssysteem"
 
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr "_Annuleren"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-msgid "Delete"
-msgstr "Verwijder"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "Alles _overslaan"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "_Opnieuw proberen"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "Alles _verwijderen"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "_Vervangen"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "_Alles vervangen"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "Sa_menvoegen"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "_Alles samenvoegen"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "_Toch kopiëren"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "Leeg _prullenbak"
-
 #: libcore/UndoManager.vala:22
 msgid "Undo Copy"
 msgstr "Kopiëren ongedaan maken"
@@ -1508,33 +1236,312 @@ msgid_plural "%'d files left to trash"
 msgstr[0] "%'d bestand over om in de prullenbak te gooien"
 msgstr[1] "%'d bestanden over om in de prullenbak te gooien"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "Openbare FTP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "FTP (met aanmelden)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "SSH"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple Filing Protocol)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "Windows-netwerk"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Beveiligde WebDAV (HTTPS)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "Serverdetails"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr "Servernaam of IP-adres"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+msgid "Server:"
+msgstr "Server:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+msgid "Port:"
+msgstr "Poort:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "Type:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+msgid "Name of share on server (Optional)"
+msgstr "Naam van share op server (Optioneel)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+msgid "Share:"
+msgstr "Share:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+msgid "Path of shared folder on server (Optional)"
+msgstr "Pad naar de gedeelde map op de server (Optioneel)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+msgid "Folder:"
+msgstr "Map:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "Gebruikerdetails"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+msgid "Name of Windows domain"
+msgstr "Naam van Windows-domein"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+msgid "Domain name:"
+msgstr "Domeinnaam:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr "Gebruikersnaam voor de server"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+msgid "User name:"
+msgstr "Gebruikersnaam:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+msgid "Password:"
+msgstr "Wachtwoord:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+msgid "Remember this password"
+msgstr "Dit wachtwoord onthouden"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+msgid "Connect"
+msgstr "Verbinden"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "Ga verder"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+msgid "Connecting…"
+msgstr "Verbinden…"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "Controleer de gebruikersgegevens."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr "Bestandsconflict"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "Origineel bestand"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "Grootte:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "Laatst bewerkt:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "Vervang met"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "Herstel"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "_Selecteer een nieuwe naam voor de bestemming"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "Pas deze actie toe op alle bestanden"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "_Overslaan"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "Her_noemen"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr "Nieuwste behouden"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr "Overslaan als het origineel recenter gewijzigd is"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Map \"%s\" samenvoegen?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Bij samenvoegen zal eerst om bevestiging gevraagd worden voordat bestanden "
+"in de map die conflicteren met de verplaatste bestanden, vervangen worden."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Een oudere map met dezelfde naam bestaat al in \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Een nieuwere map met dezelfde naam bestaat al in\"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een andere map met dezelfde naam in \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Vervang map \"%s\"?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr ""
+"Bij het vervangen ervan zullen alle bestanden in de map verwijderd worden."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een map met dezelfde naam in \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Vervang bestand \"%s\"?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr "Vervangen zal de inhoud overschrijven."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een ouder bestand met dezelfde naam in \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een nieuwer bestand met dezelfde naam in \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Er bestaat al een ander bestand met dezelfde naam in \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "Samenvoegen"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr "_Annuleren"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+msgid "Delete"
+msgstr "Verwijder"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "Alles _overslaan"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "_Opnieuw proberen"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "Alles _verwijderen"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Vervangen"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "_Alles vervangen"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "Sa_menvoegen"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "_Alles samenvoegen"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "_Toch kopiëren"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Leeg _prullenbak"
+
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "Navigeer naar %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "Ga naar %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
 msgstr "Type pad"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "Geef een pad op"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Raster-weergave"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Lijst-weergave"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Kolom-weergave"
 
@@ -1660,7 +1667,7 @@ msgstr "Capaciteit:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
+#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
 msgid "Unknown"
 msgstr "Onbekend"
 
@@ -1814,31 +1821,31 @@ msgstr "De daadwerkelijke grootte kan groter zijn"
 msgid "unknown"
 msgstr "onbekend"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
 msgid "Loading…"
 msgstr "Laden…"
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
 msgid "Could not be determined"
 msgstr "Kon niet bepaald worden"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
 msgid "Created:"
 msgstr "Gemaakt:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
 msgid "Modified:"
 msgstr "Gewijzigd:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
 msgid "Deleted:"
 msgstr "Verwijderd:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
 msgid "Media type:"
 msgstr "Mediatype:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
 msgid "Resolution:"
 msgstr "Resolutie:"
 
@@ -1847,11 +1854,11 @@ msgstr "Resolutie:"
 msgid "Location:"
 msgstr "Locatie:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
 msgid "Target:"
 msgstr "Doel:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
 msgid "Original Location:"
 msgstr "Oorspronkelijke locatie:"
 
@@ -1891,7 +1898,7 @@ msgid_plural "%u files"
 msgstr[0] "%u bestand"
 msgstr[1] "%u bestanden"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2149,13 +2156,13 @@ msgstr "De selectie wordt in plaats daarvan geknipt"
 msgid "Cannot paste files here"
 msgstr "Kan bestanden hier niet plakken"
 
-#: src/View/DetailsColumn.vala:119
+#: src/View/DetailsColumn.vala:118
 msgid "Name:"
 msgstr "Naam:"
 
-#: src/View/DetailsColumn.vala:213
-msgid "More Details…"
-msgstr "Meer details…"
+#: src/View/DetailsColumn.vala:211
+msgid "Properties…"
+msgstr "Eigenschappen…"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2534,29 +2541,29 @@ msgstr "Herlaad deze map"
 msgid "Searching…"
 msgstr "Zoeken…"
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:173
 #, c-format
 msgid "%u folders"
 msgstr "%u mappen"
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " en %u ander item (%s) geselecteerd"
 msgstr[1] " en %u andere items (%s) geselecteerd"
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
 msgid " selected"
 msgstr " geselecteerd"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:192
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u items geselecteerd (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:237
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -2564,7 +2571,7 @@ msgstr[0] "%u submap, "
 msgstr[1] "%u submappen, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:243
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -2572,18 +2579,18 @@ msgstr[0] "%u bestand, "
 msgstr[1] "%u bestanden, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:253
 #, c-format
 msgid "%s approx."
 msgstr "Ongeveer %s"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:256
 msgid "unknown size"
 msgstr "onbekende grootte"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:260
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
@@ -2617,6 +2624,9 @@ msgstr "Onder deze map"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Recent gebruikt"
+
+#~ msgid "More Details…"
+#~ msgstr "Meer details…"
 
 #~ msgid "File not Found"
 #~ msgstr "Bestand niet gevonden"

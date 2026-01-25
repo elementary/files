@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-31 04:08+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2020-04-26 23:10+0000\n"
 "Last-Translator: Jernej Virag <jernej@virag.si>\n"
 "Language-Team: Slovenian <https://l10n.elementary.io/projects/files/files/sl/"
@@ -29,9 +29,9 @@ msgstr "Naprej"
 msgid "Next"
 msgstr "Nazaj"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:166
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -91,120 +91,10 @@ msgstr "Ali naj se datoteka \"%s\" prepiše?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Zamenjava bo prepisala njeno vsebino."
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Zamenjaj"
-
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "Javni FTP"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "FTP (s prijavo)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "SSH"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "Skupna raba Windows"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Varni WebDAV (HTTPS)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "Strežnik"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr "Ime strežnika ali IP naslov"
-
-#: libcore/ConnectServerDialog.vala:119
-msgid "Server:"
-msgstr "Strežnik:"
-
-#: libcore/ConnectServerDialog.vala:129
-msgid "Port:"
-msgstr "Vrata:"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
-#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "Vrsta:"
-
-#: libcore/ConnectServerDialog.vala:161
-#, fuzzy
-msgid "Name of share on server (Optional)"
-msgstr "Ime mape v skupni rabi na strežniku"
-
-#: libcore/ConnectServerDialog.vala:164
-msgid "Share:"
-msgstr "Mapa v skupni rabi:"
-
-#: libcore/ConnectServerDialog.vala:167
-#, fuzzy
-msgid "Path of shared folder on server (Optional)"
-msgstr "Pot mape v skupni rabi na strežniku"
-
-#: libcore/ConnectServerDialog.vala:171
-msgid "Folder:"
-msgstr "Mapa:"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "Uporabnik"
-
-#: libcore/ConnectServerDialog.vala:180
-msgid "Name of Windows domain"
-msgstr "Ime Windows domene"
-
-#: libcore/ConnectServerDialog.vala:182
-msgid "Domain name:"
-msgstr "Ime domene:"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr "Ime uporabnika na strežniku"
-
-#: libcore/ConnectServerDialog.vala:189
-msgid "User name:"
-msgstr "Uporabniško ime:"
-
-#: libcore/ConnectServerDialog.vala:197
-msgid "Password:"
-msgstr "Geslo:"
-
-#: libcore/ConnectServerDialog.vala:199
-msgid "Remember this password"
-msgstr "Zapomni si to geslo"
-
-#: libcore/ConnectServerDialog.vala:209
-msgid "Connect"
-msgstr "_Poveži"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "Nadaljuj"
-
-#: libcore/ConnectServerDialog.vala:266
-msgid "Connecting…"
-msgstr "Povezovanje …"
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "Preverite uporabniško ime in geslo."
 
 #: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
@@ -370,125 +260,6 @@ msgstr[3] "%'d minute"
 #, c-format
 msgid "link to %s"
 msgstr "povezava do %s"
-
-#: libcore/FileConflictDialog.vala:64
-msgid "File conflict"
-msgstr "Datoteke v sporu"
-
-#: libcore/FileConflictDialog.vala:77
-msgid "Original file"
-msgstr "Izvirna datoteka"
-
-#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:126
-msgid "Size:"
-msgstr "Velikost:"
-
-#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
-msgid "Last modified:"
-msgstr "Zadnja sprememba:"
-
-#: libcore/FileConflictDialog.vala:111
-msgid "Replace with"
-msgstr "Zamenjaj z"
-
-#: libcore/FileConflictDialog.vala:145
-msgid "Reset"
-msgstr "Ponastavi"
-
-#: libcore/FileConflictDialog.vala:154
-msgid "_Select a new name for the destination"
-msgstr "_Izbor novega imena za cilj"
-
-#: libcore/FileConflictDialog.vala:158
-msgid "Apply this action to all files"
-msgstr "Uveljavi dejanje za vse datoteke"
-
-#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "_Preskoči"
-
-#: libcore/FileConflictDialog.vala:161
-msgid "Re_name"
-msgstr "_Preimenuj"
-
-#: libcore/FileConflictDialog.vala:163
-msgid "Keep Newest"
-msgstr "Ohrani najnovejšo"
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Skip if original was modified more recently"
-msgstr "Preskoči operacijo če je originalna datoteka novejša od trenutne"
-
-#: libcore/FileConflictDialog.vala:281
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Ali naj se združi mapa \"%s\"?"
-
-#: libcore/FileConflictDialog.vala:282
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Med združevanjem bo program pred zamenjavo datotek, ki so v sporu s "
-"kopiranimi datotekami, zahteval potrditev."
-
-#: libcore/FileConflictDialog.vala:284
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Starejša mapa z istim imenom že obstaja v \"%s\"."
-
-#: libcore/FileConflictDialog.vala:286
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Novejša mapa z istim imenom že obstaja v \"%s\"."
-
-#: libcore/FileConflictDialog.vala:288
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Mapa z istim imenom že obstaja v \"%s\"."
-
-#: libcore/FileConflictDialog.vala:291
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Ali naj se zamenja mapa \"%s\"?"
-
-#: libcore/FileConflictDialog.vala:292
-msgid "Replacing it will remove all files in the folder."
-msgstr "Zamenjava bo odstranila vse datoteke v mapi."
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Mapa z istim imenom že obstaja v \"%s\"."
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Ali naj se datoteka \"%s\" prepiše?"
-
-#: libcore/FileConflictDialog.vala:297
-msgid "Replacing it will overwrite its content."
-msgstr "Zamenjava bo prepisala njeno vsebino."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Starejša datoteka z enakim imenom že obstaja v \"%s\"."
-
-#: libcore/FileConflictDialog.vala:302
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Novejša datoteka z enakim imenom že obstaja v \"%s\"."
-
-#: libcore/FileConflictDialog.vala:304
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Druga datoteka z enakim imenom že obstaja v \"%s\"."
-
-#: libcore/FileConflictDialog.vala:336
-msgid "Merge"
-msgstr "Združi"
 
 #: libcore/FileUtils.vala:80
 #, fuzzy, c-format
@@ -994,50 +765,6 @@ msgstr ""
 #: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Datotečni sistem"
-
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr "Prekliči"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-msgid "Delete"
-msgstr "Izbriši"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "Pres_koči vse"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "Poskusi _znova"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "_Izbriši vse"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "_Zamenjaj"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "Zamenjaj _Vse"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "_Združi"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "Združi _vse"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "_Vseeno kopiraj"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "Izprazni _smeti"
 
 #: libcore/UndoManager.vala:22
 #, fuzzy
@@ -1562,33 +1289,313 @@ msgstr[1] "%'d preostala datoteka za premikanje v smeti"
 msgstr[2] "%'d preostali datoteki za premikanje v smeti"
 msgstr[3] "%'d preostale datoteke za premikanje v smeti"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "Javni FTP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "FTP (s prijavo)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "SSH"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple Filing Protocol)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "Skupna raba Windows"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Varni WebDAV (HTTPS)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "Strežnik"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr "Ime strežnika ali IP naslov"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+msgid "Server:"
+msgstr "Strežnik:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+msgid "Port:"
+msgstr "Vrata:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "Vrsta:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+#, fuzzy
+msgid "Name of share on server (Optional)"
+msgstr "Ime mape v skupni rabi na strežniku"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+msgid "Share:"
+msgstr "Mapa v skupni rabi:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+#, fuzzy
+msgid "Path of shared folder on server (Optional)"
+msgstr "Pot mape v skupni rabi na strežniku"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+msgid "Folder:"
+msgstr "Mapa:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "Uporabnik"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+msgid "Name of Windows domain"
+msgstr "Ime Windows domene"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+msgid "Domain name:"
+msgstr "Ime domene:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr "Ime uporabnika na strežniku"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+msgid "User name:"
+msgstr "Uporabniško ime:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+msgid "Password:"
+msgstr "Geslo:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+msgid "Remember this password"
+msgstr "Zapomni si to geslo"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+msgid "Connect"
+msgstr "_Poveži"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "Nadaljuj"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+msgid "Connecting…"
+msgstr "Povezovanje …"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "Preverite uporabniško ime in geslo."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr "Datoteke v sporu"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "Izvirna datoteka"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "Velikost:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "Zadnja sprememba:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "Zamenjaj z"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "Ponastavi"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "_Izbor novega imena za cilj"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "Uveljavi dejanje za vse datoteke"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "_Preskoči"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "_Preimenuj"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr "Ohrani najnovejšo"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr "Preskoči operacijo če je originalna datoteka novejša od trenutne"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Ali naj se združi mapa \"%s\"?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Med združevanjem bo program pred zamenjavo datotek, ki so v sporu s "
+"kopiranimi datotekami, zahteval potrditev."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Starejša mapa z istim imenom že obstaja v \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Novejša mapa z istim imenom že obstaja v \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Mapa z istim imenom že obstaja v \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Ali naj se zamenja mapa \"%s\"?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr "Zamenjava bo odstranila vse datoteke v mapi."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Mapa z istim imenom že obstaja v \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Ali naj se datoteka \"%s\" prepiše?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr "Zamenjava bo prepisala njeno vsebino."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Starejša datoteka z enakim imenom že obstaja v \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Novejša datoteka z enakim imenom že obstaja v \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Druga datoteka z enakim imenom že obstaja v \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "Združi"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr "Prekliči"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+msgid "Delete"
+msgstr "Izbriši"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "Pres_koči vse"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "Poskusi _znova"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "_Izbriši vse"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Zamenjaj"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "Zamenjaj _Vse"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "_Združi"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "Združi _vse"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "_Vseeno kopiraj"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Izprazni _smeti"
+
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "Pojdi v %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "Pojdi v %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
 msgstr "Vnesite pot"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "Vnesite pot"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Pogled mreže"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Pogled seznama"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Pogled v stolpcih"
 
@@ -1714,7 +1721,7 @@ msgstr "Kapaciteta:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:260 src/View/DetailsColumn.vala:274
+#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
 msgid "Unknown"
 msgstr "Neznano"
 
@@ -1882,31 +1889,31 @@ msgstr "Dejanska velikost je lahko večja"
 msgid "unknown"
 msgstr "neznano"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:311
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
 msgid "Loading…"
 msgstr "Nalaganje…"
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:280
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
 msgid "Could not be determined"
 msgstr "Ni bilo mogoče določiti"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
 msgid "Created:"
 msgstr "Ustvarjeno:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:158
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
 msgid "Modified:"
 msgstr "Spremenjeno:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:172
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
 msgid "Deleted:"
 msgstr "Izbrisano:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:181
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
 msgid "Media type:"
 msgstr "Tip:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:188
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
 msgid "Resolution:"
 msgstr "Ločljivost:"
 
@@ -1915,11 +1922,11 @@ msgstr "Ločljivost:"
 msgid "Location:"
 msgstr "Lokacija:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:196
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
 msgid "Target:"
 msgstr "Cilj:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:206
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
 msgid "Original Location:"
 msgstr "Izvorna lokacija:"
 
@@ -1963,7 +1970,7 @@ msgstr[1] "%u datoteka"
 msgstr[2] "%u datoteki"
 msgstr[3] "%u datotek"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2234,17 +2241,17 @@ msgstr "Režem izbrane predmete"
 msgid "Cannot paste files here"
 msgstr "Datotek ni mogoče prilepiti sem"
 
-#: src/View/DetailsColumn.vala:119
+#: src/View/DetailsColumn.vala:118
 #, fuzzy
 #| msgid "Name"
 msgid "Name:"
 msgstr "Imenu"
 
-#: src/View/DetailsColumn.vala:213
+#: src/View/DetailsColumn.vala:211
 #, fuzzy
-#| msgid "More Results …"
-msgid "More Details…"
-msgstr "Več rezultatov…"
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "Lastnosti"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2641,12 +2648,12 @@ msgstr "Osveži to mapo"
 msgid "Searching…"
 msgstr "Iskanje…"
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:173
 #, c-format
 msgid "%u folders"
 msgstr "Izbranih %u map"
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
 #, fuzzy, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
@@ -2655,17 +2662,17 @@ msgstr[1] " in %u drug predmet (%s)"
 msgstr[2] " in %u drug predmet (%s)"
 msgstr[3] " in %u drug predmet (%s)"
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
 msgid " selected"
 msgstr " izbranih"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:192
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "Izbranih %u predmetov (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:237
 #, fuzzy, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -2675,7 +2682,7 @@ msgstr[2] "%u podmapa, "
 msgstr[3] "%u podmapa, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:243
 #, fuzzy, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -2685,18 +2692,18 @@ msgstr[2] "%u datoteka, "
 msgstr[3] "%u datoteka, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:253
 #, c-format
 msgid "%s approx."
 msgstr "pribl. %s"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:256
 msgid "unknown size"
 msgstr "neznana velikost"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:260
 #, fuzzy, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
@@ -2733,6 +2740,11 @@ msgstr "Pod to mapo"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Nedavne datoteke"
+
+#, fuzzy
+#~| msgid "More Results …"
+#~ msgid "More Details…"
+#~ msgstr "Več rezultatov…"
 
 #~ msgid "File not Found"
 #~ msgstr "Datoteka ni najdena"

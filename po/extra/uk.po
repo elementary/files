@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-31 04:08+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2025-12-18 23:55+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementaryos.org/projects/files/extra/"
@@ -37,7 +37,7 @@ msgstr "тека;менеджер;огляд;диск;файлова систе�
 msgid "New Window"
 msgstr "Нове вікно"
 
-#: data/io.elementary.files.desktop.in.in:29
+#: data/io.elementary.files.desktop.in.in:30
 msgid "New Window As Administrator"
 msgstr "Нове вікно Як адміністратор"
 
