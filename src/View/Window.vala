@@ -40,6 +40,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"singleclick-select", null, null, "false", change_state_single_click_select},
         {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
         {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
+        {"show-file-preview", null, null, "false", change_state_show_file_preview},
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
         {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
@@ -280,6 +281,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         get_action ("show-hidden").set_state (prefs.show_hidden_files);
         get_action ("show-local-thumbnails").set_state (prefs.show_local_thumbnails);
         get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
+        get_action ("show-file-preview").set_state (prefs.show_file_preview);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
         get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
@@ -1083,6 +1085,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.app_settings.set_boolean ("show-local-thumbnails", state);
+    }
+
+    public void change_state_show_file_preview (GLib.SimpleAction action) {
+        var state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.app_settings.set_boolean ("show-file-preview", state);
     }
 
     public void change_state_folders_before_files (GLib.SimpleAction action) {

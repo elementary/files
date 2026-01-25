@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02 12:13+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2017-08-22 19:27+0000\n"
 "Last-Translator: anjelo del carmen <anjelo2009@live.com>\n"
 "Language-Team: Tagalog <https://weblate.elementary.io/projects/files/files/"
@@ -20,17 +20,17 @@ msgstr ""
 "X-Generator: Weblate 2.15\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:195
 msgid "Previous"
 msgstr "Nakaraan"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:200
 msgid "Next"
 msgstr "Susunod"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:185
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -88,131 +88,12 @@ msgstr "Palitan ang file na \"%s\"?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr ""
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:187
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Palitan"
 
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "Pampublikong FTP"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "FTP (may kasamang login)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "SSH"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "I-share sa Windows"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Secure WebDAV (HTTPS)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "Detalye ng Server"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:119
-#, fuzzy
-msgid "Server:"
-msgstr "_Server:"
-
-#: libcore/ConnectServerDialog.vala:129
-#, fuzzy
-msgid "Port:"
-msgstr "_Port:"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "Uri:"
-
-#: libcore/ConnectServerDialog.vala:161
-msgid "Name of share on server (Optional)"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:164
-#, fuzzy
-msgid "Share:"
-msgstr "I-Sh_are:"
-
-#: libcore/ConnectServerDialog.vala:167
-msgid "Path of shared folder on server (Optional)"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:171
-#, fuzzy
-msgid "Folder:"
-msgstr "Polder"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "Detalye ng User"
-
-#: libcore/ConnectServerDialog.vala:180
-#, fuzzy
-msgid "Name of Windows domain"
-msgstr "Bagong Window Bilang _Administrador"
-
-#: libcore/ConnectServerDialog.vala:182
-#, fuzzy
-msgid "Domain name:"
-msgstr "Pangalan ng _Domain"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:189
-#, fuzzy
-msgid "User name:"
-msgstr "Pangalan ng _user"
-
-#: libcore/ConnectServerDialog.vala:197
-#, fuzzy
-msgid "Password:"
-msgstr "Pass_word:"
-
-#: libcore/ConnectServerDialog.vala:199
-#, fuzzy
-msgid "Remember this password"
-msgstr "Tandaan ang password na itp"
-
-#: libcore/ConnectServerDialog.vala:209
-#, fuzzy
-msgid "Connect"
-msgstr "Kumunekta"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "Magpatuloy"
-
-#: libcore/ConnectServerDialog.vala:266
-#, fuzzy
-msgid "Connecting…"
-msgstr "Kumokonekta..."
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "Pakitignan muli ang detalye ng user mo."
-
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -333,162 +214,45 @@ msgstr ""
 msgid "Compact"
 msgstr ""
 
-#: libcore/File.vala:616 libcore/File.vala:1176
+#: libcore/File.vala:647 libcore/File.vala:1207
 msgid "Inaccessible"
 msgstr ""
 
-#: libcore/File.vala:955
+#: libcore/File.vala:986
 #, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "Hindi maiparse ang desktop file na:  %s"
 
-#: libcore/File.vala:959
+#: libcore/File.vala:990
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "Hindi maiparse ang desktop file na:  %s"
 
-#: libcore/File.vala:971
+#: libcore/File.vala:1002
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "Hindi maiparse ang desktop file na:  %s"
 
-#: libcore/File.vala:980
+#: libcore/File.vala:1011
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "Hindi maiparse ang desktop file na:  %s"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1200
 #, fuzzy
 msgid "Empty"
 msgstr "Kinokopya ang mga Files"
 
-#: libcore/File.vala:1171
+#: libcore/File.vala:1202
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d na mga minuto"
 
-#: libcore/File.vala:1216
+#: libcore/File.vala:1247
 #, fuzzy, c-format
 msgid "link to %s"
 msgstr "Burahin ang link papuntang '%s'"
-
-#: libcore/FileConflictDialog.vala:61
-msgid "File conflict"
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:96
-msgid "Original file"
-msgstr "Orihinal na file"
-
-#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
-#: src/Dialogs/PropertiesWindow.vala:546
-msgid "Size:"
-msgstr "Sukat:"
-
-#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
-msgid "Last modified:"
-msgstr "Huling binago:"
-
-#: libcore/FileConflictDialog.vala:130
-msgid "Replace with"
-msgstr "Palitan ng"
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Reset"
-msgstr "Ibalik sa Dati"
-
-#: libcore/FileConflictDialog.vala:173
-msgid "_Select a new name for the destination"
-msgstr "Pumili ng bagong pangalan para sa destina_syon"
-
-#: libcore/FileConflictDialog.vala:177
-msgid "Apply this action to all files"
-msgstr "Gamitin ang aksyon na ito sa lahat ng mga file"
-
-#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "Laktawan"
-
-#: libcore/FileConflictDialog.vala:180
-msgid "Re_name"
-msgstr "Baguhin ang Pa_ngalan"
-
-#: libcore/FileConflictDialog.vala:182
-msgid "Keep Newest"
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:183
-msgid "Skip if original was modified more recently"
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Ipagsama ang folder na \"%s\"?"
-
-#: libcore/FileConflictDialog.vala:294
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "May lumang polder na meron nang kaparehong pangalan sa \"%s\"."
-
-#: libcore/FileConflictDialog.vala:298
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "May mas bagong polder na meron nang kaparehong pangalan sa \"%s\"."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "May isa pang polder na meron nang kaparehong pangalan sa \"%s\"."
-
-#: libcore/FileConflictDialog.vala:303
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Palitan ang folder na  \"%s\"?"
-
-#: libcore/FileConflictDialog.vala:304
-msgid "Replacing it will remove all files in the folder."
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:305
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Ang folder na ito ay may kaparehong pangalan sa \"%s\"."
-
-#: libcore/FileConflictDialog.vala:308
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Palitan ang file na \"%s\"?"
-
-#: libcore/FileConflictDialog.vala:309
-msgid "Replacing it will overwrite its content."
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:312
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "May lumang file na kapareho ang pangalan ang nasa \"%s\"."
-
-#: libcore/FileConflictDialog.vala:314
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "May bagong file na kapareho ang pangalan ang nasa \"%s\"."
-
-#: libcore/FileConflictDialog.vala:316
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "May isa pang file na may kaparehong pangalan na nasa \"%s\"."
-
-#: libcore/FileConflictDialog.vala:342
-msgid "Merge"
-msgstr "Ipagsama"
 
 #: libcore/FileUtils.vala:80
 #, fuzzy, c-format
@@ -531,30 +295,30 @@ msgid "Could not rename to '%s'"
 msgstr "Hindi mabago ang pangalan sa '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:671
+#: libcore/FileUtils.vala:682
 #, c-format
 msgid "Today at %s"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:679
+#: libcore/FileUtils.vala:690
 #, c-format
 msgid "Yesterday at %s"
 msgstr ""
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:687
+#: libcore/FileUtils.vala:698
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:912
+#: libcore/FileUtils.vala:923
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d na mga segundo"
 
-#: libcore/FileUtils.vala:916 libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:927 libcore/FileUtils.vala:935
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -562,41 +326,41 @@ msgstr[0] "%'d na mga minuto"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:923 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:934
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d na mga oras"
 
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:938
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
 msgstr[0] ""
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:946
 #, fuzzy
 msgid "copy"
 msgstr " (kopya)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:948
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:939
+#: libcore/FileUtils.vala:950
 msgid "("
 msgstr ""
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:941
+#: libcore/FileUtils.vala:952
 msgid ")"
 msgstr ""
 
@@ -948,104 +712,58 @@ msgstr "Ihinahanda"
 msgid "Files"
 msgstr "Mga Files"
 
-#: libcore/Resources.vala:61
+#: libcore/Resources.vala:60
 msgid "AFP"
 msgstr ""
 
-#: libcore/Resources.vala:62
+#: libcore/Resources.vala:61
 msgid "AFC"
 msgstr ""
 
-#: libcore/Resources.vala:63
+#: libcore/Resources.vala:62
 msgid "DAV"
 msgstr ""
 
-#: libcore/Resources.vala:64
+#: libcore/Resources.vala:63
 msgid "DAVS"
 msgstr ""
 
-#: libcore/Resources.vala:65
+#: libcore/Resources.vala:64
 msgid "FTP"
 msgstr ""
 
-#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:47
+#: libcore/Resources.vala:65 src/View/Sidebar/SidebarWindow.vala:47
 msgid "Network"
 msgstr "Network"
 
-#: libcore/Resources.vala:67
+#: libcore/Resources.vala:66
 msgid "SFTP"
 msgstr ""
 
-#: libcore/Resources.vala:68
+#: libcore/Resources.vala:67
 msgid "SMB"
 msgstr ""
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
+#: libcore/Resources.vala:68 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Basura"
 
-#: libcore/Resources.vala:70
+#: libcore/Resources.vala:69
 msgid "Recent"
 msgstr "Kamakailan"
 
-#: libcore/Resources.vala:71
+#: libcore/Resources.vala:70
 msgid "MTP"
 msgstr ""
 
-#: libcore/Resources.vala:72
+#: libcore/Resources.vala:71
 msgid "GPHOTO2"
 msgstr ""
 
-#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
+#: libcore/Resources.vala:72 src/Dialogs/VolumePropertiesWindow.vala:41
 #: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr ""
-
-#: libcore/StockDialogs.vala:20
-#, fuzzy
-msgid "_Cancel"
-msgstr "I-kansela"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-#, fuzzy
-msgid "Delete"
-msgstr "Binura noong:"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "Laktawan lahat"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "Subukang muli"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "Burahin L_ahat"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "_Palitan"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "Palitan L_ahat"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "Ipagsama"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "Ipagsama L_ahat"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "Kopy_ahin Parin"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "Alisin ang laman ng Basura"
 
 #: libcore/UndoManager.vala:22
 #, fuzzy
@@ -1522,34 +1240,323 @@ msgid "%'d file left to trash"
 msgid_plural "%'d files left to trash"
 msgstr[0] "Nililipat ang mga files papunta sa basura"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "Pampublikong FTP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "FTP (may kasamang login)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "SSH"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple Filing Protocol)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "I-share sa Windows"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Secure WebDAV (HTTPS)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "Detalye ng Server"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+#, fuzzy
+msgid "Server:"
+msgstr "_Server:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+#, fuzzy
+msgid "Port:"
+msgstr "_Port:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "Uri:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+msgid "Name of share on server (Optional)"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+#, fuzzy
+msgid "Share:"
+msgstr "I-Sh_are:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+msgid "Path of shared folder on server (Optional)"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+#, fuzzy
+msgid "Folder:"
+msgstr "Polder"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "Detalye ng User"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+#, fuzzy
+msgid "Name of Windows domain"
+msgstr "Bagong Window Bilang _Administrador"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+#, fuzzy
+msgid "Domain name:"
+msgstr "Pangalan ng _Domain"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+#, fuzzy
+msgid "User name:"
+msgstr "Pangalan ng _user"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+#, fuzzy
+msgid "Password:"
+msgstr "Pass_word:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+#, fuzzy
+msgid "Remember this password"
+msgstr "Tandaan ang password na itp"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+#, fuzzy
+msgid "Connect"
+msgstr "Kumunekta"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "Magpatuloy"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+#, fuzzy
+msgid "Connecting…"
+msgstr "Kumokonekta..."
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "Pakitignan muli ang detalye ng user mo."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr ""
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "Orihinal na file"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "Sukat:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "Huling binago:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "Palitan ng"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "Ibalik sa Dati"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "Pumili ng bagong pangalan para sa destina_syon"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "Gamitin ang aksyon na ito sa lahat ng mga file"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "Laktawan"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "Baguhin ang Pa_ngalan"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr ""
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr ""
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Ipagsama ang folder na \"%s\"?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "May lumang polder na meron nang kaparehong pangalan sa \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "May mas bagong polder na meron nang kaparehong pangalan sa \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "May isa pang polder na meron nang kaparehong pangalan sa \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Palitan ang folder na  \"%s\"?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr ""
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Ang folder na ito ay may kaparehong pangalan sa \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Palitan ang file na \"%s\"?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr ""
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "May lumang file na kapareho ang pangalan ang nasa \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "May bagong file na kapareho ang pangalan ang nasa \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "May isa pang file na may kaparehong pangalan na nasa \"%s\"."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "Ipagsama"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+#, fuzzy
+msgid "_Cancel"
+msgstr "I-kansela"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+#, fuzzy
+msgid "Delete"
+msgstr "Binura noong:"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "Laktawan lahat"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "Subukang muli"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "Burahin L_ahat"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Palitan"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "Palitan L_ahat"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "Ipagsama"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "Ipagsama L_ahat"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "Kopy_ahin Parin"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Alisin ang laman ng Basura"
+
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr ""
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 #, fuzzy
 msgid "Type Path"
 msgstr "Uri"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr ""
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Tignan bilang Grid"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Tignan bilang Listahan"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr ""
 
@@ -1676,6 +1683,7 @@ msgstr "Kapasidad:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
 msgid "Unknown"
 msgstr "Hindi matukoy"
 
@@ -1803,7 +1811,7 @@ msgstr ""
 msgid "%0*d,%0*d,%0*d…"
 msgstr ""
 
-#: src/Dialogs/ChooseAppDialog.vala:45
+#: src/Dialogs/ChooseAppDialog.vala:50
 msgid "Set as default"
 msgstr ""
 
@@ -1836,31 +1844,31 @@ msgstr ""
 msgid "unknown"
 msgstr "hindi alam"
 
-#: src/Dialogs/PropertiesWindow.vala:486
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
 msgid "Loading…"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
 msgid "Could not be determined"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
 msgid "Created:"
 msgstr "Binuo noong:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
 msgid "Modified:"
 msgstr "Nagalaw o nabago noong:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
 msgid "Deleted:"
 msgstr "Binura noong:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
 msgid "Media type:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
 msgid "Resolution:"
 msgstr ""
 
@@ -1869,11 +1877,11 @@ msgstr ""
 msgid "Location:"
 msgstr "Lokasyon:"
 
-#: src/Dialogs/PropertiesWindow.vala:633
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
 msgid "Target:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:641
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
 msgid "Original Location:"
 msgstr ""
 
@@ -1913,7 +1921,7 @@ msgid_plural "%u files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2015,7 +2023,7 @@ msgid "Invalid file name provided"
 msgstr "Hindi pupwede ang binigay na pangalan ng file"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:240
 msgid "New Tab"
 msgstr "Bagong Tab"
 
@@ -2164,28 +2172,38 @@ msgid "Untitled %s"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:2960
-#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3166
 msgid "Cannot remove files from here"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:2961
-#: src/View/AbstractDirectoryView.vala:3136
-#: src/View/AbstractDirectoryView.vala:3147
-#: src/View/AbstractDirectoryView.vala:3164
+#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3167
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3107
 msgid "Cannot copy files that are in the trash"
 msgstr "Hindi pwedeng kopyahin ang mga files na nasa basura"
 
-#: src/View/AbstractDirectoryView.vala:3105
+#: src/View/AbstractDirectoryView.vala:3108
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3135
-#: src/View/AbstractDirectoryView.vala:3146
+#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3149
 msgid "Cannot paste files here"
+msgstr ""
+
+#: src/View/DetailsColumn.vala:118
+#, fuzzy
+#| msgid "Name"
+msgid "Name:"
+msgstr "Pangalan"
+
+#: src/View/DetailsColumn.vala:211
+msgid "Properties…"
 msgstr ""
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
@@ -2299,19 +2317,11 @@ msgstr ""
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Hindi makita ang File"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Hindi na umiiral ang naka-select na file"
-
-#: src/View/Window.vala:216
+#: src/View/Window.vala:215
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:246
+#: src/View/Window.vala:245
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Isara"
@@ -2340,7 +2350,7 @@ msgstr "Isara"
 msgid "Close Tab"
 msgstr "Isara"
 
-#: src/View/Window.vala:766 src/View/Window.vala:776
+#: src/View/Window.vala:765 src/View/Window.vala:775
 msgid "(as Administrator)"
 msgstr "(bilang Administrador)"
 
@@ -2543,16 +2553,20 @@ msgstr "Ipakita ang mas marami pang _detalye"
 msgid "Remote Thumbnails"
 msgstr "Ipakita ang mas marami pang _detalye"
 
+#: src/View/Widgets/AppMenu.vala:115
+msgid "File Preview (Column View)"
+msgstr ""
+
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
-#: src/View/Widgets/AppMenu.vala:116
+#: src/View/Widgets/AppMenu.vala:121
 msgid "Date & Time Format"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:210
+#: src/View/Widgets/AppMenu.vala:216
 msgid "No operation to undo"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:217
+#: src/View/Widgets/AppMenu.vala:223
 msgid "No operation to redo"
 msgstr ""
 
@@ -2583,53 +2597,53 @@ msgstr "I-load muli ang polder na ito"
 msgid "Searching…"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:173
 #, c-format
 msgid "%u folders"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] ""
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
 msgid " selected"
 msgstr " sa nakaselect"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:192
 #, c-format
 msgid "%u items selected (%s)"
 msgstr ""
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:237
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
 msgstr[0] ""
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:243
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
 msgstr[0] ""
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:253
 #, c-format
 msgid "%s approx."
 msgstr ""
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:256
 msgid "unknown size"
 msgstr ""
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:260
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
@@ -2664,6 +2678,17 @@ msgstr "Sa Polder na Ito"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Kamakailan"
+
+#, fuzzy
+#~| msgid "Server Details"
+#~ msgid "More Details…"
+#~ msgstr "Detalye ng Server"
+
+#~ msgid "File not Found"
+#~ msgstr "Hindi makita ang File"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Hindi na umiiral ang naka-select na file"
 
 #, fuzzy
 #~ msgctxt "bulk-rename"

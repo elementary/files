@@ -36,15 +36,15 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         NEWEST
     }
 
+    public Files.File source { private get; construct; }
+    public Files.File destination { private get; construct; }
+    public Files.File dest_dir { private get; construct; }
+
     private string conflict_name;
     private Gtk.Entry rename_entry;
     private Gtk.Button replace_button;
     private Gtk.Button keep_newest_button;
     private Gtk.CheckButton apply_all_checkbutton;
-
-    private Files.File source;
-    private Files.File destination;
-    private Files.File dest_dir;
 
     private Gtk.Image source_image;
     private Gtk.Label source_size_label;
@@ -58,32 +58,13 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
 
     public FileConflictDialog (Gtk.Window parent, GLib.File _source, GLib.File _destination, GLib.File _dest_dir) {
         Object (
+            source: Files.File.@get (_source),
+            destination: Files.File.@get (_destination),
+            dest_dir: Files.File.@get (_dest_dir),
             title: _("File conflict"),
             transient_for: parent,
             resizable: false
         );
-
-        source = Files.File.@get (_source);
-        destination = Files.File.@get (_destination);
-        destination.query_update ();
-        var thumbnailer = Files.Thumbnailer.get ();
-        thumbnailer.finished.connect (() => {
-            destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (),
-                                                                   Files.File.IconFlags.USE_THUMBNAILS);
-        });
-
-        thumbnailer.queue_file (destination, null);
-        destination_size_label.label = destination.format_size;
-        destination_time_label.label = destination.formated_modified;
-
-        dest_dir = Files.File.@get (_dest_dir);
-
-        var files = new GLib.List<Files.File> ();
-        files.prepend (source);
-        files.prepend (destination);
-        files.prepend (dest_dir);
-
-        new Files.CallWhenReady (files, file_list_ready_cb);
     }
 
     construct {
@@ -268,6 +249,13 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
                 replace_button.show ();
             }
         });
+
+        var files = new GLib.List<Files.File> ();
+        files.prepend (source);
+        files.prepend (destination);
+        files.prepend (dest_dir);
+
+        new Files.CallWhenReady (files, file_list_ready_cb);
     }
 
     private void file_list_ready_cb (GLib.List<Files.File> files) {
@@ -318,9 +306,15 @@ public class Files.FileConflictDialog : Granite.MessageDialog {
         }
 
         secondary_label.label = "%s %s".printf (message, message_extra);
+
         source_image.gicon = source.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
         source_size_label.label = source.format_size;
         source_time_label.label = source.formated_modified;
+
+        destination_image.gicon = destination.get_icon_pixbuf (64, get_scale_factor (), Files.File.IconFlags.USE_THUMBNAILS);
+        destination_size_label.label = destination.format_size;
+        destination_time_label.label = destination.formated_modified;
+
         if (should_show_type && src_ftype != null) {
             source_type_label.label = src_ftype;
         } else {

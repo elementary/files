@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02 12:13+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2016-08-03 23:51+0000\n"
 "Last-Translator: Kristjan Vool <tictac7x@gmail.com>\n"
 "Language-Team: Estonian <et@li.org>\n"
@@ -19,17 +19,17 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:195
 msgid "Previous"
 msgstr "Eelmine"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:200
 msgid "Next"
 msgstr "Järgmine"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:185
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -89,131 +89,12 @@ msgstr "Kas asendada fail \"%s\"?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Asendamine kirjutab selle sisu üle."
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:187
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Asenda"
 
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "Avalik FTP"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "FTP (sisselogimisega)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "SSH"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple'i protokoll)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "Windows'i jagatud"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Turvaline WebDAV (HTTPS)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "Serveri andmed"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:119
-#, fuzzy
-msgid "Server:"
-msgstr "_Server:"
-
-#: libcore/ConnectServerDialog.vala:129
-#, fuzzy
-msgid "Port:"
-msgstr "_Port:"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "Tüüp"
-
-#: libcore/ConnectServerDialog.vala:161
-msgid "Name of share on server (Optional)"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:164
-#, fuzzy
-msgid "Share:"
-msgstr "_Jagamine:"
-
-#: libcore/ConnectServerDialog.vala:167
-msgid "Path of shared folder on server (Optional)"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:171
-#, fuzzy
-msgid "Folder:"
-msgstr "_Asukoht:"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "Kasutaja andmed"
-
-#: libcore/ConnectServerDialog.vala:180
-#, fuzzy
-msgid "Name of Windows domain"
-msgstr "Uus aken _juurkasutajana"
-
-#: libcore/ConnectServerDialog.vala:182
-#, fuzzy
-msgid "Domain name:"
-msgstr "_Domeeni nimi:"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr ""
-
-#: libcore/ConnectServerDialog.vala:189
-#, fuzzy
-msgid "User name:"
-msgstr "_Kasutaja nimi:"
-
-#: libcore/ConnectServerDialog.vala:197
-#, fuzzy
-msgid "Password:"
-msgstr "_Parool:"
-
-#: libcore/ConnectServerDialog.vala:199
-#, fuzzy
-msgid "Remember this password"
-msgstr "Seda _parooli peetakse meeles"
-
-#: libcore/ConnectServerDialog.vala:209
-#, fuzzy
-msgid "Connect"
-msgstr "Ü_henda"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "Jätka"
-
-#: libcore/ConnectServerDialog.vala:266
-#, fuzzy
-msgid "Connecting…"
-msgstr "Ühenduse loomine..."
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "Palun kontrolli oma kasutaja andmeid."
-
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -336,165 +217,46 @@ msgstr "Teave"
 msgid "Compact"
 msgstr ""
 
-#: libcore/File.vala:616 libcore/File.vala:1176
+#: libcore/File.vala:647 libcore/File.vala:1207
 msgid "Inaccessible"
 msgstr ""
 
-#: libcore/File.vala:955
+#: libcore/File.vala:986
 #, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "Töölaua faili %s analüüsimine ebaõnnestus"
 
-#: libcore/File.vala:959
+#: libcore/File.vala:990
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "Töölaua faili %s analüüsimine ebaõnnestus"
 
-#: libcore/File.vala:971
+#: libcore/File.vala:1002
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "Töölaua faili %s analüüsimine ebaõnnestus"
 
-#: libcore/File.vala:980
+#: libcore/File.vala:1011
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "Töölaua faili %s analüüsimine ebaõnnestus"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1200
 #, fuzzy
 msgid "Empty"
 msgstr "Fail"
 
-#: libcore/File.vala:1171
+#: libcore/File.vala:1202
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d minut"
 msgstr[1] "%'d minutit"
 
-#: libcore/File.vala:1216
+#: libcore/File.vala:1247
 #, c-format
 msgid "link to %s"
 msgstr "viit failile %s"
-
-#: libcore/FileConflictDialog.vala:61
-msgid "File conflict"
-msgstr "Konflikt failide vahel"
-
-#: libcore/FileConflictDialog.vala:96
-msgid "Original file"
-msgstr "Algne fail"
-
-#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
-#: src/Dialogs/PropertiesWindow.vala:546
-msgid "Size:"
-msgstr "Suurus:"
-
-#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
-msgid "Last modified:"
-msgstr "Viimati muudetud:"
-
-#: libcore/FileConflictDialog.vala:130
-msgid "Replace with"
-msgstr "Asendav fail"
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Reset"
-msgstr "Lähtesta"
-
-#: libcore/FileConflictDialog.vala:173
-msgid "_Select a new name for the destination"
-msgstr "_Vali asendavale failile uus nimi"
-
-#: libcore/FileConflictDialog.vala:177
-msgid "Apply this action to all files"
-msgstr "See tegevus rakendatakse kõikidele failidele"
-
-#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "_Jäta vahele"
-
-#: libcore/FileConflictDialog.vala:180
-msgid "Re_name"
-msgstr "Muuda _nime..."
-
-#: libcore/FileConflictDialog.vala:182
-msgid "Keep Newest"
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:183
-msgid "Skip if original was modified more recently"
-msgstr ""
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Kas liita kataloog \"%s\"?"
-
-#: libcore/FileConflictDialog.vala:294
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Liitmise korral küsitakse kinnitust enne sarnaste failide asendamist "
-"kopeeritavate failidega."
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Vanem samanimeline kaust asukohas \"%s\" on juba olemas."
-
-#: libcore/FileConflictDialog.vala:298
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Uuem samanimeline kaust asukohas \"%s\" on juba olemas."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Teine samanimeline kaust asukohas \"%s\" on juba olemas."
-
-#: libcore/FileConflictDialog.vala:303
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Kas asendada kaust \"%s\"?"
-
-#: libcore/FileConflictDialog.vala:304
-msgid "Replacing it will remove all files in the folder."
-msgstr "Asendamine kustutab kõik selle kausta failid."
-
-#: libcore/FileConflictDialog.vala:305
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Samanimeline kaust asukohas \"%s\" on juba olemas."
-
-#: libcore/FileConflictDialog.vala:308
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Kas asendada fail \"%s\"?"
-
-#: libcore/FileConflictDialog.vala:309
-msgid "Replacing it will overwrite its content."
-msgstr "Asendamine kirjutab selle sisu üle."
-
-#: libcore/FileConflictDialog.vala:312
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Vanem samanimeline fail asukohas \"%s\" on juba olemas."
-
-#: libcore/FileConflictDialog.vala:314
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Uuem samanimeline fail asukohas \"%s\" on juba olemas."
-
-#: libcore/FileConflictDialog.vala:316
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Samanimeline fail asukohas \"%s\" on juba olemas."
-
-#: libcore/FileConflictDialog.vala:342
-msgid "Merge"
-msgstr "Liida"
 
 #: libcore/FileUtils.vala:80
 #, fuzzy, c-format
@@ -537,31 +299,31 @@ msgid "Could not rename to '%s'"
 msgstr "Ümbernimetamine kui '%s' ebaõnnestus"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:671
+#: libcore/FileUtils.vala:682
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Täna, kell %H:%M"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:679
+#: libcore/FileUtils.vala:690
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Eile, kell %H:%M"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:687
+#: libcore/FileUtils.vala:698
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:912
+#: libcore/FileUtils.vala:923
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d sekund"
 msgstr[1] "%'d sekundit"
 
-#: libcore/FileUtils.vala:916 libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:927 libcore/FileUtils.vala:935
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -570,19 +332,19 @@ msgstr[1] "%'d minutit"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:923 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:934
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d tund"
 msgstr[1] "%'d tundi"
 
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:938
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -590,24 +352,24 @@ msgstr[0] "ligikaudu %'d tund"
 msgstr[1] "ligikaudu %'d tundi"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:946
 #, fuzzy
 msgid "copy"
 msgstr " (koopia)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:948
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:939
+#: libcore/FileUtils.vala:950
 #, fuzzy
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:941
+#: libcore/FileUtils.vala:952
 msgid ")"
 msgstr ""
 
@@ -948,105 +710,59 @@ msgstr "Ettevalmistamine"
 msgid "Files"
 msgstr "Failid"
 
-#: libcore/Resources.vala:61
+#: libcore/Resources.vala:60
 msgid "AFP"
 msgstr "AFP"
 
-#: libcore/Resources.vala:62
+#: libcore/Resources.vala:61
 #, fuzzy
 msgid "AFC"
 msgstr "AFP"
 
-#: libcore/Resources.vala:63
+#: libcore/Resources.vala:62
 msgid "DAV"
 msgstr "DAV"
 
-#: libcore/Resources.vala:64
+#: libcore/Resources.vala:63
 msgid "DAVS"
 msgstr "DAVS"
 
-#: libcore/Resources.vala:65
+#: libcore/Resources.vala:64
 msgid "FTP"
 msgstr "FTP"
 
-#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:47
+#: libcore/Resources.vala:65 src/View/Sidebar/SidebarWindow.vala:47
 msgid "Network"
 msgstr "Võrk"
 
-#: libcore/Resources.vala:67
+#: libcore/Resources.vala:66
 msgid "SFTP"
 msgstr "SFTP"
 
-#: libcore/Resources.vala:68
+#: libcore/Resources.vala:67
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
+#: libcore/Resources.vala:68 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Prügi"
 
-#: libcore/Resources.vala:70
+#: libcore/Resources.vala:69
 msgid "Recent"
 msgstr "Hiljutised"
 
-#: libcore/Resources.vala:71
+#: libcore/Resources.vala:70
 msgid "MTP"
 msgstr "MTP"
 
-#: libcore/Resources.vala:72
+#: libcore/Resources.vala:71
 msgid "GPHOTO2"
 msgstr ""
 
-#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
+#: libcore/Resources.vala:72 src/Dialogs/VolumePropertiesWindow.vala:41
 #: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "Failisüsteem"
-
-#: libcore/StockDialogs.vala:20
-#, fuzzy
-msgid "_Cancel"
-msgstr "Loobu"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-#, fuzzy
-msgid "Delete"
-msgstr "Kustutatud:"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "_Jäta kõik vahele"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "P_roovi uuesti"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "Kustuta _kõik"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "_Asenda"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "Asenda _kõik"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "_Liida"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "Liida _kõik"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "_Kopeeri ikka"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "_Tühjenda prügikast"
 
 #: libcore/UndoManager.vala:22
 #, fuzzy
@@ -1538,34 +1254,325 @@ msgid_plural "%'d files left to trash"
 msgstr[0] "Prügikasti on veel panna %'d fail"
 msgstr[1] "Prügikasti on veel panna %'d faili"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "Avalik FTP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "FTP (sisselogimisega)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "SSH"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple'i protokoll)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "Windows'i jagatud"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Turvaline WebDAV (HTTPS)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "Serveri andmed"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+#, fuzzy
+msgid "Server:"
+msgstr "_Server:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+#, fuzzy
+msgid "Port:"
+msgstr "_Port:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "Tüüp"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+msgid "Name of share on server (Optional)"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+#, fuzzy
+msgid "Share:"
+msgstr "_Jagamine:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+msgid "Path of shared folder on server (Optional)"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+#, fuzzy
+msgid "Folder:"
+msgstr "_Asukoht:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "Kasutaja andmed"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+#, fuzzy
+msgid "Name of Windows domain"
+msgstr "Uus aken _juurkasutajana"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+#, fuzzy
+msgid "Domain name:"
+msgstr "_Domeeni nimi:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr ""
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+#, fuzzy
+msgid "User name:"
+msgstr "_Kasutaja nimi:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+#, fuzzy
+msgid "Password:"
+msgstr "_Parool:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+#, fuzzy
+msgid "Remember this password"
+msgstr "Seda _parooli peetakse meeles"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+#, fuzzy
+msgid "Connect"
+msgstr "Ü_henda"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "Jätka"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+#, fuzzy
+msgid "Connecting…"
+msgstr "Ühenduse loomine..."
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "Palun kontrolli oma kasutaja andmeid."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr "Konflikt failide vahel"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "Algne fail"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "Suurus:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "Viimati muudetud:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "Asendav fail"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "Lähtesta"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "_Vali asendavale failile uus nimi"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "See tegevus rakendatakse kõikidele failidele"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "_Jäta vahele"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "Muuda _nime..."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr ""
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr ""
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Kas liita kataloog \"%s\"?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Liitmise korral küsitakse kinnitust enne sarnaste failide asendamist "
+"kopeeritavate failidega."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Vanem samanimeline kaust asukohas \"%s\" on juba olemas."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Uuem samanimeline kaust asukohas \"%s\" on juba olemas."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Teine samanimeline kaust asukohas \"%s\" on juba olemas."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Kas asendada kaust \"%s\"?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr "Asendamine kustutab kõik selle kausta failid."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Samanimeline kaust asukohas \"%s\" on juba olemas."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Kas asendada fail \"%s\"?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr "Asendamine kirjutab selle sisu üle."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Vanem samanimeline fail asukohas \"%s\" on juba olemas."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Uuem samanimeline fail asukohas \"%s\" on juba olemas."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Samanimeline fail asukohas \"%s\" on juba olemas."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "Liida"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+#, fuzzy
+msgid "_Cancel"
+msgstr "Loobu"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+#, fuzzy
+msgid "Delete"
+msgstr "Kustutatud:"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "_Jäta kõik vahele"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "P_roovi uuesti"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "Kustuta _kõik"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Asenda"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "Asenda _kõik"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "_Liida"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "Liida _kõik"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "_Kopeeri ikka"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "_Tühjenda prügikast"
+
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "Navigeerimine sihtkohta %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "Mine %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 #, fuzzy
 msgid "Type Path"
 msgstr "Sisesta asukoht"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "Sisesta asukoht"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Kuva võrgustikuna"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Kuva nimekirjana"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Kuva veergudena"
 
@@ -1695,6 +1702,7 @@ msgstr "Mahutavus:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
 msgid "Unknown"
 msgstr "Tundmatu"
 
@@ -1823,7 +1831,7 @@ msgstr ""
 msgid "%0*d,%0*d,%0*d…"
 msgstr ""
 
-#: src/Dialogs/ChooseAppDialog.vala:45
+#: src/Dialogs/ChooseAppDialog.vala:50
 msgid "Set as default"
 msgstr "Määra vaikimisi"
 
@@ -1860,32 +1868,32 @@ msgstr "Tegelik suurus võib erineda"
 msgid "unknown"
 msgstr "tundmatu"
 
-#: src/Dialogs/PropertiesWindow.vala:486
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
 msgid "Loading…"
 msgstr "Laadimine…"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
 msgid "Could not be determined"
 msgstr "Polnud võimalik määrata"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
 msgid "Created:"
 msgstr "Loodud:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
 msgid "Modified:"
 msgstr "Muudetud:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
 msgid "Deleted:"
 msgstr "Kustutatud:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
 #, fuzzy
 msgid "Media type:"
 msgstr "Formaat:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
 msgid "Resolution:"
 msgstr "Resolutsioon:"
 
@@ -1894,11 +1902,11 @@ msgstr "Resolutsioon:"
 msgid "Location:"
 msgstr "Asukoht:"
 
-#: src/Dialogs/PropertiesWindow.vala:633
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
 msgid "Target:"
 msgstr "Sihtkoht:"
 
-#: src/Dialogs/PropertiesWindow.vala:641
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
 msgid "Original Location:"
 msgstr "Originaal asukoht:"
 
@@ -1938,7 +1946,7 @@ msgid_plural "%u files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2040,7 +2048,7 @@ msgid "Invalid file name provided"
 msgstr "Vigane faili nimi"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:240
 msgid "New Tab"
 msgstr "Uues kaardis"
 
@@ -2184,29 +2192,41 @@ msgid "Untitled %s"
 msgstr "Nimetu %s"
 
 #: src/View/AbstractDirectoryView.vala:2960
-#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3166
 msgid "Cannot remove files from here"
 msgstr ""
 
 #: src/View/AbstractDirectoryView.vala:2961
-#: src/View/AbstractDirectoryView.vala:3136
-#: src/View/AbstractDirectoryView.vala:3147
-#: src/View/AbstractDirectoryView.vala:3164
+#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3167
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3107
 msgid "Cannot copy files that are in the trash"
 msgstr "Prügikastis olevate failide kopeerimine pole võimalik."
 
-#: src/View/AbstractDirectoryView.vala:3105
+#: src/View/AbstractDirectoryView.vala:3108
 msgid "Cutting the selection instead"
 msgstr "Valitud failide lõikamine"
 
-#: src/View/AbstractDirectoryView.vala:3135
-#: src/View/AbstractDirectoryView.vala:3146
+#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3149
 msgid "Cannot paste files here"
 msgstr ""
+
+#: src/View/DetailsColumn.vala:118
+#, fuzzy
+#| msgid "Name"
+msgid "Name:"
+msgstr "Nimi"
+
+#: src/View/DetailsColumn.vala:211
+#, fuzzy
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "Omadused"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2322,19 +2342,11 @@ msgstr ""
 msgid "The server for this folder could not be located."
 msgstr "Selle kausta serverit pole võimalik leida."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Faili ei leitud"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Valitud faili ei eksisteeri enam."
-
-#: src/View/Window.vala:216
+#: src/View/Window.vala:215
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:246
+#: src/View/Window.vala:245
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Välju"
@@ -2363,7 +2375,7 @@ msgstr "Välju"
 msgid "Close Tab"
 msgstr "Välju"
 
-#: src/View/Window.vala:766 src/View/Window.vala:776
+#: src/View/Window.vala:765 src/View/Window.vala:775
 msgid "(as Administrator)"
 msgstr "- juurkasutajana"
 
@@ -2572,16 +2584,20 @@ msgstr "Kaugühenduse pisipiltide näitamine"
 msgid "Remote Thumbnails"
 msgstr "Kaugühenduse pisipiltide näitamine"
 
+#: src/View/Widgets/AppMenu.vala:115
+msgid "File Preview (Column View)"
+msgstr ""
+
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
-#: src/View/Widgets/AppMenu.vala:116
+#: src/View/Widgets/AppMenu.vala:121
 msgid "Date & Time Format"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:210
+#: src/View/Widgets/AppMenu.vala:216
 msgid "No operation to undo"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:217
+#: src/View/Widgets/AppMenu.vala:223
 msgid "No operation to redo"
 msgstr ""
 
@@ -2613,29 +2629,29 @@ msgstr "Värskenda kausta sisu"
 msgid "Searching…"
 msgstr "Laadimine…"
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:173
 #, c-format
 msgid "%u folders"
 msgstr "%u kausta"
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
 #, fuzzy, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " ja %u faili (%s) on valitud"
 msgstr[1] " ja %u faili (%s) on valitud"
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
 msgid " selected"
 msgstr " on valitud"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:192
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u faili valitud (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:237
 #, fuzzy, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -2643,7 +2659,7 @@ msgstr[0] "%u alamkaust, "
 msgstr[1] "%u alamkaust, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:243
 #, fuzzy, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -2651,18 +2667,18 @@ msgstr[0] "%u fail, "
 msgstr[1] "%u fail, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:253
 #, c-format
 msgid "%s approx."
 msgstr "%s ligikaudu"
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:256
 msgid "unknown size"
 msgstr "tundmatu suurus"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:260
 #, fuzzy, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
@@ -2698,6 +2714,17 @@ msgstr "Selles kaustas:"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Hiljutised"
+
+#, fuzzy
+#~| msgid "Server Details"
+#~ msgid "More Details…"
+#~ msgstr "Serveri andmed"
+
+#~ msgid "File not Found"
+#~ msgstr "Faili ei leitud"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Valitud faili ei eksisteeri enam."
 
 #~ msgid "_Mount"
 #~ msgstr "_Haagi"

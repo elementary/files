@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-02 12:13+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2025-03-30 11:55+0000\n"
 "Last-Translator: Marcin Serwin <marcin@serwin.dev>\n"
 "Language-Team: Polish <https://l10n.elementaryos.org/projects/files/files/pl/"
@@ -21,17 +21,17 @@ msgstr ""
 "X-Generator: Weblate 5.10.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:195
 msgid "Previous"
 msgstr "Poprzedni"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:200
 msgid "Next"
 msgstr "Następny"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:185
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -89,120 +89,12 @@ msgstr "Zastąpić „%s”?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "Zastąpienie tego pliku spowoduje nadpisanie jego aktualnej zawartości"
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:187
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Zastąp"
 
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "Publiczny FTP"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "FTP (z logowaniem)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "SSH"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Protokół plików Apple)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "Udział systemu Windows"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Bezpieczny WebDAV (HTTPS)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "Informacje o serwerze"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr "Nazwa serwera lub adres IP"
-
-#: libcore/ConnectServerDialog.vala:119
-msgid "Server:"
-msgstr "Serwer:"
-
-#: libcore/ConnectServerDialog.vala:129
-msgid "Port:"
-msgstr "Port:"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "Typ:"
-
-#: libcore/ConnectServerDialog.vala:161
-msgid "Name of share on server (Optional)"
-msgstr "Nazwa udziału na serwerze (Opcjonalnie)"
-
-#: libcore/ConnectServerDialog.vala:164
-msgid "Share:"
-msgstr "Udział:"
-
-#: libcore/ConnectServerDialog.vala:167
-msgid "Path of shared folder on server (Optional)"
-msgstr "Ścieżka do współdzielonego katalogu na serwerze (Opcjonalnie)"
-
-#: libcore/ConnectServerDialog.vala:171
-msgid "Folder:"
-msgstr "Katalog:"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "Informacje o użytkowniku"
-
-#: libcore/ConnectServerDialog.vala:180
-msgid "Name of Windows domain"
-msgstr "Nazwa domeny Windows"
-
-#: libcore/ConnectServerDialog.vala:182
-msgid "Domain name:"
-msgstr "Nazwa domeny:"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr "Nazwa użytkownika na serwerze"
-
-#: libcore/ConnectServerDialog.vala:189
-msgid "User name:"
-msgstr "Nazwa użytkownika:"
-
-#: libcore/ConnectServerDialog.vala:197
-msgid "Password:"
-msgstr "Hasło:"
-
-#: libcore/ConnectServerDialog.vala:199
-msgid "Remember this password"
-msgstr "Zapamiętaj hasło"
-
-#: libcore/ConnectServerDialog.vala:209
-msgid "Connect"
-msgstr "Połącz"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "Kontynuuj"
-
-#: libcore/ConnectServerDialog.vala:266
-msgid "Connecting…"
-msgstr "Łączenie…"
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "Sprawdź swoje dane użytkownika."
-
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Serwer nie odpowiedział w określonym przedziale czasu"
 
@@ -321,31 +213,31 @@ msgstr "Informacja"
 msgid "Compact"
 msgstr ""
 
-#: libcore/File.vala:616 libcore/File.vala:1176
+#: libcore/File.vala:647 libcore/File.vala:1207
 msgid "Inaccessible"
 msgstr "Niedostępny"
 
-#: libcore/File.vala:955
+#: libcore/File.vala:986
 msgid "Failed to parse the desktop file"
 msgstr "Nie udało się przetworzyć pliku pulpitu"
 
-#: libcore/File.vala:959
+#: libcore/File.vala:990
 msgid "Failed to parse the desktop file: "
 msgstr "Nie udało się przetworzyć pliku .desktop: "
 
-#: libcore/File.vala:971
+#: libcore/File.vala:1002
 msgid "Failed to create command from file: "
 msgstr "Nie udało się utworzyć polecenia z pliku: "
 
-#: libcore/File.vala:980
+#: libcore/File.vala:1011
 msgid "Unable to Launch Desktop File: "
 msgstr "Nie udało się uruchomić pliku pulpitu: "
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1200
 msgid "Empty"
 msgstr "Pusty"
 
-#: libcore/File.vala:1171
+#: libcore/File.vala:1202
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
@@ -353,129 +245,10 @@ msgstr[0] "%'d obiekt"
 msgstr[1] "%'d obiekty"
 msgstr[2] "%'d obiektów"
 
-#: libcore/File.vala:1216
+#: libcore/File.vala:1247
 #, c-format
 msgid "link to %s"
 msgstr "dowiązanie do %s"
-
-#: libcore/FileConflictDialog.vala:61
-msgid "File conflict"
-msgstr "Konflikt plików"
-
-#: libcore/FileConflictDialog.vala:96
-msgid "Original file"
-msgstr "Oryginalny plik"
-
-#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
-#: src/Dialogs/PropertiesWindow.vala:546
-msgid "Size:"
-msgstr "Rozmiar:"
-
-#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
-msgid "Last modified:"
-msgstr "Ostatnia modyfikacja:"
-
-#: libcore/FileConflictDialog.vala:130
-msgid "Replace with"
-msgstr "Zastąp używając"
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Reset"
-msgstr "Przywróć"
-
-#: libcore/FileConflictDialog.vala:173
-msgid "_Select a new name for the destination"
-msgstr "_Wybór nowej nazwy dla pliku docelowego"
-
-#: libcore/FileConflictDialog.vala:177
-msgid "Apply this action to all files"
-msgstr "Wykonaj tę czynność dla wszystkich plików"
-
-#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "_Pomiń"
-
-#: libcore/FileConflictDialog.vala:180
-msgid "Re_name"
-msgstr "Zmień _nazwę"
-
-#: libcore/FileConflictDialog.vala:182
-msgid "Keep Newest"
-msgstr "Zachowaj najnowsze"
-
-#: libcore/FileConflictDialog.vala:183
-msgid "Skip if original was modified more recently"
-msgstr "Pomiń jeśli plik pierwotny został niedawno zmodyfikowany"
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Połączyć katalog „%s”?"
-
-#: libcore/FileConflictDialog.vala:294
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Połączenie będzie poprzedzone zapytaniem o potwierdzenie przed zamianą "
-"jakichkolwiek plików, które mogą być w konflikcie z kopiowanymi plikami."
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "W katalogu „%s” znajduje się już starszy katalog o tej samej nazwie."
-
-#: libcore/FileConflictDialog.vala:298
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "W katalogu „%s” znajduje się już nowszy katalog o tej samej nazwie."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "W katalogu „%s” znajduje się już inny katalog o tej samej nazwie."
-
-#: libcore/FileConflictDialog.vala:303
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Zastąpić katalog „%s”?"
-
-#: libcore/FileConflictDialog.vala:304
-msgid "Replacing it will remove all files in the folder."
-msgstr "Zastąpienie go spowoduje usunięcie wszystkich plików w katalogu."
-
-#: libcore/FileConflictDialog.vala:305
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "W katalogu „%s” znajduje się już katalog o tej samej nazwie."
-
-#: libcore/FileConflictDialog.vala:308
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Zastąpić plik „%s”?"
-
-#: libcore/FileConflictDialog.vala:309
-msgid "Replacing it will overwrite its content."
-msgstr "Zastąpienie go spowoduje nadpisanie jego zawartości."
-
-#: libcore/FileConflictDialog.vala:312
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "W katalogu „%s” znajduje się starszy plik o tej samej nazwie."
-
-#: libcore/FileConflictDialog.vala:314
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "W katalogu „%s” znajduje nowszy plik o tej samej nazwie."
-
-#: libcore/FileConflictDialog.vala:316
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "W katalogu „%s” znajduje się już inny plik o tej samej nazwie."
-
-#: libcore/FileConflictDialog.vala:342
-msgid "Merge"
-msgstr "Scal"
 
 #: libcore/FileUtils.vala:80
 #, c-format
@@ -522,24 +295,24 @@ msgid "Could not rename to '%s'"
 msgstr "Nie można zmienić nazwy na '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:671
+#: libcore/FileUtils.vala:682
 #, c-format
 msgid "Today at %s"
 msgstr "Dzisiaj o %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:679
+#: libcore/FileUtils.vala:690
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Wczoraj o %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:687
+#: libcore/FileUtils.vala:698
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A o %s"
 
-#: libcore/FileUtils.vala:912
+#: libcore/FileUtils.vala:923
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -547,7 +320,7 @@ msgstr[0] "%d sekunda"
 msgstr[1] "%d sekundy"
 msgstr[2] "%d sekund"
 
-#: libcore/FileUtils.vala:916 libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:927 libcore/FileUtils.vala:935
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -557,12 +330,12 @@ msgstr[2] "%d minut"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:923 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:934
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -570,7 +343,7 @@ msgstr[0] "%d godzina"
 msgstr[1] "%d godziny"
 msgstr[2] "%d godzin"
 
-#: libcore/FileUtils.vala:927
+#: libcore/FileUtils.vala:938
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -579,22 +352,22 @@ msgstr[1] "w przybliżeniu %'d godziny"
 msgstr[2] "w przybliżeniu %'d godzin"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:946
 msgid "copy"
 msgstr "kopia"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:937
+#: libcore/FileUtils.vala:948
 msgid "link"
 msgstr "skrót"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:939
+#: libcore/FileUtils.vala:950
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:941
+#: libcore/FileUtils.vala:952
 msgid ")"
 msgstr ")"
 
@@ -937,102 +710,58 @@ msgstr "Przygotowywanie"
 msgid "Files"
 msgstr "Pliki"
 
-#: libcore/Resources.vala:61
+#: libcore/Resources.vala:60
 msgid "AFP"
 msgstr "AFP"
 
-#: libcore/Resources.vala:62
+#: libcore/Resources.vala:61
 msgid "AFC"
 msgstr "AFC"
 
-#: libcore/Resources.vala:63
+#: libcore/Resources.vala:62
 msgid "DAV"
 msgstr "DAV"
 
-#: libcore/Resources.vala:64
+#: libcore/Resources.vala:63
 msgid "DAVS"
 msgstr "DAVS"
 
-#: libcore/Resources.vala:65
+#: libcore/Resources.vala:64
 msgid "FTP"
 msgstr "FTP"
 
-#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:47
+#: libcore/Resources.vala:65 src/View/Sidebar/SidebarWindow.vala:47
 msgid "Network"
 msgstr "Sieć"
 
-#: libcore/Resources.vala:67
+#: libcore/Resources.vala:66
 msgid "SFTP"
 msgstr "SFTP"
 
-#: libcore/Resources.vala:68
+#: libcore/Resources.vala:67
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
+#: libcore/Resources.vala:68 src/View/Sidebar/BookmarkListBox.vala:169
 msgid "Trash"
 msgstr "Kosz"
 
-#: libcore/Resources.vala:70
+#: libcore/Resources.vala:69
 msgid "Recent"
 msgstr "Ostatnie"
 
-#: libcore/Resources.vala:71
+#: libcore/Resources.vala:70
 msgid "MTP"
 msgstr "MTP"
 
-#: libcore/Resources.vala:72
+#: libcore/Resources.vala:71
 msgid "GPHOTO2"
 msgstr "GPHOTO2"
 
-#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
+#: libcore/Resources.vala:72 src/Dialogs/VolumePropertiesWindow.vala:41
 #: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "System plików"
-
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr "_Anuluj"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-msgid "Delete"
-msgstr "Usuń"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "P_omiń wszystkie"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "_Ponów"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "U_suń wszystkie"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "_Zastąp"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "Z_astąp wszystkie"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "_Połącz"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "P_ołącz wszystkie"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "Skopiuj po_mimo tego"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "Opróżnij _kosz"
 
 #: libcore/UndoManager.vala:22
 msgid "Undo Copy"
@@ -1514,33 +1243,311 @@ msgstr[0] "pozostał %'d element do usunięcia"
 msgstr[1] "Pozostały %'d pliki do usunięcia"
 msgstr[2] "Pozostało %'d plików do usunięcia"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "Publiczny FTP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "FTP (z logowaniem)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "SSH"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (Protokół plików Apple)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "Udział systemu Windows"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Bezpieczny WebDAV (HTTPS)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "Informacje o serwerze"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr "Nazwa serwera lub adres IP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+msgid "Server:"
+msgstr "Serwer:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+msgid "Port:"
+msgstr "Port:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "Typ:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+msgid "Name of share on server (Optional)"
+msgstr "Nazwa udziału na serwerze (Opcjonalnie)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+msgid "Share:"
+msgstr "Udział:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+msgid "Path of shared folder on server (Optional)"
+msgstr "Ścieżka do współdzielonego katalogu na serwerze (Opcjonalnie)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+msgid "Folder:"
+msgstr "Katalog:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "Informacje o użytkowniku"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+msgid "Name of Windows domain"
+msgstr "Nazwa domeny Windows"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+msgid "Domain name:"
+msgstr "Nazwa domeny:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr "Nazwa użytkownika na serwerze"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+msgid "User name:"
+msgstr "Nazwa użytkownika:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+msgid "Password:"
+msgstr "Hasło:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+msgid "Remember this password"
+msgstr "Zapamiętaj hasło"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+msgid "Connect"
+msgstr "Połącz"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "Kontynuuj"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+msgid "Connecting…"
+msgstr "Łączenie…"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "Sprawdź swoje dane użytkownika."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr "Konflikt plików"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "Oryginalny plik"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "Rozmiar:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "Ostatnia modyfikacja:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "Zastąp używając"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "Przywróć"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "_Wybór nowej nazwy dla pliku docelowego"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "Wykonaj tę czynność dla wszystkich plików"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "_Pomiń"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "Zmień _nazwę"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr "Zachowaj najnowsze"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr "Pomiń jeśli plik pierwotny został niedawno zmodyfikowany"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Połączyć katalog „%s”?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Połączenie będzie poprzedzone zapytaniem o potwierdzenie przed zamianą "
+"jakichkolwiek plików, które mogą być w konflikcie z kopiowanymi plikami."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "W katalogu „%s” znajduje się już starszy katalog o tej samej nazwie."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "W katalogu „%s” znajduje się już nowszy katalog o tej samej nazwie."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "W katalogu „%s” znajduje się już inny katalog o tej samej nazwie."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Zastąpić katalog „%s”?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr "Zastąpienie go spowoduje usunięcie wszystkich plików w katalogu."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "W katalogu „%s” znajduje się już katalog o tej samej nazwie."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Zastąpić plik „%s”?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr "Zastąpienie go spowoduje nadpisanie jego zawartości."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "W katalogu „%s” znajduje się starszy plik o tej samej nazwie."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "W katalogu „%s” znajduje nowszy plik o tej samej nazwie."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "W katalogu „%s” znajduje się już inny plik o tej samej nazwie."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "Scal"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr "_Anuluj"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+msgid "Delete"
+msgstr "Usuń"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "P_omiń wszystkie"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "_Ponów"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "U_suń wszystkie"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Zastąp"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "Z_astąp wszystkie"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "_Połącz"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "P_ołącz wszystkie"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "Skopiuj po_mimo tego"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Opróżnij _kosz"
+
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "Przejdź do %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "Przechodzi do położenia „%s”"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
 msgstr "Wpisz ścieżkę"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "Podaj ścieżkę"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Widok siatki"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Widok listy"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Widok kolumn"
 
@@ -1666,6 +1673,7 @@ msgstr "Pojemność:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
 msgid "Unknown"
 msgstr "Nieznane"
 
@@ -1783,7 +1791,7 @@ msgstr "Separator"
 msgid "%0*d,%0*d,%0*d…"
 msgstr "%0*d,%0*d,%0*d…"
 
-#: src/Dialogs/ChooseAppDialog.vala:45
+#: src/Dialogs/ChooseAppDialog.vala:50
 msgid "Set as default"
 msgstr "Ustaw jako domyślną"
 
@@ -1820,31 +1828,31 @@ msgstr "Rzeczywisty rozmiar może być większy"
 msgid "unknown"
 msgstr "nieznany"
 
-#: src/Dialogs/PropertiesWindow.vala:486
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
 msgid "Loading…"
 msgstr "Wczytywanie…"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
 msgid "Could not be determined"
 msgstr "Nie udało się ustalić"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
 msgid "Created:"
 msgstr "Utworzono:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
 msgid "Modified:"
 msgstr "Zmodyfikowano:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
 msgid "Deleted:"
 msgstr "Usunięto:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
 msgid "Media type:"
 msgstr "Rodzaj Pliku:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
 msgid "Resolution:"
 msgstr "Rozdzielczość:"
 
@@ -1853,11 +1861,11 @@ msgstr "Rozdzielczość:"
 msgid "Location:"
 msgstr "Położenie:"
 
-#: src/Dialogs/PropertiesWindow.vala:633
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
 msgid "Target:"
 msgstr "Cel:"
 
-#: src/Dialogs/PropertiesWindow.vala:641
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
 msgid "Original Location:"
 msgstr "Oryginalne położenie:"
 
@@ -1899,7 +1907,7 @@ msgstr[0] "%u plik"
 msgstr[1] "%u pliki"
 msgstr[2] "%u plików"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -1999,7 +2007,7 @@ msgid "Invalid file name provided"
 msgstr "Podano nieprawidłową nazwę pliku"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:240
 msgid "New Tab"
 msgstr "Nowa karta"
 
@@ -2137,29 +2145,41 @@ msgid "Untitled %s"
 msgstr "Nienazwany %s"
 
 #: src/View/AbstractDirectoryView.vala:2960
-#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3166
 msgid "Cannot remove files from here"
 msgstr "Nie można usunąć stąd plików"
 
 #: src/View/AbstractDirectoryView.vala:2961
-#: src/View/AbstractDirectoryView.vala:3136
-#: src/View/AbstractDirectoryView.vala:3147
-#: src/View/AbstractDirectoryView.vala:3164
+#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3167
 msgid "You do not have permission to change this location"
 msgstr "Nie masz wystarczających uprawnień, aby zmienić to położenie"
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3107
 msgid "Cannot copy files that are in the trash"
 msgstr "Nie można skopiować plików które są w koszu"
 
-#: src/View/AbstractDirectoryView.vala:3105
+#: src/View/AbstractDirectoryView.vala:3108
 msgid "Cutting the selection instead"
 msgstr "Wytnij wybór"
 
-#: src/View/AbstractDirectoryView.vala:3135
-#: src/View/AbstractDirectoryView.vala:3146
+#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3149
 msgid "Cannot paste files here"
 msgstr "Nie można wkleić tutaj plików"
+
+#: src/View/DetailsColumn.vala:118
+#, fuzzy
+#| msgid "Name"
+msgid "Name:"
+msgstr "Nazwy"
+
+#: src/View/DetailsColumn.vala:211
+#, fuzzy
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "Właściwości"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2271,19 +2291,11 @@ msgstr "Nie można wyświetlić katalogu"
 msgid "The server for this folder could not be located."
 msgstr "Serwer dla tego katalogu nie mógł zostać zlokalizowany."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Plik nie istnieje"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Wybrany plik nie istnieje."
-
-#: src/View/Window.vala:216
+#: src/View/Window.vala:215
 msgid "Menu"
 msgstr "Menu"
 
-#: src/View/Window.vala:246
+#: src/View/Window.vala:245
 msgid "Closed Tabs"
 msgstr "Zamknięte karty"
 
@@ -2308,7 +2320,7 @@ msgstr "Zamknij inne karty"
 msgid "Close Tab"
 msgstr "Zamknij kartę"
 
-#: src/View/Window.vala:766 src/View/Window.vala:776
+#: src/View/Window.vala:765 src/View/Window.vala:775
 msgid "(as Administrator)"
 msgstr "(jako administrator)"
 
@@ -2500,16 +2512,20 @@ msgstr "Lokalne ikony"
 msgid "Remote Thumbnails"
 msgstr "Zdalne ikony"
 
+#: src/View/Widgets/AppMenu.vala:115
+msgid "File Preview (Column View)"
+msgstr ""
+
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
-#: src/View/Widgets/AppMenu.vala:116
+#: src/View/Widgets/AppMenu.vala:121
 msgid "Date & Time Format"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:210
+#: src/View/Widgets/AppMenu.vala:216
 msgid "No operation to undo"
 msgstr "Brak operacji do cofnięcia"
 
-#: src/View/Widgets/AppMenu.vala:217
+#: src/View/Widgets/AppMenu.vala:223
 msgid "No operation to redo"
 msgstr "Brak operacji do ponowienia"
 
@@ -2541,12 +2557,12 @@ msgstr "Odśwież ten katalog"
 msgid "Searching…"
 msgstr "Wyszukiwanie…"
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:173
 #, c-format
 msgid "%u folders"
 msgstr "%u katalogów"
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
@@ -2554,17 +2570,17 @@ msgstr[0] " i %u inny element (%s) został wybrany"
 msgstr[1] " i %u inne elementy (%s) zostały wybrane"
 msgstr[2] " i %u innych elementów (%s) zostało wybranych"
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
 msgid " selected"
 msgstr " zaznaczono"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:192
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "Zaznaczono %u elementów (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:237
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -2573,7 +2589,7 @@ msgstr[1] "%u podkatalogi, "
 msgstr[2] "%u podkatalogów, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:243
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -2582,18 +2598,18 @@ msgstr[1] "%u pliki, "
 msgstr[2] "%u plików, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:253
 #, c-format
 msgid "%s approx."
 msgstr "około %s."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:256
 msgid "unknown size"
 msgstr "nieznany rozmiar"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:260
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
@@ -2628,6 +2644,17 @@ msgstr "Poniżej tego katalogu"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Ostatnio używane"
+
+#, fuzzy
+#~| msgid "More Results …"
+#~ msgid "More Details…"
+#~ msgstr "Więcej wyników …"
+
+#~ msgid "File not Found"
+#~ msgstr "Plik nie istnieje"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Wybrany plik nie istnieje."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Czy chciałbyś to odtworzyć?"

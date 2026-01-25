@@ -32,8 +32,15 @@ namespace Files.View {
         private Gtk.Viewport viewport;
         public Gtk.Adjustment hadj;
         public unowned View.Slot? current_slot;
+        public unowned View.Slot? last_slot {
+            get {
+                return slot_list.last ().data;
+            }
+        }
         public GLib.List<View.Slot> slot_list = null;
         public int total_width = 0;
+
+        private View.DetailsColumn details;
 
         public override bool is_frozen {
             set {
@@ -56,8 +63,13 @@ namespace Files.View {
         }
 
         construct {
-            (Files.Preferences.get_default ()).notify["show-hidden-files"].connect ((s, p) => {
+            var prefs = (Files.Preferences.get_default ());
+            prefs.notify["show-hidden-files"].connect ((s, p) => {
                 show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
+            });
+
+            prefs.notify["show-file-preview"].connect (() => {
+                on_slot_selection_changed (current_slot, current_slot.get_selected_files ());
             });
 
             colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
@@ -118,10 +130,37 @@ namespace Files.View {
             }
 
             slot_list.append (guest); // Must add to list before scrolling
-            // Must set the new slot to be  activehere as the tab does not change (which normally sets its slot active)
-            guest.active (true, true);
+            // Must set the new slot to be  active here as the tab does not change (which normally sets its slot active)
+            guest.set_active_state (true, true);
 
             update_total_width ();
+        }
+
+        private uint draw_file_details_timeout_id = 0;
+        public void draw_file_details (Files.File file, Files.AbstractDirectoryView view) {
+            if (draw_file_details_timeout_id > 0) {
+                Source.remove (draw_file_details_timeout_id);
+                draw_file_details_timeout_id = 0;
+            }
+
+            if (!file.is_folder ()) {
+                draw_file_details_timeout_id = Timeout.add (200, () => {
+                    draw_file_details_timeout_id = 0;
+                    details = new View.DetailsColumn (file, view);
+                    last_slot.colpane.pack_start (details, false, false);
+                    last_slot.hpane.show_all ();
+                    update_total_width ();
+                    return Source.REMOVE;
+                });
+            }
+        }
+
+        public void clear_file_details () {
+            if (details is Gtk.Widget) {
+                last_slot.colpane.remove (details);
+                last_slot.hpane.show_all ();
+                update_total_width ();
+            }
         }
 
         private void truncate_list_after_slot (View.Slot slot) {
@@ -233,8 +272,6 @@ namespace Files.View {
                 foreach (unowned string d in dirs) {
                     if (d.length > 0) {
                         last_uri = GLib.Path.build_path (Path.DIR_SEPARATOR_S, last_uri, d);
-
-                        var last_slot = slot_list.last ().data;
                         var file = GLib.File.new_for_uri (last_uri);
                         var list = new List<GLib.File> ();
                         list.prepend (file);
@@ -247,6 +284,7 @@ namespace Files.View {
             } else {
                 return false;
             }
+
             return true;
         }
 
@@ -369,9 +407,14 @@ namespace Files.View {
             }
 
             View.Slot? to_activate = null;
+            var prefs = Files.Preferences.get_default ();
             switch (keyval) {
                 case Gdk.Key.Left:
                     if (current_position > 0) {
+                        if (prefs.show_file_preview) {
+                            clear_file_details ();
+                        }
+
                         to_activate = slot_list.nth_data (current_position - 1);
                     }
 
@@ -410,6 +453,10 @@ namespace Files.View {
                             return true;
                         }
 
+                        if (prefs.show_file_preview) {
+                            clear_file_details ();
+                        }
+
                     break;
 
                 default:
@@ -424,8 +471,17 @@ namespace Files.View {
             return false;
         }
 
-        private void on_slot_selection_changed (GLib.List<Files.File> files) {
-            selection_changed (files);
+        private void on_slot_selection_changed (AbstractSlot source, GLib.List<Files.File> files) {
+            if (source == current_slot) {
+                clear_file_details ();
+                if (Files.Preferences.get_default ().show_file_preview &&
+                    files.length () == 1) {
+
+                    draw_file_details (files.data, current_slot.get_directory_view ());
+                }
+            }
+
+            selection_changed (files); // Should we signal changes in non current slot?
         }
 
         private void on_slot_frozen_changed (Slot slot, bool frozen) {

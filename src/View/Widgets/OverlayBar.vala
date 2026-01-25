@@ -50,9 +50,13 @@ namespace Files.View {
             cancel ();
         }
 
-        public void selection_changed (GLib.List<unowned Files.File> files) {
+        public void selection_changed (GLib.List<unowned Files.File> files, bool is_miller) {
             cancel ();
             visible = false;
+
+            if (update_timeout_id > 0) {
+                GLib.Source.remove (update_timeout_id);
+            }
 
             update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
                 if (files != null) {
@@ -61,7 +65,14 @@ namespace Files.View {
                     selected_files = null;
                 }
 
-                real_update (selected_files);
+                if (is_miller && Preferences.get_default ().show_file_preview &&
+                    files.length () == 1 && !files.data.is_folder ()) {
+
+                    visible = false;
+                } else {
+                    real_update (selected_files);
+                }
+
                 update_timeout_id = 0;
                 return GLib.Source.REMOVE;
             });
