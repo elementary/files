@@ -1,0 +1,401 @@
+/*
+* Copyright (c) 2010 Mathijs Henquet <mathijs.henquet@gmail.com>
+*               2017-2020 elementary, Inc. <https://elementary.io>
+*
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public
+* License as published by the Free Software Foundation; either
+* version 3 of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+* General Public License for more details.
+*
+* You should have received a copy of the GNU General Public
+* License along with this program; if not, write to the
+* Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+* Boston, MA 02110-1301 USA
+*
+* Authored by: Mathijs Henquet <mathijs.henquet@gmail.com>
+*              ammonkey <am.monkeyd@gmail.com>
+*/
+
+public class Files.View.FileChooserWidget : Gtk.EventBox, SlotToplevelInterface {
+    public Gtk.FileChooserAction action { get; construct; }
+    public Browser browser { get; private set; }
+    public HeaderBar headerbar;
+    public SidebarInterface sidebar { get; private set; }
+    public Slot slot { get; private set; }
+    private Gtk.Paned lside_pane;
+    private Gtk.Box slot_container;
+
+    public string title { get; private set; default = "";}
+    public bool can_select_zero { get; set; default = true; }
+
+    public GLib.File default_location {
+        owned get {
+            return GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
+        }
+    }
+
+    public int sidebar_width {
+        get {
+            return lside_pane.position;
+        }
+
+        set {
+            lside_pane.position = value;
+        }
+    }
+
+    public Gtk.SelectionMode selection_mode {
+        get {
+            return slot != null ? slot.dir_view.get_selection_mode () : Gtk.SelectionMode.NONE;
+        }
+
+        set {
+            assert (slot != null);
+            slot.dir_view.set_selection_mode (value);
+        }
+    }
+
+    //TODO Implement filter model
+    public Files.FileFilter? filter {
+        get {
+            return slot != null ? slot.dir_view.filter : null;
+        }
+
+        set {
+            assert (slot != null);
+            slot.dir_view.filter = value;
+        }
+    }
+
+    public List<Files.File> selected_files {
+        get {
+            assert (slot != null);
+            return slot.get_selected_files ();
+        }
+    }
+
+    public string? uri { // The current displayed uri
+        get {
+            return slot != null ? slot.uri : null;
+        }
+    }
+
+    public GLib.File? location { // The currently displayed folder
+        get {
+            return slot != null ? slot.location : null;
+        }
+    }
+
+    public bool is_renaming {
+        get {
+            assert (slot != null);
+            return slot.dir_view.renaming;
+        }
+    }
+    private bool locked_focus { get; set; default = false; }
+
+    private FileChooserPreferences chooser_prefs;
+
+    // public signal void folder_deleted (GLib.File location);
+    // public signal void free_space_change ();
+    public signal void file_activated (bool only_one);
+    public signal void selection_changed ();
+
+    public FileChooserWidget (Gtk.FileChooserAction action) {
+        Object (
+            action: action
+        );
+    }
+
+    construct {
+        browser = new Browser ();
+        //We create and connect headerbar but leave to the parent where to put it.
+        headerbar = new HeaderBar ();
+
+        headerbar.go_back.connect ((steps) => {
+            string? uri = browser.go_back (steps);
+            if (uri != null) {
+                uri_path_change_request (uri);
+            } else {
+                warning ("Null path");
+            }
+        });
+        headerbar.go_forward.connect ((steps) => {
+            string? uri = browser.go_forward (steps);
+            if (uri != null) {
+                uri_path_change_request (uri);
+            }
+        });
+
+        slot_container = new Gtk.Box (HORIZONTAL, 0); //Potential for extra widgets e.g. preview
+
+        lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
+            expand = true,
+            position = ViewPreferences.get_default ().sidebar_width
+        };
+
+        sidebar = new Sidebar.SidebarWindow ();
+        sidebar.path_change_request.connect (uri_path_change_request);
+
+        lside_pane.pack1 (sidebar, false, false);
+        lside_pane.pack2 (slot_container, false, false);
+        add (lside_pane);
+
+
+        chooser_prefs = FileChooserPreferences.get_default (); // Should already be initialized
+
+        if (action == Gtk.FileChooserAction.OPEN) {
+            add_slot (chooser_prefs.open_last_folder_uri, chooser_prefs.open_viewmode);
+        } else {
+            add_slot (chooser_prefs.save_last_folder_uri, chooser_prefs.save_viewmode);
+        }
+
+        show_all ();
+
+        // Connect some signals after realize to prevent unnecessary changes
+        realize.connect (() => {
+            headerbar.path_change_request.connect (uri_path_change_request);
+            headerbar.change_view_mode.connect (on_change_view_mode_request);
+        });
+    }
+
+    public void add_slot (string uri, ViewMode mode) {
+        if (slot != null) {
+            if (slot.mode == mode) {
+                return;
+            }
+
+            slot.close ();
+            slot_container.remove (slot.get_content_box ());
+            slot = null; //TODO check slot is destructed
+        }
+
+        var _uri = FileUtils.sanitize_path (uri, "", true);
+        slot = new Slot (GLib.File.new_for_uri (_uri), this, mode);
+        slot.directory_loaded.connect (on_directory_loaded);
+
+        slot.selection_changed.connect (() => {
+            selection_changed ();
+        });
+
+        slot.notify ["directory"].connect (() => {
+            update_labels (slot.uri);
+            if (action == Gtk.FileChooserAction.OPEN) {
+                chooser_prefs.open_last_folder_uri = slot.uri;
+            } else {
+                chooser_prefs.save_last_folder_uri = slot.uri;
+            }
+        });
+
+        slot_container.add (slot.get_content_box ());
+        slot_container.show_all ();
+
+        headerbar.set_view_mode (slot.mode);
+
+        if (action == Gtk.FileChooserAction.OPEN) {
+            chooser_prefs.open_viewmode = slot.mode;
+        } else {
+            chooser_prefs.save_viewmode = slot.mode;
+        }
+
+        warning ("Initialize");
+        slot.initialize_directory ();
+    }
+
+    public void get_selection_details (out uint n_selected, out bool folder_selected, out bool file_selected) {
+        n_selected = 0;
+        folder_selected = false;
+        file_selected = false;
+        foreach (var f in selected_files) {
+            n_selected++;
+            if (f.is_folder ()) {
+                folder_selected = true;
+            } else {
+                file_selected = true;
+            }
+        }
+    }
+    // Alway operates on (or creates) this.content
+    public bool set_location (
+        GLib.File? _location,
+        ViewMode mode) {
+            GLib.File location;
+            GLib.FileType ftype;
+
+            if (_location == null) {
+                location = this.default_location;
+            } else {
+            // For simplicity we do not use cancellable. If issues arise may need to do this.
+                try {
+                    var info = _location.query_info (
+                        FileAttribute.STANDARD_TYPE,
+                        FileQueryInfoFlags.NONE
+                    );
+
+                    ftype = info.get_file_type ();
+                } catch (Error e) {
+                    warning ("No info for requested location - abandon loading");
+                    return false;
+                }
+
+
+                if (ftype == FileType.REGULAR) {
+                    location = _location.get_parent ();
+                } else {
+                    location = _location.dup ();
+                }
+            }
+
+            path_change (location);
+            return true;
+    }
+
+    /*
+     * If folder shows that with nothing selected
+     * If file shows parent folder with the file selected
+     */
+    public void path_change (GLib.File location) {
+        slot.user_path_change_request (location);
+    }
+
+    public void set_selected_location (GLib.File loc) {
+        path_change (loc);
+    }
+
+    private void on_directory_loaded () {
+        browser.record_uri (uri);
+        headerbar.set_back_menu (browser.go_back_list (), browser.get_can_go_back ());
+        headerbar.set_forward_menu (browser.go_forward_list (), browser.get_can_go_forward ());
+        headerbar.update_location_bar (uri, true);
+        slot.focus_first_for_empty_selection (!can_select_zero);
+        //TODO Handle dir cannot load
+    }
+
+    public void on_change_view_mode_request (ViewMode mode) {
+        if (slot.mode != mode) {
+            add_slot (slot.uri, mode);
+        }
+    }
+
+    private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
+        //TODO Allow Slot to change view mode rather than create new slot?
+        on_change_view_mode_request ((ViewMode)param.get_uint32 ());
+    }
+
+    public void change_state_single_click_select (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.Preferences.get_default ().singleclick_select = state;
+    }
+
+    public void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+    }
+
+    public void change_state_show_local_thumbnails (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+    }
+
+    public void change_state_folders_before_files (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+    }
+
+    public virtual void quit () {
+        headerbar.destroy (); /* stop unwanted signals if quit while pathbar in focus */
+        slot.close ();
+        this.destroy ();
+    }
+
+    private void update_labels (string uri) {
+        headerbar.update_location_bar (uri);
+        sidebar.sync_uri (uri);
+    }
+
+    public new void grab_focus () {
+        slot.grab_focus ();
+    }
+
+/* SlotToplevelInterface */
+
+    public unowned AbstractSlot? get_view () {
+        return slot;
+    } // Should return current slot
+
+    public AbstractSlot? prepare_reload () {
+        // For now, do not implement restoring file selection on reload
+        return slot;
+    }
+
+    public void refresh () {
+        slot.reload ();
+        sidebar.reload ();
+    } // Reloads the current slot
+
+    public bool can_bookmark_uri (string uri) {
+        return !sidebar.has_favorite_uri (uri);
+    }
+
+    public void bookmark_uri (string uri, string custom_name = "") {
+        sidebar.add_favorite_uri (uri, custom_name);
+    }
+
+    public void change_state_show_hidden (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+    }
+
+    public Gtk.Application? get_files_application () {
+        return null;
+    }
+
+    public Gtk.Window? get_gtk_window () {
+        var top_level = get_toplevel ();
+        return (top_level is Gtk.Window) ? ((Gtk.Window) top_level) : null;
+    }
+
+    // Copied from ViewContainer with minor adjustments
+    public void go_up () {
+        var parent = slot.location;
+        if (slot.directory.has_parent ()) { /* May not work for some protocols */
+            parent = slot.directory.get_parent ();
+        } else {
+            var parent_path = FileUtils.get_parent_path_from_path (location.get_uri ());
+            parent = FileUtils.get_file_for_path (parent_path);
+        }
+
+        /* Certain parents such as ftp:// will be returned as null as they are not browsable */
+        if (parent != null) {
+            path_change (parent);
+        }
+    }
+
+    public void uri_path_change_request (string uri, Files.OpenFlag flag = DEFAULT) {
+        path_change (GLib.File.new_for_commandline_arg (uri));
+    }
+
+    public void files_activated (OpenFlag flag, List<Files.File> selected_files) {
+        if (flag == OpenFlag.APP) {
+            //TODO Handle open with app (Shouldnt come here??)
+        } else {
+            var file = selected_files.first ().data;
+            var only_one = (selected_files.first ().next) == null;
+            if (only_one && file.is_folder ()) {
+                path_change (file.location); //Handle navigation here
+            } else {
+                file_activated (only_one); // Pass on to parent (filechooser)
+            }
+        }
+    }
+
+    public void close () {
+        // Save any unsynced settings.
+    }
+}

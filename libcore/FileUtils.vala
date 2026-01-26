@@ -287,25 +287,27 @@ namespace Files.FileUtils {
       **/
 
     public string sanitize_path (string? input_uri,
-                                 string? input_current_uri,
-                                 bool include_file_protocol) {
-        string unsanitized_uri;
-        string unsanitized_current_uri;
+                                 string? input_current_uri = "",
+                                 bool include_file_protocol = false) {
         string path = "";
         string scheme = "";
         string? current_path = null;
         string? current_scheme = null;
 
-        if (input_uri == null || input_uri == "") {
-            unsanitized_uri = input_current_uri; /* Sanitize current path */
-            unsanitized_current_uri = "";
+        string unsanitized_current_uri = input_current_uri ?? "";
+        string unsanitized_uri = input_uri ?? "";
+
+        debug ("unsanitized_current_uri '%s', unsanitized_uri '%s'", unsanitized_current_uri, unsanitized_uri);
+        if (unsanitized_uri == "") {
+            unsanitized_uri = unsanitized_current_uri; /* Sanitize current path */
         } else {
             unsanitized_uri = input_uri;
-            unsanitized_current_uri = input_current_uri;
         }
 
-        if (unsanitized_uri == null || unsanitized_uri == "") {
-            return "";
+        if (unsanitized_uri == "") {
+            var fallback = include_file_protocol ? Files.ROOT_FS_URI + Path.DIR_SEPARATOR_S : Path.DIR_SEPARATOR_S;
+            debug ("uri empty - returning %s", fallback);
+            return fallback;
         }
 
         string? unescaped_uri = Uri.unescape_string (unsanitized_uri, null);
@@ -321,8 +323,9 @@ namespace Files.FileUtils {
             path = "/";
         }
 
+        debug ("path now %s 1", path);
         StringBuilder sb = new StringBuilder (path);
-        if (unsanitized_current_uri != null) {
+        if (unsanitized_current_uri != "") {
             split_protocol_from_path (unsanitized_current_uri, out current_scheme, out current_path);
             /* current_path is assumed already sanitized */
 
@@ -372,7 +375,8 @@ namespace Files.FileUtils {
             }
         }
 
-        if (path.length > 0) {
+        debug ("path now %s 2", sb.str);
+        if (sb.str.length > 0) {
             if ((scheme == "" || scheme == Files.ROOT_FS_URI) &&
                 (path.has_prefix ("~/") || path.has_prefix ("/~") || path == "~")) {
 
@@ -386,12 +390,13 @@ namespace Files.FileUtils {
         }
 
         path = sb.str;
-
+        debug ("path now %s 3", path);
         do {
             path = path.replace ("//", "/");
         } while (path.contains ("//"));
 
         string new_path = (scheme + path).replace ("////", "///");
+        debug ("path now %s 4", path);
         if (new_path.length > 0) {
             /* ROOT_FS, TRASH and RECENT must have 3 separators after protocol, other protocols have 2 */
             if (!scheme.has_prefix (Files.ROOT_FS_URI) &&
@@ -408,7 +413,7 @@ namespace Files.FileUtils {
                 new_path = "";
             }
         }
-
+        debug ("path now %s 5", path);
         if (!include_file_protocol && new_path.has_prefix (Files.ROOT_FS_URI)) {
             new_path = new_path.slice (Files.ROOT_FS_URI.length, new_path.length);
         }
@@ -429,7 +434,7 @@ namespace Files.FileUtils {
                 }
             }
         }
-
+        debug ("return new sanitized path %s", new_path);
         return new_path;
     }
 
@@ -1216,6 +1221,58 @@ namespace Files.FileUtils {
         }
 
         return (prefix + basename);
+    }
+
+
+    // Moved from AbstractDirectoryView
+    /* Open all files through this */
+    public void open_file (Files.File file, Gdk.Screen? screen, GLib.AppInfo? app_info, Files.View.Slot slot) {
+        if (can_open_file (file, slot, true)) {
+            MimeActions.open_glib_file_request.begin (file.location, slot.top_level.get_gtk_window (), app_info);
+        }
+    }
+
+    // Moved from AbstractDirectoryView
+    public void open_files_with (GLib.AppInfo app, GLib.List<Files.File> files, Files.View.Slot slot) {
+        MimeActions.open_multiple_gof_files_request (files, slot.top_level.get_gtk_window (), app);
+    }
+
+    // Moved from AbstractDirectoryView
+    public bool can_open_file (Files.File file, Files.View.Slot slot, bool show_error_dialog = false) {
+        string err_msg1 = _("Cannot open this file");
+        string err_msg2 = "";
+        var content_type = file.get_content_type ();
+
+        if (content_type == null) {
+            bool result_uncertain = true;
+            content_type = ContentType.guess (file.basename, null, out result_uncertain);
+            debug ("Guessed content type to be %s from name - result_uncertain %s",
+                      content_type,
+                      result_uncertain.to_string ());
+        }
+
+        if (content_type == null) {
+            err_msg2 = _("Cannot identify file type to open");
+        } else if (!slot.directory.can_open_files) {
+            err_msg2 = "Cannot open files with this protocol (%s)".printf (slot.directory.scheme);
+        } else if (!slot.directory.can_stream_files &&
+                   (content_type.contains ("video") || content_type.contains ("audio"))) {
+
+            err_msg2 = "Cannot stream from this protocol (%s)".printf (slot.directory.scheme);
+        }
+
+        bool success = err_msg2.length < 1;
+        if (!success && show_error_dialog) {
+            PF.Dialogs.show_warning_dialog (err_msg1, err_msg2, slot.top_level.get_gtk_window ());
+        }
+
+        return success;
+    }
+
+    public bool app_is_this_app (AppInfo ai) {
+        string exec_name = ai.get_executable ();
+
+        return (exec_name == Config.APP_NAME);
     }
 }
 

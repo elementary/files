@@ -1,0 +1,163 @@
+/***
+    // Copyright (c) 2010 mathijshenquet
+    // Copyright (c) 2011 Lucas Baudin <xapantu@gmail.com>
+
+    Marlin is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public License as
+    published by the Free Software Foundation; either version 2 of the
+    License, or (at your option) any later version.
+
+    Marlin is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    General Public License for more details.
+
+    You should have received a copy of the GNU General Public
+    License along with this program; see the file COPYING.  If not,
+    write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor
+    Boston, MA 02110-1335 USA.
+
+***/
+
+public class Files.View.HeaderBar : Hdy.HeaderBar {
+    public const string GO_BACK_ACCEL = "<Alt>Left";
+    public const string GO_FORWARD_ACCEL = "<Alt>Right";
+
+    public Chrome.ViewSwitcher view_switcher { get; construct; }
+    public Chrome.LocationBar location_bar { get; construct; }
+    public Chrome.ButtonWithMenu button_back { get; construct; }
+    public Chrome.ButtonWithMenu button_forward { get; construct; }
+    public SimpleActionGroup actions { get; private set; }
+
+    public signal void path_change_request (string uri, Files.OpenFlag flag);
+    public signal void go_back (int steps);
+    public signal void go_forward (int steps);
+    public signal void change_view_mode (ViewMode mode);
+
+    public HeaderBar () {
+        Object ();
+    }
+
+    construct {
+        var back_action = new SimpleAction ("back", VariantType.INT32);
+        back_action.activate.connect (action_back);
+        var forward_action = new SimpleAction ("forward", VariantType.INT32);
+        forward_action.activate.connect (action_forward);
+        var view_mode_action = new SimpleAction ("view-mode", VariantType.UINT32);
+        view_mode_action.activate.connect (action_view_mode);
+
+        actions = new SimpleActionGroup ();
+        actions.add_action (back_action);
+        actions.add_action (forward_action);
+        actions.add_action (view_mode_action);
+        insert_action_group ("header", actions);
+
+        button_back = new Chrome.ButtonWithMenu ("go-previous-symbolic");
+        button_back.tooltip_markup = Granite.markup_accel_tooltip ({GO_BACK_ACCEL}, _("Previous"));
+        button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        button_back.slow_press.connect (() => {
+            warning ("back clicked");
+            go_back (1);
+        });
+
+        button_forward = new Chrome.ButtonWithMenu ("go-next-symbolic");
+        button_forward.tooltip_markup = Granite.markup_accel_tooltip ({GO_FORWARD_ACCEL}, _("Next"));
+        button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+        button_forward.slow_press.connect (() => {
+            go_forward (1);
+        });
+
+        location_bar = new Chrome.LocationBar ();
+        custom_title = location_bar;
+        centering_policy = LOOSE;
+        show_close_button = true;
+
+        view_switcher = new Chrome.ViewSwitcher (view_mode_action) {
+            margin_end = 20
+        };
+
+        pack_start (button_back);
+        pack_start (button_forward);
+        pack_start (view_switcher);
+
+        location_bar.path_change_request.connect ((path, flag) => {
+            // content.is_frozen = false;
+            // Put in an Idle so that any resulting authentication dialog
+            // is able to grab focus *after* the view does
+            Idle.add (() => {
+                path_change_request (path, flag);
+                return Source.REMOVE;
+            });
+        });
+
+        show_all ();
+    }
+
+    public void add_extra_widget (Gtk.Widget widget, Gtk.PositionType pos) {
+        if (pos == LEFT) {
+            pack_start (widget);
+        } else {
+            pack_end (widget);
+        }
+    }
+
+    public void set_back_menu (Gee.List<string> path_list, bool can_go_back) {
+        /* Clear the back menu and re-add the correct entries. */
+        var back_menu = new Menu ();
+        for (int i = 0; i < path_list.size; i++) {
+            var path = path_list.@get (i);
+            var item = new MenuItem (
+                FileUtils.sanitize_path (path, null, false),
+                Action.print_detailed_name ("header.back", new Variant.int32 (i + 1))
+            );
+            back_menu.append_item (item);
+        }
+
+        button_back.menu = back_menu;
+        button_back.sensitive = can_go_back;
+    }
+
+    public void set_forward_menu (Gee.List<string> path_list, bool can_go_forward) {
+        /* Same for the forward menu */
+        var forward_menu = new Menu ();
+        for (int i = 0; i < path_list.size; i++) {
+            var path = path_list.@get (i);
+            var item = new MenuItem (
+                FileUtils.sanitize_path (path, null, false),
+                Action.print_detailed_name ("header.forward", new Variant.int32 (i + 1))
+            );
+            forward_menu.append_item (item);
+        }
+
+        button_forward.menu = forward_menu;
+        button_forward.sensitive = can_go_forward;
+    }
+
+    public void set_view_mode (ViewMode mode) {
+        view_switcher.set_mode (mode);
+    }
+
+    private void action_back (SimpleAction action, Variant? param) {
+        go_back (param.get_int32 ());
+    }
+
+    private void action_forward (SimpleAction action, Variant? param) {
+        go_forward (param.get_int32 ());
+    }
+
+    private void action_edit_path () {
+        location_bar.enter_navigate_mode ();
+    }
+
+    private void action_view_mode (SimpleAction action, Variant? param) {
+        change_view_mode ((ViewMode)param.get_uint32 ());
+    }
+
+    public void update_location_bar (string new_path, bool with_animation = true) {
+        location_bar.with_animation = with_animation;
+        location_bar.set_display_path (new_path);
+        location_bar.with_animation = true;
+    }
+
+
+}

@@ -7,21 +7,8 @@
  */
 
 public abstract class Files.AbstractSlot : GLib.Object {
-    private Files.Directory _directory;
-    public Files.Directory? directory {
-        get {
-            AbstractSlot? current = get_current_slot ();
-            if (current != null) {
-                return current._directory;
-            } else {
-                return null;
-            }
-        }
-
-        protected set { _directory = value; }
-    }
-
-    // Directory may be destroyed before the slot so handle case that it is null
+    public Directory directory { get; protected set; }
+        // Directory may be destroyed before the slot so handle case that it is null
     public Files.File? file {
         get { return directory != null ? directory.file : null; }
     }
@@ -97,7 +84,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
     public abstract unowned AbstractSlot? get_current_slot ();
     public abstract void reload (bool non_local_only = false);
     public abstract void grab_focus ();
-    public abstract void user_path_change_request (GLib.File loc, bool make_root);
+    public abstract void user_path_change_request (GLib.File loc, bool make_root = true);
     public abstract void focus_first_for_empty_selection (bool select);
     public abstract void select_glib_files (GLib.List<GLib.File> locations, GLib.File? focus_location);
     public abstract void close ();

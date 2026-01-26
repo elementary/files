@@ -22,11 +22,12 @@
 void add_file_utils_tests () {
     /* Sanitize path */
     Test.add_func ("/FileUtils/sanitize_null_abs_path", () => {
-        assert (Files.FileUtils.sanitize_path (null, null, false) == "");
+        assert (Files.FileUtils.sanitize_path (null, null, false) == Path.DIR_SEPARATOR_S);
     });
 
     Test.add_func ("/FileUtils/sanitize_zero_length_abs_path", () => {
-        assert (Files.FileUtils.sanitize_path ("", null, true) == "");
+        var fallback_uri = Files.ROOT_FS_URI + Path.DIR_SEPARATOR_S;
+        assert (Files.FileUtils.sanitize_path ("", null, true) == fallback_uri);
     });
 
     Test.add_func ("/FileUtils/afc_device_root_strip_colon", () => {
@@ -116,17 +117,17 @@ void add_file_utils_tests () {
 
     Test.add_func ("/FileUtils/sanitize_remove_excess_slash3", () => {
         string p = "file:////home/Documents";
-        assert (Files.FileUtils.sanitize_path (p, null, true) == "file:///home/Documents");
+        assert (Files.FileUtils.sanitize_path (p, "", true) == "file:///home/Documents");
     });
 
     /* Get file for path */
     Test.add_func ("/FileUtils/file_for_null_path", () => {
         /* For some reason using assert_null does not work */
-        assert (Files.FileUtils.get_file_for_path (null) == null);
+        assert (Files.FileUtils.get_file_for_path (null) != null); // should always produce valid file
     });
 
     Test.add_func ("/FileUtils/file_for_zero_length_path", () => {
-        assert (Files.FileUtils.get_file_for_path ("") == null);
+        assert (Files.FileUtils.get_file_for_path ("") != null); // should always produce valid file
     });
 
     Test.add_func ("/FileUtils/make_filename_valid_null", () => {

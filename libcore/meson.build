@@ -6,6 +6,25 @@ resources = gnome.compile_resources(
     source_dir: meson.project_source_root() / 'data'
 )
 
+config_data = configuration_data()
+config_data.set('plugin_dir', plugin_dir)
+config_data.set('version', meson.project_version())
+config_data.set('testdata_dir', join_paths(meson.project_source_root(), 'data', 'tests'))
+config_data.set('app_name', meson.project_name())
+config_data.set('gettext_package', meson.project_name())
+config_data.set('locale_dir', join_paths(get_option('prefix'), get_option('localedir')))
+
+config_file = configure_file(
+    input: 'config.h.in',
+    output: 'config.h',
+    configuration: config_data
+)
+
+project_config_dep = declare_dependency(
+    sources: config_file,
+    include_directories: include_directories('.')
+)
+
 pantheon_files_core_deps = [
     common_deps,
     posix_dep,
@@ -14,21 +33,30 @@ pantheon_files_core_deps = [
     pango_dep,
     sqlite3_dep,
     libcanberra_dep,
-    zeitgeist_dep
+    zeitgeist_dep,
+    dependency('gdk-x11-3.0'),
+    dependency('gdk-wayland-3.0'),
+    portal_dep,
+    portal_gtk3_dep,
+    project_config_dep
 ]
 
 pantheon_files_core_vala_files = files(
     'AbstractSlot.vala',
     'CallWhenReady.vala',
     'ClipboardManager.vala',
+    'DeepCount.vala',
     'Directory.vala',
     'DndHandler.vala',
     'Enums.vala',
     'File.vala',
     'FileChanges.vala',
+    'FileFilter.vala',
     'FileUtils.vala',
     'IconInfo.vala',
     'ListModel.vala',
+    'MimeActions.vala',
+    'Permissions.vala',
     'PixbufUtils.vala',
     'Preferences.vala',
     'PluginManager.vala',
@@ -36,13 +64,21 @@ pantheon_files_core_vala_files = files(
     'ProgressInfo.vala',
     'ProgressInfoManager.vala',
     'Resources.vala',
+    'Slot.vala',
     'SoundManager.vala',
     'Thumbnailer.vala',
     'TrashMonitor.vala',
     'UserUtils.vala',
     'UndoManager.vala',
+    'ViewPreferences.vala',
+    'FileChooserPreferences.vala',
+    'ViewUtils.vala',
     'ZeitgeistManager.vala',
 
+    'FileChooser/ExternalWindow.vala',
+    'FileChooser/FileChooserDialog.vala',
+    'FileChooser/FileChooserChoice.vala',
+    'FileChooser/FileChooserWidget.vala',
     'FileOperations/CommonJob.vala',
     'FileOperations/CopyMoveJob.vala',
     'FileOperations/CreateJob.vala',
@@ -50,34 +86,74 @@ pantheon_files_core_vala_files = files(
     'FileOperations/EmptyTrashJob.vala',
     'FileOperations/MountUtils.vala',
 
-    'Interfaces/SidebarInterface.vala',
     'Interfaces/LocatableInterface.vala',
     'Interfaces/NavigatableInterface.vala',
     'Interfaces/SearchableInterface.vala',
+    'Interfaces/SidebarInterface.vala',
     'Interfaces/SidebarListInterface.vala',
     'Interfaces/SidebarItemInterface.vala',
+    'Interfaces/SlotToplevelInterface.vala',
+    'Interfaces/MultiSlotInterface.vala',
 
+    'View/Dialogs/ChooseAppDialog.vala',
     'View/Dialogs/ConnectServerOperation.vala',
     'View/Dialogs/ConnectServerDialog.vala',
     'View/Dialogs/FileConflictDialog.vala',
+    'View/Dialogs/AbstractPropertiesDialog.vala',
+    'View/Dialogs/PropertiesWindow.vala',
+    'View/Dialogs/VolumePropertiesWindow.vala',
     'View/Dialogs/StockDialogs.vala',
+    'View/Dialogs/BulkRenamer/Renamer.vala',
+    'View/Dialogs/BulkRenamer/RenamerModifier.vala',
+    'View/Dialogs/BulkRenamer/RenamerDialog.vala',
+    'View/Dialogs/BulkRenamer/RenamerListRow.vala',
 
     'View/HeaderBar/BasicBreadcrumbsEntry.vala',
     'View/HeaderBar/BasicLocationBar.vala',
     'View/HeaderBar/BreadcrumbElement.vala',
     'View/HeaderBar/BreadcrumbIconList.vala',
     'View/HeaderBar/ButtonWithMenu.vala',
+    'View/HeaderBar/HeaderBar.vala',
     'View/HeaderBar/ViewSwitcher.vala',
     'View/HeaderBar/Browser.vala',
+    'View/HeaderBar/BreadcrumbsEntry.vala',
+    'View/HeaderBar/LocationBar.vala',
+    'View/HeaderBar/SearchResults.vala',
+
     'View/Renderers/EmblemRenderer.vala',
     'View/Renderers/IconRenderer.vala',
     'View/Renderers/TextRenderer.vala',
+
     'View/Sidebar/Bookmark.vala',
     'View/Sidebar/BookmarkList.vala',
     'View/Sidebar/SidebarPluginItem.vala',
+    'View/Sidebar/AbstractMountableRow.vala',
+    'View/Sidebar/BookmarkListBox.vala',
+    'View/Sidebar/BookmarkRow.vala',
+    'View/Sidebar/DeviceListBox.vala',
+    'View/Sidebar/DriveRow.vala',
+    'View/Sidebar/NetworkListBox.vala',
+    'View/Sidebar/NetworkRow.vala',
+    'View/Sidebar/SidebarWindow.vala',
+    'View/Sidebar/VolumeRow.vala',
+    'View/Sidebar/VolumelessMountRow.vala',
+
+    'View/Views/AbstractDirectoryView.vala',
+    'View/Views/AbstractTreeView.vala',
+    'View/Views/ColumnView.vala',
+    'View/Views/IconView.vala',
+    'View/Views/ListView.vala',
+
     'View/Widgets/AbstractEditableLabel.vala',
     'View/Widgets/MultiLineEditableLabel.vala',
-    'View/Widgets/SingleLineEditableLabel.vala'
+    'View/Widgets/SingleLineEditableLabel.vala',
+    'View/Widgets/DirectoryNotFound.vala',
+    'View/Widgets/PrivacyModeOn.vala',
+    'View/Widgets/DetailsColumn.vala',
+    'View/Widgets/OverlayBar.vala',
+    'View/Widgets/PermissionButton.vala',
+    'View/Widgets/ProgressInfoWidget.vala',
+    'View/Widgets/Welcome.vala'
 )
 
 pantheon_files_core_c_files = files(
