@@ -121,7 +121,7 @@ public class FileChooserDialogTester : Gtk.Application {
     }
 
     private void filechooser_widget_add_choices (Files.FileChooserDialog filechooser) {
-        var vb = new VariantBuilder (new VariantType ("a(ss)"));
+        var vb = new VariantBuilder (new VariantType ("(a(ss))"));
         vb.add ("(ss)", "1a", "Choice 1a");
         vb.add ("(ss)", "1b", "Choice 1b");
         vb.add ("(ss)", "1c", "Choice 1c");
@@ -156,6 +156,20 @@ public class FileChooserDialogTester : Gtk.Application {
         filter3.add_pattern ("*.*");
         filter3.add_pattern ("*");
         filter3.name = "All Files";
+
+        // Example filter variant taken from XDG Desktop portal documentation
+        try {
+            var variant = Variant.parse (
+                new VariantType ("(sa(us))"),
+                "('Images', [(0, '*.[jJ][pP][gG]'), (1, 'image/png')])",
+                null,
+                null
+            );
+            var test_filter2 = new Files.FileFilter.from_gvariant (variant);
+            filechooser.add_filter (test_filter2);
+        } catch (Error e) {
+            warning ("variant parse error %s", e.message);
+        }
 
         filechooser.add_filter (filter1);
         filechooser.add_filter (filter2);
