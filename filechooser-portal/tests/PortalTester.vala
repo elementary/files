@@ -138,7 +138,7 @@ public class PortalTester : Gtk.Application {
                 break;
         }
 
-        filechooser.destroy ();
+        filechooser_native.destroy ();
     }
 
     /* Note:  Gtk.FileChooserNative supports adding choices and sends through portal but does NOT
@@ -165,6 +165,25 @@ public class PortalTester : Gtk.Application {
     }
 
     private void filechooser_add_filters (Gtk.FileChooserNative filechooser) {
+        // Doesn't work with a VariantBuilder for some reason
+        // Gtk.FileFilter.from_gvariant doesn't work with this either in Flatpak
+        // Note Files.FileFilter.from_gvariant does work.
+        // Filter gets added OK but filters out every non-folder
+        // However, apps tend to use "add_pattern" and "add_mime" which do work
+        try {
+            warning ("parsing");
+            var variant = Variant.parse (
+                new VariantType ("(sa(us))"),
+                "('Images - Variant', [(0, '*.jpg'), (1, 'image/png')])",
+                null,
+                null
+            );
+            var test_filter2 = new Gtk.FileFilter.from_gvariant (variant);
+            filechooser.add_filter (test_filter2);
+        } catch (Error e) {
+            warning ("variant parse error %s", e.message);
+        }
+
         var filter1 = new Gtk.FileFilter ();
         filter1.add_pattern ("*.txt");
         filter1.add_pattern ("*.pdf");
@@ -187,7 +206,6 @@ public class PortalTester : Gtk.Application {
     }
 
     private int show_filechooser (Gtk.FileChooserNative filechooser) {
-    warning ("show file chooser");
         if (set_filters) {
             filechooser_add_filters (filechooser);
         }
