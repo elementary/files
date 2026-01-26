@@ -147,7 +147,7 @@ namespace Files.View {
                 draw_file_details_timeout_id = Timeout.add (200, () => {
                     draw_file_details_timeout_id = 0;
                     details = new View.DetailsColumn (file, view);
-                    last_slot.colpane.pack_start (details, false, false);
+                    last_slot.colpane.add (details);
                     last_slot.hpane.show_all ();
                     last_slot.width += details.width;
                     update_total_width ();

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 23:31+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2023-04-14 23:59+0000\n"
 "Last-Translator: NorwayFun <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <https://l10n.elementary.io/projects/files/extra/ka/"
@@ -29,7 +29,7 @@ msgstr "folder;manager;explore;disk;filesystem;ფაილი;საქაღ�
 msgid "New Window"
 msgstr "ახალი ფანჯარა"
 
-#: data/io.elementary.files.desktop.in.in:29
+#: data/io.elementary.files.desktop.in.in:30
 msgid "New Window As Administrator"
 msgstr "ახალი ფანჯარა ადმინისტრატორის სახელით"
 
