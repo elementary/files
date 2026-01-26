@@ -480,9 +480,13 @@ namespace Files.View {
         private void on_slot_selection_changed (AbstractSlot source, GLib.List<Files.File> files) {
             if (source == current_slot) {
                 clear_file_details ();
+
                 if (Files.Preferences.get_default ().show_file_preview &&
                     files.length () == 1) {
 
+                    // Preview must be added to the last slot so make sure current slot
+                    // is the last
+                    truncate_list_after_slot (current_slot);
                     draw_file_details (files.data, current_slot.get_directory_view ());
                 }
             }
