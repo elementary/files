@@ -534,7 +534,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
     }
 
     public void set_uri (string uri) { // Select file at uri
-    warning ("FCD set uri to %s", uri);
         var file = GLib.File.new_for_uri (uri);
         if (file.query_exists ()) {
             file_view.set_selected_location (file);
@@ -547,7 +546,6 @@ public class Files.FileChooserDialog : Gtk.Dialog, Xdp.Request2 {
 
     // Only to be used on initializing dialog
     public void set_current_folder_uri (string uri) { //Navigate to this folder
-    warning ("setting current folder uri to %s", uri);
         if (uri == "") {
             file_view.add_slot (Environment.get_home_dir (), view_mode);
         } else {

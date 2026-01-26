@@ -405,7 +405,6 @@ public class Files.FileChooserPortal : Object {
         }
 
         if ("multiple" in options) {
-            warning ("Main setting select multiple");
             filechooser.select_multiple = options["multiple"].get_boolean ();
         }
 
