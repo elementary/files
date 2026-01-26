@@ -5,7 +5,7 @@
  * Authors : Andres Mendez <shiruken@gmail.com>
  */
 
-public class Files.View.DetailsColumn : Gtk.Box {
+public class Files.View.DetailsColumn : Gtk.Bin {
     public int width {
         get {
             return PREVIEW_SIZE + 2 * PREVIEW_H_MARGIN;
@@ -212,10 +212,12 @@ public class Files.View.DetailsColumn : Gtk.Box {
             halign = END
         };
 
-        var info_window = new Gtk.ScrolledWindow (null, null) {
-            child = info_grid,
-            propagate_natural_height = true,
-            hscrollbar_policy = Gtk.PolicyType.NEVER
+        var box = new Gtk.Box (VERTICAL, 12) {
+            halign = CENTER,
+            margin_top = 12,
+            margin_bottom = 12,
+            margin_start = 12,
+            margin_end = 12,
         };
 
         if (previewing_text) {
@@ -227,20 +229,21 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 max_content_width = PREVIEW_SIZE
             };
 
-            add (text_window);
+            box.add (text_window);
         } else {
-            add (file_image);
+            box.add (file_image);
         }
 
-        orientation = VERTICAL;
-        spacing = 12;
-        margin_top = 12;
-        margin_bottom = 12;
-        margin_start = 12;
-        margin_end = 12;
-        add (info_window);
-        add (more_info_button);
+        box.add (info_grid);
+        box.add (more_info_button);
 
+        var scrolled = new Gtk.ScrolledWindow (null, null) {
+            child = box,
+            propagate_natural_height = true,
+            hscrollbar_policy = NEVER
+        };
+
+        child = scrolled;
         show_all ();
 
         more_info_button.clicked.connect (() => {
