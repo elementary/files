@@ -32,14 +32,13 @@
 
     public string name { get; set; }
     private List<Rule?> rules;
-    // Create from filechooser portal variant type "sa(us)"
     public FileFilter.from_gvariant (Variant filter_variant) {
         VariantIter iter;
-        string _name;
-        RuleType _type;
+        string _name = "";
+        uint _type;
         string _text;
 
-        filter_variant.@get ("sa(us)", out _name, out iter);
+        filter_variant.@get ("(sa(us))", out _name, out iter);
         name = _name;
         while (iter.next ("(us)", out _type, out _text)) {
             add_rule (_type, _text);
@@ -63,15 +62,15 @@
     }
 
     public Variant to_gvariant () {
-        var vb = new VariantBuilder (new VariantType ("sa(us)"));
-        vb.add (name);
-        vb.open (new VariantType ("a(us)"));
+        var variant_type = "(a(us))";
+        var vb = new VariantBuilder (new VariantType (variant_type));
         rules.foreach ((rule) => {
-            vb.add ("(us)", rule.type, rule.text);
+            vb.add ("(us)", (uint) (rule.type), rule.text);
         });
-        vb.close ();
 
-        return vb.end ();
+        var inner_variant = vb.end ();
+        var variant_type2 = "(sa(us))";
+        return new Variant (variant_type2, "TestVariantFilter", inner_variant);
     }
 
     //TODO decide whether should accept or reject by default
