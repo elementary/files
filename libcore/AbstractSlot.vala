@@ -48,7 +48,9 @@ public abstract class Files.AbstractSlot : GLib.Object {
 
     protected Gtk.Box extra_location_widgets;
     protected Gtk.Box extra_action_widgets;
-    protected Gtk.Box content_box;
+    protected Gtk.Grid content_box;
+    protected Gtk.Box side_widget_box;
+
     public Gtk.Overlay overlay { get; protected set; }
     public int slot_number { get; protected set; }
     protected int width;
@@ -77,17 +79,21 @@ public abstract class Files.AbstractSlot : GLib.Object {
         content_box.add (overlay);
     }
 
+    protected void add_side_widget (Gtk.Widget widget, bool expand, bool fill, uint padding) {
+        side_widget_box.pack_end (widget, expand, fill, padding);
+    }
+
     construct {
-        content_box = new Gtk.Box (VERTICAL, 0) {
+        content_box = new Gtk.Grid () {
             vexpand = true,
             hexpand = true
         };
 
-        extra_location_widgets = new Gtk.Box (VERTICAL, 0);
-        content_box.add (extra_location_widgets);
+        side_widget_box = new Gtk.Box (HORIZONTAL, 0);
 
         extra_action_widgets = new Gtk.Box (VERTICAL, 0);
         content_box.add (extra_action_widgets);
+        side_widget_box.pack_start (content_box, true, true, 0);
         slot_number = -1;
     }
 
@@ -107,8 +113,8 @@ public abstract class Files.AbstractSlot : GLib.Object {
     public virtual void zoom_in () {}
     public virtual void zoom_normal () {}
     public virtual bool set_all_selected (bool all_selected) { return false; }
-    public virtual Gtk.Widget get_content_box () { return content_box as Gtk.Widget; }
+    public virtual Gtk.Widget get_content_box () { return side_widget_box as Gtk.Widget; }
     public virtual string? get_root_uri () { return directory.file.uri; }
     public virtual string? get_tip_uri () { return null; }
-    public virtual bool get_realized () { return content_box.get_realized (); }
+    public virtual bool get_realized () { return side_widget_box.get_realized (); }
 }
