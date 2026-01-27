@@ -147,9 +147,7 @@ namespace Files.View {
                 draw_file_details_timeout_id = Timeout.add (200, () => {
                     draw_file_details_timeout_id = 0;
                     details = new View.DetailsColumn (file, view);
-                    last_slot.colpane.add (details);
-                    last_slot.hpane.show_all ();
-                    last_slot.width += details.width;
+                    add_side_widget (details, true, true, 0);
                     update_total_width ();
                     schedule_scroll_to_slot (last_slot, true);
 
@@ -160,12 +158,8 @@ namespace Files.View {
 
         public void clear_file_details () {
             if (details is Gtk.Widget) {
-                last_slot.width -= details.width;
-                last_slot.colpane.remove (details);
-                last_slot.hpane.show_all ();
-                details = null;
+                details.destroy ();
                 update_total_width ();
-                schedule_scroll_to_slot (last_slot, true);
             }
         }
 
