@@ -93,7 +93,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
 
         extra_action_widgets = new Gtk.Box (VERTICAL, 0);
         content_box.add (extra_action_widgets);
-        side_widget_box.pack_start (content_box, true, true, 0);
+        side_widget_box.pack_start (content_box, false, true, 0);
         slot_number = -1;
     }
 
