@@ -131,7 +131,7 @@ public class Files.View.DetailsColumn : Gtk.Bin {
         info_grid.attach (size_key_label, 0, 2);
         info_grid.attach_next_to (size_value, size_key_label, RIGHT);
 
-        var time_created = FileUtils.get_formatted_time_attribute_from_info (
+        var time_created = get_formated_date_time_from_info (
             file.info,
             FileAttribute.TIME_CREATED
         );
@@ -140,12 +140,12 @@ public class Files.View.DetailsColumn : Gtk.Bin {
         if (time_created != "") {
             var key_label = make_key_label (_("Created:"));
             var value_label = make_value_label (time_created);
-            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach (key_label, 0, n++);
             info_grid.attach_next_to (value_label, key_label, RIGHT, 3, 1);
             n++;
         }
 
-        var time_modified = FileUtils.get_formatted_time_attribute_from_info (
+        var time_modified = get_formated_date_time_from_info (
             file.info,
             FileAttribute.TIME_MODIFIED
         );
@@ -153,13 +153,12 @@ public class Files.View.DetailsColumn : Gtk.Bin {
         if (time_modified != "") {
             var key_label = make_key_label (_("Modified:"));
             var value_label = make_value_label (time_modified);
-            info_grid.attach (key_label, 0, n, 1, 1);
-            info_grid.attach_next_to (value_label, key_label, RIGHT, 3, 1);
-            n++;
+            info_grid.attach (key_label, 0, n++);
+            info_grid.attach_next_to (value_label, key_label, RIGHT);
         }
 
         if (file.is_trashed ()) {
-            var deletion_date = FileUtils.get_formatted_time_attribute_from_info (
+            var deletion_date = get_formated_date_time_from_info (
                 file.info,
                 FileAttribute.TRASH_DELETION_DATE
             );
@@ -167,25 +166,22 @@ public class Files.View.DetailsColumn : Gtk.Bin {
             if (deletion_date != "") {
                 var key_label = make_key_label (_("Deleted:"));
                 var value_label = make_value_label (deletion_date);
-                info_grid.attach (key_label, 0, n, 1, 1);
+                info_grid.attach (key_label, 0, n++);
                 info_grid.attach_next_to (value_label, key_label, RIGHT, 3, 1);
-                n++;
             }
         }
 
         var ftype = filetype (file);
         var mimetype_key = make_key_label (_("Media type:"));
         var mimetype_value = make_value_label (ftype);
-        info_grid.attach (mimetype_key, 0, n, 1, 1);
+        info_grid.attach (mimetype_key, 0, n++);
         info_grid.attach_next_to (mimetype_value, mimetype_key, RIGHT, 3, 1);
-        n++;
 
         if (file.is_image ()) {
             var resolution_key = make_key_label (_("Resolution:"));
             resolution_value = make_value_label (resolution (file));
-            info_grid.attach (resolution_key, 0, n, 1, 1);
+            info_grid.attach (resolution_key, 0, n++);
             info_grid.attach_next_to (resolution_value, resolution_key, RIGHT, 3, 1);
-            n++;
         }
 
         if (file.info.get_attribute_boolean (GLib.FileAttribute.STANDARD_IS_SYMLINK)) {
@@ -193,21 +189,22 @@ public class Files.View.DetailsColumn : Gtk.Bin {
             var value_label = make_value_label (
                 file.info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET)
             );
-            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach (key_label, 0, n++);
             info_grid.attach_next_to (value_label, key_label, RIGHT, 3, 1);
-            n++;
         }
 
         if (file.is_trashed ()) {
             var key_label = make_key_label (_("Original Location:"));
             var value_label = make_value_label (original_location (file));
-            info_grid.attach (key_label, 0, n, 1, 1);
+            info_grid.attach (key_label, 0, n++);
             info_grid.attach_next_to (value_label, key_label, RIGHT, 3, 1);
             n++;
         }
 
         var more_info_button = new Gtk.Button.with_label (_("Properties…")) {
-            halign = END
+            halign = END,
+            margin_end = 12,
+            margin_bottom = 12
         };
 
         var box = new Gtk.Box (VERTICAL, 12) {
@@ -244,6 +241,18 @@ public class Files.View.DetailsColumn : Gtk.Bin {
         });
     }
 
+    private static string get_formated_date_time_from_info (
+        FileInfo info, 
+        string attrib
+    ) {
+        // We do not want padded string and we want max detail
+        return FileUtils.get_formatted_time_attribute_from_info (
+            info,
+            attrib,
+            DateFormatMode.LOCALE,
+            false // Do not add hard padding (cannot easily remove)
+        );
+    }
     /** Also an adjusted copy from PropertiesWindow **/
     public static string original_location (Files.File file) {
         /* print orig location of trashed files */
