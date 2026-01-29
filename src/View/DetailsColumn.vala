@@ -6,17 +6,11 @@
  */
 
 public class Files.View.DetailsColumn : Gtk.Bin {
-    public int width {
-        get {
-            return PREVIEW_SIZE + 2 * PREVIEW_H_MARGIN;
-        }
-    }
 
     public Files.File file { get; construct; }
     public Files.AbstractDirectoryView view { get; construct; }
 
-    private const int PREVIEW_SIZE = 256;
-    private const int PREVIEW_H_MARGIN = 12;
+    private const int PREVIEW_SIZE = 256 + 100;
     private const int MAX_PREVIEW_FILE_SIZE = 2 * 8 * 1024 * 1024; // 2MB
     private GLib.Cancellable? cancellable;
     private Gtk.Label resolution_value;
@@ -30,7 +24,9 @@ public class Files.View.DetailsColumn : Gtk.Bin {
     }
 
     construct {
+        width_request = PREVIEW_SIZE;
         hexpand = false;
+
         var file_real_size = PropertiesWindow.file_real_size (file);
 
         var info_grid = new Gtk.Grid () {
@@ -39,8 +35,6 @@ public class Files.View.DetailsColumn : Gtk.Bin {
         };
 
         var file_image = new Gtk.Image () {
-            hexpand = true,
-            vexpand = true,
             halign = CENTER,
             valign = CENTER,
         };
@@ -51,10 +45,6 @@ public class Files.View.DetailsColumn : Gtk.Bin {
         var file_text = new Gtk.TextView () {
             cursor_visible = false,
             editable = false,
-            top_margin = 12,
-            bottom_margin = 12,
-            left_margin = 12,
-            right_margin = 12,
         };
 
         Gdk.Pixbuf? ico_pix = file.get_icon_pixbuf (
@@ -209,15 +199,11 @@ public class Files.View.DetailsColumn : Gtk.Bin {
 
         var box = new Gtk.Box (VERTICAL, 12) {
             halign = CENTER,
-            margin_top = 12,
-            margin_bottom = 12,
-            margin_end = 12,
-            width_request = PREVIEW_SIZE + 2 * margin_end
         };
 
         var scrolled_window = new Gtk.ScrolledWindow (null, null) {
-            max_content_height = PREVIEW_SIZE,
-            max_content_width = PREVIEW_SIZE,
+            propagate_natural_width = true,
+            propagate_natural_height = true
         };
 
         if (previewing_text) {
@@ -226,7 +212,7 @@ public class Files.View.DetailsColumn : Gtk.Bin {
             scrolled_window.child = file_image;
         }
 
-        box.add (scrolled_window);
+        box.pack_start (scrolled_window, false, false, 0);
         box.add (new Gtk.Separator (HORIZONTAL));
         box.add (info_grid);
         box.add (more_info_button);
