@@ -15,8 +15,8 @@ public class Files.View.DetailsColumn : Gtk.Bin {
     public Files.File file { get; construct; }
     public Files.AbstractDirectoryView view { get; construct; }
 
-    private const int PREVIEW_SIZE = 512;
-    private const int PREVIEW_H_MARGIN = 24;
+    private const int PREVIEW_SIZE = 256;
+    private const int PREVIEW_H_MARGIN = 12;
     private const int MAX_PREVIEW_FILE_SIZE = 2 * 8 * 1024 * 1024; // 2MB
     private GLib.Cancellable? cancellable;
     private Gtk.Label resolution_value;
