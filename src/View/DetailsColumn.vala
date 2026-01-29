@@ -122,17 +122,13 @@ public class Files.View.DetailsColumn : Gtk.Bin {
 
         /** begin adapted copy-pasta from PropertiesWindow.construct_info_panel **/
         var size_key_label = make_key_label (_("Size:"));
-        var spinner = new Gtk.Spinner () {
-            halign = START
-        };
 
         var size_value = make_value_label ("");
         size_value.label = GLib.format_size (file_real_size);
 
         info_grid.attach (name_key_label, 0, 1);
         info_grid.attach_next_to (name_value, name_key_label, RIGHT);
-        info_grid.attach (size_key_label, 0, 2, 1);
-        info_grid.attach_next_to (spinner, size_key_label, RIGHT);
+        info_grid.attach (size_key_label, 0, 2);
         info_grid.attach_next_to (size_value, size_key_label, RIGHT);
 
         var time_created = FileUtils.get_formatted_time_attribute_from_info (
