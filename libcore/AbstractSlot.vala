@@ -49,7 +49,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
     protected Gtk.Box extra_location_widgets;
     protected Gtk.Box extra_action_widgets;
     protected Gtk.Grid content_box;
-    protected Gtk.Box side_widget_box;
+    protected Gtk.Paned side_widget_box;
 
     public Gtk.Overlay overlay { get; protected set; }
     public int slot_number { get; protected set; }
@@ -79,8 +79,8 @@ public abstract class Files.AbstractSlot : GLib.Object {
         content_box.add (overlay);
     }
 
-    protected void add_side_widget (Gtk.Widget widget, bool expand, bool fill, uint padding) {
-        side_widget_box.pack_end (widget, expand, fill, padding);
+    protected void add_side_widget (Gtk.Widget widget) {
+        side_widget_box.pack2 (widget, false, false);
     }
 
     construct {
@@ -89,11 +89,11 @@ public abstract class Files.AbstractSlot : GLib.Object {
             hexpand = true
         };
 
-        side_widget_box = new Gtk.Box (HORIZONTAL, 0);
+        side_widget_box = new Gtk.Paned (HORIZONTAL);
 
         extra_action_widgets = new Gtk.Box (VERTICAL, 0);
         content_box.add (extra_action_widgets);
-        side_widget_box.pack_start (content_box, false, true, 0);
+        side_widget_box.pack1 (content_box, true, false);
         slot_number = -1;
     }
 
