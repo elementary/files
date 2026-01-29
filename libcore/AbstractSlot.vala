@@ -80,7 +80,6 @@ public abstract class Files.AbstractSlot : GLib.Object {
     }
 
     protected void add_side_widget (Gtk.Widget widget, bool resize, bool shrink) {
-        // Settings suitable for preview widget
         side_widget_box.pack2 (widget, resize, shrink);
     }
 

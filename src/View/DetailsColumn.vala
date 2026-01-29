@@ -228,7 +228,7 @@ public class Files.View.DetailsColumn : Gtk.Bin {
     }
 
     private static string get_formated_date_time_from_info (
-        FileInfo info, 
+        FileInfo info,
         string attrib
     ) {
         // We do not want padded string and we want max detail
