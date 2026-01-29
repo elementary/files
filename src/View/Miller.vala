@@ -86,6 +86,9 @@ namespace Files.View {
             };
 
             hadj = scrolled_window.get_hadjustment ();
+            hadj.notify["page-size"].connect (() => {
+                schedule_scroll_to_slot (current_slot);
+            });
 
             add_overlay (scrolled_window);
 
