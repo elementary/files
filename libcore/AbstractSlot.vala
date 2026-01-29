@@ -80,7 +80,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
     }
 
     protected void add_side_widget (Gtk.Widget widget) {
-        side_widget_box.pack2 (widget, false, false);
+        side_widget_box.pack2 (widget, false, true);
     }
 
     construct {
@@ -93,7 +93,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
 
         extra_action_widgets = new Gtk.Box (VERTICAL, 0);
         content_box.add (extra_action_widgets);
-        side_widget_box.pack1 (content_box, true, false);
+        side_widget_box.pack1 (content_box, true, true);
         slot_number = -1;
     }
 
