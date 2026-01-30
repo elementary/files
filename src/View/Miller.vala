@@ -6,7 +6,6 @@
     by the Free Software Foundation.
 
     This program is distributed in the hope that it will be useful, but
-    This program is distributed in the hope that it will be useful, but
     WITHOUT ANY WARRANTY; without even the implied warranties of
     MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
     PURPOSE. See the GNU General Public License for more details.
