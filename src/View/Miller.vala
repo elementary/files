@@ -6,6 +6,7 @@
     by the Free Software Foundation.
 
     This program is distributed in the hope that it will be useful, but
+    This program is distributed in the hope that it will be useful, but
     WITHOUT ANY WARRANTY; without even the implied warranties of
     MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
     PURPOSE. See the GNU General Public License for more details.
@@ -369,6 +370,8 @@ namespace Files.View {
             }
             /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
+
+            plugins.directory_loaded (this.ctab.window, this, slot.directory.file);
         }
 
         private void show_hidden_files_changed (bool show_hidden) {
