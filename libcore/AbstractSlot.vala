@@ -46,6 +46,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
 
     public virtual bool is_frozen { get; set; default = true; }
 
+    //TODO Make private so layout fixed?
     protected Gtk.Box extra_location_widgets;
     protected Gtk.Box extra_action_widgets;
     protected Gtk.Grid content_box;
@@ -70,13 +71,8 @@ public abstract class Files.AbstractSlot : GLib.Object {
         extra_action_widgets.add (widget);
     }
 
-    public void add_overlay (Gtk.Widget widget) {
-        overlay = new Gtk.Overlay () {
-            hexpand = true,
-            vexpand = true,
-            child = widget
-        };
-        content_box.add (overlay);
+    public void add_overlay_widget (Gtk.Widget widget) {
+        overlay.child = widget;
     }
 
     protected void add_side_widget (Gtk.Widget widget, bool resize, bool shrink) {
@@ -89,10 +85,17 @@ public abstract class Files.AbstractSlot : GLib.Object {
             hexpand = true
         };
 
+        overlay = new Gtk.Overlay () {
+            hexpand = true,
+            vexpand = true,
+        };
+
         side_widget_box = new Gtk.Paned (HORIZONTAL);
 
         extra_action_widgets = new Gtk.Box (VERTICAL, 0);
-        content_box.add (extra_action_widgets);
+        content_box.attach (extra_action_widgets, 0, 0);
+        content_box.attach (overlay, 0, 1);
+
         side_widget_box.pack1 (content_box, true, true);
         slot_number = -1;
     }

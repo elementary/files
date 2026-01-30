@@ -90,7 +90,7 @@ namespace Files.View {
                 schedule_scroll_to_slot (current_slot);
             });
 
-            add_overlay (scrolled_window);
+            add_overlay_widget (scrolled_window);
 
             content_box.show_all ();
 
