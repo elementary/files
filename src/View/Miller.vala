@@ -350,7 +350,6 @@ namespace Files.View {
          **/
         private void on_slot_active (Files.AbstractSlot aslot, bool scroll = true, bool animate = true) {
             View.Slot slot;
-
             if (!(aslot is View.Slot)) {
                 return;
             } else {
@@ -372,6 +371,10 @@ namespace Files.View {
             }
             /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
+
+            // Ensure plugins (especially trash plugins) update as directory is not
+            // actually reloaded
+            plugins.directory_loaded (this.ctab.window, this, slot.directory.file);
         }
 
         private void show_hidden_files_changed (bool show_hidden) {
