@@ -75,6 +75,15 @@ public class Files.File : GLib.Object {
     public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
     public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
     public GLib.FileType file_type;
+    private string ? _content_type = null;
+    public string content_type {
+        get {
+            if (_content_type = null) {
+                update_type ();
+            }
+
+            return _content_type;
+    }
     public bool is_hidden { get; construct; }
     public bool is_remote = false;
     public bool is_directory = false;
@@ -459,7 +468,7 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    //TODO Is it necessary to refetch the icon if have pix at requested size? 
+    //TODO Is it necessary to refetch the icon if have pix at requested size?
     public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
         return get_icon (
             _size.clamp (16, 512),
@@ -1153,6 +1162,7 @@ public class Files.File : GLib.Object {
         icon = null;
         custom_display_name = null;
         custom_icon_name = null;
+        _content_type = null;
 
         uid = -1;
         gid = -1;
