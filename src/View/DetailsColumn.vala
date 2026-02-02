@@ -268,17 +268,7 @@ public class Files.View.DetailsColumn : Gtk.Bin {
     }
 
     public static string filetype (Files.File file) {
-        string ftype = file.get_ftype ();
-        if (ftype != null) {
-            return ftype;
-        } else {
-            /* show list of mimetypes only if we got a default application in common */
-            if (MimeActions.get_default_application_for_file (file) != null) {
-                return file.get_ftype ();
-            }
-        }
-
-        return _("Unknown");
+        return file.content_type;
     }
 
     private async void get_resolution (Files.File goffile) {
