@@ -38,7 +38,6 @@ public class Files.File : GLib.Object {
         "thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed";
 
     public signal void changed ();
-    public signal void icon_changed ();
     public signal void destroy ();
 
     public bool is_gone;
@@ -59,7 +58,20 @@ public class Files.File : GLib.Object {
     public uint64 size = 0;
     public int count = -1;
     public string format_size = null;
-    public int color { get; set; default = -1; }
+    private int _color = -1;
+    public int color {
+        get {
+            return _color;
+        }
+
+        set {
+            if (value != _color) {
+                _color = value;
+                after_icon_changed ();
+            }
+        }
+    }
+
     public uint64 modified;
     public uint64 created;
     public string formated_modified = null;
@@ -211,14 +223,6 @@ public class Files.File : GLib.Object {
     construct {
         var scheme = location.get_uri_scheme ();
         is_remote = scheme != "" && scheme != "file";
-        icon_changed.connect (() => {
-            if (directory != null) {
-                var dir = Files.Directory.cache_lookup (directory);
-                if (dir != null && (!is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
-                    dir.icon_changed (this);
-                }
-            }
-        });
 
         // We do not allow "hidden" status to change as this causes problems with
         // adding/removing files from view model
@@ -459,7 +463,7 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    //TODO Is it necessary to refetch the icon if have pix at requested size? 
+    //TODO Is it necessary to refetch the icon if have pix at requested size?
     public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
         return get_icon (
             _size.clamp (16, 512),
@@ -710,7 +714,7 @@ public class Files.File : GLib.Object {
 
         if (pix_size > 1 && pix_scale > 0) {
             update_icon (pix_size, pix_scale);
-            icon_changed ();
+            after_icon_changed ();
         }
     }
 
@@ -766,7 +770,7 @@ public class Files.File : GLib.Object {
         utf8_collation_key = get_display_name ().collate_key_for_filename ();
         update_formated_type ();
         ensure_size ();
-        icon_changed ();
+        after_icon_changed ();
     }
 
     // This refetches all file info and updates properties accordingly
@@ -1131,7 +1135,19 @@ public class Files.File : GLib.Object {
 
         emblems_list.append (emblem);
         n_emblems++;
-        icon_changed ();
+        after_icon_changed ();
+    }
+
+    // Should only be called when an icon has been changed after the initial
+    // loading of the view e.g. due to color change or after external changes
+    // to the file
+    private void after_icon_changed () {
+        if (directory != null) {
+            var dir = Files.Directory.cache_lookup (directory);
+            if (dir != null && (!is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
+                dir.icon_changed (this);
+            }
+        }
     }
 
     private void target_location_update () {
