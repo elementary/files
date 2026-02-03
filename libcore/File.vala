@@ -459,7 +459,7 @@ public class Files.File : GLib.Object {
         return FileUtils.get_formatted_time_attribute_from_info (info, attr);
     }
 
-    //TODO Is it necessary to refetch the icon if have pix at requested size? 
+    //TODO Is it necessary to refetch the icon if have pix at requested size?
     public Gdk.Pixbuf? get_icon_pixbuf (int _size, int scale, IconFlags flags = IconFlags.USE_THUMBNAILS) {
         return get_icon (
             _size.clamp (16, 512),
@@ -760,13 +760,6 @@ public class Files.File : GLib.Object {
         pix = iconinfo.get_pixbuf_nodefault ();
         pix_size = requested_size;
         pix_scale = requested_scale;
-    }
-
-    public void update_desktop_file () {
-        utf8_collation_key = get_display_name ().collate_key_for_filename ();
-        update_formated_type ();
-        ensure_size ();
-        icon_changed ();
     }
 
     // This refetches all file info and updates properties accordingly
