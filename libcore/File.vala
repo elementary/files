@@ -748,13 +748,6 @@ public class Files.File : GLib.Object {
         pix_scale = requested_scale;
     }
 
-    public void update_desktop_file () {
-        utf8_collation_key = get_display_name ().collate_key_for_filename ();
-        update_formated_type ();
-        ensure_size ();
-        icon_changed ();
-    }
-
     // This refetches all file info and updates properties accordingly
     public void query_update () {
         var _info = query_info ();
