@@ -66,8 +66,10 @@ public class Files.Directory : Object {
     public signal void file_added (Files.File? file, bool is_internal); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
-    public signal void icon_changed (Files.File file); /* Called directly by Files.File - handled by AbstractDirectoryView
-                                                        Gets emitted for any kind of file operation */
+
+    // Not emitted internally. Emitted externally by File in response to updates
+    // that could affect the icon. Views are listeners
+    public signal void icon_changed (Files.File file);
 
     public signal void done_loading ();
     public signal void thumbs_loaded ();
@@ -844,16 +846,7 @@ public class Files.Directory : Object {
         }
     }
 
-    public void update_desktop_files () {
-        foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null &&
-                (!gof.is_hidden || Preferences.get_default ().show_hidden_files) &&
-                gof.is_desktop) {
 
-                gof.update_desktop_file ();
-            }
-        }
-    }
 
     public Files.File? file_hash_lookup_location (GLib.File? location) {
         if (location != null && location is GLib.File) {
@@ -914,7 +907,7 @@ public class Files.Directory : Object {
     }
 
     private void changed_and_refresh (Files.File gof) {
-        gof.update ();
+        gof.update (); // Updates all file info including icon and content-type
 
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
             file_changed (gof);
