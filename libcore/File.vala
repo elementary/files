@@ -700,20 +700,6 @@ public class Files.File : GLib.Object {
         update_emblem ();
     }
 
-    public void update_type () {
-        update_formated_type ();
-
-        unowned string? ftype = get_ftype ();
-        if (ftype != null) {
-            icon = GLib.ContentType.get_icon (ftype);
-        }
-
-        if (pix_size > 1 && pix_scale > 0) {
-            update_icon (pix_size, pix_scale);
-            icon_changed ();
-        }
-    }
-
     // This only changes the file icon if the request dimensions have changed.
     //TODO Rename function to reflect this
     // Does not compile if use pix_size and pix_scale as default values for some reason
