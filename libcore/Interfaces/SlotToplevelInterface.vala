@@ -26,8 +26,6 @@
 public interface Files.SlotToplevelInterface : Gtk.Widget {
     public signal void free_space_change ();
 
-    public virtual void folder_deleted (GLib.File file) {}
-    public virtual bool is_admin () { return false; }
     public abstract unowned AbstractSlot? get_view (); // Should return current slot
     public abstract AbstractSlot? prepare_reload ();
     public abstract void refresh (); // Reloads the current slot
@@ -37,7 +35,8 @@ public interface Files.SlotToplevelInterface : Gtk.Widget {
     public abstract Gtk.Application? get_files_application ();
     public abstract Gtk.Window? get_gtk_window ();
     public abstract void go_up ();
-    public abstract void files_activated (OpenFlag flag, List<Files.File> selected_files);
-    public abstract void uri_path_change_request (string uri, Files.OpenFlag flag = DEFAULT);
-
+    public abstract void uri_path_change_request (
+        string uri,
+        Files.OpenFlag flag = DEFAULT
+    );
 }
