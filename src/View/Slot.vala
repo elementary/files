@@ -102,7 +102,7 @@ namespace Files.View {
 
             /* Miller View creates its own overlay and handles packing of the directory view */
             if (mode != ViewMode.MILLER_COLUMNS) {
-                add_overlay (dir_view);
+                add_overlay_widget (dir_view);
             }
 
             connect_dir_signals ();
