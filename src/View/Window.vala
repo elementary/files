@@ -21,7 +21,7 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.View.Window : Hdy.ApplicationWindow {
+public class Files.View.Window : Hdy.ApplicationWindow, SlotToplevelInterface {
     static uint window_id = 0;
 
     const GLib.ActionEntry [] WIN_ENTRIES = {
@@ -102,7 +102,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     public signal void loading_uri (string location);
     public signal void folder_deleted (GLib.File location);
-    public signal void free_space_change ();
 
     public Window (Files.Application _application) {
         Object (
@@ -779,14 +778,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    public void bookmark_uri (string uri, string custom_name = "") {
-        sidebar.add_favorite_uri (uri, custom_name);
-    }
-
-    public bool can_bookmark_uri (string uri) {
-        return !sidebar.has_favorite_uri (uri);
-    }
-
     private void move_content_to_new_window (ViewContainer view_container) {
         add_window (view_container.location, view_container.view_mode);
         remove_content (view_container);
@@ -1061,12 +1052,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
 
         doing_undo_redo = false;
-    }
-
-    public void change_state_show_hidden (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-hiddenfiles", state);
     }
 
     public void change_state_single_click_select (GLib.SimpleAction action) {
@@ -1443,7 +1428,68 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    public void uri_path_change_request (string p, Files.OpenFlag flag = Files.OpenFlag.DEFAULT) {
+    /** Use this function to standardise how locations are generated from uris **/
+    private GLib.File? get_file_from_uri (string uri) {
+        string? current_uri = null;
+        if (current_container != null && current_container.location != null) {
+            current_uri = current_container.location.get_uri ();
+        }
+
+        string path = FileUtils.sanitize_path (uri, current_uri, true);
+        if (path.length > 0) {
+            return GLib.File.new_for_uri (FileUtils.escape_uri (path));
+        } else {
+            return null;
+        }
+    }
+
+    public new void grab_focus () {
+        current_container.grab_focus ();
+    }
+
+    /* SlotTopelevelInterface implementation */
+    public unowned AbstractSlot? get_view () { // Should return current slot
+        return current_container.slot;
+    }
+
+    public AbstractSlot? prepare_reload () {
+        return current_container.prepare_reload ();
+    }
+
+    public void go_up () {
+        current_container.go_up ();
+    }
+
+    public void refresh () { // Reloads the current slot
+        action_reload ();
+    }
+
+    public bool can_bookmark_uri (string uri) {
+        return !sidebar.has_favorite_uri (uri);
+    }
+
+    public void bookmark_uri (string uri, string custom_name = "") {
+        sidebar.add_favorite_uri (uri, custom_name);
+    }
+
+    public void change_state_show_hidden (GLib.SimpleAction action) {
+        bool state = !action.state.get_boolean ();
+        action.set_state (new GLib.Variant.boolean (state));
+        Files.app_settings.set_boolean ("show-hiddenfiles", state);
+    }
+
+    public Gtk.Application? get_files_application () {
+        return marlin_app;
+    }
+
+    public Gtk.Window? get_gtk_window () {
+        return (Gtk.Window) this;
+    }
+
+    public void uri_path_change_request (
+        string p,
+        Files.OpenFlag flag = Files.OpenFlag.DEFAULT
+    ) {
         /* Make a sanitized file from the uri */
         var file = get_file_from_uri (p);
         if (file != null) {
@@ -1462,24 +1508,5 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         } else {
             warning ("Cannot browse %s", p);
         }
-    }
-
-    /** Use this function to standardise how locations are generated from uris **/
-    private GLib.File? get_file_from_uri (string uri) {
-        string? current_uri = null;
-        if (current_container != null && current_container.location != null) {
-            current_uri = current_container.location.get_uri ();
-        }
-
-        string path = FileUtils.sanitize_path (uri, current_uri, true);
-        if (path.length > 0) {
-            return GLib.File.new_for_uri (FileUtils.escape_uri (path));
-        } else {
-            return null;
-        }
-    }
-
-    public new void grab_focus () {
-        current_container.grab_focus ();
     }
 }
