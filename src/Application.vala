@@ -261,6 +261,14 @@ public class Files.Application : Gtk.Application {
     }
 
     private void init_schemas () {
+        ViewPreferences.set_up_view_preferences (
+            icon_view_settings,
+            list_view_settings,
+            column_view_settings,
+            app_settings
+        );
+
+
         /* Bind settings with GOFPreferences */
         var prefs = Files.Preferences.get_default ();
         if (app_settings.settings_schema.has_key ("singleclick-select")) {
