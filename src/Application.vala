@@ -29,7 +29,6 @@ namespace Files {
 }
 
 public class Files.Application : Gtk.Application {
-
     private VolumeMonitor volume_monitor;
     private Progress.UIHandler progress_handler;
     private ClipboardManager clipboard;
@@ -41,6 +40,7 @@ public class Files.Application : Gtk.Application {
     public Settings gnome_interface_settings { get; construct; }
     public Settings gnome_privacy_settings { get; construct; }
     public Settings gtk_file_chooser_settings { get; construct; }
+
 
     bool quitting = false;
 
@@ -262,10 +262,10 @@ public class Files.Application : Gtk.Application {
 
     private void init_schemas () {
         ViewPreferences.set_up_view_preferences (
-            icon_view_settings,
-            list_view_settings,
-            column_view_settings,
-            app_settings
+            Files.icon_view_settings,
+            Files.list_view_settings,
+            Files.column_view_settings,
+            Files.app_settings
         );
 
 
