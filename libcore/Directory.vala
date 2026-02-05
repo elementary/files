@@ -846,8 +846,6 @@ public class Files.Directory : Object {
         }
     }
 
-
-
     public Files.File? file_hash_lookup_location (GLib.File? location) {
         if (location != null && location is GLib.File) {
             Files.File? result = file_hash.lookup (location);
