@@ -170,16 +170,18 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         build_window ();
 
-        int width, height;
-        Files.app_settings.get ("window-size", "(ii)", out width, out height);
-        default_width = width;
-        default_height = height;
+        var view_prefs = Files.ViewPreferences.get_default ();
+        default_width = view_prefs.window_width;
+        default_height = view_prefs.window_height;
 
         if (is_first_window) {
-            Files.app_settings.bind ("sidebar-width", lside_pane,
-                                       "position", SettingsBindFlags.DEFAULT);
+            view_prefs.bind_property (
+                "sidebar-width",
+                lside_pane, "position",
+                BIDIRECTIONAL | SYNC_CREATE
+            );
 
-            var state = (Files.WindowState)(Files.app_settings.get_enum ("window-state"));
+            var state = view_prefs.window_state;
             if (state == Files.WindowState.MAXIMIZED) {
                 maximize ();
             }
@@ -190,6 +192,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void build_window () {
+        var view_prefs = Files.ViewPreferences.get_default ();
         button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
 
         button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
@@ -203,7 +206,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
             margin_end = 20
         };
-        view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
+        view_switcher.set_mode (view_prefs.default_viewmode);
 
         location_bar = new Chrome.LocationBar ();
 
@@ -264,7 +267,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
-            position = Files.app_settings.get_int ("sidebar-width")
+            position = view_prefs.sidebar_width
         };
         lside_pane.pack1 (sidebar, false, false);
         lside_pane.pack2 (tab_box, true, true);
@@ -1142,7 +1145,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 break;
         }
 
-        return (ViewMode)(Files.app_settings.get_enum ("default-viewmode"));
+        return Files.ViewPreferences.get_default ().default_viewmode;
     }
 
     public void quit () {
@@ -1166,28 +1169,27 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         if (!is_first_window) {
             return; //TODO Save all windows
         }
+
+        var view_prefs = Files.ViewPreferences.get_default ();
         var sidebar_width = lside_pane.get_position ();
-        var min_width = Files.app_settings.get_int ("minimum-sidebar-width");
+        var min_width = view_prefs.sidebar_minimum_width;
 
         sidebar_width = int.max (sidebar_width, min_width);
-        Files.app_settings.set_int ("sidebar-width", sidebar_width);
+        view_prefs.sidebar_width = sidebar_width;
 
         var state = get_window ().get_state ();
         // TODO: replace with Gtk.Window.fullscreened in Gtk4
         if (is_maximized || Gdk.WindowState.FULLSCREEN in state) {
-            Files.app_settings.set_enum (
-                "window-state", Files.WindowState.MAXIMIZED
-            );
+            view_prefs.window_state = Files.WindowState.MAXIMIZED;
         } else {
-            Files.app_settings.set_enum (
-                "window-state", Files.WindowState.NORMAL
-            );
+            view_prefs.window_state = Files.WindowState.NORMAL;
 
             if (!(Gdk.WindowState.TILED in state)) {
                 int width, height;
                 // Includes shadow for normal windows (but not maximized or tiled)
                 get_size (out width, out height);
-                Files.app_settings.set ("window-size", "(ii)", width, height);
+                view_prefs.window_width = width;
+                view_prefs.window_height = height;
             }
         }
     }
@@ -1220,6 +1222,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                    );
         }
 
+        //TODO move saving tab info into Files.Preferences
         Files.app_settings.set_value ("tab-info-list", vb.end ());
         save_active_tab_position ();
     }
