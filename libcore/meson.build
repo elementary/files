@@ -31,6 +31,7 @@ pantheon_files_core_vala_files = files(
     'ListModel.vala',
     'PixbufUtils.vala',
     'Preferences.vala',
+    'ViewPreferences.vala',
     'PluginManager.vala',
     'Plugin.vala',
     'ProgressInfo.vala',
