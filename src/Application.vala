@@ -274,6 +274,9 @@ public class Files.Application : Gtk.Application {
         Files.app_settings.bind ("show-local-thumbnails",
                                    prefs, "show-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
 
+        Files.app_settings.bind ("show-file-preview",
+                                   prefs, "show-file-preview", GLib.SettingsBindFlags.DEFAULT);
+
         Files.app_settings.bind ("date-format", prefs, "date-format", GLib.SettingsBindFlags.DEFAULT);
 
         gnome_interface_settings.bind ("clock-format",

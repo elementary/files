@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2023-02-16 21:22+0000\n"
 "Last-Translator: David Hewitt <davidmhewitt@gmail.com>\n"
 "Language-Team: Arabic <https://l10n.elementary.io/projects/files/extra/ar/>\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "New Window"
 msgstr "نافذة جديدة"
 
-#: data/io.elementary.files.desktop.in.in:29
+#: data/io.elementary.files.desktop.in.in:30
 msgid "New Window As Administrator"
 msgstr ""
 
@@ -57,115 +57,120 @@ msgstr ""
 msgid "Browse complex trees faster with Column view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:269
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:83
+#: data/files.metainfo.xml.in.in:285
 msgid "Improvements:"
 msgstr ""
 
 #: data/files.metainfo.xml.in.in:69
-msgid "A compact date format is introduced"
+msgid "An option to show a preview pane in Column view is introduced"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
-#: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:124
-#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:147
-#: data/files.metainfo.xml.in.in:162 data/files.metainfo.xml.in.in:178
-#: data/files.metainfo.xml.in.in:200 data/files.metainfo.xml.in.in:218
-#: data/files.metainfo.xml.in.in:241 data/files.metainfo.xml.in.in:253
-#: data/files.metainfo.xml.in.in:273
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:107 data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:140 data/files.metainfo.xml.in.in:151
+#: data/files.metainfo.xml.in.in:163 data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:194 data/files.metainfo.xml.in.in:216
+#: data/files.metainfo.xml.in.in:234 data/files.metainfo.xml.in.in:257
+#: data/files.metainfo.xml.in.in:269 data/files.metainfo.xml.in.in:289
 msgid "Minor updates:"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:73
-msgid "The file conflict dialog now shows a missing icon"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:74
-msgid "Flickering of the pathbar with some navigation methods is fixed"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:75
-msgid "The option to set a default app for folders is no longer offered"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:76
-msgid "The scrollbar no longer overlays the modification date in List view"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
-#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126
-#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:150
-#: data/files.metainfo.xml.in.in:164 data/files.metainfo.xml.in.in:182
-#: data/files.metainfo.xml.in.in:204 data/files.metainfo.xml.in.in:226
-#: data/files.metainfo.xml.in.in:243 data/files.metainfo.xml.in.in:255
-#: data/files.metainfo.xml.in.in:275
+#: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:128
+#: data/files.metainfo.xml.in.in:142 data/files.metainfo.xml.in.in:153
+#: data/files.metainfo.xml.in.in:166 data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:198 data/files.metainfo.xml.in.in:220
+#: data/files.metainfo.xml.in.in:242 data/files.metainfo.xml.in.in:259
+#: data/files.metainfo.xml.in.in:271 data/files.metainfo.xml.in.in:291
 msgid "Updated translations"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:85
+msgid "A compact date format is introduced"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:89
+msgid "The file conflict dialog now shows a missing icon"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:90
+msgid "Flickering of the pathbar with some navigation methods is fixed"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:91
+msgid "The option to set a default app for folders is no longer offered"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:92
+msgid "The scrollbar no longer overlays the modification date in List view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:109
 msgid "Navigation within the Trash folder now works properly"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:94
+#: data/files.metainfo.xml.in.in:110
 msgid "The view now refreshes properly after permanent deletion of a folder"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:95
+#: data/files.metainfo.xml.in.in:111
 msgid ""
 "The number of template items displayed in the context menu is now limited"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:111
+#: data/files.metainfo.xml.in.in:127
 msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:149
+#: data/files.metainfo.xml.in.in:165
 msgid "Further preparation for porting to Gtk4"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:196
 msgid "Redesign file permissions view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:181
+#: data/files.metainfo.xml.in.in:197
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:202
+#: data/files.metainfo.xml.in.in:218
 msgid "Restoring tabs from last time is now optional"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:203
+#: data/files.metainfo.xml.in.in:219
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:220
+#: data/files.metainfo.xml.in.in:236
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:221
+#: data/files.metainfo.xml.in.in:237
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:222
+#: data/files.metainfo.xml.in.in:238
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:223
+#: data/files.metainfo.xml.in.in:239
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:224
+#: data/files.metainfo.xml.in.in:240
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:225
+#: data/files.metainfo.xml.in.in:241
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:271
+#: data/files.metainfo.xml.in.in:287
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

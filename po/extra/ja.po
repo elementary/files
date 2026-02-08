@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
-"PO-Revision-Date: 2025-08-17 12:55+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
+"PO-Revision-Date: 2026-01-01 04:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/extra/"
 "ja/>\n"
@@ -38,7 +38,7 @@ msgstr ""
 msgid "New Window"
 msgstr "新しいウィンドウ"
 
-#: data/io.elementary.files.desktop.in.in:29
+#: data/io.elementary.files.desktop.in.in:30
 msgid "New Window As Administrator"
 msgstr "新しい管理者ウィンドウ"
 
@@ -71,116 +71,124 @@ msgstr "リスト表示ではより詳細なメタ情報を一目で確認可能
 msgid "Browse complex trees faster with Column view"
 msgstr "カラム表示を使えば複雑なツリーも素早く表示"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:269
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:83
+#: data/files.metainfo.xml.in.in:285
 msgid "Improvements:"
 msgstr "改善点:"
 
 #: data/files.metainfo.xml.in.in:69
-msgid "A compact date format is introduced"
-msgstr ""
+msgid "An option to show a preview pane in Column view is introduced"
+msgstr "カラム表示でプレビューペインを表示するオプションを追加"
 
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
-#: data/files.metainfo.xml.in.in:109 data/files.metainfo.xml.in.in:124
-#: data/files.metainfo.xml.in.in:135 data/files.metainfo.xml.in.in:147
-#: data/files.metainfo.xml.in.in:162 data/files.metainfo.xml.in.in:178
-#: data/files.metainfo.xml.in.in:200 data/files.metainfo.xml.in.in:218
-#: data/files.metainfo.xml.in.in:241 data/files.metainfo.xml.in.in:253
-#: data/files.metainfo.xml.in.in:273
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:107 data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:140 data/files.metainfo.xml.in.in:151
+#: data/files.metainfo.xml.in.in:163 data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:194 data/files.metainfo.xml.in.in:216
+#: data/files.metainfo.xml.in.in:234 data/files.metainfo.xml.in.in:257
+#: data/files.metainfo.xml.in.in:269 data/files.metainfo.xml.in.in:289
 msgid "Minor updates:"
 msgstr "マイナーアップデート:"
 
-#: data/files.metainfo.xml.in.in:73
-msgid "The file conflict dialog now shows a missing icon"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:74
-msgid "Flickering of the pathbar with some navigation methods is fixed"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:75
-msgid "The option to set a default app for folders is no longer offered"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:76
-msgid "The scrollbar no longer overlays the modification date in List view"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:77 data/files.metainfo.xml.in.in:96
-#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:126
-#: data/files.metainfo.xml.in.in:137 data/files.metainfo.xml.in.in:150
-#: data/files.metainfo.xml.in.in:164 data/files.metainfo.xml.in.in:182
-#: data/files.metainfo.xml.in.in:204 data/files.metainfo.xml.in.in:226
-#: data/files.metainfo.xml.in.in:243 data/files.metainfo.xml.in.in:255
-#: data/files.metainfo.xml.in.in:275
+#: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:128
+#: data/files.metainfo.xml.in.in:142 data/files.metainfo.xml.in.in:153
+#: data/files.metainfo.xml.in.in:166 data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:198 data/files.metainfo.xml.in.in:220
+#: data/files.metainfo.xml.in.in:242 data/files.metainfo.xml.in.in:259
+#: data/files.metainfo.xml.in.in:271 data/files.metainfo.xml.in.in:291
 msgid "Updated translations"
 msgstr "翻訳の更新"
 
-#: data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:85
+msgid "A compact date format is introduced"
+msgstr "日付書式に“コンパクト”を追加"
+
+#: data/files.metainfo.xml.in.in:89
+msgid "The file conflict dialog now shows a missing icon"
+msgstr "ファイルの重複ダイアログでアイコンが表示されない問題を修正"
+
+#: data/files.metainfo.xml.in.in:90
+msgid "Flickering of the pathbar with some navigation methods is fixed"
+msgstr "一部のナビゲーション方法でパスバーがちらつく問題を修正"
+
+#: data/files.metainfo.xml.in.in:91
+msgid "The option to set a default app for folders is no longer offered"
+msgstr ""
+"フォルダーに対してはデフォルトアプリに設定するオプションを表示しないように修"
+"正"
+
+#: data/files.metainfo.xml.in.in:92
+msgid "The scrollbar no longer overlays the modification date in List view"
+msgstr ""
+"スクロールバーがリストビュー内の更新日時に重なって表示されないように修正"
+
+#: data/files.metainfo.xml.in.in:109
 msgid "Navigation within the Trash folder now works properly"
-msgstr ""
+msgstr "ゴミ箱フォルダーでも適切にナビゲーションできるように修正"
 
-#: data/files.metainfo.xml.in.in:94
+#: data/files.metainfo.xml.in.in:110
 msgid "The view now refreshes properly after permanent deletion of a folder"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:95
-msgid ""
-"The number of template items displayed in the context menu is now limited"
-msgstr ""
+msgstr "フォルダーを完全に削除した後にビューが適切に更新されるように修正"
 
 #: data/files.metainfo.xml.in.in:111
+msgid ""
+"The number of template items displayed in the context menu is now limited"
+msgstr "コンテキストメニューに表示するテンプレートの数を制限するように修正"
+
+#: data/files.metainfo.xml.in.in:127
 msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
 msgstr "プロパティウィンドウがファイルの最終更新日時を正確に表示するように修正"
 
-#: data/files.metainfo.xml.in.in:149
+#: data/files.metainfo.xml.in.in:165
 msgid "Further preparation for porting to Gtk4"
 msgstr "GTK4 へのポーティング準備の追加対応"
 
-#: data/files.metainfo.xml.in.in:180
+#: data/files.metainfo.xml.in.in:196
 msgid "Redesign file permissions view"
 msgstr "ファイルパーミッション画面のデザインを変更"
 
-#: data/files.metainfo.xml.in.in:181
+#: data/files.metainfo.xml.in.in:197
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "Ctrl + ← を押すとサイドバーにフォーカスするように修正"
 
-#: data/files.metainfo.xml.in.in:202
+#: data/files.metainfo.xml.in.in:218
 msgid "Restoring tabs from last time is now optional"
 msgstr "前回開いていたタブを復元する機能をオプションに変更"
 
-#: data/files.metainfo.xml.in.in:203
+#: data/files.metainfo.xml.in.in:219
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr "副ボタンではドラッグや選択ができないように修正"
 
-#: data/files.metainfo.xml.in.in:220
+#: data/files.metainfo.xml.in.in:236
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr "ブックマークをサイドバーの外にドラッグする機能への対応を終了"
 
-#: data/files.metainfo.xml.in.in:221
+#: data/files.metainfo.xml.in.in:237
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "フォルダー名を変更した後、意図せずスクロールされてしまう不具合を修正"
 
-#: data/files.metainfo.xml.in.in:222
+#: data/files.metainfo.xml.in.in:238
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr "まれにグリッド表示に切り替えるとクラッシュすることがある不具合を修正"
 
-#: data/files.metainfo.xml.in.in:223
+#: data/files.metainfo.xml.in.in:239
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "画面更新後も選択項目が維持されるように修正"
 
-#: data/files.metainfo.xml.in.in:224
+#: data/files.metainfo.xml.in.in:240
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "最後に表示していたフォルダーが切断された場所の場合、起動失敗する不具合を修正"
 
-#: data/files.metainfo.xml.in.in:225
+#: data/files.metainfo.xml.in.in:241
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr "アンマウントされた場所を表示し続けてしまう不具合を修正"
 
-#: data/files.metainfo.xml.in.in:271
+#: data/files.metainfo.xml.in.in:287
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"

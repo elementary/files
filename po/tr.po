@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2023-05-19 08:06+0000\n"
 "Last-Translator: Özgür Baskin <queeup@zoho.com>\n"
 "Language-Team: Turkish <https://l10n.elementary.io/projects/files/files/tr/"
@@ -20,17 +20,17 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:195
 msgid "Previous"
 msgstr "Önceki"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:200
 msgid "Next"
 msgstr "Sonraki"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:166
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -89,120 +89,12 @@ msgid "Replacing this file will overwrite its current contents"
 msgstr ""
 "Bu dosyayı değiştirmek, var olan içeriğin üzerine yazılmasına neden olacak"
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Yerine Koy"
 
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "Genel FTP"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "FTP (kimlik doğrulaması ile)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "SSH"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Dosyalama Protokolü)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "Windows paylaşımı"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Güvenli WebDAV (HTTPS)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "Sunucu Ayrıntıları"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr "Sunucu adı veya IP adresi"
-
-#: libcore/ConnectServerDialog.vala:119
-msgid "Server:"
-msgstr "Sunucu:"
-
-#: libcore/ConnectServerDialog.vala:129
-msgid "Port:"
-msgstr "Port:"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
-#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "Tür:"
-
-#: libcore/ConnectServerDialog.vala:161
-msgid "Name of share on server (Optional)"
-msgstr "Paylaşımın sunucudaki adı (İsteğe bağlı)"
-
-#: libcore/ConnectServerDialog.vala:164
-msgid "Share:"
-msgstr "Paylaş:"
-
-#: libcore/ConnectServerDialog.vala:167
-msgid "Path of shared folder on server (Optional)"
-msgstr "Paylaşılan klasörün sunucudaki yolu (İsteğe bağlı)"
-
-#: libcore/ConnectServerDialog.vala:171
-msgid "Folder:"
-msgstr "Klasör:"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "Kullanıcı Ayrıntıları"
-
-#: libcore/ConnectServerDialog.vala:180
-msgid "Name of Windows domain"
-msgstr "Windows çalışma alanının adı"
-
-#: libcore/ConnectServerDialog.vala:182
-msgid "Domain name:"
-msgstr "Çalışma alanı adı:"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr "Sunucudaki kullanıcının adı"
-
-#: libcore/ConnectServerDialog.vala:189
-msgid "User name:"
-msgstr "Kullanıcı adı:"
-
-#: libcore/ConnectServerDialog.vala:197
-msgid "Password:"
-msgstr "Parola:"
-
-#: libcore/ConnectServerDialog.vala:199
-msgid "Remember this password"
-msgstr "Bu parolayı hatırla"
-
-#: libcore/ConnectServerDialog.vala:209
-msgid "Connect"
-msgstr "Bağlan"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "Devam Et"
-
-#: libcore/ConnectServerDialog.vala:266
-msgid "Connecting…"
-msgstr "Bağlanıyor…"
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "Lütfen kullanıcı ayrıntılarınızı doğrulayın."
-
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "Sunucu belirlenen sürede cevap vermedi"
 
@@ -321,160 +213,41 @@ msgstr "Bilgi"
 msgid "Compact"
 msgstr ""
 
-#: libcore/File.vala:616 libcore/File.vala:1176
+#: libcore/File.vala:647 libcore/File.vala:1207
 msgid "Inaccessible"
 msgstr "Erişilemiyor"
 
-#: libcore/File.vala:955
+#: libcore/File.vala:986
 msgid "Failed to parse the desktop file"
 msgstr "Masaüsütü dosyasını ayrıştırmada hata"
 
-#: libcore/File.vala:959
+#: libcore/File.vala:990
 msgid "Failed to parse the desktop file: "
 msgstr "Masaüsütü dosyasını ayrıştırmada hata: "
 
-#: libcore/File.vala:971
+#: libcore/File.vala:1002
 msgid "Failed to create command from file: "
 msgstr "Dosyasından komut oluşturma başarısız oldu: "
 
-#: libcore/File.vala:980
+#: libcore/File.vala:1011
 msgid "Unable to Launch Desktop File: "
 msgstr "Masaüstü Dosyası Başlatılamıyor: "
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1200
 msgid "Empty"
 msgstr "Boş"
 
-#: libcore/File.vala:1171
+#: libcore/File.vala:1202
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%i öğe"
 msgstr[1] "%i öğe"
 
-#: libcore/File.vala:1216
+#: libcore/File.vala:1247
 #, c-format
 msgid "link to %s"
 msgstr "%s bağlantısı"
-
-#: libcore/FileConflictDialog.vala:64
-msgid "File conflict"
-msgstr "Dosya çakışması"
-
-#: libcore/FileConflictDialog.vala:77
-msgid "Original file"
-msgstr "Özgün dosya"
-
-#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546
-msgid "Size:"
-msgstr "Boyut:"
-
-#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
-msgid "Last modified:"
-msgstr "Son düzenlenme tarihi:"
-
-#: libcore/FileConflictDialog.vala:111
-msgid "Replace with"
-msgstr "Bununla değiştir"
-
-#: libcore/FileConflictDialog.vala:145
-msgid "Reset"
-msgstr "Sıfırla"
-
-#: libcore/FileConflictDialog.vala:154
-msgid "_Select a new name for the destination"
-msgstr "Hedef için yeni bir ad _seçin"
-
-#: libcore/FileConflictDialog.vala:158
-msgid "Apply this action to all files"
-msgstr "Bu eylemi tüm dosyalara uygula"
-
-#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "_Atla"
-
-#: libcore/FileConflictDialog.vala:161
-msgid "Re_name"
-msgstr "Ye_niden Adlandır"
-
-#: libcore/FileConflictDialog.vala:163
-msgid "Keep Newest"
-msgstr "En Yenisini Tut"
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Skip if original was modified more recently"
-msgstr "Orijinali daha yakın bir zamanda değiştirilmişse atla"
-
-#: libcore/FileConflictDialog.vala:281
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "\"%s\" klasörü birleştirilsin mi?"
-
-#: libcore/FileConflictDialog.vala:282
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Birleştirme işlemi, klasördeki kopyalanan dosyalarla çakışan herhangi bir "
-"dosya değiştirilmeden önce onay isteyecek."
-
-#: libcore/FileConflictDialog.vala:284
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı ada sahip daha eski bir klasör zaten var."
-
-#: libcore/FileConflictDialog.vala:286
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı ada sahip daha yeni bir klasör zaten var."
-
-#: libcore/FileConflictDialog.vala:288
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı ada sahip başka bir klasör zaten var."
-
-#: libcore/FileConflictDialog.vala:291
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "\"%s\" klasörü değiştirilsin mi?"
-
-#: libcore/FileConflictDialog.vala:292
-msgid "Replacing it will remove all files in the folder."
-msgstr "Bunu değiştirmek, klasördeki tüm dosyaları kaldıracaktır."
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı ada sahip başka bir klasör zaten var."
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "\"%s\" dosyası değiştirilsin mi?"
-
-#: libcore/FileConflictDialog.vala:297
-msgid "Replacing it will overwrite its content."
-msgstr "Değiştirmek, var olan içeriğin üzerine yazılmasına neden olacak."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı ada sahip daha eski bir dosya zaten var."
-
-#: libcore/FileConflictDialog.vala:302
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı ada sahip daha yeni bir dosya zaten var."
-
-#: libcore/FileConflictDialog.vala:304
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "\"%s\" içinde aynı ada sahip başka bir dosya zaten var."
-
-#: libcore/FileConflictDialog.vala:336
-msgid "Merge"
-msgstr "Birleştir"
 
 #: libcore/FileUtils.vala:80
 #, c-format
@@ -982,50 +755,6 @@ msgstr "GPHOTO2"
 msgid "File System"
 msgstr "Dosya Sistemi"
 
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr "İ_ptal"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-msgid "Delete"
-msgstr "Sil"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "Tü_münü Atla"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "_Tekrar Dene"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "_Hepsini Sil"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "_Değiştir"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "_Tümünü Değiştir"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "_Birleştir"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "_Hepsini Birleştir"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "Yine de _Kopyala"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "Çöpü _Boşalt"
-
 #: libcore/UndoManager.vala:22
 msgid "Undo Copy"
 msgstr "Kopyalamayı Geri Al"
@@ -1487,33 +1216,311 @@ msgid_plural "%'d files left to trash"
 msgstr[0] "%'d dosya çöpe gönderilmeyi bekliyor"
 msgstr[1] "%'d dosya çöpe gönderilmeyi bekliyor"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "Genel FTP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "FTP (kimlik doğrulaması ile)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "SSH"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple Dosyalama Protokolü)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "Windows paylaşımı"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Güvenli WebDAV (HTTPS)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "Sunucu Ayrıntıları"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr "Sunucu adı veya IP adresi"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+msgid "Server:"
+msgstr "Sunucu:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+msgid "Port:"
+msgstr "Port:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "Tür:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+msgid "Name of share on server (Optional)"
+msgstr "Paylaşımın sunucudaki adı (İsteğe bağlı)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+msgid "Share:"
+msgstr "Paylaş:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+msgid "Path of shared folder on server (Optional)"
+msgstr "Paylaşılan klasörün sunucudaki yolu (İsteğe bağlı)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+msgid "Folder:"
+msgstr "Klasör:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "Kullanıcı Ayrıntıları"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+msgid "Name of Windows domain"
+msgstr "Windows çalışma alanının adı"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+msgid "Domain name:"
+msgstr "Çalışma alanı adı:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr "Sunucudaki kullanıcının adı"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+msgid "User name:"
+msgstr "Kullanıcı adı:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+msgid "Password:"
+msgstr "Parola:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+msgid "Remember this password"
+msgstr "Bu parolayı hatırla"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+msgid "Connect"
+msgstr "Bağlan"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "Devam Et"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+msgid "Connecting…"
+msgstr "Bağlanıyor…"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "Lütfen kullanıcı ayrıntılarınızı doğrulayın."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr "Dosya çakışması"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "Özgün dosya"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "Boyut:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "Son düzenlenme tarihi:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "Bununla değiştir"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "Sıfırla"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "Hedef için yeni bir ad _seçin"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "Bu eylemi tüm dosyalara uygula"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "_Atla"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "Ye_niden Adlandır"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr "En Yenisini Tut"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr "Orijinali daha yakın bir zamanda değiştirilmişse atla"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "\"%s\" klasörü birleştirilsin mi?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Birleştirme işlemi, klasördeki kopyalanan dosyalarla çakışan herhangi bir "
+"dosya değiştirilmeden önce onay isteyecek."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı ada sahip daha eski bir klasör zaten var."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı ada sahip daha yeni bir klasör zaten var."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı ada sahip başka bir klasör zaten var."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "\"%s\" klasörü değiştirilsin mi?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr "Bunu değiştirmek, klasördeki tüm dosyaları kaldıracaktır."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı ada sahip başka bir klasör zaten var."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "\"%s\" dosyası değiştirilsin mi?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr "Değiştirmek, var olan içeriğin üzerine yazılmasına neden olacak."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı ada sahip daha eski bir dosya zaten var."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı ada sahip daha yeni bir dosya zaten var."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "\"%s\" içinde aynı ada sahip başka bir dosya zaten var."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "Birleştir"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr "İ_ptal"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+msgid "Delete"
+msgstr "Sil"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "Tü_münü Atla"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "_Tekrar Dene"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "_Hepsini Sil"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Değiştir"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "_Tümünü Değiştir"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "_Birleştir"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "_Hepsini Birleştir"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "Yine de _Kopyala"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "Çöpü _Boşalt"
+
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "%s konumuna git"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "Git: %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
 msgstr "Yol Girin"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "Bir yol girin"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Izgara Olarak Görüntüle"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Liste Olarak Görüntüle"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Sütun Olarak Görüntüle"
 
@@ -1639,6 +1646,7 @@ msgstr "Kapasite:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
 msgid "Unknown"
 msgstr "Bilinmiyor"
 
@@ -1795,31 +1803,31 @@ msgstr "Asıl Boyut Daha Büyük Olabilir"
 msgid "unknown"
 msgstr "bilinmiyor"
 
-#: src/Dialogs/PropertiesWindow.vala:486
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
 msgid "Loading…"
 msgstr "Yükleniyor…"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
 msgid "Could not be determined"
 msgstr "Belirlenemedi"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
 msgid "Created:"
 msgstr "Oluşturma tarihi:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
 msgid "Modified:"
 msgstr "Değiştirilme tarihi:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
 msgid "Deleted:"
 msgstr "Silindi:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
 msgid "Media type:"
 msgstr "Medya türü:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
 msgid "Resolution:"
 msgstr "Çözünürlük:"
 
@@ -1828,11 +1836,11 @@ msgstr "Çözünürlük:"
 msgid "Location:"
 msgstr "Konum:"
 
-#: src/Dialogs/PropertiesWindow.vala:633
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
 msgid "Target:"
 msgstr "Hedef:"
 
-#: src/Dialogs/PropertiesWindow.vala:641
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
 msgid "Original Location:"
 msgstr "Özgün Konum:"
 
@@ -1872,7 +1880,7 @@ msgid_plural "%u files"
 msgstr[0] "%u dosya"
 msgstr[1] "%u dosya"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -1974,7 +1982,7 @@ msgid "Invalid file name provided"
 msgstr "Belirtilen dosya adı geçersiz"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:240
 msgid "New Tab"
 msgstr "Yeni Sekme"
 
@@ -2114,29 +2122,41 @@ msgid "Untitled %s"
 msgstr "Adsız %s"
 
 #: src/View/AbstractDirectoryView.vala:2960
-#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3166
 msgid "Cannot remove files from here"
 msgstr "Dosyalar buradan silinemez"
 
 #: src/View/AbstractDirectoryView.vala:2961
-#: src/View/AbstractDirectoryView.vala:3136
-#: src/View/AbstractDirectoryView.vala:3147
-#: src/View/AbstractDirectoryView.vala:3164
+#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3167
 msgid "You do not have permission to change this location"
 msgstr "Bu yolu değiştirebilmek için gereken yetkiye sahip değilsiniz"
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3107
 msgid "Cannot copy files that are in the trash"
 msgstr "Çöpün içindeki dosyalar kopyalanamaz"
 
-#: src/View/AbstractDirectoryView.vala:3105
+#: src/View/AbstractDirectoryView.vala:3108
 msgid "Cutting the selection instead"
 msgstr "Onun yerine seçilen kesiliyor"
 
-#: src/View/AbstractDirectoryView.vala:3135
-#: src/View/AbstractDirectoryView.vala:3146
+#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3149
 msgid "Cannot paste files here"
 msgstr "Dosyalar buraya yapıştırılamaz"
+
+#: src/View/DetailsColumn.vala:118
+#, fuzzy
+#| msgid "Name"
+msgid "Name:"
+msgstr "Ad"
+
+#: src/View/DetailsColumn.vala:211
+#, fuzzy
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "Özellikler"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2248,48 +2268,40 @@ msgstr "Klasör Görüntülenemiyor"
 msgid "The server for this folder could not be located."
 msgstr "Bu klasör için sunucu bulunamadı."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Dosya Bulunamadı"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "Seçilen dosya artık yok."
-
-#: src/View/Window.vala:214
+#: src/View/Window.vala:215
 msgid "Menu"
 msgstr "Menü"
 
-#: src/View/Window.vala:244
+#: src/View/Window.vala:245
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Closed Tabs"
 msgstr "Sekmeyi Kapat"
 
-#: src/View/Window.vala:472 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Yeni Pencerede Aç"
 
-#: src/View/Window.vala:473
+#: src/View/Window.vala:475
 msgid "Duplicate Tab"
 msgstr "Sekmeyi Çoğalt"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:477
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:478
+#: src/View/Window.vala:480
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Close Other Tabs"
 msgstr "Sekmeyi Kapat"
 
-#: src/View/Window.vala:479
+#: src/View/Window.vala:481
 msgid "Close Tab"
 msgstr "Sekmeyi Kapat"
 
-#: src/View/Window.vala:763 src/View/Window.vala:773
+#: src/View/Window.vala:765 src/View/Window.vala:775
 msgid "(as Administrator)"
 msgstr "(yönetici olarak)"
 
@@ -2486,16 +2498,20 @@ msgstr "Yerel Küçük Resimler"
 msgid "Remote Thumbnails"
 msgstr "Uzak Küçük Resimler"
 
+#: src/View/Widgets/AppMenu.vala:115
+msgid "File Preview (Column View)"
+msgstr ""
+
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
-#: src/View/Widgets/AppMenu.vala:116
+#: src/View/Widgets/AppMenu.vala:121
 msgid "Date & Time Format"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:210
+#: src/View/Widgets/AppMenu.vala:216
 msgid "No operation to undo"
 msgstr "Geri alınacak işlem yok"
 
-#: src/View/Widgets/AppMenu.vala:217
+#: src/View/Widgets/AppMenu.vala:223
 msgid "No operation to redo"
 msgstr "Yeniden yapılacak işlem yok"
 
@@ -2526,29 +2542,29 @@ msgstr "Klasörü yenile"
 msgid "Searching…"
 msgstr "Arıyor…"
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:173
 #, c-format
 msgid "%u folders"
 msgstr "%u klasör"
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " ve %u diğer öğe (%s) seçildi"
 msgstr[1] " ve %u diğer öğe (%s) seçildi"
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
 msgid " selected"
 msgstr " seçildi"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:192
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u öğe seçildi (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:237
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -2556,7 +2572,7 @@ msgstr[0] "%u alt klasör, "
 msgstr[1] "%u alt klasör, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:243
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -2564,18 +2580,18 @@ msgstr[0] "%u dosya, "
 msgstr[1] "%u dosya, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:253
 #, c-format
 msgid "%s approx."
 msgstr "yaklaşık %s."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:256
 msgid "unknown size"
 msgstr "bilinmeyen boyut"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:260
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
@@ -2609,6 +2625,17 @@ msgstr "Bu Klasörün Altında"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Son Kullanılan"
+
+#, fuzzy
+#~| msgid "More Results …"
+#~ msgid "More Details…"
+#~ msgstr "Diğer Sonuçlar …"
+
+#~ msgid "File not Found"
+#~ msgstr "Dosya Bulunamadı"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "Seçilen dosya artık yok."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Klasörü yeniden oluşturmak istiyor musunuz?"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-07 22:13+0000\n"
+"POT-Creation-Date: 2026-01-09 08:35+0000\n"
 "PO-Revision-Date: 2025-11-11 13:55+0000\n"
 "Last-Translator: TomiOhl <ohlslager.tom@gmail.com>\n"
 "Language-Team: Hungarian <https://l10n.elementaryos.org/projects/files/files/"
@@ -21,17 +21,17 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:194
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:195
 msgid "Previous"
 msgstr "Előző"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:199
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:200
 msgid "Next"
 msgstr "Következő"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:166
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -89,120 +89,12 @@ msgstr "Felülírja a(z) \"%s\" fájlt?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "A fájl cseréjével annak tartalma felülíródik"
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:168
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "Felülírás"
 
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "Nyilvános FTP"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "FTP (bejelentkezéssel)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "SSH"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "AFP (Apple Filing Protocol)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "Windows-megosztás"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "WebDAV (HTTP)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "Biztonságos WebDAV (HTTPS)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "Kiszolgáló részletei"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr "Szerver neve vagy IP-címe"
-
-#: libcore/ConnectServerDialog.vala:119
-msgid "Server:"
-msgstr "Szerver:"
-
-#: libcore/ConnectServerDialog.vala:129
-msgid "Port:"
-msgstr "Port:"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:89
-#: libcore/FileConflictDialog.vala:123 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "Típus:"
-
-#: libcore/ConnectServerDialog.vala:161
-msgid "Name of share on server (Optional)"
-msgstr "A szerveren lévő megosztás neve (nem kötelező)"
-
-#: libcore/ConnectServerDialog.vala:164
-msgid "Share:"
-msgstr "Megosztás:"
-
-#: libcore/ConnectServerDialog.vala:167
-msgid "Path of shared folder on server (Optional)"
-msgstr "A szerveren lévő megosztott mappa elérési útvonala (nem kötelező)"
-
-#: libcore/ConnectServerDialog.vala:171
-msgid "Folder:"
-msgstr "Mappa:"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "Felhasználói adatok"
-
-#: libcore/ConnectServerDialog.vala:180
-msgid "Name of Windows domain"
-msgstr "Windows tartomány neve"
-
-#: libcore/ConnectServerDialog.vala:182
-msgid "Domain name:"
-msgstr "Tartománynév:"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr "Felhasználó neve a szerveren"
-
-#: libcore/ConnectServerDialog.vala:189
-msgid "User name:"
-msgstr "Felhasználónév:"
-
-#: libcore/ConnectServerDialog.vala:197
-msgid "Password:"
-msgstr "Jelszó:"
-
-#: libcore/ConnectServerDialog.vala:199
-msgid "Remember this password"
-msgstr "Emlékezzen erre a jelszóra"
-
-#: libcore/ConnectServerDialog.vala:209
-msgid "Connect"
-msgstr "Kapcsolódás"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "Folytatás"
-
-#: libcore/ConnectServerDialog.vala:266
-msgid "Connecting…"
-msgstr "Kapcsolódás…"
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "Ellenőrizze a felhasználói adatait."
-
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:746
 msgid "Server did not respond within time limit"
 msgstr "A szerver nem válaszolt határidőn belül"
 
@@ -319,160 +211,41 @@ msgstr "Informális"
 msgid "Compact"
 msgstr "Kompakt"
 
-#: libcore/File.vala:616 libcore/File.vala:1176
+#: libcore/File.vala:647 libcore/File.vala:1207
 msgid "Inaccessible"
 msgstr "Hozzáférhetetlen"
 
-#: libcore/File.vala:955
+#: libcore/File.vala:986
 msgid "Failed to parse the desktop file"
 msgstr "Nem sikerült elemezni az asztali fájlt"
 
-#: libcore/File.vala:959
+#: libcore/File.vala:990
 msgid "Failed to parse the desktop file: "
 msgstr "Az asztali fájl elemzése sikertelen: "
 
-#: libcore/File.vala:971
+#: libcore/File.vala:1002
 msgid "Failed to create command from file: "
 msgstr "Nem sikerült parancsot létrehozni ebből a fájlból: "
 
-#: libcore/File.vala:980
+#: libcore/File.vala:1011
 msgid "Unable to Launch Desktop File: "
 msgstr "Nem sikerült elindítani ezt az asztali fájlt: "
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1200
 msgid "Empty"
 msgstr "Üres"
 
-#: libcore/File.vala:1171
+#: libcore/File.vala:1202
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d elem"
 msgstr[1] "%'d elem"
 
-#: libcore/File.vala:1216
+#: libcore/File.vala:1247
 #, c-format
 msgid "link to %s"
 msgstr "hivatkozás erre: %s"
-
-#: libcore/FileConflictDialog.vala:64
-msgid "File conflict"
-msgstr "Fájlütközés"
-
-#: libcore/FileConflictDialog.vala:77
-msgid "Original file"
-msgstr "Eredeti fájl"
-
-#: libcore/FileConflictDialog.vala:79 libcore/FileConflictDialog.vala:113
-#: src/Dialogs/PropertiesWindow.vala:546
-msgid "Size:"
-msgstr "Méret:"
-
-#: libcore/FileConflictDialog.vala:97 libcore/FileConflictDialog.vala:131
-msgid "Last modified:"
-msgstr "Utoljára módosítva:"
-
-#: libcore/FileConflictDialog.vala:111
-msgid "Replace with"
-msgstr "Cserélje erre"
-
-#: libcore/FileConflictDialog.vala:145
-msgid "Reset"
-msgstr "Alapállapot"
-
-#: libcore/FileConflictDialog.vala:154
-msgid "_Select a new name for the destination"
-msgstr "A_dja meg a cél új nevét"
-
-#: libcore/FileConflictDialog.vala:158
-msgid "Apply this action to all files"
-msgstr "Művelet alkalmazása az összes fájlra"
-
-#: libcore/FileConflictDialog.vala:160 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "_Kihagyás"
-
-#: libcore/FileConflictDialog.vala:161
-msgid "Re_name"
-msgstr "Át_nevezés"
-
-#: libcore/FileConflictDialog.vala:163
-msgid "Keep Newest"
-msgstr "Legújabb megtartása"
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Skip if original was modified more recently"
-msgstr "Kihagyás, ha az eredeti módosításai frissebbek"
-
-#: libcore/FileConflictDialog.vala:281
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "Egyesíti a(z) „%s” mappát?"
-
-#: libcore/FileConflictDialog.vala:282
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"Az egyesítés a mappában található, a másolandó fájlokkal ütköző fájlok "
-"felülírása előtt megerősítést kér."
-
-#: libcore/FileConflictDialog.vala:284
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "Már létezik ilyen nevű régebbi mappa „%s” alatt."
-
-#: libcore/FileConflictDialog.vala:286
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy újabb, ugyanilyen nevű mappa itt: „%s”."
-
-#: libcore/FileConflictDialog.vala:288
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy másik, ugyanilyen nevű mappa itt: „%s”."
-
-#: libcore/FileConflictDialog.vala:291
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "Lecseréli a(z) „%s” mappát?"
-
-#: libcore/FileConflictDialog.vala:292
-msgid "Replacing it will remove all files in the folder."
-msgstr "Cseréjével az összes fájl a mappában el lesz távolítva."
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "Már létezik egy ugyanilyen nevű mappa itt: „%s”."
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "Felülírja a(z) \"%s\" fájlt?"
-
-#: libcore/FileConflictDialog.vala:297
-msgid "Replacing it will overwrite its content."
-msgstr "Cseréjével a fájl tartalma felül lesz írva."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "Már létezik egy régebbi, ugyanilyen nevű fájl itt: „%s”."
-
-#: libcore/FileConflictDialog.vala:302
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "Már létezik egy újabb, ugyanilyen nevű fájl itt: „%s”."
-
-#: libcore/FileConflictDialog.vala:304
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "Már létezik egy másik, ugyanilyen nevű fájl itt: „%s”."
-
-#: libcore/FileConflictDialog.vala:336
-msgid "Merge"
-msgstr "Egyesítés"
 
 #: libcore/FileUtils.vala:80
 #, c-format
@@ -974,50 +747,6 @@ msgstr "GPHOTO2"
 msgid "File System"
 msgstr "Fájlrendszer"
 
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr "_Mégse"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-msgid "Delete"
-msgstr "Törlés"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "Összes ki_hagyása"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "_Újra"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "Öss_zes törlése"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "_Csere"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "_Összes cseréje"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "Össz_efésülés"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "Összes össze_fésülése"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "Másolás mi_ndenképp"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "_Kuka ürítése"
-
 #: libcore/UndoManager.vala:22
 msgid "Undo Copy"
 msgstr "Másolás visszavonása"
@@ -1474,33 +1203,311 @@ msgid_plural "%'d files left to trash"
 msgstr[0] "%'d fájl maradt a Kukába való áthelyezésből"
 msgstr[1] "%'d fájl maradt a Kukába való áthelyezésből"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "Nyilvános FTP"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "FTP (bejelentkezéssel)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "SSH"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "AFP (Apple Filing Protocol)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "Windows-megosztás"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "WebDAV (HTTP)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "Biztonságos WebDAV (HTTPS)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "Kiszolgáló részletei"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr "Szerver neve vagy IP-címe"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+msgid "Server:"
+msgstr "Szerver:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+msgid "Port:"
+msgstr "Port:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "Típus:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+msgid "Name of share on server (Optional)"
+msgstr "A szerveren lévő megosztás neve (nem kötelező)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+msgid "Share:"
+msgstr "Megosztás:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+msgid "Path of shared folder on server (Optional)"
+msgstr "A szerveren lévő megosztott mappa elérési útvonala (nem kötelező)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+msgid "Folder:"
+msgstr "Mappa:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "Felhasználói adatok"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+msgid "Name of Windows domain"
+msgstr "Windows tartomány neve"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+msgid "Domain name:"
+msgstr "Tartománynév:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr "Felhasználó neve a szerveren"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+msgid "User name:"
+msgstr "Felhasználónév:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+msgid "Password:"
+msgstr "Jelszó:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+msgid "Remember this password"
+msgstr "Emlékezzen erre a jelszóra"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+msgid "Connect"
+msgstr "Kapcsolódás"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "Folytatás"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+msgid "Connecting…"
+msgstr "Kapcsolódás…"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "Ellenőrizze a felhasználói adatait."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr "Fájlütközés"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "Eredeti fájl"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "Méret:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "Utoljára módosítva:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "Cserélje erre"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "Alapállapot"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "A_dja meg a cél új nevét"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "Művelet alkalmazása az összes fájlra"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "_Kihagyás"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "Át_nevezés"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr "Legújabb megtartása"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr "Kihagyás, ha az eredeti módosításai frissebbek"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "Egyesíti a(z) „%s” mappát?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"Az egyesítés a mappában található, a másolandó fájlokkal ütköző fájlok "
+"felülírása előtt megerősítést kér."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "Már létezik ilyen nevű régebbi mappa „%s” alatt."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "Már létezik egy újabb, ugyanilyen nevű mappa itt: „%s”."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "Már létezik egy másik, ugyanilyen nevű mappa itt: „%s”."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "Lecseréli a(z) „%s” mappát?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr "Cseréjével az összes fájl a mappában el lesz távolítva."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "Már létezik egy ugyanilyen nevű mappa itt: „%s”."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "Felülírja a(z) \"%s\" fájlt?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr "Cseréjével a fájl tartalma felül lesz írva."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "Már létezik egy régebbi, ugyanilyen nevű fájl itt: „%s”."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "Már létezik egy újabb, ugyanilyen nevű fájl itt: „%s”."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "Már létezik egy másik, ugyanilyen nevű fájl itt: „%s”."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "Egyesítés"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr "_Mégse"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+msgid "Delete"
+msgstr "Törlés"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "Összes ki_hagyása"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "_Újra"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "Öss_zes törlése"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "_Csere"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "_Összes cseréje"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "Össz_efésülés"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "Összes össze_fésülése"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "Másolás mi_ndenképp"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "_Kuka ürítése"
+
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "Navigáljon ide: %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "Ugrás ide: %s"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
 msgstr "Adjon meg egy elérési utat"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "Adjon meg egy elérési utat"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:39
 msgid "View as Grid"
 msgstr "Rácsnézet"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:49
 msgid "View as List"
 msgstr "Listanézet"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:60
 msgid "View in Columns"
 msgstr "Oszlopnézet"
 
@@ -1627,6 +1634,7 @@ msgstr "Kapacitás:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
 msgid "Unknown"
 msgstr "Ismeretlen"
 
@@ -1777,31 +1785,31 @@ msgstr "Az aktuális méret nagyobb lehet"
 msgid "unknown"
 msgstr "ismeretlen"
 
-#: src/Dialogs/PropertiesWindow.vala:486
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
 msgid "Loading…"
 msgstr "Betöltés…"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
 msgid "Could not be determined"
 msgstr "Nem lehet meghatározni"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
 msgid "Created:"
 msgstr "Létrehozva:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
 msgid "Modified:"
 msgstr "Módosítva:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
 msgid "Deleted:"
 msgstr "Törölve:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
 msgid "Media type:"
 msgstr "Médiatípus:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
 msgid "Resolution:"
 msgstr "Felbontás:"
 
@@ -1810,11 +1818,11 @@ msgstr "Felbontás:"
 msgid "Location:"
 msgstr "Elérési út:"
 
-#: src/Dialogs/PropertiesWindow.vala:633
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
 msgid "Target:"
 msgstr "Cél:"
 
-#: src/Dialogs/PropertiesWindow.vala:641
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
 msgid "Original Location:"
 msgstr "Eredeti hely:"
 
@@ -1854,7 +1862,7 @@ msgid_plural "%u files"
 msgstr[0] "%u fájl"
 msgstr[1] "%u fájl"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -1950,7 +1958,7 @@ msgid "Invalid file name provided"
 msgstr "A megadott fájlnév érvénytelen"
 
 #: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:239
+#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:240
 msgid "New Tab"
 msgstr "Új lap"
 
@@ -2086,29 +2094,41 @@ msgid "Untitled %s"
 msgstr "Névtelen %s"
 
 #: src/View/AbstractDirectoryView.vala:2960
-#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3166
 msgid "Cannot remove files from here"
 msgstr "A fájlok nem távolíthatók el innen"
 
 #: src/View/AbstractDirectoryView.vala:2961
-#: src/View/AbstractDirectoryView.vala:3136
-#: src/View/AbstractDirectoryView.vala:3147
-#: src/View/AbstractDirectoryView.vala:3164
+#: src/View/AbstractDirectoryView.vala:3139
+#: src/View/AbstractDirectoryView.vala:3150
+#: src/View/AbstractDirectoryView.vala:3167
 msgid "You do not have permission to change this location"
 msgstr "Nincs engedélye az elérési út megváltoztatására"
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3107
 msgid "Cannot copy files that are in the trash"
 msgstr "A kukában levő fájlok nem másolhatóak"
 
-#: src/View/AbstractDirectoryView.vala:3105
+#: src/View/AbstractDirectoryView.vala:3108
 msgid "Cutting the selection instead"
 msgstr "A kijelöltek kivágása inkább"
 
-#: src/View/AbstractDirectoryView.vala:3135
-#: src/View/AbstractDirectoryView.vala:3146
+#: src/View/AbstractDirectoryView.vala:3138
+#: src/View/AbstractDirectoryView.vala:3149
 msgid "Cannot paste files here"
 msgstr "Fájlok beillesztése itt nem lehetséges"
+
+#: src/View/DetailsColumn.vala:118
+#, fuzzy
+#| msgid "Name"
+msgid "Name:"
+msgstr "Név"
+
+#: src/View/DetailsColumn.vala:211
+#, fuzzy
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "Tulajdonságok"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2220,44 +2240,36 @@ msgstr "Nem lehet a mappát megjeleníteni"
 msgid "The server for this folder could not be located."
 msgstr "Nem található a mappához tartozó szerver."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "Fájl nem található"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "A kiválasztott fájl már nem létezik."
-
-#: src/View/Window.vala:214
+#: src/View/Window.vala:215
 msgid "Menu"
 msgstr "Menü"
 
-#: src/View/Window.vala:244
+#: src/View/Window.vala:245
 msgid "Closed Tabs"
 msgstr "Bezárt lapok"
 
-#: src/View/Window.vala:472 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Megnyitás új ablakban"
 
-#: src/View/Window.vala:473
+#: src/View/Window.vala:475
 msgid "Duplicate Tab"
 msgstr "Lap megkettőzése"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:477
+#: src/View/Window.vala:479
 msgid "Close Tabs to the Right"
 msgstr "A jobbra lévő lapok bezárása"
 
-#: src/View/Window.vala:478
+#: src/View/Window.vala:480
 msgid "Close Other Tabs"
 msgstr "A többi lap bezárása"
 
-#: src/View/Window.vala:479
+#: src/View/Window.vala:481
 msgid "Close Tab"
 msgstr "Lap bezárása"
 
-#: src/View/Window.vala:763 src/View/Window.vala:773
+#: src/View/Window.vala:765 src/View/Window.vala:775
 msgid "(as Administrator)"
 msgstr "(Rendszergazdaként)"
 
@@ -2449,16 +2461,20 @@ msgstr "Helyi előnézetek"
 msgid "Remote Thumbnails"
 msgstr "Távoli előnézetek"
 
+#: src/View/Widgets/AppMenu.vala:115
+msgid "File Preview (Column View)"
+msgstr ""
+
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
-#: src/View/Widgets/AppMenu.vala:116
+#: src/View/Widgets/AppMenu.vala:121
 msgid "Date & Time Format"
 msgstr "Dátum- és időformátum"
 
-#: src/View/Widgets/AppMenu.vala:210
+#: src/View/Widgets/AppMenu.vala:216
 msgid "No operation to undo"
 msgstr "Nincs visszavonható művelet"
 
-#: src/View/Widgets/AppMenu.vala:217
+#: src/View/Widgets/AppMenu.vala:223
 msgid "No operation to redo"
 msgstr "Nincs újra végrehajtható művelet"
 
@@ -2491,29 +2507,29 @@ msgstr "A mappa újratöltése"
 msgid "Searching…"
 msgstr "Keresés…"
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:173
 #, c-format
 msgid "%u folders"
 msgstr "%u mappa"
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " és %u egyéb elem (%s) kijelölve"
 msgstr[1] " és %u egyéb elem (%s) kijelölve"
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
 msgid " selected"
 msgstr " kijelölve"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:192
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u elem kijelölve (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:237
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -2521,7 +2537,7 @@ msgstr[0] "%u almappa, "
 msgstr[1] "%u almappa, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:243
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -2529,18 +2545,18 @@ msgstr[0] "%u fájl, "
 msgstr[1] "%u fájl, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:253
 #, c-format
 msgid "%s approx."
 msgstr "Körülbelül %s."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:256
 msgid "unknown size"
 msgstr "ismeretlen méret"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:260
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
@@ -2574,6 +2590,17 @@ msgstr "Ezen mappa alatt"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Mostanában használt"
+
+#, fuzzy
+#~| msgid "More Results …"
+#~ msgid "More Details…"
+#~ msgstr "További eredmények…"
+
+#~ msgid "File not Found"
+#~ msgstr "Fájl nem található"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "A kiválasztott fájl már nem létezik."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "Szeretné újra létrehozni?"

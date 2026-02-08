@@ -40,7 +40,7 @@ public class Files.Directory : Object {
 
     public GLib.File creation_key {get; construct;}
     public GLib.File location {get; private set;}
-    public GLib.File? selected_file {get; private set;}
+    public GLib.File? initial_selected_file {get; private set;} // Only used for initial focus.
     public Files.File file {get; private set;}
     public int icon_size = 32;
 
@@ -146,7 +146,9 @@ public class Files.Directory : Object {
         /* If the original file was not a folder, ensure that it will be
          * selected in the loaded view*/
         if (!creation_key.equal (gfile)) {
-            dir.selected_file = file;
+            dir.initial_selected_file = file;
+        } else {
+            dir.initial_selected_file = null;
         }
 
         return dir;
@@ -169,7 +171,7 @@ public class Files.Directory : Object {
 
         location = _file;
         file = Files.File.get (location);
-        selected_file = null;
+        initial_selected_file = null;
 
         cancellable = new Cancellable ();
         state = State.NOT_LOADED;
@@ -261,7 +263,7 @@ public class Files.Directory : Object {
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
                     file = Files.File.get (parent);
-                    selected_file = location;
+                    initial_selected_file = location;
                     location = parent;
                     success = yield get_file_info ();
                 } else {
@@ -842,17 +844,6 @@ public class Files.Directory : Object {
                 (!gof.is_hidden || Preferences.get_default ().show_hidden_files)) {
 
                 gof.update ();
-            }
-        }
-    }
-
-    public void update_desktop_files () {
-        foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null &&
-                (!gof.is_hidden || Preferences.get_default ().show_hidden_files) &&
-                gof.is_desktop) {
-
-                gof.update_desktop_file ();
             }
         }
     }
