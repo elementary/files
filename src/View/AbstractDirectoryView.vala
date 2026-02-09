@@ -309,7 +309,7 @@ namespace Files {
             no_files_label.no_show_all = true;
 
             var hidden_box = new Gtk.Box (HORIZONTAL, 6);
-            hidden_label = new Gtk.Label (_("This folder contains only hidden files")) {
+            hidden_label = new Gtk.Label (_("This folder only contains hidden files")) {
                 wrap = true
             };
             hidden_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
