@@ -308,15 +308,17 @@ namespace Files {
             no_files_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
             no_files_label.no_show_all = true;
 
-            var hidden_box = new Gtk.Box (HORIZONTAL, 6);
+            var hidden_box = new Gtk.Box (VERTICAL, 24);
             hidden_label = new Gtk.Label (_("This folder only contains hidden files")) {
-                wrap = true
+                wrap = true,
+                halign = START
             };
             hidden_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
             hidden_label.no_show_all = true;
 
             var hidden_button = new Gtk.Button.with_label (_("Show")) {
-                no_show_all = true
+                no_show_all = true,
+                halign = CENTER
             };
 
             hidden_button.clicked.connect (() => {
@@ -396,7 +398,7 @@ namespace Files {
                 };
                 key_controller.key_pressed.connect (on_view_key_press_event);
                 // Workaround for scroll events getting consumed by scroll controller
-                // Only handle scroll events when a key is pressed (for zooming) or when frozen/renaming, otherwise 
+                // Only handle scroll events when a key is pressed (for zooming) or when frozen/renaming, otherwise
                 // they will be handled by the native widget
                 key_controller.key_pressed.connect (() => {
                     if (!is_frozen && !renaming) {
