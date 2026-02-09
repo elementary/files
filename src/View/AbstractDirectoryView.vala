@@ -299,7 +299,6 @@ namespace Files {
                 kinetic_scrolling = true,
                 overlay_scrolling = true,
                 window_placement = TOP_LEFT,
-                hscrollbar_policy = NEVER,
                 shadow_type = NONE
             };
 
@@ -384,19 +383,33 @@ namespace Files {
                    schedule_thumbnail_color_tag_timeout ();
                 });
 
-                scroll_controller = new Gtk.EventControllerScroll (view, NONE);
+                scroll_controller = new Gtk.EventControllerScroll (view, NONE) {
+                    propagation_phase = CAPTURE
+                };
+
                 scroll_controller.scroll.connect (on_scroll_event);
+
+                enable_scroll (true);
 
                 key_controller = new Gtk.EventControllerKey (view) {
                     propagation_phase = BUBBLE
                 };
                 key_controller.key_pressed.connect (on_view_key_press_event);
                 // Workaround for scroll events getting consumed by scroll controller
-                // Only handle scroll events when a key is pressed (for zooming), otherwise they will be handled
-                // by the native widget
-                key_controller.key_pressed.connect (() => {scroll_controller.flags = VERTICAL; return false;});
-                key_controller.key_released.connect (() => scroll_controller.flags = NONE);
+                // Only handle scroll events when a key is pressed (for zooming) or when frozen/renaming, otherwise 
+                // they will be handled by the native widget
+                key_controller.key_pressed.connect (() => {
+                    if (!is_frozen && !renaming) {
+                        scroll_controller.flags = VERTICAL;
+                    }
 
+                     return false;
+                });
+                key_controller.key_released.connect (() => {
+                    if (!is_frozen && !renaming) {
+                        scroll_controller.flags = NONE;
+                    }
+                });
                 // Hack required to suppress native behaviour when dragging
                 // multiple selected items with GestureMultiPress event controller
                 // Native behaviour deselects items except the one clicked on
@@ -3298,7 +3311,7 @@ namespace Files {
         }
 
         protected virtual void on_scroll_event (double dx, double dy) {
-            if (is_frozen) {
+            if (is_frozen || renaming) {
                 return;
             }
 
@@ -3344,9 +3357,11 @@ namespace Files {
             }
         }
 
+        // This gets called after a successful edit also
         protected void on_name_editing_canceled () {
             is_frozen = false;
             renaming = false;
+            enable_scroll (true);
             name_renderer.editable = false;
             proposed_name = "";
 
@@ -3399,6 +3414,16 @@ namespace Files {
             }
 
             /* do not cancel editing here - will be cancelled in rename callback */
+        }
+
+        protected void enable_scroll (bool enable) {
+            if (enable) {
+                scrolled_window.set_policy (NEVER, AUTOMATIC);
+                scroll_controller.flags = NONE;
+            } else {
+                scrolled_window.set_policy (NEVER, EXTERNAL);
+                scroll_controller.flags = BOTH_AXES;
+            }
         }
 
         public async GLib.File? set_file_display_name (GLib.File old_location, string new_name,
@@ -3697,6 +3722,7 @@ namespace Files {
             /* The order of the next three lines must not be changed */
             renaming = true;
             update_menu_actions ();
+            enable_scroll (false);
             is_frozen = true;
             uint count = 0;
             bool ok_next_time = false;
