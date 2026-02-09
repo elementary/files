@@ -65,10 +65,12 @@ public abstract class Files.AbstractSlot : GLib.Object {
     }
 
     public void add_extra_action_widget (Gtk.Widget widget) {
+        // Used for e.g. trash plugin actionbar
         extra_action_widgets.add (widget);
     }
 
     public void add_overlay (Gtk.Widget widget) {
+        // It is assumed this is only called once per slot
         overlay = new Gtk.Overlay () {
             hexpand = true,
             vexpand = true,
