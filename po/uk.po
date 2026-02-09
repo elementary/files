@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-01-09 08:35+0000\n"
-"PO-Revision-Date: 2025-12-18 23:55+0000\n"
+"PO-Revision-Date: 2026-01-31 23:55+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementaryos.org/projects/files/files/"
 "uk/>\n"
@@ -198,18 +198,16 @@ msgstr "ISO"
 
 #: libcore/Enums.vala:270
 msgid "Locale"
-msgstr ""
+msgstr "За локаллю"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Info"
 msgid "Informal"
-msgstr "Відомості"
+msgstr "Неофіційний"
 
 #. TRANSLATORS Adjective applied to datetime format
 #: libcore/Enums.vala:275
 msgid "Compact"
-msgstr ""
+msgstr "Компактний"
 
 #: libcore/File.vala:647 libcore/File.vala:1207
 msgid "Inaccessible"
@@ -2165,16 +2163,12 @@ msgid "Cannot paste files here"
 msgstr "Неможливо вставити файли сюди"
 
 #: src/View/DetailsColumn.vala:118
-#, fuzzy
-#| msgid "Name"
 msgid "Name:"
-msgstr "Назва"
+msgstr "Назва:"
 
 #: src/View/DetailsColumn.vala:211
-#, fuzzy
-#| msgid "Properties"
 msgid "Properties…"
-msgstr "Властивості"
+msgstr "Властивості…"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2509,7 +2503,7 @@ msgstr "Віддалені ескізи"
 
 #: src/View/Widgets/AppMenu.vala:115
 msgid "File Preview (Column View)"
-msgstr ""
+msgstr "Попередній перегляд файлу (перегляд стовпців)"
 
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:121
