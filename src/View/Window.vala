@@ -284,24 +284,26 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
         get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
 
+        var view_mode_action = Files.app_settings.create_action ("default-viewmode");
+        add_action (view_mode_action);
+
         /*/
         /* Connect and abstract signals to local ones
         /*/
-        get_action ("view-mode").activate.connect ((id) => {
-            switch ((ViewMode)(id.get_uint32 ())) {
-                case ViewMode.ICON:
+        Files.app_settings.changed["default-viewmode"].connect (() => {
+            var mode = real_mode ((ViewMode) Files.app_settings.get_enum ("default-viewmode"));
+            current_container.change_view_mode (mode);
+
+            switch (Files.app_settings.get_string ("default-viewmode")) {
+                case "icon":
                     app_menu.on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
                     break;
-                case ViewMode.LIST:
+                case "list":
                     app_menu.on_zoom_setting_changed (Files.list_view_settings, "zoom-level");
                     break;
-                case ViewMode.MILLER_COLUMNS:
+                case "miller_columns":
                     app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
                     break;
-                case ViewMode.PREFERRED:
-                case ViewMode.CURRENT:
-                case ViewMode.INVALID:
-                    assert_not_reached (); //The switcher should not generate these modes
             }
         });
 
