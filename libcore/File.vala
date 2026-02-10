@@ -761,7 +761,6 @@ public class Files.File : GLib.Object {
         }
     }
 
-
     public bool ensure_query_info () {
         if (info == null) {
             query_update ();
@@ -1121,11 +1120,13 @@ public class Files.File : GLib.Object {
     // loading of the view e.g. due to color change or after external changes
     // to the file
     private void after_icon_changed () {
-        if (directory != null) {
-            var dir = Files.Directory.cache_lookup (directory);
-            if (dir != null && (!is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
-                dir.icon_changed (this);
-            }
+        if (directory == null) {
+            return;
+        }
+
+        var dir = Files.Directory.cache_lookup (directory);
+        if (dir != null && (!is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
+            dir.icon_changed (this);
         }
     }
 
