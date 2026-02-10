@@ -704,20 +704,6 @@ public class Files.File : GLib.Object {
         update_emblem ();
     }
 
-    public void update_type () {
-        update_formated_type ();
-
-        unowned string? ftype = get_ftype ();
-        if (ftype != null) {
-            icon = GLib.ContentType.get_icon (ftype);
-        }
-
-        if (pix_size > 1 && pix_scale > 0) {
-            update_icon (pix_size, pix_scale);
-            after_icon_changed ();
-        }
-    }
-
     // This only changes the file icon if the request dimensions have changed.
     //TODO Rename function to reflect this
     // Does not compile if use pix_size and pix_scale as default values for some reason
@@ -764,13 +750,6 @@ public class Files.File : GLib.Object {
         pix = iconinfo.get_pixbuf_nodefault ();
         pix_size = requested_size;
         pix_scale = requested_scale;
-    }
-
-    public void update_desktop_file () {
-        utf8_collation_key = get_display_name ().collate_key_for_filename ();
-        update_formated_type ();
-        ensure_size ();
-        after_icon_changed ();
     }
 
     // This refetches all file info and updates properties accordingly
