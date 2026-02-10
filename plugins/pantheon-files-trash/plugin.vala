@@ -113,6 +113,7 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                 });
 
                 view.add_extra_action_widget (actionbar);
+                actionbar.show_all ();
                 actionbars.@set (view, actionbar);
             }
 

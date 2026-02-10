@@ -67,10 +67,11 @@ public class Files.File : GLib.Object {
         set {
             if (value != _color) {
                 _color = value;
-                after_icon_has_changed ();
+                after_icon_changed ();
             }
         }
     }
+
     public uint64 modified;
     public uint64 created;
     public string formated_modified = null;
@@ -767,7 +768,6 @@ public class Files.File : GLib.Object {
         }
     }
 
-
     public bool ensure_query_info () {
         if (info == null) {
             query_update ();
@@ -1122,15 +1122,20 @@ public class Files.File : GLib.Object {
 
         emblems_list.append (emblem);
         n_emblems++;
-        after_icon_has_changed ();
+        after_icon_changed ();
     }
 
-    private void after_icon_has_changed () {
-        if (directory != null) {
-            var dir = Files.Directory.cache_lookup (directory);
-            if (dir != null && (!is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
-                dir.icon_changed (this);
-            }
+    // Should only be called when an icon has been changed after the initial
+    // loading of the view e.g. due to color change or after external changes
+    // to the file
+    private void after_icon_changed () {
+        if (directory == null) {
+            return;
+        }
+
+        var dir = Files.Directory.cache_lookup (directory);
+        if (dir != null && (!is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
+            dir.icon_changed (this);
         }
     }
 
