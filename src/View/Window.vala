@@ -93,7 +93,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private Gtk.MenuButton tab_history_button;
     private Gtk.Paned lside_pane;
     private Hdy.HeaderBar headerbar;
-    private Hdy.TabBar tab_bar;
     private SidebarInterface sidebar;
 
     private unowned UndoManager undo_manager;
@@ -247,7 +246,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             use_popover = false
         };
 
-        tab_bar = new Hdy.TabBar () {
+        var tab_bar = new Hdy.TabBar () {
             autohide = false,
             expand_tabs = false,
             inverted = true,
