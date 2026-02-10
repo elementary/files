@@ -371,7 +371,7 @@ namespace Files {
                 };
                 key_controller.key_pressed.connect (on_view_key_press_event);
                 // Workaround for scroll events getting consumed by scroll controller
-                // Only handle scroll events when a key is pressed (for zooming) or when frozen/renaming, otherwise 
+                // Only handle scroll events when a key is pressed (for zooming) or when frozen/renaming, otherwise
                 // they will be handled by the native widget
                 key_controller.key_pressed.connect (() => {
                     if (!is_frozen && !renaming) {
