@@ -821,7 +821,7 @@ namespace Files {
             }
 
             if (flag != Files.OpenFlag.APP && (file.is_folder () ||
-                file.get_ftype () == "inode/directory" ||
+                file.content_type == "inode/directory" ||
                 file.is_root_network_folder ())) {
 
                 switch (flag) {
@@ -840,7 +840,7 @@ namespace Files {
             } else if (!in_trash) {
                 if (only_one_file) {
                     if (file.is_executable ()) {
-                        var content_type = file.get_ftype ();
+                        var content_type = file.content_type;
 
                         if (GLib.ContentType.is_a (content_type, "text/plain")) {
                             open_file (file, screen, default_app);
@@ -876,7 +876,7 @@ namespace Files {
         private bool can_open_file (Files.File file, bool show_error_dialog = false) {
             string err_msg1 = _("Cannot open this file");
             string err_msg2 = "";
-            var content_type = file.get_ftype ();
+            var content_type = file.content_type;
 
             if (content_type == null) {
                 bool result_uncertain = true;
@@ -2534,7 +2534,7 @@ namespace Files {
              * because remote file bookmarks do not work correctly for unmounted locations */
             can_bookmark = (!more_than_one_selected || single_folder) &&
                            (slot.directory.is_local ||
-                           (file.get_ftype () != null && file.get_ftype () == "inode/directory") ||
+                           (file.content_type != null && file.content_type == "inode/directory") ||
                            file.is_smb_server ());
 
             can_copy = file.is_readable ();

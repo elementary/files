@@ -63,7 +63,7 @@ public class Files.Plugins.Contractor : Files.Plugins.Base {
                 files = new GLib.File[0];
                 files += current_directory.location;
 
-                string? mimetype = current_directory.get_ftype ();
+                string? mimetype = current_directory.content_type;
 
                 if (mimetype == null) {
                     return;
@@ -116,7 +116,7 @@ public class Files.Plugins.Contractor : Files.Plugins.Base {
         string[] mimetypes = new string[0];
 
         foreach (unowned Files.File file in files) {
-            var ftype = file.get_ftype ();
+            var ftype = file.content_type;
 
             if (ftype != null) {
                 mimetypes += ftype;
