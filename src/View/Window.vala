@@ -83,7 +83,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     public Files.Application marlin_app { get; construct; }
     private unowned UndoManager undo_manager;
     public Hdy.HeaderBar headerbar;
-    public Chrome.ViewSwitcher view_switcher;
     public Hdy.TabView tab_view;
     public Hdy.TabBar tab_bar;
     private Gtk.Paned lside_pane;
@@ -200,10 +199,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-        view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
+        var view_switcher = new Chrome.ViewSwitcher () {
             margin_end = 20
         };
-        view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
 
         location_bar = new Chrome.LocationBar ();
 
@@ -289,7 +287,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         /*/
         /* Connect and abstract signals to local ones
         /*/
-        view_switcher.action.activate.connect ((id) => {
+        get_action ("view-mode").activate.connect ((id) => {
             switch ((ViewMode)(id.get_uint32 ())) {
                 case ViewMode.ICON:
                     app_menu.on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
@@ -1375,9 +1373,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
-        view_switcher.set_mode (mode);
-        view_switcher.sensitive = current_container.can_show_folder;
-        get_action ("view-mode").change_state (new Variant.uint32 (mode));
+
+        var view_mode_action = get_action ("view-mode");
+        view_mode_action.set_enabled (current_container.can_show_folder);
+        view_mode_action.change_state (new Variant.uint32 (mode));
+
         Files.app_settings.set_enum ("default-viewmode", mode);
     }
 
