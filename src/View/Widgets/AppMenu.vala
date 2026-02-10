@@ -94,7 +94,7 @@ public class Files.AppMenu : Gtk.Popover {
         var show_header = new Granite.HeaderLabel (_("Show in View"));
 
         var show_hidden_button = new Gtk.CheckButton () {
-            action_name = "win.show-hidden"
+            action_name = "win.show-hiddenfiles"
         };
         show_hidden_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
         show_hidden_button.add (new Granite.AccelLabel (
