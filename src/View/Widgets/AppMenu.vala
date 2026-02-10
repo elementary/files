@@ -207,6 +207,8 @@ public class Files.AppMenu : Gtk.Popover {
                 app_settings.set_enum ("date-format", DateFormatMode.COMPACT);
             }
         });
+
+        app_settings.changed["default-viewmode"].connect (on_zoom_setting_changed);
     }
 
     private void set_undo_redo_tooltips () {
@@ -228,7 +230,20 @@ public class Files.AppMenu : Gtk.Popover {
         );
     }
 
-    public void on_zoom_setting_changed (Settings settings, string key) {
+    private void on_zoom_setting_changed () {
+        Settings settings = null;
+        switch (app_settings.get_string ("default-viewmode")) {
+            case "icon":
+                settings = Files.icon_view_settings;
+                break;
+            case "list":
+                settings = Files.list_view_settings;
+                break;
+            case "miller_columns":
+                settings = Files.list_view_settings;
+                break;
+        }
+
         if (settings == null) {
             critical ("Zoom string from settinggs: Null settings");
             zoom_default_button.label = "";
