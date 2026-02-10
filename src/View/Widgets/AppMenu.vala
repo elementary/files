@@ -161,10 +161,14 @@ public class Files.AppMenu : Gtk.Popover {
 
         // Connect to all view settings rather than try to connect and disconnect
         // continuously to current view mode setting.
-        Files.icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
-        Files.list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
-        Files.column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+        var icon_view_settings = new Settings ("io.elementary.files.icon-view");
+        var list_view_settings = new Settings ("io.elementary.files.list-view");
+        var column_view_settings = new Settings ("io.elementary.files.column-view");
+        icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+        list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+        column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
 
+        var app_settings = new Settings ("io.elementary.files.preferences");
         // Initialize and connect dateformat buttons
         switch (app_settings.get_enum ("date-format")) {
             case DateFormatMode.ISO:
