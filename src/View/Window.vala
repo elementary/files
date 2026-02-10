@@ -293,18 +293,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         Files.app_settings.changed["default-viewmode"].connect (() => {
             var mode = real_mode ((ViewMode) Files.app_settings.get_enum ("default-viewmode"));
             current_container.change_view_mode (mode);
-
-            switch (Files.app_settings.get_string ("default-viewmode")) {
-                case "icon":
-                    app_menu.on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
-                    break;
-                case "list":
-                    app_menu.on_zoom_setting_changed (Files.list_view_settings, "zoom-level");
-                    break;
-                case "miller_columns":
-                    app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
-                    break;
-            }
         });
 
 
