@@ -89,7 +89,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private Chrome.ButtonWithMenu button_back;
     private Chrome.ButtonWithMenu button_forward;
     private Chrome.LocationBar? location_bar;
-    private Chrome.ViewSwitcher view_switcher;
     private Gtk.MenuButton tab_history_button;
     private Gtk.Paned lside_pane;
     private Hdy.HeaderBar headerbar;
@@ -121,6 +120,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         width_request = 500;
         icon_name = "system-file-manager";
         title = _(APP_TITLE);
+
+        add_action (app_settings.create_action ("default-viewmode"));
 
         add_action_entries (WIN_ENTRIES, this);
         undo_actions_set_insensitive ();
@@ -200,10 +201,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
-        view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
+        var view_switcher = new Chrome.ViewSwitcher () {
             margin_end = 20
         };
-        view_switcher.set_mode (Files.app_settings.get_enum ("default-viewmode"));
 
         location_bar = new Chrome.LocationBar ();
 
@@ -285,6 +285,14 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
         get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
+
+        /*/
+        /* Connect and abstract signals to local ones
+        /*/
+        Files.app_settings.changed["default-viewmode"].connect (() => {
+            var mode = real_mode ((ViewMode) Files.app_settings.get_enum ("default-viewmode"));
+            current_container.change_view_mode (mode);
+        });
 
         button_forward.slow_press.connect (() => {
             get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
@@ -1353,8 +1361,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
-        view_switcher.set_mode (mode);
-        view_switcher.sensitive = current_container.can_show_folder;
 
         var view_mode_action = get_action ("view-mode");
         view_mode_action.set_enabled (current_container.can_show_folder);
