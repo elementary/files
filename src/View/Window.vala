@@ -171,16 +171,16 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         build_window ();
 
         int width, height;
-        var app_settings = new Settings ("io.elementary.files.preferences");
-        app_settings.get ("window-size", "(ii)", out width, out height);
+        var app_preferences = new Settings ("io.elementary.files.preferences");
+        app_preferences.get ("window-size", "(ii)", out width, out height);
         default_width = width;
         default_height = height;
 
         if (is_first_window) {
-            app_settings.bind ("sidebar-width", lside_pane,
+            app_preferences.bind ("sidebar-width", lside_pane,
                                        "position", SettingsBindFlags.DEFAULT);
 
-            var state = (Files.WindowState)(app_settings.get_enum ("window-state"));
+            var state = (Files.WindowState)(app_preferences.get_enum ("window-state"));
             if (state == Files.WindowState.MAXIMIZED) {
                 maximize ();
             }
@@ -205,8 +205,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             margin_end = 20
         };
 
-        var app_settings = new Settings ("io.elementary.files.preferences");
-        view_switcher.set_mode (app_settings.get_enum ("default-viewmode"));
+        var app_preferences = new Settings ("io.elementary.files.preferences");
+        view_switcher.set_mode (app_preferences.get_enum ("default-viewmode"));
 
         location_bar = new Chrome.LocationBar ();
 
@@ -267,7 +267,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         lside_pane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
             expand = true,
-            position = app_settings.get_int ("sidebar-width")
+            position = app_preferences.get_int ("sidebar-width")
         };
         lside_pane.pack1 (sidebar, false, false);
         lside_pane.pack2 (tab_box, true, true);
@@ -287,7 +287,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         get_action ("show-file-preview").set_state (prefs.show_file_preview);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
-        get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
+        get_action ("restore-tabs-on-startup").set_state (app_preferences.get_boolean ("restore-tabs"));
 
         /*/
         /* Connect and abstract signals to local ones
@@ -1185,23 +1185,23 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             return; //TODO Save all windows
         }
 
-        var app_settings = new Settings ("io.elementary.files.preferences");
+        var app_preferences = new Settings ("io.elementary.files.preferences");
 
         var sidebar_width = int.max (
             lside_pane.get_position (),
-            app_settings.get_int ("minimum-sidebar-width")
+            app_preferences.get_int ("minimum-sidebar-width")
         );
 
-        app_settings.set_int ("sidebar-width", sidebar_width);
+        app_preferences.set_int ("sidebar-width", sidebar_width);
 
         var state = get_window ().get_state ();
         // TODO: replace with Gtk.Window.fullscreened in Gtk4
         if (is_maximized || Gdk.WindowState.FULLSCREEN in state) {
-            app_settings.set_enum (
+            app_preferences.set_enum (
                 "window-state", Files.WindowState.MAXIMIZED
             );
         } else {
-            app_settings.set_enum (
+            app_preferences.set_enum (
                 "window-state", Files.WindowState.NORMAL
             );
 
@@ -1209,7 +1209,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 int width, height;
                 // Includes shadow for normal windows (but not maximized or tiled)
                 get_size (out width, out height);
-                app_settings.set ("window-size", "(ii)", width, height);
+                app_preferences.set ("window-size", "(ii)", width, height);
             }
         }
     }
@@ -1217,10 +1217,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private void save_tabs () {
         /* Do not overwrite existing settings if history or restore-tabs is off
          * or is admin window */
-        var app_settings = new Settings ("io.elementary.files.preferences");
+        var app_preferences = new Settings ("io.elementary.files.preferences");
         if (
             !Files.Preferences.get_default ().remember_history ||
-            !app_settings.get_boolean ("restore-tabs") ||
+            !app_preferences.get_boolean ("restore-tabs") ||
             Files.is_admin ()
         ) {
             return;
@@ -1243,7 +1243,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                    );
         }
 
-        app_settings.set_value ("tab-info-list", vb.end ());
+        app_preferences.set_value ("tab-info-list", vb.end ());
         save_active_tab_position ();
     }
 
@@ -1260,12 +1260,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private async uint restore_tabs () {
         /* Do not restore tabs more than once or if various conditions not met */
-        var app_settings = new Settings ("io.elementary.files.preferences");
+        var app_preferences = new Settings ("io.elementary.files.preferences");
         if (
             tabs_restored ||
             !is_first_window ||
             !Files.Preferences.get_default ().remember_history ||
-            !app_settings.get_boolean ("restore-tabs") ||
+            !app_preferences.get_boolean ("restore-tabs") ||
             Files.is_admin ()
         ) {
             return 0;
@@ -1273,7 +1273,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             tabs_restored = true;
         }
 
-        GLib.Variant tab_info_array = app_settings.get_value ("tab-info-list");
+        GLib.Variant tab_info_array = app_preferences.get_value ("tab-info-list");
         GLib.VariantIter iter = new GLib.VariantIter (tab_info_array);
 
         ViewMode mode = ViewMode.INVALID;
@@ -1322,7 +1322,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             return 0;
         }
 
-        int active_tab_position = app_settings.get_int ("active-tab-position");
+        int active_tab_position = app_preferences.get_int ("active-tab-position");
         if (active_tab_position < 0 || active_tab_position >= restoring_tabs) {
             active_tab_position = 0;
         }
