@@ -3865,10 +3865,13 @@ namespace Files {
                 maximum_zoom = (ZoomLevel)view_settings.get_enum ("maximum-zoom-level");
                 zoom_level = (ZoomLevel)view_settings.get_enum ("zoom-level");
 
+                // Do not bind BIDIRECTIONAL so that changes in one tab are not reflected
+                // in other tabs as this may not be what is desired. However, new tabs
+                // follow the last **changed** tab
                 view_settings.bind (
                     "zoom-level",
                     this, "zoom-level",
-                    GLib.SettingsBindFlags.SET
+                    SET
                 );
             }
         }
