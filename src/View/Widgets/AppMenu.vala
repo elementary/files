@@ -130,25 +130,25 @@ public class Files.AppMenu : Gtk.Popover {
         ///TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
         var datetimeformat_header = new Granite.HeaderLabel (_("Date & Time Format"));
 
-        var iso_button = new Gtk.RadioButton.with_label (null, DateFormatMode.ISO.to_string ()) {
+        var iso_button = new Gtk.CheckButton.with_label (DateFormatMode.ISO.to_string ()) {
             action_name = "app.date-format",
             action_target = new Variant.string ("iso")
         };
         iso_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
-        var locale_button = new Gtk.RadioButton.with_label (null, DateFormatMode.LOCALE.to_string ()) {
+        var locale_button = new Gtk.CheckButton.with_label (DateFormatMode.LOCALE.to_string ()) {
             action_name = "app.date-format",
             action_target = new Variant.string ("locale")
         };
         locale_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
-        var informal_button = new Gtk.RadioButton.with_label (null, DateFormatMode.INFORMAL.to_string ()) {
+        var informal_button = new Gtk.CheckButton.with_label (DateFormatMode.INFORMAL.to_string ()) {
             action_name = "app.date-format",
             action_target = new Variant.string ("informal")
         };
         informal_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
-        var compact_button = new Gtk.RadioButton.with_label (null, DateFormatMode.COMPACT.to_string ()) {
+        var compact_button = new Gtk.CheckButton.with_label (DateFormatMode.COMPACT.to_string ()) {
             action_name = "app.date-format",
             action_target = new Variant.string ("compact")
         };
