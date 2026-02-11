@@ -287,6 +287,8 @@ namespace Files {
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
+        private static Settings app_settings;
+
         //TODO Rewrite in Object (), construct {} style
         protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
@@ -412,6 +414,10 @@ namespace Files {
             connect_directory_handlers (slot.directory);
         }
 
+        static construct {
+            app_settings = new Settings ("io.elementary.files.preferences");
+        }
+
         ~AbstractDirectoryView () {
             debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
         }
@@ -453,9 +459,8 @@ namespace Files {
             prefs.notify["show-local-thumbnails"].connect (on_show_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.notify["date-format"].connect (on_dateformat_changed);
-            prefs.bind_property (
-                "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
-            );
+
+            app_settings.bind ("singleclick-select", this, "singleclick_select", SettingsBindFlags.DEFAULT);
 
             model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
