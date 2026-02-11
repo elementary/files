@@ -18,6 +18,7 @@
 
 public class Files.File : GLib.Object {
     private static GLib.HashTable<GLib.File, Files.File> file_cache;
+    private static Settings app_settings;
 
     public enum IconFlags {
         NONE,
@@ -218,6 +219,10 @@ public class Files.File : GLib.Object {
             basename: location.get_basename (),
             directory: dir
         );
+    }
+
+    static construct {
+        app_settings = new Settings ("io.elementary.files.preferences");
     }
 
     construct {
@@ -1125,7 +1130,7 @@ public class Files.File : GLib.Object {
         }
 
         var dir = Files.Directory.cache_lookup (directory);
-        if (dir != null && (!is_hidden || Files.Preferences.get_default ().show_hidden_files)) {
+        if (dir != null && (!is_hidden || app_settings.get_boolean ("show-hiddenfiles"))) {
             dir.icon_changed (this);
         }
     }
@@ -1209,7 +1214,7 @@ public class Files.File : GLib.Object {
             return;
         }
 
-        var pref_show_hidden = Files.Preferences.get_default ().show_hidden_files;
+        var pref_show_hidden = app_settings.get_boolean ("show-hiddenfiles");
         if (location.has_uri_scheme ("file") ||
             (is_mounted && location.is_native ())) {
 
