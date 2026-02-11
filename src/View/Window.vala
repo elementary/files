@@ -1377,7 +1377,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var mode = current_container.view_mode;
         view_switcher.set_mode (mode);
         view_switcher.sensitive = current_container.can_show_folder;
-        get_action ("view-mode").change_state (new Variant.uint32 (mode));
+
+        var view_mode_action = get_action ("view-mode");
+        view_mode_action.set_enabled (current_container.can_show_folder);
+        view_mode_action.change_state (new Variant.uint32 (mode));
+
         Files.app_settings.set_enum ("default-viewmode", mode);
     }
 
