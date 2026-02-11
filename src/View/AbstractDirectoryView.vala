@@ -428,6 +428,11 @@ namespace Files {
             zoom_actions.add_action (action_zoom_out);
             zoom_actions.add_action (action_zoom_default);
 
+            // FIXME
+            // marlin_app.set_accels_for_action ("zoom-in", {"<Ctrl>plus", "<Ctrl>equal"});
+            // marlin_app.set_accels_for_action ("zoom-out", {"<Ctrl>minus"});
+            // marlin_app.set_accels_for_action ("zoom-default", {"<Ctrl>0"});
+
             notify["zoom-level"].connect (() => {
                 action_zoom_in.set_enabled (zoom_level < maximum_zoom);
                 action_zoom_out.set_enabled (zoom_level > minimum_zoom);

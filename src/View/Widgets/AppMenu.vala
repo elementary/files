@@ -32,10 +32,7 @@ public class Files.AppMenu : Gtk.Popover {
             _("Zoom Out")
         );
 
-        zoom_default_button = new Gtk.Button.with_label ("100%") {
-            action_name = "win.zoom",
-            action_target = "ZOOM_NORMAL"
-        };
+        zoom_default_button = new Gtk.Button.with_label ("100%");
         zoom_default_button.tooltip_markup = Granite.markup_accel_tooltip (
             app_instance.get_accels_for_action ("win.zoom::ZOOM_NORMAL"),
             _("Zoom 1:1")
@@ -249,6 +246,7 @@ public class Files.AppMenu : Gtk.Popover {
 
         zoom_in_button.action_name = "%s-view.zoom-in".printf (app_settings.get_string ("default-viewmode"));
         zoom_out_button.action_name = "%s-view.zoom-out".printf (app_settings.get_string ("default-viewmode"));
+        zoom_default_button.action_name = "%s-view.zoom-default".printf (app_settings.get_string ("default-viewmode"));
 
         if (settings == null) {
             critical ("Zoom string from settinggs: Null settings");
