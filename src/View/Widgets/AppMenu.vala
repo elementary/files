@@ -4,14 +4,30 @@
  */
 
 public class Files.AppMenu : Gtk.Popover {
+    private static Settings icon_view_preferences;
+    private static Settings list_view_preferences;
+    private static Settings column_view_preferences;
+
     private Gtk.Button redo_button;
     private Gtk.Button undo_button;
     private Gtk.Button zoom_default_button;
     private Gtk.Button zoom_in_button;
     private Gtk.Button zoom_out_button;
+
+    private Gtk.RadioButton iso_button;
+    private Gtk.RadioButton locale_button;
+    private Gtk.RadioButton informal_button;
+    private Gtk.RadioButton compact_button;
+
     private string[] redo_accels;
     private string[] undo_accels;
     private unowned UndoManager undo_manager;
+
+    static construct {
+        icon_view_preferences = new Settings ("io.elementary.files.icon-view");
+        list_view_preferences = new Settings ("io.elementary.files.list-view");
+        column_view_preferences = new Settings ("io.elementary.files.column-view");
+    }
 
     construct {
         var app_instance = (Gtk.Application)(GLib.Application.get_default ());
@@ -120,13 +136,16 @@ public class Files.AppMenu : Gtk.Popover {
         ///TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
         var datetimeformat_header = new Granite.HeaderLabel (_("Date & Time Format"));
 
-        var iso_button = new Gtk.RadioButton.with_label (null, DateFormatMode.ISO.to_string ());
+        iso_button = new Gtk.RadioButton.with_label (null, DateFormatMode.ISO.to_string ());
         iso_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
-        var locale_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.LOCALE.to_string ());
+
+        locale_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.LOCALE.to_string ());
         locale_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
-        var informal_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.INFORMAL.to_string ());
+
+        informal_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.INFORMAL.to_string ());
         informal_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
-        var compact_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.COMPACT.to_string ());
+
+        compact_button = new Gtk.RadioButton.with_label_from_widget (iso_button, DateFormatMode.COMPACT.to_string ());
         compact_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
         var menu_box = new Gtk.Box (VERTICAL, 0) {
@@ -161,32 +180,12 @@ public class Files.AppMenu : Gtk.Popover {
 
         // Connect to all view settings rather than try to connect and disconnect
         // continuously to current view mode setting.
-        var icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        var list_view_settings = new Settings ("io.elementary.files.list-view");
-        var column_view_settings = new Settings ("io.elementary.files.column-view");
+
         icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
 
         var app_settings = new Settings ("io.elementary.files.preferences");
-        // Initialize and connect dateformat buttons
-        switch (app_settings.get_enum ("date-format")) {
-            case DateFormatMode.ISO:
-                iso_button.active = true;
-                break;
-            case DateFormatMode.LOCALE:
-                locale_button.active = true;
-                break;
-            case DateFormatMode.INFORMAL:
-                informal_button.active= true;
-                break;
-            case DateFormatMode.COMPACT:
-                compact_button.active= true;
-                break;
-            default:
-                assert_not_reached ();
-        }
-
         iso_button.toggled.connect (() => {
             if (iso_button.active) {
                 app_settings.set_enum ("date-format", DateFormatMode.ISO);
@@ -207,6 +206,8 @@ public class Files.AppMenu : Gtk.Popover {
                 app_settings.set_enum ("date-format", DateFormatMode.COMPACT);
             }
         });
+
+        notify["visible"].connect (on_visible);
     }
 
     private void set_undo_redo_tooltips () {
@@ -228,13 +229,44 @@ public class Files.AppMenu : Gtk.Popover {
         );
     }
 
-    public void on_zoom_setting_changed (Settings settings, string key) {
-        if (settings == null) {
-            critical ("Zoom string from settinggs: Null settings");
-            zoom_default_button.label = "";
-            return;
+    public void on_visible () {
+        var app_settings = new Settings ("io.elementary.files.preferences");
+        // Initialize and connect dateformat buttons
+        switch (app_settings.get_enum ("date-format")) {
+            case DateFormatMode.ISO:
+                iso_button.active = true;
+                break;
+            case DateFormatMode.LOCALE:
+                locale_button.active = true;
+                break;
+            case DateFormatMode.INFORMAL:
+                informal_button.active= true;
+                break;
+            case DateFormatMode.COMPACT:
+                compact_button.active= true;
+                break;
+            default:
+                assert_not_reached ();
         }
 
+        switch (app_settings.get_enum ("default-viewmode")) {
+            case ViewMode.ICON:
+                on_zoom_setting_changed (icon_view_settings);
+                break;
+            case ViewMode.LIST:
+                on_zoom_setting_changed (list_view_settings);
+                break;
+            case ViewMode.MILLER_COLUMNS:
+                on_zoom_setting_changed (column_view_settings);
+                break;
+            default:
+                assert_not_reached (); //Other settings are invalid
+        }
+    }
+
+    // @key parameter not used - needed to match signal
+    // @settings is guaranteed non-null as now private method
+    private void on_zoom_setting_changed (Settings settings, string key = "zoom-level") {
         var default_zoom = (Files.ZoomLevel)(settings.get_enum ("default-zoom-level"));
         var zoom_level = (Files.ZoomLevel)(settings.get_enum ("zoom-level"));
         zoom_default_button.label = ("%.0f%%").printf ((double)(zoom_level.to_icon_size ()) / (double)(default_zoom.to_icon_size ()) * 100);
