@@ -22,34 +22,14 @@
 */
 
 public class Files.View.Window : Hdy.ApplicationWindow {
-    static uint window_id = 0;
+    public signal void loading_uri (string location);
+    public signal void folder_deleted (GLib.File location);
+    public signal void free_space_change ();
 
-    const GLib.ActionEntry [] WIN_ENTRIES = {
-        {"new-window", action_new_window},
-        {"refresh", action_reload},
-        {"undo", action_undo},
-        {"redo", action_redo},
-        {"bookmark", action_bookmark},
-        {"find", action_find, "s"},
-        {"edit-path", action_edit_path},
-        {"tab", action_tab, "s"},
-        {"go-to", action_go_to, "s"},
-        {"zoom", action_zoom, "s"},
-        {"view-mode", action_view_mode, "u", "0" },
-        {"show-hidden", null, null, "false", change_state_show_hidden},
-        {"singleclick-select", null, null, "false", change_state_single_click_select},
-        {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-        {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
-        {"show-file-preview", null, null, "false", change_state_show_file_preview},
-        {"tabhistory-restore", action_tabhistory_restore, "s" },
-        {"folders-before-files", null, null, "true", change_state_folders_before_files},
-        {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
-        {"forward", action_forward, "i"},
-        {"back", action_back, "i"},
-        {"focus-sidebar", action_focus_sidebar}
-    };
-
+    public Files.Application marlin_app { get; construct; }
     public uint window_number { get; construct; }
+
+    public Hdy.TabView tab_view { get; private set; }
 
     public bool is_first_window {
         get {
@@ -79,19 +59,43 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    public Gtk.Builder ui;
-    public Files.Application marlin_app { get; construct; }
-    private unowned UndoManager undo_manager;
-    public Hdy.HeaderBar headerbar;
-    public Chrome.ViewSwitcher view_switcher;
-    public Hdy.TabView tab_view;
-    public Hdy.TabBar tab_bar;
-    private Gtk.Paned lside_pane;
-    public SidebarInterface sidebar;
-    private Chrome.ButtonWithMenu button_forward;
+    private const GLib.ActionEntry [] WIN_ENTRIES = {
+        {"new-window", action_new_window},
+        {"refresh", action_reload},
+        {"undo", action_undo},
+        {"redo", action_redo},
+        {"bookmark", action_bookmark},
+        {"find", action_find, "s"},
+        {"edit-path", action_edit_path},
+        {"tab", action_tab, "s"},
+        {"go-to", action_go_to, "s"},
+        {"zoom", action_zoom, "s"},
+        {"view-mode", action_view_mode, "u", "0" },
+        {"show-hidden", null, null, "false", change_state_show_hidden},
+        {"singleclick-select", null, null, "false", change_state_single_click_select},
+        {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
+        {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
+        {"show-file-preview", null, null, "false", change_state_show_file_preview},
+        {"tabhistory-restore", action_tabhistory_restore, "s" },
+        {"folders-before-files", null, null, "true", change_state_folders_before_files},
+        {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
+        {"forward", action_forward, "i"},
+        {"back", action_back, "i"},
+        {"focus-sidebar", action_focus_sidebar}
+    };
+
+    private static uint window_id = 0;
+
     private Chrome.ButtonWithMenu button_back;
+    private Chrome.ButtonWithMenu button_forward;
     private Chrome.LocationBar? location_bar;
+    private Chrome.ViewSwitcher view_switcher;
     private Gtk.MenuButton tab_history_button;
+    private Gtk.Paned lside_pane;
+    private Hdy.HeaderBar headerbar;
+    private SidebarInterface sidebar;
+
+    private unowned UndoManager undo_manager;
 
     private bool locked_focus { get; set; default = false; }
     private bool tabs_restored = false;
@@ -99,10 +103,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private bool doing_undo_redo = false;
 
     private Gtk.EventControllerKey key_controller; //[Gtk3] Does not work unless we keep this ref
-
-    public signal void loading_uri (string location);
-    public signal void folder_deleted (GLib.File location);
-    public signal void free_space_change ();
 
     public Window (Files.Application _application) {
         Object (
@@ -246,7 +246,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             use_popover = false
         };
 
-        tab_bar = new Hdy.TabBar () {
+        var tab_bar = new Hdy.TabBar () {
             autohide = false,
             expand_tabs = false,
             inverted = true,
@@ -1355,7 +1355,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var mode = current_container.view_mode;
         view_switcher.set_mode (mode);
         view_switcher.sensitive = current_container.can_show_folder;
-        get_action ("view-mode").change_state (new Variant.uint32 (mode));
+
+        var view_mode_action = get_action ("view-mode");
+        view_mode_action.set_enabled (current_container.can_show_folder);
+        view_mode_action.change_state (new Variant.uint32 (mode));
+
         Files.app_settings.set_enum ("default-viewmode", mode);
     }
 
