@@ -283,7 +283,5 @@ public class Files.Application : Gtk.Application {
                                        Files.Preferences.get_default (), "clock-format", GLib.SettingsBindFlags.GET);
         gnome_privacy_settings.bind ("remember-recent-files",
                                      Files.Preferences.get_default (), "remember-history", GLib.SettingsBindFlags.GET);
-        gtk_file_chooser_settings.bind ("sort-directories-first",
-                                        prefs, "sort-directories-first", GLib.SettingsBindFlags.DEFAULT);
     }
 }
