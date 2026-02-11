@@ -26,10 +26,7 @@ public class Files.AppMenu : Gtk.Popover {
     construct {
         var app_instance = (Gtk.Application)(GLib.Application.get_default ());
 
-        zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic", Gtk.IconSize.MENU) {
-            action_name = "win.zoom",
-            action_target = "ZOOM_OUT"
-        };
+        zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic", Gtk.IconSize.MENU);
         zoom_out_button.tooltip_markup = Granite.markup_accel_tooltip (
             app_instance.get_accels_for_action ("win.zoom::ZOOM_OUT"),
             _("Zoom Out")
@@ -44,10 +41,7 @@ public class Files.AppMenu : Gtk.Popover {
             _("Zoom 1:1")
         );
 
-        zoom_in_button = new Gtk.Button.from_icon_name ("zoom-in-symbolic", Gtk.IconSize.MENU) {
-            action_name = "win.zoom",
-            action_target = "ZOOM_IN"
-        };
+        zoom_in_button = new Gtk.Button.from_icon_name ("zoom-in-symbolic", Gtk.IconSize.MENU);
         zoom_in_button.tooltip_markup = Granite.markup_accel_tooltip (
             app_instance.get_accels_for_action ("win.zoom::ZOOM_IN"),
             _("Zoom In")
@@ -178,6 +172,8 @@ public class Files.AppMenu : Gtk.Popover {
         var app_settings = new Settings ("io.elementary.files.preferences");
         app_settings.changed["default-viewmode"].connect (on_zoom_setting_changed);
 
+        on_zoom_setting_changed ();
+
         // Initialize and connect dateformat buttons
         switch (app_settings.get_enum ("date-format")) {
             case DateFormatMode.ISO:
@@ -251,6 +247,9 @@ public class Files.AppMenu : Gtk.Popover {
                 break;
         }
 
+        zoom_in_button.action_name = "%s-view.zoom-in".printf (app_settings.get_string ("default-viewmode"));
+        zoom_out_button.action_name = "%s-view.zoom-out".printf (app_settings.get_string ("default-viewmode"));
+
         if (settings == null) {
             critical ("Zoom string from settinggs: Null settings");
             zoom_default_button.label = "";
@@ -260,11 +259,5 @@ public class Files.AppMenu : Gtk.Popover {
         var default_zoom = (Files.ZoomLevel)(settings.get_enum ("default-zoom-level"));
         var zoom_level = (Files.ZoomLevel)(settings.get_enum ("zoom-level"));
         zoom_default_button.label = ("%.0f%%").printf ((double)(zoom_level.to_icon_size ()) / (double)(default_zoom.to_icon_size ()) * 100);
-
-        var max_zoom = settings.get_enum ("maximum-zoom-level");
-        var min_zoom = settings.get_enum ("minimum-zoom-level");
-
-        zoom_in_button.sensitive = zoom_level < max_zoom;
-        zoom_out_button.sensitive = zoom_level > min_zoom;
     }
 }
