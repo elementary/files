@@ -287,28 +287,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
 
-        /*/
-        /* Connect and abstract signals to local ones
-        /*/
-        view_switcher.action.activate.connect ((id) => {
-            switch ((ViewMode)(id.get_uint32 ())) {
-                case ViewMode.ICON:
-                    app_menu.on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
-                    break;
-                case ViewMode.LIST:
-                    app_menu.on_zoom_setting_changed (Files.list_view_settings, "zoom-level");
-                    break;
-                case ViewMode.MILLER_COLUMNS:
-                    app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
-                    break;
-                case ViewMode.PREFERRED:
-                case ViewMode.CURRENT:
-                case ViewMode.INVALID:
-                    assert_not_reached (); //The switcher should not generate these modes
-            }
-        });
-
-
         button_forward.slow_press.connect (() => {
             get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
         });
