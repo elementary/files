@@ -504,17 +504,17 @@ namespace Files {
             insert_action_group ("common", common_actions);
         }
 
-        public void zoom_in () {
+        private void zoom_in () {
             zoom_level = zoom_level + 1;
         }
 
-        public void zoom_out () {
+        private void zoom_out () {
             if (zoom_level > 0) {
                 zoom_level = zoom_level - 1;
             }
         }
 
-        public void zoom_normal () {
+        private void zoom_normal () {
             var view_settings = get_view_settings ();
             if (view_settings == null) {
                 zoom_level = ZoomLevel.NORMAL;

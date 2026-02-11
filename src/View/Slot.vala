@@ -351,24 +351,6 @@ namespace Files.View {
             }
         }
 
-        public override void zoom_in () {
-            if (dir_view != null) {
-                dir_view.zoom_in ();
-            }
-        }
-
-        public override void zoom_out () {
-            if (dir_view != null) {
-                dir_view.zoom_out ();
-            }
-        }
-
-        public override void zoom_normal () {
-            if (dir_view != null) {
-                dir_view.zoom_normal ();
-            }
-        }
-
         public override void close () {
             debug ("SLOT close %s", uri);
             cancel_timeouts ();
