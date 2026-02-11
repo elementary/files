@@ -73,8 +73,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"view-mode", action_view_mode, "u", "0" },
         {"show-hidden", null, null, "false", change_state_show_hidden},
         {"singleclick-select", null, null, "false", change_state_single_click_select},
-        {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-        {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
         {"show-file-preview", null, null, "false", change_state_show_file_preview},
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
@@ -121,6 +119,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         width_request = 500;
         icon_name = "system-file-manager";
         title = _(APP_TITLE);
+
+        var app_settings = new Settings ("io.elementary.files.preferences");
+        add_action (app_settings.create_action ("show-local-thumbnails"));
+        add_action (app_settings.create_action ("show-remote-thumbnails"));
 
         add_action_entries (WIN_ENTRIES, this);
         undo_actions_set_insensitive ();
@@ -279,8 +281,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
         get_action ("show-hidden").set_state (prefs.show_hidden_files);
-        get_action ("show-local-thumbnails").set_state (prefs.show_local_thumbnails);
-        get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
         get_action ("show-file-preview").set_state (prefs.show_file_preview);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
@@ -1073,18 +1073,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.Preferences.get_default ().singleclick_select = state;
-    }
-
-    public void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-remote-thumbnails", state);
-    }
-
-    public void change_state_show_local_thumbnails (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-local-thumbnails", state);
     }
 
     public void change_state_show_file_preview (GLib.SimpleAction action) {
