@@ -13,6 +13,16 @@ public class Files.AppMenu : Gtk.Popover {
     private string[] undo_accels;
     private unowned UndoManager undo_manager;
 
+    private static Settings column_view_settings;
+    private static Settings icon_view_settings;
+    private static Settings list_view_settings;
+
+    static construct {
+        column_view_settings = new Settings ("io.elementary.files.column-view");
+        icon_view_settings = new Settings ("io.elementary.files.icon-view");
+        list_view_settings = new Settings ("io.elementary.files.list-view");
+    }
+
     construct {
         var app_instance = (Gtk.Application)(GLib.Application.get_default ());
 
@@ -161,9 +171,6 @@ public class Files.AppMenu : Gtk.Popover {
 
         // Connect to all view settings rather than try to connect and disconnect
         // continuously to current view mode setting.
-        var icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        var list_view_settings = new Settings ("io.elementary.files.list-view");
-        var column_view_settings = new Settings ("io.elementary.files.column-view");
         icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
@@ -234,13 +241,13 @@ public class Files.AppMenu : Gtk.Popover {
         Settings settings = null;
         switch (app_settings.get_string ("default-viewmode")) {
             case "icon":
-                settings = Files.icon_view_settings;
+                settings = icon_view_settings;
                 break;
             case "list":
-                settings = Files.list_view_settings;
+                settings = list_view_settings;
                 break;
             case "miller_columns":
-                settings = Files.list_view_settings;
+                settings = column_view_settings;
                 break;
         }
 
