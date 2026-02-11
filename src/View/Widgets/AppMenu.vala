@@ -4,10 +4,6 @@
  */
 
 public class Files.AppMenu : Gtk.Popover {
-    private static Settings icon_view_preferences;
-    private static Settings list_view_preferences;
-    private static Settings column_view_preferences;
-
     private Gtk.Button redo_button;
     private Gtk.Button undo_button;
     private Gtk.Button zoom_default_button;
@@ -23,10 +19,14 @@ public class Files.AppMenu : Gtk.Popover {
     private string[] undo_accels;
     private unowned UndoManager undo_manager;
 
+    private static Settings column_view_settings;
+    private static Settings icon_view_settings;
+    private static Settings list_view_settings;
+
     static construct {
-        icon_view_preferences = new Settings ("io.elementary.files.icon-view");
-        list_view_preferences = new Settings ("io.elementary.files.list-view");
-        column_view_preferences = new Settings ("io.elementary.files.column-view");
+        column_view_settings = new Settings ("io.elementary.files.column-view");
+        icon_view_settings = new Settings ("io.elementary.files.icon-view");
+        list_view_settings = new Settings ("io.elementary.files.list-view");
     }
 
     construct {
@@ -180,12 +180,12 @@ public class Files.AppMenu : Gtk.Popover {
 
         // Connect to all view settings rather than try to connect and disconnect
         // continuously to current view mode setting.
-
         icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
 
         var app_settings = new Settings ("io.elementary.files.preferences");
+
         iso_button.toggled.connect (() => {
             if (iso_button.active) {
                 app_settings.set_enum ("date-format", DateFormatMode.ISO);
