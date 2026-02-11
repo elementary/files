@@ -216,8 +216,6 @@ public class Files.AppMenu : Gtk.Popover {
                 app_settings.set_enum ("date-format", DateFormatMode.COMPACT);
             }
         });
-
-        app_settings.changed["default-viewmode"].connect (on_zoom_setting_changed);
     }
 
     private void set_undo_redo_tooltips () {
