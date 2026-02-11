@@ -13,6 +13,16 @@ public class Files.AppMenu : Gtk.Popover {
     private string[] undo_accels;
     private unowned UndoManager undo_manager;
 
+    private static Settings column_view_settings;
+    private static Settings icon_view_settings;
+    private static Settings list_view_settings;
+
+    static construct {
+        column_view_settings = new Settings ("io.elementary.files.column-view");
+        icon_view_settings = new Settings ("io.elementary.files.icon-view");
+        list_view_settings = new Settings ("io.elementary.files.list-view");
+    }
+
     construct {
         var app_instance = (Gtk.Application)(GLib.Application.get_default ());
 
@@ -128,22 +138,19 @@ public class Files.AppMenu : Gtk.Popover {
 
         var locale_button = new Gtk.RadioButton.with_label (null, DateFormatMode.LOCALE.to_string ()) {
             action_name = "app.date-format",
-            action_target = new Variant.string ("locale"),
-            group = iso_button
+            action_target = new Variant.string ("locale")
         };
         locale_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
         var informal_button = new Gtk.RadioButton.with_label (null, DateFormatMode.INFORMAL.to_string ()) {
             action_name = "app.date-format",
-            action_target = new Variant.string ("informal"),
-            group = iso_button
+            action_target = new Variant.string ("informal")
         };
         informal_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
         var compact_button = new Gtk.RadioButton.with_label (null, DateFormatMode.COMPACT.to_string ()) {
             action_name = "app.date-format",
-            action_target = new Variant.string ("compact"),
-            group = iso_button
+            action_target = new Variant.string ("compact")
         };
         compact_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
@@ -179,14 +186,14 @@ public class Files.AppMenu : Gtk.Popover {
 
         // Connect to all view settings rather than try to connect and disconnect
         // continuously to current view mode setting.
-        var icon_view_settings = new Settings ("io.elementary.files.icon-view");
-        var list_view_settings = new Settings ("io.elementary.files.list-view");
-        var column_view_settings = new Settings ("io.elementary.files.column-view");
         icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
         column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
 
         var app_settings = new Settings ("io.elementary.files.preferences");
+        app_settings.changed["default-viewmode"].connect (on_zoom_setting_changed);
+
+        // Initialize and connect dateformat buttons
         app_instance.add_action (app_settings.create_action ("date-format"));
     }
 
@@ -209,7 +216,20 @@ public class Files.AppMenu : Gtk.Popover {
         );
     }
 
-    public void on_zoom_setting_changed (Settings settings, string key) {
+    private void on_zoom_setting_changed () {
+        Settings settings = null;
+        switch (app_settings.get_string ("default-viewmode")) {
+            case "icon":
+                settings = icon_view_settings;
+                break;
+            case "list":
+                settings = list_view_settings;
+                break;
+            case "miller_columns":
+                settings = column_view_settings;
+                break;
+        }
+
         if (settings == null) {
             critical ("Zoom string from settinggs: Null settings");
             zoom_default_button.label = "";
