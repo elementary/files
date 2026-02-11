@@ -121,6 +121,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         icon_name = "system-file-manager";
         title = _(APP_TITLE);
 
+        add_action (app_settings.create_action ("default-viewmode"));
+
         add_action_entries (WIN_ENTRIES, this);
         undo_actions_set_insensitive ();
 
@@ -284,9 +286,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
         get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
 
-        var view_mode_action = Files.app_settings.create_action ("default-viewmode");
-        add_action (view_mode_action);
-
         /*/
         /* Connect and abstract signals to local ones
         /*/
@@ -294,7 +293,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             var mode = real_mode ((ViewMode) Files.app_settings.get_enum ("default-viewmode"));
             current_container.change_view_mode (mode);
         });
-
 
         button_forward.slow_press.connect (() => {
             get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
