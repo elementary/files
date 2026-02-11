@@ -264,7 +264,8 @@ namespace Files {
 
         private Gtk.Widget view;
         protected Gtk.ScrolledWindow scrolled_window;
-        private Gtk.Label empty_label;
+        private Gtk.Label no_files_label;
+        private Gtk.Label hidden_label;
         private Gtk.Overlay overlay;
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
@@ -301,23 +302,49 @@ namespace Files {
                 shadow_type = NONE
             };
 
-            empty_label = new Gtk.Label (slot.get_empty_message ()) {
+            no_files_label = new Gtk.Label (slot.get_empty_message ()) {
+                wrap = true
+            };
+            no_files_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+            no_files_label.no_show_all = true;
+
+            var hidden_box = new Gtk.Box (VERTICAL, 24);
+            hidden_label = new Gtk.Label (_("This folder only contains hidden files")) {
+                wrap = true,
+                halign = START
+            };
+            hidden_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+            hidden_label.no_show_all = true;
+
+            var hidden_button = new Gtk.Button.with_label (_("Show")) {
+                no_show_all = true,
+                halign = CENTER
+            };
+
+            hidden_button.clicked.connect (() => {
+                show_hidden_files_in_folder (true, true);
+            });
+
+            hidden_label.bind_property ("visible", hidden_button, "visible", DEFAULT);
+            hidden_box.add (hidden_label);
+            hidden_box.add (hidden_button);
+
+            var empty_box = new Gtk.Box (VERTICAL, 0) {
                 halign = CENTER,
                 valign = CENTER,
                 hexpand = false,
                 vexpand = false,
-                wrap = true
             };
-            empty_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-            empty_label.no_show_all = true;
+            empty_box.add (no_files_label);
+            empty_box.add (hidden_box);
 
             overlay = new Gtk.Overlay () {
                 hexpand = true,
                 vexpand = true,
                 child = scrolled_window
             };
-            overlay.add_overlay (empty_label);
-            overlay.set_overlay_pass_through (empty_label, true);
+            overlay.add_overlay (empty_box);
+            overlay.set_overlay_pass_through (empty_box, true);
             overlay.add_events (Gdk.EventMask.ALL_EVENTS_MASK);
 
             child = overlay;
@@ -733,12 +760,15 @@ namespace Files {
             clear ();
             disconnect_directory_handlers (old_dir);
             connect_directory_handlers (new_dir);
+            old_dir.show_hidden_override = false;
+            new_dir.show_hidden_override = false;
         }
 
         public void prepare_reload (Directory dir) {
             cancel ();
             clear ();
             connect_directory_loading_handlers (dir);
+            dir.show_hidden_override = false;
         }
 
         private void clear () {
@@ -951,8 +981,8 @@ namespace Files {
         // Only called after initial loading finished, in response to files added due to internal or external
         // file operations
         private void add_file (Files.File file, Directory dir, bool is_internal = true) {
-            empty_label.visible = false;
             model.insert_sorted (file, dir);
+            update_no_files_labels ();
             if (is_internal) { /* This true once view finished loading */
                 // Do not select until the model has resorted else wrong file is selected
                 ulong model_resorted = 0;
@@ -1065,7 +1095,7 @@ namespace Files {
         public void after_trash_or_delete () {
             /* Need to use Idle else cursor gets reset to null after setting to delete_path */
             Idle.add (() => {
-                empty_label.visible = slot.directory.is_empty ();
+                update_no_files_labels ();
                 set_cursor (deleted_path, false, false, false);
                 unblock_directory_monitor ();
                 return GLib.Source.REMOVE;
@@ -1352,8 +1382,10 @@ namespace Files {
 
         private void on_directory_file_loaded (Directory dir, Files.File file) {
             // Do not select or sort files added during initial load.
-            empty_label.visible = false;
             model.add_file (file, dir);
+            if (no_files_label.visible || hidden_label.visible) {
+                update_no_files_labels ();
+            }
         }
 
         private void on_directory_file_changed (Directory dir, Files.File file) {
@@ -1387,8 +1419,9 @@ namespace Files {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             file.exists = false;
-            empty_label.visible = dir.is_empty ();
             model.remove_file (file, dir);
+
+            update_no_files_labels ();
 
             if (plugins != null) {
                 plugins.update_file_info (file);
@@ -1426,7 +1459,7 @@ namespace Files {
 
             // Wait for view to draw so thumbnails and color tags displayed on first sight
             Idle.add (() => {
-                empty_label.visible = slot.directory.is_empty ();
+                update_no_files_labels ();
                 thaw_tree ();
                 schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
@@ -1442,6 +1475,11 @@ namespace Files {
     /** Handle Preference changes */
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = ((Files.Preferences) prefs).show_hidden_files;
+            show_hidden_files_in_folder (show, false); // Cancels override
+            action_set_state (background_actions, "show-hidden", show);
+        }
+
+        private void show_hidden_files_in_folder (bool show, bool @override) {
             model.show_hidden_files = show;
             cancel ();
             /* As directory may reload, for consistent behaviour always lose selection */
@@ -1452,7 +1490,7 @@ namespace Files {
                 model.clear ();
             }
 
-            directory_hidden_changed (slot.directory, show);
+            directory_hidden_changed (slot.directory, show, @override);
 
             if (!show) {
                 unblock_model ();
@@ -1463,8 +1501,6 @@ namespace Files {
                     file.ensure_size ();
                 }
             }
-
-            action_set_state (background_actions, "show-hidden", show);
         }
 
         private void set_should_thumbnail () {
@@ -1486,9 +1522,11 @@ namespace Files {
             model.set_should_sort_directories_first (sort_directories_first);
         }
 
-        private void directory_hidden_changed (Directory dir, bool show) {
+        private void directory_hidden_changed (Directory dir, bool show, bool @override) {
             /* May not be slot.directory - could be subdirectory */
             connect_directory_loading_handlers (dir);
+            dir.show_hidden_override = @override;
+            warning ("dir show hidden override %s", dir.show_hidden_override.to_string ());
             dir.load_hiddens ();
         }
 
@@ -2585,6 +2623,30 @@ namespace Files {
         private void update_default_app (GLib.List<Files.File> selection) {
             default_app = MimeActions.get_default_application_for_files (selection);
             return;
+        }
+
+        // We need to throttle this for when e.g. pasting a large number of files into an empty folder
+        // or deleting a large number of files from a folder
+        private uint no_files_label_timeout_id = 0;
+        private bool no_files_label_wait;
+        private void update_no_files_labels () {
+            if (no_files_label_timeout_id == 0) {
+                no_files_label_wait = false;
+                no_files_label_timeout_id = Timeout.add (200, () => {
+                    if (no_files_label_wait) {
+                        no_files_label_wait = false;
+                        return Source.CONTINUE;
+                    } else {
+                        no_files_label_timeout_id = 0;
+                        no_files_label.visible = slot.directory.is_empty ();
+                        hidden_label.visible = !no_files_label.visible && model.is_empty;
+                        return Source.REMOVE;
+                    }
+                });
+            } else {
+                no_files_label_wait = true;
+                return;
+            }
         }
 
     /** Menu helpers */

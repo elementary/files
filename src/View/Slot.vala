@@ -28,8 +28,8 @@ namespace Files.View {
         private uint path_change_timeout_id = 0;
         private bool original_reload_request = false;
 
-        private const string EMPTY_MESSAGE = _("This Folder Is Empty");
-        private const string EMPTY_TRASH_MESSAGE = _("Trash Is Empty");
+        private const string EMPTY_MESSAGE = _("This Folder does not contain any files");
+        private const string EMPTY_TRASH_MESSAGE = _("Trash does not contain any files");
         private const string EMPTY_RECENT_MESSAGE = _("There Are No Recent Files");
         private const string DENIED_MESSAGE = _("Access Denied");
 
