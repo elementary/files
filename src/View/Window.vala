@@ -1025,7 +1025,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         update_undo_actions ();
     }
 
-    public void after_undo_redo () {
+    private void after_undo_redo () {
         if (current_container.slot.directory.is_recent) {
             get_action_group ("win").activate_action ("refresh", null);
         }
@@ -1058,7 +1058,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
 
-    public GLib.SimpleAction? get_action (string action_name) {
+    private GLib.SimpleAction? get_action (string action_name) {
         return (GLib.SimpleAction?)(lookup_action (action_name));
     }
 
