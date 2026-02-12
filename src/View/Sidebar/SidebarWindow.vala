@@ -230,14 +230,6 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         });
     }
 
-    public void add_favorite_uri (string uri, string custom_name = "") {
-        bookmark_listbox.add_favorite (uri, custom_name);
-    }
-
-    public bool has_favorite_uri (string uri) {
-        return bookmark_listbox.has_uri (uri);
-    }
-
     public void on_free_space_change () {
         /* We cannot be sure which devices will experience a freespace change so refresh all */
         device_listbox.refresh_info ();

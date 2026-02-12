@@ -1199,7 +1199,7 @@ namespace Files {
                 location = slot.directory.file.get_target_location ();
             }
 
-            window.bookmark_uri (location.get_uri ());
+            BookmarkList.get_instance ().insert_uri_at_end (location.get_uri (), "");
         }
 
         /** Background actions */
@@ -2058,6 +2058,9 @@ namespace Files {
                 ));
             }
 
+            var bookmark_action = (SimpleAction) common_actions.lookup_action ("bookmark");
+            var bookmark_list = BookmarkList.get_instance ();
+
             if (get_selected_files () != null) { // Add selection actions
                 var cut_menuitem = new Gtk.MenuItem ();
                 cut_menuitem.add (new Granite.AccelLabel (
@@ -2213,10 +2216,14 @@ namespace Files {
                         menu.add (rename_menuitem);
                     }
 
-                    /* Do  not offer to bookmark if location is already bookmarked */
-                    if (common_actions.get_action_enabled ("bookmark") &&
-                        window.can_bookmark_uri (selected_files.data.uri)) {
+                    bookmark_action.set_enabled (
+                        !bookmark_list.contains (
+                            new Bookmark.from_uri (selected_files.data.uri, "")
+                        )
+                    );
 
+                    /* Do  not offer to bookmark if location is already bookmarked */
+                    if (common_actions.get_action_enabled ("bookmark")) {
                         menu.add (bookmark_menuitem);
                     }
 
@@ -2273,9 +2280,14 @@ namespace Files {
                         menu.add (new SortSubMenuItem ());
                     }
 
+                    bookmark_action.set_enabled (
+                        !bookmark_list.contains (
+                            new Bookmark.from_uri (slot.directory.file.uri, "")
+                        )
+                    );
+
                     /* Do  not offer to bookmark if location is already bookmarked */
-                    if (common_actions.get_action_enabled ("bookmark") &&
-                        window.can_bookmark_uri (slot.directory.file.uri)) {
+                    if (common_actions.get_action_enabled ("bookmark")) {
 
                         menu.add (bookmark_menuitem);
                     }
