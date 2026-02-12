@@ -497,10 +497,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
     }
 
-    public new void set_title (string title) {
-        this.title = title;
-    }
-
     private void change_tab () {
         //Ignore if some restored tabs still loading
         if (restoring_tabs > 0) {
@@ -1361,7 +1357,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void update_labels (string uri) {
         if (current_container != null) { /* Can happen during restore */
-            set_title (current_container.tab_name); /* Not actually visible on elementaryos */
+            title = current_container.tab_name; /* Not actually visible on elementaryos */
             update_location_bar (uri);
             sidebar.sync_uri (uri);
         }
