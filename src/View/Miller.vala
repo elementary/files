@@ -40,6 +40,7 @@ namespace Files.View {
         public GLib.List<View.Slot> slot_list = null;
         public int total_width = 0;
 
+        private static Settings app_settings;
         private View.DetailsColumn details;
 
         public override bool is_frozen {
@@ -62,13 +63,17 @@ namespace Files.View {
             );
         }
 
+        static construct {
+            app_settings = new Settings ("io.elementary.files.preferences");
+        }
+
         construct {
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect ((s, p) => {
                 show_hidden_files_changed (((Files.Preferences)s).show_hidden_files);
             });
 
-            prefs.notify["show-file-preview"].connect (() => {
+            app_settings.changed["show-file-preview"].connect (() => {
                 on_slot_selection_changed (current_slot, current_slot.get_selected_files ());
             });
 
@@ -409,11 +414,10 @@ namespace Files.View {
             }
 
             View.Slot? to_activate = null;
-            var prefs = Files.Preferences.get_default ();
             switch (keyval) {
                 case Gdk.Key.Left:
                     if (current_position > 0) {
-                        if (prefs.show_file_preview) {
+                        if (app_settings.get_boolean ("show-file-preview")) {
                             clear_file_details ();
                         }
 
@@ -455,7 +459,7 @@ namespace Files.View {
                             return true;
                         }
 
-                        if (prefs.show_file_preview) {
+                        if (app_settings.get_boolean ("show-file-preview")) {
                             clear_file_details ();
                         }
 
@@ -476,7 +480,7 @@ namespace Files.View {
         private void on_slot_selection_changed (AbstractSlot source, GLib.List<Files.File> files) {
             if (source == current_slot) {
                 clear_file_details ();
-                if (Files.Preferences.get_default ().show_file_preview &&
+                if (app_settings.get_boolean ("show-file-preview") &&
                     files.length () == 1) {
 
                     draw_file_details (files.data, current_slot.get_directory_view ());
