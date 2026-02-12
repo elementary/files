@@ -72,7 +72,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"zoom", action_zoom, "s"},
         {"view-mode", action_view_mode, "u", "0" },
         {"singleclick-select", null, null, "false", change_state_single_click_select},
-        {"show-file-preview", null, null, "false", change_state_show_file_preview},
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
         {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
@@ -120,6 +119,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         title = _(APP_TITLE);
 
         var app_settings = new Settings ("io.elementary.files.preferences");
+        add_action (app_settings.create_action ("show-file-preview"));
         add_action (app_settings.create_action ("show-local-thumbnails"));
         add_action (app_settings.create_action ("show-remote-thumbnails"));
         add_action (app_settings.create_action ("show-hiddenfiles"));
@@ -282,7 +282,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
         get_action ("show-local-thumbnails").set_state (prefs.show_local_thumbnails);
         get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
-        get_action ("show-file-preview").set_state (prefs.show_file_preview);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
         get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
@@ -1046,12 +1045,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.Preferences.get_default ().singleclick_select = state;
-    }
-
-    public void change_state_show_file_preview (GLib.SimpleAction action) {
-        var state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-file-preview", state);
     }
 
     public void change_state_folders_before_files (GLib.SimpleAction action) {
