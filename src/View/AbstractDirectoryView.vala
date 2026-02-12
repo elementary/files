@@ -76,8 +76,7 @@ namespace Files {
             {"new", on_background_action_new, "s"},
             {"create-from", on_background_action_create_from, "s"},
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
-            {"reverse", on_background_action_reverse_changed, null, "false"},
-            {"show-hidden", null, null, "false", change_state_show_hidden}
+            {"reverse", on_background_action_reverse_changed, null, "false"}
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
@@ -1204,11 +1203,6 @@ namespace Files {
         }
 
         /** Background actions */
-
-        private void change_state_show_hidden (GLib.SimpleAction action) requires (window != null) {
-            window.change_state_show_hidden (action);
-        }
-
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
             switch (param.get_string ()) {
                 case "FOLDER":
@@ -1459,7 +1453,8 @@ namespace Files {
                 }
             }
 
-            action_set_state (background_actions, "show-hidden", show);
+            var app_settings = new Settings ("io.elementary.files.preferences");
+            app_settings.set_boolean ("show-hiddenfiles", show);
         }
 
         private void set_should_thumbnail () {
