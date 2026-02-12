@@ -30,7 +30,6 @@ namespace Files {
         public bool show_local_thumbnails {set; get; default = true;}
         public bool singleclick_select {set; get; default = false;}
         public bool confirm_trash {set; get; default = true;}
-        public bool force_icon_size {set; get; default = true;}
         public bool sort_directories_first { get; set; default = true; }
         public bool remember_history { get; set; default = true; }
 
