@@ -71,7 +71,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"go-to", action_go_to, "s"},
         {"zoom", action_zoom, "s"},
         {"view-mode", action_view_mode, "u", "0" },
-        {"singleclick-select", null, null, "false", change_state_single_click_select},
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"forward", action_forward, "i"},
         {"back", action_back, "i"},
@@ -119,9 +118,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var app_settings = new Settings ("io.elementary.files.preferences");
         add_action (app_settings.create_action ("restore-tabs"));
         add_action (app_settings.create_action ("show-file-preview"));
+        add_action (app_settings.create_action ("show-hiddenfiles"));
         add_action (app_settings.create_action ("show-local-thumbnails"));
         add_action (app_settings.create_action ("show-remote-thumbnails"));
-        add_action (app_settings.create_action ("show-hiddenfiles"));
+        add_action (app_settings.create_action ("singleclick-select"));
         add_action (app_settings.create_action ("sort-directories-first"));
 
         add_action_entries (WIN_ENTRIES, this);
@@ -277,10 +277,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         grid.show_all ();
 
         add (grid);
-
-        /** Apply preferences */
-        var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
-        get_action ("singleclick-select").set_state (prefs.singleclick_select);
 
         button_forward.slow_press.connect (() => {
             get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
@@ -1035,12 +1031,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
 
         doing_undo_redo = false;
-    }
-
-    public void change_state_single_click_select (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.Preferences.get_default ().singleclick_select = state;
     }
 
     private void connect_to_server () {
