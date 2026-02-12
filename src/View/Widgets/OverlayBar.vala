@@ -65,9 +65,11 @@ namespace Files.View {
                     selected_files = null;
                 }
 
-                if (is_miller && Preferences.get_default ().show_file_preview &&
-                    files.length () == 1 && !files.data.is_folder ()) {
-
+                if (is_miller &&
+                    new Settings ("io.elementary.files.preferences").get_boolean ("show-file-preview") &&
+                    files.length () == 1 &&
+                    !files.data.is_folder ()
+                ) {
                     visible = false;
                 } else {
                     real_update (selected_files);
