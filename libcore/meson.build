@@ -111,6 +111,10 @@ pantheon_files_core_library = shared_library(
     version: meson.project_version(),
 )
 
+gnome.post_install(
+    glib_compile_schemas: true
+)
+
 install_headers(
     pantheon_files_core_h_files,
     subdir: pantheon_files_core_name
