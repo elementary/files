@@ -77,8 +77,7 @@ namespace Files {
             {"create-from", on_background_action_create_from, "s"},
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"},
-            {"folders-first", on_background_action_folders_first_changed, null, "true"},
-            {"show-hidden", null, null, "false", change_state_show_hidden}
+            {"folders-first", on_background_action_folders_first_changed, null, "true"}
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
@@ -460,6 +459,7 @@ namespace Files {
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.notify["date-format"].connect (on_dateformat_changed);
 
+            var app_settings = new Settings ("io.elementary.files.preferences");
             app_settings.bind ("singleclick-select", this, "singleclick_select", SettingsBindFlags.DEFAULT);
 
             model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
@@ -1209,11 +1209,6 @@ namespace Files {
         }
 
         /** Background actions */
-
-        private void change_state_show_hidden (GLib.SimpleAction action) requires (window != null) {
-            window.change_state_show_hidden (action);
-        }
-
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
             switch (param.get_string ()) {
                 case "FOLDER":
@@ -1469,7 +1464,7 @@ namespace Files {
                 }
             }
 
-            action_set_state (background_actions, "show-hidden", show);
+            app_settings.set_boolean ("show-hiddenfiles", show);
         }
 
         private void set_should_thumbnail () {
