@@ -29,7 +29,6 @@ namespace Files {
         public bool show_remote_thumbnails {set; get; default = true;}
         public bool show_local_thumbnails {set; get; default = true;}
         public bool show_file_preview {set; get; default = true;}
-        public bool singleclick_select {set; get; default = false;}
         public bool confirm_trash {set; get; default = true;}
         public bool sort_directories_first { get; set; default = true; }
         public bool remember_history { get; set; default = true; }
