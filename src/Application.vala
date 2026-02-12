@@ -269,11 +269,6 @@ public class Files.Application : Gtk.Application {
 
         Files.app_settings.bind ("show-hiddenfiles", prefs, "show-hidden-files", GLib.SettingsBindFlags.DEFAULT);
 
-        Files.app_settings.bind ("show-remote-thumbnails",
-                                   prefs, "show-remote-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-        Files.app_settings.bind ("show-local-thumbnails",
-                                   prefs, "show-local-thumbnails", GLib.SettingsBindFlags.DEFAULT);
-
         Files.app_settings.bind ("show-file-preview",
                                    prefs, "show-file-preview", GLib.SettingsBindFlags.DEFAULT);
 

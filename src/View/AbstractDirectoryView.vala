@@ -286,6 +286,8 @@ namespace Files {
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
+        private static Settings app_settings;
+
         //TODO Rewrite in Object (), construct {} style
         protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
@@ -409,6 +411,10 @@ namespace Files {
             set_up_zoom_level ();
 
             connect_directory_handlers (slot.directory);
+        }
+
+        static construct {
+            app_settings = new Settings ("io.elementary.files.preferences");
         }
 
         ~AbstractDirectoryView () {
@@ -1458,16 +1464,14 @@ namespace Files {
                 }
             }
 
-            var app_settings = new Settings ("io.elementary.files.preferences");
             app_settings.set_boolean ("show-hiddenfiles", show);
         }
 
         private void set_should_thumbnail () {
-            var prefs = Files.Preferences.get_default ();
             if (slot.directory.is_network) {
-                should_thumbnail = slot.directory.can_open_files && prefs.show_remote_thumbnails;
+                should_thumbnail = slot.directory.can_open_files && app_settings.get_boolean ("show-remote-thumbnails");
             } else {
-                should_thumbnail = prefs.show_local_thumbnails;
+                should_thumbnail = app_settings.get_boolean ("show-local-thumbnails");
             }
         }
 
