@@ -71,7 +71,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"go-to", action_go_to, "s"},
         {"zoom", action_zoom, "s"},
         {"view-mode", action_view_mode, "u", "0" },
-        {"singleclick-select", null, null, "false", change_state_single_click_select},
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
         {"forward", action_forward, "i"},
@@ -123,6 +122,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         add_action (app_settings.create_action ("show-local-thumbnails"));
         add_action (app_settings.create_action ("show-remote-thumbnails"));
         add_action (app_settings.create_action ("show-hiddenfiles"));
+        add_action (app_settings.create_action ("singleclick-select"));
 
         add_action_entries (WIN_ENTRIES, this);
         undo_actions_set_insensitive ();
@@ -280,7 +280,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         /** Apply preferences */
         var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
-        get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
 
         button_forward.slow_press.connect (() => {
@@ -1036,12 +1035,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
 
         doing_undo_redo = false;
-    }
-
-    public void change_state_single_click_select (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.Preferences.get_default ().singleclick_select = state;
     }
 
     public void change_state_folders_before_files (GLib.SimpleAction action) {

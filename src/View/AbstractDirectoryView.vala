@@ -454,13 +454,13 @@ namespace Files {
 
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
-            prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
-            prefs.notify["show-local-thumbnails"].connect (on_show_thumbnails_changed);
             prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.notify["date-format"].connect (on_dateformat_changed);
-            prefs.bind_property (
-                "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
-            );
+
+            app_settings.bind ("singleclick-select", this, "singleclick_select", SettingsBindFlags.DEFAULT);
+
+            app_settings.changed["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
+            app_settings.changed["show-local-thumbnails"].connect (on_show_thumbnails_changed);
 
             model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
             model.row_deleted.connect (on_row_deleted);
