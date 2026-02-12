@@ -6,6 +6,11 @@ resources = gnome.compile_resources(
     source_dir: meson.project_source_root() / 'data'
 )
 
+install_data(
+    meson.project_source_root() / 'data' / 'schemas' / meson.project_name() + '.gschema.xml',
+    install_dir: get_option('datadir') / 'glib-2.0' / 'schemas'
+)
+
 pantheon_files_core_deps = [
     common_deps,
     posix_dep,
