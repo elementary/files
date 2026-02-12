@@ -172,6 +172,16 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         build_window ();
 
+        app_settings.changed["default-viewmode"].connect (() => {
+            if (tab_view == null || current_container == null) { // can occur during startup
+                return;
+            }
+
+            current_container.change_view_mode (
+                real_mode ((ViewMode) app_settings.get_enum ("default-viewmode"))
+            );
+        });
+
         int width, height;
         Files.app_settings.get ("window-size", "(ii)", out width, out height);
         default_width = width;
@@ -882,13 +892,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void action_view_mode (GLib.SimpleAction action, GLib.Variant? param) {
-        if (tab_view == null || current_container == null) { // can occur during startup
-            return;
-        }
-
-        ViewMode mode = real_mode ((ViewMode)(param.get_uint32 ()));
-        current_container.change_view_mode (mode);
-        /* ViewContainer takes care of changing appearance */
+        app_settings.set_enum ("default-viewmode", (int) param.get_uint32 ());
     }
 
     private void action_back (SimpleAction action, Variant? param) {
