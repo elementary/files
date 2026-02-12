@@ -47,12 +47,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    public ViewMode default_mode {
-        get {
-            return ViewMode.PREFERRED;
-        }
-    }
-
     public GLib.File default_location {
         owned get {
             return GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
@@ -414,7 +408,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.close_page_finish (page, true);
 
         if (tab_view.n_pages == 0) {
-            add_tab.begin (default_location, default_mode, false);
+            add_tab.begin (default_location, PREFERRED, false);
         }
 
         return Gdk.EVENT_STOP;
@@ -515,7 +509,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     public async void open_tabs (
         owned GLib.File[]? files,
-        ViewMode mode = default_mode,
+        ViewMode mode = PREFERRED,
         bool ignore_duplicate
     ) {
         // Always try to restore tabs
@@ -540,7 +534,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private async bool add_tab_by_uri (string uri, ViewMode mode = default_mode) {
+    private async bool add_tab_by_uri (string uri, ViewMode mode = PREFERRED) {
         var file = get_file_from_uri (uri);
         if (file != null) {
             return yield add_tab (file, mode, false);
@@ -551,7 +545,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private async bool add_tab (
         GLib.File _location = default_location,
-        ViewMode mode = default_mode,
+        ViewMode mode = PREFERRED,
         bool ignore_duplicate
     ) {
         // Do not try to restore locations that we cannot determine the filetype. This will
@@ -786,7 +780,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private void add_window (GLib.File location = default_location, ViewMode mode = default_mode) {
+    private void add_window (GLib.File location = default_location, ViewMode mode = PREFERRED) {
         var new_window = new Window (marlin_app);
         new_window.add_tab.begin (location, real_mode (mode), false);
         new_window.present ();
@@ -959,7 +953,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private void action_tab (GLib.SimpleAction action, GLib.Variant? param) {
         switch (param.get_string ()) {
             case "NEW":
-                add_tab.begin (default_location, default_mode, false);
+                add_tab.begin (default_location, PREFERRED, false);
                 break;
 
             case "CLOSE":
