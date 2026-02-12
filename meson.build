@@ -106,9 +106,9 @@ project_config_dep = declare_dependency(
 
 gnome = import('gnome')
 
+subdir('data')
 subdir('libcore')
 subdir('src')
-subdir('data')
 subdir('pantheon-files-daemon')
 subdir('plugins')
 subdir('filechooser-portal')
