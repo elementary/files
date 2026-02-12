@@ -74,7 +74,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"singleclick-select", null, null, "false", change_state_single_click_select},
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"folders-before-files", null, null, "true", change_state_folders_before_files},
-        {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
         {"forward", action_forward, "i"},
         {"back", action_back, "i"},
         {"focus-sidebar", action_focus_sidebar}
@@ -119,6 +118,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         title = _(APP_TITLE);
 
         var app_settings = new Settings ("io.elementary.files.preferences");
+        add_action (app_settings.create_action ("restore-tabs"));
         add_action (app_settings.create_action ("show-file-preview"));
         add_action (app_settings.create_action ("show-local-thumbnails"));
         add_action (app_settings.create_action ("show-remote-thumbnails"));
@@ -284,7 +284,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
         get_action ("singleclick-select").set_state (prefs.singleclick_select);
         get_action ("folders-before-files").set_state (prefs.sort_directories_first);
-        get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
 
         button_forward.slow_press.connect (() => {
             get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
@@ -1051,12 +1050,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         bool state = !action.state.get_boolean ();
         action.set_state (new GLib.Variant.boolean (state));
         Files.Preferences.get_default ().sort_directories_first = state;
-    }
-
-    public void change_state_restore_tabs_on_startup (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("restore-tabs", state);
     }
 
     private void connect_to_server () {
