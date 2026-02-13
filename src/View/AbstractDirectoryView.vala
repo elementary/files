@@ -2214,14 +2214,12 @@ namespace Files {
                         menu.add (rename_menuitem);
                     }
 
-                    bookmark_action.set_enabled (
-                        !bookmark_list.contains (
-                            new Bookmark.from_uri (selected_files.data.uri, "")
-                        )
+                    var already_bookmarked = bookmark_list.contains (
+                        new Bookmark.from_uri (selected_files.data.uri, "")
                     );
 
                     /* Do  not offer to bookmark if location is already bookmarked */
-                    if (common_actions.get_action_enabled ("bookmark")) {
+                    if (common_actions.get_action_enabled ("bookmark") && !already_bookmarked) {
                         menu.add (bookmark_menuitem);
                     }
 
@@ -2278,14 +2276,12 @@ namespace Files {
                         menu.add (new SortSubMenuItem ());
                     }
 
-                    bookmark_action.set_enabled (
-                        !bookmark_list.contains (
-                            new Bookmark.from_uri (slot.directory.file.uri, "")
-                        )
+                    var already_bookmarked = bookmark_list.contains (
+                        new Bookmark.from_uri (slot.directory.file.uri, "")
                     );
 
                     /* Do  not offer to bookmark if location is already bookmarked */
-                    if (common_actions.get_action_enabled ("bookmark")) {
+                    if (common_actions.get_action_enabled ("bookmark") && !already_bookmarked) {
 
                         menu.add (bookmark_menuitem);
                     }
