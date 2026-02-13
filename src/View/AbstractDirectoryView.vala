@@ -2313,40 +2313,51 @@ namespace Files {
 
         private class SortSubMenuItem : Gtk.MenuItem {
             construct {
-                var name_radioitem = new Gtk.CheckMenuItem.with_label (_("Name"));
-                name_radioitem.action_name = "background.sort-by";
-                name_radioitem.action_target = "name";
-                name_radioitem.draw_as_radio = true;
+                var name_item = new MenuItem (
+                    _("Name"),
+                    Action.print_detailed_name ("background.sort-by", new Variant.string ("name"))
+                );
 
-                var size_radioitem = new Gtk.CheckMenuItem.with_label (_("Size"));
-                size_radioitem.action_name = "background.sort-by";
-                size_radioitem.action_target = "size";
-                size_radioitem.draw_as_radio = true;
+                var size_item = new MenuItem (
+                    _("Size"),
+                    Action.print_detailed_name ("background.sort-by", new Variant.string ("size"))
+                );
 
-                var type_radioitem = new Gtk.CheckMenuItem.with_label (_("Type"));
-                type_radioitem.action_name = "background.sort-by";
-                type_radioitem.action_target = "type";
-                type_radioitem.draw_as_radio = true;
+                var type_item = new MenuItem (
+                    _("Type"),
+                    Action.print_detailed_name ("background.sort-by", new Variant.string ("type"))
+                );
 
-                var date_radioitem = new Gtk.CheckMenuItem.with_label (_("Date"));
-                date_radioitem.action_name = "background.sort-by";
-                date_radioitem.action_target = "modified";
-                date_radioitem.draw_as_radio = true;
+                var date_item = new MenuItem (
+                    _("Date"),
+                    Action.print_detailed_name ("background.sort-by", new Variant.string ("modified"))
+                );
 
-                var reversed_checkitem = new Gtk.CheckMenuItem.with_label (_("Reversed Order"));
-                reversed_checkitem.action_name = "background.reverse";
+                var reversed_item = new MenuItem (
+                    _("Reversed Order"),
+                    "background.reverse"
+                );
 
-                var folders_first_checkitem = new Gtk.CheckMenuItem.with_label (_("Folders Before Files"));
-                folders_first_checkitem.action_name = "win.sort-directories-first";
+                var folders_first_item = new MenuItem (
+                    _("Folders Before Files"),
+                    "win.sort-directories-first"
+                );
 
-                submenu = new Gtk.Menu ();
-                submenu.add (name_radioitem);
-                submenu.add (size_radioitem);
-                submenu.add (type_radioitem);
-                submenu.add (date_radioitem);
-                submenu.add (new Gtk.SeparatorMenuItem ());
-                submenu.add (reversed_checkitem);
-                submenu.add (folders_first_checkitem);
+                var radio_section = new Menu ();
+                radio_section.append_item (name_item);
+                radio_section.append_item (size_item);
+                radio_section.append_item (type_item);
+                radio_section.append_item (date_item);
+
+                var check_section = new Menu ();
+                check_section.append_item (reversed_item);
+                check_section.append_item (folders_first_item);
+
+                var menu_model = new Menu ();
+                menu_model.append_section (null, radio_section);
+                menu_model.append_section (null, check_section);
+
+                submenu = new Gtk.Menu.from_model (menu_model);
 
                 label = _("Sort by");
             }
