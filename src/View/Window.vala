@@ -796,14 +796,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         unowned var selected_files = current_container.view.get_selected_files ();
         if (selected_files == null) {
             bookmark_list.insert_uri_at_end (current_container.location.get_uri (), "");
-            return;
-        }
-
-        if (selected_files.first ().next == null) {
+        } else if (selected_files.first ().next == null) {
             bookmark_list.insert_uri_at_end (selected_files.first ().data.uri, "");
-        }
-
-        // Ignore if more than one item selected
+        } // Ignore if more than one item selected
     }
 
     private void action_find (GLib.SimpleAction action, GLib.Variant? param) {
