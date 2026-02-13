@@ -76,8 +76,7 @@ namespace Files {
             {"new", on_background_action_new, "s"},
             {"create-from", on_background_action_create_from, "s"},
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
-            {"reverse", on_background_action_reverse_changed, null, "false"},
-            {"folders-first", on_background_action_folders_first_changed, null, "true"}
+            {"reverse", on_background_action_reverse_changed, null, "false"}
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
@@ -456,12 +455,13 @@ namespace Files {
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
             prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
             prefs.notify["show-local-thumbnails"].connect (on_show_thumbnails_changed);
-            prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.notify["date-format"].connect (on_dateformat_changed);
 
             app_settings.bind ("singleclick-select", this, "singleclick_select", SettingsBindFlags.DEFAULT);
 
-            model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
+            app_settings.changed["sort-directories-first"].connect (on_sort_directories_first_changed);
+
+            model.set_should_sort_directories_first (app_settings.get_boolean ("sort-directories-first"));
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
             model.sort_column_changed.connect (on_sort_column_changed);
@@ -1236,11 +1236,6 @@ namespace Files {
             set_sort (null, true);
         }
 
-        private void on_background_action_folders_first_changed (GLib.SimpleAction action, GLib.Variant? val) {
-            var prefs = Files.Preferences.get_default ();
-            prefs.sort_directories_first = !prefs.sort_directories_first;
-        }
-
         private void set_sort (string? col_name, bool reverse) {
             int sort_column_id;
             Gtk.SortType sort_order;
@@ -1480,9 +1475,8 @@ namespace Files {
             slot.reload ();
         }
 
-        private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            var sort_directories_first = ((Files.Preferences) prefs).sort_directories_first;
-            model.set_should_sort_directories_first (sort_directories_first);
+        private void on_sort_directories_first_changed (Settings settings, string key) {
+            model.set_should_sort_directories_first (settings.get_boolean (key));
         }
 
         private void directory_hidden_changed (Directory dir, bool show) {
@@ -2343,7 +2337,7 @@ namespace Files {
                 reversed_checkitem.action_name = "background.reverse";
 
                 var folders_first_checkitem = new Gtk.CheckMenuItem.with_label (_("Folders Before Files"));
-                folders_first_checkitem.action_name = "background.folders-first";
+                folders_first_checkitem.action_name = "win.sort-directories-first";
 
                 submenu = new Gtk.Menu ();
                 submenu.add (name_radioitem);
@@ -2574,8 +2568,6 @@ namespace Files {
                 action_set_state (background_actions, "sort-by", val);
                 val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
                 action_set_state (background_actions, "reverse", val);
-                val = new GLib.Variant.boolean (Files.Preferences.get_default ().sort_directories_first);
-                action_set_state (background_actions, "folders-first", val);
             } else {
                 warning ("Update menu actions sort: The model is unsorted - this should not happen");
             }
