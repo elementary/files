@@ -2360,10 +2360,7 @@ namespace Files {
                     _("Folder"),
                      Action.print_detailed_name ("background.new", new Variant.string ("FOLDER"))
                 );
-                // folder_menuitem.add (new Granite.AccelLabel (
-                //     _("Folder"),
-                //     "<Ctrl><Shift>n"
-                // ));
+                folder_menuitem.set_attribute_value ("accel", "<Ctrl><Shift>n");
 
                 var file_menuitem = new MenuItem (
                     _("Empty File"),
