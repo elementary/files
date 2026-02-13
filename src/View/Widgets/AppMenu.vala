@@ -94,7 +94,7 @@ public class Files.AppMenu : Gtk.Popover {
         };
 
         var folders_before_files = new Granite.SwitchModelButton (_("Sort Folders before Files")) {
-            action_name = "win.folders-before-files"
+            action_name = "win.sort-directories-first"
         };
 
         var restore_tabs = new Granite.SwitchModelButton (_("Restore Tabs from Last Time")) {
