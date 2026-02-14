@@ -739,14 +739,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    public void bookmark_uri (string uri, string custom_name = "") {
-        sidebar.add_favorite_uri (uri, custom_name);
-    }
-
-    public bool can_bookmark_uri (string uri) {
-        return !sidebar.has_favorite_uri (uri);
-    }
-
     private void move_content_to_new_window (ViewContainer view_container) {
         add_window (view_container.location, view_container.view_mode);
         remove_content (view_container);
@@ -799,12 +791,13 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
+        var bookmark_list = BookmarkList.get_instance ();
         /* Note: Duplicate bookmarks will not be created by BookmarkList */
         unowned var selected_files = current_container.view.get_selected_files ();
         if (selected_files == null) {
-            sidebar.add_favorite_uri (current_container.location.get_uri ());
+            bookmark_list.insert_uri_at_end (current_container.location.get_uri (), "");
         } else if (selected_files.first ().next == null) {
-            sidebar.add_favorite_uri (selected_files.first ().data.uri);
+            bookmark_list.insert_uri_at_end (selected_files.first ().data.uri, "");
         } // Ignore if more than one item selected
     }
 
