@@ -453,12 +453,12 @@ namespace Files {
 
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
-            prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
-            prefs.notify["show-local-thumbnails"].connect (on_show_thumbnails_changed);
             prefs.notify["date-format"].connect (on_dateformat_changed);
 
             app_settings.bind ("singleclick-select", this, "singleclick_select", SettingsBindFlags.DEFAULT);
 
+            app_settings.changed["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
+            app_settings.changed["show-local-thumbnails"].connect (on_show_thumbnails_changed);
             app_settings.changed["sort-directories-first"].connect (on_sort_directories_first_changed);
 
             model.set_should_sort_directories_first (app_settings.get_boolean ("sort-directories-first"));
@@ -1462,11 +1462,10 @@ namespace Files {
         }
 
         private void set_should_thumbnail () {
-            var prefs = Files.Preferences.get_default ();
             if (slot.directory.is_network) {
-                should_thumbnail = slot.directory.can_open_files && prefs.show_remote_thumbnails;
+                should_thumbnail = slot.directory.can_open_files && app_settings.get_boolean ("show-remote-thumbnails");
             } else {
-                should_thumbnail = prefs.show_local_thumbnails;
+                should_thumbnail = app_settings.get_boolean ("show-local-thumbnails");
             }
         }
 
