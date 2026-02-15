@@ -18,7 +18,7 @@
 
 namespace Files {
     public class ListView : AbstractTreeView {
-
+        protected static Settings list_view_preferences;
         /* We wait two seconds after row is collapsed to unload the subdirectory */
         const int COLLAPSE_TO_UNLOAD_DELAY = 2;
 
@@ -36,6 +36,10 @@ namespace Files {
 
         public ListView (View.Slot _slot) {
             base (_slot);
+        }
+
+        static construct {
+            list_view_preferences = new Settings ("io.elementary.files.list-view");
         }
 
         protected override void set_up_icon_renderer () {
@@ -202,7 +206,7 @@ namespace Files {
         }
 
         public override Settings? get_view_settings () {
-            return Files.list_view_settings;
+            return list_view_preferences;
         }
 
         private void add_subdirectory_at_path (Gtk.TreePath path) {

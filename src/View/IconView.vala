@@ -17,6 +17,8 @@
 ***/
 
 public class Files.IconView : Files.AbstractDirectoryView {
+    protected static Settings icon_view_preferences;
+
     protected new Gtk.IconView tree;
     /* support for linear selection mode in icon view, overriding native behaviour of Gtk.IconView */
     protected bool previous_selection_was_linear = false;
@@ -27,6 +29,10 @@ public class Files.IconView : Files.AbstractDirectoryView {
 
     public IconView (View.Slot _slot) {
         base (_slot);
+    }
+
+    static construct {
+        icon_view_preferences = new Settings ("io.elementary.files.icon-view");
     }
 
     ~IconView () {
@@ -74,7 +80,7 @@ public class Files.IconView : Files.AbstractDirectoryView {
     }
 
     public override Settings? get_view_settings () {
-        return Files.icon_view_settings;
+        return icon_view_preferences;
     }
 
     public override void change_zoom_level () {
