@@ -1132,7 +1132,7 @@ public class Files.File : GLib.Object {
             return;
         }
 
-        var show_hidden =  app_settings == null ? true : app_settings.get_boolean ("show-hiddenfiles");
+        var show_hidden = app_settings == null ? true : app_settings.get_boolean ("show-hiddenfiles");
         var dir = Files.Directory.cache_lookup (directory);
         if (dir != null && (!is_hidden || show_hidden)) {
             dir.icon_changed (this);
