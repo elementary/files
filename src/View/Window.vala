@@ -47,12 +47,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    public ViewMode default_mode {
-        get {
-            return ViewMode.PREFERRED;
-        }
-    }
-
     public GLib.File default_location {
         owned get {
             return GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
@@ -72,7 +66,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"zoom", action_zoom, "s"},
         {"view-mode", action_view_mode, "u", "0" },
         {"tabhistory-restore", action_tabhistory_restore, "s" },
-        {"folders-before-files", null, null, "true", change_state_folders_before_files},
         {"forward", action_forward, "i"},
         {"back", action_back, "i"},
         {"focus-sidebar", action_focus_sidebar}
@@ -119,10 +112,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var app_settings = new Settings ("io.elementary.files.preferences");
         add_action (app_settings.create_action ("restore-tabs"));
         add_action (app_settings.create_action ("show-file-preview"));
+        add_action (app_settings.create_action ("show-hiddenfiles"));
         add_action (app_settings.create_action ("show-local-thumbnails"));
         add_action (app_settings.create_action ("show-remote-thumbnails"));
-        add_action (app_settings.create_action ("show-hiddenfiles"));
         add_action (app_settings.create_action ("singleclick-select"));
+        add_action (app_settings.create_action ("sort-directories-first"));
 
         add_action_entries (WIN_ENTRIES, this);
         undo_actions_set_insensitive ();
@@ -278,10 +272,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         add (grid);
 
-        /** Apply preferences */
-        var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
-        get_action ("folders-before-files").set_state (prefs.sort_directories_first);
-
         button_forward.slow_press.connect (() => {
             get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
         });
@@ -414,7 +404,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.close_page_finish (page, true);
 
         if (tab_view.n_pages == 0) {
-            add_tab.begin (default_location, default_mode, false);
+            add_tab.begin (default_location, PREFERRED, false);
         }
 
         return Gdk.EVENT_STOP;
@@ -497,10 +487,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
     }
 
-    public new void set_title (string title) {
-        this.title = title;
-    }
-
     private void change_tab () {
         //Ignore if some restored tabs still loading
         if (restoring_tabs > 0) {
@@ -515,7 +501,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     public async void open_tabs (
         owned GLib.File[]? files,
-        ViewMode mode = default_mode,
+        ViewMode mode = PREFERRED,
         bool ignore_duplicate
     ) {
         // Always try to restore tabs
@@ -540,7 +526,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private async bool add_tab_by_uri (string uri, ViewMode mode = default_mode) {
+    private async bool add_tab_by_uri (string uri, ViewMode mode = PREFERRED) {
         var file = get_file_from_uri (uri);
         if (file != null) {
             return yield add_tab (file, mode, false);
@@ -551,7 +537,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private async bool add_tab (
         GLib.File _location = default_location,
-        ViewMode mode = default_mode,
+        ViewMode mode = PREFERRED,
         bool ignore_duplicate
     ) {
         // Do not try to restore locations that we cannot determine the filetype. This will
@@ -753,14 +739,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    public void bookmark_uri (string uri, string custom_name = "") {
-        sidebar.add_favorite_uri (uri, custom_name);
-    }
-
-    public bool can_bookmark_uri (string uri) {
-        return !sidebar.has_favorite_uri (uri);
-    }
-
     private void move_content_to_new_window (ViewContainer view_container) {
         add_window (view_container.location, view_container.view_mode);
         remove_content (view_container);
@@ -786,7 +764,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private void add_window (GLib.File location = default_location, ViewMode mode = default_mode) {
+    private void add_window (GLib.File location = default_location, ViewMode mode = PREFERRED) {
         var new_window = new Window (marlin_app);
         new_window.add_tab.begin (location, real_mode (mode), false);
         new_window.present ();
@@ -813,12 +791,13 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
+        var bookmark_list = BookmarkList.get_instance ();
         /* Note: Duplicate bookmarks will not be created by BookmarkList */
         unowned var selected_files = current_container.view.get_selected_files ();
         if (selected_files == null) {
-            sidebar.add_favorite_uri (current_container.location.get_uri ());
+            bookmark_list.insert_uri_at_end (current_container.location.get_uri (), "");
         } else if (selected_files.first ().next == null) {
-            sidebar.add_favorite_uri (selected_files.first ().data.uri);
+            bookmark_list.insert_uri_at_end (selected_files.first ().data.uri, "");
         } // Ignore if more than one item selected
     }
 
@@ -959,7 +938,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private void action_tab (GLib.SimpleAction action, GLib.Variant? param) {
         switch (param.get_string ()) {
             case "NEW":
-                add_tab.begin (default_location, default_mode, false);
+                add_tab.begin (default_location, PREFERRED, false);
                 break;
 
             case "CLOSE":
@@ -1029,18 +1008,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         update_undo_actions ();
     }
 
-    public void after_undo_redo () {
+    private void after_undo_redo () {
         if (current_container.slot.directory.is_recent) {
             get_action_group ("win").activate_action ("refresh", null);
         }
 
         doing_undo_redo = false;
-    }
-
-    public void change_state_folders_before_files (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.Preferences.get_default ().sort_directories_first = state;
     }
 
     private void connect_to_server () {
@@ -1062,7 +1035,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
 
-    public GLib.SimpleAction? get_action (string action_name) {
+    private GLib.SimpleAction? get_action (string action_name) {
         return (GLib.SimpleAction?)(lookup_action (action_name));
     }
 
@@ -1361,7 +1334,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void update_labels (string uri) {
         if (current_container != null) { /* Can happen during restore */
-            set_title (current_container.tab_name); /* Not actually visible on elementaryos */
+            title = current_container.tab_name; /* Not actually visible on elementaryos */
             update_location_bar (uri);
             sidebar.sync_uri (uri);
         }
