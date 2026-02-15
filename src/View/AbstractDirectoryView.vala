@@ -2374,41 +2374,39 @@ namespace Files {
             private uint total_item_count = 0;
 
             construct {
-                var folder_menuitem = new Gtk.MenuItem ();
-                folder_menuitem.add (new Granite.AccelLabel (
+                var folder_menuitem = new MenuItem (
                     _("Folder"),
-                    "<Ctrl><Shift>n"
-                ));
-                folder_menuitem.action_name = "background.new";
-                folder_menuitem.action_target = "FOLDER";
+                     Action.print_detailed_name ("background.new", new Variant.string ("FOLDER"))
+                );
+                folder_menuitem.set_attribute_value ("accel", "<Ctrl><Shift>n");
 
-                var file_menuitem = new Gtk.MenuItem.with_label (_("Empty File"));
-                file_menuitem.action_name = "background.new";
-                file_menuitem.action_target = "FILE";
+                var file_menuitem = new MenuItem (
+                    _("Empty File"),
+                     Action.print_detailed_name ("background.new", new Variant.string ("FILE"))
+                );
 
-                submenu = new Gtk.Menu ();
-                submenu.add (folder_menuitem);
-                submenu.add (file_menuitem);
+                var menu_model = new Menu ();
+                menu_model.append_item (folder_menuitem);
+                menu_model.append_item (file_menuitem);
 
                 unowned string? template_path = GLib.Environment.get_user_special_dir (GLib.UserDirectory.TEMPLATES);
                 if (template_path != null) {
-                    var template_item = new Gtk.MenuItem.with_label (_("Template"));
-                    var template_menu = new Gtk.Menu ();
-                    template_item.submenu = template_menu;
-                    load_templates_from_folder (GLib.File.new_for_path (template_path), template_menu);
+                    var template_submenu = new Menu ();
+                    load_templates_from_folder (GLib.File.new_for_path (template_path), template_submenu);
 
                     if (total_item_count > 0) {
-                        submenu.add (template_item);
+                        menu_model.append_submenu (_("Template"), template_submenu);
                         if (total_item_count > MAX_TEMPLATES) {
-                            template_menu.add (new Gtk.MenuItem.with_label (_("…too many templates")));
+                            template_submenu.append (_("…too many templates"), "");
                         }
                     }
                 }
 
+                submenu = new Gtk.Menu.from_model (menu_model);
                 label = _("New");
             }
 
-            private bool load_templates_from_folder (GLib.File template_folder, Gtk.Menu submenu) {
+            private bool load_templates_from_folder (GLib.File template_folder, Menu submenu) {
                 if (total_item_count >= MAX_TEMPLATES) {
                     return false;
                 }
@@ -2445,13 +2443,11 @@ namespace Files {
                     });
 
                     foreach (var folder in folder_list) {
-                        var folder_menu = new Gtk.Menu ();
+                        var folder_menu = new Menu ();
                         total_item_count++;
                         if (load_templates_from_folder (folder, folder_menu)) {
                             has_nonempty_items = true;
-                            var folder_menuitem = new Gtk.MenuItem.with_label (folder.get_basename ());
-                            folder_menuitem.submenu = folder_menu;
-                            submenu.add (folder_menuitem);
+                            submenu.append_submenu (folder.get_basename (), folder_menu);
                         } else {
                             total_item_count--;
                         }
@@ -2474,12 +2470,12 @@ namespace Files {
                             break;
                         }
 
-                        var template_menuitem = new Gtk.MenuItem.with_label (file.get_basename ()) {
-                            action_name = "background.create-from",
-                            action_target = file.get_path ()
-                        };
+                        var template_menuitem = new MenuItem (
+                            file.get_basename (),
+                             Action.print_detailed_name ("background.create-from", new Variant.string (file.get_path ()))
+                        );
 
-                        submenu.add (template_menuitem);
+                        submenu.append_item (template_menuitem);
                     };
                 }
 
