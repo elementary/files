@@ -26,8 +26,6 @@ namespace Files {
         };
 
         public bool show_hidden_files {get; set; default = false;}
-        public bool show_remote_thumbnails {set; get; default = true;}
-        public bool show_local_thumbnails {set; get; default = true;}
         public bool show_file_preview {set; get; default = true;}
         public bool confirm_trash {set; get; default = true;}
         public bool remember_history { get; set; default = true; }
