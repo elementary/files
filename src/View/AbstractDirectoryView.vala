@@ -76,9 +76,7 @@ namespace Files {
             {"new", on_background_action_new, "s"},
             {"create-from", on_background_action_create_from, "s"},
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
-            {"reverse", on_background_action_reverse_changed, null, "false"},
-            {"folders-first", on_background_action_folders_first_changed, null, "true"},
-            {"show-hidden", null, null, "false", change_state_show_hidden}
+            {"reverse", on_background_action_reverse_changed, null, "false"}
         };
 
         const GLib.ActionEntry [] COMMON_ENTRIES = {
@@ -288,6 +286,8 @@ namespace Files {
         public signal void path_change_request (GLib.File location, Files.OpenFlag flag, bool new_root);
         public signal void selection_changed (GLib.List<Files.File> gof_file);
 
+        private static Settings app_settings;
+
         //TODO Rewrite in Object (), construct {} style
         protected AbstractDirectoryView (View.Slot _slot) {
             slot = _slot;
@@ -439,6 +439,10 @@ namespace Files {
             });
         }
 
+        static construct {
+            app_settings = new Settings ("io.elementary.files.preferences");
+        }
+
         ~AbstractDirectoryView () {
             debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
         }
@@ -476,15 +480,15 @@ namespace Files {
 
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
-            prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
-            prefs.notify["show-local-thumbnails"].connect (on_show_thumbnails_changed);
-            prefs.notify["sort-directories-first"].connect (on_sort_directories_first_changed);
             prefs.notify["date-format"].connect (on_dateformat_changed);
-            prefs.bind_property (
-                "singleclick-select", this, "singleclick_select", BindingFlags.DEFAULT | BindingFlags.SYNC_CREATE
-            );
 
-            model.set_should_sort_directories_first (Files.Preferences.get_default ().sort_directories_first);
+            app_settings.bind ("singleclick-select", this, "singleclick_select", SettingsBindFlags.DEFAULT);
+
+            app_settings.changed["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
+            app_settings.changed["show-local-thumbnails"].connect (on_show_thumbnails_changed);
+            app_settings.changed["sort-directories-first"].connect (on_sort_directories_first_changed);
+
+            model.set_should_sort_directories_first (app_settings.get_boolean ("sort-directories-first"));
             model.row_deleted.connect (on_row_deleted);
             /* Sort order of model is set after loading */
             model.sort_column_changed.connect (on_sort_column_changed);
@@ -1227,15 +1231,10 @@ namespace Files {
                 location = slot.directory.file.get_target_location ();
             }
 
-            window.bookmark_uri (location.get_uri ());
+            BookmarkList.get_instance ().insert_uri_at_end (location.get_uri (), "");
         }
 
         /** Background actions */
-
-        private void change_state_show_hidden (GLib.SimpleAction action) requires (window != null) {
-            window.change_state_show_hidden (action);
-        }
-
         private void on_background_action_new (GLib.SimpleAction action, GLib.Variant? param) {
             switch (param.get_string ()) {
                 case "FOLDER":
@@ -1262,11 +1261,6 @@ namespace Files {
 
         private void on_background_action_reverse_changed (GLib.SimpleAction action, GLib.Variant? val) {
             set_sort (null, true);
-        }
-
-        private void on_background_action_folders_first_changed (GLib.SimpleAction action, GLib.Variant? val) {
-            var prefs = Files.Preferences.get_default ();
-            prefs.sort_directories_first = !prefs.sort_directories_first;
         }
 
         private void set_sort (string? col_name, bool reverse) {
@@ -1491,15 +1485,14 @@ namespace Files {
                 }
             }
 
-            action_set_state (background_actions, "show-hidden", show);
+            app_settings.set_boolean ("show-hiddenfiles", show);
         }
 
         private void set_should_thumbnail () {
-            var prefs = Files.Preferences.get_default ();
             if (slot.directory.is_network) {
-                should_thumbnail = slot.directory.can_open_files && prefs.show_remote_thumbnails;
+                should_thumbnail = slot.directory.can_open_files && app_settings.get_boolean ("show-remote-thumbnails");
             } else {
-                should_thumbnail = prefs.show_local_thumbnails;
+                should_thumbnail = app_settings.get_boolean ("show-local-thumbnails");
             }
         }
 
@@ -1508,9 +1501,8 @@ namespace Files {
             slot.reload ();
         }
 
-        private void on_sort_directories_first_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
-            var sort_directories_first = ((Files.Preferences) prefs).sort_directories_first;
-            model.set_should_sort_directories_first (sort_directories_first);
+        private void on_sort_directories_first_changed (Settings settings, string key) {
+            model.set_should_sort_directories_first (settings.get_boolean (key));
         }
 
         private void directory_hidden_changed (Directory dir, bool show) {
@@ -2090,6 +2082,9 @@ namespace Files {
                 ));
             }
 
+            var bookmark_action = (SimpleAction) common_actions.lookup_action ("bookmark");
+            var bookmark_list = BookmarkList.get_instance ();
+
             if (get_selected_files () != null) { // Add selection actions
                 var cut_menuitem = new Gtk.MenuItem ();
                 cut_menuitem.add (new Granite.AccelLabel (
@@ -2245,10 +2240,12 @@ namespace Files {
                         menu.add (rename_menuitem);
                     }
 
-                    /* Do  not offer to bookmark if location is already bookmarked */
-                    if (common_actions.get_action_enabled ("bookmark") &&
-                        window.can_bookmark_uri (selected_files.data.uri)) {
+                    var already_bookmarked = bookmark_list.contains (
+                        new Bookmark.from_uri (selected_files.data.uri, "")
+                    );
 
+                    /* Do  not offer to bookmark if location is already bookmarked */
+                    if (common_actions.get_action_enabled ("bookmark") && !already_bookmarked) {
                         menu.add (bookmark_menuitem);
                     }
 
@@ -2305,9 +2302,12 @@ namespace Files {
                         menu.add (new SortSubMenuItem ());
                     }
 
+                    var already_bookmarked = bookmark_list.contains (
+                        new Bookmark.from_uri (slot.directory.file.uri, "")
+                    );
+
                     /* Do  not offer to bookmark if location is already bookmarked */
-                    if (common_actions.get_action_enabled ("bookmark") &&
-                        window.can_bookmark_uri (slot.directory.file.uri)) {
+                    if (common_actions.get_action_enabled ("bookmark") && !already_bookmarked) {
 
                         menu.add (bookmark_menuitem);
                     }
@@ -2371,7 +2371,7 @@ namespace Files {
                 reversed_checkitem.action_name = "background.reverse";
 
                 var folders_first_checkitem = new Gtk.CheckMenuItem.with_label (_("Folders Before Files"));
-                folders_first_checkitem.action_name = "background.folders-first";
+                folders_first_checkitem.action_name = "win.sort-directories-first";
 
                 submenu = new Gtk.Menu ();
                 submenu.add (name_radioitem);
@@ -2602,8 +2602,6 @@ namespace Files {
                 action_set_state (background_actions, "sort-by", val);
                 val = new GLib.Variant.boolean (sort_order == Gtk.SortType.DESCENDING);
                 action_set_state (background_actions, "reverse", val);
-                val = new GLib.Variant.boolean (Files.Preferences.get_default ().sort_directories_first);
-                action_set_state (background_actions, "folders-first", val);
             } else {
                 warning ("Update menu actions sort: The model is unsorted - this should not happen");
             }
