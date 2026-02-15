@@ -453,12 +453,12 @@ namespace Files {
 
             var prefs = (Files.Preferences.get_default ());
             prefs.notify["show-hidden-files"].connect (on_show_hidden_files_changed);
-            prefs.notify["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
-            prefs.notify["show-local-thumbnails"].connect (on_show_thumbnails_changed);
             prefs.notify["date-format"].connect (on_dateformat_changed);
 
             app_settings.bind ("singleclick-select", this, "singleclick_select", SettingsBindFlags.DEFAULT);
 
+            app_settings.changed["show-remote-thumbnails"].connect (on_show_thumbnails_changed);
+            app_settings.changed["show-local-thumbnails"].connect (on_show_thumbnails_changed);
             app_settings.changed["sort-directories-first"].connect (on_sort_directories_first_changed);
 
             model.set_should_sort_directories_first (app_settings.get_boolean ("sort-directories-first"));
@@ -1204,7 +1204,7 @@ namespace Files {
                 location = slot.directory.file.get_target_location ();
             }
 
-            window.bookmark_uri (location.get_uri ());
+            BookmarkList.get_instance ().insert_uri_at_end (location.get_uri (), "");
         }
 
         /** Background actions */
@@ -1462,11 +1462,10 @@ namespace Files {
         }
 
         private void set_should_thumbnail () {
-            var prefs = Files.Preferences.get_default ();
             if (slot.directory.is_network) {
-                should_thumbnail = slot.directory.can_open_files && prefs.show_remote_thumbnails;
+                should_thumbnail = slot.directory.can_open_files && app_settings.get_boolean ("show-remote-thumbnails");
             } else {
-                should_thumbnail = prefs.show_local_thumbnails;
+                should_thumbnail = app_settings.get_boolean ("show-local-thumbnails");
             }
         }
 
@@ -2056,6 +2055,9 @@ namespace Files {
                 ));
             }
 
+            var bookmark_action = (SimpleAction) common_actions.lookup_action ("bookmark");
+            var bookmark_list = BookmarkList.get_instance ();
+
             if (get_selected_files () != null) { // Add selection actions
                 var cut_menuitem = new Gtk.MenuItem ();
                 cut_menuitem.add (new Granite.AccelLabel (
@@ -2211,10 +2213,12 @@ namespace Files {
                         menu.add (rename_menuitem);
                     }
 
-                    /* Do  not offer to bookmark if location is already bookmarked */
-                    if (common_actions.get_action_enabled ("bookmark") &&
-                        window.can_bookmark_uri (selected_files.data.uri)) {
+                    var already_bookmarked = bookmark_list.contains (
+                        new Bookmark.from_uri (selected_files.data.uri, "")
+                    );
 
+                    /* Do  not offer to bookmark if location is already bookmarked */
+                    if (common_actions.get_action_enabled ("bookmark") && !already_bookmarked) {
                         menu.add (bookmark_menuitem);
                     }
 
@@ -2271,9 +2275,12 @@ namespace Files {
                         menu.add (new SortSubMenuItem ());
                     }
 
+                    var already_bookmarked = bookmark_list.contains (
+                        new Bookmark.from_uri (slot.directory.file.uri, "")
+                    );
+
                     /* Do  not offer to bookmark if location is already bookmarked */
-                    if (common_actions.get_action_enabled ("bookmark") &&
-                        window.can_bookmark_uri (slot.directory.file.uri)) {
+                    if (common_actions.get_action_enabled ("bookmark") && !already_bookmarked) {
 
                         menu.add (bookmark_menuitem);
                     }
