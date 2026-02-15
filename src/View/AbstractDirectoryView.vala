@@ -418,10 +418,10 @@ namespace Files {
             action_zoom_in.activate.connect (zoom_in);
 
             var action_zoom_out = new SimpleAction ("zoom-out", null);
-            action_zoom_in.activate.connect (zoom_out);
+            action_zoom_out.activate.connect (zoom_out);
 
             var action_zoom_default = new SimpleAction ("zoom-default", null);
-            action_zoom_in.activate.connect (zoom_normal);
+            action_zoom_default.activate.connect (zoom_normal);
 
             zoom_actions = new SimpleActionGroup ();
             zoom_actions.add_action (action_zoom_in);
