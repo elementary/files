@@ -94,6 +94,7 @@ namespace Files {
         GLib.SimpleActionGroup common_actions;
         GLib.SimpleActionGroup selection_actions;
         GLib.SimpleActionGroup background_actions;
+        protected GLib.SimpleActionGroup zoom_actions;
 
         private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
         public ZoomLevel zoom_level {
@@ -412,6 +413,32 @@ namespace Files {
             connect_directory_handlers (slot.directory);
         }
 
+        construct {
+            var action_zoom_in = new SimpleAction ("zoom-in", null);
+            action_zoom_in.activate.connect (zoom_in);
+
+            var action_zoom_out = new SimpleAction ("zoom-out", null);
+            action_zoom_out.activate.connect (zoom_out);
+
+            var action_zoom_default = new SimpleAction ("zoom-default", null);
+            action_zoom_default.activate.connect (zoom_normal);
+
+            zoom_actions = new SimpleActionGroup ();
+            zoom_actions.add_action (action_zoom_in);
+            zoom_actions.add_action (action_zoom_out);
+            zoom_actions.add_action (action_zoom_default);
+
+            // FIXME
+            // marlin_app.set_accels_for_action ("zoom-in", {"<Ctrl>plus", "<Ctrl>equal"});
+            // marlin_app.set_accels_for_action ("zoom-out", {"<Ctrl>minus"});
+            // marlin_app.set_accels_for_action ("zoom-default", {"<Ctrl>0"});
+
+            notify["zoom-level"].connect (() => {
+                action_zoom_in.set_enabled (zoom_level < maximum_zoom);
+                action_zoom_out.set_enabled (zoom_level > minimum_zoom);
+            });
+        }
+
         static construct {
             app_settings = new Settings ("io.elementary.files.preferences");
         }
@@ -481,17 +508,17 @@ namespace Files {
             insert_action_group ("common", common_actions);
         }
 
-        public void zoom_in () {
+        private void zoom_in () {
             zoom_level = zoom_level + 1;
         }
 
-        public void zoom_out () {
+        private void zoom_out () {
             if (zoom_level > 0) {
                 zoom_level = zoom_level - 1;
             }
         }
 
-        public void zoom_normal () {
+        private void zoom_normal () {
             var view_settings = get_view_settings ();
             if (view_settings == null) {
                 zoom_level = ZoomLevel.NORMAL;
