@@ -428,10 +428,9 @@ namespace Files {
             zoom_actions.add_action (action_zoom_out);
             zoom_actions.add_action (action_zoom_default);
 
-            // FIXME
-            // marlin_app.set_accels_for_action ("zoom-in", {"<Ctrl>plus", "<Ctrl>equal"});
-            // marlin_app.set_accels_for_action ("zoom-out", {"<Ctrl>minus"});
-            // marlin_app.set_accels_for_action ("zoom-default", {"<Ctrl>0"});
+            var app_settings = new Settings ("io.elementary.files.preferences");
+            app_settings.changed["default-viewmode"].connect (on_viewmode_changed);
+            on_viewmode_changed (app_settings, "default-viewmode");
 
             notify["zoom-level"].connect (() => {
                 action_zoom_in.set_enabled (zoom_level < maximum_zoom);
@@ -445,6 +444,46 @@ namespace Files {
 
         ~AbstractDirectoryView () {
             debug ("ADV destruct"); // Cannot reference slot here as it is already invalid
+        }
+
+        private void on_viewmode_changed (Settings settings, string key) {
+            var application = (Gtk.Application) GLib.Application.get_default ();
+
+            var viewmode = settings.get_string (key);
+            switch (viewmode) {
+                case "icon":
+                    application.set_accels_for_action ("list-view.zoom-in", {});
+                    application.set_accels_for_action ("list-view.zoom-out", {});
+                    application.set_accels_for_action ("list-view.zoom-default", {});
+                    application.set_accels_for_action ("miller_columns-view.zoom-in", {});
+                    application.set_accels_for_action ("miller_columns-view.zoom-out", {});
+                    application.set_accels_for_action ("miller_columns-view.zoom-default", {});
+                    break;
+                case "list":
+                    application.set_accels_for_action ("icon-view.zoom-in", {});
+                    application.set_accels_for_action ("icon-view.zoom-out", {});
+                    application.set_accels_for_action ("icon-view.zoom-default", {});
+                    application.set_accels_for_action ("miller_columns-view.zoom-in", {});
+                    application.set_accels_for_action ("miller_columns-view.zoom-out", {});
+                    application.set_accels_for_action ("miller_columns-view.zoom-default", {});
+                    break;
+                case "miller_columns":
+                    application.set_accels_for_action ("icon-view.zoom-in", {});
+                    application.set_accels_for_action ("icon-view.zoom-out", {});
+                    application.set_accels_for_action ("icon-view.zoom-default", {});
+                    application.set_accels_for_action ("list-view.zoom-in", {});
+                    application.set_accels_for_action ("list-view.zoom-out", {});
+                    application.set_accels_for_action ("list-view.zoom-default", {});
+                    break;
+            }
+
+            application.set_accels_for_action ("%s-view.zoom-in".printf (viewmode), {"<Ctrl>plus", "<Ctrl>equal"});
+            application.set_accels_for_action ("%s-view.zoom-out".printf (viewmode), {"<Ctrl>minus"});
+            application.set_accels_for_action ("%s-view.zoom-default".printf (viewmode), {"<Ctrl>0"});
+        }
+
+        protected void set_up_zoom_actions (string view_mode) {
+            get_toplevel ().insert_action_group ("%s-view".printf (view_mode), zoom_actions);
         }
 
         protected void set_up_name_renderer () {

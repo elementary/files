@@ -40,7 +40,7 @@ namespace Files {
 
         construct {
             realize.connect (() => {
-                get_toplevel ().insert_action_group ("list-view", zoom_actions);
+                set_up_zoom_actions ("list");
             });
         }
 

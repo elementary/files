@@ -26,11 +26,11 @@ public class Files.AppMenu : Gtk.Popover {
     construct {
         var app_instance = (Gtk.Application)(GLib.Application.get_default ());
 
-        zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic", Gtk.IconSize.MENU);
+        zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic", MENU);
 
         zoom_default_button = new Gtk.Button.with_label ("100%");
 
-        zoom_in_button = new Gtk.Button.from_icon_name ("zoom-in-symbolic", Gtk.IconSize.MENU);
+        zoom_in_button = new Gtk.Button.from_icon_name ("zoom-in-symbolic", MENU);
 
         var icon_size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
             homogeneous = true,

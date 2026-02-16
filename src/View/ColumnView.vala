@@ -30,7 +30,7 @@ namespace Files {
 
         construct {
             realize.connect (() => {
-                get_toplevel ().insert_action_group ("miller_columns", zoom_actions);
+                set_up_zoom_actions ("miller_columns");
             });
         }
 

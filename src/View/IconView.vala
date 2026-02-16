@@ -31,7 +31,7 @@ public class Files.IconView : Files.AbstractDirectoryView {
 
     construct {
         realize.connect (() => {
-            get_toplevel ().insert_action_group ("icon-view", zoom_actions);
+            set_up_zoom_actions ("icon");
         });
     }
 
