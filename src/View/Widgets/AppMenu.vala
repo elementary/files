@@ -27,22 +27,10 @@ public class Files.AppMenu : Gtk.Popover {
         var app_instance = (Gtk.Application)(GLib.Application.get_default ());
 
         zoom_out_button = new Gtk.Button.from_icon_name ("zoom-out-symbolic", Gtk.IconSize.MENU);
-        zoom_out_button.tooltip_markup = Granite.markup_accel_tooltip (
-            app_instance.get_accels_for_action ("win.zoom::ZOOM_OUT"),
-            _("Zoom Out")
-        );
 
         zoom_default_button = new Gtk.Button.with_label ("100%");
-        zoom_default_button.tooltip_markup = Granite.markup_accel_tooltip (
-            app_instance.get_accels_for_action ("win.zoom::ZOOM_NORMAL"),
-            _("Zoom 1:1")
-        );
 
         zoom_in_button = new Gtk.Button.from_icon_name ("zoom-in-symbolic", Gtk.IconSize.MENU);
-        zoom_in_button.tooltip_markup = Granite.markup_accel_tooltip (
-            app_instance.get_accels_for_action ("win.zoom::ZOOM_IN"),
-            _("Zoom In")
-        );
 
         var icon_size_box = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
             homogeneous = true,
@@ -167,9 +155,9 @@ public class Files.AppMenu : Gtk.Popover {
         column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
 
         var app_settings = new Settings ("io.elementary.files.preferences");
-        app_settings.changed["default-viewmode"].connect (on_zoom_setting_changed);
+        app_settings.changed["default-viewmode"].connect (on_viewmode_changed);
 
-        on_zoom_setting_changed ();
+        on_viewmode_changed ();
 
         // Initialize and connect dateformat buttons
         switch (app_settings.get_enum ("date-format")) {
@@ -230,9 +218,10 @@ public class Files.AppMenu : Gtk.Popover {
         );
     }
 
-    private void on_zoom_setting_changed () {
+    private void on_viewmode_changed () {
+        var default_viewmode = app_settings.get_string ("default-viewmode");
         Settings settings = null;
-        switch (app_settings.get_string ("default-viewmode")) {
+        switch (default_viewmode) {
             case "icon":
                 settings = icon_view_settings;
                 break;
@@ -244,9 +233,25 @@ public class Files.AppMenu : Gtk.Popover {
                 break;
         }
 
-        zoom_in_button.action_name = "%s-view.zoom-in".printf (app_settings.get_string ("default-viewmode"));
-        zoom_out_button.action_name = "%s-view.zoom-out".printf (app_settings.get_string ("default-viewmode"));
-        zoom_default_button.action_name = "%s-view.zoom-default".printf (app_settings.get_string ("default-viewmode"));
+        var app_instance = (Gtk.Application)(GLib.Application.get_default ());
+
+        zoom_in_button.action_name = "%s-view.zoom-in".printf (default_viewmode);
+        zoom_in_button.tooltip_markup = Granite.markup_accel_tooltip (
+            app_instance.get_accels_for_action (zoom_in_button.action_name),
+            _("Zoom In")
+        );
+
+        zoom_out_button.action_name = "%s-view.zoom-out".printf (default_viewmode);
+        zoom_out_button.tooltip_markup = Granite.markup_accel_tooltip (
+            app_instance.get_accels_for_action (zoom_out_button.action_name),
+            _("Zoom Out")
+        );
+
+        zoom_default_button.action_name = "%s-view.zoom-default".printf (default_viewmode);
+        zoom_default_button.tooltip_markup = Granite.markup_accel_tooltip (
+            app_instance.get_accels_for_action (zoom_default_button.action_name),
+            _("Zoom 1:1")
+        );
 
         if (settings == null) {
             critical ("Zoom string from settinggs: Null settings");
@@ -254,8 +259,12 @@ public class Files.AppMenu : Gtk.Popover {
             return;
         }
 
+        on_zoom_setting_changed (settings, "zoom-level");
+    }
+
+    private void on_zoom_setting_changed (Settings settings, string key) {
         var default_zoom = (Files.ZoomLevel)(settings.get_enum ("default-zoom-level"));
-        var zoom_level = (Files.ZoomLevel)(settings.get_enum ("zoom-level"));
+        var zoom_level = (Files.ZoomLevel)(settings.get_enum (key));
         zoom_default_button.label = ("%.0f%%").printf ((double)(zoom_level.to_icon_size ()) / (double)(default_zoom.to_icon_size ()) * 100);
     }
 }
