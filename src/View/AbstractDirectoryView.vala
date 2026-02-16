@@ -337,10 +337,7 @@ namespace Files {
                 draw_when_idle ();
             });
 
-            set_should_thumbnail ();
-
             model = new Files.ListModel ();
-
 
              /* Currently, "single-click rename" is disabled, matching existing UI
               * Currently, "right margin unselects all" is disabled, matching existing UI
@@ -1418,6 +1415,7 @@ namespace Files {
                 is_writable = false;
             }
 
+            set_should_thumbnail ();
             // Wait for view to draw so thumbnails and color tags displayed on first sight
             Idle.add (() => {
                 empty_label.visible = slot.directory.is_empty ();
