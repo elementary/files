@@ -29,6 +29,12 @@ public class Files.IconView : Files.AbstractDirectoryView {
         base (_slot);
     }
 
+    construct {
+        realize.connect (() => {
+            set_up_zoom_actions ("icon");
+        });
+    }
+
     ~IconView () {
         debug ("Icon View destruct");
     }
