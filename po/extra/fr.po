@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-09 08:35+0000\n"
+"POT-Creation-Date: 2026-02-20 16:13+0000\n"
 "PO-Revision-Date: 2026-01-20 13:55+0000\n"
 "Last-Translator: Nathan <bonnemainsnathan@gmail.com>\n"
 "Language-Team: French <https://l10n.elementaryos.org/projects/files/extra/fr/"
@@ -72,8 +72,8 @@ msgid "Browse complex trees faster with Column view"
 msgstr ""
 "Naviguez plus rapidement dans les arbres complexes avec la vue en colonnes"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:83
-#: data/files.metainfo.xml.in.in:285
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:289
 msgid "Improvements:"
 msgstr "Améliorations :"
 
@@ -82,71 +82,76 @@ msgid "An option to show a preview pane in Column view is introduced"
 msgstr ""
 "Introduction d'une option pour afficher un panneau d'aperçu en vue colonne"
 
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:87
-#: data/files.metainfo.xml.in.in:107 data/files.metainfo.xml.in.in:125
-#: data/files.metainfo.xml.in.in:140 data/files.metainfo.xml.in.in:151
-#: data/files.metainfo.xml.in.in:163 data/files.metainfo.xml.in.in:178
-#: data/files.metainfo.xml.in.in:194 data/files.metainfo.xml.in.in:216
-#: data/files.metainfo.xml.in.in:234 data/files.metainfo.xml.in.in:257
-#: data/files.metainfo.xml.in.in:269 data/files.metainfo.xml.in.in:289
+#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
+#: data/files.metainfo.xml.in.in:111 data/files.metainfo.xml.in.in:129
+#: data/files.metainfo.xml.in.in:144 data/files.metainfo.xml.in.in:155
+#: data/files.metainfo.xml.in.in:167 data/files.metainfo.xml.in.in:182
+#: data/files.metainfo.xml.in.in:198 data/files.metainfo.xml.in.in:220
+#: data/files.metainfo.xml.in.in:238 data/files.metainfo.xml.in.in:261
+#: data/files.metainfo.xml.in.in:273 data/files.metainfo.xml.in.in:293
 msgid "Minor updates:"
 msgstr "Mises à jour mineures :"
 
-#: data/files.metainfo.xml.in.in:73 data/files.metainfo.xml.in.in:93
-#: data/files.metainfo.xml.in.in:112 data/files.metainfo.xml.in.in:128
-#: data/files.metainfo.xml.in.in:142 data/files.metainfo.xml.in.in:153
-#: data/files.metainfo.xml.in.in:166 data/files.metainfo.xml.in.in:180
-#: data/files.metainfo.xml.in.in:198 data/files.metainfo.xml.in.in:220
-#: data/files.metainfo.xml.in.in:242 data/files.metainfo.xml.in.in:259
-#: data/files.metainfo.xml.in.in:271 data/files.metainfo.xml.in.in:291
+#: data/files.metainfo.xml.in.in:73
+msgid ""
+"The list of search results now shows matches in the current folder first"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:74 data/files.metainfo.xml.in.in:97
+#: data/files.metainfo.xml.in.in:116 data/files.metainfo.xml.in.in:132
+#: data/files.metainfo.xml.in.in:146 data/files.metainfo.xml.in.in:157
+#: data/files.metainfo.xml.in.in:170 data/files.metainfo.xml.in.in:184
+#: data/files.metainfo.xml.in.in:202 data/files.metainfo.xml.in.in:224
+#: data/files.metainfo.xml.in.in:246 data/files.metainfo.xml.in.in:263
+#: data/files.metainfo.xml.in.in:275 data/files.metainfo.xml.in.in:295
 msgid "Updated translations"
 msgstr "Traductions mises à jour"
 
-#: data/files.metainfo.xml.in.in:85
+#: data/files.metainfo.xml.in.in:89
 msgid "A compact date format is introduced"
 msgstr "Introduction d'un format de date compacte"
 
-#: data/files.metainfo.xml.in.in:89
+#: data/files.metainfo.xml.in.in:93
 msgid "The file conflict dialog now shows a missing icon"
 msgstr ""
 "La boîte de dialogue de conflit de fichiers affiche désormais une icône"
 
-#: data/files.metainfo.xml.in.in:90
+#: data/files.metainfo.xml.in.in:94
 msgid "Flickering of the pathbar with some navigation methods is fixed"
 msgstr ""
 "Le scintillement du fil d'ariane via certaines méthodes de navigation est "
 "corrigé"
 
-#: data/files.metainfo.xml.in.in:91
+#: data/files.metainfo.xml.in.in:95
 msgid "The option to set a default app for folders is no longer offered"
 msgstr ""
 "L'option pour définir une application par défaut aux dossiers n'est plus "
 "proposée"
 
-#: data/files.metainfo.xml.in.in:92
+#: data/files.metainfo.xml.in.in:96
 msgid "The scrollbar no longer overlays the modification date in List view"
 msgstr ""
 "La barre de défilement ne recouvre plus la date de modification dans la vue "
 "en liste"
 
-#: data/files.metainfo.xml.in.in:109
+#: data/files.metainfo.xml.in.in:113
 msgid "Navigation within the Trash folder now works properly"
 msgstr ""
 "La navigation dans le dossier Corbeille fonctionne désormais correctement"
 
-#: data/files.metainfo.xml.in.in:110
+#: data/files.metainfo.xml.in.in:114
 msgid "The view now refreshes properly after permanent deletion of a folder"
 msgstr ""
 "La vue s'actualise désormais correctement après la suppression définitive "
 "d'un dossier"
 
-#: data/files.metainfo.xml.in.in:111
+#: data/files.metainfo.xml.in.in:115
 msgid ""
 "The number of template items displayed in the context menu is now limited"
 msgstr ""
 "Le nombre de modèles affiché dans le menu contextuel est désormais limité"
 
-#: data/files.metainfo.xml.in.in:127
+#: data/files.metainfo.xml.in.in:131
 msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
@@ -154,64 +159,64 @@ msgstr ""
 "La fenêtre des propriétés affiche désormais la date et l'heure exactes où le "
 "fichier a été modifié pour la dernière fois"
 
-#: data/files.metainfo.xml.in.in:165
+#: data/files.metainfo.xml.in.in:169
 msgid "Further preparation for porting to Gtk4"
 msgstr "Préparation au portage vers Gtk4"
 
-#: data/files.metainfo.xml.in.in:196
+#: data/files.metainfo.xml.in.in:200
 msgid "Redesign file permissions view"
 msgstr "Remodelage de la vue des permissions de fichier"
 
-#: data/files.metainfo.xml.in.in:197
+#: data/files.metainfo.xml.in.in:201
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "Changez le focus sur la barre latérale en appuyant sur Ctrl + Gauche"
 
-#: data/files.metainfo.xml.in.in:218
+#: data/files.metainfo.xml.in.in:222
 msgid "Restoring tabs from last time is now optional"
 msgstr "La restauration des derniers onglets est désormais facultative"
 
-#: data/files.metainfo.xml.in.in:219
+#: data/files.metainfo.xml.in.in:223
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 "Le glisser-sélection ne peut plus être effectué avec le bouton du pointeur "
 "secondaire"
 
-#: data/files.metainfo.xml.in.in:236
+#: data/files.metainfo.xml.in.in:240
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 "Arrêt de la prise en charge du déplacement des favoris hors de la barre "
 "latérale"
 
-#: data/files.metainfo.xml.in.in:237
+#: data/files.metainfo.xml.in.in:241
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "Correction d'un défilement inattendu après avoir renommé un dossier"
 
-#: data/files.metainfo.xml.in.in:238
+#: data/files.metainfo.xml.in.in:242
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Correction d'un plantage lors du passage à l'affichage sous forme de grille "
 "dans de rares circonstances"
 
-#: data/files.metainfo.xml.in.in:239
+#: data/files.metainfo.xml.in.in:243
 msgid "Ensure the selection persists after refreshing the view"
 msgstr ""
 "Nous nos sommes assurés que la sélection persiste après l'actualisation de "
 "la vue"
 
-#: data/files.metainfo.xml.in.in:240
+#: data/files.metainfo.xml.in.in:244
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Correction de l'échec de l'ouverture de Fichiers lors de la restauration "
 "d'un emplacement déconnecté"
 
-#: data/files.metainfo.xml.in.in:241
+#: data/files.metainfo.xml.in.in:245
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 "Correction de la vue qui continue à s'afficher lorsqu'un emplacement est "
 "démonté"
 
-#: data/files.metainfo.xml.in.in:287
+#: data/files.metainfo.xml.in.in:291
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
