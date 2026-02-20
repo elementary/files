@@ -28,7 +28,7 @@ jobs:
         apt install -y libcloudproviders-dev libdbus-glib-1-dev libpango1.0-dev
         apt install -y libsqlite3-dev libunity-dev libzeitgeist-2.0-dev policykit-1 libgit2-glib-1.0-dev
         apt install -y gir1.2-poppler-0.18 libpoppler-glib-dev
-        apt install -y meson valac
+        apt install -y meson systemd valac
     - name: Build
       env:
         DESTDIR: out
