@@ -22,34 +22,14 @@
 */
 
 public class Files.View.Window : Hdy.ApplicationWindow {
-    static uint window_id = 0;
+    public signal void loading_uri (string location);
+    public signal void folder_deleted (GLib.File location);
+    public signal void free_space_change ();
 
-    const GLib.ActionEntry [] WIN_ENTRIES = {
-        {"new-window", action_new_window},
-        {"refresh", action_reload},
-        {"undo", action_undo},
-        {"redo", action_redo},
-        {"bookmark", action_bookmark},
-        {"find", action_find, "s"},
-        {"edit-path", action_edit_path},
-        {"tab", action_tab, "s"},
-        {"go-to", action_go_to, "s"},
-        {"zoom", action_zoom, "s"},
-        {"view-mode", action_view_mode, "u", "0" },
-        {"show-hidden", null, null, "false", change_state_show_hidden},
-        {"singleclick-select", null, null, "false", change_state_single_click_select},
-        {"show-remote-thumbnails", null, null, "true", change_state_show_remote_thumbnails},
-        {"show-local-thumbnails", null, null, "false", change_state_show_local_thumbnails},
-        {"show-file-preview", null, null, "false", change_state_show_file_preview},
-        {"tabhistory-restore", action_tabhistory_restore, "s" },
-        {"folders-before-files", null, null, "true", change_state_folders_before_files},
-        {"restore-tabs-on-startup", null, null, "true", change_state_restore_tabs_on_startup},
-        {"forward", action_forward, "i"},
-        {"back", action_back, "i"},
-        {"focus-sidebar", action_focus_sidebar}
-    };
-
+    public Files.Application marlin_app { get; construct; }
     public uint window_number { get; construct; }
+
+    public Hdy.TabView tab_view { get; private set; }
 
     public bool is_first_window {
         get {
@@ -67,31 +47,42 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    public ViewMode default_mode {
-        get {
-            return ViewMode.PREFERRED;
-        }
-    }
-
     public GLib.File default_location {
         owned get {
             return GLib.File.new_for_path (PF.UserUtils.get_real_user_home ());
         }
     }
 
-    public Gtk.Builder ui;
-    public Files.Application marlin_app { get; construct; }
-    private unowned UndoManager undo_manager;
-    public Hdy.HeaderBar headerbar;
-    public Chrome.ViewSwitcher view_switcher;
-    public Hdy.TabView tab_view;
-    public Hdy.TabBar tab_bar;
-    private Gtk.Paned lside_pane;
-    public SidebarInterface sidebar;
-    private Chrome.ButtonWithMenu button_forward;
+    private const GLib.ActionEntry [] WIN_ENTRIES = {
+        {"new-window", action_new_window},
+        {"refresh", action_reload},
+        {"undo", action_undo},
+        {"redo", action_redo},
+        {"bookmark", action_bookmark},
+        {"find", action_find, "s"},
+        {"edit-path", action_edit_path},
+        {"tab", action_tab, "s"},
+        {"go-to", action_go_to, "s"},
+        {"zoom", action_zoom, "s"},
+        {"view-mode", action_view_mode, "u", "0" },
+        {"tabhistory-restore", action_tabhistory_restore, "s" },
+        {"forward", action_forward, "i"},
+        {"back", action_back, "i"},
+        {"focus-sidebar", action_focus_sidebar}
+    };
+
+    private static uint window_id = 0;
+
     private Chrome.ButtonWithMenu button_back;
+    private Chrome.ButtonWithMenu button_forward;
     private Chrome.LocationBar? location_bar;
+    private Chrome.ViewSwitcher view_switcher;
     private Gtk.MenuButton tab_history_button;
+    private Gtk.Paned lside_pane;
+    private Hdy.HeaderBar headerbar;
+    private SidebarInterface sidebar;
+
+    private unowned UndoManager undo_manager;
 
     private bool locked_focus { get; set; default = false; }
     private bool tabs_restored = false;
@@ -99,10 +90,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private bool doing_undo_redo = false;
 
     private Gtk.EventControllerKey key_controller; //[Gtk3] Does not work unless we keep this ref
-
-    public signal void loading_uri (string location);
-    public signal void folder_deleted (GLib.File location);
-    public signal void free_space_change ();
 
     public Window (Files.Application _application) {
         Object (
@@ -121,6 +108,15 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         width_request = 500;
         icon_name = "system-file-manager";
         title = _(APP_TITLE);
+
+        var app_settings = new Settings ("io.elementary.files.preferences");
+        add_action (app_settings.create_action ("restore-tabs"));
+        add_action (app_settings.create_action ("show-file-preview"));
+        add_action (app_settings.create_action ("show-hiddenfiles"));
+        add_action (app_settings.create_action ("show-local-thumbnails"));
+        add_action (app_settings.create_action ("show-remote-thumbnails"));
+        add_action (app_settings.create_action ("singleclick-select"));
+        add_action (app_settings.create_action ("sort-directories-first"));
 
         add_action_entries (WIN_ENTRIES, this);
         undo_actions_set_insensitive ();
@@ -152,7 +148,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
             marlin_app.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
             marlin_app.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
-            marlin_app.set_accels_for_action ("win.show-hidden", {"<Ctrl>H"});
+            marlin_app.set_accels_for_action ("win.show-hiddenfiles", {"<Ctrl>H"});
             marlin_app.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
             marlin_app.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
             marlin_app.set_accels_for_action ("win.go-to::RECENT", {"<Alt>R"});
@@ -246,7 +242,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             use_popover = false
         };
 
-        tab_bar = new Hdy.TabBar () {
+        var tab_bar = new Hdy.TabBar () {
             autohide = false,
             expand_tabs = false,
             inverted = true,
@@ -275,38 +271,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         grid.show_all ();
 
         add (grid);
-
-        /** Apply preferences */
-        var prefs = Files.Preferences.get_default (); // Bound to settings schema by Application
-        get_action ("show-hidden").set_state (prefs.show_hidden_files);
-        get_action ("show-local-thumbnails").set_state (prefs.show_local_thumbnails);
-        get_action ("show-remote-thumbnails").set_state (prefs.show_remote_thumbnails);
-        get_action ("show-file-preview").set_state (prefs.show_file_preview);
-        get_action ("singleclick-select").set_state (prefs.singleclick_select);
-        get_action ("folders-before-files").set_state (prefs.sort_directories_first);
-        get_action ("restore-tabs-on-startup").set_state (app_settings.get_boolean ("restore-tabs"));
-
-        /*/
-        /* Connect and abstract signals to local ones
-        /*/
-        view_switcher.action.activate.connect ((id) => {
-            switch ((ViewMode)(id.get_uint32 ())) {
-                case ViewMode.ICON:
-                    app_menu.on_zoom_setting_changed (Files.icon_view_settings, "zoom-level");
-                    break;
-                case ViewMode.LIST:
-                    app_menu.on_zoom_setting_changed (Files.list_view_settings, "zoom-level");
-                    break;
-                case ViewMode.MILLER_COLUMNS:
-                    app_menu.on_zoom_setting_changed (Files.column_view_settings, "zoom-level");
-                    break;
-                case ViewMode.PREFERRED:
-                case ViewMode.CURRENT:
-                case ViewMode.INVALID:
-                    assert_not_reached (); //The switcher should not generate these modes
-            }
-        });
-
 
         button_forward.slow_press.connect (() => {
             get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
@@ -440,7 +404,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.close_page_finish (page, true);
 
         if (tab_view.n_pages == 0) {
-            add_tab.begin (default_location, default_mode, false);
+            add_tab.begin (default_location, PREFERRED, false);
         }
 
         return Gdk.EVENT_STOP;
@@ -523,10 +487,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
     }
 
-    public new void set_title (string title) {
-        this.title = title;
-    }
-
     private void change_tab () {
         //Ignore if some restored tabs still loading
         if (restoring_tabs > 0) {
@@ -541,7 +501,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     public async void open_tabs (
         owned GLib.File[]? files,
-        ViewMode mode = default_mode,
+        ViewMode mode = PREFERRED,
         bool ignore_duplicate
     ) {
         // Always try to restore tabs
@@ -566,7 +526,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private async bool add_tab_by_uri (string uri, ViewMode mode = default_mode) {
+    private async bool add_tab_by_uri (string uri, ViewMode mode = PREFERRED) {
         var file = get_file_from_uri (uri);
         if (file != null) {
             return yield add_tab (file, mode, false);
@@ -577,7 +537,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private async bool add_tab (
         GLib.File _location = default_location,
-        ViewMode mode = default_mode,
+        ViewMode mode = PREFERRED,
         bool ignore_duplicate
     ) {
         // Do not try to restore locations that we cannot determine the filetype. This will
@@ -779,14 +739,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    public void bookmark_uri (string uri, string custom_name = "") {
-        sidebar.add_favorite_uri (uri, custom_name);
-    }
-
-    public bool can_bookmark_uri (string uri) {
-        return !sidebar.has_favorite_uri (uri);
-    }
-
     private void move_content_to_new_window (ViewContainer view_container) {
         add_window (view_container.location, view_container.view_mode);
         remove_content (view_container);
@@ -812,7 +764,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
     }
 
-    private void add_window (GLib.File location = default_location, ViewMode mode = default_mode) {
+    private void add_window (GLib.File location = default_location, ViewMode mode = PREFERRED) {
         var new_window = new Window (marlin_app);
         new_window.add_tab.begin (location, real_mode (mode), false);
         new_window.present ();
@@ -839,12 +791,13 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void action_bookmark (GLib.SimpleAction action, GLib.Variant? param) {
+        var bookmark_list = BookmarkList.get_instance ();
         /* Note: Duplicate bookmarks will not be created by BookmarkList */
         unowned var selected_files = current_container.view.get_selected_files ();
         if (selected_files == null) {
-            sidebar.add_favorite_uri (current_container.location.get_uri ());
+            bookmark_list.insert_uri_at_end (current_container.location.get_uri (), "");
         } else if (selected_files.first ().next == null) {
-            sidebar.add_favorite_uri (selected_files.first ().data.uri);
+            bookmark_list.insert_uri_at_end (selected_files.first ().data.uri, "");
         } // Ignore if more than one item selected
     }
 
@@ -985,7 +938,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private void action_tab (GLib.SimpleAction action, GLib.Variant? param) {
         switch (param.get_string ()) {
             case "NEW":
-                add_tab.begin (default_location, default_mode, false);
+                add_tab.begin (default_location, PREFERRED, false);
                 break;
 
             case "CLOSE":
@@ -1055,54 +1008,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         update_undo_actions ();
     }
 
-    public void after_undo_redo () {
+    private void after_undo_redo () {
         if (current_container.slot.directory.is_recent) {
             get_action_group ("win").activate_action ("refresh", null);
         }
 
         doing_undo_redo = false;
-    }
-
-    public void change_state_show_hidden (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-hiddenfiles", state);
-    }
-
-    public void change_state_single_click_select (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.Preferences.get_default ().singleclick_select = state;
-    }
-
-    public void change_state_show_remote_thumbnails (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-remote-thumbnails", state);
-    }
-
-    public void change_state_show_local_thumbnails (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-local-thumbnails", state);
-    }
-
-    public void change_state_show_file_preview (GLib.SimpleAction action) {
-        var state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("show-file-preview", state);
-    }
-
-    public void change_state_folders_before_files (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.Preferences.get_default ().sort_directories_first = state;
-    }
-
-    public void change_state_restore_tabs_on_startup (GLib.SimpleAction action) {
-        bool state = !action.state.get_boolean ();
-        action.set_state (new GLib.Variant.boolean (state));
-        Files.app_settings.set_boolean ("restore-tabs", state);
     }
 
     private void connect_to_server () {
@@ -1124,7 +1035,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
 
-    public GLib.SimpleAction? get_action (string action_name) {
+    private GLib.SimpleAction? get_action (string action_name) {
         return (GLib.SimpleAction?)(lookup_action (action_name));
     }
 
@@ -1377,7 +1288,11 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         var mode = current_container.view_mode;
         view_switcher.set_mode (mode);
         view_switcher.sensitive = current_container.can_show_folder;
-        get_action ("view-mode").change_state (new Variant.uint32 (mode));
+
+        var view_mode_action = get_action ("view-mode");
+        view_mode_action.set_enabled (current_container.can_show_folder);
+        view_mode_action.change_state (new Variant.uint32 (mode));
+
         Files.app_settings.set_enum ("default-viewmode", mode);
     }
 
@@ -1419,7 +1334,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void update_labels (string uri) {
         if (current_container != null) { /* Can happen during restore */
-            set_title (current_container.tab_name); /* Not actually visible on elementaryos */
+            title = current_container.tab_name; /* Not actually visible on elementaryos */
             update_location_bar (uri);
             sidebar.sync_uri (uri);
         }

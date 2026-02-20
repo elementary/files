@@ -844,17 +844,6 @@ public class Files.Directory : Object {
         }
     }
 
-    public void update_desktop_files () {
-        foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null &&
-                (!gof.is_hidden || Preferences.get_default ().show_hidden_files) &&
-                gof.is_desktop) {
-
-                gof.update_desktop_file ();
-            }
-        }
-    }
-
     public Files.File? file_hash_lookup_location (GLib.File? location) {
         if (location != null && location is GLib.File) {
             Files.File? result = file_hash.lookup (location);
