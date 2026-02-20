@@ -114,12 +114,8 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
 
                 view.add_extra_action_widget (actionbar);
                 actionbar.show_all ();
-
                 actionbars.@set (view, actionbar);
             }
-
-
-
         } else if (actionbar != null) {  /* not showing trash directory */
             actionbars.unset (view);
             actionbar.destroy ();

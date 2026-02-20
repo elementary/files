@@ -387,9 +387,6 @@ namespace Files.View {
             }
             /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
-
-            // Ensure plugins (especially trash plugins) update as directory is not
-            // actually reloaded
             plugins.directory_loaded (this.ctab.window, this, slot.directory.file);
         }
 

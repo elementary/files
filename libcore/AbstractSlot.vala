@@ -68,6 +68,7 @@ public abstract class Files.AbstractSlot : GLib.Object {
     }
 
     public void add_extra_action_widget (Gtk.Widget widget) {
+        // Used for e.g. trash plugin actionbar
         extra_action_widgets.add (widget);
     }
 
