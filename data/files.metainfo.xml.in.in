@@ -62,7 +62,7 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
-    <release version="7.3.0" date="2025-12-26" urgency="medium">
+    <release version="7.3.0" date="2026-03-06" urgency="medium">
       <description>
         <p>Improvements:</p>
         <ul>
@@ -70,12 +70,16 @@
         </ul>
         <p>Minor updates:</p>
         <ul>
+          <li>The list of search results now shows matches in the current folder first</li>
           <li>Updated translations</li>
         </ul>
       </description>
       <issues>
+        <issue url="https://github.com/elementary/files/issues/1194">Renaming field is misplaced when scrolling</issue>
         <issue url="https://github.com/elementary/files/issues/1601">(Mixed mode) clicking on a file should open its details in the next column</issue>
+        <issue url="https://github.com/elementary/files/issues/2015">Search results should list folders and files "In this folder" on top</issue>
         <issue url="https://github.com/elementary/files/issues/2672">Searching for a file in the current folder and moving it elsewhere results in a File not Found screen</issue>
+        <issue url="https://github.com/elementary/files/issues/2715">Miller view: action buttons do not reappear after navigating back to trash:// </issue>
       </issues>
     </release>
     <release version="7.2.0" date="2025-12-08" urgency="medium">
