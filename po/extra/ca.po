@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-20 16:13+0000\n"
-"PO-Revision-Date: 2026-01-01 04:55+0000\n"
+"PO-Revision-Date: 2026-02-22 08:55+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/extra/"
 "ca/>\n"
@@ -95,6 +95,8 @@ msgstr "Actualitzacions menors:"
 msgid ""
 "The list of search results now shows matches in the current folder first"
 msgstr ""
+"La llista de resultats de la cerca ara mostra primer les coincidències de la "
+"carpeta actual."
 
 #: data/files.metainfo.xml.in.in:74 data/files.metainfo.xml.in.in:97
 #: data/files.metainfo.xml.in.in:116 data/files.metainfo.xml.in.in:132
