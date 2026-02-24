@@ -81,7 +81,7 @@ public class Files.MimeActions {
 
     public static List<AppInfo> get_applications_for_file (Files.File file) {
         List<AppInfo> result = null;
-        string? type = file.get_ftype ();
+        string? type = file.content_type;
         if (type == null) {
             return result;
         }
@@ -145,7 +145,7 @@ public class Files.MimeActions {
             if (previous_file == null) {
                 result = get_applications_for_file (file);
                 if (result == null) {
-                    debug ("No application found for %s", file.get_ftype ());
+                    debug ("No application found for %s", file.content_type);
                     return result;
                 }
                 previous_file = file;
@@ -190,7 +190,7 @@ public class Files.MimeActions {
     }
 
     private static int file_compare_by_mime_type (Files.File a, Files.File b) {
-        return strcmp (a.get_ftype (), b.get_ftype ());
+        return strcmp (a.content_type, b.content_type);
     }
 
     private static string? gof_get_parent_uri (Files.File file) {

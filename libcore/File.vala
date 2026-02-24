@@ -18,7 +18,7 @@
 
 public class Files.File : GLib.Object {
     private static GLib.HashTable<GLib.File, Files.File> file_cache;
-
+    private const string UNKNOWN_CONTENT = "unknown";
     public enum IconFlags {
         NONE,
         USE_THUMBNAILS
@@ -37,7 +37,7 @@ public class Files.File : GLib.Object {
         "standard::symlink-target,standard::target-uri,access::*,time::*,owner::*,trash::*,unix::*,id::filesystem," +
         "thumbnail::*,mountable::*,metadata::marlin-sort-column-id,metadata::marlin-sort-reversed";
 
-    public signal void changed ();
+    public signal void changed (); // Only listener is FileConflictDialog
     public signal void destroy ();
 
     public bool is_gone;
@@ -87,6 +87,42 @@ public class Files.File : GLib.Object {
     public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
     public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
     public GLib.FileType file_type;
+    private string ? _content_type = null;
+    public string content_type {
+        get {
+            if (_content_type != null) {
+                return _content_type;
+            }
+            if (is_location_uri_default ()) {
+                _content_type = UNKNOWN_CONTENT;
+            }
+
+            if (is_directory) {
+                _content_type = "inode/directory";
+            }
+
+            if (info.has_attribute (FileAttribute.STANDARD_CONTENT_TYPE)) {
+                _content_type =info.get_attribute_string (
+                    FileAttribute.STANDARD_CONTENT_TYPE
+                );
+            }
+
+            if (info.has_attribute (FileAttribute.STANDARD_FAST_CONTENT_TYPE)) {
+                var ctype = info.get_attribute_string (
+                    FileAttribute.STANDARD_FAST_CONTENT_TYPE
+                );
+
+                // Unclear what this done as tagstype is never set to
+                // other than null?? Appears to be legacy C code not used
+                if (ctype == "application/octet-stream" && tagstype != null) {
+                    _content_type = tagstype;
+                }
+            }
+
+            return _content_type;
+        }
+    }
+
     public bool is_hidden { get; construct; }
     public bool is_remote = false;
     public bool is_directory = false;
@@ -282,8 +318,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_desktop_file = false;
-        unowned string? content_type = get_ftype ();
-        if (content_type != null) {
+        if (content_type != UNKNOWN_CONTENT) {
             is_desktop_file = GLib.ContentType.is_mime_type (content_type, "application/x-desktop");
         }
 
@@ -296,8 +331,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_image = false;
-        unowned string? content_type = get_ftype ();
-        if (content_type != null) {
+        if (content_type != UNKNOWN_CONTENT) {
             is_image = GLib.ContentType.is_mime_type (content_type, "image/*");
         }
 
@@ -310,8 +344,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_text = false;
-        unowned string? content_type = get_ftype ();
-        if (content_type != null) {
+        if (content_type != UNKNOWN_CONTENT) {
             is_text = GLib.ContentType.is_mime_type (content_type, "text/*") ||
                 GLib.ContentType.is_mime_type (content_type, "application/sql");
         }
@@ -325,8 +358,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_pdf = false;
-        unowned string? content_type = get_ftype ();
-        if (content_type != null) {
+        if (content_type != UNKNOWN_CONTENT) {
             // https://stackoverflow.com/questions/312230/proper-mime-media-type-for-pdf-files#312258
             is_pdf = GLib.ContentType.is_mime_type (content_type, "application/pdf") ||
                 GLib.ContentType.is_mime_type (content_type, "application/x-pdf");
@@ -382,8 +414,8 @@ public class Files.File : GLib.Object {
         }
 
         if (info.get_attribute_boolean (GLib.FileAttribute.ACCESS_CAN_EXECUTE)) {
-            unowned string? content_type = get_ftype ();
-            if (content_type != null && GLib.ContentType.is_a (content_type, "application/x-executable")) {
+            if (content_type != UNKNOWN_CONTENT &&
+                ContentType.is_a (content_type, "application/x-executable")) {
                 return true;
             }
         }
@@ -431,32 +463,6 @@ public class Files.File : GLib.Object {
         }
 
         return info.get_attribute_byte_string (GLib.FileAttribute.STANDARD_SYMLINK_TARGET);
-    }
-
-    public unowned string? get_ftype () {
-        if (info == null || is_location_uri_default ()) {
-            return null;
-        }
-
-        if (is_directory) {
-            return "inode/directory";
-        }
-
-        if (info.has_attribute (GLib.FileAttribute.STANDARD_CONTENT_TYPE)) {
-            return info.get_attribute_string (GLib.FileAttribute.STANDARD_CONTENT_TYPE);
-        }
-
-        unowned string ftype = null;
-        if (info.has_attribute (GLib.FileAttribute.STANDARD_FAST_CONTENT_TYPE)) {
-            ftype = info.get_attribute_string (GLib.FileAttribute.STANDARD_FAST_CONTENT_TYPE);
-        }
-
-        /* If octet-stream then check tagtype */
-        if (ftype == "application/octet-stream" && tagstype != null) {
-            return tagstype;
-        }
-
-        return ftype;
     }
 
     public string? get_formated_time (string attr) {
@@ -543,6 +549,8 @@ public class Files.File : GLib.Object {
         return iconinfo;
     }
 
+    // Called by directory when (re-)loaded, file changes detected,
+    // desktop file updated
     public void update () {
         if (info == null) {
             return;
@@ -657,9 +665,8 @@ public class Files.File : GLib.Object {
         } else if (info.get_file_type () == GLib.FileType.MOUNTABLE) {
             icon = new GLib.ThemedIcon.with_default_fallbacks ("folder-remote");
         } else {
-            unowned string? ftype = get_ftype ();
-            if (ftype != null && icon == null) {
-                icon = GLib.ContentType.get_icon (ftype);
+            if (content_type != UNKNOWN_CONTENT && icon == null) {
+                icon = GLib.ContentType.get_icon (content_type);
             }
         }
 
@@ -932,9 +939,11 @@ public class Files.File : GLib.Object {
     }
 
     public GLib.AppInfo? get_default_handler () {
-        unowned string? content_type = get_ftype ();
-        if (content_type != null) {
-            return GLib.AppInfo.get_default_for_type (content_type, location.get_path () == null);
+        if (content_type != UNKNOWN_CONTENT) {
+            return AppInfo.get_default_for_type (
+                content_type,
+                location.get_path () == null
+            );
         }
 
         if (target_location != null) {
@@ -1149,6 +1158,7 @@ public class Files.File : GLib.Object {
         icon = null;
         custom_display_name = null;
         custom_icon_name = null;
+        _content_type = null;
 
         uid = -1;
         gid = -1;
@@ -1237,12 +1247,11 @@ public class Files.File : GLib.Object {
     }
 
     private void update_formated_type () {
-        unowned string? ftype = get_ftype ();
-        if (ftype != null) {
+        if (content_type != null) {
             if (is_symlink ()) {
-                formated_type = _("link to %s").printf (GLib.ContentType.get_description (ftype));
+                formated_type = _("link to %s").printf (GLib.ContentType.get_description (content_type));
             } else {
-                formated_type = GLib.ContentType.get_description (ftype);
+                formated_type = GLib.ContentType.get_description (content_type);
             }
         } else {
             formated_type = "";
