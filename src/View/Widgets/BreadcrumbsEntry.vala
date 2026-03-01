@@ -234,6 +234,7 @@ namespace Files.View.Chrome {
                 Gdk.Atom target = Gtk.drag_dest_find_target (this, context, list);
                 if (target != Gdk.Atom.NONE) {
                     Gtk.drag_get_data (this, context, target, time); /* emits "drag_data_received" */
+                    return false;
                 }
             }
 
