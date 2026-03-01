@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-20 16:13+0000\n"
-"PO-Revision-Date: 2026-01-05 23:31+0000\n"
+"PO-Revision-Date: 2026-03-02 11:55+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "l10n.elementaryos.org/projects/files/extra/zh_TW/>\n"
@@ -91,7 +91,7 @@ msgstr "小型更新："
 #: data/files.metainfo.xml.in.in:73
 msgid ""
 "The list of search results now shows matches in the current folder first"
-msgstr ""
+msgstr "在搜尋結果清單中先顯示目前資料夾內的結果"
 
 #: data/files.metainfo.xml.in.in:74 data/files.metainfo.xml.in.in:97
 #: data/files.metainfo.xml.in.in:116 data/files.metainfo.xml.in.in:132
