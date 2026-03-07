@@ -41,9 +41,8 @@ public class Files.View.DetailsColumn : Gtk.Bin {
             hexpand = true,
             vexpand = true,
             halign = CENTER,
-            valign = CENTER,
+            valign = CENTER
         };
-
         file_image.get_style_context ().add_class (Granite.STYLE_CLASS_CARD);
         file_image.get_style_context ().add_class (Granite.STYLE_CLASS_CHECKERBOARD);
 
@@ -215,33 +214,36 @@ public class Files.View.DetailsColumn : Gtk.Bin {
 
         var box = new Gtk.Box (VERTICAL, 12) {
             halign = CENTER,
-            hexpand = true,
             margin_top = 12,
             margin_bottom = 12,
             margin_start = 12,
             margin_end = 12,
         };
 
-        var scrolled_window = new Gtk.ScrolledWindow (null, null) {
-            width_request = PREVIEW_SIZE,
-            max_content_height = PREVIEW_SIZE,
-            max_content_width = PREVIEW_SIZE,
-            min_content_height = PREVIEW_SIZE / 2,
-            min_content_width = PREVIEW_SIZE / 2
-        };
-
         if (previewing_text) {
-            scrolled_window.child = file_text;
+            var text_window = new Gtk.ScrolledWindow (null, null) {
+                child = file_text,
+                width_request = PREVIEW_SIZE,
+                height_request = PREVIEW_SIZE,
+                max_content_height = PREVIEW_SIZE,
+                max_content_width = PREVIEW_SIZE
+            };
+
+            box.add (text_window);
         } else {
-            scrolled_window.child = file_image;
+            box.add (file_image);
         }
 
-        box.add (scrolled_window);
-        box.add (new Gtk.Separator (HORIZONTAL));
         box.add (info_grid);
         box.add (more_info_button);
 
-        child = box;
+        var scrolled = new Gtk.ScrolledWindow (null, null) {
+            child = box,
+            propagate_natural_height = true,
+            hscrollbar_policy = NEVER
+        };
+
+        child = scrolled;
         show_all ();
 
         more_info_button.clicked.connect (() => {
