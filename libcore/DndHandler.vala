@@ -355,36 +355,44 @@ namespace Files {
                                                  Gdk.DragAction possible_actions,
                                                  out Gdk.DragAction suggested_action_return) {
 
+            warning ("checking file accepts drop");
             var actions = possible_actions;
             var suggested_action = selected_action;
             var target_location = dest.get_target_location ();
             suggested_action_return = Gdk.DragAction.PRIVATE;
 
             if (drop_file_list == null || drop_file_list.data == null) {
+                warning ("drop file list empty - return DEFAULT");
                 return Gdk.DragAction.DEFAULT;
             }
 
             if (dest.is_folder ()) {
                 if (!dest.is_writable ()) {
+                    warning ("Folder not writable - return DEFAULT");
                     actions = Gdk.DragAction.DEFAULT;
                 } else {
+                    warning ("target is writable folder - check valid actions");
                     /* Modify actions and suggested_action according to source files */
                     actions &= valid_actions_for_file_list (target_location,
                                                             drop_file_list,
                                                             ref suggested_action);
                 }
             } else if (dest.is_executable ()) {
+                warning ("target is executable file - actions |= COPY|MOVE|LINK|PRIVATE");
                 actions |= (Gdk.DragAction.COPY |
                            Gdk.DragAction.MOVE |
                            Gdk.DragAction.LINK |
                            Gdk.DragAction.PRIVATE);
             } else {
+                warning ("target is not a valid DnD target - not folder and not executable");
                 actions = Gdk.DragAction.DEFAULT;
             }
 
             if (actions == Gdk.DragAction.DEFAULT) { // No point asking if no other valid actions
+                warning ("Cannot accept drop - return now");
                 return Gdk.DragAction.DEFAULT;
             } else if (FileUtils.location_is_in_trash (target_location)) { // cannot copy or link to trash
+                warning ("target is trash - cannot copy or link");
                 actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
             }
 
@@ -400,6 +408,7 @@ namespace Files {
                 suggested_action_return = Gdk.DragAction.MOVE;
             }
 
+            warning ("actions - %s, suggested - %s", actions.to_string (), suggested_action_return.to_string ());
             return actions;
         }
 
@@ -408,6 +417,7 @@ namespace Files {
                                                             GLib.List<GLib.File> drop_file_list,
                                                             ref Gdk.DragAction suggested_action) {
 
+            warning ("checking valid actions for file list");
             var valid_actions = Gdk.DragAction.DEFAULT |
                                 Gdk.DragAction.COPY |
                                 Gdk.DragAction.MOVE |
@@ -427,6 +437,7 @@ namespace Files {
                     from_trash = true;
 
                     if (FileUtils.location_is_in_trash (target_location)) {
+                        warning ("file in trash - cannot DnD");
                         valid_actions = Gdk.DragAction.DEFAULT; // No DnD within trash
                     }
                 }
@@ -434,17 +445,20 @@ namespace Files {
                 var parent = drop_file.get_parent ();
 
                 if (parent != null && parent.equal (target_location)) {
+                    warning ("file in destination - only LINK");
                     valid_actions &= Gdk.DragAction.LINK; // Only LINK is valid
                 }
 
                 var scheme = drop_file.get_uri_scheme ();
                 if (scheme == null || !scheme.has_prefix ("file")) {
+                    warning ("file not local - cannot LINK");
                     valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
                 }
 
                 if (++count > MAX_FILES_CHECKED ||
                     valid_actions == Gdk.DragAction.DEFAULT) {
 
+                    warning ("No valid action for file - stop checking files");
                     break;
                 }
             }
@@ -457,6 +471,7 @@ namespace Files {
                  suggested_action == Gdk.DragAction.COPY &&
                  (from_trash || FileUtils.same_file_system (drop_file_list.first ().data, target_location))) {
 
+                warning ("Same filesystem - suggesting MOVE");
                 suggested_action = Gdk.DragAction.MOVE;
             }
 
@@ -464,6 +479,7 @@ namespace Files {
                 valid_actions |= Gdk.DragAction.ASK; // Allow ASK if there is a possible action
             }
 
+            warning ("valid actions - %s", valid_actions.to_string ());
             return valid_actions;
         }
     }
