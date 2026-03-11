@@ -248,8 +248,44 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             inverted = true,
             start_action_widget = new_tab_button,
             end_action_widget = tab_history_button,
-            view = tab_view
+            view = tab_view,
+            extra_drag_dest_targets = new Gtk.TargetList (AbstractDirectoryView.DROP_TARGETS) // match targets of view
         };
+
+        tab_bar.extra_drag_data_received.connect ((tab, context, data, info, time) => {
+            var current_actions = 0;
+            var current_suggested_action = 0;
+            var drop_target_gfile = ((ViewContainer ) (tab.get_child ())).location;
+            string text = "";
+            var success = false;
+
+            if (drop_target_gfile != null && DndHandler.selection_data_is_uri_list (data, info, out text)) {
+                var drop_target_file = Files.File.@get (drop_target_gfile);
+                drop_target_file.update ();
+                var destination_drop_file_list = FileUtils.files_from_escaped_uris (text);
+                current_actions = DndHandler.file_accepts_drop (
+                    drop_target_file,
+                    destination_drop_file_list,
+                    context.get_selected_action (),
+                    context.get_actions (),
+                    out current_suggested_action
+                );
+
+                if ((current_actions & AbstractDirectoryView.FILE_DRAG_ACTIONS) != 0) {
+                    success = new DndHandler ().handle_file_drag_actions (
+                        ((Slot) ((ViewContainer ) (tab.get_child ())).slot).dir_view,
+                        drop_target_file,
+                        destination_drop_file_list,
+                        current_actions,
+                        current_suggested_action,
+                        this,
+                        time
+                    );
+                }
+            }
+
+            Gtk.drag_finish (context, success, false, time);
+        });
 
         var tab_box = new Gtk.Box (VERTICAL, 0);
         tab_box.add (tab_bar);

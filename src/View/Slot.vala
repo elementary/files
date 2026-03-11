@@ -23,7 +23,7 @@ namespace Files.View {
         public ViewMode mode { get; construct; }
 
         private int preferred_column_width;
-        private Files.AbstractDirectoryView? dir_view = null;
+        public Files.AbstractDirectoryView? dir_view { get; private set; default = null; }
         private uint reload_timeout_id = 0;
         private uint path_change_timeout_id = 0;
         private bool original_reload_request = false;
