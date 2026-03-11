@@ -134,12 +134,12 @@ namespace Files {
         uint drag_enter_timer_id = 0;
         private bool destination_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
-        Files.File? drop_target_file = null;
+        private Files.File? drop_target_file = null;
         private GLib.List<GLib.File> destination_drop_file_list = null; /* the list of URIs that are contained in the drop data */
-        Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
-        Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
-        bool _drop_highlight;
-        bool drop_highlight {
+        private Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
+        private Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
+        private bool _drop_highlight;
+        private bool drop_highlight {
             get {
                 return _drop_highlight;
             }
@@ -164,10 +164,10 @@ namespace Files {
         private void* drag_data;
 
         /* support for generating thumbnails */
-        int thumbnail_request = -1;
-        uint thumbnail_source_id = 0;
-        uint freeze_source_id = 0;
-        Thumbnailer thumbnailer = null;
+        private int thumbnail_request = -1;
+        private uint thumbnail_source_id = 0;
+        private uint freeze_source_id = 0;
+        private Thumbnailer thumbnailer = null;
 
         /* Free space signal support */
         uint add_remove_file_timeout_id = 0;
