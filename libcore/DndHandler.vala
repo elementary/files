@@ -349,11 +349,13 @@ namespace Files {
             }
         }
 
-        public static Gdk.DragAction file_accepts_drop (Files.File dest,
-                                                 GLib.List<GLib.File> drop_file_list, // read-only
-                                                 Gdk.DragAction selected_action,
-                                                 Gdk.DragAction possible_actions,
-                                                 out Gdk.DragAction suggested_action_return) {
+        public static Gdk.DragAction file_accepts_drop (
+            Files.File dest,
+            GLib.List<GLib.File> drop_file_list, // read-only
+            Gdk.DragAction selected_action,// may be null - ignore
+            Gdk.DragAction possible_actions,
+            out Gdk.DragAction suggested_action_return
+        ) {
 
             var actions = possible_actions;
             var suggested_action = selected_action;
@@ -404,9 +406,11 @@ namespace Files {
         }
 
         private const uint MAX_FILES_CHECKED = 100; // Max checked copied from gof_file.c version
-        private static Gdk.DragAction valid_actions_for_file_list (GLib.File target_location,
-                                                            GLib.List<GLib.File> drop_file_list,
-                                                            ref Gdk.DragAction suggested_action) {
+        private static Gdk.DragAction valid_actions_for_file_list (
+            GLib.File target_location,
+            GLib.List<GLib.File> drop_file_list,
+            ref Gdk.DragAction suggested_action
+        ) {
 
             var valid_actions = Gdk.DragAction.DEFAULT |
                                 Gdk.DragAction.COPY |
