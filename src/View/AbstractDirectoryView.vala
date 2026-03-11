@@ -1805,7 +1805,7 @@ namespace Files {
 
                     highlight_drop_file (drop_target_file, current_actions, get_path_at_pos (x, y));
 
-                    if (drop_target_file.is_folder () && is_valid_drop_folder (drop_target_file)) {
+                    if (drop_target_file.is_folder () && drop_target_file.uri != slot.uri) {
                         /* open the target folder after a short delay */
                         drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                                      1000,
@@ -1820,17 +1820,7 @@ namespace Files {
             }
         }
 
-        private bool is_valid_drop_folder (Files.File file) {
-            /* Cannot drop onto a file onto its parent or onto itself */
-            if (file.uri != slot.uri &&
-                source_drag_file_list != null &&
-                source_drag_file_list.index (file) < 0) {
 
-                return true;
-            } else {
-                return false;
-            }
-        }
 
         private void highlight_drop_file (Files.File drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
             bool can_drop = (action > Gdk.DragAction.DEFAULT);
