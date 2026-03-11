@@ -63,7 +63,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"edit-path", action_edit_path},
         {"tab", action_tab, "s"},
         {"go-to", action_go_to, "s"},
-        {"zoom", action_zoom, "s"},
         {"view-mode", action_view_mode, "u", "0" },
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"forward", action_forward, "i"},
@@ -145,9 +144,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action (
                 GLib.Action.print_detailed_name ("win.view-mode", new Variant.uint32 (2)), {"<Ctrl>3"}
             );
-            marlin_app.set_accels_for_action ("win.zoom::ZOOM_IN", {"<Ctrl>plus", "<Ctrl>equal"});
-            marlin_app.set_accels_for_action ("win.zoom::ZOOM_OUT", {"<Ctrl>minus"});
-            marlin_app.set_accels_for_action ("win.zoom::ZOOM_NORMAL", {"<Ctrl>0"});
             marlin_app.set_accels_for_action ("win.show-hiddenfiles", {"<Ctrl>H"});
             marlin_app.set_accels_for_action ("win.refresh", {"<Ctrl>R", "F5"});
             marlin_app.set_accels_for_action ("win.go-to::HOME", {"<Alt>Home"});
@@ -910,28 +906,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
             default:
                 break;
-        }
-    }
-
-    private void action_zoom (GLib.SimpleAction action, GLib.Variant? param) {
-        if (current_container != null) {
-            assert (current_container.view != null);
-            switch (param.get_string ()) {
-                case "ZOOM_IN":
-                    current_container.view.zoom_in ();
-                    break;
-
-                case "ZOOM_OUT":
-                    current_container.view.zoom_out ();
-                    break;
-
-                case "ZOOM_NORMAL":
-                    current_container.view.zoom_normal ();
-                    break;
-
-                default:
-                    break;
-            }
         }
     }
 

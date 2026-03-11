@@ -38,6 +38,12 @@ namespace Files {
             base (_slot);
         }
 
+        construct {
+            realize.connect (() => {
+                set_up_zoom_actions ("list");
+            });
+        }
+
         protected override void set_up_icon_renderer () {
             icon_renderer = new IconRenderer ();
         }
