@@ -435,7 +435,7 @@ namespace Files {
                 var parent = drop_file.get_parent ();
                 var scheme = drop_file.get_uri_scheme ();
 
-                if (scheme != null && scheme = "file" && parent != null && parent.equal (target_location)) {
+                if (scheme != null && scheme == "file" && parent != null && parent.equal (target_location)) {
                     valid_actions = (LINK | COPY);
                     suggested_action = Gdk.DragAction.PRIVATE; // Ask in this case
                 }
