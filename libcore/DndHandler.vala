@@ -352,7 +352,7 @@ namespace Files {
         public static Gdk.DragAction file_accepts_drop (
             Files.File dest,
             GLib.List<GLib.File> drop_file_list, // read-only
-            Gdk.DragAction selected_action,// may be null - ignore
+            Gdk.DragAction selected_action, // may be null - ignore
             Gdk.DragAction possible_actions,
             out Gdk.DragAction suggested_action_return
         ) {
