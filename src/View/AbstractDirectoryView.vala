@@ -134,12 +134,12 @@ namespace Files {
         uint drag_enter_timer_id = 0;
         private bool destination_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
-        Files.File? drop_target_file = null;
+        private Files.File? drop_target_file = null;
         private GLib.List<GLib.File> destination_drop_file_list = null; /* the list of URIs that are contained in the drop data */
-        Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
-        Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
-        bool _drop_highlight;
-        bool drop_highlight {
+        private Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
+        private Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
+        private bool _drop_highlight;
+        private bool drop_highlight {
             get {
                 return _drop_highlight;
             }
@@ -164,10 +164,10 @@ namespace Files {
         private void* drag_data;
 
         /* support for generating thumbnails */
-        int thumbnail_request = -1;
-        uint thumbnail_source_id = 0;
-        uint freeze_source_id = 0;
-        Thumbnailer thumbnailer = null;
+        private int thumbnail_request = -1;
+        private uint thumbnail_source_id = 0;
+        private uint freeze_source_id = 0;
+        private Thumbnailer thumbnailer = null;
 
         /* Free space signal support */
         uint add_remove_file_timeout_id = 0;
@@ -1793,11 +1793,10 @@ namespace Files {
                         current_suggested_action = Gdk.DragAction.COPY;
                         current_actions = current_suggested_action;
                     } else {
-
                         current_actions = DndHandler.file_accepts_drop (
                             drop_target_file,
                             destination_drop_file_list,
-                            context.get_selected_action (),
+                            context.get_selected_action (), //may return null
                             context.get_actions (),
                             out current_suggested_action
                         );
@@ -1805,7 +1804,7 @@ namespace Files {
 
                     highlight_drop_file (drop_target_file, current_actions, get_path_at_pos (x, y));
 
-                    if (drop_target_file.is_folder () && is_valid_drop_folder (drop_target_file)) {
+                    if (drop_target_file.is_folder () && drop_target_file.uri != slot.uri) {
                         /* open the target folder after a short delay */
                         drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                                      1000,
@@ -1820,17 +1819,7 @@ namespace Files {
             }
         }
 
-        private bool is_valid_drop_folder (Files.File file) {
-            /* Cannot drop onto a file onto its parent or onto itself */
-            if (file.uri != slot.uri &&
-                source_drag_file_list != null &&
-                source_drag_file_list.index (file) < 0) {
 
-                return true;
-            } else {
-                return false;
-            }
-        }
 
         private void highlight_drop_file (Files.File drop_file, Gdk.DragAction action, Gtk.TreePath? path) {
             bool can_drop = (action > Gdk.DragAction.DEFAULT);
