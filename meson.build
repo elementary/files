@@ -115,6 +115,5 @@ subdir('filechooser-portal')
 subdir('po')
 
 gnome.post_install(
-    glib_compile_schemas: true,
     update_desktop_database: true
 )

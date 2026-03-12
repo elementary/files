@@ -42,6 +42,7 @@ jobs:
         DESTDIR: out
       run: |
         cd build
+        ninja install
         ninja test
 
   lint:
