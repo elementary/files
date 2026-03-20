@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-09 08:35+0000\n"
+"POT-Creation-Date: 2026-02-20 16:13+0000\n"
 "PO-Revision-Date: 2026-01-08 12:55+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/files/"
@@ -21,11 +21,11 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:195
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:191
 msgid "Previous"
 msgstr "Назад"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:200
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:196
 msgid "Next"
 msgstr "Далее"
 
@@ -114,7 +114,7 @@ msgstr "Копировать сюда"
 msgid "Link Here"
 msgstr "Создать ссылку здесь"
 
-#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2321
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2322
 msgid "Name"
 msgstr "Имя"
 
@@ -127,7 +127,7 @@ msgstr "Дата создания"
 msgid "Last modification date"
 msgstr "Дата последнего изменения"
 
-#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2326
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2327
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Размер"
@@ -140,7 +140,7 @@ msgstr "Последовательность чисел"
 msgid "Text"
 msgstr "Текст"
 
-#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2336
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2337
 msgid "Date"
 msgstr "Дата"
 
@@ -210,31 +210,31 @@ msgstr "Разговорный"
 msgid "Compact"
 msgstr "Компактный"
 
-#: libcore/File.vala:647 libcore/File.vala:1207
+#: libcore/File.vala:651 libcore/File.vala:1203
 msgid "Inaccessible"
 msgstr "Недоступно"
 
-#: libcore/File.vala:986
+#: libcore/File.vala:968
 msgid "Failed to parse the desktop file"
 msgstr "Ошибка обработки desktop-файла"
 
-#: libcore/File.vala:990
+#: libcore/File.vala:972
 msgid "Failed to parse the desktop file: "
 msgstr "Не удалось обработать desktop-файл: "
 
-#: libcore/File.vala:1002
+#: libcore/File.vala:984
 msgid "Failed to create command from file: "
 msgstr "Не удалось создать команду из файла: "
 
-#: libcore/File.vala:1011
+#: libcore/File.vala:993
 msgid "Unable to Launch Desktop File: "
 msgstr "Невозможно запустить desktop-файл: "
 
-#: libcore/File.vala:1200
+#: libcore/File.vala:1196
 msgid "Empty"
 msgstr "Пустой"
 
-#: libcore/File.vala:1202
+#: libcore/File.vala:1198
 #, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
@@ -242,7 +242,7 @@ msgstr[0] "%'d объект"
 msgstr[1] "%'d объекта"
 msgstr[2] "%'d объектов"
 
-#: libcore/File.vala:1247
+#: libcore/File.vala:1243
 #, c-format
 msgid "link to %s"
 msgstr "ссылка на %s"
@@ -715,7 +715,7 @@ msgstr "DAVS"
 msgid "FTP"
 msgstr "FTP"
 
-#: libcore/Resources.vala:65 src/View/Sidebar/SidebarWindow.vala:47
+#: libcore/Resources.vala:65 src/View/Sidebar/SidebarWindow.vala:53
 msgid "Network"
 msgstr "Сеть"
 
@@ -727,7 +727,7 @@ msgstr "SFTP"
 msgid "SMB"
 msgstr "SMB"
 
-#: libcore/Resources.vala:68 src/View/Sidebar/BookmarkListBox.vala:169
+#: libcore/Resources.vala:68 src/View/Sidebar/BookmarkListBox.vala:173
 msgid "Trash"
 msgstr "Корзина"
 
@@ -1528,15 +1528,15 @@ msgstr "Введите путь"
 msgid "Type a path"
 msgstr "Введите путь"
 
-#: libcore/View/HeaderBar/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:21
 msgid "View as Grid"
 msgstr "Просмотр в виде значков"
 
-#: libcore/View/HeaderBar/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:31
 msgid "View as List"
 msgstr "Просмотр в виде списка"
 
-#: libcore/View/HeaderBar/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:42
 msgid "View in Columns"
 msgstr "Просмотр в виде колонок"
 
@@ -1578,8 +1578,8 @@ msgstr "Показать версию программы"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Открыть одну или несколько ссылок URI, каждую в новой вкладке"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1909
-#: src/View/AbstractDirectoryView.vala:1915
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1900
+#: src/View/AbstractDirectoryView.vala:1907
 msgid "New Window"
 msgstr "Новое окно"
 
@@ -1662,7 +1662,7 @@ msgstr "Ёмкость:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:264 src/View/DetailsColumn.vala:278
+#: src/View/DetailsColumn.vala:267 src/View/DetailsColumn.vala:281
 msgid "Unknown"
 msgstr "Неизвестно"
 
@@ -1785,7 +1785,7 @@ msgid "Set as default"
 msgstr "Установить по умолчанию"
 
 #: src/Dialogs/PropertiesWindow.vala:116
-#: src/View/AbstractDirectoryView.vala:2028
+#: src/View/AbstractDirectoryView.vala:2020
 #: src/View/Sidebar/AbstractMountableRow.vala:277
 msgid "Properties"
 msgstr "Свойства"
@@ -1817,11 +1817,11 @@ msgstr "Фактический размер может быть больше"
 msgid "unknown"
 msgstr "неизвестно"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:315
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:318
 msgid "Loading…"
 msgstr "Загрузка…"
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:284
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:287
 msgid "Could not be determined"
 msgstr "Не удалось определить"
 
@@ -1859,7 +1859,7 @@ msgid "Original Location:"
 msgstr "Исходное расположение:"
 
 #: src/Dialogs/PropertiesWindow.vala:664
-#: src/View/AbstractDirectoryView.vala:1996
+#: src/View/AbstractDirectoryView.vala:1988
 msgid "Other Application…"
 msgstr "Другое приложение…"
 
@@ -1958,18 +1958,18 @@ msgstr "Группа"
 msgid "Everyone"
 msgstr "Все"
 
-#: src/View/AbstractDirectoryView.vala:838
-#: src/View/AbstractDirectoryView.vala:1164
+#: src/View/AbstractDirectoryView.vala:852
+#: src/View/AbstractDirectoryView.vala:1178
 msgid "Cannot execute this file"
 msgstr "Не удаётся выполнить этот файл"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:848
+#: src/View/AbstractDirectoryView.vala:862
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "«%s» необходимо восстановить из корзины перед открытием"
 
-#: src/View/AbstractDirectoryView.vala:849
+#: src/View/AbstractDirectoryView.vala:863
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -1977,110 +1977,110 @@ msgstr ""
 "Файлы в Корзине не могут быть открыты. Чтобы открыть файл, перенесите его в "
 "другое место."
 
-#: src/View/AbstractDirectoryView.vala:864
+#: src/View/AbstractDirectoryView.vala:878
 msgid "Cannot open this file"
 msgstr "Не удалось открыть этот файл"
 
-#: src/View/AbstractDirectoryView.vala:877
+#: src/View/AbstractDirectoryView.vala:891
 msgid "Cannot identify file type to open"
 msgstr "Не удалось определить тип файла для открытия"
 
-#: src/View/AbstractDirectoryView.vala:1617
+#: src/View/AbstractDirectoryView.vala:1608
 msgid "Cannot drop this file"
 msgstr "Не удаётся поместить этот файл"
 
-#: src/View/AbstractDirectoryView.vala:1618
+#: src/View/AbstractDirectoryView.vala:1609
 msgid "Invalid file name provided"
 msgstr "Недопустимое имя файла"
 
-#: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:240
+#: src/View/AbstractDirectoryView.vala:1883
+#: src/View/AbstractDirectoryView.vala:1890 src/View/Window.vala:236
 msgid "New Tab"
 msgstr "Новая вкладка"
 
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1924
 msgid "Run"
 msgstr "Выполнить"
 
-#: src/View/AbstractDirectoryView.vala:1939
+#: src/View/AbstractDirectoryView.vala:1931
 #, c-format
 msgid "Open in %s"
 msgstr "Открыть в %s"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2000
 msgid "Open in"
 msgstr "Открыть в"
 
-#: src/View/AbstractDirectoryView.vala:2010
+#: src/View/AbstractDirectoryView.vala:2002
 #: src/View/Widgets/BreadcrumbsEntry.vala:446
 msgid "Open with"
 msgstr "Открыть с помощью"
 
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2013
 msgid "Add to Bookmarks"
 msgstr "Добавить в закладки"
 
-#: src/View/AbstractDirectoryView.vala:2041
+#: src/View/AbstractDirectoryView.vala:2033
 msgid "Select All"
 msgstr "Выделить всё"
 
-#: src/View/AbstractDirectoryView.vala:2050
+#: src/View/AbstractDirectoryView.vala:2042
 msgid "Invert Selection"
 msgstr "Инвертировать выделение"
 
-#: src/View/AbstractDirectoryView.vala:2059
+#: src/View/AbstractDirectoryView.vala:2051
 msgid "Deselect All"
 msgstr "Снять выделение со всего"
 
-#: src/View/AbstractDirectoryView.vala:2067
+#: src/View/AbstractDirectoryView.vala:2062
 msgid "Cut"
 msgstr "Вырезать"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2070
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/View/AbstractDirectoryView.vala:2082
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Move to Trash"
 msgstr "Переместить в корзину"
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2082
 msgid "Delete Permanently"
 msgstr "Удалить безвозвратно"
 
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2089
 msgid "Restore from Trash"
 msgstr "Восстановить из корзины"
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2112
 msgid "Open Parent Folder"
 msgstr "Открыть родительскую папку"
 
-#: src/View/AbstractDirectoryView.vala:2120
+#: src/View/AbstractDirectoryView.vala:2115
 msgid "Remove from History"
 msgstr "Удалить из истории"
 
-#: src/View/AbstractDirectoryView.vala:2146
+#: src/View/AbstractDirectoryView.vala:2141
 msgid "Rename…"
 msgstr "Переименовать…"
 
-#: src/View/AbstractDirectoryView.vala:2153
+#: src/View/AbstractDirectoryView.vala:2148
 msgid "Copy as Link"
 msgstr "Копировать ссылку"
 
-#: src/View/AbstractDirectoryView.vala:2176
-#: src/View/AbstractDirectoryView.vala:2256
+#: src/View/AbstractDirectoryView.vala:2171
+#: src/View/AbstractDirectoryView.vala:2253
 msgid "Paste Link into Folder"
 msgstr "Вставить ссылку в папку"
 
-#: src/View/AbstractDirectoryView.vala:2181
-#: src/View/AbstractDirectoryView.vala:2233
+#: src/View/AbstractDirectoryView.vala:2176
+#: src/View/AbstractDirectoryView.vala:2230
 msgid "Paste into Folder"
 msgstr "Вставить в папку"
 
-#: src/View/AbstractDirectoryView.vala:2191
-#: src/View/AbstractDirectoryView.vala:2261
+#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2258
 msgid "Paste"
 msgstr "Вставить"
 
@@ -2088,69 +2088,69 @@ msgstr "Вставить"
 msgid "Set as Wallpaper"
 msgstr "Установить как обои"
 
-#: src/View/AbstractDirectoryView.vala:2331 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2332 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Тип"
 
-#: src/View/AbstractDirectoryView.vala:2341
+#: src/View/AbstractDirectoryView.vala:2342
 msgid "Reversed Order"
 msgstr "В обратном порядке"
 
-#: src/View/AbstractDirectoryView.vala:2344
+#: src/View/AbstractDirectoryView.vala:2347
 msgid "Folders Before Files"
 msgstr "Папки перед файлами"
 
-#: src/View/AbstractDirectoryView.vala:2356
+#: src/View/AbstractDirectoryView.vala:2367
 msgid "Sort by"
 msgstr "Сортировать"
 
-#: src/View/AbstractDirectoryView.vala:2366
+#: src/View/AbstractDirectoryView.vala:2376
 msgid "Folder"
 msgstr "Папка"
 
-#: src/View/AbstractDirectoryView.vala:2372
+#: src/View/AbstractDirectoryView.vala:2382
 msgid "Empty File"
 msgstr "Пустой файл"
 
-#: src/View/AbstractDirectoryView.vala:2382
+#: src/View/AbstractDirectoryView.vala:2396
 msgid "Template"
 msgstr "Шаблон"
 
-#: src/View/AbstractDirectoryView.vala:2390
+#: src/View/AbstractDirectoryView.vala:2398
 msgid "…too many templates"
 msgstr "…слишком много шаблонов"
 
-#: src/View/AbstractDirectoryView.vala:2395
+#: src/View/AbstractDirectoryView.vala:2404
 msgid "New"
 msgstr "Создать"
 
-#: src/View/AbstractDirectoryView.vala:2669
+#: src/View/AbstractDirectoryView.vala:2674
 #, c-format
 msgid "Untitled %s"
 msgstr "Безымянный %s"
 
-#: src/View/AbstractDirectoryView.vala:2960
-#: src/View/AbstractDirectoryView.vala:3166
+#: src/View/AbstractDirectoryView.vala:2965
+#: src/View/AbstractDirectoryView.vala:3171
 msgid "Cannot remove files from here"
 msgstr "Не удалось удалить файлы отсюда"
 
-#: src/View/AbstractDirectoryView.vala:2961
-#: src/View/AbstractDirectoryView.vala:3139
-#: src/View/AbstractDirectoryView.vala:3150
-#: src/View/AbstractDirectoryView.vala:3167
+#: src/View/AbstractDirectoryView.vala:2966
+#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:3155
+#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr "У вас нет прав на изменение этого расположения"
 
-#: src/View/AbstractDirectoryView.vala:3107
+#: src/View/AbstractDirectoryView.vala:3112
 msgid "Cannot copy files that are in the trash"
 msgstr "Невозможно копировать файлы, находящиеся в корзине"
 
-#: src/View/AbstractDirectoryView.vala:3108
+#: src/View/AbstractDirectoryView.vala:3113
 msgid "Cutting the selection instead"
 msgstr "Вырезать невыделенное"
 
-#: src/View/AbstractDirectoryView.vala:3138
-#: src/View/AbstractDirectoryView.vala:3149
+#: src/View/AbstractDirectoryView.vala:3143
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot paste files here"
 msgstr "Не удалось вставить файлы сюда"
 
@@ -2224,7 +2224,7 @@ msgstr "Здесь нет недавних файлов"
 msgid "Access Denied"
 msgstr "Доступ запрещён"
 
-#: src/View/ViewContainer.vala:356 src/View/Sidebar/BookmarkListBox.vala:127
+#: src/View/ViewContainer.vala:356 src/View/Sidebar/BookmarkListBox.vala:131
 msgid "Home"
 msgstr "Домашняя папка"
 
@@ -2272,36 +2272,36 @@ msgstr "Невозможно отобразить папку"
 msgid "The server for this folder could not be located."
 msgstr "Невозможно определить сервер для указанной папки."
 
-#: src/View/Window.vala:215
+#: src/View/Window.vala:211
 msgid "Menu"
 msgstr "Меню"
 
-#: src/View/Window.vala:245
+#: src/View/Window.vala:241
 msgid "Closed Tabs"
 msgstr "Закрытые вкладки"
 
-#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:438 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Открыть в новом окне"
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:439
 msgid "Duplicate Tab"
 msgstr "Дублировать вкладку"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:479
+#: src/View/Window.vala:443
 msgid "Close Tabs to the Right"
 msgstr "Закрыть вкладки справа"
 
-#: src/View/Window.vala:480
+#: src/View/Window.vala:444
 msgid "Close Other Tabs"
 msgstr "Закрыть остальные вкладки"
 
-#: src/View/Window.vala:481
+#: src/View/Window.vala:445
 msgid "Close Tab"
 msgstr "Закрыть вкладку"
 
-#: src/View/Window.vala:765 src/View/Window.vala:775
+#: src/View/Window.vala:725 src/View/Window.vala:735
 msgid "(as Administrator)"
 msgstr "(как администратор)"
 
@@ -2347,15 +2347,15 @@ msgstr "%s (%s)"
 msgid "Not mounted"
 msgstr "не подключён"
 
-#: src/View/Sidebar/BookmarkListBox.vala:135
+#: src/View/Sidebar/BookmarkListBox.vala:139
 msgid "View the home folder"
 msgstr "Просмотреть домашнюю папку"
 
-#: src/View/Sidebar/BookmarkListBox.vala:152
+#: src/View/Sidebar/BookmarkListBox.vala:156
 msgid "View the list of recently used files"
 msgstr "Посмотреть список недавно использованных файлов"
 
-#: src/View/Sidebar/BookmarkListBox.vala:177
+#: src/View/Sidebar/BookmarkListBox.vala:181
 msgid "Open the Trash"
 msgstr "Открыть корзину"
 
@@ -2411,29 +2411,29 @@ msgstr "Вся сеть"
 msgid "Browse the contents of the network"
 msgstr "Обзор содержимого сети"
 
-#: src/View/Sidebar/SidebarWindow.vala:30
+#: src/View/Sidebar/SidebarWindow.vala:36
 #: src/View/Widgets/SearchResults.vala:300
 msgid "Bookmarks"
 msgstr "Закладки"
 
-#: src/View/Sidebar/SidebarWindow.vala:31
+#: src/View/Sidebar/SidebarWindow.vala:37
 msgid "Common places plus saved folders and files"
 msgstr "Стандартные места и сохранённые папки и файлы"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
-#: src/View/Sidebar/SidebarWindow.vala:39
+#: src/View/Sidebar/SidebarWindow.vala:45
 msgid "Storage"
 msgstr "Накопители"
 
-#: src/View/Sidebar/SidebarWindow.vala:40
+#: src/View/Sidebar/SidebarWindow.vala:46
 msgid "Internal and connected storage devices"
 msgstr "Внутренние и подключённые устройства хранения"
 
-#: src/View/Sidebar/SidebarWindow.vala:48
+#: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Devices and places available via a network"
 msgstr "Устройства и места, доступные через сеть"
 
-#: src/View/Sidebar/SidebarWindow.vala:73
+#: src/View/Sidebar/SidebarWindow.vala:79
 msgid "Connect Server…"
 msgstr "Подключить сервер…"
 
@@ -2449,64 +2449,64 @@ msgstr "Извлечь носитель"
 msgid "Bind mount"
 msgstr "Привязать подключение"
 
-#: src/View/Widgets/AppMenu.vala:25
+#: src/View/Widgets/AppMenu.vala:35
 msgid "Zoom Out"
 msgstr "Отдалить"
 
-#: src/View/Widgets/AppMenu.vala:34
+#: src/View/Widgets/AppMenu.vala:44
 msgid "Zoom 1:1"
 msgstr "Сбросить масштаб"
 
-#: src/View/Widgets/AppMenu.vala:43
+#: src/View/Widgets/AppMenu.vala:53
 msgid "Zoom In"
 msgstr "Приблизить"
 
-#: src/View/Widgets/AppMenu.vala:81
+#: src/View/Widgets/AppMenu.vala:91
 msgid "Double-click to Navigate"
 msgstr "Навигация двойным щелчком"
 
-#: src/View/Widgets/AppMenu.vala:82
+#: src/View/Widgets/AppMenu.vala:92
 msgid "Double-click on a folder opens it, single-click selects it"
 msgstr "Двойной щелчок по папке открывает её, одинарный — выбирает"
 
-#: src/View/Widgets/AppMenu.vala:86
+#: src/View/Widgets/AppMenu.vala:96
 msgid "Sort Folders before Files"
 msgstr "Сортировать папки перед файлами"
 
-#: src/View/Widgets/AppMenu.vala:90
+#: src/View/Widgets/AppMenu.vala:100
 msgid "Restore Tabs from Last Time"
 msgstr "Восстанавливать прошлые вкладки"
 
-#: src/View/Widgets/AppMenu.vala:94
+#: src/View/Widgets/AppMenu.vala:104
 msgid "Show in View"
 msgstr "Показывать"
 
-#: src/View/Widgets/AppMenu.vala:101
+#: src/View/Widgets/AppMenu.vala:111
 msgid "Hidden Files"
 msgstr "Скрытые файлы"
 
-#: src/View/Widgets/AppMenu.vala:105
+#: src/View/Widgets/AppMenu.vala:115
 msgid "Local Thumbnails"
 msgstr "Локальные миниатюры"
 
-#: src/View/Widgets/AppMenu.vala:110
+#: src/View/Widgets/AppMenu.vala:120
 msgid "Remote Thumbnails"
 msgstr "Удалённые миниатюры"
 
-#: src/View/Widgets/AppMenu.vala:115
+#: src/View/Widgets/AppMenu.vala:125
 msgid "File Preview (Column View)"
 msgstr "Предпросмотр файлов в виде колонок"
 
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
-#: src/View/Widgets/AppMenu.vala:121
+#: src/View/Widgets/AppMenu.vala:131
 msgid "Date & Time Format"
 msgstr "Формат даты и времени"
 
-#: src/View/Widgets/AppMenu.vala:216
+#: src/View/Widgets/AppMenu.vala:229
 msgid "No operation to undo"
 msgstr "Нечего отменять"
 
-#: src/View/Widgets/AppMenu.vala:223
+#: src/View/Widgets/AppMenu.vala:236
 msgid "No operation to redo"
 msgstr "Нечего повторять"
 
