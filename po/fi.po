@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-02-20 16:13+0000\n"
-"PO-Revision-Date: 2025-09-29 18:55+0000\n"
+"PO-Revision-Date: 2026-03-22 15:55+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementaryos.org/projects/files/files/"
 "fi/>\n"
@@ -73,10 +73,10 @@ msgid "This file is a link."
 msgstr "Tämä tiedosto on linkki."
 
 #: filechooser-portal/Main.vala:460
-#, fuzzy
 msgid ""
 "Replacing a link will overwrite the target's contents. The link will remain"
-msgstr "Sen korvaaminen ylikirjoittaa sisällön."
+msgstr ""
+"Linkin korvaaminen ylikirjoittaa kohteen sisällön. Linkki pysyy olemassa"
 
 #: filechooser-portal/Main.vala:462
 #, c-format
@@ -198,18 +198,16 @@ msgstr "ISO"
 
 #: libcore/Enums.vala:270
 msgid "Locale"
-msgstr ""
+msgstr "Maa-asetusto"
 
 #: libcore/Enums.vala:272
-#, fuzzy
-#| msgid "Info"
 msgid "Informal"
-msgstr "Tiedot"
+msgstr "Arkinen"
 
 #. TRANSLATORS Adjective applied to datetime format
 #: libcore/Enums.vala:275
 msgid "Compact"
-msgstr ""
+msgstr "Tiivis"
 
 #: libcore/File.vala:651 libcore/File.vala:1203
 msgid "Inaccessible"
@@ -262,17 +260,14 @@ msgid "The original folder %s no longer exists"
 msgstr "Alkuperäistä kansiota %s ei ole enää olemassa"
 
 #: libcore/FileUtils.vala:185
-#, fuzzy
-#| msgid ""
-#| "The folder will be recreated and selected files that were originally "
-#| "there will be restored to it"
 msgid ""
 "The folder can be recreated and selected files that were originally there "
 "will be restored to it. Otherwise, files that were in this folder will not "
 "be restored."
 msgstr ""
-"Kansio luodaan uudelleen ja valitut tiedostot, jotka olivat kansiossa alun "
-"perin, palautetaan kansioon"
+"Kansio voidaan luoda uudelleen, ja valitut tiedostot, jotka olivat kansiossa "
+"alun perin, palautetaan kansioon. Muussa tapauksessa tässä kansiossa olleita "
+"tiedostoja ei palauteta."
 
 #: libcore/FileUtils.vala:189
 msgid "Ignore"
@@ -1761,7 +1756,7 @@ msgstr "Aloitusnumero"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:60
 msgid "Digits"
-msgstr ""
+msgstr "Luvut"
 
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:150
 msgid "Separator"
@@ -1770,7 +1765,7 @@ msgstr "Erotin"
 #: src/Dialogs/BulkRenamer/RenamerModifier.vala:310
 #, c-format
 msgid "%0*d,%0*d,%0*d…"
-msgstr ""
+msgstr "%0*d,%0*d,%0*d…"
 
 #: src/Dialogs/ChooseAppDialog.vala:50
 msgid "Set as default"
@@ -2099,14 +2094,12 @@ msgid "Empty File"
 msgstr "Tyhjä tiedosto"
 
 #: src/View/AbstractDirectoryView.vala:2396
-#, fuzzy
-#| msgid "Templates"
 msgid "Template"
-msgstr "Mallit"
+msgstr "Mallipohja"
 
 #: src/View/AbstractDirectoryView.vala:2398
 msgid "…too many templates"
-msgstr ""
+msgstr "…liian monta mallipohjaa"
 
 #: src/View/AbstractDirectoryView.vala:2404
 msgid "New"
@@ -2143,16 +2136,12 @@ msgid "Cannot paste files here"
 msgstr "Tiedostoja ei voi liittää tänne"
 
 #: src/View/DetailsColumn.vala:118
-#, fuzzy
-#| msgid "Name"
 msgid "Name:"
-msgstr "Nimi"
+msgstr "Nimi:"
 
 #: src/View/DetailsColumn.vala:211
-#, fuzzy
-#| msgid "Properties"
 msgid "Properties…"
-msgstr "Ominaisuudet"
+msgstr "Ominaisuudet…"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2487,7 +2476,7 @@ msgstr "Etäpikkukuvat"
 
 #: src/View/Widgets/AppMenu.vala:125
 msgid "File Preview (Column View)"
-msgstr ""
+msgstr "Tiedoston esikatselu (sarakenäkymä)"
 
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
 #: src/View/Widgets/AppMenu.vala:131
