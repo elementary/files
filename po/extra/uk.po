@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 16:13+0000\n"
+"POT-Creation-Date: 2026-03-28 20:08+0000\n"
 "PO-Revision-Date: 2026-01-31 23:55+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementaryos.org/projects/files/extra/"
@@ -21,23 +21,23 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Файли"
 
-#: data/io.elementary.files.desktop.in.in:7
+#: data/io.elementary.files.desktop.in.in:6
 msgid "Browse your files"
 msgstr "Переглянути свої файли"
 
-#: data/io.elementary.files.desktop.in.in:9
+#: data/io.elementary.files.desktop.in.in:8
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "тека;менеджер;огляд;диск;файлова система;"
 
-#: data/io.elementary.files.desktop.in.in:25
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window"
 msgstr "Нове вікно"
 
-#: data/io.elementary.files.desktop.in.in:30
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "Нове вікно Як адміністратор"
 
@@ -70,6 +70,10 @@ msgstr "Швидкий огляд більшої кількості метада
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
 msgstr "Переглядайте складні дерева швидше у поданні стовпчиками"
+
+#: data/files.metainfo.xml.in.in:59
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
 
 #: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:87
 #: data/files.metainfo.xml.in.in:289
@@ -231,9 +235,6 @@ msgstr "Автентифікація потрібна для запуску Фа
 #~ msgstr ""
 #~ "Глобальні налаштування з контекстного меню перенесено в меню застосунку "
 #~ "на панелі заголовка"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary, Inc."
 
 #~ msgid "File Manager"
 #~ msgstr "Файловий менеджер"

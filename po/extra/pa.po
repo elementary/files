@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 16:13+0000\n"
+"POT-Creation-Date: 2026-03-28 20:08+0000\n"
 "PO-Revision-Date: 2021-07-28 00:16+0000\n"
 "Last-Translator: elSolus <tumbleweed@tuta.io>\n"
 "Language-Team: Punjabi <https://l10n.elementary.io/projects/files/extra/pa/"
@@ -13,23 +13,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 4.4.2\n"
 
-#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "ਫ਼ਾਇਲਸ"
 
-#: data/io.elementary.files.desktop.in.in:7
+#: data/io.elementary.files.desktop.in.in:6
 msgid "Browse your files"
 msgstr "ਸਾਰੀਆਂ ਫ਼ਾਇਲਾਂ ਫਰੋਲੋ"
 
-#: data/io.elementary.files.desktop.in.in:9
+#: data/io.elementary.files.desktop.in.in:8
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "ਫ਼ੋਲਡਰ;ਮੈਨੇਜਰ;ਫਰੋਲੋ;ਡਿਸਕ; ਫ਼ਾਇਲਸਿਸਟਮ;"
 
-#: data/io.elementary.files.desktop.in.in:25
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ"
 
-#: data/io.elementary.files.desktop.in.in:30
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "ਨਵੀਂ ਵਿੰਡੋ ਬਤੌਰ ਐਡਮਿਨ"
 
@@ -59,6 +59,10 @@ msgstr ""
 
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:59
+msgid "elementary, Inc."
 msgstr ""
 
 #: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:87
