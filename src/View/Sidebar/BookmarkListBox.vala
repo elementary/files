@@ -45,6 +45,10 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             refresh ();
         });
 
+        bookmark_list.contents_changed.connect (() => {
+            refresh ();
+        });
+
         list_box.row_activated.connect ((row) => {
             if (row is BookmarkRow) {
                 ((BookmarkRow) row).activated ();
@@ -58,7 +62,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         });
     }
 
-    public BookmarkRow? add_bookmark (string label,
+    private BookmarkRow? add_bookmark (string label,
                                                string uri,
                                                Icon gicon,
                                                bool pinned = false,
