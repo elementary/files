@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 16:13+0000\n"
+"POT-Creation-Date: 2026-03-28 20:08+0000\n"
 "PO-Revision-Date: 2026-03-02 11:55+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/extra/"
@@ -20,25 +20,25 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "ファイル"
 
-#: data/io.elementary.files.desktop.in.in:7
+#: data/io.elementary.files.desktop.in.in:6
 msgid "Browse your files"
 msgstr "ファイルを閲覧します"
 
-#: data/io.elementary.files.desktop.in.in:9
+#: data/io.elementary.files.desktop.in.in:8
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
 "folder;manager;explore;disk;filesystem;フォルダー;マネージャー;エクスプロー"
 "ラー;ディスク;ファイルシステム;"
 
-#: data/io.elementary.files.desktop.in.in:25
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window"
 msgstr "新しいウィンドウ"
 
-#: data/io.elementary.files.desktop.in.in:30
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "新しい管理者ウィンドウ"
 
@@ -70,6 +70,10 @@ msgstr "リスト表示ではより詳細なメタ情報を一目で確認可能
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
 msgstr "カラム表示を使えば複雑なツリーも素早く表示"
+
+#: data/files.metainfo.xml.in.in:59
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
 
 #: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:87
 #: data/files.metainfo.xml.in.in:289
@@ -225,9 +229,6 @@ msgstr "“ファイル”を管理者として実行するには認証が必要
 #~ msgstr ""
 #~ "アプリ全体の設定を、コンテキストメニューからヘッダーバー内のアプリメニュー"
 #~ "に移動"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary, Inc."
 
 #~ msgid "File Manager"
 #~ msgstr "ファイルマネージャー"
