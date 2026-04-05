@@ -222,7 +222,10 @@ public class Files.File : GLib.Object {
     }
 
     static construct {
-        app_settings = new Settings ("io.elementary.files.preferences");
+        var settings_schema = SettingsSchemaSource.get_default ().lookup ("io.elementary.files.preferences", true);
+        if (settings_schema != null) {
+            app_settings = new Settings.full (settings_schema, null, null);
+        }
     }
 
     construct {
@@ -1125,12 +1128,13 @@ public class Files.File : GLib.Object {
     // loading of the view e.g. due to color change or after external changes
     // to the file
     private void after_icon_changed () {
-        if (directory == null) {
+        if (directory == null || app_settings == null) {
             return;
         }
 
+        var show_hidden = app_settings == null ? true : app_settings.get_boolean ("show-hiddenfiles");
         var dir = Files.Directory.cache_lookup (directory);
-        if (dir != null && (!is_hidden || app_settings.get_boolean ("show-hiddenfiles"))) {
+        if (dir != null && (!is_hidden || show_hidden)) {
             dir.icon_changed (this);
         }
     }
@@ -1214,7 +1218,7 @@ public class Files.File : GLib.Object {
             return;
         }
 
-        var pref_show_hidden = app_settings.get_boolean ("show-hiddenfiles");
+        var pref_show_hidden = app_settings == null ? true : app_settings.get_boolean ("show-hiddenfiles");
         if (location.has_uri_scheme ("file") ||
             (is_mounted && location.is_native ())) {
 
