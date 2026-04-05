@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 16:13+0000\n"
+"POT-Creation-Date: 2026-03-28 20:08+0000\n"
 "PO-Revision-Date: 2025-11-12 19:05+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/files/extra/he/"
@@ -13,25 +13,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Weblate 5.11.4\n"
 
-#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "קבצים"
 
-#: data/io.elementary.files.desktop.in.in:7
+#: data/io.elementary.files.desktop.in.in:6
 msgid "Browse your files"
 msgstr "ניווט בין הקבצים שלך"
 
-#: data/io.elementary.files.desktop.in.in:9
+#: data/io.elementary.files.desktop.in.in:8
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
 "תיקייה;תיקיה;ספריה;מנהל;מנווט;ניווט;עיון;מעיין;כונן;דיסק;מערכת "
 "קבצים;קובץ;קבצים;"
 
-#: data/io.elementary.files.desktop.in.in:25
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window"
 msgstr "חלון חדש"
 
-#: data/io.elementary.files.desktop.in.in:30
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "חלון חדש בתור מנהל"
 
@@ -62,6 +62,10 @@ msgstr "הצגת נתוני על רבים יותר במבט חטוף בתצוג�
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
 msgstr "עיון בעצים מורכבים מהר יותר עם תצוגת עמודות"
+
+#: data/files.metainfo.xml.in.in:59
+msgid "elementary, Inc."
+msgstr "elementary בע״מ."
 
 #: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:87
 #: data/files.metainfo.xml.in.in:289
@@ -211,9 +215,6 @@ msgstr "נדרש אימות כדי להפעיל את היישום קבצים כ�
 #~ msgid ""
 #~ "Move global settings from the context menu to an app menu in the headerbar"
 #~ msgstr "ההגדרות הגלובליות הועברו מתפריט ההקשר לתפריט יישומים בסרגל העליון"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary בע״מ."
 
 #~ msgid "File Manager"
 #~ msgstr "מנהל קבצים"

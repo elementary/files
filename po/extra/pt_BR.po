@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 16:13+0000\n"
+"POT-Creation-Date: 2026-03-28 20:08+0000\n"
 "PO-Revision-Date: 2025-07-28 23:55+0000\n"
 "Last-Translator: Guilherme Faura <guilhermefaura@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) <https://l10n.elementaryos.org/projects/"
@@ -20,23 +20,23 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Arquivos"
 
-#: data/io.elementary.files.desktop.in.in:7
+#: data/io.elementary.files.desktop.in.in:6
 msgid "Browse your files"
 msgstr "Visualizar seus arquivos"
 
-#: data/io.elementary.files.desktop.in.in:9
+#: data/io.elementary.files.desktop.in.in:8
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr "pasta;gerenciador;explorar;disco;sistema de arquivos;"
 
-#: data/io.elementary.files.desktop.in.in:25
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window"
 msgstr "Nova janela"
 
-#: data/io.elementary.files.desktop.in.in:30
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "Nova janela como administrador"
 
@@ -69,6 +69,11 @@ msgstr "Veja mais metadados de uma só vez na Visualização em Lista"
 msgid "Browse complex trees faster with Column view"
 msgstr ""
 "Navegue por árvores complexas mais rapidamente com a Visualização em Colunas"
+
+#: data/files.metainfo.xml.in.in:59
+#, fuzzy
+msgid "elementary, Inc."
+msgstr "elementary LLC."
 
 #: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:87
 #: data/files.metainfo.xml.in.in:289
@@ -209,10 +214,6 @@ msgstr "Executar Pantheon Files como administrador"
 #: data/io.elementary.files.policy.in.in:11
 msgid "Authentication is required to run Files as Administrator"
 msgstr "É necessária autenticação para executar Arquivos como Administrador"
-
-#, fuzzy
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary LLC."
 
 #~ msgid "File Manager"
 #~ msgstr "Gerenciador de arquivos"
