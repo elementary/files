@@ -442,6 +442,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
                 case Files.TargetType.TEXT_URI_LIST:
                     if (!Files.DndHandler.selection_data_is_uri_list (sel_data, info, out drop_text)) {
+                        warning ("sel data not uri list");
                         drop_text = null;
                     } else {
                         // we require that dropped uris have been escaped by the source
@@ -544,6 +545,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     list.has_uri (drop_text.strip ())) { //Need to remove trailing newline
 
                     current_suggested_action = Gdk.DragAction.DEFAULT; //Do not allowing dropping duplicate URI
+                    reveal = false;
                 }
             }
 
