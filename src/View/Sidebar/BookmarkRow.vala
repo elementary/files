@@ -442,7 +442,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
                 case Files.TargetType.TEXT_URI_LIST:
                     if (!Files.DndHandler.selection_data_is_uri_list (sel_data, info, out drop_text)) {
-                        warning ("sel data not uri list");
                         drop_text = null;
                     } else {
                         // we require that dropped uris have been escaped by the source
@@ -477,7 +476,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
                 /* Signal source to cleanup after drag */
                 Gtk.drag_finish (ctx, success, false, time);
-                reset_drag_drop ();
+                // Resetting of drag-drop will occur in drag-end handler
             }
         });
 
@@ -545,7 +544,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
                     list.has_uri (drop_text.strip ())) { //Need to remove trailing newline
 
                     current_suggested_action = Gdk.DragAction.DEFAULT; //Do not allowing dropping duplicate URI
-                    reveal = false;
                 }
             }
 
@@ -582,12 +580,19 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     private void reset_drag_drop () {
-        drop_file_list = null;
-        drop_text = null;
-        drop_occurred = false;
-        current_suggested_action = Gdk.DragAction.DEFAULT;
-        reveal_drop_target (false);
-        highlight (false);
+        // Wait till idle before resetting to ensure the revealer is not closed
+        // while dropping between rows with animations disabled.
+        // The revealer state is used to determine whether the drop occurred on
+        // or between rows.
+        Idle.add (() => {
+            drop_file_list = null;
+            drop_text = null;
+            drop_occurred = false;
+            current_suggested_action = Gdk.DragAction.DEFAULT;
+            reveal_drop_target (false);
+            highlight (false);
+            return Source.REMOVE;
+        });
     }
 
     private bool process_dropped_row (string drop_text, bool dropped_between) {
