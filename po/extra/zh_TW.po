@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-28 20:08+0000\n"
-"PO-Revision-Date: 2026-03-02 11:55+0000\n"
+"PO-Revision-Date: 2026-04-07 12:12+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "l10n.elementaryos.org/projects/files/extra/zh_TW/>\n"
@@ -70,9 +70,8 @@ msgid "Browse complex trees faster with Column view"
 msgstr "用分欄檢視來更快速地瀏覽複雜目錄樹"
 
 #: data/files.metainfo.xml.in.in:59
-#, fuzzy
 msgid "elementary, Inc."
-msgstr "elementary LLC."
+msgstr "elementary, Inc."
 
 #: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:87
 #: data/files.metainfo.xml.in.in:289
