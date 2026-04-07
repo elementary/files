@@ -67,22 +67,18 @@ namespace Files {
 
             win.add_action (action);
 
-            var ask_menu = new Gtk.Menu () {
+            var cancel_section = new GLib.Menu ();
+            cancel_section.append (_("Cancel"), Action.print_detailed_name ("choice", new Variant.uint32 (Gdk.DragAction.DEFAULT)));
+
+            var menu = new GLib.Menu ();
+            append_menu_item (menu, _("Move Here"), Gdk.DragAction.MOVE, possible_actions);
+            append_menu_item (menu, _("Copy Here"), Gdk.DragAction.COPY, possible_actions);
+            append_menu_item (menu, _("Link Here"), Gdk.DragAction.LINK, possible_actions);
+            menu.append_section (null, cancel_section);
+
+            var ask_menu = new Gtk.Menu.from_model (menu) {
                 attach_widget = dest_widget
             };
-
-            ask_menu.append (build_menu_item (_("Move Here"), Gdk.DragAction.MOVE, possible_actions));
-            ask_menu.append (build_menu_item (_("Copy Here"), Gdk.DragAction.COPY, possible_actions));
-            ask_menu.append (build_menu_item (_("Link Here"), Gdk.DragAction.LINK, possible_actions));
-            ask_menu.append (new Gtk.SeparatorMenuItem ());
-            ask_menu.append (new Gtk.MenuItem.with_label (_("Cancel")));
-
-            // switch (choice) {
-            //     case "cancel":
-            //     default:
-            //         this.chosen = Gdk.DragAction.DEFAULT;
-            //         break;
-            // }
 
             var loop = new GLib.MainLoop (null, false);
 
@@ -94,7 +90,6 @@ namespace Files {
                 ((Gtk.ApplicationWindow) win).remove_action ("choice");
             });
 
-            ask_menu.show_all ();
             ask_menu.popup_at_pointer (null);
 
             loop.run ();
@@ -103,17 +98,12 @@ namespace Files {
             return this.chosen;
         }
 
-        private Gtk.MenuItem? build_menu_item (string label, Gdk.DragAction? action, Gdk.DragAction possible_actions) {
+        private void append_menu_item (GLib.Menu menu, string label, Gdk.DragAction action, Gdk.DragAction possible_actions) {
             if ((possible_actions & action) == 0) {
-                return null;
+                return;
             }
 
-            var item = new Gtk.MenuItem.with_label (label) {
-                action_name = "choice",
-                action_target = new Variant.uint32 (action)
-            };
-
-            return item;
+            menu.append (label, Action.print_detailed_name ("choice", action));
         }
 
         private void on_choice (GLib.Variant? param) {
