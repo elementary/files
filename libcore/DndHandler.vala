@@ -68,7 +68,10 @@ namespace Files {
             win.add_action (action);
 
             var cancel_section = new GLib.Menu ();
-            cancel_section.append (_("Cancel"), Action.print_detailed_name ("choice", new Variant.uint32 (Gdk.DragAction.DEFAULT)));
+            cancel_section.append (
+                _("Cancel"),
+                Action.print_detailed_name ("choice", new Variant.uint32 (Gdk.DragAction.DEFAULT))
+            );
 
             var menu = new GLib.Menu ();
             append_menu_item (menu, _("Move Here"), Gdk.DragAction.MOVE, possible_actions);
