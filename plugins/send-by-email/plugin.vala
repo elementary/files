@@ -21,7 +21,7 @@ public class Files.Plugins.SendByEmail : Files.Plugins.Base {
     private GLib.File[] files;
     private Gdk.Window? parent;
 
-    public override void context_menu (Gtk.Widget widget, List<Files.File> gof_files) {
+    public override void context_menu (Gtk.Widget widget, List<Files.File> gof_files, Files.File source_folder) {
         if (gof_files == null || gof_files.length () == 0) {
             return;
         }
