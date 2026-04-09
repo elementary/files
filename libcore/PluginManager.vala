@@ -174,7 +174,7 @@ public class Files.PluginManager : Object {
         }
     }
 
-    public void hook_context_menu (Gtk.Menu menu, List<Files.File> files) {
+    public void hook_context_menu (Gtk.Menu menu, List<Files.File> files, Files.File source_folder) {
         foreach (var menu_item in menuitem_references) {
             menu_item.parent.remove (menu_item);
         }
@@ -182,7 +182,7 @@ public class Files.PluginManager : Object {
         menuitem_references.clear ();
 
         foreach (var plugin in plugin_hash.values) {
-            plugin.context_menu (menu, files);
+            plugin.context_menu (menu, files, source_folder);
         }
     }
 

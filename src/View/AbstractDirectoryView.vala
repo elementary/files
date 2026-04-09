@@ -2291,9 +2291,9 @@ namespace Files {
             }
 
             if (!in_trash) {
-                // We send the actual files - it is up to the plugin to extract target
-                // if needed.  Color tag plugin needs actual file, others need target
-                plugins.hook_context_menu (menu, get_selected_files ());
+                // We send both the actual files and the target folder to ensure correct target
+                // Color tag plugin needs actual file, others need target
+                plugins.hook_context_menu (menu, get_selected_files (), slot.directory.file);
 
                 if (selection.length () == 1 && "image" in selection.nth_data (0).info.get_content_type ()) {
                     var wallpaper_menuitem = new Gtk.MenuItem.with_label (_("Set as Wallpaper")) {
