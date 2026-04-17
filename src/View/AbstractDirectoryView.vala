@@ -1420,6 +1420,7 @@ namespace Files {
             Idle.add (() => {
                 empty_label.visible = slot.directory.is_empty ();
                 thaw_tree ();
+warning ("tree thawed");
                 schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
             });
@@ -1784,16 +1785,18 @@ namespace Files {
             string uri = drop_target_file != null ? drop_target_file.uri : "";
 
             if (uri != current_uri) {
+                warning ("drop target has changed");
                 cancel_timeout (ref drag_enter_timer_id);
                 current_actions = Gdk.DragAction.DEFAULT;
                 current_suggested_action = Gdk.DragAction.DEFAULT;
 
                 if (drop_target_file != null) {
+                    warning ("have a target file - %s", drop_target_file.uri);
                     if (current_target_type == Gdk.Atom.intern_static_string ("XdndDirectSave0")) {
+                        warning ("XdndDirectSave0 - copy");
                         current_suggested_action = Gdk.DragAction.COPY;
                         current_actions = current_suggested_action;
                     } else {
-
                         current_actions = DndHandler.file_accepts_drop (
                             drop_target_file,
                             destination_drop_file_list,
@@ -1807,14 +1810,18 @@ namespace Files {
 
                     if (drop_target_file.is_folder () && is_valid_drop_folder (drop_target_file)) {
                         /* open the target folder after a short delay */
+                        warning ("starting folder enter timer");
                         drag_enter_timer_id = GLib.Timeout.add_full (GLib.Priority.LOW,
                                                                      1000,
                                                                      () => {
 
+                            warning ("loading location during DnD");
                             load_location (drop_target_file.get_target_location ());
                             drag_enter_timer_id = 0;
                             return GLib.Source.REMOVE;
                         });
+                    } else {
+                        warning ("not a valid drop folder - cannot drop onto a file's parent or itself");
                     }
                 }
             }
@@ -1822,6 +1829,7 @@ namespace Files {
 
         private bool is_valid_drop_folder (Files.File file) {
             /* Cannot drop onto a file onto its parent or onto itself */
+            /* We no longer implement link creation by dropping onto parent */
             if (file.uri != slot.uri &&
                 source_drag_file_list != null &&
                 source_drag_file_list.index (file) < 0) {
