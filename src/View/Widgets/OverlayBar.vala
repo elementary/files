@@ -29,8 +29,6 @@ namespace Files.View {
         private Files.File? goffile = null;
         private GLib.List<unowned Files.File>? selected_files = null;
         private uint8 [] buffer;
-        private GLib.FileInputStream? stream;
-        private Gdk.PixbufLoader loader;
         private uint update_timeout_id = 0;
         private DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
@@ -290,6 +288,8 @@ namespace Files.View {
             }
 
             var file = goffile.location;
+            Gdk.PixbufLoader? loader = null;
+            GLib.FileInputStream? stream = null;
             image_size_loaded = false;
 
             try {
@@ -309,15 +309,20 @@ namespace Files.View {
                 warning ("Error loading image resolution in OverlayBar: %s", e.message);
             }
             /* Gdk wants us to always close the loader, so we are nice to it. */
-            try {
-                stream.close ();
-            } catch (GLib.Error e) {
-                debug ("Error closing stream in load resolution: %s", e.message);
+            if (stream != null) {
+                try {
+                    stream.close ();
+                } catch (GLib.Error e) {
+                    critical ("Error closing stream in load resolution: %s", e.message);
+                }
             }
-            try {
-                loader.close ();
-            } catch (GLib.Error e) { /* Errors expected because may not load whole image. */
-                debug ("Error closing loader in load resolution: %s", e.message);
+
+            if (loader != null) {
+                try {
+                    loader.close ();
+                } catch (GLib.Error e) { /* Errors expected because may not load whole image. */
+                    critical ("Error closing loader in load resolution: %s", e.message);
+                }
             }
             cancellable = null;
         }
