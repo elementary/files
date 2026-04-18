@@ -324,6 +324,7 @@ namespace Files.View {
                     critical ("Error closing loader in load resolution: %s", e.message);
                 }
             }
+
             cancellable = null;
         }
 
@@ -331,6 +332,7 @@ namespace Files.View {
             if (goffile == null) { /* This can occur during rapid rubberband selection. */
                 return;
             }
+
             image_size_loaded = true;
             goffile.width = width;
             goffile.height = height;
@@ -341,6 +343,7 @@ namespace Files.View {
                                               Cancellable cancellable) {
             ssize_t read = 1;
             uint count = 0;
+
             while (!image_size_loaded && read > 0 && !cancellable.is_cancelled ()) {
                 try {
                     read = yield stream.read_async (buffer, 0, cancellable);
