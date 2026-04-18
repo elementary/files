@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 16:13+0000\n"
+"POT-Creation-Date: 2026-03-28 20:08+0000\n"
 "PO-Revision-Date: 2026-03-02 11:55+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/extra/"
@@ -21,25 +21,25 @@ msgstr ""
 "X-Generator: Weblate 5.11.4\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Файлы"
 
-#: data/io.elementary.files.desktop.in.in:7
+#: data/io.elementary.files.desktop.in.in:6
 msgid "Browse your files"
 msgstr "Просматривайте свои файлы"
 
-#: data/io.elementary.files.desktop.in.in:9
+#: data/io.elementary.files.desktop.in.in:8
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
 "folder;manager;explore;disk;filesystem;папка;каталог;менеджер;обзор;диск;файловая "
 "система;"
 
-#: data/io.elementary.files.desktop.in.in:25
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window"
 msgstr "Новое окно"
 
-#: data/io.elementary.files.desktop.in.in:30
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "Новое окно от имени администратора"
 
@@ -73,6 +73,10 @@ msgstr "Легко просматривайте информацию о файл
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
 msgstr "Просматривайте деревья папок быстрее в виде колонок"
+
+#: data/files.metainfo.xml.in.in:59
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
 
 #: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:87
 #: data/files.metainfo.xml.in.in:289
@@ -238,9 +242,6 @@ msgstr "Для запуска Файлов с правами администр�
 #~ msgid ""
 #~ "Move global settings from the context menu to an app menu in the headerbar"
 #~ msgstr "Глобальные настройки были перенесены в меню в заголовок окна"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary, Inc."
 
 #~ msgid "File Manager"
 #~ msgstr "Файловый менеджер"

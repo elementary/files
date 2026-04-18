@@ -1,27 +1,27 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 16:13+0000\n"
+"POT-Creation-Date: 2026-03-28 20:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
-#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr ""
 
-#: data/io.elementary.files.desktop.in.in:7
+#: data/io.elementary.files.desktop.in.in:6
 msgid "Browse your files"
 msgstr ""
 
-#: data/io.elementary.files.desktop.in.in:9
+#: data/io.elementary.files.desktop.in.in:8
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
 
-#: data/io.elementary.files.desktop.in.in:25
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window"
 msgstr ""
 
-#: data/io.elementary.files.desktop.in.in:30
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr ""
 
@@ -47,6 +47,10 @@ msgstr ""
 
 #: data/files.metainfo.xml.in.in:26
 msgid "Browse complex trees faster with Column view"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:59
+msgid "elementary, Inc."
 msgstr ""
 
 #: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:87
