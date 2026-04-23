@@ -100,7 +100,7 @@ namespace Files.View {
 
             add_overlay_widget (scrolled_window);
 
-            content_box.show_all ();
+            content_grid.show_all ();
 
             current_slot = null;
             add_location (root_location, null); /* current slot gets set by this */

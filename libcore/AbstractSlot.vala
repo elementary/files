@@ -49,8 +49,8 @@ public abstract class Files.AbstractSlot : GLib.Object {
     //TODO Make private so layout fixed?
     protected Gtk.Box extra_location_widgets;
     protected Gtk.Box extra_action_widgets;
-    protected Gtk.Grid content_box;
-    protected Gtk.Paned side_widget_box;
+    protected Gtk.Grid content_grid; // Holds view, overlay and extra action widgets
+    protected Gtk.Paned main_paned; // Holds all displayed widgets (content_grid and preview or other side widget)
 
     public Gtk.Overlay overlay { get; protected set; }
     public int slot_number { get; protected set; }
@@ -77,11 +77,11 @@ public abstract class Files.AbstractSlot : GLib.Object {
     }
 
     protected void add_side_widget (Gtk.Widget widget, bool resize, bool shrink) {
-        side_widget_box.pack2 (widget, resize, shrink);
+        main_paned.pack2 (widget, resize, shrink);
     }
 
     construct {
-        content_box = new Gtk.Grid () {
+        content_grid = new Gtk.Grid () {
             vexpand = true,
             hexpand = true
         };
@@ -91,13 +91,13 @@ public abstract class Files.AbstractSlot : GLib.Object {
             vexpand = true,
         };
 
-        side_widget_box = new Gtk.Paned (HORIZONTAL);
+        main_paned = new Gtk.Paned (HORIZONTAL);
 
         extra_action_widgets = new Gtk.Box (VERTICAL, 0);
-        content_box.attach (extra_action_widgets, 0, 0);
-        content_box.attach (overlay, 0, 1);
+        content_grid.attach (extra_action_widgets, 0, 0);
+        content_grid.attach (overlay, 0, 1);
 
-        side_widget_box.pack1 (content_box, true, true);
+        main_paned.pack1 (content_grid, true, true);
         slot_number = -1;
     }
 
@@ -117,8 +117,8 @@ public abstract class Files.AbstractSlot : GLib.Object {
     public virtual void zoom_in () {}
     public virtual void zoom_normal () {}
     public virtual bool set_all_selected (bool all_selected) { return false; }
-    public virtual Gtk.Widget get_content_box () { return side_widget_box as Gtk.Widget; }
+    public virtual Gtk.Widget get_main_widget () { return main_paned as Gtk.Widget; }
     public virtual string? get_root_uri () { return directory.file.uri; }
     public virtual string? get_tip_uri () { return null; }
-    public virtual bool get_realized () { return side_widget_box.get_realized (); }
+    public virtual bool get_realized () { return main_paned.get_realized (); }
 }
