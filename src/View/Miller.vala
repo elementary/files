@@ -120,9 +120,7 @@ namespace Files.View {
             path_changed ();
             guest.slot_number = (host != null) ? host.slot_number + 1 : 0;
             guest.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            guest.colpane.set_size_request (
-                2 * guest.width, -1
-            );
+            guest.colpane.width_request = 2 * guest.width;
             guest.hpane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
                 hexpand = true
             };
@@ -209,7 +207,7 @@ namespace Files.View {
                 total_width += slot.width;
             });
 
-            this.colpane.set_size_request (total_width, -1);
+            this.colpane.width_request = total_width;
         }
 
         private uint total_width_timeout_id = 0;
