@@ -51,7 +51,7 @@ void existing_local_folder_test () {
     assert (file.basename == basename);
     assert (file.is_directory);
     assert (!file.is_hidden);
-    assert (file.get_ftype () == "inode/directory");
+    assert (file.content_type == "inode/directory");
     assert (!file.is_symlink ());
     assert (file.location.get_uri () == uri);
     assert (file.uri == uri);

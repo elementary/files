@@ -822,7 +822,7 @@ namespace Files {
             }
 
             if (flag != Files.OpenFlag.APP && (file.is_folder () ||
-                file.get_ftype () == "inode/directory" ||
+                file.content_type == "inode/directory" ||
                 file.is_root_network_folder ())) {
 
                 switch (flag) {
@@ -841,7 +841,7 @@ namespace Files {
             } else if (!in_trash) {
                 if (only_one_file) {
                     if (file.is_executable ()) {
-                        var content_type = file.get_ftype ();
+                        var content_type = file.content_type;
 
                         if (GLib.ContentType.is_a (content_type, "text/plain")) {
                             open_file (file, screen, default_app);
@@ -877,7 +877,7 @@ namespace Files {
         private bool can_open_file (Files.File file, bool show_error_dialog = false) {
             string err_msg1 = _("Cannot open this file");
             string err_msg2 = "";
-            var content_type = file.get_ftype ();
+            var content_type = file.content_type;
 
             if (content_type == null) {
                 bool result_uncertain = true;
@@ -1874,46 +1874,39 @@ namespace Files {
             var selection = get_files_for_action ();
             var selected_file = selection.data;
 
-            var open_submenu = new Gtk.Menu ();
+            var open_submenu = new Menu ();
 
             if (common_actions.get_action_enabled ("open-in")) {
-                var new_tab_menuitem = new Gtk.MenuItem ();
+                var new_tab_menuitem = new MenuItem (_("New Tab"), null);
                 if (selected_files != null) {
-                    new_tab_menuitem.add (new Granite.AccelLabel (
-                        _("New Tab"),
-                        "<Shift>Return"
-                    ));
-                    new_tab_menuitem.action_name = "common.open-in";
-                    new_tab_menuitem.action_target = Files.OpenFlag.NEW_TAB;
+                    new_tab_menuitem.set_action_and_target_value (
+                        "common.open-in",
+                        Files.OpenFlag.NEW_TAB
+                    );
+                    new_tab_menuitem.set_attribute_value ("accel", "<Shift>Return");
                 } else {
-                    new_tab_menuitem.add (new Granite.AccelLabel.from_action_name (
-                        _("New Tab"),
-                        "win.tab::TAB"
-                    ));
-                    new_tab_menuitem.action_name = "win.tab";
-                    new_tab_menuitem.action_target = "TAB";
+                    new_tab_menuitem.set_action_and_target_value (
+                        "win.tab",
+                        "TAB"
+                    );
                 }
 
-                var new_window_menuitem = new Gtk.MenuItem ();
+                var new_window_menuitem = new MenuItem (_("New Window"), null);
                 if (selected_files != null) {
-                    new_window_menuitem.add (new Granite.AccelLabel (
-                        _("New Window"),
-                        "<Shift><Ctrl>Return"
-                    ));
-                    new_window_menuitem.action_name = "common.open-in";
-                    new_window_menuitem.action_target = Files.OpenFlag.NEW_WINDOW;
+                    new_window_menuitem.set_action_and_target_value (
+                        "common.open-in",
+                        Files.OpenFlag.NEW_WINDOW
+                    );
+                    new_window_menuitem.set_attribute_value ("accel", "<Shift><Ctrl>Return");
                 } else {
-                    new_window_menuitem.add (new Granite.AccelLabel.from_action_name (
-                        _("New Window"),
-                        "win.tab::WINDOW"
-                    ));
-                    new_window_menuitem.action_name = "win.tab";
-                    new_window_menuitem.action_target = "WINDOW";
+                    new_window_menuitem.set_action_and_target_value (
+                        "win.tab",
+                        "WINDOW"
+                    );
                 }
 
-                open_submenu.add (new_tab_menuitem);
-                open_submenu.add (new_window_menuitem);
-                open_submenu.add (new Gtk.SeparatorMenuItem ());
+                open_submenu.append_item (new_tab_menuitem);
+                open_submenu.append_item (new_window_menuitem);
             }
 
             if (!selected_file.is_mountable () &&
@@ -1949,29 +1942,20 @@ namespace Files {
                     unowned string last_exec = "";
                     uint count = 0;
 
+                    var apps_section = new Menu ();
+
                     foreach (unowned AppInfo app_info in open_with_apps) {
                         /* Ensure no duplicate items */
                         unowned string label = app_info.get_display_name ();
                         unowned string exec = app_info.get_executable ().split (" ")[0];
                         if (label != last_label || exec != last_exec) {
-                            var app_image = new Gtk.Image.from_gicon (
-                                app_info.get_icon (),
-                                Gtk.IconSize.MENU
-                            );
-                            app_image.pixel_size = 16;
-
-                            var label_grid = new Gtk.Grid ();
-                            label_grid.add (app_image);
-                            label_grid.add (new Gtk.Label (label));
-
-                            var menuitem = new Gtk.MenuItem ();
-                            menuitem.add (label_grid);
-                            menuitem.set_detailed_action_name (GLib.Action.print_detailed_name (
+                            var menuitem = new MenuItem (label, Action.print_detailed_name (
                                 "selection.open-with-app",
                                 new GLib.Variant.uint32 (count)
                             ));
+                            menuitem.set_icon (app_info.get_icon ());
 
-                            open_submenu.add (menuitem);
+                            apps_section.append_item (menuitem);
                         }
 
                         last_label = label;
@@ -1980,21 +1964,20 @@ namespace Files {
                     };
 
                     if (count > 0) {
-                        open_submenu.add (new Gtk.SeparatorMenuItem ());
+                        open_submenu.append_section (null, apps_section);
                     }
                 }
 
                 if (selection != null && selection.first ().next == null) { // Only one selected
-                    var other_apps_menuitem = new Gtk.MenuItem.with_label (_("Other Application…"));
-                    other_apps_menuitem.action_name = "selection.open-with-other-app";
-
-                    open_submenu.add (other_apps_menuitem);
+                    var other_section = new Menu ();
+                    other_section.append (_("Other Application…"), "selection.open-with-other-app");
+                    open_submenu.append_section (null, other_section);
                 }
             }
 
             var open_submenu_item = new Gtk.MenuItem ();
-            if (open_submenu.get_children ().length () > 0) { //Can be assumed to be limited length
-                open_submenu_item.submenu = open_submenu;
+            if (open_submenu.get_n_items () > 0) { //Can be assumed to be limited length
+                open_submenu_item.submenu = new Gtk.Menu.from_model (open_submenu);
 
                 if (selected_file.is_folder () || selected_file.is_root_network_folder ()) {
                     open_submenu_item.label = _("Open in");
@@ -2293,7 +2276,7 @@ namespace Files {
             if (!in_trash) {
                 // We send the actual files - it is up to the plugin to extract target
                 // if needed.  Color tag plugin needs actual file, others need target
-                plugins.hook_context_menu (menu as Gtk.Widget, get_selected_files ());
+                plugins.hook_context_menu (menu, get_selected_files ());
 
                 if (selection.length () == 1 && "image" in selection.nth_data (0).info.get_content_type ()) {
                     var wallpaper_menuitem = new Gtk.MenuItem.with_label (_("Set as Wallpaper")) {
@@ -2539,7 +2522,7 @@ namespace Files {
              * because remote file bookmarks do not work correctly for unmounted locations */
             can_bookmark = (!more_than_one_selected || single_folder) &&
                            (slot.directory.is_local ||
-                           (file.get_ftype () != null && file.get_ftype () == "inode/directory") ||
+                           (file.content_type != null && file.content_type == "inode/directory") ||
                            file.is_smb_server ());
 
             can_copy = file.is_readable ();
