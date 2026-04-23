@@ -135,7 +135,9 @@ public class Files.View.DetailsColumn : Gtk.Bin {
 
         var time_created = FileUtils.get_formatted_time_attribute_from_info (
             file.info,
-            FileAttribute.TIME_CREATED
+            FileAttribute.TIME_CREATED,
+            Files.Preferences.get_default ().date_format,
+            false
         );
 
         int n = 5;
@@ -149,7 +151,9 @@ public class Files.View.DetailsColumn : Gtk.Bin {
 
         var time_modified = FileUtils.get_formatted_time_attribute_from_info (
             file.info,
-            FileAttribute.TIME_MODIFIED
+            FileAttribute.TIME_MODIFIED,
+            Files.Preferences.get_default ().date_format,
+            false
         );
 
         if (time_modified != "") {
@@ -163,7 +167,9 @@ public class Files.View.DetailsColumn : Gtk.Bin {
         if (file.is_trashed ()) {
             var deletion_date = FileUtils.get_formatted_time_attribute_from_info (
                 file.info,
-                FileAttribute.TRASH_DELETION_DATE
+                FileAttribute.TRASH_DELETION_DATE,
+                Files.Preferences.get_default ().date_format,
+                false
             );
 
             if (deletion_date != "") {
