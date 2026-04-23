@@ -427,7 +427,7 @@ namespace Files.View {
             }
 
             if (can_show_folder) {
-                content = view.get_content_box ();
+                content = view.get_main_widget ();
                 var directory = dir.file;
 
                 /* Only record valid folders (will also log Zeitgeist event) */
