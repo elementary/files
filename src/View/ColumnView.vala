@@ -28,6 +28,12 @@ namespace Files {
             /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
         }
 
+        construct {
+            realize.connect (() => {
+                set_up_zoom_actions ("miller_columns");
+            });
+        }
+
         protected override void set_up_icon_renderer () {
             icon_renderer = new IconRenderer ();
         }
