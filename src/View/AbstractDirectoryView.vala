@@ -2378,7 +2378,7 @@ namespace Files {
                     if (total_item_count > 0) {
                         menu_model.append_submenu (_("Template"), template_submenu);
                         if (total_item_count > MAX_TEMPLATES) {
-                            template_submenu.append (_("…too many templates"), "");
+                            template_submenu.append (_("…too many templates"), null); // Does not accept empty string for action name.
                         }
                     }
                 }
