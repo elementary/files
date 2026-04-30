@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-28 20:08+0000\n"
+"POT-Creation-Date: 2026-04-30 14:31+0000\n"
 "PO-Revision-Date: 2015-12-21 13:44+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Faroese <fo@li.org>\n"
@@ -19,11 +19,11 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:191
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:192
 msgid "Previous"
 msgstr ""
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:197
 msgid "Next"
 msgstr ""
 
@@ -91,7 +91,7 @@ msgstr ""
 msgid "Replace"
 msgstr "Set í staðin"
 
-#: libcore/Directory.vala:746
+#: libcore/Directory.vala:748
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 msgid "Link Here"
 msgstr ""
 
-#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2322
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2305
 msgid "Name"
 msgstr ""
 
@@ -127,7 +127,7 @@ msgstr "Stovna"
 msgid "Last modification date"
 msgstr "Broytt seinast:"
 
-#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2327
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2310
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Stødd"
@@ -140,7 +140,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2337
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2320
 msgid "Date"
 msgstr ""
 
@@ -212,38 +212,38 @@ msgstr ""
 msgid "Compact"
 msgstr ""
 
-#: libcore/File.vala:651 libcore/File.vala:1203
+#: libcore/File.vala:659 libcore/File.vala:1213
 msgid "Inaccessible"
 msgstr ""
 
-#: libcore/File.vala:968
+#: libcore/File.vala:977
 msgid "Failed to parse the desktop file"
 msgstr ""
 
-#: libcore/File.vala:972
+#: libcore/File.vala:981
 msgid "Failed to parse the desktop file: "
 msgstr ""
 
-#: libcore/File.vala:984
+#: libcore/File.vala:993
 msgid "Failed to create command from file: "
 msgstr ""
 
-#: libcore/File.vala:993
+#: libcore/File.vala:1002
 msgid "Unable to Launch Desktop File: "
 msgstr ""
 
-#: libcore/File.vala:1196
+#: libcore/File.vala:1206
 msgid "Empty"
 msgstr ""
 
-#: libcore/File.vala:1198
+#: libcore/File.vala:1208
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d minuttur"
 msgstr[1] "%'d minuttir"
 
-#: libcore/File.vala:1243
+#: libcore/File.vala:1252
 #, c-format
 msgid "link to %s"
 msgstr "leinkja til %s"
@@ -289,31 +289,31 @@ msgid "Could not rename to '%s'"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:682
+#: libcore/FileUtils.vala:687
 #, c-format
 msgid "Today at %s"
 msgstr ""
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:690
+#: libcore/FileUtils.vala:695
 #, c-format
 msgid "Yesterday at %s"
 msgstr ""
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:698
+#: libcore/FileUtils.vala:703
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:928
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d sekund"
 msgstr[1] "%'d sekund"
 
-#: libcore/FileUtils.vala:927 libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:932 libcore/FileUtils.vala:940
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -322,19 +322,19 @@ msgstr[1] "%'d minuttir"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:939 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:934
+#: libcore/FileUtils.vala:939
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d tími"
 msgstr[1] "%'d tímar"
 
-#: libcore/FileUtils.vala:938
+#: libcore/FileUtils.vala:943
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -342,23 +342,23 @@ msgstr[0] "umleið %'d tími"
 msgstr[1] "umleið %'d tímar"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:946
+#: libcore/FileUtils.vala:951
 msgid "copy"
 msgstr ""
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:948
+#: libcore/FileUtils.vala:953
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:950
+#: libcore/FileUtils.vala:955
 #, fuzzy
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:952
+#: libcore/FileUtils.vala:957
 msgid ")"
 msgstr ""
 
@@ -1532,7 +1532,7 @@ msgstr ""
 msgid "Delete Selected"
 msgstr "Strika _Allar"
 
-#: plugins/send-by-email/plugin.vala:26
+#: plugins/send-by-email/plugin.vala:42
 msgid "Send by Email"
 msgstr ""
 
@@ -1554,8 +1554,7 @@ msgstr ""
 msgid "Open one or more URIs, each in their own tab"
 msgstr ""
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1900
-#: src/View/AbstractDirectoryView.vala:1907
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1894
 msgid "New Window"
 msgstr ""
 
@@ -1639,7 +1638,7 @@ msgstr ""
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:267 src/View/DetailsColumn.vala:281
+#: src/View/DetailsColumn.vala:273
 msgid "Unknown"
 msgstr ""
 
@@ -1770,7 +1769,7 @@ msgid "Set as default"
 msgstr "Set sum vanligu forritan"
 
 #: src/Dialogs/PropertiesWindow.vala:116
-#: src/View/AbstractDirectoryView.vala:2020
+#: src/View/AbstractDirectoryView.vala:2003
 #: src/View/Sidebar/AbstractMountableRow.vala:277
 msgid "Properties"
 msgstr "Eginleikar"
@@ -1798,31 +1797,31 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:318
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:314
 msgid "Loading…"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:287
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:283
 msgid "Could not be determined"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
 msgid "Created:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:160
 msgid "Modified:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:176
 msgid "Deleted:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:185
 msgid "Media type:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:192
 msgid "Resolution:"
 msgstr ""
 
@@ -1831,16 +1830,16 @@ msgstr ""
 msgid "Location:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:200
 msgid "Target:"
 msgstr ""
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:210
 msgid "Original Location:"
 msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:664
-#: src/View/AbstractDirectoryView.vala:1988
+#: src/View/AbstractDirectoryView.vala:1973
 msgid "Other Application…"
 msgstr ""
 
@@ -1968,173 +1967,172 @@ msgstr ""
 msgid "Invalid file name provided"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1883
-#: src/View/AbstractDirectoryView.vala:1890 src/View/Window.vala:236
+#: src/View/AbstractDirectoryView.vala:1880 src/View/Window.vala:239
 #, fuzzy
 msgid "New Tab"
 msgstr "Opna í nýggjum _teigi"
 
-#: src/View/AbstractDirectoryView.vala:1924
+#: src/View/AbstractDirectoryView.vala:1917
 msgid "Run"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1931
+#: src/View/AbstractDirectoryView.vala:1924
 #, c-format
 msgid "Open in %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2000
+#: src/View/AbstractDirectoryView.vala:1983
 msgid "Open in"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2002
+#: src/View/AbstractDirectoryView.vala:1985
 #: src/View/Widgets/BreadcrumbsEntry.vala:446
 msgid "Open with"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2013
+#: src/View/AbstractDirectoryView.vala:1996
 msgid "Add to Bookmarks"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2042
+#: src/View/AbstractDirectoryView.vala:2025
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2051
+#: src/View/AbstractDirectoryView.vala:2034
 msgid "Deselect All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2062
+#: src/View/AbstractDirectoryView.vala:2045
 msgid "Cut"
 msgstr ""
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2053
 msgid "Copy"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2077
+#: src/View/AbstractDirectoryView.vala:2060
 #, fuzzy
 msgid "Move to Trash"
 msgstr "Flyti fílur í ruskspannina"
 
-#: src/View/AbstractDirectoryView.vala:2082
+#: src/View/AbstractDirectoryView.vala:2065
 #, fuzzy
 msgid "Delete Permanently"
 msgstr "Strika _Allar"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2072
 msgid "Restore from Trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2095
 #, fuzzy
 msgid "Open Parent Folder"
 msgstr "Opna tína persónligu mappu"
 
-#: src/View/AbstractDirectoryView.vala:2115
+#: src/View/AbstractDirectoryView.vala:2098
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2141
+#: src/View/AbstractDirectoryView.vala:2124
 #, fuzzy
 msgid "Rename…"
 msgstr "Ný_nevn"
 
-#: src/View/AbstractDirectoryView.vala:2148
+#: src/View/AbstractDirectoryView.vala:2131
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2171
-#: src/View/AbstractDirectoryView.vala:2253
+#: src/View/AbstractDirectoryView.vala:2154
+#: src/View/AbstractDirectoryView.vala:2236
 msgid "Paste Link into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2176
-#: src/View/AbstractDirectoryView.vala:2230
+#: src/View/AbstractDirectoryView.vala:2159
+#: src/View/AbstractDirectoryView.vala:2213
 msgid "Paste into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2186
-#: src/View/AbstractDirectoryView.vala:2258
+#: src/View/AbstractDirectoryView.vala:2169
+#: src/View/AbstractDirectoryView.vala:2241
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2299
+#: src/View/AbstractDirectoryView.vala:2282
 #, fuzzy
 #| msgid "Set as default"
 msgid "Set as Wallpaper"
 msgstr "Set sum vanligu forritan"
 
-#: src/View/AbstractDirectoryView.vala:2332 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2315 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Slag"
 
-#: src/View/AbstractDirectoryView.vala:2342
+#: src/View/AbstractDirectoryView.vala:2325
 msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2330
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2350
 msgid "Sort by"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2376
+#: src/View/AbstractDirectoryView.vala:2359
 #, fuzzy
 msgid "Folder"
 msgstr "_Faldari"
 
-#: src/View/AbstractDirectoryView.vala:2382
+#: src/View/AbstractDirectoryView.vala:2365
 msgid "Empty File"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2396
+#: src/View/AbstractDirectoryView.vala:2379
 msgid "Template"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2398
+#: src/View/AbstractDirectoryView.vala:2381
 msgid "…too many templates"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2404
+#: src/View/AbstractDirectoryView.vala:2387
 #, fuzzy
 msgid "New"
 msgstr "Netverk"
 
-#: src/View/AbstractDirectoryView.vala:2674
+#: src/View/AbstractDirectoryView.vala:2657
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2965
-#: src/View/AbstractDirectoryView.vala:3171
+#: src/View/AbstractDirectoryView.vala:2948
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2966
-#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:2949
+#: src/View/AbstractDirectoryView.vala:3127
+#: src/View/AbstractDirectoryView.vala:3138
 #: src/View/AbstractDirectoryView.vala:3155
-#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3112
+#: src/View/AbstractDirectoryView.vala:3095
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3113
+#: src/View/AbstractDirectoryView.vala:3096
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3143
-#: src/View/AbstractDirectoryView.vala:3154
+#: src/View/AbstractDirectoryView.vala:3126
+#: src/View/AbstractDirectoryView.vala:3137
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -2142,7 +2140,7 @@ msgstr ""
 msgid "Name:"
 msgstr ""
 
-#: src/View/DetailsColumn.vala:211
+#: src/View/DetailsColumn.vala:217
 #, fuzzy
 #| msgid "Properties"
 msgid "Properties…"
@@ -2258,40 +2256,40 @@ msgstr ""
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: src/View/Window.vala:211
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:241
+#: src/View/Window.vala:244
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Opna í nýggjum _teigi"
 
-#: src/View/Window.vala:438 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr ""
 
-#: src/View/Window.vala:439
+#: src/View/Window.vala:442
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Striki fílur"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:443
+#: src/View/Window.vala:446
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:444
+#: src/View/Window.vala:447
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Opna í nýggjum _teigi"
 
-#: src/View/Window.vala:445
+#: src/View/Window.vala:448
 #, fuzzy
 msgid "Close Tab"
 msgstr "Opna í nýggjum _teigi"
 
-#: src/View/Window.vala:725 src/View/Window.vala:735
+#: src/View/Window.vala:728 src/View/Window.vala:738
 msgid "(as Administrator)"
 msgstr ""
 
