@@ -62,6 +62,15 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.3.1" date="2026-05-08" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Fixed a regression causing a crash if there are too many templates</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
     <release version="7.3.0" date="2026-04-24" urgency="medium">
       <description>
         <p>Improvements:</p>
