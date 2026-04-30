@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-28 20:08+0000\n"
+"POT-Creation-Date: 2026-04-30 14:31+0000\n"
 "PO-Revision-Date: 2026-01-31 23:55+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementaryos.org/projects/files/extra/"
@@ -75,135 +75,141 @@ msgstr "Переглядайте складні дерева швидше у п�
 msgid "elementary, Inc."
 msgstr "elementary, Inc."
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:87
-#: data/files.metainfo.xml.in.in:289
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:80
+#: data/files.metainfo.xml.in.in:100 data/files.metainfo.xml.in.in:120
+#: data/files.metainfo.xml.in.in:138 data/files.metainfo.xml.in.in:153
+#: data/files.metainfo.xml.in.in:164 data/files.metainfo.xml.in.in:176
+#: data/files.metainfo.xml.in.in:191 data/files.metainfo.xml.in.in:207
+#: data/files.metainfo.xml.in.in:229 data/files.metainfo.xml.in.in:247
+#: data/files.metainfo.xml.in.in:270 data/files.metainfo.xml.in.in:282
+#: data/files.metainfo.xml.in.in:302
+msgid "Minor updates:"
+msgstr "Незначні оновлення:"
+
+#: data/files.metainfo.xml.in.in:69
+msgid "Fixed a regression causing a crash if there are too many templates"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:83
+#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:141 data/files.metainfo.xml.in.in:155
+#: data/files.metainfo.xml.in.in:166 data/files.metainfo.xml.in.in:179
+#: data/files.metainfo.xml.in.in:193 data/files.metainfo.xml.in.in:211
+#: data/files.metainfo.xml.in.in:233 data/files.metainfo.xml.in.in:255
+#: data/files.metainfo.xml.in.in:272 data/files.metainfo.xml.in.in:284
+#: data/files.metainfo.xml.in.in:304
+msgid "Updated translations"
+msgstr "Оновлено переклади"
+
+#: data/files.metainfo.xml.in.in:76 data/files.metainfo.xml.in.in:96
+#: data/files.metainfo.xml.in.in:298
 msgid "Improvements:"
 msgstr "Поліпшено:"
 
-#: data/files.metainfo.xml.in.in:69
+#: data/files.metainfo.xml.in.in:78
 msgid "An option to show a preview pane in Column view is introduced"
 msgstr ""
 "Додано можливість показувати панель попереднього перегляду в режимі "
 "перегляду стовпців"
 
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
-#: data/files.metainfo.xml.in.in:111 data/files.metainfo.xml.in.in:129
-#: data/files.metainfo.xml.in.in:144 data/files.metainfo.xml.in.in:155
-#: data/files.metainfo.xml.in.in:167 data/files.metainfo.xml.in.in:182
-#: data/files.metainfo.xml.in.in:198 data/files.metainfo.xml.in.in:220
-#: data/files.metainfo.xml.in.in:238 data/files.metainfo.xml.in.in:261
-#: data/files.metainfo.xml.in.in:273 data/files.metainfo.xml.in.in:293
-msgid "Minor updates:"
-msgstr "Незначні оновлення:"
-
-#: data/files.metainfo.xml.in.in:73
+#: data/files.metainfo.xml.in.in:82
 msgid ""
 "The list of search results now shows matches in the current folder first"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:74 data/files.metainfo.xml.in.in:97
-#: data/files.metainfo.xml.in.in:116 data/files.metainfo.xml.in.in:132
-#: data/files.metainfo.xml.in.in:146 data/files.metainfo.xml.in.in:157
-#: data/files.metainfo.xml.in.in:170 data/files.metainfo.xml.in.in:184
-#: data/files.metainfo.xml.in.in:202 data/files.metainfo.xml.in.in:224
-#: data/files.metainfo.xml.in.in:246 data/files.metainfo.xml.in.in:263
-#: data/files.metainfo.xml.in.in:275 data/files.metainfo.xml.in.in:295
-msgid "Updated translations"
-msgstr "Оновлено переклади"
-
-#: data/files.metainfo.xml.in.in:89
+#: data/files.metainfo.xml.in.in:98
 msgid "A compact date format is introduced"
 msgstr "Введено компактний формат дати"
 
-#: data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:102
 msgid "The file conflict dialog now shows a missing icon"
 msgstr ""
 "У діалоговому вікні конфлікту файлів відтепер показується піктограма "
 "відсутнього файлу"
 
-#: data/files.metainfo.xml.in.in:94
+#: data/files.metainfo.xml.in.in:103
 msgid "Flickering of the pathbar with some navigation methods is fixed"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:95
+#: data/files.metainfo.xml.in.in:104
 msgid "The option to set a default app for folders is no longer offered"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:96
+#: data/files.metainfo.xml.in.in:105
 msgid "The scrollbar no longer overlays the modification date in List view"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:113
+#: data/files.metainfo.xml.in.in:122
 msgid "Navigation within the Trash folder now works properly"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:114
+#: data/files.metainfo.xml.in.in:123
 msgid "The view now refreshes properly after permanent deletion of a folder"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:115
+#: data/files.metainfo.xml.in.in:124
 msgid ""
 "The number of template items displayed in the context menu is now limited"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:131
+#: data/files.metainfo.xml.in.in:140
 msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:169
+#: data/files.metainfo.xml.in.in:178
 msgid "Further preparation for porting to Gtk4"
 msgstr "Подальша підготовка до переходу на Gtk4"
 
-#: data/files.metainfo.xml.in.in:200
+#: data/files.metainfo.xml.in.in:209
 msgid "Redesign file permissions view"
 msgstr "Перероблено подання дозволів на файли"
 
-#: data/files.metainfo.xml.in.in:201
+#: data/files.metainfo.xml.in.in:210
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "Фокусування на бічній панелі за допомогою клавіш Ctrl + ліворуч"
 
-#: data/files.metainfo.xml.in.in:222
+#: data/files.metainfo.xml.in.in:231
 msgid "Restoring tabs from last time is now optional"
 msgstr "Відновлення вкладок з минулого разу тепер необов'язкове"
 
-#: data/files.metainfo.xml.in.in:223
+#: data/files.metainfo.xml.in.in:232
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 "Перетягування та вибір більше не можна робити за допомогою вторинної кнопки "
 "вказівника"
 
-#: data/files.metainfo.xml.in.in:240
+#: data/files.metainfo.xml.in.in:249
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr "Припинено підтримку перетягування закладок з бічної панелі"
 
-#: data/files.metainfo.xml.in.in:241
+#: data/files.metainfo.xml.in.in:250
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "Виправлено неочікуване прокручування після перейменування теки"
 
-#: data/files.metainfo.xml.in.in:242
+#: data/files.metainfo.xml.in.in:251
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Виправлено збій під час переходу до перегляду у вигляді сітки за рідкісних "
 "обставин"
 
-#: data/files.metainfo.xml.in.in:243
+#: data/files.metainfo.xml.in.in:252
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "Вибір зберігається після оновлення подання"
 
-#: data/files.metainfo.xml.in.in:244
+#: data/files.metainfo.xml.in.in:253
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Виправлено помилку, коли файли не відкриваються під час спроби відновити "
 "від'єднане розташування"
 
-#: data/files.metainfo.xml.in.in:245
+#: data/files.metainfo.xml.in.in:254
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr "Виправлено продовження показу не змонтованого розташування"
 
-#: data/files.metainfo.xml.in.in:291
+#: data/files.metainfo.xml.in.in:300
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
