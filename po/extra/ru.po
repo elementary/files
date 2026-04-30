@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-30 14:31+0000\n"
-"PO-Revision-Date: 2026-03-02 11:55+0000\n"
+"PO-Revision-Date: 2026-04-30 21:20+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/extra/"
 "ru/>\n"
@@ -91,7 +91,7 @@ msgstr "Незначительные обновления:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Fixed a regression causing a crash if there are too many templates"
-msgstr ""
+msgstr "Исправлена регрессия, приводившая к сбою, если шаблонов слишком много"
 
 #: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:83
 #: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:125
