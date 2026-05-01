@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-30 14:31+0000\n"
-"PO-Revision-Date: 2026-02-22 08:55+0000\n"
+"PO-Revision-Date: 2026-05-01 10:53+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/extra/"
 "ca/>\n"
@@ -88,6 +88,8 @@ msgstr "Actualitzacions menors:"
 #: data/files.metainfo.xml.in.in:69
 msgid "Fixed a regression causing a crash if there are too many templates"
 msgstr ""
+"S'ha corregit una regressió que provocava un blocatge si hi havia massa "
+"plantilles."
 
 #: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:83
 #: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:125
