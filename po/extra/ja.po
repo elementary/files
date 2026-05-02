@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-30 14:31+0000\n"
-"PO-Revision-Date: 2026-03-02 11:55+0000\n"
+"PO-Revision-Date: 2026-05-02 23:51+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/extra/"
 "ja/>\n"
@@ -88,7 +88,7 @@ msgstr "マイナーアップデート:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Fixed a regression causing a crash if there are too many templates"
-msgstr ""
+msgstr "テンプレートが大量に存在する場合にクラッシュを引き起こすリグレッションを修正"
 
 #: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:83
 #: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:125
