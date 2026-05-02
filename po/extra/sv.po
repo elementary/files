@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-04-30 14:31+0000\n"
-"PO-Revision-Date: 2026-04-03 09:36+0000\n"
+"PO-Revision-Date: 2026-05-02 09:03+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/files/extra/"
 "sv/>\n"
@@ -87,6 +87,7 @@ msgstr "Mindre uppdateringar:"
 #: data/files.metainfo.xml.in.in:69
 msgid "Fixed a regression causing a crash if there are too many templates"
 msgstr ""
+"Rättade en regression som orsakade en krasch om det fanns för många mallar"
 
 #: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:83
 #: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:125
