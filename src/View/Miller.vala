@@ -384,15 +384,11 @@ namespace Files.View {
             }
             /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
+            // Using Idle ensures container window is not null
             Idle.add (() => {
-                if (this.ctab.window != null) {
-                    plugins.directory_loaded (this.ctab.window, this, slot.directory.file);
-                    return Source.REMOVE;
-                } else {
-                    return Source.CONTINUE;
-                }
+                plugins.directory_loaded (this.ctab.window, this, slot.directory.file);
+                return Source.REMOVE;
             });
-
         }
 
         private void show_hidden_files_changed (bool show_hidden) {
