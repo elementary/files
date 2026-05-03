@@ -384,7 +384,15 @@ namespace Files.View {
             }
             /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
-            plugins.directory_loaded (this.ctab.window, this, slot.directory.file);
+            Idle.add (() => {
+                if (this.ctab.window != null) {
+                    plugins.directory_loaded (this.ctab.window, this, slot.directory.file);
+                    return Source.REMOVE;
+                } else {
+                    return Source.CONTINUE;
+                }
+            });
+
         }
 
         private void show_hidden_files_changed (bool show_hidden) {
