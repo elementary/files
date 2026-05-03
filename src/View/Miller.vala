@@ -384,7 +384,11 @@ namespace Files.View {
             }
             /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
-            plugins.directory_loaded (this.ctab.window, this, slot.directory.file);
+            // Using Idle ensures container window is not null
+            Idle.add (() => {
+                plugins.directory_loaded (this.ctab.window, this, slot.directory.file);
+                return Source.REMOVE;
+            });
         }
 
         private void show_hidden_files_changed (bool show_hidden) {
@@ -641,11 +645,12 @@ namespace Files.View {
             if (scroll_to_slot_timeout_id > 0) {
                 GLib.Source.remove (scroll_to_slot_timeout_id);
             }
+
             if (total_width_timeout_id > 0) {
                 GLib.Source.remove (total_width_timeout_id);
             }
 
-            truncate_list_after_slot (slot_list.first ().data);
+            // No need to close slots - they are destroyed anyway.
         }
 
         public override bool set_all_selected (bool all) {
