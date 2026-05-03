@@ -645,11 +645,12 @@ namespace Files.View {
             if (scroll_to_slot_timeout_id > 0) {
                 GLib.Source.remove (scroll_to_slot_timeout_id);
             }
+
             if (total_width_timeout_id > 0) {
                 GLib.Source.remove (total_width_timeout_id);
             }
 
-            truncate_list_after_slot (slot_list.first ().data);
+            // No need to close slots - they are destroyed anyway.
         }
 
         public override bool set_all_selected (bool all) {
