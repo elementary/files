@@ -494,9 +494,6 @@ namespace Files.View {
                 if (Files.Preferences.get_default ().show_file_preview &&
                     files.length () == 1) {
 
-                    // Preview must be added to the last slot so make sure current slot
-                    // is the last
-                    truncate_list_after_slot (current_slot);
                     draw_file_details (files.data, current_slot.get_directory_view ());
                 }
             }
