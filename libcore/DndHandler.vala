@@ -60,12 +60,29 @@ namespace Files {
         public Gdk.DragAction? drag_drop_action_ask (Gtk.Widget dest_widget,
                                                      Gtk.ApplicationWindow win,
                                                      Gdk.DragAction possible_actions) {
+            chosen = Gdk.DragAction.DEFAULT;
 
-            this.chosen = Gdk.DragAction.DEFAULT;
-            add_action (win);
-            var ask_menu = build_menu (possible_actions);
-            ask_menu.set_screen (dest_widget.get_screen ());
-            ask_menu.show_all ();
+            var action = new GLib.SimpleAction ("choice", VariantType.UINT32);
+            action.activate.connect (on_choice);
+
+            win.add_action (action);
+
+            var cancel_section = new GLib.Menu ();
+            cancel_section.append (
+                _("Cancel"),
+                Action.print_detailed_name ("choice", new Variant.uint32 (Gdk.DragAction.DEFAULT))
+            );
+
+            var menu = new GLib.Menu ();
+            append_menu_item (menu, _("Move Here"), Gdk.DragAction.MOVE, possible_actions);
+            append_menu_item (menu, _("Copy Here"), Gdk.DragAction.COPY, possible_actions);
+            append_menu_item (menu, _("Link Here"), Gdk.DragAction.LINK, possible_actions);
+            menu.append_section (null, cancel_section);
+
+            var ask_menu = new Gtk.Menu.from_model (menu) {
+                attach_widget = dest_widget
+            };
+
             var loop = new GLib.MainLoop (null, false);
 
             ask_menu.deactivate.connect (() => {
@@ -73,78 +90,27 @@ namespace Files {
                     loop.quit ();
                 }
 
-                remove_action ((Gtk.ApplicationWindow)win);
+                ((Gtk.ApplicationWindow) win).remove_action ("choice");
             });
 
             ask_menu.popup_at_pointer (null);
+
             loop.run ();
             Gtk.grab_remove (ask_menu);
 
             return this.chosen;
         }
 
-        private void add_action (Gtk.ApplicationWindow win) {
-            var action = new GLib.SimpleAction ("choice", GLib.VariantType.STRING);
-            action.activate.connect (this.on_choice);
-
-            win.add_action (action);
-        }
-
-        private void remove_action (Gtk.ApplicationWindow win) {
-            win.remove_action ("choice");
-        }
-
-        private Gtk.Menu build_menu (Gdk.DragAction possible_actions) {
-            var menu = new Gtk.Menu ();
-
-            build_and_append_menu_item (menu, _("Move Here"), Gdk.DragAction.MOVE, possible_actions);
-            build_and_append_menu_item (menu, _("Copy Here"), Gdk.DragAction.COPY, possible_actions);
-            build_and_append_menu_item (menu, _("Link Here"), Gdk.DragAction.LINK, possible_actions);
-
-            menu.append (new Gtk.SeparatorMenuItem ());
-            menu.append (new Gtk.MenuItem.with_label (_("Cancel")));
-
-            return menu;
-        }
-
-        private void build_and_append_menu_item (Gtk.Menu menu, string label, Gdk.DragAction? action,
-                                                 Gdk.DragAction possible_actions) {
-
-            if ((possible_actions & action) != 0) {
-                var item = new Gtk.MenuItem.with_label (label);
-
-                item.activate.connect (() => {
-                    this.chosen = action;
-                });
-
-                menu.append (item);
-            }
-        }
-
-        public void on_choice (GLib.Variant? param) {
-            if (param == null || !param.is_of_type (GLib.VariantType.STRING)) {
-                critical ("Invalid variant type in DndHandler Menu");
+        private void append_menu_item (GLib.Menu menu, string label, Gdk.DragAction action, Gdk.DragAction possible_actions) {
+            if ((possible_actions & action) == 0) {
                 return;
             }
 
-            string choice = param.get_string ();
+            menu.append (label, Action.print_detailed_name ("choice", action));
+        }
 
-            switch (choice) {
-                case "move":
-                    this.chosen = Gdk.DragAction.MOVE;
-                    break;
-                case "copy":
-                    this.chosen = Gdk.DragAction.COPY;
-                    break;
-                case "link":
-                    this.chosen = Gdk.DragAction.LINK;
-                    break;
-                case "background": /* not implemented yet */
-                case "cancel":
-                default:
-                    this.chosen = Gdk.DragAction.DEFAULT;
-                    break;
-            }
+        private void on_choice (GLib.Variant? param) {
+            chosen = (Gdk.DragAction) param.get_int32 ();
         }
 
         public string? get_source_filename (Gdk.Window source_window) {
