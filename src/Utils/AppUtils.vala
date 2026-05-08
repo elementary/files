@@ -37,7 +37,11 @@ namespace Files {
         return new Gtk.Label (label) {
             halign = Gtk.Align.START,
             selectable = true,
-            use_markup = true
+            use_markup = true,
+            wrap = true,
+            ellipsize = END,
+            lines = 2,
+            xalign = 0
         };
     }
 }

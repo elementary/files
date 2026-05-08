@@ -46,9 +46,12 @@ public abstract class Files.AbstractSlot : GLib.Object {
 
     public virtual bool is_frozen { get; set; default = true; }
 
+    //TODO Make private so layout fixed?
     protected Gtk.Box extra_location_widgets;
     protected Gtk.Box extra_action_widgets;
-    protected Gtk.Box content_box;
+    protected Gtk.Grid content_grid; // Holds view, overlay and extra action widgets
+    protected Gtk.Paned main_paned; // Holds all displayed widgets (content_grid and preview or other side widget)
+
     public Gtk.Overlay overlay { get; protected set; }
     public int slot_number { get; protected set; }
     protected int width;
@@ -69,27 +72,32 @@ public abstract class Files.AbstractSlot : GLib.Object {
         extra_action_widgets.add (widget);
     }
 
-    public void add_overlay (Gtk.Widget widget) {
-        // It is assumed this is only called once per slot
-        overlay = new Gtk.Overlay () {
-            hexpand = true,
-            vexpand = true,
-            child = widget
-        };
-        content_box.add (overlay);
+    public void add_overlay_widget (Gtk.Widget widget) {
+        overlay.child = widget;
+    }
+
+    protected void add_side_widget (Gtk.Widget widget, bool resize, bool shrink) {
+        main_paned.pack2 (widget, resize, shrink);
     }
 
     construct {
-        content_box = new Gtk.Box (VERTICAL, 0) {
+        content_grid = new Gtk.Grid () {
             vexpand = true,
             hexpand = true
         };
 
-        extra_location_widgets = new Gtk.Box (VERTICAL, 0);
-        content_box.add (extra_location_widgets);
+        overlay = new Gtk.Overlay () {
+            hexpand = true,
+            vexpand = true,
+        };
+
+        main_paned = new Gtk.Paned (HORIZONTAL);
 
         extra_action_widgets = new Gtk.Box (VERTICAL, 0);
-        content_box.add (extra_action_widgets);
+        content_grid.attach (extra_action_widgets, 0, 0);
+        content_grid.attach (overlay, 0, 1);
+
+        main_paned.pack1 (content_grid, true, true);
         slot_number = -1;
     }
 
@@ -109,8 +117,8 @@ public abstract class Files.AbstractSlot : GLib.Object {
     public virtual void zoom_in () {}
     public virtual void zoom_normal () {}
     public virtual bool set_all_selected (bool all_selected) { return false; }
-    public virtual Gtk.Widget get_content_box () { return content_box as Gtk.Widget; }
+    public virtual Gtk.Widget get_main_widget () { return main_paned as Gtk.Widget; }
     public virtual string? get_root_uri () { return directory.file.uri; }
     public virtual string? get_tip_uri () { return null; }
-    public virtual bool get_realized () { return content_box.get_realized (); }
+    public virtual bool get_realized () { return main_paned.get_realized (); }
 }

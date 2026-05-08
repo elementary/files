@@ -207,7 +207,7 @@ namespace Files {
             uint index = 0;
             foreach (var file in supported_files) {
                 uris[index] = file.uri;
-                mime_hints[index] = file.get_ftype ();
+                mime_hints[index] = file.content_type;
                 index++;
             }
 
@@ -255,7 +255,7 @@ namespace Files {
 
         private bool is_supported (Files.File file) {
             /* TODO cache supported combinations */
-            var ftype = file.get_ftype ();
+            var ftype = file.content_type;
             if (proxy == null || ftype == null) {
                 return false;
             }

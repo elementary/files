@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-20 16:13+0000\n"
+"POT-Creation-Date: 2026-04-30 14:31+0000\n"
 "PO-Revision-Date: 2025-11-12 19:05+0000\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: Hebrew <https://l10n.elementaryos.org/projects/files/extra/he/"
@@ -13,25 +13,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Weblate 5.11.4\n"
 
-#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "קבצים"
 
-#: data/io.elementary.files.desktop.in.in:7
+#: data/io.elementary.files.desktop.in.in:6
 msgid "Browse your files"
 msgstr "ניווט בין הקבצים שלך"
 
-#: data/io.elementary.files.desktop.in.in:9
+#: data/io.elementary.files.desktop.in.in:8
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
 "תיקייה;תיקיה;ספריה;מנהל;מנווט;ניווט;עיון;מעיין;כונן;דיסק;מערכת "
 "קבצים;קובץ;קבצים;"
 
-#: data/io.elementary.files.desktop.in.in:25
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window"
 msgstr "חלון חדש"
 
-#: data/io.elementary.files.desktop.in.in:30
+#: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
 msgstr "חלון חדש בתור מנהל"
 
@@ -63,127 +63,137 @@ msgstr "הצגת נתוני על רבים יותר במבט חטוף בתצוג�
 msgid "Browse complex trees faster with Column view"
 msgstr "עיון בעצים מורכבים מהר יותר עם תצוגת עמודות"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:87
-#: data/files.metainfo.xml.in.in:289
-msgid "Improvements:"
-msgstr "שיפורים:"
+#: data/files.metainfo.xml.in.in:59
+msgid "elementary, Inc."
+msgstr "elementary בע״מ."
 
-#: data/files.metainfo.xml.in.in:69
-msgid "An option to show a preview pane in Column view is introduced"
-msgstr ""
-
-#: data/files.metainfo.xml.in.in:71 data/files.metainfo.xml.in.in:91
-#: data/files.metainfo.xml.in.in:111 data/files.metainfo.xml.in.in:129
-#: data/files.metainfo.xml.in.in:144 data/files.metainfo.xml.in.in:155
-#: data/files.metainfo.xml.in.in:167 data/files.metainfo.xml.in.in:182
-#: data/files.metainfo.xml.in.in:198 data/files.metainfo.xml.in.in:220
-#: data/files.metainfo.xml.in.in:238 data/files.metainfo.xml.in.in:261
-#: data/files.metainfo.xml.in.in:273 data/files.metainfo.xml.in.in:293
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:80
+#: data/files.metainfo.xml.in.in:100 data/files.metainfo.xml.in.in:120
+#: data/files.metainfo.xml.in.in:138 data/files.metainfo.xml.in.in:153
+#: data/files.metainfo.xml.in.in:164 data/files.metainfo.xml.in.in:176
+#: data/files.metainfo.xml.in.in:191 data/files.metainfo.xml.in.in:207
+#: data/files.metainfo.xml.in.in:229 data/files.metainfo.xml.in.in:247
+#: data/files.metainfo.xml.in.in:270 data/files.metainfo.xml.in.in:282
+#: data/files.metainfo.xml.in.in:302
 msgid "Minor updates:"
 msgstr "תיקונים מזעריים:"
 
-#: data/files.metainfo.xml.in.in:73
+#: data/files.metainfo.xml.in.in:69
+msgid "Fixed a regression causing a crash if there are too many templates"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:70 data/files.metainfo.xml.in.in:83
+#: data/files.metainfo.xml.in.in:106 data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:141 data/files.metainfo.xml.in.in:155
+#: data/files.metainfo.xml.in.in:166 data/files.metainfo.xml.in.in:179
+#: data/files.metainfo.xml.in.in:193 data/files.metainfo.xml.in.in:211
+#: data/files.metainfo.xml.in.in:233 data/files.metainfo.xml.in.in:255
+#: data/files.metainfo.xml.in.in:272 data/files.metainfo.xml.in.in:284
+#: data/files.metainfo.xml.in.in:304
+msgid "Updated translations"
+msgstr "התרגומים עודכנו"
+
+#: data/files.metainfo.xml.in.in:76 data/files.metainfo.xml.in.in:96
+#: data/files.metainfo.xml.in.in:298
+msgid "Improvements:"
+msgstr "שיפורים:"
+
+#: data/files.metainfo.xml.in.in:78
+msgid "An option to show a preview pane in Column view is introduced"
+msgstr ""
+
+#: data/files.metainfo.xml.in.in:82
 msgid ""
 "The list of search results now shows matches in the current folder first"
 msgstr ""
 
-#: data/files.metainfo.xml.in.in:74 data/files.metainfo.xml.in.in:97
-#: data/files.metainfo.xml.in.in:116 data/files.metainfo.xml.in.in:132
-#: data/files.metainfo.xml.in.in:146 data/files.metainfo.xml.in.in:157
-#: data/files.metainfo.xml.in.in:170 data/files.metainfo.xml.in.in:184
-#: data/files.metainfo.xml.in.in:202 data/files.metainfo.xml.in.in:224
-#: data/files.metainfo.xml.in.in:246 data/files.metainfo.xml.in.in:263
-#: data/files.metainfo.xml.in.in:275 data/files.metainfo.xml.in.in:295
-msgid "Updated translations"
-msgstr "התרגומים עודכנו"
-
-#: data/files.metainfo.xml.in.in:89
+#: data/files.metainfo.xml.in.in:98
 msgid "A compact date format is introduced"
 msgstr "תבנית תאריך מצומצמת נוספה"
 
-#: data/files.metainfo.xml.in.in:93
+#: data/files.metainfo.xml.in.in:102
 msgid "The file conflict dialog now shows a missing icon"
 msgstr "חלונית סתירת קבצים מציג מעתה סמל שהיה חסר"
 
-#: data/files.metainfo.xml.in.in:94
+#: data/files.metainfo.xml.in.in:103
 msgid "Flickering of the pathbar with some navigation methods is fixed"
 msgstr "הבהוב של סרגל הנתיב עם כמה שיטות ניווט עבר תיקון"
 
-#: data/files.metainfo.xml.in.in:95
+#: data/files.metainfo.xml.in.in:104
 msgid "The option to set a default app for folders is no longer offered"
 msgstr "האפשרות להגדרת יישום ברירת מחדל לא מוצעת יותר"
 
-#: data/files.metainfo.xml.in.in:96
+#: data/files.metainfo.xml.in.in:105
 msgid "The scrollbar no longer overlays the modification date in List view"
 msgstr "פס הגלילה לא חופף יותר עם תאריך השינוי בתצוגת הרשימה"
 
-#: data/files.metainfo.xml.in.in:113
+#: data/files.metainfo.xml.in.in:122
 msgid "Navigation within the Trash folder now works properly"
 msgstr "הניווט בתיקיית האשפה עובדת מעתה כראוי"
 
-#: data/files.metainfo.xml.in.in:114
+#: data/files.metainfo.xml.in.in:123
 msgid "The view now refreshes properly after permanent deletion of a folder"
 msgstr "התצוגה מתרעננת כעת כראוי לאחר מחיקה של תיקייה לצמיתות"
 
-#: data/files.metainfo.xml.in.in:115
+#: data/files.metainfo.xml.in.in:124
 msgid ""
 "The number of template items displayed in the context menu is now limited"
 msgstr "מספר פריטי התבנית שמוצגים בתפריט ההקשר מוגבל כעת"
 
-#: data/files.metainfo.xml.in.in:131
+#: data/files.metainfo.xml.in.in:140
 msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
 msgstr ""
 "חלון המאפיינים מציג את התאריך והשעה המדויקים שבהם הקובץ נערך בפעם האחרונה"
 
-#: data/files.metainfo.xml.in.in:169
+#: data/files.metainfo.xml.in.in:178
 msgid "Further preparation for porting to Gtk4"
 msgstr "הכנות נוספות להסבה ל־Gtk4"
 
-#: data/files.metainfo.xml.in.in:200
+#: data/files.metainfo.xml.in.in:209
 msgid "Redesign file permissions view"
 msgstr "תצוגת הרשאות הקבצים עוצבה מחדש"
 
-#: data/files.metainfo.xml.in.in:201
+#: data/files.metainfo.xml.in.in:210
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "התמקדות על סרגל הצד בלחיצה על Ctrl + שמאלה"
 
-#: data/files.metainfo.xml.in.in:222
+#: data/files.metainfo.xml.in.in:231
 msgid "Restoring tabs from last time is now optional"
 msgstr "שחזור לשוניות מהפעם האחרונה היא בגדר רשות מעתה"
 
-#: data/files.metainfo.xml.in.in:223
+#: data/files.metainfo.xml.in.in:232
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr "לא ניתן לבצע עוד גרירה ובחירה עם הכפתור המשני"
 
-#: data/files.metainfo.xml.in.in:240
+#: data/files.metainfo.xml.in.in:249
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr "הופסקה התמיכה בגרירת סימניות אל מחוץ לסרגל הצד"
 
-#: data/files.metainfo.xml.in.in:241
+#: data/files.metainfo.xml.in.in:250
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "תוקנה גלילה לא צפויה לאחר שינוי שם תיקייה"
 
-#: data/files.metainfo.xml.in.in:242
+#: data/files.metainfo.xml.in.in:251
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr "תוקנה קריסה בעת מעבר לתצוגת רשת במצבים נדירים במיוחד"
 
-#: data/files.metainfo.xml.in.in:243
+#: data/files.metainfo.xml.in.in:252
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "וידוא שהבחירה נשארת אחרי רענון התצוגה"
 
-#: data/files.metainfo.xml.in.in:244
+#: data/files.metainfo.xml.in.in:253
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "תוקנה הבעיה שיישום הקבצים לא מצליח לפתוח אם מתבצע ניסיון לשחזר מקום מנותק"
 
-#: data/files.metainfo.xml.in.in:245
+#: data/files.metainfo.xml.in.in:254
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr "תוקנה התצוגה שממשיכה להופיע כאשר המקום מנותק"
 
-#: data/files.metainfo.xml.in.in:291
+#: data/files.metainfo.xml.in.in:300
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
@@ -211,9 +221,6 @@ msgstr "נדרש אימות כדי להפעיל את היישום קבצים כ�
 #~ msgid ""
 #~ "Move global settings from the context menu to an app menu in the headerbar"
 #~ msgstr "ההגדרות הגלובליות הועברו מתפריט ההקשר לתפריט יישומים בסרגל העליון"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary בע״מ."
 
 #~ msgid "File Manager"
 #~ msgstr "מנהל קבצים"
