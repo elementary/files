@@ -1826,7 +1826,6 @@ namespace Files {
                         current_suggested_action = Gdk.DragAction.COPY;
                         current_actions = current_suggested_action;
                     } else {
-
                         current_actions = DndHandler.file_accepts_drop (
                             drop_target_file,
                             destination_drop_file_list,
