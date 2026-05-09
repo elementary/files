@@ -1829,7 +1829,7 @@ namespace Files {
                         current_actions = DndHandler.file_accepts_drop (
                             drop_target_file,
                             destination_drop_file_list,
-                            context.get_selected_action (),
+                            context.get_selected_action (), // may return null
                             context.get_actions (),
                             out current_suggested_action
                         );
