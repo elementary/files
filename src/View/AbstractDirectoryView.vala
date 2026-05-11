@@ -47,7 +47,7 @@ namespace Files {
             {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST}
         };
 
-       private const Gtk.TargetEntry [] DROP_TARGETS = {
+        private const Gtk.TargetEntry [] DROP_TARGETS = {
             {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
             {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST},
             {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, Files.TargetType.XDND_DIRECT_SAVE0},
@@ -57,7 +57,7 @@ namespace Files {
        private const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
 
         /* Menu Handling */
-       private const GLib.ActionEntry [] SELECTION_ENTRIES = {
+        private const GLib.ActionEntry [] SELECTION_ENTRIES = {
             {"open", on_selection_action_open_executable},
             {"open-with-app", on_selection_action_open_with_app, "u"},
             {"open-with-default", on_selection_action_open_with_default},
@@ -72,14 +72,14 @@ namespace Files {
             {"invert-selection", invert_selection}
         };
 
-       private const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
+        private const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
             {"new", on_background_action_new, "s"},
             {"create-from", on_background_action_create_from, "s"},
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"}
         };
 
-       private const GLib.ActionEntry [] COMMON_ENTRIES = {
+        private const GLib.ActionEntry [] COMMON_ENTRIES = {
             {"copy", on_common_action_copy},
             {"paste-into", on_common_action_paste_into}, // Paste into selected folder
             {"paste", on_common_action_paste}, // Paste into background folder
