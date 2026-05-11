@@ -264,6 +264,7 @@ namespace Files {
         protected Gtk.ScrolledWindow scrolled_window;
         private Gtk.Label no_files_label;
         private Gtk.Label hidden_label;
+        private Gtk.Button hidden_button;
         private Gtk.Overlay overlay;
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
@@ -316,13 +317,13 @@ namespace Files {
             hidden_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
             hidden_label.no_show_all = true;
 
-            var hidden_button = new Gtk.Button.with_label (_("Show")) {
+            hidden_button = new Gtk.Button.with_label (_("Show")) {
                 no_show_all = true,
                 halign = CENTER
             };
 
             hidden_button.clicked.connect (() => {
-                show_hidden_files_in_folder (true, true);
+                show_hidden_files_in_folder (!slot.directory.show_hidden_override, true);
             });
 
             hidden_label.bind_property ("visible", hidden_button, "visible", DEFAULT);
@@ -1514,8 +1515,7 @@ namespace Files {
         private void directory_hidden_changed (Directory dir, bool show, bool @override) {
             /* May not be slot.directory - could be subdirectory */
             connect_directory_loading_handlers (dir);
-            dir.show_hidden_override = @override;
-            warning ("dir show hidden override %s", dir.show_hidden_override.to_string ());
+            dir.show_hidden_override = @override && show;
             dir.load_hiddens ();
         }
 
@@ -2624,7 +2624,8 @@ namespace Files {
                     } else {
                         no_files_label_timeout_id = 0;
                         no_files_label.visible = slot.directory.is_empty ();
-                        hidden_label.visible = !no_files_label.visible && model.is_empty;
+                        hidden_label.visible = !no_files_label.visible && (model.is_empty || slot.directory.show_hidden_override);
+                        hidden_button.label = slot.directory.show_hidden_override ? _("Hide") : _("Show");
                         return Source.REMOVE;
                     }
                 });
