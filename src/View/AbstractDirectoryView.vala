@@ -1468,7 +1468,6 @@ namespace Files {
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = ((Files.Preferences) prefs).show_hidden_files;
             show_hidden_files_in_folder (show, false); // Cancels override
-            action_set_state (background_actions, "show-hidden", show);
         }
 
         private void show_hidden_files_in_folder (bool show, bool @override) {
