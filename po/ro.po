@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-28 20:08+0000\n"
+"POT-Creation-Date: 2026-04-30 14:31+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:191
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:192
 msgid "Previous"
 msgstr "Anterior"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:197
 msgid "Next"
 msgstr "Următor"
 
@@ -95,7 +95,7 @@ msgstr "Înlocuirea va suprascrie conținutul."
 msgid "Replace"
 msgstr "Înlocuiește"
 
-#: libcore/Directory.vala:746
+#: libcore/Directory.vala:748
 msgid "Server did not respond within time limit"
 msgstr ""
 
@@ -116,7 +116,7 @@ msgstr "Copiază aici"
 msgid "Link Here"
 msgstr "Leagă aici"
 
-#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2322
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2305
 msgid "Name"
 msgstr "Nume"
 
@@ -131,7 +131,7 @@ msgstr "Creează"
 msgid "Last modification date"
 msgstr "Data ultimei modificări:"
 
-#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2327
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2310
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Dimensiune"
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2337
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2320
 msgid "Date"
 msgstr "Data"
 
@@ -218,36 +218,36 @@ msgstr "Informații"
 msgid "Compact"
 msgstr ""
 
-#: libcore/File.vala:651 libcore/File.vala:1203
+#: libcore/File.vala:659 libcore/File.vala:1213
 msgid "Inaccessible"
 msgstr "Inaccesibil"
 
-#: libcore/File.vala:968
+#: libcore/File.vala:977
 #, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "Eroare in analizarea fisierelor desktopului: %s"
 
-#: libcore/File.vala:972
+#: libcore/File.vala:981
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "Eroare in analizarea fisierelor desktopului: %s"
 
-#: libcore/File.vala:984
+#: libcore/File.vala:993
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "Eroare in analizarea fisierelor desktopului: %s"
 
-#: libcore/File.vala:993
+#: libcore/File.vala:1002
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "Eroare in analizarea fisierelor desktopului: %s"
 
-#: libcore/File.vala:1196
+#: libcore/File.vala:1206
 #, fuzzy
 msgid "Empty"
 msgstr "Fişier gol"
 
-#: libcore/File.vala:1198
+#: libcore/File.vala:1208
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
@@ -255,7 +255,7 @@ msgstr[0] "un minut"
 msgstr[1] "%'d minute"
 msgstr[2] "%'d de minute"
 
-#: libcore/File.vala:1243
+#: libcore/File.vala:1252
 #, c-format
 msgid "link to %s"
 msgstr "legatură către %s"
@@ -301,24 +301,24 @@ msgid "Could not rename to '%s'"
 msgstr "Nu s-a putut redenumi în '%s'"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:682
+#: libcore/FileUtils.vala:687
 #, fuzzy, c-format
 msgid "Today at %s"
 msgstr "Astazi la %-I:%M %p"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:690
+#: libcore/FileUtils.vala:695
 #, fuzzy, c-format
 msgid "Yesterday at %s"
 msgstr "Ieri la %-I:%M %p"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:698
+#: libcore/FileUtils.vala:703
 #, c-format
 msgid "%%A at %s"
 msgstr ""
 
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:928
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -326,7 +326,7 @@ msgstr[0] "%'d secundă"
 msgstr[1] "%'d secunde"
 msgstr[2] "%'d secunde"
 
-#: libcore/FileUtils.vala:927 libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:932 libcore/FileUtils.vala:940
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -336,12 +336,12 @@ msgstr[2] "%'d de minute"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:939 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:934
+#: libcore/FileUtils.vala:939
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -349,7 +349,7 @@ msgstr[0] "o oră"
 msgstr[1] "%'d ore"
 msgstr[2] "%'d de ore"
 
-#: libcore/FileUtils.vala:938
+#: libcore/FileUtils.vala:943
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -358,24 +358,24 @@ msgstr[1] "aproximativ %'d ore"
 msgstr[2] "aproximativ %'d de ore"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:946
+#: libcore/FileUtils.vala:951
 #, fuzzy
 msgid "copy"
 msgstr " (copiaza)"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:948
+#: libcore/FileUtils.vala:953
 msgid "link"
 msgstr ""
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:950
+#: libcore/FileUtils.vala:955
 #, fuzzy
 msgid "("
 msgstr " ("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:952
+#: libcore/FileUtils.vala:957
 msgid ")"
 msgstr ""
 
@@ -1626,7 +1626,7 @@ msgstr "Restaurează toate"
 msgid "Delete Selected"
 msgstr " selectat"
 
-#: plugins/send-by-email/plugin.vala:26
+#: plugins/send-by-email/plugin.vala:42
 msgid "Send by Email"
 msgstr ""
 
@@ -1649,8 +1649,7 @@ msgstr "Arata versiunea programului"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Deschide uri(le) in fila noua"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1900
-#: src/View/AbstractDirectoryView.vala:1907
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1894
 msgid "New Window"
 msgstr "Fereastră nouă"
 
@@ -1734,7 +1733,7 @@ msgstr "Capacitate:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:267 src/View/DetailsColumn.vala:281
+#: src/View/DetailsColumn.vala:273
 msgid "Unknown"
 msgstr "Nescunoscut"
 
@@ -1868,7 +1867,7 @@ msgid "Set as default"
 msgstr "Stabilește ca implicit"
 
 #: src/Dialogs/PropertiesWindow.vala:116
-#: src/View/AbstractDirectoryView.vala:2020
+#: src/View/AbstractDirectoryView.vala:2003
 #: src/View/Sidebar/AbstractMountableRow.vala:277
 msgid "Properties"
 msgstr "Proprietăţi"
@@ -1900,32 +1899,32 @@ msgstr "Mărimea actuală ar putea fi mai mare"
 msgid "unknown"
 msgstr "necunoscut"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:318
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:314
 msgid "Loading…"
 msgstr "Se încarcă..."
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:287
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:283
 msgid "Could not be determined"
 msgstr "Nu a putut fi determinat"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
 msgid "Created:"
 msgstr "Creat:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:160
 msgid "Modified:"
 msgstr "Modificat:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:176
 msgid "Deleted:"
 msgstr "Șters:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:185
 #, fuzzy
 msgid "Media type:"
 msgstr "Mimetype:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:192
 msgid "Resolution:"
 msgstr "Rezoluţie:"
 
@@ -1934,16 +1933,16 @@ msgstr "Rezoluţie:"
 msgid "Location:"
 msgstr "Locație:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:200
 msgid "Target:"
 msgstr "Destinație:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:210
 msgid "Original Location:"
 msgstr "Locația originară:"
 
 #: src/Dialogs/PropertiesWindow.vala:664
-#: src/View/AbstractDirectoryView.vala:1988
+#: src/View/AbstractDirectoryView.vala:1973
 msgid "Other Application…"
 msgstr "Altă aplicație..."
 
@@ -2084,172 +2083,171 @@ msgstr "Nu pot arunca acest fişier"
 msgid "Invalid file name provided"
 msgstr "Numele de fișier furnizat nu este valid"
 
-#: src/View/AbstractDirectoryView.vala:1883
-#: src/View/AbstractDirectoryView.vala:1890 src/View/Window.vala:236
+#: src/View/AbstractDirectoryView.vala:1880 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "Filă nouă"
 
-#: src/View/AbstractDirectoryView.vala:1924
+#: src/View/AbstractDirectoryView.vala:1917
 msgid "Run"
 msgstr "Execută"
 
-#: src/View/AbstractDirectoryView.vala:1931
+#: src/View/AbstractDirectoryView.vala:1924
 #, c-format
 msgid "Open in %s"
 msgstr "Deschide în %s"
 
-#: src/View/AbstractDirectoryView.vala:2000
+#: src/View/AbstractDirectoryView.vala:1983
 msgid "Open in"
 msgstr "Deschide în"
 
-#: src/View/AbstractDirectoryView.vala:2002
+#: src/View/AbstractDirectoryView.vala:1985
 #: src/View/Widgets/BreadcrumbsEntry.vala:446
 msgid "Open with"
 msgstr "Deschide cu"
 
-#: src/View/AbstractDirectoryView.vala:2013
+#: src/View/AbstractDirectoryView.vala:1996
 #, fuzzy
 msgid "Add to Bookmarks"
 msgstr "Favorite"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2042
+#: src/View/AbstractDirectoryView.vala:2025
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2051
+#: src/View/AbstractDirectoryView.vala:2034
 #, fuzzy
 msgid "Deselect All"
 msgstr "Restaurează toate"
 
-#: src/View/AbstractDirectoryView.vala:2062
+#: src/View/AbstractDirectoryView.vala:2045
 msgid "Cut"
 msgstr "Decupează"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2053
 msgid "Copy"
 msgstr "Copiază"
 
-#: src/View/AbstractDirectoryView.vala:2077
+#: src/View/AbstractDirectoryView.vala:2060
 msgid "Move to Trash"
 msgstr "Mută în coşul de gunoi"
 
-#: src/View/AbstractDirectoryView.vala:2082
+#: src/View/AbstractDirectoryView.vala:2065
 #, fuzzy
 msgid "Delete Permanently"
 msgstr "Şterge permanent"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2072
 msgid "Restore from Trash"
 msgstr "Restaurează din coş"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2095
 msgid "Open Parent Folder"
 msgstr "Deschide dosar părinte"
 
-#: src/View/AbstractDirectoryView.vala:2115
+#: src/View/AbstractDirectoryView.vala:2098
 msgid "Remove from History"
 msgstr "Elimină din istoric"
 
-#: src/View/AbstractDirectoryView.vala:2141
+#: src/View/AbstractDirectoryView.vala:2124
 #, fuzzy
 msgid "Rename…"
 msgstr "Redenumește"
 
-#: src/View/AbstractDirectoryView.vala:2148
+#: src/View/AbstractDirectoryView.vala:2131
 #, fuzzy
 msgid "Copy as Link"
 msgstr "Lipeşte"
 
-#: src/View/AbstractDirectoryView.vala:2171
-#: src/View/AbstractDirectoryView.vala:2253
+#: src/View/AbstractDirectoryView.vala:2154
+#: src/View/AbstractDirectoryView.vala:2236
 #, fuzzy
 msgid "Paste Link into Folder"
 msgstr "Lipește în dosar"
 
-#: src/View/AbstractDirectoryView.vala:2176
-#: src/View/AbstractDirectoryView.vala:2230
+#: src/View/AbstractDirectoryView.vala:2159
+#: src/View/AbstractDirectoryView.vala:2213
 msgid "Paste into Folder"
 msgstr "Lipește în dosar"
 
-#: src/View/AbstractDirectoryView.vala:2186
-#: src/View/AbstractDirectoryView.vala:2258
+#: src/View/AbstractDirectoryView.vala:2169
+#: src/View/AbstractDirectoryView.vala:2241
 msgid "Paste"
 msgstr "Lipeşte"
 
-#: src/View/AbstractDirectoryView.vala:2299
+#: src/View/AbstractDirectoryView.vala:2282
 #, fuzzy
 #| msgid "Set as default"
 msgid "Set as Wallpaper"
 msgstr "Stabilește ca implicit"
 
-#: src/View/AbstractDirectoryView.vala:2332 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2315 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Tip"
 
-#: src/View/AbstractDirectoryView.vala:2342
+#: src/View/AbstractDirectoryView.vala:2325
 msgid "Reversed Order"
 msgstr "Ordine inversă"
 
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2330
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2350
 msgid "Sort by"
 msgstr "Filtrează după"
 
-#: src/View/AbstractDirectoryView.vala:2376
+#: src/View/AbstractDirectoryView.vala:2359
 msgid "Folder"
 msgstr "Dosar"
 
-#: src/View/AbstractDirectoryView.vala:2382
+#: src/View/AbstractDirectoryView.vala:2365
 msgid "Empty File"
 msgstr "Fişier gol"
 
-#: src/View/AbstractDirectoryView.vala:2396
+#: src/View/AbstractDirectoryView.vala:2379
 msgid "Template"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2398
+#: src/View/AbstractDirectoryView.vala:2381
 msgid "…too many templates"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2404
+#: src/View/AbstractDirectoryView.vala:2387
 msgid "New"
 msgstr "Nou"
 
-#: src/View/AbstractDirectoryView.vala:2674
+#: src/View/AbstractDirectoryView.vala:2657
 #, c-format
 msgid "Untitled %s"
 msgstr "%s fără nume"
 
-#: src/View/AbstractDirectoryView.vala:2965
-#: src/View/AbstractDirectoryView.vala:3171
+#: src/View/AbstractDirectoryView.vala:2948
+#: src/View/AbstractDirectoryView.vala:3154
 msgid "Cannot remove files from here"
 msgstr "Nu se pot elimina fișiere de aici"
 
-#: src/View/AbstractDirectoryView.vala:2966
-#: src/View/AbstractDirectoryView.vala:3144
+#: src/View/AbstractDirectoryView.vala:2949
+#: src/View/AbstractDirectoryView.vala:3127
+#: src/View/AbstractDirectoryView.vala:3138
 #: src/View/AbstractDirectoryView.vala:3155
-#: src/View/AbstractDirectoryView.vala:3172
 msgid "You do not have permission to change this location"
 msgstr "Nu ai permisiunea de a schimba această locaţie"
 
-#: src/View/AbstractDirectoryView.vala:3112
+#: src/View/AbstractDirectoryView.vala:3095
 msgid "Cannot copy files that are in the trash"
 msgstr "Nu se pot copia fişiere din coş"
 
-#: src/View/AbstractDirectoryView.vala:3113
+#: src/View/AbstractDirectoryView.vala:3096
 msgid "Cutting the selection instead"
 msgstr "În schimb se poate tăia selecţia"
 
-#: src/View/AbstractDirectoryView.vala:3143
-#: src/View/AbstractDirectoryView.vala:3154
+#: src/View/AbstractDirectoryView.vala:3126
+#: src/View/AbstractDirectoryView.vala:3137
 msgid "Cannot paste files here"
 msgstr "Nu se pot lipi fișiere aici"
 
@@ -2259,7 +2257,7 @@ msgstr "Nu se pot lipi fișiere aici"
 msgid "Name:"
 msgstr "Nume"
 
-#: src/View/DetailsColumn.vala:211
+#: src/View/DetailsColumn.vala:217
 #, fuzzy
 #| msgid "Properties"
 msgid "Properties…"
@@ -2378,40 +2376,40 @@ msgstr "Nu se poate afişa acest dosar"
 msgid "The server for this folder could not be located."
 msgstr "Serverul pentru acest dosar nu a putut fi localizat."
 
-#: src/View/Window.vala:211
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:241
+#: src/View/Window.vala:244
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Închide"
 
-#: src/View/Window.vala:438 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Deschide în fereastră nouă"
 
-#: src/View/Window.vala:439
+#: src/View/Window.vala:442
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Se duplică „%B”"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:443
+#: src/View/Window.vala:446
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:444
+#: src/View/Window.vala:447
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Închide"
 
-#: src/View/Window.vala:445
+#: src/View/Window.vala:448
 #, fuzzy
 msgid "Close Tab"
 msgstr "Închide"
 
-#: src/View/Window.vala:725 src/View/Window.vala:735
+#: src/View/Window.vala:728 src/View/Window.vala:738
 msgid "(as Administrator)"
 msgstr "(ca Administrator)"
 
