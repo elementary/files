@@ -1492,8 +1492,6 @@ namespace Files {
                     file.ensure_size ();
                 }
             }
-
-            app_settings.set_boolean ("show-hiddenfiles", show);
         }
 
         private void set_should_thumbnail () {
