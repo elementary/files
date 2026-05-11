@@ -3342,7 +3342,7 @@ namespace Files {
             /* do not cancel editing here - will be cancelled in rename callback */
         }
 
-        protected void enable_scroll (bool enable) {
+        protected virtual void enable_scroll (bool enable) {
             if (enable) {
                 scrolled_window.set_policy (NEVER, AUTOMATIC);
                 scroll_controller.flags = NONE;
