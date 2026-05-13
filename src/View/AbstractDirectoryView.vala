@@ -758,6 +758,7 @@ namespace Files {
                 style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
             }
 
+            hidden_label.visible = false;
             cancel ();
             clear ();
             disconnect_directory_handlers (old_dir);
