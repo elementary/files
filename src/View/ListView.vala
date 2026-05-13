@@ -79,6 +79,13 @@ namespace Files {
             }
         }
 
+        protected override void enable_scroll (bool enable) {
+            base.enable_scroll (enable);
+            if (enable) {
+                scrolled_window.set_policy (AUTOMATIC, AUTOMATIC);
+            }
+        }
+
         private void on_row_expanded (Gtk.TreeIter iter, Gtk.TreePath path) {
             set_path_expanded (path, true);
             add_subdirectory_at_path (path);
