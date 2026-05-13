@@ -323,6 +323,7 @@ namespace Files {
             };
 
             hidden_button.clicked.connect (() => {
+                hidden_button.label = slot.directory.show_hidden_override ? _("Show") : _("Hide");
                 show_hidden_files_in_folder (!slot.directory.show_hidden_override, true);
             });
 
@@ -2626,7 +2627,6 @@ namespace Files {
                         no_files_label_timeout_id = 0;
                         no_files_label.visible = slot.directory.is_empty ();
                         hidden_label.visible = !no_files_label.visible && (model.is_empty || slot.directory.show_hidden_override);
-                        hidden_button.label = slot.directory.show_hidden_override ? _("Hide") : _("Show");
                         return Source.REMOVE;
                     }
                 });
