@@ -753,12 +753,6 @@ namespace Files {
         }
 
         public void change_directory (Directory old_dir, Directory new_dir) {
-            var style_context = get_style_context ();
-            if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
-                style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
-                style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
-            }
-
             hidden_label.visible = false;
             cancel ();
             clear ();
