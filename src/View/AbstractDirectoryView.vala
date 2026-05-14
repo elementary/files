@@ -38,26 +38,26 @@ namespace Files {
             INVALID
         }
 
-        const int MAX_TEMPLATES = 2048;
+        private const int MAX_TEMPLATES = 2048;
 
-        const Gtk.TargetEntry [] DRAG_TARGETS = {
+        private const Gtk.TargetEntry [] DRAG_TARGETS = {
             {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.STRING},
             {"text/plain", Gtk.TargetFlags.OTHER_APP, Files.TargetType.STRING},
             {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
             {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST}
         };
 
-        const Gtk.TargetEntry [] DROP_TARGETS = {
+        private const Gtk.TargetEntry [] DROP_TARGETS = {
             {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
             {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST},
             {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, Files.TargetType.XDND_DIRECT_SAVE0},
             {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, Files.TargetType.NETSCAPE_URL}
         };
 
-        const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
+       private const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
 
         /* Menu Handling */
-        const GLib.ActionEntry [] SELECTION_ENTRIES = {
+        private const GLib.ActionEntry [] SELECTION_ENTRIES = {
             {"open", on_selection_action_open_executable},
             {"open-with-app", on_selection_action_open_with_app, "u"},
             {"open-with-default", on_selection_action_open_with_default},
@@ -72,14 +72,14 @@ namespace Files {
             {"invert-selection", invert_selection}
         };
 
-        const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
+        private const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
             {"new", on_background_action_new, "s"},
             {"create-from", on_background_action_create_from, "s"},
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"}
         };
 
-        const GLib.ActionEntry [] COMMON_ENTRIES = {
+        private const GLib.ActionEntry [] COMMON_ENTRIES = {
             {"copy", on_common_action_copy},
             {"paste-into", on_common_action_paste_into}, // Paste into selected folder
             {"paste", on_common_action_paste}, // Paste into background folder
@@ -91,9 +91,9 @@ namespace Files {
             {"set-wallpaper", action_set_wallpaper}
         };
 
-        GLib.SimpleActionGroup common_actions;
-        GLib.SimpleActionGroup selection_actions;
-        GLib.SimpleActionGroup background_actions;
+        private GLib.SimpleActionGroup common_actions;
+        private GLib.SimpleActionGroup selection_actions;
+        private GLib.SimpleActionGroup background_actions;
 
         private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
         public ZoomLevel zoom_level {
@@ -124,22 +124,22 @@ namespace Files {
         protected ZoomLevel maximum_zoom = ZoomLevel.LARGEST;
 
         /* Used only when acting as drag source */
-        double drag_x = 0;
-        double drag_y = 0;
+        private double drag_x = 0;
+        private double drag_y = 0;
         protected GLib.List<Files.File> source_drag_file_list = null;
         protected Gdk.Atom current_target_type = Gdk.Atom.NONE;
 
         /* Used only when acting as drag destination */
-        uint drag_scroll_timer_id = 0;
-        uint drag_enter_timer_id = 0;
+        private uint drag_scroll_timer_id = 0;
+        private uint drag_enter_timer_id = 0;
         private bool destination_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
-        Files.File? drop_target_file = null;
+        private Files.File? drop_target_file = null;
         private GLib.List<GLib.File> destination_drop_file_list = null; /* the list of URIs that are contained in the drop data */
-        Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
-        Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
-        bool _drop_highlight;
-        bool drop_highlight {
+        private Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
+        private Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
+        private bool _drop_highlight;
+        private bool drop_highlight {
             get {
                 return _drop_highlight;
             }
@@ -164,14 +164,14 @@ namespace Files {
         private void* drag_data;
 
         /* support for generating thumbnails */
-        int thumbnail_request = -1;
-        uint thumbnail_source_id = 0;
-        uint freeze_source_id = 0;
-        Thumbnailer thumbnailer = null;
+        private int thumbnail_request = -1;
+        private uint thumbnail_source_id = 0;
+        private uint freeze_source_id = 0;
+        private Thumbnailer thumbnailer = null;
 
         /* Free space signal support */
-        uint add_remove_file_timeout_id = 0;
-        bool signal_free_space_change = false;
+        private uint add_remove_file_timeout_id = 0;
+        private bool signal_free_space_change = false;
 
         /* Rename support */
         protected Files.TextRenderer? name_renderer = null;
@@ -1826,11 +1826,10 @@ namespace Files {
                         current_suggested_action = Gdk.DragAction.COPY;
                         current_actions = current_suggested_action;
                     } else {
-
                         current_actions = DndHandler.file_accepts_drop (
                             drop_target_file,
                             destination_drop_file_list,
-                            context.get_selected_action (),
+                            context.get_selected_action (), // may return null
                             context.get_actions (),
                             out current_suggested_action
                         );
