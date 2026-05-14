@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-05-13 10:24+0000\n"
-"PO-Revision-Date: 2026-01-08 12:55+0000\n"
+"PO-Revision-Date: 2026-05-15 06:47+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/files/"
 "ca/>\n"
@@ -1942,16 +1942,16 @@ msgstr "Tothom"
 
 #: src/View/AbstractDirectoryView.vala:313
 msgid "This folder only contains hidden files"
-msgstr ""
+msgstr "Aquesta carpeta només conté fitxers ocults."
 
 #: src/View/AbstractDirectoryView.vala:320
 #: src/View/AbstractDirectoryView.vala:326
 msgid "Show"
-msgstr ""
+msgstr "Mostra'ls"
 
 #: src/View/AbstractDirectoryView.vala:326
 msgid "Hide"
-msgstr ""
+msgstr "Amaga'ls"
 
 #: src/View/AbstractDirectoryView.vala:879
 #: src/View/AbstractDirectoryView.vala:1205
@@ -2204,14 +2204,12 @@ msgstr ""
 "Obre l'aplicació per configurar la seguretat i la privadesa del sistema"
 
 #: src/View/Slot.vala:31
-#, fuzzy
-#| msgid "This Folder Does Not Exist"
 msgid "This Folder does not contain any files"
-msgstr "Aquesta carpeta no existeix"
+msgstr "Aquesta carpeta no conté cap fitxer."
 
 #: src/View/Slot.vala:32
 msgid "Trash does not contain any files"
-msgstr ""
+msgstr "La paperera no conté cap fitxer."
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
