@@ -25,11 +25,12 @@ namespace Files {
 
         public DndHandler () {}
 
-        public bool dnd_perform (Gtk.Widget widget,
-                                 Files.File drop_target,
-                                 GLib.List<GLib.File> drop_file_list,
-                                 Gdk.DragAction action)
-        requires (drop_target != null && drop_file_list != null) {
+        public bool dnd_perform (
+            Gtk.Widget widget,
+            Files.File drop_target,
+            GLib.List<GLib.File> drop_file_list,
+            Gdk.DragAction action
+        ) requires (drop_target != null && drop_file_list != null) {
 
             if (drop_target.is_folder ()) {
                 Files.FileOperations.copy_move_link.begin (
@@ -57,9 +58,11 @@ namespace Files {
             return false;
         }
 
-        public Gdk.DragAction? drag_drop_action_ask (Gtk.Widget dest_widget,
-                                                     Gtk.ApplicationWindow win,
-                                                     Gdk.DragAction possible_actions) {
+        public Gdk.DragAction? drag_drop_action_ask (
+            Gtk.Widget dest_widget,
+            Gtk.ApplicationWindow win,
+            Gdk.DragAction possible_actions
+        ) {
 
             this.chosen = Gdk.DragAction.DEFAULT;
             add_action (win);
@@ -107,8 +110,12 @@ namespace Files {
             return menu;
         }
 
-        private void build_and_append_menu_item (Gtk.Menu menu, string label, Gdk.DragAction? action,
-                                                 Gdk.DragAction possible_actions) {
+        private void build_and_append_menu_item (
+            Gtk.Menu menu,
+            string label,
+            Gdk.DragAction? action,
+            Gdk.DragAction possible_actions
+        ) {
 
             if ((possible_actions & action) != 0) {
                 var item = new Gtk.MenuItem.with_label (label);
@@ -189,9 +196,12 @@ namespace Files {
                                  uri.length);
         }
 
-        public bool handle_xdnddirectsave (Gdk.Window source_window,
-                                           Files.File drop_target,
-                                           Gtk.SelectionData selection) {
+        public bool handle_xdnddirectsave (
+            Gdk.Window source_window,
+            Files.File drop_target,
+            Gtk.SelectionData selection
+        ) {
+
             bool success = false;
 
             if (selection != null &&
@@ -225,7 +235,12 @@ namespace Files {
             return success;
         }
 
-        public bool handle_netscape_url (Gdk.Window source_window, Files.File drop_target, Gtk.SelectionData selection) {
+        public bool handle_netscape_url (
+            Gdk.Window source_window,
+            Files.File drop_target,
+            Gtk.SelectionData selection
+        ) {
+
             string [] parts = (selection.get_text ()).split ("\n");
 
             /* _NETSCAPE_URL looks like this: "$URL\n$TITLE" - should be 2 parts */
@@ -237,13 +252,15 @@ namespace Files {
             return false;
         }
 
-        public bool handle_file_drag_actions (Gtk.Widget dest_widget,
-                                              Files.File drop_target,
-                                              GLib.List<GLib.File> drop_file_list,
-                                              Gdk.DragAction possible_actions,
-                                              Gdk.DragAction suggested_action,
-                                              Gtk.ApplicationWindow win,
-                                              uint32 timestamp) {
+        public bool handle_file_drag_actions (
+            Gtk.Widget dest_widget,
+            Files.File drop_target,
+            GLib.List<GLib.File> drop_file_list,
+            Gdk.DragAction possible_actions,
+            Gdk.DragAction suggested_action,
+            Gtk.ApplicationWindow win,
+            uint32 timestamp
+        ) {
 
             bool success = false;
             Gdk.DragAction action = suggested_action;
@@ -268,7 +285,12 @@ namespace Files {
         }
 
 
-        public static bool selection_data_is_uri_list (Gtk.SelectionData selection_data, uint info, out string? text) {
+        public static bool selection_data_is_uri_list (
+            Gtk.SelectionData selection_data,
+            uint info,
+            out string? text
+        ) {
+
             text = null;
 
             if (info == Files.TargetType.TEXT_URI_LIST &&
@@ -295,9 +317,11 @@ namespace Files {
         }
 
         // Used when TargetType is TEXT_URI_LIST
-        public static void set_selection_data_as_file_list (Gtk.SelectionData selection_data,
-                                                            GLib.List<Files.File> file_list,
-                                                            string prefix = "") {
+        public static void set_selection_data_as_file_list (
+            Gtk.SelectionData selection_data,
+            GLib.List<Files.File> file_list,
+            string prefix = ""
+        ) {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
             set_stringbuilder_from_file_list (
@@ -312,9 +336,11 @@ namespace Files {
         }
 
         // Used when TargetType is STRING
-        public static void set_selection_data_as_text (Gtk.SelectionData selection_data,
-                                                       GLib.List<Files.File> file_list,
-                                                       string prefix = "") {
+        public static void set_selection_data_as_text (
+            Gtk.SelectionData selection_data,
+            GLib.List<Files.File> file_list,
+            string prefix = ""
+        ) {
 
             GLib.StringBuilder sb = new GLib.StringBuilder (prefix);
             set_stringbuilder_from_file_list (
@@ -326,9 +352,11 @@ namespace Files {
             selection_data.set_text (sb.str, (int)(sb.len));
         }
 
-        private static void set_stringbuilder_from_file_list (GLib.StringBuilder sb,
-                                                              GLib.List<Files.File> file_list,
-                                                              TargetType type) {
+        private static void set_stringbuilder_from_file_list (
+            GLib.StringBuilder sb,
+            GLib.List<Files.File> file_list,
+            TargetType type
+        ) {
 
             if (file_list != null && file_list.data != null && file_list.data is Files.File) {
                 bool in_recent = file_list.data.is_recent_uri_scheme ();
@@ -349,11 +377,13 @@ namespace Files {
             }
         }
 
-        public static Gdk.DragAction file_accepts_drop (Files.File dest,
-                                                 GLib.List<GLib.File> drop_file_list, // read-only
-                                                 Gdk.DragAction selected_action,
-                                                 Gdk.DragAction possible_actions,
-                                                 out Gdk.DragAction suggested_action_return) {
+        public static Gdk.DragAction file_accepts_drop (
+            Files.File dest,
+            GLib.List<GLib.File> drop_file_list, // read-only
+            Gdk.DragAction selected_action, // may be null - ignore
+            Gdk.DragAction possible_actions,
+            out Gdk.DragAction suggested_action_return
+        ) {
 
             var actions = possible_actions;
             var suggested_action = selected_action;
@@ -404,9 +434,11 @@ namespace Files {
         }
 
         private const uint MAX_FILES_CHECKED = 100; // Max checked copied from gof_file.c version
-        private static Gdk.DragAction valid_actions_for_file_list (GLib.File target_location,
-                                                            GLib.List<GLib.File> drop_file_list,
-                                                            ref Gdk.DragAction suggested_action) {
+        private static Gdk.DragAction valid_actions_for_file_list (
+            GLib.File target_location,
+            GLib.List<GLib.File> drop_file_list,
+            ref Gdk.DragAction suggested_action
+        ) {
 
             var valid_actions = Gdk.DragAction.DEFAULT |
                                 Gdk.DragAction.COPY |

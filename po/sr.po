@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-28 20:08+0000\n"
+"POT-Creation-Date: 2026-05-13 10:24+0000\n"
 "PO-Revision-Date: 2021-03-12 05:56+0000\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <https://l10n.elementary.io/projects/files/files/sr/"
@@ -21,11 +21,11 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:191
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:192
 msgid "Previous"
 msgstr "Претходна"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:197
 msgid "Next"
 msgstr "Следећа"
 
@@ -96,7 +96,7 @@ msgstr "Њена замена ће преписати постојећи сад�
 msgid "Replace"
 msgstr "Замени"
 
-#: libcore/Directory.vala:746
+#: libcore/Directory.vala:752
 msgid "Server did not respond within time limit"
 msgstr "Сервер није одговорио у временском року"
 
@@ -117,7 +117,7 @@ msgstr "Умножи овде"
 msgid "Link Here"
 msgstr "Повежи овде"
 
-#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2322
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2338
 msgid "Name"
 msgstr "Назив"
 
@@ -132,7 +132,7 @@ msgstr "Направи"
 msgid "Last modification date"
 msgstr "Последња измена:"
 
-#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2327
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2343
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "Величина"
@@ -145,7 +145,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2337
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2353
 msgid "Date"
 msgstr "Датум"
 
@@ -219,36 +219,36 @@ msgstr "Подаци"
 msgid "Compact"
 msgstr ""
 
-#: libcore/File.vala:651 libcore/File.vala:1203
+#: libcore/File.vala:659 libcore/File.vala:1213
 msgid "Inaccessible"
 msgstr ""
 
-#: libcore/File.vala:968
+#: libcore/File.vala:977
 #, fuzzy
 msgid "Failed to parse the desktop file"
 msgstr "Није могуће је обрадити датотеку радне површине: %s"
 
-#: libcore/File.vala:972
+#: libcore/File.vala:981
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "Није могуће је обрадити датотеку радне површине: %s"
 
-#: libcore/File.vala:984
+#: libcore/File.vala:993
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "Није могуће је обрадити датотеку радне површине: %s"
 
-#: libcore/File.vala:993
+#: libcore/File.vala:1002
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "Није могуће је обрадити датотеку радне површине: %s"
 
-#: libcore/File.vala:1196
+#: libcore/File.vala:1206
 #, fuzzy
 msgid "Empty"
 msgstr "Празна датотека"
 
-#: libcore/File.vala:1198
+#: libcore/File.vala:1208
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
@@ -256,7 +256,7 @@ msgstr[0] "%'d минут"
 msgstr[1] "%'d минута"
 msgstr[2] "%'d минута"
 
-#: libcore/File.vala:1243
+#: libcore/File.vala:1252
 #, c-format
 msgid "link to %s"
 msgstr "веза до %s"
@@ -302,24 +302,24 @@ msgid "Could not rename to '%s'"
 msgstr "Не могу да преименујем у „%s“"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:682
+#: libcore/FileUtils.vala:687
 #, c-format
 msgid "Today at %s"
 msgstr "Данас у %s"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:690
+#: libcore/FileUtils.vala:695
 #, c-format
 msgid "Yesterday at %s"
 msgstr "Јуче у %s"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:698
+#: libcore/FileUtils.vala:703
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A у %s"
 
-#: libcore/FileUtils.vala:923
+#: libcore/FileUtils.vala:928
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
@@ -327,7 +327,7 @@ msgstr[0] "%'d секунда"
 msgstr[1] "%'d секунде"
 msgstr[2] "%'d секунди"
 
-#: libcore/FileUtils.vala:927 libcore/FileUtils.vala:935
+#: libcore/FileUtils.vala:932 libcore/FileUtils.vala:940
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -337,12 +337,12 @@ msgstr[2] "%'d минута"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:934 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:939 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:934
+#: libcore/FileUtils.vala:939
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
@@ -350,7 +350,7 @@ msgstr[0] "%'d сат"
 msgstr[1] "%'d сата"
 msgstr[2] "%'d сати"
 
-#: libcore/FileUtils.vala:938
+#: libcore/FileUtils.vala:943
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -359,22 +359,22 @@ msgstr[1] "приближно %'d сата"
 msgstr[2] "приближно %'d сати"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:946
+#: libcore/FileUtils.vala:951
 msgid "copy"
 msgstr "умножак"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:948
+#: libcore/FileUtils.vala:953
 msgid "link"
 msgstr "веза"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:950
+#: libcore/FileUtils.vala:955
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:952
+#: libcore/FileUtils.vala:957
 msgid ")"
 msgstr ")"
 
@@ -1588,7 +1588,7 @@ msgstr "Поврати изабрано"
 msgid "Delete Selected"
 msgstr "Обриши изабрано"
 
-#: plugins/send-by-email/plugin.vala:26
+#: plugins/send-by-email/plugin.vala:42
 msgid "Send by Email"
 msgstr ""
 
@@ -1610,8 +1610,7 @@ msgstr "Приказује издање програма"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "Отворите једну или више путања, сваку у свом језичку"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1900
-#: src/View/AbstractDirectoryView.vala:1907
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1927
 msgid "New Window"
 msgstr "Нови прозор"
 
@@ -1694,7 +1693,7 @@ msgstr "Капацитет:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:267 src/View/DetailsColumn.vala:281
+#: src/View/DetailsColumn.vala:273
 msgid "Unknown"
 msgstr "Непознато"
 
@@ -1828,7 +1827,7 @@ msgid "Set as default"
 msgstr "Постави као основно"
 
 #: src/Dialogs/PropertiesWindow.vala:116
-#: src/View/AbstractDirectoryView.vala:2020
+#: src/View/AbstractDirectoryView.vala:2036
 #: src/View/Sidebar/AbstractMountableRow.vala:277
 msgid "Properties"
 msgstr "Својства"
@@ -1857,31 +1856,31 @@ msgstr "Стварна величина може бити већа"
 msgid "unknown"
 msgstr "непознато"
 
-#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:318
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:314
 msgid "Loading…"
 msgstr "Учитавам…"
 
-#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:287
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:283
 msgid "Could not be determined"
 msgstr "Не може бити одређено"
 
-#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:143
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
 msgid "Created:"
 msgstr "Направљено:"
 
-#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:156
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:160
 msgid "Modified:"
 msgstr "Измењено:"
 
-#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:170
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:176
 msgid "Deleted:"
 msgstr "Обрисано:"
 
-#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:179
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:185
 msgid "Media type:"
 msgstr "Врста медија:"
 
-#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:186
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:192
 msgid "Resolution:"
 msgstr "Резолуција:"
 
@@ -1890,16 +1889,16 @@ msgstr "Резолуција:"
 msgid "Location:"
 msgstr "Место:"
 
-#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:194
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:200
 msgid "Target:"
 msgstr "Одредиште:"
 
-#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:204
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:210
 msgid "Original Location:"
 msgstr "Првобитна локација:"
 
 #: src/Dialogs/PropertiesWindow.vala:664
-#: src/View/AbstractDirectoryView.vala:1988
+#: src/View/AbstractDirectoryView.vala:2006
 msgid "Other Application…"
 msgstr "Другим програмом…"
 
@@ -2004,18 +2003,31 @@ msgstr "Група:"
 msgid "Everyone"
 msgstr "Свако:"
 
-#: src/View/AbstractDirectoryView.vala:852
-#: src/View/AbstractDirectoryView.vala:1178
+#: src/View/AbstractDirectoryView.vala:313
+msgid "This folder only contains hidden files"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:320
+#: src/View/AbstractDirectoryView.vala:326
+msgid "Show"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:326
+msgid "Hide"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:879
+#: src/View/AbstractDirectoryView.vala:1205
 msgid "Cannot execute this file"
 msgstr "Не могу да извршим ову датотеку"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:862
+#: src/View/AbstractDirectoryView.vala:889
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "„%s“ мора бити премештена из смећа пре отварања"
 
-#: src/View/AbstractDirectoryView.vala:863
+#: src/View/AbstractDirectoryView.vala:890
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -2023,184 +2035,183 @@ msgstr ""
 "Датотеке у смећу се не могу отворити. Да отворите ову датотеку, мора бити "
 "премештена на друго место."
 
-#: src/View/AbstractDirectoryView.vala:878
+#: src/View/AbstractDirectoryView.vala:905
 msgid "Cannot open this file"
 msgstr "Не могу да отворим ову датотеку"
 
-#: src/View/AbstractDirectoryView.vala:891
+#: src/View/AbstractDirectoryView.vala:918
 msgid "Cannot identify file type to open"
 msgstr "Не могу да одредим врсту датотеке за отварање"
 
-#: src/View/AbstractDirectoryView.vala:1608
+#: src/View/AbstractDirectoryView.vala:1641
 msgid "Cannot drop this file"
 msgstr "Не могу да упустим ову датотеку"
 
-#: src/View/AbstractDirectoryView.vala:1609
+#: src/View/AbstractDirectoryView.vala:1642
 msgid "Invalid file name provided"
 msgstr "Достављен је неисправан назив датотеке"
 
-#: src/View/AbstractDirectoryView.vala:1883
-#: src/View/AbstractDirectoryView.vala:1890 src/View/Window.vala:236
+#: src/View/AbstractDirectoryView.vala:1913 src/View/Window.vala:239
 msgid "New Tab"
 msgstr "Нови језичак"
 
-#: src/View/AbstractDirectoryView.vala:1924
+#: src/View/AbstractDirectoryView.vala:1950
 msgid "Run"
 msgstr "Покрени"
 
-#: src/View/AbstractDirectoryView.vala:1931
+#: src/View/AbstractDirectoryView.vala:1957
 #, c-format
 msgid "Open in %s"
 msgstr "Отвори у „%s“"
 
-#: src/View/AbstractDirectoryView.vala:2000
+#: src/View/AbstractDirectoryView.vala:2016
 msgid "Open in"
 msgstr "Отвори у"
 
-#: src/View/AbstractDirectoryView.vala:2002
+#: src/View/AbstractDirectoryView.vala:2018
 #: src/View/Widgets/BreadcrumbsEntry.vala:446
 msgid "Open with"
 msgstr "Отвори програмом"
 
-#: src/View/AbstractDirectoryView.vala:2013
+#: src/View/AbstractDirectoryView.vala:2029
 msgid "Add to Bookmarks"
 msgstr "Додај у обележиваче"
 
-#: src/View/AbstractDirectoryView.vala:2033
+#: src/View/AbstractDirectoryView.vala:2049
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2042
+#: src/View/AbstractDirectoryView.vala:2058
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2051
+#: src/View/AbstractDirectoryView.vala:2067
 #, fuzzy
 msgid "Deselect All"
 msgstr "Поврати све"
 
-#: src/View/AbstractDirectoryView.vala:2062
+#: src/View/AbstractDirectoryView.vala:2078
 msgid "Cut"
 msgstr "Исеци"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2070
+#: src/View/AbstractDirectoryView.vala:2086
 msgid "Copy"
 msgstr "Умножи"
 
-#: src/View/AbstractDirectoryView.vala:2077
+#: src/View/AbstractDirectoryView.vala:2093
 msgid "Move to Trash"
 msgstr "Премести у смеће"
 
-#: src/View/AbstractDirectoryView.vala:2082
+#: src/View/AbstractDirectoryView.vala:2098
 #, fuzzy
 msgid "Delete Permanently"
 msgstr "Трајно обриши"
 
-#: src/View/AbstractDirectoryView.vala:2089
+#: src/View/AbstractDirectoryView.vala:2105
 msgid "Restore from Trash"
 msgstr "Поврати из смећа"
 
-#: src/View/AbstractDirectoryView.vala:2112
+#: src/View/AbstractDirectoryView.vala:2128
 msgid "Open Parent Folder"
 msgstr "Отвори родитељску фасциклу"
 
-#: src/View/AbstractDirectoryView.vala:2115
+#: src/View/AbstractDirectoryView.vala:2131
 msgid "Remove from History"
 msgstr "Уклони из историјата"
 
-#: src/View/AbstractDirectoryView.vala:2141
+#: src/View/AbstractDirectoryView.vala:2157
 msgid "Rename…"
 msgstr "Преименуј…"
 
-#: src/View/AbstractDirectoryView.vala:2148
+#: src/View/AbstractDirectoryView.vala:2164
 msgid "Copy as Link"
 msgstr "Умножи као везу"
 
-#: src/View/AbstractDirectoryView.vala:2171
-#: src/View/AbstractDirectoryView.vala:2253
+#: src/View/AbstractDirectoryView.vala:2187
+#: src/View/AbstractDirectoryView.vala:2269
 msgid "Paste Link into Folder"
 msgstr "Убаци везу у фасциклу"
 
-#: src/View/AbstractDirectoryView.vala:2176
-#: src/View/AbstractDirectoryView.vala:2230
+#: src/View/AbstractDirectoryView.vala:2192
+#: src/View/AbstractDirectoryView.vala:2246
 msgid "Paste into Folder"
 msgstr "Убаци у фасциклу"
 
-#: src/View/AbstractDirectoryView.vala:2186
-#: src/View/AbstractDirectoryView.vala:2258
+#: src/View/AbstractDirectoryView.vala:2202
+#: src/View/AbstractDirectoryView.vala:2274
 msgid "Paste"
 msgstr "Убаци"
 
-#: src/View/AbstractDirectoryView.vala:2299
+#: src/View/AbstractDirectoryView.vala:2315
 #, fuzzy
 #| msgid "Set as default"
 msgid "Set as Wallpaper"
 msgstr "Постави као основно"
 
-#: src/View/AbstractDirectoryView.vala:2332 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:28
 msgid "Type"
 msgstr "Врста"
 
-#: src/View/AbstractDirectoryView.vala:2342
+#: src/View/AbstractDirectoryView.vala:2358
 msgid "Reversed Order"
 msgstr "Обрнутим редоследом"
 
-#: src/View/AbstractDirectoryView.vala:2347
+#: src/View/AbstractDirectoryView.vala:2363
 msgid "Folders Before Files"
 msgstr "Фасцикле пре датотека"
 
-#: src/View/AbstractDirectoryView.vala:2367
+#: src/View/AbstractDirectoryView.vala:2383
 msgid "Sort by"
 msgstr "Поређај"
 
-#: src/View/AbstractDirectoryView.vala:2376
+#: src/View/AbstractDirectoryView.vala:2392
 msgid "Folder"
 msgstr "Фасцикла"
 
-#: src/View/AbstractDirectoryView.vala:2382
+#: src/View/AbstractDirectoryView.vala:2398
 msgid "Empty File"
 msgstr "Празна датотека"
 
-#: src/View/AbstractDirectoryView.vala:2396
+#: src/View/AbstractDirectoryView.vala:2412
 msgid "Template"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2398
+#: src/View/AbstractDirectoryView.vala:2414
 msgid "…too many templates"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2404
+#: src/View/AbstractDirectoryView.vala:2420
 msgid "New"
 msgstr "Нова"
 
-#: src/View/AbstractDirectoryView.vala:2674
+#: src/View/AbstractDirectoryView.vala:2714
 #, c-format
 msgid "Untitled %s"
 msgstr "Неименована „%s“"
 
-#: src/View/AbstractDirectoryView.vala:2965
-#: src/View/AbstractDirectoryView.vala:3171
+#: src/View/AbstractDirectoryView.vala:3005
+#: src/View/AbstractDirectoryView.vala:3211
 msgid "Cannot remove files from here"
 msgstr "Не можете да уклоните датотеке одатле"
 
-#: src/View/AbstractDirectoryView.vala:2966
-#: src/View/AbstractDirectoryView.vala:3144
-#: src/View/AbstractDirectoryView.vala:3155
-#: src/View/AbstractDirectoryView.vala:3172
+#: src/View/AbstractDirectoryView.vala:3006
+#: src/View/AbstractDirectoryView.vala:3184
+#: src/View/AbstractDirectoryView.vala:3195
+#: src/View/AbstractDirectoryView.vala:3212
 msgid "You do not have permission to change this location"
 msgstr "Немате дозволе да измените ову локацију"
 
-#: src/View/AbstractDirectoryView.vala:3112
+#: src/View/AbstractDirectoryView.vala:3152
 msgid "Cannot copy files that are in the trash"
 msgstr "Не можете умножити датотеке које су у смећу"
 
-#: src/View/AbstractDirectoryView.vala:3113
+#: src/View/AbstractDirectoryView.vala:3153
 msgid "Cutting the selection instead"
 msgstr "Зато исецам избор уместо тога"
 
-#: src/View/AbstractDirectoryView.vala:3143
-#: src/View/AbstractDirectoryView.vala:3154
+#: src/View/AbstractDirectoryView.vala:3183
+#: src/View/AbstractDirectoryView.vala:3194
 msgid "Cannot paste files here"
 msgstr "Не можете да убаците датотеке овде"
 
@@ -2210,7 +2221,7 @@ msgstr "Не можете да убаците датотеке овде"
 msgid "Name:"
 msgstr "Назив"
 
-#: src/View/DetailsColumn.vala:211
+#: src/View/DetailsColumn.vala:217
 #, fuzzy
 #| msgid "Properties"
 msgid "Properties…"
@@ -2263,12 +2274,14 @@ msgid "Open the system security and privacy settings app"
 msgstr "Отвори програм поставки безбедности система и приватности"
 
 #: src/View/Slot.vala:31
-msgid "This Folder Is Empty"
-msgstr "Ова фасцикла је празна"
+#, fuzzy
+#| msgid "This Folder Does Not Exist"
+msgid "This Folder does not contain any files"
+msgstr "Ова фасцикла не постоји"
 
 #: src/View/Slot.vala:32
-msgid "Trash Is Empty"
-msgstr "Смеће је празно"
+msgid "Trash does not contain any files"
+msgstr ""
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
@@ -2326,40 +2339,40 @@ msgstr "Не могу да прикажем фасциклу"
 msgid "The server for this folder could not be located."
 msgstr "Не могу да пронађем сервер за ову фасциклу."
 
-#: src/View/Window.vala:211
+#: src/View/Window.vala:214
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:241
+#: src/View/Window.vala:244
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "Затвори"
 
-#: src/View/Window.vala:438 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "Отвори у новом прозору"
 
-#: src/View/Window.vala:439
+#: src/View/Window.vala:442
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "Удвостручавам „%s“"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:443
+#: src/View/Window.vala:446
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:444
+#: src/View/Window.vala:447
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "Затвори"
 
-#: src/View/Window.vala:445
+#: src/View/Window.vala:448
 #, fuzzy
 msgid "Close Tab"
 msgstr "Затвори"
 
-#: src/View/Window.vala:725 src/View/Window.vala:735
+#: src/View/Window.vala:728 src/View/Window.vala:738
 msgid "(as Administrator)"
 msgstr "(као администратор)"
 
@@ -2694,6 +2707,12 @@ msgstr "Испод ове фасцикле"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "Скоро коришћене"
+
+#~ msgid "This Folder Is Empty"
+#~ msgstr "Ова фасцикла је празна"
+
+#~ msgid "Trash Is Empty"
+#~ msgstr "Смеће је празно"
 
 #, fuzzy
 #~| msgid "More Results …"
