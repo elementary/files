@@ -38,26 +38,26 @@ namespace Files {
             INVALID
         }
 
-        const int MAX_TEMPLATES = 2048;
+        private const int MAX_TEMPLATES = 2048;
 
-        const Gtk.TargetEntry [] DRAG_TARGETS = {
+        private const Gtk.TargetEntry [] DRAG_TARGETS = {
             {"text/plain", Gtk.TargetFlags.SAME_APP, Files.TargetType.STRING},
             {"text/plain", Gtk.TargetFlags.OTHER_APP, Files.TargetType.STRING},
             {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
             {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST}
         };
 
-        const Gtk.TargetEntry [] DROP_TARGETS = {
+        private const Gtk.TargetEntry [] DROP_TARGETS = {
             {"text/uri-list", Gtk.TargetFlags.SAME_APP, Files.TargetType.TEXT_URI_LIST},
             {"text/uri-list", Gtk.TargetFlags.OTHER_APP, Files.TargetType.TEXT_URI_LIST},
             {"XdndDirectSave0", Gtk.TargetFlags.OTHER_APP, Files.TargetType.XDND_DIRECT_SAVE0},
             {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, Files.TargetType.NETSCAPE_URL}
         };
 
-        const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
+       private const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
 
         /* Menu Handling */
-        const GLib.ActionEntry [] SELECTION_ENTRIES = {
+        private const GLib.ActionEntry [] SELECTION_ENTRIES = {
             {"open", on_selection_action_open_executable},
             {"open-with-app", on_selection_action_open_with_app, "u"},
             {"open-with-default", on_selection_action_open_with_default},
@@ -72,14 +72,14 @@ namespace Files {
             {"invert-selection", invert_selection}
         };
 
-        const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
+        private const GLib.ActionEntry [] BACKGROUND_ENTRIES = {
             {"new", on_background_action_new, "s"},
             {"create-from", on_background_action_create_from, "s"},
             {"sort-by", on_background_action_sort_by_changed, "s", "'name'"},
             {"reverse", on_background_action_reverse_changed, null, "false"}
         };
 
-        const GLib.ActionEntry [] COMMON_ENTRIES = {
+        private const GLib.ActionEntry [] COMMON_ENTRIES = {
             {"copy", on_common_action_copy},
             {"paste-into", on_common_action_paste_into}, // Paste into selected folder
             {"paste", on_common_action_paste}, // Paste into background folder
@@ -91,9 +91,9 @@ namespace Files {
             {"set-wallpaper", action_set_wallpaper}
         };
 
-        GLib.SimpleActionGroup common_actions;
-        GLib.SimpleActionGroup selection_actions;
-        GLib.SimpleActionGroup background_actions;
+        private GLib.SimpleActionGroup common_actions;
+        private GLib.SimpleActionGroup selection_actions;
+        private GLib.SimpleActionGroup background_actions;
 
         private ZoomLevel _zoom_level = ZoomLevel.NORMAL;
         public ZoomLevel zoom_level {
@@ -124,14 +124,14 @@ namespace Files {
         protected ZoomLevel maximum_zoom = ZoomLevel.LARGEST;
 
         /* Used only when acting as drag source */
-        double drag_x = 0;
-        double drag_y = 0;
+        private double drag_x = 0;
+        private double drag_y = 0;
         protected GLib.List<Files.File> source_drag_file_list = null;
         protected Gdk.Atom current_target_type = Gdk.Atom.NONE;
 
         /* Used only when acting as drag destination */
-        uint drag_scroll_timer_id = 0;
-        uint drag_enter_timer_id = 0;
+        private uint drag_scroll_timer_id = 0;
+        private uint drag_enter_timer_id = 0;
         private bool destination_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
         private string current_drop_target_uri = "";
@@ -170,8 +170,8 @@ namespace Files {
         private Thumbnailer thumbnailer = null;
 
         /* Free space signal support */
-        uint add_remove_file_timeout_id = 0;
-        bool signal_free_space_change = false;
+        private uint add_remove_file_timeout_id = 0;
+        private bool signal_free_space_change = false;
 
         /* Rename support */
         protected Files.TextRenderer? name_renderer = null;
@@ -262,7 +262,9 @@ namespace Files {
 
         private Gtk.Widget view;
         protected Gtk.ScrolledWindow scrolled_window;
-        private Gtk.Label empty_label;
+        private Gtk.Label no_files_label;
+        private Gtk.Label hidden_label;
+        private Gtk.Button hidden_button;
         private Gtk.Overlay overlay;
         private unowned ClipboardManager clipboard;
         protected Files.ListModel model;
@@ -301,23 +303,50 @@ namespace Files {
                 shadow_type = NONE
             };
 
-            empty_label = new Gtk.Label (slot.get_empty_message ()) {
+            no_files_label = new Gtk.Label (slot.get_empty_message ()) {
+                wrap = true
+            };
+            no_files_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+            no_files_label.no_show_all = true;
+
+            var hidden_box = new Gtk.Box (VERTICAL, 24);
+            hidden_label = new Gtk.Label (_("This folder only contains hidden files")) {
+                wrap = true,
+                halign = START
+            };
+            hidden_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
+            hidden_label.no_show_all = true;
+
+            hidden_button = new Gtk.Button.with_label (_("Show")) {
+                no_show_all = true,
+                halign = CENTER
+            };
+
+            hidden_button.clicked.connect (() => {
+                hidden_button.label = slot.directory.show_hidden_override ? _("Show") : _("Hide");
+                show_hidden_files_in_folder (!slot.directory.show_hidden_override, true);
+            });
+
+            hidden_label.bind_property ("visible", hidden_button, "visible", DEFAULT);
+            hidden_box.add (hidden_label);
+            hidden_box.add (hidden_button);
+
+            var empty_box = new Gtk.Box (VERTICAL, 0) {
                 halign = CENTER,
                 valign = CENTER,
                 hexpand = false,
                 vexpand = false,
-                wrap = true
             };
-            empty_label.get_style_context ().add_class (Granite.STYLE_CLASS_H2_LABEL);
-            empty_label.no_show_all = true;
+            empty_box.add (no_files_label);
+            empty_box.add (hidden_box);
 
             overlay = new Gtk.Overlay () {
                 hexpand = true,
                 vexpand = true,
                 child = scrolled_window
             };
-            overlay.add_overlay (empty_label);
-            overlay.set_overlay_pass_through (empty_label, true);
+            overlay.add_overlay (empty_box);
+            overlay.set_overlay_pass_through (empty_box, true);
             overlay.add_events (Gdk.EventMask.ALL_EVENTS_MASK);
 
             child = overlay;
@@ -724,22 +753,20 @@ namespace Files {
         }
 
         public void change_directory (Directory old_dir, Directory new_dir) {
-            var style_context = get_style_context ();
-            if (style_context.has_class (Granite.STYLE_CLASS_H2_LABEL)) {
-                style_context.remove_class (Granite.STYLE_CLASS_H2_LABEL);
-                style_context.remove_class (Gtk.STYLE_CLASS_VIEW);
-            }
-
+            hidden_label.visible = false;
             cancel ();
             clear ();
             disconnect_directory_handlers (old_dir);
             connect_directory_handlers (new_dir);
+            old_dir.show_hidden_override = false;
+            new_dir.show_hidden_override = false;
         }
 
         public void prepare_reload (Directory dir) {
             cancel ();
             clear ();
             connect_directory_loading_handlers (dir);
+            dir.show_hidden_override = false;
         }
 
         private void clear () {
@@ -952,8 +979,8 @@ namespace Files {
         // Only called after initial loading finished, in response to files added due to internal or external
         // file operations
         private void add_file (Files.File file, Directory dir, bool is_internal = true) {
-            empty_label.visible = false;
             model.insert_sorted (file, dir);
+            update_no_files_labels ();
             if (is_internal) { /* This true once view finished loading */
                 // Do not select until the model has resorted else wrong file is selected
                 ulong model_resorted = 0;
@@ -1066,7 +1093,7 @@ namespace Files {
         public void after_trash_or_delete () {
             /* Need to use Idle else cursor gets reset to null after setting to delete_path */
             Idle.add (() => {
-                empty_label.visible = slot.directory.is_empty ();
+                update_no_files_labels ();
                 set_cursor (deleted_path, false, false, false);
                 unblock_directory_monitor ();
                 return GLib.Source.REMOVE;
@@ -1343,8 +1370,10 @@ namespace Files {
 
         private void on_directory_file_loaded (Directory dir, Files.File file) {
             // Do not select or sort files added during initial load.
-            empty_label.visible = false;
             model.add_file (file, dir);
+            if (no_files_label.visible || hidden_label.visible) {
+                update_no_files_labels ();
+            }
         }
 
         private void on_directory_file_changed (Directory dir, Files.File file) {
@@ -1378,8 +1407,9 @@ namespace Files {
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             file.exists = false;
-            empty_label.visible = dir.is_empty ();
             model.remove_file (file, dir);
+
+            update_no_files_labels ();
 
             if (plugins != null) {
                 plugins.update_file_info (file);
@@ -1418,7 +1448,7 @@ namespace Files {
             set_should_thumbnail ();
             // Wait for view to draw so thumbnails and color tags displayed on first sight
             Idle.add (() => {
-                empty_label.visible = slot.directory.is_empty ();
+                update_no_files_labels ();
                 thaw_tree ();
                 schedule_thumbnail_color_tag_timeout ();
                 return Source.REMOVE;
@@ -1434,6 +1464,10 @@ namespace Files {
     /** Handle Preference changes */
         private void on_show_hidden_files_changed (GLib.Object prefs, GLib.ParamSpec pspec) {
             bool show = ((Files.Preferences) prefs).show_hidden_files;
+            show_hidden_files_in_folder (show, false); // Cancels override
+        }
+
+        private void show_hidden_files_in_folder (bool show, bool @override) {
             model.show_hidden_files = show;
             cancel ();
             /* As directory may reload, for consistent behaviour always lose selection */
@@ -1444,7 +1478,7 @@ namespace Files {
                 model.clear ();
             }
 
-            directory_hidden_changed (slot.directory, show);
+            directory_hidden_changed (slot.directory, show, @override);
 
             if (!show) {
                 unblock_model ();
@@ -1455,8 +1489,6 @@ namespace Files {
                     file.ensure_size ();
                 }
             }
-
-            app_settings.set_boolean ("show-hiddenfiles", show);
         }
 
         private void set_should_thumbnail () {
@@ -1476,9 +1508,10 @@ namespace Files {
             model.set_should_sort_directories_first (settings.get_boolean (key));
         }
 
-        private void directory_hidden_changed (Directory dir, bool show) {
+        private void directory_hidden_changed (Directory dir, bool show, bool @override) {
             /* May not be slot.directory - could be subdirectory */
             connect_directory_loading_handlers (dir);
+            dir.show_hidden_override = @override && show;
             dir.load_hiddens ();
         }
 
@@ -1798,7 +1831,7 @@ namespace Files {
                         current_actions = DndHandler.file_accepts_drop (
                             drop_target_file,
                             destination_drop_file_list,
-                            context.get_selected_action (), //may return null
+                            context.get_selected_action (), // may return null
                             context.get_actions (),
                             out current_suggested_action
                         );
@@ -2560,6 +2593,30 @@ namespace Files {
         private void update_default_app (GLib.List<Files.File> selection) {
             default_app = MimeActions.get_default_application_for_files (selection);
             return;
+        }
+
+        // We need to throttle this for when e.g. pasting a large number of files into an empty folder
+        // or deleting a large number of files from a folder
+        private uint no_files_label_timeout_id = 0;
+        private bool no_files_label_wait;
+        private void update_no_files_labels () {
+            if (no_files_label_timeout_id == 0) {
+                no_files_label_wait = false;
+                no_files_label_timeout_id = Timeout.add (200, () => {
+                    if (no_files_label_wait) {
+                        no_files_label_wait = false;
+                        return Source.CONTINUE;
+                    } else {
+                        no_files_label_timeout_id = 0;
+                        no_files_label.visible = slot.directory.is_empty ();
+                        hidden_label.visible = !no_files_label.visible && (model.is_empty || slot.directory.show_hidden_override);
+                        return Source.REMOVE;
+                    }
+                });
+            } else {
+                no_files_label_wait = true;
+                return;
+            }
         }
 
     /** Menu helpers */
@@ -3331,7 +3388,7 @@ namespace Files {
             /* do not cancel editing here - will be cancelled in rename callback */
         }
 
-        protected void enable_scroll (bool enable) {
+        protected virtual void enable_scroll (bool enable) {
             if (enable) {
                 scrolled_window.set_policy (NEVER, AUTOMATIC);
                 scroll_controller.flags = NONE;
