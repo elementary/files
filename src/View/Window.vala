@@ -161,7 +161,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.back(1)", {"<Alt>Left", "XF86Back"});
             marlin_app.set_accels_for_action ("win.tab::TAB", {"<Shift><Ctrl>K"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
-            marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl>Left"});
+            marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl><Alt>Left"});
         }
 
         build_window ();
