@@ -1,3 +1,9 @@
+pantheon-files (7.3.1) jammy; urgency=medium
+
+  * Release 7.3.1
+
+ -- Danielle Foré <danielle@elementary.io>  Fri, 22 May 2026 12:45:27 -0700
+
 pantheon-files (7.3.0) noble; urgency=medium
 
   * Release 7.3.0
