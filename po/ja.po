@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-05-13 10:24+0000\n"
-"PO-Revision-Date: 2026-01-08 12:55+0000\n"
+"PO-Revision-Date: 2026-05-21 22:56+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/files/"
 "ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:26+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:192
@@ -1892,16 +1892,16 @@ msgstr "全員"
 
 #: src/View/AbstractDirectoryView.vala:313
 msgid "This folder only contains hidden files"
-msgstr ""
+msgstr "このフォルダーには隠しファイルのみが存在します"
 
 #: src/View/AbstractDirectoryView.vala:320
 #: src/View/AbstractDirectoryView.vala:326
 msgid "Show"
-msgstr ""
+msgstr "表示"
 
 #: src/View/AbstractDirectoryView.vala:326
 msgid "Hide"
-msgstr ""
+msgstr "隠す"
 
 #: src/View/AbstractDirectoryView.vala:879
 #: src/View/AbstractDirectoryView.vala:1205
@@ -2153,14 +2153,12 @@ msgid "Open the system security and privacy settings app"
 msgstr "システムのセキュリティとプライバシー設定アプリを開きます"
 
 #: src/View/Slot.vala:31
-#, fuzzy
-#| msgid "This Folder Does Not Exist"
 msgid "This Folder does not contain any files"
-msgstr "このフォルダーは存在しません"
+msgstr "このフォルダーにはファイルがありません"
 
 #: src/View/Slot.vala:32
 msgid "Trash does not contain any files"
-msgstr ""
+msgstr "ゴミ箱にはファイルがありません"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
