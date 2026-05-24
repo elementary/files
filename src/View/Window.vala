@@ -68,7 +68,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"forward", action_forward, "i"},
         {"back", action_back, "i"},
-        {"focus-sidebar", action_focus_sidebar}
+        {"focus-sidebar", action_focus_sidebar},
+        {"focus-current-container", action_focus_current_container}
     };
 
     private static uint window_id = 0;
@@ -162,6 +163,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.tab::TAB", {"<Shift><Ctrl>K"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
             marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl><Alt>Left"});
+            marlin_app.set_accels_for_action ("win.focus-current-container", {"<Ctrl><Alt>Right"});
         }
 
         build_window ();
@@ -1004,6 +1006,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void action_focus_sidebar () {
         sidebar.focus ();
+    }
+
+    private void action_focus_current_container () {
+        grab_focus ();
     }
 
     private void before_undo_redo () {
