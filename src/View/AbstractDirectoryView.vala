@@ -524,8 +524,6 @@ namespace Files {
             } else {
                 zoom_level = (ZoomLevel)view_settings.get_enum ("default-zoom-level"); // syncs to settings
             }
-
-
         }
 
         private uint set_cursor_timeout_id = 0;
@@ -1899,8 +1897,6 @@ namespace Files {
          * instead.
         **/
 
-
-
         protected void show_context_menu (Gdk.Event event) requires (window != null) {
             /* select selection or background context menu */
             update_menu_actions ();
@@ -2926,8 +2922,6 @@ namespace Files {
                     adj.set_value (val);
                 }
         }
-
-
 
         /* For actions on the background we need to return the current slot directory, but this
          * should not be added to the list of selected files
