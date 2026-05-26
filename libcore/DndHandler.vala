@@ -387,7 +387,7 @@ namespace Files {
             out Gdk.DragAction suggested_action_return
         ) {
 
-            var actions = possible_actions;
+            var actions = FILE_DRAG_ACTIONS; // Assume all actions possible to start with
             var suggested_action = selected_action;
             var target_location = dest.get_target_location ();
             suggested_action_return = Gdk.DragAction.PRIVATE;
@@ -406,10 +406,7 @@ namespace Files {
                                                             ref suggested_action);
                 }
             } else if (dest.is_executable ()) {
-                actions |= (Gdk.DragAction.COPY |
-                           Gdk.DragAction.MOVE |
-                           Gdk.DragAction.LINK |
-                           Gdk.DragAction.PRIVATE);
+                // Accept all file drag actions
             } else {
                 actions = Gdk.DragAction.DEFAULT;
             }
