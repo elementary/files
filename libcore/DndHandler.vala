@@ -21,6 +21,8 @@
 
 namespace Files {
     public class DndHandler : GLib.Object {
+       public const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
+
         Gdk.DragAction chosen = Gdk.DragAction.DEFAULT;
 
         public DndHandler () {}

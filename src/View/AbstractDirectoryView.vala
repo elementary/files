@@ -54,8 +54,6 @@ namespace Files {
             {"_NETSCAPE_URL", Gtk.TargetFlags.OTHER_APP, Files.TargetType.NETSCAPE_URL}
         };
 
-       private const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY | Gdk.DragAction.MOVE | Gdk.DragAction.LINK);
-
         /* Menu Handling */
         private const GLib.ActionEntry [] SELECTION_ENTRIES = {
             {"open", on_selection_action_open_executable},
@@ -783,7 +781,7 @@ namespace Files {
 
         protected void connect_drag_drop_signals (Gtk.Widget widget) {
             /* Set up as drop site */
-            Gtk.drag_dest_set (widget, Gtk.DestDefaults.MOTION, DROP_TARGETS, Gdk.DragAction.ASK | FILE_DRAG_ACTIONS);
+            Gtk.drag_dest_set (widget, Gtk.DestDefaults.MOTION, DROP_TARGETS, Gdk.DragAction.ASK | DndHandler.FILE_DRAG_ACTIONS);
             widget.drag_drop.connect (on_drag_drop);
             widget.drag_data_received.connect (on_drag_data_received);
             widget.drag_leave.connect (on_drag_leave);
@@ -794,7 +792,7 @@ namespace Files {
                 widget,
                 Gdk.ModifierType.BUTTON1_MASK | Gdk.ModifierType.CONTROL_MASK,
                 DRAG_TARGETS,
-                FILE_DRAG_ACTIONS
+                DndHandler.FILE_DRAG_ACTIONS
             );
             widget.drag_begin.connect (on_drag_begin);
             widget.drag_data_get.connect (on_drag_data_get);
@@ -1691,7 +1689,7 @@ namespace Files {
                         break;
 
                     case Files.TargetType.TEXT_URI_LIST:
-                        if ((current_actions & FILE_DRAG_ACTIONS) == 0) {
+                        if ((current_actions & DndHandler.FILE_DRAG_ACTIONS) == 0) {
                             break;
                         }
 
