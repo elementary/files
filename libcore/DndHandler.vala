@@ -390,7 +390,7 @@ namespace Files {
             var actions = FILE_DRAG_ACTIONS; // Assume all actions possible to start with
             var suggested_action = Gdk.DragAction.COPY;  // Cannot rely on context selected action, default to COPY
             var target_location = dest.get_target_location ();
-            suggested_action_return = Gdk.DragAction.PRIVATE;
+            suggested_action_return = Gdk.DragAction.DEFAULT;
 
             if (drop_file_list == null || drop_file_list.data == null) {
                 return Gdk.DragAction.DEFAULT;
@@ -424,6 +424,7 @@ namespace Files {
                 actions |= Gdk.DragAction.ASK;
             }
 
+            warning ("return actions %s, suggest %s", actions.to_string (), suggested_action_return.to_string ());
             return actions;
         }
 
@@ -434,8 +435,7 @@ namespace Files {
             ref Gdk.DragAction suggested_action
         ) {
 
-            var valid_actions = Gdk.DragAction.DEFAULT |
-                                Gdk.DragAction.COPY |
+            var valid_actions = Gdk.DragAction.COPY |
                                 Gdk.DragAction.MOVE |
                                 Gdk.DragAction.LINK;
 
@@ -458,14 +458,12 @@ namespace Files {
                 }
 
                 var parent = drop_file.get_parent ();
-
-                if (parent != null && parent.equal (target_location)) {
-                    valid_actions &= Gdk.DragAction.LINK; // Only LINK is valid
-                }
-
                 var scheme = drop_file.get_uri_scheme ();
-                if (scheme == null || !scheme.has_prefix ("file")) {
-                    valid_actions &= ~(Gdk.DragAction.LINK); // Can only LINK local files
+                if (scheme != null && scheme != "file") {
+                    valid_actions &= ~(Gdk.DragAction.LINK); // Cannot LINK non-local files
+                } else if (parent != null && parent.equal (target_location)) {
+                    valid_actions &= ~(Gdk.DragAction.MOVE) ; // Cannot MOVE to parent; Ask desired action
+                    suggested_action = Gdk.DragAction.ASK;
                 }
 
                 if (++count > MAX_FILES_CHECKED ||
