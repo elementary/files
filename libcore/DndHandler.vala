@@ -419,14 +419,9 @@ namespace Files {
 
             if (suggested_action in actions) {
                 suggested_action_return = suggested_action;
-            } else if (Gdk.DragAction.ASK in actions) {
-                suggested_action_return = Gdk.DragAction.ASK;
-            } else if (Gdk.DragAction.COPY in actions) {
-                suggested_action_return = Gdk.DragAction.COPY;
-            } else if (Gdk.DragAction.LINK in actions) {
-                suggested_action_return = Gdk.DragAction.LINK;
-            } else if (Gdk.DragAction.MOVE in actions) {
-                suggested_action_return = Gdk.DragAction.MOVE;
+             } else {
+                suggested_action_return = Gdk.DragAction.ASK; // Assume always possible to ask in Files
+                actions |= Gdk.DragAction.ASK;
             }
 
             return actions;
