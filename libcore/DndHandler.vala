@@ -406,7 +406,7 @@ namespace Files {
             } else if (dest.is_executable ()) {
                 actions |= (Gdk.DragAction.COPY |
                            Gdk.DragAction.MOVE |
-                           Gdk.DragAction.LINK
+                           Gdk.DragAction.LINK);
             } else {
                 actions = Gdk.DragAction.DEFAULT;
             }
