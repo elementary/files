@@ -388,7 +388,7 @@ namespace Files {
         ) {
 
             var actions = FILE_DRAG_ACTIONS; // Assume all actions possible to start with
-            var suggested_action = selected_action;
+            var suggested_action = Gdk.DragAction.COPY;  // Cannot rely on context selected action, default to COPY
             var target_location = dest.get_target_location ();
             suggested_action_return = Gdk.DragAction.PRIVATE;
 
