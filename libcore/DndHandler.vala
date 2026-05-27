@@ -388,7 +388,9 @@ namespace Files {
         ) {
 
             var actions = FILE_DRAG_ACTIONS; // Assume all actions possible to start with
-            var suggested_action = Gdk.DragAction.COPY;  // Cannot rely on context selected action, default to COPY
+            // Cannot rely on context selected action, so we will determine ourselves.
+            // If we cannot suggest a file action then we will suggest to ASK.
+            var suggested_action = Gdk.DragAction.DEFAULT; // Start with no suggestion
             var target_location = dest.get_target_location ();
             suggested_action_return = Gdk.DragAction.DEFAULT;
 
@@ -400,23 +402,31 @@ namespace Files {
                 if (!dest.is_writable ()) {
                     actions = Gdk.DragAction.DEFAULT;
                 } else {
-                    /* Modify actions and suggested_action according to source files */
+                    // Modify actions and suggested_action according to source files
                     actions &= valid_actions_for_file_list (target_location,
                                                             drop_file_list,
                                                             ref suggested_action);
                 }
             } else if (dest.is_executable ()) {
-                // Accept all file drag actions
+                // Suggest any FILE_DRAG_ACTIONS. The drop file uri(s) will just be passed to the executable anyway
+                suggested_action = Gdk.DragAction.COPY;
             } else {
+                // Dnd not supported for other file types at present
                 actions = Gdk.DragAction.DEFAULT;
             }
 
-            if (actions == Gdk.DragAction.DEFAULT) { // No point asking if no other valid actions
+            if (actions == Gdk.DragAction.DEFAULT) { // No point asking if no valid actions
                 return Gdk.DragAction.DEFAULT;
-            } else if (FileUtils.location_is_in_trash (target_location)) { // cannot copy or link to trash
-                actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
             }
 
+            // Modify actions for certain destinations
+            if (FileUtils.location_is_in_trash (target_location)) { // cannot copy or link to trash
+                actions &= ~(Gdk.DragAction.COPY | Gdk.DragAction.LINK);
+                warning ("actions now %s", actions.to_string ());
+                suggested_action = Gdk.DragAction.MOVE;
+            }
+
+            // If no suggestion then ASK - triggers a menu of valid actions or cancel
             if (suggested_action in actions) {
                 suggested_action_return = suggested_action;
              } else {
@@ -424,7 +434,6 @@ namespace Files {
                 actions |= Gdk.DragAction.ASK;
             }
 
-            warning ("return actions %s, suggest %s", actions.to_string (), suggested_action_return.to_string ());
             return actions;
         }
 
@@ -435,9 +444,7 @@ namespace Files {
             ref Gdk.DragAction suggested_action
         ) {
 
-            var valid_actions = Gdk.DragAction.COPY |
-                                Gdk.DragAction.MOVE |
-                                Gdk.DragAction.LINK;
+            var valid_actions = FILE_DRAG_ACTIONS | Gdk.DragAction.DEFAULT;
 
             /* Check the first MAX_FILES_CHECKED and let
              * the operation fail for file the same as target if it is
@@ -459,33 +466,35 @@ namespace Files {
 
                 var parent = drop_file.get_parent ();
                 var scheme = drop_file.get_uri_scheme ();
-                if (scheme != null && scheme != "file") {
-                    valid_actions &= ~(Gdk.DragAction.LINK); // Cannot LINK non-local files
-                } else if (parent != null && parent.equal (target_location)) {
-                    valid_actions &= ~(Gdk.DragAction.MOVE) ; // Cannot MOVE to parent; Ask desired action
-                    suggested_action = Gdk.DragAction.ASK;
+                if (scheme != null) {
+                    if (scheme != "file") {
+                        valid_actions &= ~(Gdk.DragAction.LINK); // Cannot LINK non-local files
+                    } else if (scheme == "trash") {
+                        valid_actions = Gdk.DragAction.MOVE; // Can only move from trash
+                    }
+                }
+
+                if (parent != null && parent.equal (target_location)) {
+                    valid_actions &= ~(Gdk.DragAction.MOVE); // Cannot MOVE to parent;
+                    suggested_action = Gdk.DragAction.ASK; // ASK whether COPY or LINK required
                 }
 
                 if (++count > MAX_FILES_CHECKED ||
                     valid_actions == Gdk.DragAction.DEFAULT) {
-
                     break;
                 }
             }
 
-            /* Modify Gtk suggested COPY action to MOVE if source is trash or dest is in
-             * same filesystem and if MOVE is a valid action.  We assume that it is not possible
-             * to drop files both from remote and local filesystems simultaneously
-             */
-            if ((Gdk.DragAction.COPY in valid_actions && Gdk.DragAction.MOVE in valid_actions) &&
-                 suggested_action == Gdk.DragAction.COPY &&
-                 (from_trash || FileUtils.same_file_system (drop_file_list.first ().data, target_location))) {
-
-                suggested_action = Gdk.DragAction.MOVE;
-            }
-
-            if (valid_actions != Gdk.DragAction.DEFAULT) {
-                valid_actions |= Gdk.DragAction.ASK; // Allow ASK if there is a possible action
+            if (valid_actions == Gdk.DragAction.DEFAULT) {
+                suggested_action = Gdk.DragAction.DEFAULT;
+            } else if (from_trash || FileUtils.same_file_system (drop_file_list.first ().data, target_location)) {
+                /* Modify suggested COPY action to MOVE if source is trash or dest is in
+                 * same filesystem and if MOVE is a valid action.  We assume that it is not possible
+                 * to drop files both from remote and local filesystems simultaneously
+                 */
+                if (Gdk.DragAction.MOVE in valid_actions) {
+                    suggested_action = Gdk.DragAction.MOVE;
+                }
             }
 
             return valid_actions;
