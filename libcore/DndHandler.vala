@@ -388,7 +388,7 @@ namespace Files {
             var actions = possible_actions;
             var suggested_action = selected_action;
             var target_location = dest.get_target_location ();
-            suggested_action_return = Gdk.DragAction.PRIVATE;
+            suggested_action_return = Gdk.DragAction.DEFAULT;
 
             if (drop_file_list == null || drop_file_list.data == null) {
                 return Gdk.DragAction.DEFAULT;
@@ -406,8 +406,7 @@ namespace Files {
             } else if (dest.is_executable ()) {
                 actions |= (Gdk.DragAction.COPY |
                            Gdk.DragAction.MOVE |
-                           Gdk.DragAction.LINK |
-                           Gdk.DragAction.PRIVATE);
+                           Gdk.DragAction.LINK);
             } else {
                 actions = Gdk.DragAction.DEFAULT;
             }
