@@ -424,59 +424,61 @@ namespace Files.View {
 
             View.Slot? to_activate = null;
             var prefs = Files.Preferences.get_default ();
-            switch (keyval) {
-                case Gdk.Key.Left:
-                    if (current_position > 0) {
-                        if (prefs.show_file_preview) {
-                            clear_file_details ();
-                        }
 
-                        to_activate = slot_list.nth_data (current_position - 1);
+            uint up_key;
+            uint down_key;
+
+            // Determine which key is the "drill down" key based on the layout direction
+            if (Gtk.StateFlags.DIR_RTL in scrolled_window.get_style_context ().get_state ()) {
+                up_key = Gdk.Key.Right;
+                down_key = Gdk.Key.Left;
+            } else {
+                up_key = Gdk.Key.Left;
+                down_key = Gdk.Key.Right;
+            }
+
+            if (keyval == up_key) {
+                if (current_position > 0) {
+                    if (prefs.show_file_preview) {
+                        clear_file_details ();
                     }
 
-                    break;
+                    to_activate = slot_list.nth_data (current_position - 1);
+                }
 
-                case Gdk.Key.Right:
-                    if (current_slot.get_selected_files () == null) {
-                        return true;
-                    }
+            } else if (keyval == down_key) {
+                if (current_slot.get_selected_files () == null) {
+                    return true;
+                }
 
-                    Files.File? selected_file = current_slot.get_selected_files ().data;
-                    if (selected_file == null) {
-                        return true;
-                    }
+                Files.File? selected_file = current_slot.get_selected_files ().data;
+                if (selected_file == null) {
+                    return true;
+                }
 
-                    GLib.File current_location = selected_file.location;
-                    GLib.File? next_location = null;
-                    if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
-                        next_location = slot_list.nth_data (current_position + 1).location;
-                    }
+                GLib.File current_location = selected_file.location;
+                GLib.File? next_location = null;
+                if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
+                    next_location = slot_list.nth_data (current_position + 1).location;
+                }
 
-                    if (next_location != null && next_location.equal (current_location)) {
-                        to_activate = slot_list.nth_data (current_position + 1);
-                    } else if (selected_file.is_folder ()) {
-                        add_location (current_location, current_slot);
-                        return true;
-                    }
+                if (next_location != null && next_location.equal (current_location)) {
+                    to_activate = slot_list.nth_data (current_position + 1);
+                } else if (selected_file.is_folder ()) {
+                    add_location (current_location, current_slot);
+                    return true;
+                }
+            } else if (keyval == Gdk.Key.BackSpace) {
+                if (current_position > 0) {
+                    truncate_list_after_slot (slot_list.nth_data (current_position - 1));
+                } else {
+                    ctab.go_up ();
+                    return true;
+                }
 
-                    break;
-
-                case Gdk.Key.BackSpace:
-                        if (current_position > 0) {
-                            truncate_list_after_slot (slot_list.nth_data (current_position - 1));
-                        } else {
-                            ctab.go_up ();
-                            return true;
-                        }
-
-                        if (prefs.show_file_preview) {
-                            clear_file_details ();
-                        }
-
-                    break;
-
-                default:
-                    break;
+                if (prefs.show_file_preview) {
+                    clear_file_details ();
+                }
             }
 
             if (to_activate != null) {
