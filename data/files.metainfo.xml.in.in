@@ -73,6 +73,7 @@
         <ul>
           <li>The existing shortcut to focus the sidebar is changed to Ctrl + Alt + Left</li>
           <li>A corresponding shortcut to focus the document is added: Ctrl + Alt + Right</li>
+          <li>Shortcuts involving Left or Right arrow keys now change according whether the locale is RTL or LTR</li>
           <li>Allow horizontal scrolling in ListView to ensure all columns visible</li>
           <li>Updated translations</li>
         </ul>
@@ -80,7 +81,13 @@
       <issues>
         <issue url="https://github.com/elementary/files/issues/1278">Ignore hidden files for 'this folder is empty' message</issue>
         <issue url="https://github.com/elementary/files/issues/1992">List view columns can extend outside of viewport without scrolling</issue>
+        <issue url="https://github.com/elementary/files/issues/2658">Drag and drop files into a folder doesn't always work</issue>
         <issue url="https://github.com/elementary/files/issues/2677">When renaming a file pressing CTRL+LEFT makes the focus move to the left column of Files</issue>
+        <issue url="https://github.com/elementary/files/issues/2772">Doing a drag-drop operation in reverse fails</issue>
+        <issue url="https://github.com/elementary/files/issues/2781">Sudden surge in memory usage when right clicking big jpg file</issue>
+        <issue url="https://github.com/elementary/files/issues/2787">Screenshots need updating</issue>
+        <issue url="https://github.com/elementary/files/issues/2788">Miller columns: the right-hand column appears blank</issue>
+        <issue url="https://github.com/elementary/files/issues/2797">Correct RTL accelerator arrow keys</issue>
       </issues>
     </release>
     <release version="7.3.1" date="2026-05-08" urgency="medium">
