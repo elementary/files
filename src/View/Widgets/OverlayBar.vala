@@ -1,6 +1,6 @@
 /***
     Copyright (c) 2012 ammonkey <am.monkeyd@gmail.com>
-                  2015-2018 elementary LLC <https://elementary.io>
+                  2015-2026 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,8 +29,6 @@ namespace Files.View {
         private Files.File? goffile = null;
         private GLib.List<unowned Files.File>? selected_files = null;
         private uint8 [] buffer;
-        private GLib.FileInputStream? stream;
-        private Gdk.PixbufLoader loader;
         private uint update_timeout_id = 0;
         private DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
@@ -290,6 +288,8 @@ namespace Files.View {
             }
 
             var file = goffile.location;
+            Gdk.PixbufLoader? loader = null;
+            GLib.FileInputStream? stream = null;
             image_size_loaded = false;
 
             try {
@@ -309,16 +309,22 @@ namespace Files.View {
                 warning ("Error loading image resolution in OverlayBar: %s", e.message);
             }
             /* Gdk wants us to always close the loader, so we are nice to it. */
-            try {
-                stream.close ();
-            } catch (GLib.Error e) {
-                debug ("Error closing stream in load resolution: %s", e.message);
+            if (stream != null) {
+                try {
+                    stream.close ();
+                } catch (GLib.Error e) {
+                    critical ("Error closing stream in load resolution: %s", e.message);
+                }
             }
-            try {
-                loader.close ();
-            } catch (GLib.Error e) { /* Errors expected because may not load whole image. */
-                debug ("Error closing loader in load resolution: %s", e.message);
+
+            if (loader != null) {
+                try {
+                    loader.close ();
+                } catch (GLib.Error e) { /* Errors expected because may not load whole image. */
+                    critical ("Error closing loader in load resolution: %s", e.message);
+                }
             }
+
             cancellable = null;
         }
 
@@ -326,6 +332,7 @@ namespace Files.View {
             if (goffile == null) { /* This can occur during rapid rubberband selection. */
                 return;
             }
+
             image_size_loaded = true;
             goffile.width = width;
             goffile.height = height;
@@ -336,6 +343,7 @@ namespace Files.View {
                                               Cancellable cancellable) {
             ssize_t read = 1;
             uint count = 0;
+
             while (!image_size_loaded && read > 0 && !cancellable.is_cancelled ()) {
                 try {
                     read = yield stream.read_async (buffer, 0, cancellable);

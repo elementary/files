@@ -160,36 +160,41 @@ namespace Files {
         }
 
         protected override bool on_view_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
+            uint up_key;
+            uint down_key;
+            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+                up_key = Gdk.Key.Right;
+                down_key = Gdk.Key.Left;
+            } else {
+                up_key = Gdk.Key.Left;
+                down_key = Gdk.Key.Right;
+            }
+
             bool control_pressed = ((state & Gdk.ModifierType.CONTROL_MASK) != 0);
             bool shift_pressed = ((state & Gdk.ModifierType.SHIFT_MASK) != 0);
             if (!control_pressed && !shift_pressed) {
-                switch (keyval) {
-                    case Gdk.Key.Right:
-                        Gtk.TreePath? path = null;
-                        tree.get_cursor (out path, null);
+                if (keyval == down_key) {
+                    Gtk.TreePath? path = null;
+                    tree.get_cursor (out path, null);
 
-                        if (path != null) {
-                            tree.expand_row (path, false);
+                    if (path != null) {
+                        tree.expand_row (path, false);
+                    }
+
+                    return true;
+                } else if (keyval == up_key) {
+                    Gtk.TreePath? path = null;
+                    tree.get_cursor (out path, null);
+
+                    if (path != null) {
+                        if (tree.is_row_expanded (path)) {
+                            tree.collapse_row (path);
+                        } else if (path.up ()) {
+                            tree.collapse_row (path);
                         }
+                    }
 
-                        return true;
-
-                    case Gdk.Key.Left:
-                        Gtk.TreePath? path = null;
-                        tree.get_cursor (out path, null);
-
-                        if (path != null) {
-                            if (tree.is_row_expanded (path)) {
-                                tree.collapse_row (path);
-                            } else if (path.up ()) {
-                                tree.collapse_row (path);
-                            }
-                        }
-
-                        return true;
-
-                    default:
-                        break;
+                    return true;
                 }
             }
 
