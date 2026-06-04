@@ -134,7 +134,7 @@ namespace Files {
         private uint drag_enter_timer_id = 0;
         private bool destination_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
-        private Files.File? drop_target_file = null;
+        private string current_drop_target_uri = "";
         private GLib.List<GLib.File> destination_drop_file_list = null; /* the list of URIs that are contained in the drop data */
         private Gdk.DragAction current_suggested_action = Gdk.DragAction.DEFAULT;
         private Gdk.DragAction current_actions = Gdk.DragAction.DEFAULT;
@@ -524,8 +524,6 @@ namespace Files {
             } else {
                 zoom_level = (ZoomLevel)view_settings.get_enum ("default-zoom-level"); // syncs to settings
             }
-
-
         }
 
         private uint set_cursor_timeout_id = 0;
@@ -1677,6 +1675,7 @@ namespace Files {
                 bool success = false;
                 drop_occurred = false;
 
+                var drop_target_file = get_drop_target_file (x, y);
                 switch (info) {
                     case Files.TargetType.XDND_DIRECT_SAVE0:
                         success = dnd_handler.handle_xdnddirectsave (context.get_source_window (),
@@ -1753,6 +1752,7 @@ namespace Files {
             destination_data_ready = false;
             current_target_type = Gdk.Atom.NONE;
             destination_drop_file_list = null;
+            current_drop_target_uri = "";
             cancel_timeout (ref drag_scroll_timer_id);
         }
 
@@ -1794,6 +1794,7 @@ namespace Files {
             if (target == Gdk.Atom.intern_static_string ("XdndDirectSave0") ||
                 target == Gdk.Atom.intern_static_string ("_NETSCAPE_URL")) {
 
+                var drop_target_file = get_drop_target_file (x, y);
                 if (drop_target_file != null &&
                     drop_target_file.is_folder () &&
                     drop_target_file.is_writable ()) {
@@ -1812,11 +1813,10 @@ namespace Files {
 
         /* Called by DnD destination during drag_motion */
         private void check_destination_actions_and_target_file (Gdk.DragContext context, int x, int y, uint timestamp) {
-            string current_uri = drop_target_file != null ? drop_target_file.uri : "";
-            drop_target_file = get_drop_target_file (x, y);
+            var drop_target_file = get_drop_target_file (x, y);
             string uri = drop_target_file != null ? drop_target_file.uri : "";
 
-            if (uri != current_uri) {
+            if (uri != current_drop_target_uri) {
                 cancel_timeout (ref drag_enter_timer_id);
                 current_actions = Gdk.DragAction.DEFAULT;
                 current_suggested_action = Gdk.DragAction.DEFAULT;
@@ -1848,6 +1848,8 @@ namespace Files {
                             return GLib.Source.REMOVE;
                         });
                     }
+
+                    current_drop_target_uri = uri;
                 }
             }
         }
@@ -1894,8 +1896,6 @@ namespace Files {
          * drag (with #GDK_ACTION_ASK) will be started
          * instead.
         **/
-
-
 
         protected void show_context_menu (Gdk.Event event) requires (window != null) {
             /* select selection or background context menu */
@@ -2922,8 +2922,6 @@ namespace Files {
                     adj.set_value (val);
                 }
         }
-
-
 
         /* For actions on the background we need to return the current slot directory, but this
          * should not be added to the list of selected files
