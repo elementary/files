@@ -68,7 +68,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         {"tabhistory-restore", action_tabhistory_restore, "s" },
         {"forward", action_forward, "i"},
         {"back", action_back, "i"},
-        {"focus-sidebar", action_focus_sidebar}
+        {"focus-sidebar", action_focus_sidebar},
+        {"focus-current-container", action_focus_current_container}
     };
 
     private static uint window_id = 0;
@@ -157,11 +158,19 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             marlin_app.set_accels_for_action ("win.go-to::NETWORK", {"<Alt>N"});
             marlin_app.set_accels_for_action ("win.go-to::SERVER", {"<Alt>C"});
             marlin_app.set_accels_for_action ("win.go-to::UP", {"<Alt>Up"});
-            marlin_app.set_accels_for_action ("win.forward(1)", {"<Alt>Right", "XF86Forward"});
-            marlin_app.set_accels_for_action ("win.back(1)", {"<Alt>Left", "XF86Back"});
             marlin_app.set_accels_for_action ("win.tab::TAB", {"<Shift><Ctrl>K"});
             marlin_app.set_accels_for_action ("win.tab::WINDOW", {"<Ctrl><Alt>N"});
-            marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl>Left"});
+
+            // Make sure Left and Right arrow keys are mapped logically based on layout direction
+            if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+                marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl><Alt>Right"});
+                marlin_app.set_accels_for_action ("win.focus-current-container", {"<Ctrl><Alt>Left"});
+                marlin_app.set_accels_for_action ("win.forward(1)", {"<Alt>Right", "XF86Forward"});
+            } else {
+                marlin_app.set_accels_for_action ("win.focus-sidebar", {"<Ctrl><Alt>Left"});
+                marlin_app.set_accels_for_action ("win.focus-current-container", {"<Ctrl><Alt>Right"});
+                marlin_app.set_accels_for_action ("win.back(1)", {"<Alt>Left", "XF86Back"});
+            }
         }
 
         build_window ();
@@ -188,14 +197,18 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void build_window () {
         button_back = new View.Chrome.ButtonWithMenu ("go-previous-symbolic");
-
-        button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
         button_back.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
 
         button_forward = new View.Chrome.ButtonWithMenu ("go-next-symbolic");
-
-        button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
         button_forward.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+
+        if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+            button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Previous"));
+            button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Next"));
+        } else {
+            button_back.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Left"}, _("Previous"));
+            button_forward.tooltip_markup = Granite.markup_accel_tooltip ({"<Alt>Right"}, _("Next"));
+        }
 
         view_switcher = new Chrome.ViewSwitcher ((SimpleAction)lookup_action ("view-mode")) {
             margin_end = 20
@@ -1004,6 +1017,10 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void action_focus_sidebar () {
         sidebar.focus ();
+    }
+
+    private void action_focus_current_container () {
+        grab_focus ();
     }
 
     private void before_undo_redo () {
