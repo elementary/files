@@ -217,7 +217,9 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
 
         insert_action_group ("bookmark", action_group);
 
-        ((Gtk.Application) Application.get_default ()).set_accels_for_action ("bookmark.rename", { "F2" });
+        var gtk_application = (Gtk.Application) Application.get_default ();
+        gtk_application.set_accels_for_action ("bookmark.rename", { "F2" });
+        gtk_application.set_accels_for_action ("bookmark.remove", { "Delete" });
     }
 
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
