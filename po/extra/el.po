@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-05-13 10:24+0000\n"
 "PO-Revision-Date: 2026-06-29 17:56+0000\n"
-"Last-Translator: Yiannos Kryos <johnkrios13@gmail.com>\n"
+"Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/extra/el/>"
 "\n"
 "Language: el\n"
@@ -31,14 +31,15 @@ msgstr "Περιηγηθείτε στα αρχεία σας"
 #: data/io.elementary.files.desktop.in.in:8
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
+"φάκελος;διαχειριστής;διαχείριση;εξερεύνηση;δίσκος;σύστημα;αρχείων;folder;manager;explore;disk;filesystem;"
 
 #: data/io.elementary.files.desktop.in.in:24
 msgid "New Window"
-msgstr ""
+msgstr "Νέο παράθυρο"
 
 #: data/io.elementary.files.desktop.in.in:29
 msgid "New Window As Administrator"
-msgstr ""
+msgstr "Νέο παράθυρο ως διαχειριστής"
 
 #: data/files.metainfo.xml.in.in:11
 msgid "Browse and manage files and folders"
@@ -66,7 +67,7 @@ msgstr ""
 
 #: data/files.metainfo.xml.in.in:59
 msgid "elementary, Inc."
-msgstr ""
+msgstr "elementary, Inc."
 
 #: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:80
 #: data/files.metainfo.xml.in.in:100 data/files.metainfo.xml.in.in:120
@@ -76,9 +77,8 @@ msgstr ""
 #: data/files.metainfo.xml.in.in:229 data/files.metainfo.xml.in.in:247
 #: data/files.metainfo.xml.in.in:270 data/files.metainfo.xml.in.in:282
 #: data/files.metainfo.xml.in.in:302
-#, fuzzy
 msgid "Minor updates:"
-msgstr "Μικρές διορθώσεις σφαλμάτων"
+msgstr "Μικρές ενημερώσεις:"
 
 #: data/files.metainfo.xml.in.in:69
 msgid "Fixed a regression causing a crash if there are too many templates"
@@ -92,14 +92,13 @@ msgstr ""
 #: data/files.metainfo.xml.in.in:233 data/files.metainfo.xml.in.in:255
 #: data/files.metainfo.xml.in.in:272 data/files.metainfo.xml.in.in:284
 #: data/files.metainfo.xml.in.in:304
-#, fuzzy
 msgid "Updated translations"
-msgstr "Νέες μεταφράσεις"
+msgstr "Ενημερωμένες μεταφράσεις"
 
 #: data/files.metainfo.xml.in.in:76 data/files.metainfo.xml.in.in:96
 #: data/files.metainfo.xml.in.in:298
 msgid "Improvements:"
-msgstr ""
+msgstr "Βελτιώσεις:"
 
 #: data/files.metainfo.xml.in.in:78
 msgid "An option to show a preview pane in Column view is introduced"
