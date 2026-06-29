@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-14 15:22+0000\n"
-"PO-Revision-Date: 2026-01-13 13:55+0000\n"
+"PO-Revision-Date: 2026-06-30 23:56+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <italo@gp-mail.com>\n"
 "Language-Team: Spanish <https://l10n.elementaryos.org/projects/files/files/"
 "es/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:206
@@ -1951,16 +1951,16 @@ msgstr "Todos"
 
 #: src/View/AbstractDirectoryView.vala:313
 msgid "This folder only contains hidden files"
-msgstr ""
+msgstr "Esta carpeta solamente contiene archivos ocultos"
 
 #: src/View/AbstractDirectoryView.vala:320
 #: src/View/AbstractDirectoryView.vala:326
 msgid "Show"
-msgstr ""
+msgstr "Mostrar"
 
 #: src/View/AbstractDirectoryView.vala:326
 msgid "Hide"
-msgstr ""
+msgstr "Ocultar"
 
 #: src/View/AbstractDirectoryView.vala:877
 #: src/View/AbstractDirectoryView.vala:1203
@@ -2212,14 +2212,12 @@ msgid "Open the system security and privacy settings app"
 msgstr "Abrir la configuración de seguridad y privacidad del sistema"
 
 #: src/View/Slot.vala:31
-#, fuzzy
-#| msgid "This Folder Does Not Exist"
 msgid "This Folder does not contain any files"
-msgstr "Esta carpeta no existe"
+msgstr "Esta carpeta no contiene archivos"
 
 #: src/View/Slot.vala:32
 msgid "Trash does not contain any files"
-msgstr ""
+msgstr "La papelera no contiene archivos"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
