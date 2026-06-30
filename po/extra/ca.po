@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-14 15:22+0000\n"
-"PO-Revision-Date: 2026-05-01 10:53+0000\n"
+"PO-Revision-Date: 2026-06-30 23:56+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/extra/"
 "ca/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
@@ -84,12 +84,16 @@ msgid ""
 "The presence of undisplayed hidden files is indicated when there are no "
 "visible files"
 msgstr ""
+"La presència de fitxers amagats no mostrats s'indica quan no hi ha fitxers "
+"visibles."
 
 #: data/files.metainfo.xml.in.in:70
 msgid ""
 "Undisplayed hidden files can temporarily be shown in an otherwise empty "
 "folder"
 msgstr ""
+"Els fitxers amagats no mostrats es poden mostrar temporalment en una carpeta "
+"que d'altra banda estigui buida."
 
 #: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:95
 #: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:128
@@ -106,21 +110,29 @@ msgstr "Actualitzacions menors:"
 msgid ""
 "The existing shortcut to focus the sidebar is changed to Ctrl + Alt + Left"
 msgstr ""
+"La drecera existent per centrar-se en la barra lateral s'ha canviat a Ctrl + "
+"Alt + Esquerra."
 
 #: data/files.metainfo.xml.in.in:75
 msgid ""
 "A corresponding shortcut to focus the document is added: Ctrl + Alt + Right"
 msgstr ""
+"S'afegeix una drecera corresponent per centrar el focus al document: Ctrl + "
+"Alt + Fletxa dreta."
 
 #: data/files.metainfo.xml.in.in:76
 msgid ""
 "Shortcuts involving Left or Right arrow keys now change according whether "
 "the locale is RTL or LTR"
 msgstr ""
+"Les dreceres que impliquen les tecles de fletxa d'esquerra o dreta ara "
+"canvien segons si la configuració regional és RTL o LTR."
 
 #: data/files.metainfo.xml.in.in:77
 msgid "Allow horizontal scrolling in ListView to ensure all columns visible"
 msgstr ""
+"Permet el desplaçament horitzontal a la visualització de llista per garantir "
+"que totes les columnes siguin visibles."
 
 #: data/files.metainfo.xml.in.in:78 data/files.metainfo.xml.in.in:98
 #: data/files.metainfo.xml.in.in:111 data/files.metainfo.xml.in.in:134
