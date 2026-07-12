@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-14 15:22+0000\n"
-"PO-Revision-Date: 2026-04-30 21:20+0000\n"
+"PO-Revision-Date: 2026-07-13 07:00+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/extra/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
@@ -87,13 +87,15 @@ msgstr "Улучшения:"
 msgid ""
 "The presence of undisplayed hidden files is indicated when there are no "
 "visible files"
-msgstr ""
+msgstr "Сообщение о наличии скрытых файлов, если в папке нет видимых файлов"
 
 #: data/files.metainfo.xml.in.in:70
 msgid ""
 "Undisplayed hidden files can temporarily be shown in an otherwise empty "
 "folder"
 msgstr ""
+"Отображение скрытых файлов может быть временно включено, если видимых файлов "
+"в папке нет"
 
 #: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:95
 #: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:128
@@ -110,21 +112,29 @@ msgstr "Незначительные обновления:"
 msgid ""
 "The existing shortcut to focus the sidebar is changed to Ctrl + Alt + Left"
 msgstr ""
+"Сочетание клавиш для фокусировки на боковой панели изменено на Ctrl + Alt + "
+"Стрелка влево"
 
 #: data/files.metainfo.xml.in.in:75
 msgid ""
 "A corresponding shortcut to focus the document is added: Ctrl + Alt + Right"
 msgstr ""
+"Для фокусировки на рабочий области добавлено сочетание клавиш, "
+"соответственно, Ctrl + Alt + Стрелка вправо"
 
 #: data/files.metainfo.xml.in.in:76
 msgid ""
 "Shortcuts involving Left or Right arrow keys now change according whether "
 "the locale is RTL or LTR"
 msgstr ""
+"Сочетания клавиш, содержащие клавиши-стрелки, теперь подстраиваются под "
+"направление письма в локали"
 
 #: data/files.metainfo.xml.in.in:77
 msgid "Allow horizontal scrolling in ListView to ensure all columns visible"
 msgstr ""
+"Добавлена возможность горизонтальной прокрутки в виде списка для обеспечения "
+"видимости всех столбцов"
 
 #: data/files.metainfo.xml.in.in:78 data/files.metainfo.xml.in.in:98
 #: data/files.metainfo.xml.in.in:111 data/files.metainfo.xml.in.in:134
