@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-14 15:22+0000\n"
-"PO-Revision-Date: 2026-01-08 12:55+0000\n"
+"PO-Revision-Date: 2026-07-13 07:00+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/files/"
 "ru/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:206
@@ -1961,16 +1961,16 @@ msgstr "Все"
 
 #: src/View/AbstractDirectoryView.vala:313
 msgid "This folder only contains hidden files"
-msgstr ""
+msgstr "В этой папке есть только скрытые файлы"
 
 #: src/View/AbstractDirectoryView.vala:320
 #: src/View/AbstractDirectoryView.vala:326
 msgid "Show"
-msgstr ""
+msgstr "Показать"
 
 #: src/View/AbstractDirectoryView.vala:326
 msgid "Hide"
-msgstr ""
+msgstr "Скрыть"
 
 #: src/View/AbstractDirectoryView.vala:877
 #: src/View/AbstractDirectoryView.vala:1203
@@ -2222,14 +2222,12 @@ msgid "Open the system security and privacy settings app"
 msgstr "Открыть приложение для настройки защиты и приватности"
 
 #: src/View/Slot.vala:31
-#, fuzzy
-#| msgid "This Folder Does Not Exist"
 msgid "This Folder does not contain any files"
-msgstr "Эта папка не существует"
+msgstr "В этой папке нет файлов"
 
 #: src/View/Slot.vala:32
 msgid "Trash does not contain any files"
-msgstr ""
+msgstr "В корзине нет файлов"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
