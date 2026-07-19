@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-14 15:22+0000\n"
-"PO-Revision-Date: 2026-05-02 23:51+0000\n"
+"PO-Revision-Date: 2026-07-20 16:00+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/extra/"
 "ja/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
@@ -85,12 +85,16 @@ msgid ""
 "The presence of undisplayed hidden files is indicated when there are no "
 "visible files"
 msgstr ""
+"表示中のファイルがない場合に非表示の隠しファイルが存在する旨を表示するように"
+"修正"
 
 #: data/files.metainfo.xml.in.in:70
 msgid ""
 "Undisplayed hidden files can temporarily be shown in an otherwise empty "
 "folder"
 msgstr ""
+"非表示の隠しファイルを表示しないと空のフォルダーになる場合、一時的に表示でき"
+"る機能を追加"
 
 #: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:95
 #: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:128
@@ -106,22 +110,26 @@ msgstr "マイナーアップデート:"
 #: data/files.metainfo.xml.in.in:74
 msgid ""
 "The existing shortcut to focus the sidebar is changed to Ctrl + Alt + Left"
-msgstr ""
+msgstr "サイドバーにフォーカスする既存のショートカットを Ctrl + Alt + ← に変更"
 
 #: data/files.metainfo.xml.in.in:75
 msgid ""
 "A corresponding shortcut to focus the document is added: Ctrl + Alt + Right"
-msgstr ""
+msgstr "ドキュメントにフォーカスするショートカットを追加: Ctrl + Alt + →"
 
 #: data/files.metainfo.xml.in.in:76
 msgid ""
 "Shortcuts involving Left or Right arrow keys now change according whether "
 "the locale is RTL or LTR"
 msgstr ""
+"ロケールが RTL か LTR かによって、右矢印/左矢印キーが含まれるショートカットが"
+"変化するように修正"
 
 #: data/files.metainfo.xml.in.in:77
 msgid "Allow horizontal scrolling in ListView to ensure all columns visible"
 msgstr ""
+"すべてのカラムを確認できるよう、リスト表示で水平スクロールを許可するように修"
+"正"
 
 #: data/files.metainfo.xml.in.in:78 data/files.metainfo.xml.in.in:98
 #: data/files.metainfo.xml.in.in:111 data/files.metainfo.xml.in.in:134
