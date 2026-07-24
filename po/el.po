@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-14 15:22+0000\n"
-"PO-Revision-Date: 2026-07-10 15:01+0000\n"
+"PO-Revision-Date: 2026-07-25 20:01+0000\n"
 "Last-Translator: Jim Spentzos <jimspentzos2000@gmail.com>\n"
 "Language-Team: Greek <https://l10n.elementaryos.org/projects/files/files/el/>"
 "\n"
@@ -1328,7 +1328,7 @@ msgstr "Όνομα χρήστη:"
 
 #: libcore/View/Dialogs/ConnectServerDialog.vala:197
 msgid "Password:"
-msgstr "Συνθηματικό:"
+msgstr "Κωδικός πρόσβασης:"
 
 #: libcore/View/Dialogs/ConnectServerDialog.vala:199
 msgid "Remember this password"
@@ -1344,7 +1344,7 @@ msgstr "Συνέχεια"
 
 #: libcore/View/Dialogs/ConnectServerDialog.vala:266
 msgid "Connecting…"
-msgstr "Γίνεται σύνδεση…"
+msgstr "Σύνδεση…"
 
 #: libcore/View/Dialogs/ConnectServerDialog.vala:373
 msgid "Please verify your user details."
@@ -1557,9 +1557,8 @@ msgid "Empty the Trash"
 msgstr "Άδειασμα του κάδου"
 
 #: plugins/pantheon-files-trash/plugin.vala:21
-#, fuzzy
 msgid "Restore Selected"
-msgstr "Επαναφορά όλων"
+msgstr "Ανάκτηση επιλεγμένων"
 
 #: plugins/pantheon-files-trash/plugin.vala:22
 msgid "Delete Selected"
@@ -1673,7 +1672,7 @@ msgstr "Χωρητικότητα:"
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
 #: src/View/DetailsColumn.vala:273
 msgid "Unknown"
-msgstr ""
+msgstr "Άγνωστο"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:154
 msgid "Available:"
@@ -1699,9 +1698,8 @@ msgid "New basename"
 msgstr "Μετονομασία"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:66
-#, fuzzy
 msgid "Bulk Rename"
-msgstr "Μετονομασία"
+msgstr "Μαζική μετονομασία"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:72
 #: src/View/Sidebar/BookmarkRow.vala:338
@@ -1814,7 +1812,7 @@ msgstr "Δικαιώματα"
 
 #: src/Dialogs/PropertiesWindow.vala:263
 msgid "Contains:"
-msgstr "Περιέχoνται:"
+msgstr "Περιέχει:"
 
 #: src/Dialogs/PropertiesWindow.vala:277
 #, c-format
@@ -1829,7 +1827,7 @@ msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:303 src/Dialogs/PropertiesWindow.vala:322
 msgid "unknown"
-msgstr ""
+msgstr "άγνωστο"
 
 #: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:314
 msgid "Loading…"
@@ -1866,7 +1864,7 @@ msgstr "Τοποθεσία:"
 
 #: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:200
 msgid "Target:"
-msgstr ""
+msgstr "Προορισμός:"
 
 #: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:210
 msgid "Original Location:"
@@ -2038,17 +2036,16 @@ msgid "Open with"
 msgstr "Άνοιγμα με"
 
 #: src/View/AbstractDirectoryView.vala:2028
-#, fuzzy
 msgid "Add to Bookmarks"
-msgstr "Σελιδοδείκτες"
+msgstr "Προσθήκη στους σελιδοδείκτες"
 
 #: src/View/AbstractDirectoryView.vala:2048
 msgid "Select All"
-msgstr ""
+msgstr "Επιλογή όλων"
 
 #: src/View/AbstractDirectoryView.vala:2057
 msgid "Invert Selection"
-msgstr ""
+msgstr "Αντιστροφή επιλογής"
 
 #: src/View/AbstractDirectoryView.vala:2066
 #, fuzzy
@@ -2069,7 +2066,6 @@ msgid "Move to Trash"
 msgstr "Μετακίνηση στον κάδο"
 
 #: src/View/AbstractDirectoryView.vala:2097
-#, fuzzy
 msgid "Delete Permanently"
 msgstr "Οριστική διαγραφή"
 
@@ -2090,9 +2086,8 @@ msgid "Rename…"
 msgstr "Μετονομασία…"
 
 #: src/View/AbstractDirectoryView.vala:2163
-#, fuzzy
 msgid "Copy as Link"
-msgstr "Επικόλληση"
+msgstr "Αντιγραφή ως σύνδεσμος"
 
 #: src/View/AbstractDirectoryView.vala:2186
 #: src/View/AbstractDirectoryView.vala:2268
@@ -2111,10 +2106,8 @@ msgid "Paste"
 msgstr "Επικόλληση"
 
 #: src/View/AbstractDirectoryView.vala:2314
-#, fuzzy
-#| msgid "Set as default"
 msgid "Set as Wallpaper"
-msgstr "Ορισμός ως προεπιλογή"
+msgstr "Ορισμός ως ταπετσαρία"
 
 #: src/View/AbstractDirectoryView.vala:2347 src/View/ListView.vala:28
 msgid "Type"
@@ -2150,7 +2143,7 @@ msgstr "…πάρα πολλά πρότυπα"
 
 #: src/View/AbstractDirectoryView.vala:2419
 msgid "New"
-msgstr "Νέος/-o"
+msgstr "Νέο"
 
 #: src/View/AbstractDirectoryView.vala:2713
 #, c-format
@@ -2332,9 +2325,8 @@ msgid "Close Other Tabs"
 msgstr "Κλείσιμο"
 
 #: src/View/Window.vala:461
-#, fuzzy
 msgid "Close Tab"
-msgstr "Κλείσιμο"
+msgstr "Κλείσιμο καρτέλας"
 
 #: src/View/Window.vala:741 src/View/Window.vala:751
 msgid "(as Administrator)"
@@ -2407,7 +2399,7 @@ msgstr "Άνοιγμα σε νέο _παράθυρο"
 
 #: src/View/Sidebar/BookmarkRow.vala:334
 msgid "Remove"
-msgstr "Κατάργηση"
+msgstr "Αφαίρεση"
 
 #: src/View/Sidebar/BookmarkRow.vala:352
 msgid "Permanently Delete All Trash"
@@ -2437,9 +2429,8 @@ msgid "Unformatted or no media"
 msgstr ""
 
 #: src/View/Sidebar/DriveRow.vala:128 src/View/Sidebar/VolumeRow.vala:188
-#, fuzzy
 msgid "Safely Remove"
-msgstr "Κατάργηση"
+msgstr "Ασφαλής αφαίρεση"
 
 #: src/View/Sidebar/NetworkListBox.vala:130
 msgid "Entire Network"
@@ -2481,7 +2472,7 @@ msgstr "Προσάρτηση"
 
 #: src/View/Sidebar/VolumeRow.vala:191
 msgid "Eject Media"
-msgstr ""
+msgstr "Εξαγωγή μέσου"
 
 #: src/View/Sidebar/VolumelessMountRow.vala:42
 #, fuzzy
@@ -2524,19 +2515,16 @@ msgid "Show in View"
 msgstr "Προβολή κρυφών αρχείων"
 
 #: src/View/Widgets/AppMenu.vala:111
-#, fuzzy
 msgid "Hidden Files"
-msgstr "Προβολή κρυφών αρχείων"
+msgstr "Κρυφά αρχεία"
 
 #: src/View/Widgets/AppMenu.vala:115
-#, fuzzy
 msgid "Local Thumbnails"
-msgstr "Εμφάνιση περισσότερων _λεπτομερειών"
+msgstr "Τοπικές μικρογραφίες"
 
 #: src/View/Widgets/AppMenu.vala:120
-#, fuzzy
 msgid "Remote Thumbnails"
-msgstr "Εμφάνιση περισσότερων _λεπτομερειών"
+msgstr "Απομακρυσμένες μικρογραφίες"
 
 #: src/View/Widgets/AppMenu.vala:125
 msgid "File Preview (Column View)"
@@ -2623,7 +2611,7 @@ msgstr[1] "%u αρχεία, "
 #: src/View/Widgets/OverlayBar.vala:251
 #, c-format
 msgid "%s approx."
-msgstr ""
+msgstr "περίπου %s"
 
 #. TRANSLATORS: 'size' refers to disk space
 #: src/View/Widgets/OverlayBar.vala:254
@@ -2664,9 +2652,8 @@ msgid "Below This Folder"
 msgstr "Σε αυτό το φάκελο"
 
 #: src/View/Widgets/SearchResults.vala:305
-#, fuzzy
 msgid "Recently Used"
-msgstr "Πρόσφατα"
+msgstr "Πρόσφατη χρήση"
 
 #~ msgid "This Folder Is Empty"
 #~ msgstr "Αυτός ο φάκελος είναι άδειος"
