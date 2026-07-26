@@ -118,7 +118,8 @@ public class Files.Plugins.Cloud.Plugin : Files.Plugins.Base {
             action_group = account.action_group,
             action_group_namespace = "cloudprovider",
             menu_model = account.menu_model,
-            action_icon = get_icon (account.get_status ())
+            action_icon = get_icon (account.get_status ()),
+            action_tooltip = account.status_details
         };
 
         return item;
@@ -132,9 +133,21 @@ public class Files.Plugins.Cloud.Plugin : Files.Plugins.Base {
      * @return a error icon if status is error else returns null
      */
     static Icon? get_icon (CloudProviders.AccountStatus status) {
-        return status == CloudProviders.AccountStatus.ERROR ?
-                         new ThemedIcon.with_default_fallbacks ("dialog-error-symbolic") :
-                         null;
+        warning ("get icon for status %s", status.to_string ());
+        switch (status) {
+            case CloudProviders.AccountStatus.ERROR:
+                return new ThemedIcon.with_default_fallbacks ("dialog-error-symbolic");
+            case CloudProviders.AccountStatus.IDLE:
+                return new ThemedIcon ("process-completed");
+            case CloudProviders.AccountStatus.INVALID:
+                return new ThemedIcon ("process-error");
+            case CloudProviders.AccountStatus.SYNCING:
+                return new ThemedIcon ("process-working");
+            default:
+                warning ("return null icon");
+                return null;
+
+        }
     }
 }
 
