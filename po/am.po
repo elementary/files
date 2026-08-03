@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-05-13 10:24+0000\n"
+"POT-Creation-Date: 2026-06-14 15:22+0000\n"
 "PO-Revision-Date: 2016-06-30 19:10+0000\n"
 "Last-Translator: Daniel Fore <Unknown>\n"
 "Language-Team: Amharic <am@li.org>\n"
@@ -19,15 +19,17 @@ msgstr ""
 "X-Launchpad-Export-Date: 2017-06-11 06:24+0000\n"
 "X-Generator: Launchpad (build 18402)\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:192
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:206
+#: src/View/Window.vala:209
 msgid "Previous"
 msgstr ""
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:197
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:207
+#: src/View/Window.vala:210
 msgid "Next"
 msgstr ""
 
-#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:105
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:108
 #: libcore/View/Dialogs/ConnectServerDialog.vala:206
 #: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
@@ -98,24 +100,24 @@ msgstr "መቀየሪያ"
 msgid "Server did not respond within time limit"
 msgstr ""
 
-#: libcore/DndHandler.vala:50
+#: libcore/DndHandler.vala:51
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr ""
 
-#: libcore/DndHandler.vala:100
+#: libcore/DndHandler.vala:103
 msgid "Move Here"
 msgstr ""
 
-#: libcore/DndHandler.vala:101
+#: libcore/DndHandler.vala:104
 msgid "Copy Here"
 msgstr ""
 
-#: libcore/DndHandler.vala:102
+#: libcore/DndHandler.vala:105
 msgid "Link Here"
 msgstr ""
 
-#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2338
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2337
 msgid "Name"
 msgstr ""
 
@@ -130,7 +132,7 @@ msgstr "መፍጠሪያ"
 msgid "Last modification date"
 msgstr "መጨረሻ የተሻሻለው:"
 
-#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2343
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2342
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "መጠን"
@@ -143,7 +145,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2353
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2352
 msgid "Date"
 msgstr ""
 
@@ -1595,7 +1597,7 @@ msgstr "የመተግበሪያውን እትም ማሳያ"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "መክፈቻ uri(s) በአዲስ ንዑስ መስኮት"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1927
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1926
 msgid "New Window"
 msgstr ""
 
@@ -1812,7 +1814,7 @@ msgid "Set as default"
 msgstr "እንደነባር ማዘጋጃ"
 
 #: src/Dialogs/PropertiesWindow.vala:116
-#: src/View/AbstractDirectoryView.vala:2036
+#: src/View/AbstractDirectoryView.vala:2035
 #: src/View/Sidebar/AbstractMountableRow.vala:277
 msgid "Properties"
 msgstr "ባህሪዎች"
@@ -1882,7 +1884,7 @@ msgid "Original Location:"
 msgstr ""
 
 #: src/Dialogs/PropertiesWindow.vala:664
-#: src/View/AbstractDirectoryView.vala:2006
+#: src/View/AbstractDirectoryView.vala:2005
 msgid "Other Application…"
 msgstr ""
 
@@ -1917,7 +1919,7 @@ msgid_plural "%u files"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:182
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:180
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -1990,207 +1992,207 @@ msgstr ""
 msgid "Hide"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:879
-#: src/View/AbstractDirectoryView.vala:1205
+#: src/View/AbstractDirectoryView.vala:877
+#: src/View/AbstractDirectoryView.vala:1203
 msgid "Cannot execute this file"
 msgstr ""
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:889
+#: src/View/AbstractDirectoryView.vala:887
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:890
+#: src/View/AbstractDirectoryView.vala:888
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:905
+#: src/View/AbstractDirectoryView.vala:903
 msgid "Cannot open this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:918
+#: src/View/AbstractDirectoryView.vala:916
 msgid "Cannot identify file type to open"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1641
+#: src/View/AbstractDirectoryView.vala:1639
 msgid "Cannot drop this file"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1642
+#: src/View/AbstractDirectoryView.vala:1640
 msgid "Invalid file name provided"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1913 src/View/Window.vala:239
+#: src/View/AbstractDirectoryView.vala:1912 src/View/Window.vala:252
 #, fuzzy
 msgid "New Tab"
 msgstr "በ አዲስ ንዑስ መስኮት መክፈቻ"
 
-#: src/View/AbstractDirectoryView.vala:1950
+#: src/View/AbstractDirectoryView.vala:1949
 msgid "Run"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:1957
+#: src/View/AbstractDirectoryView.vala:1956
 #, c-format
 msgid "Open in %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2016
+#: src/View/AbstractDirectoryView.vala:2015
 msgid "Open in"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2018
+#: src/View/AbstractDirectoryView.vala:2017
 #: src/View/Widgets/BreadcrumbsEntry.vala:446
 msgid "Open with"
 msgstr "መክፈቻ በ"
 
-#: src/View/AbstractDirectoryView.vala:2029
+#: src/View/AbstractDirectoryView.vala:2028
 msgid "Add to Bookmarks"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2049
+#: src/View/AbstractDirectoryView.vala:2048
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2058
+#: src/View/AbstractDirectoryView.vala:2057
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2067
+#: src/View/AbstractDirectoryView.vala:2066
 msgid "Deselect All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2078
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Cut"
 msgstr ""
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2086
+#: src/View/AbstractDirectoryView.vala:2085
 msgid "Copy"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2093
+#: src/View/AbstractDirectoryView.vala:2092
 #, fuzzy
 msgid "Move to Trash"
 msgstr "ማንቀሳቀሻ '%s' ወደ ቆሻሻ ማጠራቀሚያ"
 
-#: src/View/AbstractDirectoryView.vala:2098
+#: src/View/AbstractDirectoryView.vala:2097
 #, fuzzy
 msgid "Delete Permanently"
 msgstr " የተመረጠው"
 
-#: src/View/AbstractDirectoryView.vala:2105
+#: src/View/AbstractDirectoryView.vala:2104
 #, fuzzy
 msgid "Restore from Trash"
 msgstr "እንደ ነበር መመለሻ '%s' ከቆሻሻ ማጠራቀሚያ ውስጥ"
 
-#: src/View/AbstractDirectoryView.vala:2128
+#: src/View/AbstractDirectoryView.vala:2127
 #, fuzzy
 msgid "Open Parent Folder"
 msgstr "የግል ፎልደር መክፈቻ"
 
-#: src/View/AbstractDirectoryView.vala:2131
+#: src/View/AbstractDirectoryView.vala:2130
 msgid "Remove from History"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2157
+#: src/View/AbstractDirectoryView.vala:2156
 #, fuzzy
 msgid "Rename…"
 msgstr "እንደገና _መሰየሚያ"
 
-#: src/View/AbstractDirectoryView.vala:2164
+#: src/View/AbstractDirectoryView.vala:2163
 msgid "Copy as Link"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2187
-#: src/View/AbstractDirectoryView.vala:2269
+#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2268
 msgid "Paste Link into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2192
-#: src/View/AbstractDirectoryView.vala:2246
+#: src/View/AbstractDirectoryView.vala:2191
+#: src/View/AbstractDirectoryView.vala:2245
 msgid "Paste into Folder"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2202
-#: src/View/AbstractDirectoryView.vala:2274
+#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2273
 msgid "Paste"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2315
+#: src/View/AbstractDirectoryView.vala:2314
 #, fuzzy
 #| msgid "Set as default"
 msgid "Set as Wallpaper"
 msgstr "እንደነባር ማዘጋጃ"
 
-#: src/View/AbstractDirectoryView.vala:2348 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2347 src/View/ListView.vala:28
 msgid "Type"
 msgstr "አይነት"
 
-#: src/View/AbstractDirectoryView.vala:2358
+#: src/View/AbstractDirectoryView.vala:2357
 msgid "Reversed Order"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2363
+#: src/View/AbstractDirectoryView.vala:2362
 msgid "Folders Before Files"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2383
+#: src/View/AbstractDirectoryView.vala:2382
 msgid "Sort by"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2392
+#: src/View/AbstractDirectoryView.vala:2391
 #, fuzzy
 msgid "Folder"
 msgstr "_ፎልደር :"
 
-#: src/View/AbstractDirectoryView.vala:2398
+#: src/View/AbstractDirectoryView.vala:2397
 #, fuzzy
 msgid "Empty File"
 msgstr "ፋይሎችን ኮፒ በማድረግ ላይ"
 
-#: src/View/AbstractDirectoryView.vala:2412
+#: src/View/AbstractDirectoryView.vala:2411
 msgid "Template"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2414
+#: src/View/AbstractDirectoryView.vala:2413
 msgid "…too many templates"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2420
+#: src/View/AbstractDirectoryView.vala:2419
 #, fuzzy
 msgid "New"
 msgstr "ኔትዎርክ"
 
-#: src/View/AbstractDirectoryView.vala:2714
+#: src/View/AbstractDirectoryView.vala:2713
 #, c-format
 msgid "Untitled %s"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3005
-#: src/View/AbstractDirectoryView.vala:3211
+#: src/View/AbstractDirectoryView.vala:3002
+#: src/View/AbstractDirectoryView.vala:3208
 msgid "Cannot remove files from here"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3006
-#: src/View/AbstractDirectoryView.vala:3184
-#: src/View/AbstractDirectoryView.vala:3195
-#: src/View/AbstractDirectoryView.vala:3212
+#: src/View/AbstractDirectoryView.vala:3003
+#: src/View/AbstractDirectoryView.vala:3181
+#: src/View/AbstractDirectoryView.vala:3192
+#: src/View/AbstractDirectoryView.vala:3209
 msgid "You do not have permission to change this location"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3152
+#: src/View/AbstractDirectoryView.vala:3149
 msgid "Cannot copy files that are in the trash"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3153
+#: src/View/AbstractDirectoryView.vala:3150
 msgid "Cutting the selection instead"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:3183
-#: src/View/AbstractDirectoryView.vala:3194
+#: src/View/AbstractDirectoryView.vala:3180
+#: src/View/AbstractDirectoryView.vala:3191
 msgid "Cannot paste files here"
 msgstr ""
 
@@ -2318,40 +2320,40 @@ msgstr ""
 msgid "The server for this folder could not be located."
 msgstr ""
 
-#: src/View/Window.vala:214
+#: src/View/Window.vala:227
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:244
+#: src/View/Window.vala:257
 #, fuzzy
 msgid "Closed Tabs"
 msgstr "በ አዲስ ንዑስ መስኮት መክፈቻ"
 
-#: src/View/Window.vala:441 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:454 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr ""
 
-#: src/View/Window.vala:442
+#: src/View/Window.vala:455
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "በማባዛት ላይ \"%B\""
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:446
+#: src/View/Window.vala:459
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:447
+#: src/View/Window.vala:460
 #, fuzzy
 msgid "Close Other Tabs"
 msgstr "በ አዲስ ንዑስ መስኮት መክፈቻ"
 
-#: src/View/Window.vala:448
+#: src/View/Window.vala:461
 #, fuzzy
 msgid "Close Tab"
 msgstr "በ አዲስ ንዑስ መስኮት መክፈቻ"
 
-#: src/View/Window.vala:728 src/View/Window.vala:738
+#: src/View/Window.vala:741 src/View/Window.vala:751
 msgid "(as Administrator)"
 msgstr "(እንደ አስተዳዳሪ)"
 
@@ -2602,29 +2604,29 @@ msgstr ""
 msgid "Searching…"
 msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:173
+#: src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folders"
 msgstr "%u ፎልደሮች"
 
-#: src/View/Widgets/OverlayBar.vala:175 src/View/Widgets/OverlayBar.vala:185
+#: src/View/Widgets/OverlayBar.vala:173 src/View/Widgets/OverlayBar.vala:183
 #, fuzzy, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " እና %u ሌሎች እቃዎች (%s) ተመርጠዋል"
 msgstr[1] " እና %u ሌሎች እቃዎች (%s) ተመርጠዋል"
 
-#: src/View/Widgets/OverlayBar.vala:179 src/View/Widgets/OverlayBar.vala:189
+#: src/View/Widgets/OverlayBar.vala:177 src/View/Widgets/OverlayBar.vala:187
 msgid " selected"
 msgstr " የተመረጠው"
 
-#: src/View/Widgets/OverlayBar.vala:192
+#: src/View/Widgets/OverlayBar.vala:190
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u የተመረጡት እቃዎች (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:237
+#: src/View/Widgets/OverlayBar.vala:235
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -2632,7 +2634,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:243
+#: src/View/Widgets/OverlayBar.vala:241
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -2640,18 +2642,18 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:253
+#: src/View/Widgets/OverlayBar.vala:251
 #, c-format
 msgid "%s approx."
 msgstr ""
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:256
+#: src/View/Widgets/OverlayBar.vala:254
 msgid "unknown size"
 msgstr ""
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:260
+#: src/View/Widgets/OverlayBar.vala:258
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
