@@ -233,6 +233,7 @@ namespace Files.View {
 
             if (mode == ViewMode.MILLER_COLUMNS) {
                 this.view = new Miller (loc, this);
+                ((Miller)view).active.connect (on_miller_slot_active);
             } else {
                 this.view = new Slot (loc, this, mode);
             }
@@ -241,7 +242,6 @@ namespace Files.View {
                 no_show_all = true
             };
 
-            view.active.connect (on_slot_active);
             view.path_changed.connect (on_slot_path_changed);
             view.new_container_request.connect (on_slot_new_container_request);
             view.selection_changed.connect (on_slot_selection_changed);
@@ -269,9 +269,6 @@ namespace Files.View {
             /* Make sure async loading and thumbnailing are cancelled and signal handlers disconnected */
             disconnect_slot_signals (view);
             add_view (mode, loc ?? location);
-            /* Slot is created inactive so we activate now since we must be the current tab
-             * to have received a change mode instruction */
-            set_active_state (true);
             /* Do not update top menu (or record uri) unless folder loads successfully */
             load_directory ();
 
@@ -283,14 +280,17 @@ namespace Files.View {
         }
 
         private void disconnect_slot_signals (Files.AbstractSlot aslot) {
-            aslot.active.disconnect (on_slot_active);
+            if (aslot is Miller) {
+                ((Miller)aslot).active.disconnect (on_miller_slot_active);
+            }
+
             aslot.path_changed.disconnect (on_slot_path_changed);
             aslot.new_container_request.disconnect (on_slot_new_container_request);
             aslot.selection_changed.disconnect (on_slot_selection_changed);
             aslot.directory_loaded.disconnect (on_slot_directory_loaded);
         }
 
-        private void on_slot_active (Files.AbstractSlot aslot, bool scroll, bool animate) {
+        private void on_miller_slot_active (Files.AbstractSlot aslot, bool scroll, bool animate) {
             refresh_slot_info (slot.location);
         }
 
@@ -461,18 +461,6 @@ namespace Files.View {
 
         public unowned Files.AbstractSlot? get_view () {
            return this.view != null ? this.view : null;
-        }
-
-        public void set_active_state (bool is_active, bool animate = true) {
-            var aslot = get_current_slot ();
-            if (aslot != null) {
-                aslot.grab_focus ();
-                /* Since async loading it may not have been determined whether slot is loadable */
-                aslot.set_active_state (is_active, animate);
-                if (is_active) {
-                    active ();
-                }
-            }
         }
 
         private void set_all_selected (bool select_all) {

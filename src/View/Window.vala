@@ -510,7 +510,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         }
 
         loading_uri (current_container.uri);
-        current_container.set_active_state (true, false); /* changing tab should not cause animated scrolling */
         sidebar.sync_uri (current_container.uri);
         save_active_tab_position ();
     }
@@ -527,12 +526,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         ) {
             // Open a tab pointing at the default location if no tabs restored and none provided
             // Duplicates are not ignored
-            add_tab.begin (default_location, mode, false, () => {
-                // We can assume adding default tab always succeeds
-                // Ensure default tab's slot is active so it can be focused
-                current_container.set_active_state (true, false);
-            });
-
+            add_tab.begin (default_location, mode, false);
         } else {
             /* Open tabs at each requested location */
             /* As files may be derived from commandline, we use a new sanitized one */
