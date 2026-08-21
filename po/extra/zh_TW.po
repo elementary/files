@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-14 15:22+0000\n"
-"PO-Revision-Date: 2026-04-07 12:12+0000\n"
+"PO-Revision-Date: 2026-08-03 20:01+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "l10n.elementaryos.org/projects/files/extra/zh_TW/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
@@ -82,13 +82,13 @@ msgstr "改善項目："
 msgid ""
 "The presence of undisplayed hidden files is indicated when there are no "
 "visible files"
-msgstr ""
+msgstr "沒有可見檔案但有已隱藏而未顯示的檔案時告知使用者"
 
 #: data/files.metainfo.xml.in.in:70
 msgid ""
 "Undisplayed hidden files can temporarily be shown in an otherwise empty "
 "folder"
-msgstr ""
+msgstr "新增在只有未顯示的隱藏檔案的資料夾裡暫時顯示它們的功能"
 
 #: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:95
 #: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:128
@@ -104,22 +104,22 @@ msgstr "小型更新："
 #: data/files.metainfo.xml.in.in:74
 msgid ""
 "The existing shortcut to focus the sidebar is changed to Ctrl + Alt + Left"
-msgstr ""
+msgstr "將現存的聚焦側邊欄快捷鍵改為 Ctrl + Alt + ←"
 
 #: data/files.metainfo.xml.in.in:75
 msgid ""
 "A corresponding shortcut to focus the document is added: Ctrl + Alt + Right"
-msgstr ""
+msgstr "新增與其相對的聚焦文件快捷鍵：Ctrl + Alt + →"
 
 #: data/files.metainfo.xml.in.in:76
 msgid ""
 "Shortcuts involving Left or Right arrow keys now change according whether "
 "the locale is RTL or LTR"
-msgstr ""
+msgstr "讓利用 ← 或 → 的快捷鍵依目前地域是左到右還是右到左書寫來變化以符合方向"
 
 #: data/files.metainfo.xml.in.in:77
 msgid "Allow horizontal scrolling in ListView to ensure all columns visible"
-msgstr ""
+msgstr "允許水平捲動列表檢視以保證所有欄位皆可見"
 
 #: data/files.metainfo.xml.in.in:78 data/files.metainfo.xml.in.in:98
 #: data/files.metainfo.xml.in.in:111 data/files.metainfo.xml.in.in:134
@@ -134,7 +134,7 @@ msgstr "翻譯更新"
 
 #: data/files.metainfo.xml.in.in:97
 msgid "Fixed a regression causing a crash if there are too many templates"
-msgstr ""
+msgstr "修正模板太多時會崩潰的功能退化"
 
 #: data/files.metainfo.xml.in.in:106
 msgid "An option to show a preview pane in Column view is introduced"
