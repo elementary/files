@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-18 16:44+0000\n"
+"POT-Creation-Date: 2026-06-14 15:22+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -15,17 +15,19 @@ msgstr ""
 "X-Generator: Weblate 4.4.2\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:27+0000\n"
 
-#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:196
+#: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:206
+#: src/View/Window.vala:209
 msgid "Previous"
 msgstr "मागील"
 
-#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:201
+#: filechooser-portal/FileChooserDialog.vala:95 src/View/Window.vala:207
+#: src/View/Window.vala:210
 msgid "Next"
 msgstr "पुढील"
 
-#: filechooser-portal/FileChooserDialog.vala:112
-#: libcore/ConnectServerDialog.vala:206 libcore/DndHandler.vala:105
-#: libcore/FileConflictDialog.vala:185
+#: filechooser-portal/FileChooserDialog.vala:112 libcore/DndHandler.vala:108
+#: libcore/View/Dialogs/ConnectServerDialog.vala:206
+#: libcore/View/Dialogs/FileConflictDialog.vala:166
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:70
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:331
 #: src/View/Widgets/ProgressInfoWidget.vala:63
@@ -85,141 +87,33 @@ msgstr "\"%s\" फाइल पुनर्स्थित करायची?"
 msgid "Replacing this file will overwrite its current contents"
 msgstr "त्यास पुनर्स्थित केल्याने त्याची सामग्री अधिलिखित होईल."
 
-#: filechooser-portal/Main.vala:476 libcore/FileConflictDialog.vala:187
+#: filechooser-portal/Main.vala:476
+#: libcore/View/Dialogs/FileConflictDialog.vala:168
 msgid "Replace"
 msgstr "बदला"
 
-#: libcore/ConnectServerDialog.vala:32
-msgid "Public FTP"
-msgstr "पब्लीक एफटीपी"
-
-#: libcore/ConnectServerDialog.vala:38
-msgid "FTP (with login)"
-msgstr "एफटीपी(लाॅगीनसह)"
-
-#: libcore/ConnectServerDialog.vala:45
-msgid "SSH"
-msgstr "एसएसएच"
-
-#: libcore/ConnectServerDialog.vala:51
-msgid "AFP (Apple Filing Protocol)"
-msgstr "एएफपी (अॅपल फाइलिंग प्रोटोकाॅल)"
-
-#: libcore/ConnectServerDialog.vala:57
-msgid "Windows share"
-msgstr "विंडोज शेअर"
-
-#: libcore/ConnectServerDialog.vala:63
-msgid "WebDAV (HTTP)"
-msgstr "वेबडीएव्ही (एचटीटीपी)"
-
-#: libcore/ConnectServerDialog.vala:70
-msgid "Secure WebDAV (HTTPS)"
-msgstr "सिक्युअर वेबडीएव्ही (एचटीटीपीएस)"
-
-#: libcore/ConnectServerDialog.vala:112
-msgid "Server Details"
-msgstr "सर्वर तपशील"
-
-#: libcore/ConnectServerDialog.vala:116
-msgid "Server name or IP address"
-msgstr "सर्व्हरचे नाव किंवा आयपी पत्ता"
-
-#: libcore/ConnectServerDialog.vala:119
-msgid "Server:"
-msgstr "सर्व्हर:"
-
-#: libcore/ConnectServerDialog.vala:129
-msgid "Port:"
-msgstr "पोर्ट:"
-
-#: libcore/ConnectServerDialog.vala:156 libcore/FileConflictDialog.vala:108
-#: libcore/FileConflictDialog.vala:142 src/Dialogs/PropertiesWindow.vala:242
-msgid "Type:"
-msgstr "प्रकार:"
-
-#: libcore/ConnectServerDialog.vala:161
-msgid "Name of share on server (Optional)"
-msgstr "सर्व्हरवर सामायिकरण नाव (पर्यायी)"
-
-#: libcore/ConnectServerDialog.vala:164
-msgid "Share:"
-msgstr "शेअर:"
-
-#: libcore/ConnectServerDialog.vala:167
-msgid "Path of shared folder on server (Optional)"
-msgstr "सर्व्हरवर सामायिक फोल्डरचा मार्ग (पर्यायी)"
-
-#: libcore/ConnectServerDialog.vala:171
-msgid "Folder:"
-msgstr "फोल्डर:"
-
-#: libcore/ConnectServerDialog.vala:175
-msgid "User Details"
-msgstr "वापरकर्ता तपशील"
-
-#: libcore/ConnectServerDialog.vala:180
-msgid "Name of Windows domain"
-msgstr "विंडोज डोमेनचे नाव"
-
-#: libcore/ConnectServerDialog.vala:182
-msgid "Domain name:"
-msgstr "डोमेनचे नाव:"
-
-#: libcore/ConnectServerDialog.vala:187
-msgid "Name of user on server"
-msgstr "सर्व्हरवर वापरकर्त्याचे नाव"
-
-#: libcore/ConnectServerDialog.vala:189
-msgid "User name:"
-msgstr "वापरकर्ता नाव:"
-
-#: libcore/ConnectServerDialog.vala:197
-msgid "Password:"
-msgstr "पासवर्ड:"
-
-#: libcore/ConnectServerDialog.vala:199
-msgid "Remember this password"
-msgstr "हा पासवर्ड लक्षात ठेवा"
-
-#: libcore/ConnectServerDialog.vala:209
-msgid "Connect"
-msgstr "जोडत आहे"
-
-#: libcore/ConnectServerDialog.vala:216
-msgid "Continue"
-msgstr "सुरु"
-
-#: libcore/ConnectServerDialog.vala:266
-msgid "Connecting…"
-msgstr "जोडत आहे…"
-
-#: libcore/ConnectServerDialog.vala:373
-msgid "Please verify your user details."
-msgstr "कृपया तुमचा वापरकर्ता तपशील पुन्हा तपासा."
-
-#: libcore/Directory.vala:744
+#: libcore/Directory.vala:752
 msgid "Server did not respond within time limit"
 msgstr "सर्व्हरने वेळ मर्यादेत प्रतिसाद दिला नाही"
 
-#: libcore/DndHandler.vala:50
+#: libcore/DndHandler.vala:51
 #, c-format
 msgid "Failed to execute \"%s\""
 msgstr "\"%s\" चालविण्यात अयशस्वी"
 
-#: libcore/DndHandler.vala:100
+#: libcore/DndHandler.vala:103
 msgid "Move Here"
 msgstr "येथे हलवा"
 
-#: libcore/DndHandler.vala:101
+#: libcore/DndHandler.vala:104
 msgid "Copy Here"
 msgstr "येथे कॉपी करा"
 
-#: libcore/DndHandler.vala:102
+#: libcore/DndHandler.vala:105
 msgid "Link Here"
 msgstr "येथे दुवा साधा"
 
-#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2321
+#: libcore/Enums.vala:133 src/View/AbstractDirectoryView.vala:2337
 msgid "Name"
 msgstr "नाव"
 
@@ -234,7 +128,7 @@ msgstr "तयार करा"
 msgid "Last modification date"
 msgstr "शेवटी बदल केलेला:"
 
-#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2326
+#: libcore/Enums.vala:142 src/View/AbstractDirectoryView.vala:2342
 #: src/View/ListView.vala:27
 msgid "Size"
 msgstr "आकार"
@@ -247,7 +141,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2336
+#: libcore/Enums.vala:171 src/View/AbstractDirectoryView.vala:2352
 msgid "Date"
 msgstr "दिनांक"
 
@@ -302,178 +196,64 @@ msgid "Current Date"
 msgstr ""
 
 #. TRANSLATORS "ISO" is the acronym for "International Standards Organisation"
-#: libcore/Enums.vala:267
+#: libcore/Enums.vala:268
 msgid "ISO"
 msgstr ""
 
-#: libcore/Enums.vala:269
+#: libcore/Enums.vala:270
 msgid "Locale"
 msgstr ""
 
-#: libcore/Enums.vala:271
+#: libcore/Enums.vala:272
 #, fuzzy
 #| msgid "Info"
 msgid "Informal"
 msgstr "माहिती"
 
-#: libcore/File.vala:616 libcore/File.vala:1176
+#. TRANSLATORS Adjective applied to datetime format
+#: libcore/Enums.vala:275
+msgid "Compact"
+msgstr ""
+
+#: libcore/File.vala:659 libcore/File.vala:1213
 msgid "Inaccessible"
 msgstr "मिळविण्यास अशक्य"
 
-#: libcore/File.vala:955
+#: libcore/File.vala:977
 msgid "Failed to parse the desktop file"
 msgstr "डेस्कटॉप फाइल विश्लेषित करण्यात अयशस्वी"
 
-#: libcore/File.vala:959
+#: libcore/File.vala:981
 #, fuzzy
 msgid "Failed to parse the desktop file: "
 msgstr "डेस्कटॉप फाईल :%s पार्स होऊ शकली नाही"
 
-#: libcore/File.vala:971
+#: libcore/File.vala:993
 #, fuzzy
 msgid "Failed to create command from file: "
 msgstr "%s : फाइलमधून कमांड तयार करण्यात अयशस्वी"
 
-#: libcore/File.vala:980
+#: libcore/File.vala:1002
 #, fuzzy
 msgid "Unable to Launch Desktop File: "
 msgstr "%s: डेस्कटॉप फाइल सुरु करण्यात अक्षम"
 
-#: libcore/File.vala:1169
+#: libcore/File.vala:1206
 #, fuzzy
 msgid "Empty"
 msgstr "रिकामी फाईल"
 
-#: libcore/File.vala:1171
+#: libcore/File.vala:1208
 #, fuzzy, c-format
 msgid "%'d item"
 msgid_plural "%'d items"
 msgstr[0] "%'d मिनिट"
 msgstr[1] "%'d मिनिटे"
 
-#: libcore/File.vala:1216
+#: libcore/File.vala:1252
 #, c-format
 msgid "link to %s"
 msgstr "%s ची लिंक"
-
-#: libcore/FileConflictDialog.vala:61
-msgid "File conflict"
-msgstr "विवादित फाइल"
-
-#: libcore/FileConflictDialog.vala:96
-msgid "Original file"
-msgstr "मूळ फाइल"
-
-#: libcore/FileConflictDialog.vala:98 libcore/FileConflictDialog.vala:132
-#: src/Dialogs/PropertiesWindow.vala:546
-msgid "Size:"
-msgstr "आकार:"
-
-#: libcore/FileConflictDialog.vala:116 libcore/FileConflictDialog.vala:150
-msgid "Last modified:"
-msgstr "शेवटी बदल केलेला:"
-
-#: libcore/FileConflictDialog.vala:130
-msgid "Replace with"
-msgstr "यासह बदला"
-
-#: libcore/FileConflictDialog.vala:164
-msgid "Reset"
-msgstr "रीसेट करा"
-
-#: libcore/FileConflictDialog.vala:173
-msgid "_Select a new name for the destination"
-msgstr "(_S)गंतव्यस्थानासाठी एक नवीन नाव निवडा"
-
-#: libcore/FileConflictDialog.vala:177
-msgid "Apply this action to all files"
-msgstr "ही क्रिया सर्व फायलींवर लागू करा"
-
-#: libcore/FileConflictDialog.vala:179 libcore/StockDialogs.vala:22
-msgid "_Skip"
-msgstr "(_S)वगळा"
-
-#: libcore/FileConflictDialog.vala:180
-msgid "Re_name"
-msgstr "(_n)पुनर्नामित करा"
-
-#: libcore/FileConflictDialog.vala:182
-msgid "Keep Newest"
-msgstr "नवीनतम ठेवा"
-
-#: libcore/FileConflictDialog.vala:183
-msgid "Skip if original was modified more recently"
-msgstr "मूळ फाईल अलीकडे सुधारित केली असल्यास वगळा"
-
-#: libcore/FileConflictDialog.vala:293
-#, c-format
-msgid "Merge folder \"%s\"?"
-msgstr "\"%s\" फोल्डर विलीन करायचे?"
-
-#: libcore/FileConflictDialog.vala:294
-msgid ""
-"Merging will ask for confirmation before replacing any files in the folder "
-"that conflict with the files being copied."
-msgstr ""
-"कॉपी केलेल्या फायलींशी संघर्ष करणार्या फोल्डरमधील कोणत्याही फायली पुनर्स्थित करण्यापूर्वी "
-"विलीनीकरण पुष्टीकरण विचारेल."
-
-#: libcore/FileConflictDialog.vala:296
-#, c-format
-msgid "An older folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" मध्ये समान नावाचे जुने फोल्डर आधीपासूनच विद्यमान आहे."
-
-#: libcore/FileConflictDialog.vala:298
-#, c-format
-msgid "A newer folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" मध्ये समान नावाचे एक नवीन फोल्डर आधीपासून विद्यमान आहे."
-
-#: libcore/FileConflictDialog.vala:300
-#, c-format
-msgid "Another folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" मध्ये समान नावाचे दुसरे फोल्डर आधीपासूनच विद्यमान आहे."
-
-#: libcore/FileConflictDialog.vala:303
-#, c-format
-msgid "Replace folder \"%s\"?"
-msgstr "\"%s\" फोल्डर पुनर्स्थित करायचे?"
-
-#: libcore/FileConflictDialog.vala:304
-msgid "Replacing it will remove all files in the folder."
-msgstr "यास पुनर्स्थित केल्याने फोल्डर मधील सर्व फायली काढून टाकल्या जातील."
-
-#: libcore/FileConflictDialog.vala:305
-#, c-format
-msgid "A folder with the same name already exists in \"%s\"."
-msgstr "\"%s\" मध्ये समान नावाचे फोल्डर आधीपासूनच विद्यमान आहे."
-
-#: libcore/FileConflictDialog.vala:308
-#, c-format
-msgid "Replace file \"%s\"?"
-msgstr "\"%s\" फाइल पुनर्स्थित करायची?"
-
-#: libcore/FileConflictDialog.vala:309
-msgid "Replacing it will overwrite its content."
-msgstr "त्यास पुनर्स्थित केल्याने त्याची सामग्री अधिलिखित होईल."
-
-#: libcore/FileConflictDialog.vala:312
-#, c-format
-msgid "An older file with the same name already exists in \"%s\"."
-msgstr "\"%s\" मध्ये समान नावाची जुनी फाइल आधीपासूनच विद्यमान आहे."
-
-#: libcore/FileConflictDialog.vala:314
-#, c-format
-msgid "A newer file with the same name already exists in \"%s\"."
-msgstr "\"%s\" मध्ये समान नावाची एक नवीन फाइल आधीपासूनच विद्यमान आहे."
-
-#: libcore/FileConflictDialog.vala:316
-#, c-format
-msgid "Another file with the same name already exists in \"%s\"."
-msgstr "\"%s\" मध्ये समान नावाची दुसरी फाइल आधीपासूनच विद्यमान आहे."
-
-#: libcore/FileConflictDialog.vala:342
-msgid "Merge"
-msgstr "विलीन करा"
 
 #: libcore/FileUtils.vala:80
 #, fuzzy, c-format
@@ -521,31 +301,31 @@ msgid "Could not rename to '%s'"
 msgstr "'%s' या नावाने पुनर्नामित करणे शक्य नाही"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:668
+#: libcore/FileUtils.vala:687
 #, c-format
 msgid "Today at %s"
 msgstr "आज %s वाजता"
 
 #. TRANSLATORS '%s' is a placeholder for the time. It may be moved but not changed.
-#: libcore/FileUtils.vala:676
+#: libcore/FileUtils.vala:695
 #, c-format
 msgid "Yesterday at %s"
 msgstr "काल %s वाजता"
 
 #. TRANSLATORS '%%A' is a placeholder for the day name, '%s' is a placeholder for the time. These may be moved and reordered but not changed.
-#: libcore/FileUtils.vala:684
+#: libcore/FileUtils.vala:703
 #, c-format
 msgid "%%A at %s"
 msgstr "%%A %s वाजता"
 
-#: libcore/FileUtils.vala:909
+#: libcore/FileUtils.vala:928
 #, c-format
 msgid "%'d second"
 msgid_plural "%'d seconds"
 msgstr[0] "%'d सेकंद"
 msgstr[1] "%'d सेकंद"
 
-#: libcore/FileUtils.vala:913 libcore/FileUtils.vala:921
+#: libcore/FileUtils.vala:932 libcore/FileUtils.vala:940
 #, c-format
 msgid "%'d minute"
 msgid_plural "%'d minutes"
@@ -554,19 +334,19 @@ msgstr[1] "%'d मिनिटे"
 
 #. TRANSLATORS The %s will be translated into "x hours, y minutes"
 #. TRANSLATORS: folders, files
-#: libcore/FileUtils.vala:920 src/Dialogs/PropertiesWindow.vala:1270
+#: libcore/FileUtils.vala:939 src/Dialogs/PropertiesWindow.vala:1270
 #, c-format
 msgid "%s, %s"
 msgstr "%s, %s"
 
-#: libcore/FileUtils.vala:920
+#: libcore/FileUtils.vala:939
 #, c-format
 msgid "%'d hour"
 msgid_plural "%'d hours"
 msgstr[0] "%'d तास"
 msgstr[1] "%'d तास"
 
-#: libcore/FileUtils.vala:924
+#: libcore/FileUtils.vala:943
 #, c-format
 msgid "approximately %'d hour"
 msgid_plural "approximately %'d hours"
@@ -574,22 +354,22 @@ msgstr[0] "अंदाजे %'d तास"
 msgstr[1] "अंदाजे %'d तास"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a duplicate of another file.
-#: libcore/FileUtils.vala:932
+#: libcore/FileUtils.vala:951
 msgid "copy"
 msgstr "प्रतिकृती"
 
 #. TRANSLATORS A noun to append to a filename to indicate that it is a symbolic link to another file.
-#: libcore/FileUtils.vala:934
+#: libcore/FileUtils.vala:953
 msgid "link"
 msgstr "दुवा"
 
 #. TRANSLATORS Punctuation used to prefix "copy" or "link" and acting as an opening parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:936
+#: libcore/FileUtils.vala:955
 msgid "("
 msgstr "("
 
 #. TRANSLATORS Punctuation used as a suffix to "copy" or "link" and acting as a closing parenthesis. Must not occur in translated "copy" or "link", or in file extensions.
-#: libcore/FileUtils.vala:938
+#: libcore/FileUtils.vala:957
 msgid ")"
 msgstr ")"
 
@@ -923,102 +703,58 @@ msgstr "तयार करीत आहे"
 msgid "Files"
 msgstr "फायली"
 
-#: libcore/Resources.vala:61
+#: libcore/Resources.vala:60
 msgid "AFP"
 msgstr "एएफपी"
 
-#: libcore/Resources.vala:62
+#: libcore/Resources.vala:61
 msgid "AFC"
 msgstr "एएफसी"
 
-#: libcore/Resources.vala:63
+#: libcore/Resources.vala:62
 msgid "DAV"
 msgstr "डीएव्ही"
 
-#: libcore/Resources.vala:64
+#: libcore/Resources.vala:63
 msgid "DAVS"
 msgstr "डीएव्हीएस"
 
-#: libcore/Resources.vala:65
+#: libcore/Resources.vala:64
 msgid "FTP"
 msgstr "FTP"
 
-#: libcore/Resources.vala:66 src/View/Sidebar/SidebarWindow.vala:47
+#: libcore/Resources.vala:65 src/View/Sidebar/SidebarWindow.vala:53
 msgid "Network"
 msgstr "नेटवर्क"
 
-#: libcore/Resources.vala:67
+#: libcore/Resources.vala:66
 msgid "SFTP"
 msgstr "एसएफटीपी"
 
-#: libcore/Resources.vala:68
+#: libcore/Resources.vala:67
 msgid "SMB"
 msgstr "एसएमबी"
 
-#: libcore/Resources.vala:69 src/View/Sidebar/BookmarkListBox.vala:169
+#: libcore/Resources.vala:68 src/View/Sidebar/BookmarkListBox.vala:173
 msgid "Trash"
 msgstr "कचरा"
 
-#: libcore/Resources.vala:70
+#: libcore/Resources.vala:69
 msgid "Recent"
 msgstr "अलीकडील"
 
-#: libcore/Resources.vala:71
+#: libcore/Resources.vala:70
 msgid "MTP"
 msgstr "MTP"
 
-#: libcore/Resources.vala:72
+#: libcore/Resources.vala:71
 msgid "GPHOTO2"
 msgstr "जीफोटो2"
 
-#: libcore/Resources.vala:73 src/Dialogs/VolumePropertiesWindow.vala:41
+#: libcore/Resources.vala:72 src/Dialogs/VolumePropertiesWindow.vala:41
 #: src/View/Sidebar/DeviceListBox.vala:146
 msgid "File System"
 msgstr "फाईल प्रणाली"
-
-#: libcore/StockDialogs.vala:20
-msgid "_Cancel"
-msgstr "_(C) रद्द करा"
-
-#: libcore/StockDialogs.vala:21 src/Dialogs/BulkRenamer/RenamerDialog.vala:333
-msgid "Delete"
-msgstr "हटवा"
-
-#: libcore/StockDialogs.vala:23
-msgid "S_kip All"
-msgstr "(_k)सर्व वगळा"
-
-#: libcore/StockDialogs.vala:24
-msgid "_Retry"
-msgstr "(_R)पुन्हा प्रयत्न करा"
-
-#: libcore/StockDialogs.vala:25
-msgid "Delete _All"
-msgstr "(_A)सर्व हटवा"
-
-#: libcore/StockDialogs.vala:26
-msgid "_Replace"
-msgstr "(_R)बदला"
-
-#: libcore/StockDialogs.vala:27
-msgid "Replace _All"
-msgstr "(_A)सर्व बदला"
-
-#: libcore/StockDialogs.vala:28
-msgid "_Merge"
-msgstr "(_M)विलीन करा"
-
-#: libcore/StockDialogs.vala:29
-msgid "Merge _All"
-msgstr "(_A)सर्व विलीन करा"
-
-#: libcore/StockDialogs.vala:30
-msgid "Copy _Anyway"
-msgstr "(_A)तरीही कॉपी करा"
-
-#: libcore/StockDialogs.vala:31
-msgid "Empty _Trash"
-msgstr "(_T) कचरापेटी रिकामी करा"
 
 #: libcore/UndoManager.vala:22
 #, fuzzy
@@ -1501,33 +1237,311 @@ msgid_plural "%'d files left to trash"
 msgstr[0] "%'d फाइल कचरापेटीमध्ये बाकी"
 msgstr[1] "%'d फाइल्स कचरापेटीमध्ये बाकी"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:201
+#: libcore/View/Dialogs/ConnectServerDialog.vala:32
+msgid "Public FTP"
+msgstr "पब्लीक एफटीपी"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:38
+msgid "FTP (with login)"
+msgstr "एफटीपी(लाॅगीनसह)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:45
+msgid "SSH"
+msgstr "एसएसएच"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:51
+msgid "AFP (Apple Filing Protocol)"
+msgstr "एएफपी (अॅपल फाइलिंग प्रोटोकाॅल)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:57
+msgid "Windows share"
+msgstr "विंडोज शेअर"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:63
+msgid "WebDAV (HTTP)"
+msgstr "वेबडीएव्ही (एचटीटीपी)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:70
+msgid "Secure WebDAV (HTTPS)"
+msgstr "सिक्युअर वेबडीएव्ही (एचटीटीपीएस)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:112
+msgid "Server Details"
+msgstr "सर्वर तपशील"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:116
+msgid "Server name or IP address"
+msgstr "सर्व्हरचे नाव किंवा आयपी पत्ता"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:119
+msgid "Server:"
+msgstr "सर्व्हर:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:129
+msgid "Port:"
+msgstr "पोर्ट:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:156
+#: libcore/View/Dialogs/FileConflictDialog.vala:89
+#: libcore/View/Dialogs/FileConflictDialog.vala:123
+#: src/Dialogs/PropertiesWindow.vala:242
+msgid "Type:"
+msgstr "प्रकार:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:161
+msgid "Name of share on server (Optional)"
+msgstr "सर्व्हरवर सामायिकरण नाव (पर्यायी)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:164
+msgid "Share:"
+msgstr "शेअर:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:167
+msgid "Path of shared folder on server (Optional)"
+msgstr "सर्व्हरवर सामायिक फोल्डरचा मार्ग (पर्यायी)"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:171
+msgid "Folder:"
+msgstr "फोल्डर:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:175
+msgid "User Details"
+msgstr "वापरकर्ता तपशील"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:180
+msgid "Name of Windows domain"
+msgstr "विंडोज डोमेनचे नाव"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:182
+msgid "Domain name:"
+msgstr "डोमेनचे नाव:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:187
+msgid "Name of user on server"
+msgstr "सर्व्हरवर वापरकर्त्याचे नाव"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:189
+msgid "User name:"
+msgstr "वापरकर्ता नाव:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:197
+msgid "Password:"
+msgstr "पासवर्ड:"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:199
+msgid "Remember this password"
+msgstr "हा पासवर्ड लक्षात ठेवा"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:209
+msgid "Connect"
+msgstr "जोडत आहे"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:216
+msgid "Continue"
+msgstr "सुरु"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:266
+msgid "Connecting…"
+msgstr "जोडत आहे…"
+
+#: libcore/View/Dialogs/ConnectServerDialog.vala:373
+msgid "Please verify your user details."
+msgstr "कृपया तुमचा वापरकर्ता तपशील पुन्हा तपासा."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:64
+msgid "File conflict"
+msgstr "विवादित फाइल"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:77
+msgid "Original file"
+msgstr "मूळ फाइल"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:79
+#: libcore/View/Dialogs/FileConflictDialog.vala:113
+#: src/Dialogs/PropertiesWindow.vala:546 src/View/DetailsColumn.vala:122
+msgid "Size:"
+msgstr "आकार:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:97
+#: libcore/View/Dialogs/FileConflictDialog.vala:131
+msgid "Last modified:"
+msgstr "शेवटी बदल केलेला:"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:111
+msgid "Replace with"
+msgstr "यासह बदला"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:145
+msgid "Reset"
+msgstr "रीसेट करा"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:154
+msgid "_Select a new name for the destination"
+msgstr "(_S)गंतव्यस्थानासाठी एक नवीन नाव निवडा"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:158
+msgid "Apply this action to all files"
+msgstr "ही क्रिया सर्व फायलींवर लागू करा"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:160
+#: libcore/View/Dialogs/StockDialogs.vala:22
+msgid "_Skip"
+msgstr "(_S)वगळा"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:161
+msgid "Re_name"
+msgstr "(_n)पुनर्नामित करा"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:163
+msgid "Keep Newest"
+msgstr "नवीनतम ठेवा"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:164
+msgid "Skip if original was modified more recently"
+msgstr "मूळ फाईल अलीकडे सुधारित केली असल्यास वगळा"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:281
+#, c-format
+msgid "Merge folder \"%s\"?"
+msgstr "\"%s\" फोल्डर विलीन करायचे?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:282
+msgid ""
+"Merging will ask for confirmation before replacing any files in the folder "
+"that conflict with the files being copied."
+msgstr ""
+"कॉपी केलेल्या फायलींशी संघर्ष करणार्या फोल्डरमधील कोणत्याही फायली पुनर्स्थित करण्यापूर्वी "
+"विलीनीकरण पुष्टीकरण विचारेल."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:284
+#, c-format
+msgid "An older folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" मध्ये समान नावाचे जुने फोल्डर आधीपासूनच विद्यमान आहे."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:286
+#, c-format
+msgid "A newer folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" मध्ये समान नावाचे एक नवीन फोल्डर आधीपासून विद्यमान आहे."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:288
+#, c-format
+msgid "Another folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" मध्ये समान नावाचे दुसरे फोल्डर आधीपासूनच विद्यमान आहे."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:291
+#, c-format
+msgid "Replace folder \"%s\"?"
+msgstr "\"%s\" फोल्डर पुनर्स्थित करायचे?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:292
+msgid "Replacing it will remove all files in the folder."
+msgstr "यास पुनर्स्थित केल्याने फोल्डर मधील सर्व फायली काढून टाकल्या जातील."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:293
+#, c-format
+msgid "A folder with the same name already exists in \"%s\"."
+msgstr "\"%s\" मध्ये समान नावाचे फोल्डर आधीपासूनच विद्यमान आहे."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:296
+#, c-format
+msgid "Replace file \"%s\"?"
+msgstr "\"%s\" फाइल पुनर्स्थित करायची?"
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:297
+msgid "Replacing it will overwrite its content."
+msgstr "त्यास पुनर्स्थित केल्याने त्याची सामग्री अधिलिखित होईल."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:300
+#, c-format
+msgid "An older file with the same name already exists in \"%s\"."
+msgstr "\"%s\" मध्ये समान नावाची जुनी फाइल आधीपासूनच विद्यमान आहे."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:302
+#, c-format
+msgid "A newer file with the same name already exists in \"%s\"."
+msgstr "\"%s\" मध्ये समान नावाची एक नवीन फाइल आधीपासूनच विद्यमान आहे."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:304
+#, c-format
+msgid "Another file with the same name already exists in \"%s\"."
+msgstr "\"%s\" मध्ये समान नावाची दुसरी फाइल आधीपासूनच विद्यमान आहे."
+
+#: libcore/View/Dialogs/FileConflictDialog.vala:336
+msgid "Merge"
+msgstr "विलीन करा"
+
+#: libcore/View/Dialogs/StockDialogs.vala:20
+msgid "_Cancel"
+msgstr "_(C) रद्द करा"
+
+#: libcore/View/Dialogs/StockDialogs.vala:21
+#: src/Dialogs/BulkRenamer/RenamerDialog.vala:333
+msgid "Delete"
+msgstr "हटवा"
+
+#: libcore/View/Dialogs/StockDialogs.vala:23
+msgid "S_kip All"
+msgstr "(_k)सर्व वगळा"
+
+#: libcore/View/Dialogs/StockDialogs.vala:24
+msgid "_Retry"
+msgstr "(_R)पुन्हा प्रयत्न करा"
+
+#: libcore/View/Dialogs/StockDialogs.vala:25
+msgid "Delete _All"
+msgstr "(_A)सर्व हटवा"
+
+#: libcore/View/Dialogs/StockDialogs.vala:26
+msgid "_Replace"
+msgstr "(_R)बदला"
+
+#: libcore/View/Dialogs/StockDialogs.vala:27
+msgid "Replace _All"
+msgstr "(_A)सर्व बदला"
+
+#: libcore/View/Dialogs/StockDialogs.vala:28
+msgid "_Merge"
+msgstr "(_M)विलीन करा"
+
+#: libcore/View/Dialogs/StockDialogs.vala:29
+msgid "Merge _All"
+msgstr "(_A)सर्व विलीन करा"
+
+#: libcore/View/Dialogs/StockDialogs.vala:30
+msgid "Copy _Anyway"
+msgstr "(_A)तरीही कॉपी करा"
+
+#: libcore/View/Dialogs/StockDialogs.vala:31
+msgid "Empty _Trash"
+msgstr "(_T) कचरापेटी रिकामी करा"
+
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:201
 #, c-format
 msgid "Navigate to %s"
 msgstr "%s वर नेव्हिगेट करा"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:312
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:312
 #, c-format
 msgid "Go to %s"
 msgstr "%sला जा"
 
-#: libcore/Widgets/BasicBreadcrumbsEntry.vala:389
+#: libcore/View/HeaderBar/BasicBreadcrumbsEntry.vala:389
 msgid "Type Path"
 msgstr "प्रकार"
 
-#: libcore/Widgets/BasicLocationBar.vala:88
+#: libcore/View/HeaderBar/BasicLocationBar.vala:88
 msgid "Type a path"
 msgstr "एक पाथ टाइप करा"
 
-#: libcore/Widgets/ViewSwitcher.vala:39
+#: libcore/View/HeaderBar/ViewSwitcher.vala:21
 msgid "View as Grid"
 msgstr "ग्रिड म्हणून पहा"
 
-#: libcore/Widgets/ViewSwitcher.vala:49
+#: libcore/View/HeaderBar/ViewSwitcher.vala:31
 msgid "View as List"
 msgstr "यादी म्हणून पहा"
 
-#: libcore/Widgets/ViewSwitcher.vala:60
+#: libcore/View/HeaderBar/ViewSwitcher.vala:42
 msgid "View in Columns"
 msgstr "स्तंभात पहा"
 
@@ -1547,7 +1561,7 @@ msgstr "निवडलेले पुनर्संचयित करा"
 msgid "Delete Selected"
 msgstr "निवडलेले हटवा"
 
-#: plugins/send-by-email/plugin.vala:26
+#: plugins/send-by-email/plugin.vala:42
 msgid "Send by Email"
 msgstr ""
 
@@ -1569,8 +1583,7 @@ msgstr "प्रोग्रामची आवृत्ती दाखवा"
 msgid "Open one or more URIs, each in their own tab"
 msgstr "प्रत्येक एक किंवा अधिक यूआरआय उघडा, प्रत्येक त्यांच्या स्वत: च्या टॅबमध्ये"
 
-#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1909
-#: src/View/AbstractDirectoryView.vala:1915
+#: src/Application.vala:72 src/View/AbstractDirectoryView.vala:1926
 msgid "New Window"
 msgstr "नवीन विंडो"
 
@@ -1656,6 +1669,7 @@ msgstr "क्षमता:"
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
 #: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:273
 msgid "Unknown"
 msgstr "अज्ञात"
 
@@ -1784,12 +1798,12 @@ msgstr ""
 msgid "%0*d,%0*d,%0*d…"
 msgstr ""
 
-#: src/Dialogs/ChooseAppDialog.vala:45
+#: src/Dialogs/ChooseAppDialog.vala:50
 msgid "Set as default"
 msgstr "डीफॉल्ट म्हणून सेट करा"
 
 #: src/Dialogs/PropertiesWindow.vala:116
-#: src/View/AbstractDirectoryView.vala:2028
+#: src/View/AbstractDirectoryView.vala:2035
 #: src/View/Sidebar/AbstractMountableRow.vala:277
 msgid "Properties"
 msgstr "गुणधर्म"
@@ -1817,31 +1831,31 @@ msgstr "वास्तविक आकार मोठा असू शकत�
 msgid "unknown"
 msgstr "अज्ञात"
 
-#: src/Dialogs/PropertiesWindow.vala:486
+#: src/Dialogs/PropertiesWindow.vala:486 src/View/DetailsColumn.vala:314
 msgid "Loading…"
 msgstr "लोड करीत आहे…"
 
-#: src/Dialogs/PropertiesWindow.vala:520
+#: src/Dialogs/PropertiesWindow.vala:520 src/View/DetailsColumn.vala:283
 msgid "Could not be determined"
 msgstr "निश्चित केले जाऊ शकत नाही"
 
-#: src/Dialogs/PropertiesWindow.vala:568
+#: src/Dialogs/PropertiesWindow.vala:568 src/View/DetailsColumn.vala:145
 msgid "Created:"
 msgstr "तयार केले:"
 
-#: src/Dialogs/PropertiesWindow.vala:582
+#: src/Dialogs/PropertiesWindow.vala:582 src/View/DetailsColumn.vala:160
 msgid "Modified:"
 msgstr "सुधारित:"
 
-#: src/Dialogs/PropertiesWindow.vala:598
+#: src/Dialogs/PropertiesWindow.vala:598 src/View/DetailsColumn.vala:176
 msgid "Deleted:"
 msgstr "हटविले:"
 
-#: src/Dialogs/PropertiesWindow.vala:608
+#: src/Dialogs/PropertiesWindow.vala:608 src/View/DetailsColumn.vala:185
 msgid "Media type:"
 msgstr "मीडिया प्रकार:"
 
-#: src/Dialogs/PropertiesWindow.vala:615
+#: src/Dialogs/PropertiesWindow.vala:615 src/View/DetailsColumn.vala:192
 msgid "Resolution:"
 msgstr "रिझॉल्युशन:"
 
@@ -1850,16 +1864,16 @@ msgstr "रिझॉल्युशन:"
 msgid "Location:"
 msgstr "स्थान:"
 
-#: src/Dialogs/PropertiesWindow.vala:633
+#: src/Dialogs/PropertiesWindow.vala:633 src/View/DetailsColumn.vala:200
 msgid "Target:"
 msgstr "लक्ष्य:"
 
-#: src/Dialogs/PropertiesWindow.vala:641
+#: src/Dialogs/PropertiesWindow.vala:641 src/View/DetailsColumn.vala:210
 msgid "Original Location:"
 msgstr "मूळ स्थान:"
 
 #: src/Dialogs/PropertiesWindow.vala:664
-#: src/View/AbstractDirectoryView.vala:1996
+#: src/View/AbstractDirectoryView.vala:2005
 msgid "Other Application…"
 msgstr "इतर अप्लिकेशन…"
 
@@ -1894,7 +1908,7 @@ msgid_plural "%u files"
 msgstr[0] "%u फाईल"
 msgstr[1] "%u फायली"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:171
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:180
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -1960,18 +1974,31 @@ msgstr "गट:"
 msgid "Everyone"
 msgstr "प्रत्येकजण:"
 
-#: src/View/AbstractDirectoryView.vala:838
-#: src/View/AbstractDirectoryView.vala:1164
+#: src/View/AbstractDirectoryView.vala:313
+msgid "This folder only contains hidden files"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:320
+#: src/View/AbstractDirectoryView.vala:326
+msgid "Show"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:326
+msgid "Hide"
+msgstr ""
+
+#: src/View/AbstractDirectoryView.vala:877
+#: src/View/AbstractDirectoryView.vala:1203
 msgid "Cannot execute this file"
 msgstr "ही फाईल कार्यान्वित करू शकत नाही"
 
 #. TRANSLATORS: '%s' is a quoted placehorder for the name of a file. It can be moved but not omitted
-#: src/View/AbstractDirectoryView.vala:848
+#: src/View/AbstractDirectoryView.vala:887
 #, c-format
 msgid "“%s” must be moved from Trash before opening"
 msgstr "उघडण्यापूर्वी कचर्‍यामधून “%s” हलविले जाणे आवश्यक आहे"
 
-#: src/View/AbstractDirectoryView.vala:849
+#: src/View/AbstractDirectoryView.vala:888
 msgid ""
 "Files inside Trash cannot be opened. To open this file, it must be moved "
 "elsewhere."
@@ -1979,187 +2006,198 @@ msgstr ""
 "कचर्‍यामधील फायली उघडल्या जाऊ शकत नाहीत. ही फाईल उघडण्यासाठी, ती इतरत्र हलविली "
 "जाणे आवश्यक आहे."
 
-#: src/View/AbstractDirectoryView.vala:864
+#: src/View/AbstractDirectoryView.vala:903
 msgid "Cannot open this file"
 msgstr "ही फाइल उघडू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:877
+#: src/View/AbstractDirectoryView.vala:916
 msgid "Cannot identify file type to open"
 msgstr "उघडण्यासाठी फाइल प्रकार ओळखू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:1617
+#: src/View/AbstractDirectoryView.vala:1639
 msgid "Cannot drop this file"
 msgstr "ही फाईल सोडू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:1618
+#: src/View/AbstractDirectoryView.vala:1640
 msgid "Invalid file name provided"
 msgstr "अवैध फाइल नाव प्रदान केले"
 
-#: src/View/AbstractDirectoryView.vala:1892
-#: src/View/AbstractDirectoryView.vala:1898 src/View/Window.vala:241
+#: src/View/AbstractDirectoryView.vala:1912 src/View/Window.vala:252
 msgid "New Tab"
 msgstr "नवीन टॅब"
 
-#: src/View/AbstractDirectoryView.vala:1932
+#: src/View/AbstractDirectoryView.vala:1949
 msgid "Run"
 msgstr "चालवा"
 
-#: src/View/AbstractDirectoryView.vala:1939
+#: src/View/AbstractDirectoryView.vala:1956
 #, c-format
 msgid "Open in %s"
 msgstr "%s मध्ये उघडा"
 
-#: src/View/AbstractDirectoryView.vala:2008
+#: src/View/AbstractDirectoryView.vala:2015
 msgid "Open in"
 msgstr "मध्ये उघडा"
 
-#: src/View/AbstractDirectoryView.vala:2010
+#: src/View/AbstractDirectoryView.vala:2017
 #: src/View/Widgets/BreadcrumbsEntry.vala:446
 msgid "Open with"
 msgstr "उघडण्यासाठी वापरा"
 
-#: src/View/AbstractDirectoryView.vala:2021
+#: src/View/AbstractDirectoryView.vala:2028
 msgid "Add to Bookmarks"
 msgstr "बुकमार्क मध्ये जोडा"
 
-#: src/View/AbstractDirectoryView.vala:2041
+#: src/View/AbstractDirectoryView.vala:2048
 msgid "Select All"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2050
+#: src/View/AbstractDirectoryView.vala:2057
 msgid "Invert Selection"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2059
+#: src/View/AbstractDirectoryView.vala:2066
 #, fuzzy
 msgid "Deselect All"
 msgstr "सर्व पुनर्संचयित करा"
 
-#: src/View/AbstractDirectoryView.vala:2067
+#: src/View/AbstractDirectoryView.vala:2077
 msgid "Cut"
 msgstr "कट"
 
 #. TRANSLATORS Verb to indicate action of menuitem will be to duplicate a file.
-#: src/View/AbstractDirectoryView.vala:2075
+#: src/View/AbstractDirectoryView.vala:2085
 msgid "Copy"
 msgstr "कॉपी"
 
-#: src/View/AbstractDirectoryView.vala:2082
+#: src/View/AbstractDirectoryView.vala:2092
 msgid "Move to Trash"
 msgstr "फाइल्स कचर्यामध्ये टाका"
 
-#: src/View/AbstractDirectoryView.vala:2087
+#: src/View/AbstractDirectoryView.vala:2097
 msgid "Delete Permanently"
 msgstr "कायमचे हटवा"
 
-#: src/View/AbstractDirectoryView.vala:2094
+#: src/View/AbstractDirectoryView.vala:2104
 msgid "Restore from Trash"
 msgstr "कचरापेटी मधून पुनर्संचयित करा"
 
-#: src/View/AbstractDirectoryView.vala:2117
+#: src/View/AbstractDirectoryView.vala:2127
 msgid "Open Parent Folder"
 msgstr "पॅरेन्ट फोल्डर उघडा"
 
-#: src/View/AbstractDirectoryView.vala:2120
+#: src/View/AbstractDirectoryView.vala:2130
 msgid "Remove from History"
 msgstr "इतिहासातून काढा"
 
-#: src/View/AbstractDirectoryView.vala:2146
+#: src/View/AbstractDirectoryView.vala:2156
 msgid "Rename…"
 msgstr "पुनर्नामित करा…"
 
-#: src/View/AbstractDirectoryView.vala:2153
+#: src/View/AbstractDirectoryView.vala:2163
 msgid "Copy as Link"
 msgstr "लिंक कॉपी करा"
 
-#: src/View/AbstractDirectoryView.vala:2176
-#: src/View/AbstractDirectoryView.vala:2256
+#: src/View/AbstractDirectoryView.vala:2186
+#: src/View/AbstractDirectoryView.vala:2268
 msgid "Paste Link into Folder"
 msgstr "फोल्डरमध्ये लिंक पेस्ट करा"
 
-#: src/View/AbstractDirectoryView.vala:2181
-#: src/View/AbstractDirectoryView.vala:2233
+#: src/View/AbstractDirectoryView.vala:2191
+#: src/View/AbstractDirectoryView.vala:2245
 msgid "Paste into Folder"
 msgstr "फोल्डरमध्ये पेस्ट करा"
 
-#: src/View/AbstractDirectoryView.vala:2191
-#: src/View/AbstractDirectoryView.vala:2261
+#: src/View/AbstractDirectoryView.vala:2201
+#: src/View/AbstractDirectoryView.vala:2273
 msgid "Paste"
 msgstr "पेस्ट"
 
-#: src/View/AbstractDirectoryView.vala:2299
+#: src/View/AbstractDirectoryView.vala:2314
 #, fuzzy
 #| msgid "Set as default"
 msgid "Set as Wallpaper"
 msgstr "डीफॉल्ट म्हणून सेट करा"
 
-#: src/View/AbstractDirectoryView.vala:2331 src/View/ListView.vala:28
+#: src/View/AbstractDirectoryView.vala:2347 src/View/ListView.vala:28
 msgid "Type"
 msgstr "प्रकार"
 
-#: src/View/AbstractDirectoryView.vala:2341
+#: src/View/AbstractDirectoryView.vala:2357
 msgid "Reversed Order"
 msgstr "उलट क्रम"
 
-#: src/View/AbstractDirectoryView.vala:2344
+#: src/View/AbstractDirectoryView.vala:2362
 msgid "Folders Before Files"
 msgstr "फायली आधी फोल्डर"
 
-#: src/View/AbstractDirectoryView.vala:2356
+#: src/View/AbstractDirectoryView.vala:2382
 msgid "Sort by"
 msgstr "याच्या क्रमाने लावा"
 
-#: src/View/AbstractDirectoryView.vala:2366
+#: src/View/AbstractDirectoryView.vala:2391
 msgid "Folder"
 msgstr "फोल्डर"
 
-#: src/View/AbstractDirectoryView.vala:2372
+#: src/View/AbstractDirectoryView.vala:2397
 msgid "Empty File"
 msgstr "रिकामी फाईल"
 
-#: src/View/AbstractDirectoryView.vala:2382
+#: src/View/AbstractDirectoryView.vala:2411
 #, fuzzy
 #| msgid "Templates"
 msgid "Template"
 msgstr "नमुने"
 
-#: src/View/AbstractDirectoryView.vala:2390
+#: src/View/AbstractDirectoryView.vala:2413
 msgid "…too many templates"
 msgstr ""
 
-#: src/View/AbstractDirectoryView.vala:2395
+#: src/View/AbstractDirectoryView.vala:2419
 msgid "New"
 msgstr "नवीन"
 
-#: src/View/AbstractDirectoryView.vala:2669
+#: src/View/AbstractDirectoryView.vala:2713
 #, c-format
 msgid "Untitled %s"
 msgstr "शीर्षकविरहित %s"
 
-#: src/View/AbstractDirectoryView.vala:2960
-#: src/View/AbstractDirectoryView.vala:3163
+#: src/View/AbstractDirectoryView.vala:3002
+#: src/View/AbstractDirectoryView.vala:3208
 msgid "Cannot remove files from here"
 msgstr "येथून फायली काढू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:2961
-#: src/View/AbstractDirectoryView.vala:3136
-#: src/View/AbstractDirectoryView.vala:3147
-#: src/View/AbstractDirectoryView.vala:3164
+#: src/View/AbstractDirectoryView.vala:3003
+#: src/View/AbstractDirectoryView.vala:3181
+#: src/View/AbstractDirectoryView.vala:3192
+#: src/View/AbstractDirectoryView.vala:3209
 msgid "You do not have permission to change this location"
 msgstr "आपल्याला ही जागा बदलण्याची परवानगी नाही"
 
-#: src/View/AbstractDirectoryView.vala:3104
+#: src/View/AbstractDirectoryView.vala:3149
 msgid "Cannot copy files that are in the trash"
 msgstr "कचर्यात असलेल्या फायली कॉपी करू शकत नाही"
 
-#: src/View/AbstractDirectoryView.vala:3105
+#: src/View/AbstractDirectoryView.vala:3150
 msgid "Cutting the selection instead"
 msgstr "त्याऐवजी निवडलेले कट करीत आहोत"
 
-#: src/View/AbstractDirectoryView.vala:3135
-#: src/View/AbstractDirectoryView.vala:3146
+#: src/View/AbstractDirectoryView.vala:3180
+#: src/View/AbstractDirectoryView.vala:3191
 msgid "Cannot paste files here"
 msgstr "येथे फायली पेस्ट करू शकत नाही"
+
+#: src/View/DetailsColumn.vala:118
+#, fuzzy
+#| msgid "Name"
+msgid "Name:"
+msgstr "नाव"
+
+#: src/View/DetailsColumn.vala:217
+#, fuzzy
+#| msgid "Properties"
+msgid "Properties…"
+msgstr "गुणधर्म"
 
 #: src/View/DirectoryNotFound.vala:27 src/View/ViewContainer.vala:377
 msgid "This Folder Does Not Exist"
@@ -2208,12 +2246,14 @@ msgid "Open the system security and privacy settings app"
 msgstr "सिस्टम सुरक्षा आणि गोपनीयता सेटिंग्ज अॅप उघडा"
 
 #: src/View/Slot.vala:31
-msgid "This Folder Is Empty"
-msgstr "हे फोल्डर रिकामे आहे"
+#, fuzzy
+#| msgid "This Folder Does Not Exist"
+msgid "This Folder does not contain any files"
+msgstr "हे फोल्डर अस्तित्वात नाही"
 
 #: src/View/Slot.vala:32
-msgid "Trash Is Empty"
-msgstr "कचरापेटी रिकामी आहे"
+msgid "Trash does not contain any files"
+msgstr ""
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
@@ -2223,7 +2263,7 @@ msgstr "अलीकडे उघडलेल्या कोणत्याह�
 msgid "Access Denied"
 msgstr "प्रवेश नाकारला गेला"
 
-#: src/View/ViewContainer.vala:356 src/View/Sidebar/BookmarkListBox.vala:127
+#: src/View/ViewContainer.vala:356 src/View/Sidebar/BookmarkListBox.vala:131
 msgid "Home"
 msgstr "होम"
 
@@ -2271,49 +2311,41 @@ msgstr "फोल्डर दाखविण्यास अक्षम"
 msgid "The server for this folder could not be located."
 msgstr "या फोल्डरसाठी सर्व्हर शोधता आला नाही."
 
-#: src/View/ViewContainer.vala:428
-msgid "File not Found"
-msgstr "फाइल सापडली नाही"
-
-#: src/View/ViewContainer.vala:429
-msgid "The file selected no longer exists."
-msgstr "निवडलेली फाइल यापुढे विद्यमान नाही."
-
-#: src/View/Window.vala:216
+#: src/View/Window.vala:227
 msgid "Menu"
 msgstr ""
 
-#: src/View/Window.vala:246
+#: src/View/Window.vala:257
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Closed Tabs"
 msgstr "टॅब बंद करा"
 
-#: src/View/Window.vala:474 src/View/Widgets/BreadcrumbsEntry.vala:410
+#: src/View/Window.vala:454 src/View/Widgets/BreadcrumbsEntry.vala:410
 msgid "Open in New Window"
 msgstr "नवीन विंडोमध्ये उघडा"
 
-#: src/View/Window.vala:475
+#: src/View/Window.vala:455
 #, fuzzy
 msgid "Duplicate Tab"
 msgstr "\"%s\" डुप्लिकेट करीत आहे"
 
 #. TRANSLATORS: For RTL this should be "to the left"
-#: src/View/Window.vala:479
+#: src/View/Window.vala:459
 msgid "Close Tabs to the Right"
 msgstr ""
 
-#: src/View/Window.vala:480
+#: src/View/Window.vala:460
 #, fuzzy
 #| msgid "Close Tab"
 msgid "Close Other Tabs"
 msgstr "टॅब बंद करा"
 
-#: src/View/Window.vala:481
+#: src/View/Window.vala:461
 msgid "Close Tab"
 msgstr "टॅब बंद करा"
 
-#: src/View/Window.vala:766 src/View/Window.vala:776
+#: src/View/Window.vala:741 src/View/Window.vala:751
 msgid "(as Administrator)"
 msgstr "(प्रशासक म्हणून)"
 
@@ -2359,15 +2391,15 @@ msgstr "%s (%s, %s)"
 msgid "Not mounted"
 msgstr ""
 
-#: src/View/Sidebar/BookmarkListBox.vala:135
+#: src/View/Sidebar/BookmarkListBox.vala:139
 msgid "View the home folder"
 msgstr "मुख्य फोल्डर बघा"
 
-#: src/View/Sidebar/BookmarkListBox.vala:152
+#: src/View/Sidebar/BookmarkListBox.vala:156
 msgid "View the list of recently used files"
 msgstr "अलीकडे वापरलेल्या फायलींची सूची पहा"
 
-#: src/View/Sidebar/BookmarkListBox.vala:177
+#: src/View/Sidebar/BookmarkListBox.vala:181
 msgid "Open the Trash"
 msgstr "कचरा उघडा"
 
@@ -2423,29 +2455,29 @@ msgstr "संपूर्ण नेटवर्क"
 msgid "Browse the contents of the network"
 msgstr "नेटवर्कची सामग्री ब्राउझ करा"
 
-#: src/View/Sidebar/SidebarWindow.vala:30
+#: src/View/Sidebar/SidebarWindow.vala:36
 #: src/View/Widgets/SearchResults.vala:300
 msgid "Bookmarks"
 msgstr "बुकमार्क"
 
-#: src/View/Sidebar/SidebarWindow.vala:31
+#: src/View/Sidebar/SidebarWindow.vala:37
 msgid "Common places plus saved folders and files"
 msgstr "सामान्य ठिकाणे तसेच जतन केलेली फोल्डर्स आणि फायली"
 
 #. TRANSLATORS: Generic term for collection of storage devices, mount points, etc.
-#: src/View/Sidebar/SidebarWindow.vala:39
+#: src/View/Sidebar/SidebarWindow.vala:45
 msgid "Storage"
 msgstr "साठवण"
 
-#: src/View/Sidebar/SidebarWindow.vala:40
+#: src/View/Sidebar/SidebarWindow.vala:46
 msgid "Internal and connected storage devices"
 msgstr "अंतर्गत आणि कनेक्ट केलेले स्टोरेज डिव्हाइस"
 
-#: src/View/Sidebar/SidebarWindow.vala:48
+#: src/View/Sidebar/SidebarWindow.vala:54
 msgid "Devices and places available via a network"
 msgstr "नेटवर्कद्वारे उपलब्ध साधने आणि ठिकाणे"
 
-#: src/View/Sidebar/SidebarWindow.vala:73
+#: src/View/Sidebar/SidebarWindow.vala:79
 msgid "Connect Server…"
 msgstr "सर्वरला कनेक्ट करा…"
 
@@ -2463,68 +2495,72 @@ msgstr ""
 msgid "Bind mount"
 msgstr "(_U)अनमाउंट करा"
 
-#: src/View/Widgets/AppMenu.vala:25
+#: src/View/Widgets/AppMenu.vala:35
 msgid "Zoom Out"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:34
+#: src/View/Widgets/AppMenu.vala:44
 msgid "Zoom 1:1"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:43
+#: src/View/Widgets/AppMenu.vala:53
 msgid "Zoom In"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:81
+#: src/View/Widgets/AppMenu.vala:91
 msgid "Double-click to Navigate"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:82
+#: src/View/Widgets/AppMenu.vala:92
 msgid "Double-click on a folder opens it, single-click selects it"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:86
+#: src/View/Widgets/AppMenu.vala:96
 #, fuzzy
 msgid "Sort Folders before Files"
 msgstr "फायली आधी फोल्डर"
 
-#: src/View/Widgets/AppMenu.vala:90
+#: src/View/Widgets/AppMenu.vala:100
 #, fuzzy
 #| msgid "Restore '%s' from trash"
 msgid "Restore Tabs from Last Time"
 msgstr "कचर्यामधून '%s' पुनर्संचयित करा"
 
-#: src/View/Widgets/AppMenu.vala:94
+#: src/View/Widgets/AppMenu.vala:104
 #, fuzzy
 msgid "Show in View"
 msgstr "लपविलेल्या फायली दाखवा"
 
-#: src/View/Widgets/AppMenu.vala:101
+#: src/View/Widgets/AppMenu.vala:111
 #, fuzzy
 msgid "Hidden Files"
 msgstr "लपविलेल्या फायली दाखवा"
 
-#: src/View/Widgets/AppMenu.vala:105
+#: src/View/Widgets/AppMenu.vala:115
 #, fuzzy
 msgid "Local Thumbnails"
 msgstr "थंबनेल्स लपवा"
 
-#: src/View/Widgets/AppMenu.vala:110
+#: src/View/Widgets/AppMenu.vala:120
 #, fuzzy
 msgid "Remote Thumbnails"
 msgstr "रिमोट थंबनेल्स दाखवा"
 
+#: src/View/Widgets/AppMenu.vala:125
+msgid "File Preview (Column View)"
+msgstr ""
+
 #. TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
-#: src/View/Widgets/AppMenu.vala:116
+#: src/View/Widgets/AppMenu.vala:131
 msgid "Date & Time Format"
 msgstr ""
 
-#: src/View/Widgets/AppMenu.vala:199
+#: src/View/Widgets/AppMenu.vala:229
 #, fuzzy
 msgid "No operation to undo"
 msgstr "ऑपरेशन कालबाह्य झाले आहे."
 
-#: src/View/Widgets/AppMenu.vala:206
+#: src/View/Widgets/AppMenu.vala:236
 #, fuzzy
 msgid "No operation to redo"
 msgstr "ऑपरेशन कालबाह्य झाले आहे."
@@ -2556,29 +2592,29 @@ msgstr "हे फोल्डर रीलोड करा"
 msgid "Searching…"
 msgstr "शोधत आहे…"
 
-#: src/View/Widgets/OverlayBar.vala:162
+#: src/View/Widgets/OverlayBar.vala:171
 #, c-format
 msgid "%u folders"
 msgstr "%u फोल्डर"
 
-#: src/View/Widgets/OverlayBar.vala:164 src/View/Widgets/OverlayBar.vala:174
+#: src/View/Widgets/OverlayBar.vala:173 src/View/Widgets/OverlayBar.vala:183
 #, c-format
 msgid " and %u other item (%s) selected"
 msgid_plural " and %u other items (%s) selected"
 msgstr[0] " आणि निवडलेला %u अन्य आयटम (%s)"
 msgstr[1] " आणि निवडलेले %u अन्य आयटम (%s)"
 
-#: src/View/Widgets/OverlayBar.vala:168 src/View/Widgets/OverlayBar.vala:178
+#: src/View/Widgets/OverlayBar.vala:177 src/View/Widgets/OverlayBar.vala:187
 msgid " selected"
 msgstr " निवडले"
 
-#: src/View/Widgets/OverlayBar.vala:181
+#: src/View/Widgets/OverlayBar.vala:190
 #, c-format
 msgid "%u items selected (%s)"
 msgstr "%u आयटम निवडले (%s)"
 
 #. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:226
+#: src/View/Widgets/OverlayBar.vala:235
 #, c-format
 msgid "%u sub-folder, "
 msgid_plural "%u sub-folders, "
@@ -2586,7 +2622,7 @@ msgstr[0] "%u सब-फोल्डर, "
 msgstr[1] "%u सब-फोल्डर, "
 
 #. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:232
+#: src/View/Widgets/OverlayBar.vala:241
 #, c-format
 msgid "%u file, "
 msgid_plural "%u files, "
@@ -2594,18 +2630,18 @@ msgstr[0] "%u फाईल, "
 msgstr[1] "%u फायली, "
 
 #. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:242
+#: src/View/Widgets/OverlayBar.vala:251
 #, c-format
 msgid "%s approx."
 msgstr "%s साधारण."
 
 #. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:245
+#: src/View/Widgets/OverlayBar.vala:254
 msgid "unknown size"
 msgstr "अज्ञात आकार"
 
 #. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:249
+#: src/View/Widgets/OverlayBar.vala:258
 #, c-format
 msgid "%u file not readable"
 msgid_plural "%u files not readable"
@@ -2639,6 +2675,23 @@ msgstr "या फोल्डर खाली"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "अलीकडे वापरलेले"
+
+#~ msgid "This Folder Is Empty"
+#~ msgstr "हे फोल्डर रिकामे आहे"
+
+#~ msgid "Trash Is Empty"
+#~ msgstr "कचरापेटी रिकामी आहे"
+
+#, fuzzy
+#~| msgid "More Results …"
+#~ msgid "More Details…"
+#~ msgstr "अधिक परिणाम …"
+
+#~ msgid "File not Found"
+#~ msgstr "फाइल सापडली नाही"
+
+#~ msgid "The file selected no longer exists."
+#~ msgstr "निवडलेली फाइल यापुढे विद्यमान नाही."
 
 #~ msgid "Would you like to recreate it?"
 #~ msgstr "आपण तो पुन्हा तयार करू इच्छिता?"

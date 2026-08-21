@@ -1,6 +1,6 @@
 /***
     Copyright (c) 2012 ammonkey <am.monkeyd@gmail.com>
-                  2015-2018 elementary LLC <https://elementary.io>
+                  2015-2026 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,8 +29,6 @@ namespace Files.View {
         private Files.File? goffile = null;
         private GLib.List<unowned Files.File>? selected_files = null;
         private uint8 [] buffer;
-        private GLib.FileInputStream? stream;
-        private Gdk.PixbufLoader loader;
         private uint update_timeout_id = 0;
         private DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
@@ -50,9 +48,13 @@ namespace Files.View {
             cancel ();
         }
 
-        public void selection_changed (GLib.List<unowned Files.File> files) {
+        public void selection_changed (GLib.List<unowned Files.File> files, bool is_miller) {
             cancel ();
             visible = false;
+
+            if (update_timeout_id > 0) {
+                GLib.Source.remove (update_timeout_id);
+            }
 
             update_timeout_id = GLib.Timeout.add_full (GLib.Priority.LOW, STATUS_UPDATE_DELAY, () => {
                 if (files != null) {
@@ -61,7 +63,14 @@ namespace Files.View {
                     selected_files = null;
                 }
 
-                real_update (selected_files);
+                if (is_miller && Preferences.get_default ().show_file_preview &&
+                    files.length () == 1 && !files.data.is_folder ()) {
+
+                    visible = false;
+                } else {
+                    real_update (selected_files);
+                }
+
                 update_timeout_id = 0;
                 return GLib.Source.REMOVE;
             });
@@ -137,7 +146,7 @@ namespace Files.View {
                     str = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
                     /* If we have an image, see if we can get its resolution. */
-                    string? type = goffile.get_ftype ();
+                    string? type = goffile.content_type;
 
                     if (goffile.format_size == "" ) { /* No need to keep recalculating the formatted size. */
                         goffile.format_size = format_size (PropertiesWindow.file_real_size (goffile));
@@ -279,6 +288,8 @@ namespace Files.View {
             }
 
             var file = goffile.location;
+            Gdk.PixbufLoader? loader = null;
+            GLib.FileInputStream? stream = null;
             image_size_loaded = false;
 
             try {
@@ -287,7 +298,7 @@ namespace Files.View {
                     error ("Could not read image file's size data");
                 }
 
-                loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_ftype ());
+                loader = new Gdk.PixbufLoader.with_mime_type (goffile.content_type);
                 loader.size_prepared.connect (on_size_prepared);
 
                 cancel_cancellable ();
@@ -298,16 +309,22 @@ namespace Files.View {
                 warning ("Error loading image resolution in OverlayBar: %s", e.message);
             }
             /* Gdk wants us to always close the loader, so we are nice to it. */
-            try {
-                stream.close ();
-            } catch (GLib.Error e) {
-                debug ("Error closing stream in load resolution: %s", e.message);
+            if (stream != null) {
+                try {
+                    stream.close ();
+                } catch (GLib.Error e) {
+                    critical ("Error closing stream in load resolution: %s", e.message);
+                }
             }
-            try {
-                loader.close ();
-            } catch (GLib.Error e) { /* Errors expected because may not load whole image. */
-                debug ("Error closing loader in load resolution: %s", e.message);
+
+            if (loader != null) {
+                try {
+                    loader.close ();
+                } catch (GLib.Error e) { /* Errors expected because may not load whole image. */
+                    critical ("Error closing loader in load resolution: %s", e.message);
+                }
             }
+
             cancellable = null;
         }
 
@@ -315,6 +332,7 @@ namespace Files.View {
             if (goffile == null) { /* This can occur during rapid rubberband selection. */
                 return;
             }
+
             image_size_loaded = true;
             goffile.width = width;
             goffile.height = height;
@@ -325,6 +343,7 @@ namespace Files.View {
                                               Cancellable cancellable) {
             ssize_t read = 1;
             uint count = 0;
+
             while (!image_size_loaded && read > 0 && !cancellable.is_cancelled ()) {
                 try {
                     read = yield stream.read_async (buffer, 0, cancellable);
@@ -334,7 +353,7 @@ namespace Files.View {
                         goffile.height = -1;
                         /* Note that Gdk.PixbufLoader seems to leak memory with some file types.
                          * Any file type that causes this error should be added to the Files.SKIP_IMAGES array. */
-                        critical ("Could not determine resolution of file type %s", goffile.get_ftype ());
+                        critical ("Could not determine resolution of file type %s", goffile.content_type);
                         break;
                     }
 

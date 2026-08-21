@@ -21,26 +21,6 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-public class Files.Plugins.ContractMenuItem : Gtk.MenuItem {
-    private Granite.Services.Contract contract;
-    private GLib.File[] files;
-
-    public ContractMenuItem (Granite.Services.Contract contract, GLib.File[] files) {
-        this.contract = contract;
-        this.files = files;
-
-        label = contract.get_display_name ();
-    }
-
-    public override void activate () {
-        try {
-            contract.execute_with_files (files);
-        } catch (Error err) {
-            warning (err.message);
-        }
-    }
-}
-
 public class Files.Plugins.Contractor : Files.Plugins.Base {
     private Gtk.Menu menu;
     private Files.File current_directory = null;
@@ -63,7 +43,7 @@ public class Files.Plugins.Contractor : Files.Plugins.Base {
                 files = new GLib.File[0];
                 files += current_directory.location;
 
-                string? mimetype = current_directory.get_ftype ();
+                string? mimetype = current_directory.content_type;
 
                 if (mimetype == null) {
                     return;
@@ -84,17 +64,31 @@ public class Files.Plugins.Contractor : Files.Plugins.Base {
                 return;
             }
 
+            var separator_item = new Gtk.SeparatorMenuItem ();
+            add_menuitem (menu, separator_item);
+
+            var action_group = new SimpleActionGroup ();
+
+            menu.insert_action_group ("contractor", action_group);
+
             for (int i = 0; i < contracts.size; i++) {
                 var contract = contracts.get (i);
-                Gtk.MenuItem menu_item;
 
-                // insert separator if we got at least 1 contract
-                if (i == 0) {
-                    menu_item = new Gtk.SeparatorMenuItem ();
-                    add_menuitem (menu, menu_item);
-                }
+                var action = new SimpleAction ("contract-%i".printf (i), null);
+                action.activate.connect (() => {
+                    try {
+                        contract.execute_with_files (files);
+                    } catch (Error err) {
+                        warning (err.message);
+                    }
+                });
 
-                menu_item = new ContractMenuItem (contract, files);
+                action_group.add_action (action);
+
+                var menu_item = new Gtk.MenuItem.with_label (contract.get_display_name ()) {
+                    action_name = "contractor.contract-%i".printf (i)
+                };
+
                 add_menuitem (menu, menu_item);
             }
         } catch (Error e) {
@@ -116,7 +110,7 @@ public class Files.Plugins.Contractor : Files.Plugins.Base {
         string[] mimetypes = new string[0];
 
         foreach (unowned Files.File file in files) {
-            var ftype = file.get_ftype ();
+            var ftype = file.content_type;
 
             if (ftype != null) {
                 mimetypes += ftype;

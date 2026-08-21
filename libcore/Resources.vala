@@ -20,7 +20,6 @@ namespace Files {
     public const string APP_ID = "io.elementary.files";
     public const string APP_DESKTOP = APP_ID + ".desktop";
     public const string APP_TITLE = N_("Files");
-    public const string HELP_URL = "https://elementaryos.stackexchange.com/questions/tagged/pantheon-files";
     public const string BUG_URL = "https://github.com/elementary/files/issues/new";
     public const string INVALID_TAB_NAME = "----";
 

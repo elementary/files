@@ -51,7 +51,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             var info = yield file.location.query_info_async ("metadata::color-tag", FileQueryInfoFlags.NONE);
             if (info.has_attribute ("metadata::color-tag")) {
                 file.color = int.parse (info.get_attribute_string ("metadata::color-tag"));
-                file.icon_changed ();
             } else {
                 // Look for color in Files daemon database
                 var rc = yield daemon.get_uri_infos (file.uri);
@@ -66,7 +65,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                     row_iter.next_value ().get_string (); // Skip file type
                     file.color = int.parse (row_iter.next_value ().get_string ());
                     file.location.set_attribute_string ("metadata::color-tag", file.color.to_string (), FileQueryInfoFlags.NONE);
-                    file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
                     yield daemon.delete_entry (file.uri);
                 }
             }
@@ -124,7 +122,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             if (target_file.color != n) {
                 target_file.color = n;
                 target_file.location.set_attribute_string ("metadata::color-tag", n.to_string (), FileQueryInfoFlags.NONE);
-                target_file.icon_changed ();
             }
         }
 
@@ -134,7 +131,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             foreach (unowned Files.File file in files) {
                 if (file.location.has_uri_scheme ("recent")) {
                     file.color = n;
-                    file.icon_changed (); /* Just need to trigger redraw */
                 }
             }
         }

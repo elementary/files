@@ -13,6 +13,16 @@ public class Files.AppMenu : Gtk.Popover {
     private string[] undo_accels;
     private unowned UndoManager undo_manager;
 
+    private static Settings column_view_settings;
+    private static Settings icon_view_settings;
+    private static Settings list_view_settings;
+
+    static construct {
+        column_view_settings = new Settings ("io.elementary.files.column-view");
+        icon_view_settings = new Settings ("io.elementary.files.icon-view");
+        list_view_settings = new Settings ("io.elementary.files.list-view");
+    }
+
     construct {
         var app_instance = (Gtk.Application)(GLib.Application.get_default ());
 
@@ -84,17 +94,17 @@ public class Files.AppMenu : Gtk.Popover {
         };
 
         var folders_before_files = new Granite.SwitchModelButton (_("Sort Folders before Files")) {
-            action_name = "win.folders-before-files"
+            action_name = "win.sort-directories-first"
         };
 
         var restore_tabs = new Granite.SwitchModelButton (_("Restore Tabs from Last Time")) {
-            action_name = "win.restore-tabs-on-startup"
+            action_name = "win.restore-tabs"
         };
 
         var show_header = new Granite.HeaderLabel (_("Show in View"));
 
         var show_hidden_button = new Gtk.CheckButton () {
-            action_name = "win.show-hidden"
+            action_name = "win.show-hiddenfiles"
         };
         show_hidden_button.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
         show_hidden_button.add (new Granite.AccelLabel (
@@ -111,6 +121,11 @@ public class Files.AppMenu : Gtk.Popover {
             action_name = "win.show-remote-thumbnails"
         };
         show_remote_thumbnails.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
+
+        var show_file_preview = new Gtk.CheckButton.with_label (_("File Preview (Column View)")) {
+            action_name = "win.show-file-preview"
+        };
+        show_file_preview.get_style_context ().add_class (Gtk.STYLE_CLASS_MENUITEM);
 
         ///TRANSLATORS The format of the date (possibly with time) shown in the Modified column of the file view
         var datetimeformat_header = new Granite.HeaderLabel (_("Date & Time Format"));
@@ -138,6 +153,7 @@ public class Files.AppMenu : Gtk.Popover {
         menu_box.add (show_hidden_button);
         menu_box.add (show_local_thumbnails);
         menu_box.add (show_remote_thumbnails);
+        menu_box.add (show_file_preview);
         menu_box.add (new Gtk.Separator (HORIZONTAL) { margin_top = 3, margin_bottom = 3 });
         menu_box.add (datetimeformat_header);
         menu_box.add (iso_button);
@@ -155,9 +171,12 @@ public class Files.AppMenu : Gtk.Popover {
 
         // Connect to all view settings rather than try to connect and disconnect
         // continuously to current view mode setting.
-        Files.icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
-        Files.list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
-        Files.column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+        icon_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+        list_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+        column_view_settings.changed["zoom-level"].connect (on_zoom_setting_changed);
+
+        var app_settings = new Settings ("io.elementary.files.preferences");
+        app_settings.changed["default-viewmode"].connect (on_zoom_setting_changed);
 
         // Initialize and connect dateformat buttons
         switch (app_settings.get_enum ("date-format")) {
@@ -218,7 +237,20 @@ public class Files.AppMenu : Gtk.Popover {
         );
     }
 
-    public void on_zoom_setting_changed (Settings settings, string key) {
+    private void on_zoom_setting_changed () {
+        Settings settings = null;
+        switch (app_settings.get_string ("default-viewmode")) {
+            case "icon":
+                settings = icon_view_settings;
+                break;
+            case "list":
+                settings = list_view_settings;
+                break;
+            case "miller_columns":
+                settings = column_view_settings;
+                break;
+        }
+
         if (settings == null) {
             critical ("Zoom string from settinggs: Null settings");
             zoom_default_button.label = "";

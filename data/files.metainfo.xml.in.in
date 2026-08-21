@@ -16,15 +16,15 @@
   <screenshots>
     <screenshot type="default">
       <caption>Quick access to settings like zoom levels and hidden files</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.1.6/data/screenshot-grid.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.3.2/data/screenshot-grid.png</image>
     </screenshot>
     <screenshot>
       <caption>See more metadata at a glance in List view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.1.6/data/screenshot-list.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.3.2/data/screenshot-list.png</image>
     </screenshot>
     <screenshot>
       <caption>Browse complex trees faster with Column view</caption>
-      <image>https://raw.githubusercontent.com/elementary/files/7.1.6/data/screenshot-column.png</image>
+      <image>https://raw.githubusercontent.com/elementary/files/7.3.2/data/screenshot-column.png</image>
     </screenshot>
   </screenshots>
 
@@ -62,6 +62,87 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.3.2" date="2026-08-03" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>The presence of undisplayed hidden files is indicated when there are no visible files</li>
+          <li>Undisplayed hidden files can temporarily be shown in an otherwise empty folder</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>The existing shortcut to focus the sidebar is changed to Ctrl + Alt + Left</li>
+          <li>A corresponding shortcut to focus the document is added: Ctrl + Alt + Right</li>
+          <li>Shortcuts involving Left or Right arrow keys now change according whether the locale is RTL or LTR</li>
+          <li>Allow horizontal scrolling in ListView to ensure all columns visible</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/1278">Ignore hidden files for 'this folder is empty' message</issue>
+        <issue url="https://github.com/elementary/files/issues/1992">List view columns can extend outside of viewport without scrolling</issue>
+        <issue url="https://github.com/elementary/files/issues/2658">Drag and drop files into a folder doesn't always work</issue>
+        <issue url="https://github.com/elementary/files/issues/2677">When renaming a file pressing CTRL+LEFT makes the focus move to the left column of Files</issue>
+        <issue url="https://github.com/elementary/files/issues/2772">Doing a drag-drop operation in reverse fails</issue>
+        <issue url="https://github.com/elementary/files/issues/2781">Sudden surge in memory usage when right clicking big jpg file</issue>
+        <issue url="https://github.com/elementary/files/issues/2787">Screenshots need updating</issue>
+        <issue url="https://github.com/elementary/files/issues/2788">Miller columns: the right-hand column appears blank</issue>
+        <issue url="https://github.com/elementary/files/issues/2797">Correct RTL accelerator arrow keys</issue>
+      </issues>
+    </release>
+    <release version="7.3.1" date="2026-05-08" urgency="medium">
+      <description>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Fixed a regression causing a crash if there are too many templates</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+    </release>
+    <release version="7.3.0" date="2026-04-24" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>An option to show a preview pane in Column view is introduced</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>The list of search results now shows matches in the current folder first</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/1194">Renaming field is misplaced when scrolling</issue>
+        <issue url="https://github.com/elementary/files/issues/1601">(Mixed mode) clicking on a file should open its details in the next column</issue>
+        <issue url="https://github.com/elementary/files/issues/2015">Search results should list folders and files "In this folder" on top</issue>
+        <issue url="https://github.com/elementary/files/issues/2672">Searching for a file in the current folder and moving it elsewhere results in a File not Found screen</issue>
+        <issue url="https://github.com/elementary/files/issues/2715">Miller view: action buttons do not reappear after navigating back to trash:// </issue>
+      </issues>
+    </release>
+    <release version="7.2.0" date="2025-12-08" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>A compact date format is introduced</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>The file conflict dialog now shows a missing icon</li>
+          <li>Flickering of the pathbar with some navigation methods is fixed</li>
+          <li>The option to set a default app for folders is no longer offered</li>
+          <li>The scrollbar no longer overlays the modification date in List view</li>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2665">Only allow setting default app for regular files, not folders</issue>
+        <issue url="https://github.com/elementary/files/issues/1602">Path bar sometimes flickers when changing folders</issue>
+        <issue url="https://github.com/elementary/files/issues/1538">Listview Vertical scrollbar is on top of modified date column information</issue>
+        <issue url="https://github.com/elementary/files/issues/1475">F1 sending people to StackExchange feels… weird</issue>
+        <issue url="https://github.com/elementary/files/issues/1219">Option to make the list view more compact</issue>
+        <issue url="https://github.com/elementary/files/issues/695">No icon of original file in replace dialog</issue>
+      </issues>
+    </release>
     <release version="7.1.6" date="2025-10-24" urgency="medium">
       <description>
         <p>Minor updates:</p>

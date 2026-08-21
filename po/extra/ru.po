@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-10-18 16:44+0000\n"
-"PO-Revision-Date: 2025-10-22 08:07+0000\n"
+"POT-Creation-Date: 2026-06-14 15:22+0000\n"
+"PO-Revision-Date: 2026-07-13 07:00+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/extra/"
 "ru/>\n"
@@ -18,24 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
-#: data/io.elementary.files.desktop.in.in:6 data/files.metainfo.xml.in.in:10
+#: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
 msgid "Files"
 msgstr "Файлы"
 
-#: data/io.elementary.files.desktop.in.in:7
+#: data/io.elementary.files.desktop.in.in:6
 msgid "Browse your files"
 msgstr "Просматривайте свои файлы"
 
-#: data/io.elementary.files.desktop.in.in:9
+#: data/io.elementary.files.desktop.in.in:8
 msgid "folder;manager;explore;disk;filesystem;"
 msgstr ""
 "folder;manager;explore;disk;filesystem;папка;каталог;менеджер;обзор;диск;файловая "
 "система;"
 
-#: data/io.elementary.files.desktop.in.in:25
+#: data/io.elementary.files.desktop.in.in:24
 msgid "New Window"
 msgstr "Новое окно"
 
@@ -74,104 +74,193 @@ msgstr "Легко просматривайте информацию о файл
 msgid "Browse complex trees faster with Column view"
 msgstr "Просматривайте деревья папок быстрее в виде колонок"
 
-#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:85
-#: data/files.metainfo.xml.in.in:100 data/files.metainfo.xml.in.in:111
-#: data/files.metainfo.xml.in.in:123 data/files.metainfo.xml.in.in:138
-#: data/files.metainfo.xml.in.in:154 data/files.metainfo.xml.in.in:176
-#: data/files.metainfo.xml.in.in:194 data/files.metainfo.xml.in.in:217
-#: data/files.metainfo.xml.in.in:229 data/files.metainfo.xml.in.in:249
+#: data/files.metainfo.xml.in.in:59
+msgid "elementary, Inc."
+msgstr "elementary, Inc."
+
+#: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:104
+#: data/files.metainfo.xml.in.in:124 data/files.metainfo.xml.in.in:326
+msgid "Improvements:"
+msgstr "Улучшения:"
+
+#: data/files.metainfo.xml.in.in:69
+msgid ""
+"The presence of undisplayed hidden files is indicated when there are no "
+"visible files"
+msgstr "Сообщение о наличии скрытых файлов, если в папке нет видимых файлов"
+
+#: data/files.metainfo.xml.in.in:70
+msgid ""
+"Undisplayed hidden files can temporarily be shown in an otherwise empty "
+"folder"
+msgstr ""
+"Отображение скрытых файлов может быть временно включено, если видимых файлов "
+"в папке нет"
+
+#: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:95
+#: data/files.metainfo.xml.in.in:108 data/files.metainfo.xml.in.in:128
+#: data/files.metainfo.xml.in.in:148 data/files.metainfo.xml.in.in:166
+#: data/files.metainfo.xml.in.in:181 data/files.metainfo.xml.in.in:192
+#: data/files.metainfo.xml.in.in:204 data/files.metainfo.xml.in.in:219
+#: data/files.metainfo.xml.in.in:235 data/files.metainfo.xml.in.in:257
+#: data/files.metainfo.xml.in.in:275 data/files.metainfo.xml.in.in:298
+#: data/files.metainfo.xml.in.in:310 data/files.metainfo.xml.in.in:330
 msgid "Minor updates:"
 msgstr "Незначительные обновления:"
 
-#: data/files.metainfo.xml.in.in:69
+#: data/files.metainfo.xml.in.in:74
+msgid ""
+"The existing shortcut to focus the sidebar is changed to Ctrl + Alt + Left"
+msgstr ""
+"Сочетание клавиш для фокусировки на боковой панели изменено на Ctrl + Alt + "
+"Стрелка влево"
+
+#: data/files.metainfo.xml.in.in:75
+msgid ""
+"A corresponding shortcut to focus the document is added: Ctrl + Alt + Right"
+msgstr ""
+"Для фокусировки на рабочий области добавлено сочетание клавиш, "
+"соответственно, Ctrl + Alt + Стрелка вправо"
+
+#: data/files.metainfo.xml.in.in:76
+msgid ""
+"Shortcuts involving Left or Right arrow keys now change according whether "
+"the locale is RTL or LTR"
+msgstr ""
+"Сочетания клавиш, содержащие клавиши-стрелки, теперь подстраиваются под "
+"направление письма в локали"
+
+#: data/files.metainfo.xml.in.in:77
+msgid "Allow horizontal scrolling in ListView to ensure all columns visible"
+msgstr ""
+"Добавлена возможность горизонтальной прокрутки в виде списка для обеспечения "
+"видимости всех столбцов"
+
+#: data/files.metainfo.xml.in.in:78 data/files.metainfo.xml.in.in:98
+#: data/files.metainfo.xml.in.in:111 data/files.metainfo.xml.in.in:134
+#: data/files.metainfo.xml.in.in:153 data/files.metainfo.xml.in.in:169
+#: data/files.metainfo.xml.in.in:183 data/files.metainfo.xml.in.in:194
+#: data/files.metainfo.xml.in.in:207 data/files.metainfo.xml.in.in:221
+#: data/files.metainfo.xml.in.in:239 data/files.metainfo.xml.in.in:261
+#: data/files.metainfo.xml.in.in:283 data/files.metainfo.xml.in.in:300
+#: data/files.metainfo.xml.in.in:312 data/files.metainfo.xml.in.in:332
+msgid "Updated translations"
+msgstr "Обновлены переводы"
+
+#: data/files.metainfo.xml.in.in:97
+msgid "Fixed a regression causing a crash if there are too many templates"
+msgstr "Исправлена регрессия, приводившая к сбою, если шаблонов слишком много"
+
+#: data/files.metainfo.xml.in.in:106
+msgid "An option to show a preview pane in Column view is introduced"
+msgstr "Добавлена возможность отображения панели предпросмотра в виде колонок"
+
+#: data/files.metainfo.xml.in.in:110
+msgid ""
+"The list of search results now shows matches in the current folder first"
+msgstr ""
+"Список результатов поиска теперь сначала отображает совпадения в текущей "
+"папке"
+
+#: data/files.metainfo.xml.in.in:126
+msgid "A compact date format is introduced"
+msgstr "Добавлен компактный формат даты"
+
+#: data/files.metainfo.xml.in.in:130
+msgid "The file conflict dialog now shows a missing icon"
+msgstr "Диалог конфликта файлов теперь отображает отсутствующие значки"
+
+#: data/files.metainfo.xml.in.in:131
+msgid "Flickering of the pathbar with some navigation methods is fixed"
+msgstr "Исправлено моргание адресной строки при некоторых способах навигации"
+
+#: data/files.metainfo.xml.in.in:132
+msgid "The option to set a default app for folders is no longer offered"
+msgstr ""
+"Больше не предлагается возможность установить приложение по умолчанию для "
+"папок"
+
+#: data/files.metainfo.xml.in.in:133
+msgid "The scrollbar no longer overlays the modification date in List view"
+msgstr ""
+"В виде списка полоса прокрутки больше не закрывает собой даты изменения"
+
+#: data/files.metainfo.xml.in.in:150
 msgid "Navigation within the Trash folder now works properly"
 msgstr "Навигация внутри папки корзины теперь работает корректно"
 
-#: data/files.metainfo.xml.in.in:70
+#: data/files.metainfo.xml.in.in:151
 msgid "The view now refreshes properly after permanent deletion of a folder"
 msgstr ""
 "Представление теперь корректно обновляется после безвозвратного удаления "
 "папки"
 
-#: data/files.metainfo.xml.in.in:71
+#: data/files.metainfo.xml.in.in:152
 msgid ""
 "The number of template items displayed in the context menu is now limited"
 msgstr "Число отображаемых в контекстном меню шаблонов теперь ограничено"
 
-#: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:88
-#: data/files.metainfo.xml.in.in:102 data/files.metainfo.xml.in.in:113
-#: data/files.metainfo.xml.in.in:126 data/files.metainfo.xml.in.in:140
-#: data/files.metainfo.xml.in.in:158 data/files.metainfo.xml.in.in:180
-#: data/files.metainfo.xml.in.in:202 data/files.metainfo.xml.in.in:219
-#: data/files.metainfo.xml.in.in:231 data/files.metainfo.xml.in.in:251
-msgid "Updated translations"
-msgstr "Обновлены переводы"
-
-#: data/files.metainfo.xml.in.in:87
+#: data/files.metainfo.xml.in.in:168
 msgid ""
 "The Properties Window now shows the exact date and time the file was last "
 "modified"
 msgstr "Окно «Свойства» теперь показывает точную дату изменения"
 
-#: data/files.metainfo.xml.in.in:125
+#: data/files.metainfo.xml.in.in:206
 msgid "Further preparation for porting to Gtk4"
 msgstr "Дальнейшие приготовления к портированию на GTK4"
 
-#: data/files.metainfo.xml.in.in:156
+#: data/files.metainfo.xml.in.in:237
 msgid "Redesign file permissions view"
 msgstr "Обновлено представление разрешений файла"
 
-#: data/files.metainfo.xml.in.in:157
+#: data/files.metainfo.xml.in.in:238
 msgid "Focus sidebar by pressing Ctrl + Left"
 msgstr "Фокус на боковой панели по нажатии Ctrl + Влево"
 
-#: data/files.metainfo.xml.in.in:178
+#: data/files.metainfo.xml.in.in:259
 msgid "Restoring tabs from last time is now optional"
 msgstr "Восстановление прошлых вкладок теперь опционально"
 
-#: data/files.metainfo.xml.in.in:179
+#: data/files.metainfo.xml.in.in:260
 msgid "Drag and select can no longer be done with secondary pointer button"
 msgstr ""
 "Перетаскивание и выделение больше нельзя выполнить с помощью вторичной "
 "кнопки мыши"
 
-#: data/files.metainfo.xml.in.in:196
+#: data/files.metainfo.xml.in.in:277
 msgid "Discontinue support for dragging bookmark out of sidebar"
 msgstr ""
 "Удалена возможность удаления закладок путём перетаскивания их из бокового "
 "меню"
 
-#: data/files.metainfo.xml.in.in:197
+#: data/files.metainfo.xml.in.in:278
 msgid "Fix unexpected scrolling after renaming a folder"
 msgstr "Исправлена неожиданная прокрутка после переименования папки"
 
-#: data/files.metainfo.xml.in.in:198
+#: data/files.metainfo.xml.in.in:279
 msgid ""
 "Fixes a crash when switching to viewing as grid under rare circumstances"
 msgstr ""
 "Исправлен вылет при переключении в вид сетки при некоторых обстоятельствах"
 
-#: data/files.metainfo.xml.in.in:199
+#: data/files.metainfo.xml.in.in:280
 msgid "Ensure the selection persists after refreshing the view"
 msgstr "Выделение теперь сохраняется при обновлении"
 
-#: data/files.metainfo.xml.in.in:200
+#: data/files.metainfo.xml.in.in:281
 msgid "Fix Files failing to open if trying to restore a disconnected location"
 msgstr ""
 "Исправлена ошибка, из-за которой Файлы не запускались при восстановлении "
 "отключённой папки"
 
-#: data/files.metainfo.xml.in.in:201
+#: data/files.metainfo.xml.in.in:282
 msgid "Fix the view continuing to show when a location is unmounted"
 msgstr ""
 "Исправлена ошибка, из-за которой папка продолжала быть открытой даже после "
 "демонтирования локации"
 
-#: data/files.metainfo.xml.in.in:245
-msgid "Improvements:"
-msgstr "Улучшения:"
-
-#: data/files.metainfo.xml.in.in:247
+#: data/files.metainfo.xml.in.in:328
 msgid ""
 "New Tab Bar with improved animations, smoother drag-and-drop, and "
 "reorganized tab context menus"
@@ -201,9 +290,6 @@ msgstr "Для запуска Файлов с правами администр�
 #~ msgid ""
 #~ "Move global settings from the context menu to an app menu in the headerbar"
 #~ msgstr "Глобальные настройки были перенесены в меню в заголовок окна"
-
-#~ msgid "elementary, Inc."
-#~ msgstr "elementary, Inc."
 
 #~ msgid "File Manager"
 #~ msgstr "Файловый менеджер"

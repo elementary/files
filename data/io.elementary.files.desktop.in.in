@@ -22,8 +22,10 @@ Actions=new-window;root;
 
 [Desktop Action new-window]
 Name=New Window
+Icon=window-new
 Exec=@exec_name@ -n
 
 [Desktop Action root]
 Name=New Window As Administrator
+Icon=dialog-password
 Exec=@exec_name@-pkexec

@@ -22,13 +22,12 @@ conf_data = configuration_data()
 conf_data.set('libexecdir', libexec_dir)
 
 systemd_systemduserunitdir = get_option('systemduserunitdir')
-if systemd_systemduserunitdir != 'no'
+systemd_dep = dependency('systemd', version: '>= 206', required: false)
 
-  if systemd_systemduserunitdir == ''
-    systemd_dep = dependency('systemd', version: '>= 206', required: false)
-    assert(systemd_dep.found(), 'systemd required but not found, please provide a valid systemd user unit dir or disable it')
-    systemd_systemduserunitdir = systemd_dep.get_variable('systemduserunitdir', pkgconfig_define: ['prefix', get_option('prefix')])
-  endif
+if (systemd_dep.found () and systemd_systemduserunitdir != 'no')
+    if systemd_systemduserunitdir == ''
+        systemd_systemduserunitdir = systemd_dep.get_variable('systemduserunitdir', pkgconfig_define: ['prefix', get_option('prefix')])
+    endif
 
   configure_file(
       input: 'io.elementary.files.xdg-desktop-portal.service.in',

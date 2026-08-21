@@ -17,16 +17,60 @@
 * Boston, MA 02110-1301 USA
 */
 
-public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
+public class Files.Plugins.SendByEmail : Files.Plugins.Base {
     private GLib.File[] files;
+    private Gdk.Window? parent;
 
-    public SendByEmailMenuItem (GLib.File[] files) {
-        this.files = files;
+    public override void context_menu (Gtk.Widget widget, List<Files.File> gof_files) {
+        if (gof_files == null || gof_files.length () == 0) {
+            return;
+        }
 
-        label = _("Send by Email");
+        files = get_file_array (gof_files);
+        if (files == null || files.length <= 0) {
+            return;
+        }
+
+        var email_action = new SimpleAction ("send", null);
+        email_action.activate.connect (action_email);
+
+        var action_group = new SimpleActionGroup ();
+        action_group.add_action (email_action);
+
+        var separator = new Gtk.SeparatorMenuItem ();
+
+        var send_by_email_menuitem = new Gtk.MenuItem.with_label (_("Send by Email")) {
+            action_name = "email.send"
+        };
+
+        var menu = (Gtk.Menu) widget;
+        menu.append (separator);
+        menu.append (send_by_email_menuitem);
+        menu.insert_action_group ("email", action_group);
+
+        plugins.menuitem_references.add (separator);
+        plugins.menuitem_references.add (send_by_email_menuitem);
+
+        parent = menu.get_toplevel ().get_window ();
     }
 
-    public override void activate () {
+    private static GLib.File[] get_file_array (List<Files.File> files) {
+        GLib.File[] file_array = new GLib.File[0];
+
+        foreach (unowned Files.File file in files) {
+            if (file.location != null && !file.is_directory && file.is_readable ()) {
+                if (file.location.get_uri_scheme () == "recent") {
+                    file_array += GLib.File.new_for_uri (file.get_display_target_uri ());
+                } else {
+                    file_array += file.location;
+                }
+            }
+        }
+
+        return file_array;
+    }
+
+    private void action_email () {
         try {
             var portal = Portal.Email.get ();
 
@@ -76,14 +120,12 @@ public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
     }
 
     private async string window_export () {
-        var window = get_toplevel ().get_window ();
-
-        if (window is Gdk.X11.Window) {
-            var xid = ((Gdk.X11.Window) window).get_xid ();
+        if (parent is Gdk.X11.Window) {
+            var xid = ((Gdk.X11.Window) parent).get_xid ();
             return "x11:%x".printf ((uint) xid);
-        } else if (window is Gdk.Wayland.Window) {
+        } else if (parent is Gdk.Wayland.Window) {
             var handle = "wayland:";
-            ((Gdk.Wayland.Window) window).export_handle ((w, h) => {
+            ((Gdk.Wayland.Window) parent).export_handle ((w, h) => {
                 handle += h;
                 window_export.callback ();
             });
@@ -99,45 +141,6 @@ public class Files.Plugins.SendByEmailMenuItem : Gtk.MenuItem {
             warning ("Unknown windowing system, not exporting window");
             return "";
         }
-    }
-}
-
-public class Files.Plugins.SendByEmail : Files.Plugins.Base {
-
-    public override void context_menu (Gtk.Widget widget, List<Files.File> gof_files) {
-        var menu = widget as Gtk.Menu;
-
-        if (gof_files == null || gof_files.length () == 0) {
-            return;
-        }
-
-        var files = get_file_array (gof_files);
-        if (files != null && files.length > 0) {
-            add_menuitem (menu, new Gtk.SeparatorMenuItem ());
-            add_menuitem (menu, new SendByEmailMenuItem (files));
-        }
-    }
-
-    private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
-        menu.append (menu_item);
-        menu_item.show ();
-        plugins.menuitem_references.add (menu_item);
-    }
-
-    private static GLib.File[] get_file_array (List<Files.File> files) {
-        GLib.File[] file_array = new GLib.File[0];
-
-        foreach (unowned Files.File file in files) {
-            if (file.location != null && !file.is_directory && file.is_readable ()) {
-                if (file.location.get_uri_scheme () == "recent") {
-                    file_array += GLib.File.new_for_uri (file.get_display_target_uri ());
-                } else {
-                    file_array += file.location;
-                }
-            }
-        }
-
-        return file_array;
     }
 }
 

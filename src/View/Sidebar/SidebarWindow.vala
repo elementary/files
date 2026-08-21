@@ -7,6 +7,8 @@
 
 
 public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
+    private static Settings app_preferences;
+
     private Gtk.ScrolledWindow scrolled_window;
     private BookmarkListBox bookmark_listbox;
     private DeviceListBox device_listbox;
@@ -20,6 +22,10 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         get {
             return bookmark_listbox.has_focus;
         }
+    }
+
+    static construct {
+        app_preferences = new Settings ("io.elementary.files.preferences");
     }
 
     construct {
@@ -87,7 +93,8 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
         action_bar.add (connect_server_button);
 
         orientation = Gtk.Orientation.VERTICAL;
-        width_request = Files.app_settings.get_int ("minimum-sidebar-width");
+
+        width_request = app_preferences.get_int ("minimum-sidebar-width");
         get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
         add (scrolled_window);
 
@@ -102,19 +109,25 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
         show_all ();
 
-        Files.app_settings.bind (
-            "sidebar-cat-personal-expander", bookmark_expander, "active", SettingsBindFlags.DEFAULT
+        app_preferences.bind (
+            "sidebar-cat-personal-expander", bookmark_expander, "active", DEFAULT
         );
-        Files.app_settings.bind (
-            "sidebar-cat-devices-expander", device_expander, "active", SettingsBindFlags.DEFAULT
+        app_preferences.bind (
+            "sidebar-cat-devices-expander", device_expander, "active", DEFAULT
         );
-        Files.app_settings.bind (
-            "sidebar-cat-network-expander", network_expander, "active", SettingsBindFlags.DEFAULT
+        app_preferences.bind (
+            "sidebar-cat-network-expander", network_expander, "active", DEFAULT
         );
 
-        bookmark_expander.bind_property ("active", bookmark_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
-        device_expander.bind_property ("active", device_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
-        network_expander.bind_property ("active", network_revealer, "reveal-child", GLib.BindingFlags.SYNC_CREATE);
+        bookmark_expander.bind_property (
+            "active", bookmark_revealer, "reveal-child", SYNC_CREATE
+        );
+        device_expander.bind_property (
+            "active", device_revealer, "reveal-child", SYNC_CREATE
+        );
+        network_expander.bind_property (
+            "active", network_revealer, "reveal-child", SYNC_CREATE
+        );
     }
 
     private void refresh (bool bookmarks = true, bool devices = true, bool network = true) {
@@ -215,14 +228,6 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
             sync_uri (selected_uri);
             return false;
         });
-    }
-
-    public void add_favorite_uri (string uri, string custom_name = "") {
-        bookmark_listbox.add_favorite (uri, custom_name);
-    }
-
-    public bool has_favorite_uri (string uri) {
-        return bookmark_listbox.has_uri (uri);
     }
 
     public void on_free_space_change () {

@@ -40,7 +40,7 @@ public class Files.Directory : Object {
 
     public GLib.File creation_key {get; construct;}
     public GLib.File location {get; private set;}
-    public GLib.File? selected_file {get; private set;}
+    public GLib.File? initial_selected_file {get; private set;} // Only used for initial focus.
     public Files.File file {get; private set;}
     public int icon_size = 32;
 
@@ -54,6 +54,7 @@ public class Files.Directory : Object {
 
     private HashTable<GLib.File,Files.File> file_hash;
     public uint displayed_files_count {get; private set;}
+    public bool show_hidden_override { get; set; default = false;}
 
     public bool permission_denied = false;
     public bool network_available = true;
@@ -66,8 +67,10 @@ public class Files.Directory : Object {
     public signal void file_added (Files.File? file, bool is_internal); /* null used to signal failed operation */
     public signal void file_changed (Files.File file);
     public signal void file_deleted (Files.File file);
-    public signal void icon_changed (Files.File file); /* Called directly by Files.File - handled by AbstractDirectoryView
-                                                        Gets emitted for any kind of file operation */
+
+    // Not emitted internally. Emitted externally by File in response to updates
+    // that could affect the icon. Views are listeners
+    public signal void icon_changed (Files.File file);
 
     public signal void done_loading ();
     public signal void thumbs_loaded ();
@@ -145,7 +148,9 @@ public class Files.Directory : Object {
         /* If the original file was not a folder, ensure that it will be
          * selected in the loaded view*/
         if (!creation_key.equal (gfile)) {
-            dir.selected_file = file;
+            dir.initial_selected_file = file;
+        } else {
+            dir.initial_selected_file = null;
         }
 
         return dir;
@@ -168,7 +173,7 @@ public class Files.Directory : Object {
 
         location = _file;
         file = Files.File.get (location);
-        selected_file = null;
+        initial_selected_file = null;
 
         cancellable = new Cancellable ();
         state = State.NOT_LOADED;
@@ -260,7 +265,7 @@ public class Files.Directory : Object {
                 var parent = file.is_connected ? location.get_parent () : null;
                 if (parent != null) {
                     file = Files.File.get (parent);
-                    selected_file = location;
+                    initial_selected_file = location;
                     location = parent;
                     success = yield get_file_info ();
                 } else {
@@ -645,6 +650,10 @@ public class Files.Directory : Object {
         }
     }
 
+    private bool get_show_hidden () {
+        return show_hidden_override || is_trash || Preferences.get_default ().show_hidden_files;
+    }
+
     private void list_cached_files (FileLoadedFunc? file_loaded_func, DoneLoadingFunc? done_loading_func) {
         debug ("list cached files");
         if (state != State.LOADED) {
@@ -654,7 +663,7 @@ public class Files.Directory : Object {
 
         state = State.LOADING;
         displayed_files_count = 0;
-        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
+        bool show_hidden = get_show_hidden ();
         foreach (unowned Files.File gof in file_hash.get_values ()) {
             if (gof != null) {
                 after_load_file (gof, show_hidden, file_loaded_func);
@@ -694,8 +703,7 @@ public class Files.Directory : Object {
         can_load = true;
         displayed_files_count = 0;
         state = State.LOADING;
-        bool show_hidden = is_trash || Preferences.get_default ().show_hidden_files;
-
+        bool show_hidden = get_show_hidden ();
         try {
             var e = yield this.location.enumerate_children_async (gio_attrs, 0, Priority.HIGH, cancellable);
             debug ("Obtained file enumerator for location %s", location.get_uri ());
@@ -842,17 +850,6 @@ public class Files.Directory : Object {
         }
     }
 
-    public void update_desktop_files () {
-        foreach (unowned Files.File gof in file_hash.get_values ()) {
-            if (gof != null && gof.info != null &&
-                (!gof.is_hidden || Preferences.get_default ().show_hidden_files) &&
-                gof.is_desktop) {
-
-                gof.update_desktop_file ();
-            }
-        }
-    }
-
     public Files.File? file_hash_lookup_location (GLib.File? location) {
         if (location != null && location is GLib.File) {
             Files.File? result = file_hash.lookup (location);
@@ -912,7 +909,7 @@ public class Files.Directory : Object {
     }
 
     private void changed_and_refresh (Files.File gof) {
-        gof.update ();
+        gof.update (); // Updates all file info including icon and content-type
 
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
             file_changed (gof);
