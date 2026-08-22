@@ -1251,8 +1251,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             }
         }
 
-        /* Render the final path in the location bar without animation */
-        update_location_bar (path, false);
         return restoring_tabs;
     }
 
@@ -1312,6 +1310,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         button_back.sensitive = current_container.can_go_back;
         button_forward.sensitive = (current_container.can_show_folder && current_container.can_go_forward);
 
+        location_bar.set_display_path (current_container.uri);
+
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
         view_switcher.set_mode (mode);
@@ -1356,16 +1356,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         button_forward.menu = forward_menu;
     }
 
-    private void update_location_bar (string new_path, bool with_animation = true) {
-        location_bar.with_animation = with_animation;
-        location_bar.set_display_path (new_path);
-        location_bar.with_animation = true;
-    }
-
     private void update_labels (string uri) {
         if (current_container != null) { /* Can happen during restore */
             title = current_container.tab_name; /* Not actually visible on elementaryos */
-            update_location_bar (uri);
             sidebar.sync_uri (uri);
         }
     }
