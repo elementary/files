@@ -369,7 +369,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         tab_view.close_page.connect (tab_view_close_page);
 
-        tab_view.notify["selected-page"].connect (change_tab);
+        tab_view.notify["selected-page"].connect (after_change_tab);
 
         tab_view.create_window.connect (() => {
             return new Window (marlin_app).tab_view;
@@ -503,7 +503,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         });
     }
 
-    private void change_tab () {
+    private void after_change_tab () {
         //Ignore if some restored tabs still loading
         if (restoring_tabs > 0) {
             return;
@@ -1079,7 +1079,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         headerbar.destroy (); /* stop unwanted signals if quit while pathbar in focus */
 
         // Prevent saved focused tab changing
-        tab_view.notify["selected-page"].disconnect (change_tab);
+        tab_view.notify["selected-page"].disconnect (after_change_tab);
 
         for (int i = 0; i < tab_view.n_pages; i++) {
             var tab_page = (Hdy.TabPage) tab_view.get_nth_page (i);
