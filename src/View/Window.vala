@@ -1236,8 +1236,16 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         restoring_tabs = 0; // Required for update_headerbar to work when we select active tab
 
         int active_tab_position = app_preferences.get_int ("active-tab-position");
-        if (active_tab_position < 0 || active_tab_position >= restoring_tabs) {
+        if (active_tab_position < 0 || active_tab_position >= n_tabs_restored) {
             active_tab_position = 0;
+        }
+
+        // Select a page - will also trigger headerbar update via notify selected-page
+        var active_page = tab_view.get_nth_page (active_tab_position);
+        if (tab_view.selected_page == active_page) {
+            update_headerbar (); // setting the same page does not trigger notify selected-page
+        } else {
+            tab_view.selected_page = active_page;
         }
 
         string path = "";
