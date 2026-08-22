@@ -509,7 +509,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             return;
         }
 
-        loading_uri (current_container.uri);
+        update_headerbar ();
         sidebar.sync_uri (current_container.uri);
         save_active_tab_position ();
     }
@@ -598,6 +598,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         mode = real_mode (mode);
         var content = new View.ViewContainer ();
+        var page = tab_view.append (content); // This sets the window property on the content as well
+        tab_view.selected_page = page;
+        connect_content_signals (content);
 
         if (!location.equal (_location)) {
             content.add_view (mode, location, {_location});
@@ -605,11 +608,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             content.add_view (mode, location);
         }
 
-        var page = tab_view.append (content);
-        tab_view.selected_page = page;
-
-        connect_content_signals (content);
-
+        content.load_directory ();
         return true;
     }
 
@@ -628,22 +627,23 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
     private void on_content_loading (ViewContainer content, bool is_loading) {
         if (restoring_tabs > 0 && !is_loading) {
-            restoring_tabs--;
             /* Each restored tab must signal with is_loading false once */
             assert (restoring_tabs >= 0);
             if (!content.can_show_folder) {
                 warning ("Cannot restore %s, ignoring", content.uri);
                 /* remove_tab function uses Idle loop to close tab */
                 remove_content (content);
+                restoring_tabs--;
             }
         }
 
         tab_view.get_page (content).loading = is_loading;
 
         check_for_tabs_with_same_name ();
-        update_headerbar ();
 
         if (restoring_tabs == 0 && !is_loading) {
+        // Need to update after loading to set mode buttons correctly
+            update_headerbar ();
             save_tabs ();
         }
     }
@@ -1200,8 +1200,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                 continue;
             }
 
+            restoring_tabs++; // Ensure update headerbar ignored during initial tab creation
             if (yield add_tab_by_uri (root_uri, mode)) {
-                restoring_tabs++;
                 var tab = tab_view.selected_page;
                 if (tab != null &&
                     tab.child != null &&
@@ -1213,6 +1213,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
                     }
                 }
             } else {
+                restoring_tabs--;
                 debug ("Failed to restore tab %s", root_uri);
             }
 
@@ -1231,6 +1232,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             return 0;
         }
 
+        var n_tabs_restored = restoring_tabs; // Keep for later use and return value
+        restoring_tabs = 0; // Required for update_headerbar to work when we select active tab
+
         int active_tab_position = app_preferences.get_int ("active-tab-position");
         if (active_tab_position < 0 || active_tab_position >= restoring_tabs) {
             active_tab_position = 0;
@@ -1245,7 +1249,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             }
         }
 
-        return restoring_tabs;
+        return n_tabs_restored;
     }
 
     private void expand_miller_view (Miller miller_view, string tip_uri, string unescaped_root_uri) {
@@ -1294,7 +1298,8 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     }
 
     private void update_headerbar () {
-        if (restoring_tabs > 0 || current_container == null) {
+        if (restoring_tabs > 0 || current_container == null || current_container.uri == "") {
+            // Do not update headerbar during initial tab creation
             return;
         }
 

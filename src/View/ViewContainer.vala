@@ -41,8 +41,6 @@ namespace Files.View {
                 _window = value;
                 _window.folder_deleted.connect (on_folder_deleted);
                 _window.connect_content_signals (this);
-                _window.loading_uri (slot.location.get_uri ());
-                load_directory ();
             }
         }
 
@@ -274,7 +272,7 @@ namespace Files.View {
 
         }
 
-        private void load_directory () {
+        public void load_directory () {
             directory_is_loading (slot.location);
             slot.initialize_directory ();
         }
@@ -365,6 +363,7 @@ namespace Files.View {
 
         public void on_slot_directory_loaded (Directory dir) {
             can_show_folder = dir.can_load;
+            warning ("%s can load %s", this.uri, dir.can_load.to_string ());
             /* First deal with all cases where directory could not be loaded */
             if (!can_show_folder) {
                 if (dir.is_recent && !Files.Preferences.get_default ().remember_history) {
