@@ -191,7 +191,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             }
         }
 
-        loading_uri.connect (update_labels);
+        loading_uri.connect (update_headerbar);
         present ();
     }
 
@@ -1306,6 +1306,12 @@ public class Files.View.Window : Hdy.ApplicationWindow {
 
         location_bar.set_display_path (current_container.uri);
 
+        /* Update labels */
+        if (current_container != null) { /* Can happen during restore */
+            title = current_container.tab_name; /* Not actually visible on elementaryos */
+            sidebar.sync_uri (current_container.uri);
+        }
+
         /* Update viewmode switch, action state and settings */
         var mode = current_container.view_mode;
         view_switcher.set_mode (mode);
@@ -1350,12 +1356,6 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         button_forward.menu = forward_menu;
     }
 
-    private void update_labels (string uri) {
-        if (current_container != null) { /* Can happen during restore */
-            title = current_container.tab_name; /* Not actually visible on elementaryos */
-            sidebar.sync_uri (uri);
-        }
-    }
 
     public void mount_removed (Mount mount) {
         debug ("Mount %s removed", mount.get_name ());
