@@ -90,7 +90,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
         /* Check the colors currently set */
         foreach (Files.File gof in current_selected_files) {
-            color_menu_item.check_color (gof.color);
+            color_menu_item.check_color_index (gof.color);
         }
 
         color_menu_item.color_changed.connect ((ncolor) => {
@@ -139,14 +139,18 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     private class ColorButton : Gtk.CheckButton {
         private static Gtk.CssProvider css_provider;
         public string color_name { get; construct; }
+        public int index { get; construct; } // Corresponding index into Preferences TAG_COLORS
 
         static construct {
             css_provider = new Gtk.CssProvider ();
             css_provider.load_from_resource ("io/elementary/files/ColorButton.css");
         }
 
-        public ColorButton (string color_name) {
-            Object (color_name: color_name);
+        public ColorButton (string color_name, int index) {
+            Object (
+                color_name: color_name,
+                index: index
+            );
         }
 
         construct {
@@ -160,29 +164,29 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
     private class ColorWidget : Gtk.MenuItem {
         public signal void color_changed (int ncolor);
         private Gee.ArrayList<ColorButton> color_buttons;
+        private Gtk.Grid colorbox;
         private const int COLORBOX_SPACING = 3;
 
         construct {
-            var color_button_remove = new ColorButton ("none");
             color_buttons = new Gee.ArrayList<ColorButton> ();
-            color_buttons.add (new ColorButton ("blue"));
-            color_buttons.add (new ColorButton ("mint"));
-            color_buttons.add (new ColorButton ("green"));
-            color_buttons.add (new ColorButton ("yellow"));
-            color_buttons.add (new ColorButton ("orange"));
-            color_buttons.add (new ColorButton ("red"));
-            color_buttons.add (new ColorButton ("pink"));
-            color_buttons.add (new ColorButton ("purple"));
-            color_buttons.add (new ColorButton ("brown"));
-            color_buttons.add (new ColorButton ("slate"));
+            color_buttons.add (new ColorButton ("none", 0));
+            color_buttons.add (new ColorButton ("blue", 1));
+            color_buttons.add (new ColorButton ("mint", 2));
+            color_buttons.add (new ColorButton ("green", 3));
+            color_buttons.add (new ColorButton ("yellow", 4));
+            color_buttons.add (new ColorButton ("orange", 5));
+            color_buttons.add (new ColorButton ("red", 6));
+            color_buttons.add (new ColorButton ("pink", 7));
+            color_buttons.add (new ColorButton ("purple", 8));
+            color_buttons.add (new ColorButton ("latte", 11));
+            color_buttons.add (new ColorButton ("brown", 9));
+            color_buttons.add (new ColorButton ("slate", 10));
 
-            var colorbox = new Gtk.Grid () {
+            colorbox = new Gtk.Grid () {
                 column_spacing = COLORBOX_SPACING,
                 margin_start = 3,
                 halign = Gtk.Align.START
             };
-
-            colorbox.add (color_button_remove);
 
             for (int i = 0; i < color_buttons.size; i++) {
                 colorbox.add (color_buttons[i]);
@@ -209,56 +213,33 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             button_press_event.connect (button_pressed_cb);
         }
 
-        private void clear_checks () {
-            color_buttons.foreach ((b) => { b.active = false; return true;});
-        }
-
-        public void check_color (int color) {
-            if (color <= 0 || color > color_buttons.size) {
-                return;
+        public void check_color_index (int index, bool clear_others = false) {
+            foreach (var button in color_buttons) {
+                if (button.index == index) {
+                    button.active = true;
+                } else if (clear_others) {
+                    button.active = false;
+                } else {
+                    return;
+                }
             }
-
-            color_buttons[color - 1].active = true;
         }
 
         private bool button_pressed_cb (Gdk.EventButton event) {
-            var color_button_width = color_buttons[0].get_allocated_width ();
-
-            int y0 = (get_allocated_height () - color_button_width) / 2;
-            int x0 = COLORBOX_SPACING + color_button_width;
-
             double ex, ey;
+            int cbx, cby;
             event.get_coords (out ex, out ey);
-            if (ey < y0 || ey > y0 + color_button_width) {
-                return true;
-            }
-
+            translate_coordinates (colorbox, (int)ex, (int)ey, out cbx, out cby);
+            var cb_width = colorbox.get_allocated_width ();
+            var n_buttons = color_buttons.size;
+            var button_index = (int)(cbx * (double) n_buttons / (double) cb_width);
             if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
-                var width = get_allocated_width ();
-                int x = width - 27;
-                for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (ex <= x && ex >= x - color_button_width) {
-                        color_changed (i);
-                        clear_checks ();
-                        check_color (i);
-                        break;
-                    }
-
-                    x -= x0;
-                }
-            } else {
-                int x = 27;
-                for (int i = 0; i < Files.Preferences.TAGS_COLORS.length; i++) {
-                    if (ex >= x && ex <= x + color_button_width) {
-                        color_changed (i);
-                        clear_checks ();
-                        check_color (i);
-                        break;
-                    }
-
-                    x += x0;
-                }
+                button_index = color_buttons.size - 1 - button_index;
             }
+
+            var color_index = color_buttons[button_index].index;
+            color_changed (color_index);
+            check_color_index (color_index, true);
 
             return true;
         }
