@@ -1401,6 +1401,7 @@ copy_file_progress_callback (goffset current_num_bytes,
     new_size = current_num_bytes - pdata->last_size;
 
     if (new_size > 0) {
+        sync ();
         pdata->transfer_info->num_bytes += new_size;
         pdata->last_size = current_num_bytes;
         marlin_file_operations_copy_move_job_report_copy_progress (pdata->job,
