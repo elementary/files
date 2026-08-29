@@ -8,16 +8,16 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-06-14 15:22+0000\n"
-"PO-Revision-Date: 2018-02-05 00:11+0000\n"
-"Last-Translator: Rokar <mail@rokar.de>\n"
-"Language-Team: Kurdish <https://weblate.elementary.io/projects/files/extra/"
+"PO-Revision-Date: 2026-08-29 02:01+0000\n"
+"Last-Translator: Cyax <fakecyax@gmail.com>\n"
+"Language-Team: Kurdish <https://l10n.elementaryos.org/projects/files/extra/"
 "ku/>\n"
 "Language: ku\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.18\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:29+0000\n"
 
 #: data/io.elementary.files.desktop.in.in:5 data/files.metainfo.xml.in.in:10
@@ -30,7 +30,7 @@ msgstr "Çav li pelên xwe le bigere"
 
 #: data/io.elementary.files.desktop.in.in:8
 msgid "folder;manager;explore;disk;filesystem;"
-msgstr ""
+msgstr "peldank;rêvebir;vekolandin;dîsk;pergala pelan;"
 
 #: data/io.elementary.files.desktop.in.in:24
 msgid "New Window"
@@ -66,7 +66,7 @@ msgstr ""
 
 #: data/files.metainfo.xml.in.in:59
 msgid "elementary, Inc."
-msgstr ""
+msgstr "elementary, Inc."
 
 #: data/files.metainfo.xml.in.in:67 data/files.metainfo.xml.in.in:104
 #: data/files.metainfo.xml.in.in:124 data/files.metainfo.xml.in.in:326
@@ -93,9 +93,8 @@ msgstr ""
 #: data/files.metainfo.xml.in.in:235 data/files.metainfo.xml.in.in:257
 #: data/files.metainfo.xml.in.in:275 data/files.metainfo.xml.in.in:298
 #: data/files.metainfo.xml.in.in:310 data/files.metainfo.xml.in.in:330
-#, fuzzy
 msgid "Minor updates:"
-msgstr "çêkirina biçûke çewtî"
+msgstr "Rojanekirinên biçûk:"
 
 #: data/files.metainfo.xml.in.in:74
 msgid ""
@@ -125,9 +124,8 @@ msgstr ""
 #: data/files.metainfo.xml.in.in:239 data/files.metainfo.xml.in.in:261
 #: data/files.metainfo.xml.in.in:283 data/files.metainfo.xml.in.in:300
 #: data/files.metainfo.xml.in.in:312 data/files.metainfo.xml.in.in:332
-#, fuzzy
 msgid "Updated translations"
-msgstr "Wergerên Nû"
+msgstr "Wergerên rojanekirî"
 
 #: data/files.metainfo.xml.in.in:97
 msgid "Fixed a regression causing a crash if there are too many templates"
