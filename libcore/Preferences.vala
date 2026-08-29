@@ -20,9 +20,21 @@ namespace Files {
     public static Preferences? preferences = null;
 
     public class Preferences : Object {
-        /* First element set to null in order that the text renderer background is not set */
+        /* We have to hard code the colors while we are using renderers - cannot use css */
         public const string?[] TAGS_COLORS = {
-            null, "#64baff", "#43d6b5", "#9bdb4d", "#ffe16b", "#ffc27d", "#ff8c82", "#f4679d", "#cd9ef7", "#a3907c", "#95a3ab", null
+            null,       // No color set
+            "#64baff",  // CSS name "blue" (Elementary Blueberry 300)
+            "#43d6b5",  // CSS name "mint" (Elementary Mint 300)
+            "#9bdb4d",  // CSS name "green" (Elementary Lime 300)
+            "#ffe16b",  // CSS name "yellow" (Elementary Banana 300)
+            "#ffc27d",  // CSS name "orange" (Elementary Orange 100)
+            "#ff8c82",  // CSS name "red" (Elementary Strawberry 100)
+            "#f4679d",  // CSS name "pink" (Elementary Bubblegum 300)
+            "#cd9ef7",  // CSS name "purple" (Elementary Grape 300)
+            "#a3907c",  // CSS name "brown" (Elementary Cocoa 100)
+            "#95a3ab",  // CSS name "slate" (Elementary Slate 100)
+            "#efdfc4",   // CSS name "latte" (Elementary Latte 100)
+            null
         };
 
         public bool show_hidden_files {get; set; default = false;}
