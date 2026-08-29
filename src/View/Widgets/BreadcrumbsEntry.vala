@@ -59,10 +59,6 @@ namespace Files.View.Chrome {
         public bool search_mode { set; get; default = false; }
 
         /** Drag and drop support **/
-        protected const Gdk.DragAction FILE_DRAG_ACTIONS = (Gdk.DragAction.COPY |
-                                                            Gdk.DragAction.MOVE |
-                                                            Gdk.DragAction.LINK);
-
         private bool drop_data_ready = false; /* whether the drop data was received already */
         private bool drop_occurred = false; /* whether the data was dropped */
         private GLib.List<GLib.File> drop_file_list = null; /* the list of URIs in the drop data */
@@ -87,7 +83,7 @@ namespace Files.View.Chrome {
             Gtk.TargetEntry target_uri_list = {"text/uri-list", 0, Files.TargetType.TEXT_URI_LIST};
             Gtk.drag_dest_set (this, Gtk.DestDefaults.MOTION,
                                {target_uri_list},
-                               Gdk.DragAction.ASK | FILE_DRAG_ACTIONS);
+                               Gdk.DragAction.ASK | DndHandler.FILE_DRAG_ACTIONS);
 
             drag_leave.connect (on_drag_leave);
             drag_motion.connect (on_drag_motion);
@@ -315,7 +311,7 @@ namespace Files.View.Chrome {
                         out current_suggested_action
                     );
 
-                    if ((current_actions & FILE_DRAG_ACTIONS) != 0) {
+                    if ((current_actions & DndHandler.FILE_DRAG_ACTIONS) != 0) {
                         success = dnd_handler.handle_file_drag_actions (
                             this,
                             drop_target_file,
