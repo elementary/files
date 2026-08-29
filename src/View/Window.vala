@@ -420,7 +420,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         tab_view.close_page_finish (page, true);
 
         if (tab_view.n_pages == 0) {
-            add_tab.begin (default_location, PREFERRED, false);
+            quit ();
         }
 
         return Gdk.EVENT_STOP;
