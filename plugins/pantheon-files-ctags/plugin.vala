@@ -79,7 +79,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         }
     }
 
-    public override void context_menu (Gtk.Widget widget, GLib.List<Files.File> selected_files) {
+    public override void context_menu (Gtk.Widget widget, GLib.List<Files.File> selected_files, Files.File source_folder) {
         if (selected_files == null) {
             return;
         }
