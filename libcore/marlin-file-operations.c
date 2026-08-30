@@ -37,6 +37,7 @@
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <gio/gio.h>
+#include <gio/gfiledescriptorbased.h>
 #include <glib.h>
 
 #include "pantheon-files-core.h"
@@ -44,6 +45,9 @@
 #define NSEC_PER_MSEC 1000000
 
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
+
+#define COPY_MOVE_CHUNK_SIZE (1024 * 1024) // 1 MiB
+#define SYNC_INTERVAL_MICROS (100 * 1000) // 100 milliseconds
 
 #define IS_IO_ERROR(__error, KIND) (((__error)->domain == G_IO_ERROR && (__error)->code == G_IO_ERROR_ ## KIND))
 
@@ -1514,6 +1518,122 @@ get_target_file_for_display_name (GFile *dir,
     return dest;
 }
 
+static gboolean
+copy_move_with_sync (GFile *src,
+                     GFile *dest,
+                     gboolean is_move,
+                     gboolean do_syncs,
+                     GFileCopyFlags flags,
+                     GCancellable *cancellable,
+                     GFileProgressCallback progress_callback,
+                     gpointer progress_callback_data,
+                     GError **error)
+{
+    if (is_move) {
+        gboolean overwrite = flags & G_FILE_COPY_OVERWRITE;
+        gboolean move_success = g_file_move (src,
+                                             dest,
+                                             flags,
+                                             cancellable,
+                                             progress_callback,
+                                             progress_callback_data,
+                                             error);
+        if (move_success) {
+            return TRUE;
+        } else if (!overwrite) {
+            return FALSE;
+        }
+    }
+
+    GFileInputStream *in = g_file_read (src, cancellable, error);
+    if (!in) {
+        return FALSE;
+    }
+
+    goffset total_size = 0;
+
+    GFileInfo *info = g_file_input_stream_query_info (in, G_FILE_ATTRIBUTE_STANDARD_SIZE, cancellable, error);
+    if (info) {
+        total_size = g_file_info_get_size (info);
+        g_object_unref (info);
+    }
+
+    GFileOutputStream *out = g_file_replace (dest, NULL, FALSE, G_FILE_CREATE_NONE, cancellable, error);
+    if (!out) {
+        g_object_unref (in);
+        return FALSE;
+    }
+
+    gint fd = -1;
+
+    if (do_syncs && G_IS_FILE_DESCRIPTOR_BASED (out)) {
+        fd = g_file_descriptor_based_get_fd (G_FILE_DESCRIPTOR_BASED (out));
+    }
+
+    gboolean success = FALSE;
+
+    gchar buffer[COPY_MOVE_CHUNK_SIZE];
+    goffset copied = 0;
+    gint64 last_sync_time = 0;
+
+    while (TRUE) {
+        gssize read = g_input_stream_read (G_INPUT_STREAM (in), buffer, COPY_MOVE_CHUNK_SIZE, cancellable, error);
+
+        if (read < 0) {
+            goto cleanup_copy_move_with_sync;
+        }
+
+        if (read == 0) {
+            break;
+        }
+
+        gsize written = 0;
+
+        if (!g_output_stream_write_all (G_OUTPUT_STREAM (out),
+                                        buffer,
+                                        read,
+                                        &written,
+                                        cancellable,
+                                        error)) {
+            goto cleanup_copy_move_with_sync;
+        }
+
+        copied += written;
+
+        gint64 now = g_get_monotonic_time ();
+
+        if (abs(now - last_sync_time) >= SYNC_INTERVAL_MICROS) {
+            if (fd >= 0) {
+                g_fsync (fd);
+            }
+            last_sync_time = now;
+        }
+
+        if (progress_callback) {
+            progress_callback (copied, total_size, progress_callback_data);
+        }
+    }
+
+    if (!g_output_stream_close (G_OUTPUT_STREAM (out), cancellable, error)) {
+        goto cleanup_copy_move_with_sync;
+    }
+
+    if (is_move && !g_file_equal(src, dest)) {
+        if (!g_file_delete (src, cancellable, error)) {
+            goto cleanup_copy_move_with_sync;
+        }
+    }
+
+    success = TRUE;
+
+cleanup_copy_move_with_sync:
+    g_input_stream_close (G_INPUT_STREAM (in), NULL, NULL);
+    g_object_unref (in);
+    g_object_unref (out);
+
+    return success;
+}
+
 /* Debuting files is non-NULL only for toplevel items */
 static void
 copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
@@ -1651,21 +1771,15 @@ retry:
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
 
-    if (copy_job->is_move) {
-        res = g_file_move (src, dest,
-                           flags,
-                           job->cancellable,
-                           copy_file_progress_callback,
-                           &pdata,
-                           &error);
-    } else {
-        res = g_file_copy (src, dest,
-                           flags,
-                           job->cancellable,
-                           copy_file_progress_callback,
-                           &pdata,
-                           &error);
-    }
+    res = copy_move_with_sync (src,
+                               dest,
+                               copy_job->is_move,
+                               files_file_utils_file_can_unplug (src) || files_file_utils_file_can_unplug (dest_dir),
+                               flags,
+                               job->cancellable,
+                               copy_file_progress_callback,
+                               &pdata,
+                               &error);
 
     /* NOTE Result is false if file being moved is a folder and the target is on a Samba share even if
      * the file is successfully copied, so the change will not be notified to the view.
@@ -2222,7 +2336,9 @@ retry:
     }
 
     error = NULL;
-    if (g_file_move (src, dest,
+    if (copy_move_with_sync (src, dest,
+                     TRUE,
+                     files_file_utils_file_can_unplug (src) || files_file_utils_file_can_unplug (dest_dir),
                      flags,
                      job->cancellable,
                      NULL,
