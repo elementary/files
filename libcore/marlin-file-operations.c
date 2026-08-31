@@ -47,7 +47,7 @@
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
 
 #define COPY_MOVE_CHUNK_SIZE (1024 * 1024) // 1 MiB
-#define SYNC_INTERVAL_MICROS (100 * 1000) // 100 milliseconds
+#define SYNC_INTERVAL_MICROS (500 * 1000) // 500 milliseconds
 
 #define IS_IO_ERROR(__error, KIND) (((__error)->domain == G_IO_ERROR && (__error)->code == G_IO_ERROR_ ## KIND))
 
@@ -1651,7 +1651,7 @@ copy_move_with_sync (GFile *src,
 
         gint64 now = g_get_monotonic_time ();
 
-        if (abs(now - last_sync_time) >= SYNC_INTERVAL_MICROS) {
+        if (last_sync_time == 0 || abs(now - last_sync_time) >= SYNC_INTERVAL_MICROS) {
             if (fd >= 0) {
                 g_fsync (fd);
             }
