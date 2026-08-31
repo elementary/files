@@ -1532,11 +1532,13 @@ copy_move_with_sync (GFile *src,
     gboolean overwrite = flags & G_FILE_COPY_OVERWRITE;
 
     if (is_move) {
+        *error = NULL;
+
         gboolean no_fallback_for_move = flags & G_FILE_COPY_NO_FALLBACK_FOR_MOVE;
-        flags |= no_fallback_for_move ? G_FILE_COPY_NONE : G_FILE_COPY_NO_FALLBACK_FOR_MOVE;
+
         gboolean move_success = g_file_move (src,
                                              dest,
-                                             flags,
+                                             flags | G_FILE_COPY_NO_FALLBACK_FOR_MOVE,
                                              cancellable,
                                              progress_callback,
                                              progress_callback_data,
@@ -1548,24 +1550,39 @@ copy_move_with_sync (GFile *src,
         }
     }
 
-    if (files_file_utils_file_is_dir (src)) {
-        if (files_file_utils_file_is_dir (dest)) {
-            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_WOULD_MERGE, "copy_move_with_sync error");
+    *error = NULL;
+
+    gboolean src_is_dir = files_file_utils_file_is_dir (src);
+    gboolean dest_is_dir = files_file_utils_file_is_dir (dest);
+    gboolean dest_exists = g_file_query_exists (dest, NULL);
+
+    if (src_is_dir) {
+        if (dest_is_dir) {
+            g_set_error_literal (error, G_IO_ERROR,
+                                 overwrite ? G_IO_ERROR_WOULD_MERGE : G_IO_ERROR_EXISTS,
+                                 "copy_move_with_sync error");
             return FALSE;
-        } else if (overwrite || !g_file_query_exists (dest, NULL)) {
-            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_WOULD_RECURSE, "copy_move_with_sync error");
+        } else if (overwrite || !dest_exists) {
+            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_WOULD_RECURSE, "error");
+            return FALSE;
+        } else {
+            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_EXISTS, "error");
             return FALSE;
         }
     } else {
-        if (files_file_utils_file_is_dir (dest)) {
-            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_IS_DIRECTORY, "copy_move_with_sync error");
+        if (dest_is_dir) {
+            g_set_error_literal (error, G_IO_ERROR,
+                                 overwrite ? G_IO_ERROR_IS_DIRECTORY : G_IO_ERROR_EXISTS,
+                                 "copy_move_with_sync error");
+            return FALSE;
+        } else if (!overwrite && dest_exists) {
+            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_EXISTS, "copy_move_with_sync error");
             return FALSE;
         }
     }
 
-    *error = NULL;
-
     GFileInputStream *in = g_file_read (src, cancellable, error);
+
     if (!in) {
         return FALSE;
     }
@@ -1573,6 +1590,7 @@ copy_move_with_sync (GFile *src,
     goffset total_size = 0;
 
     GFileInfo *info = g_file_input_stream_query_info (in, G_FILE_ATTRIBUTE_STANDARD_SIZE, cancellable, NULL);
+
     if (info) {
         total_size = g_file_info_get_size (info);
         g_object_unref (info);
@@ -1581,16 +1599,9 @@ copy_move_with_sync (GFile *src,
     *error = NULL;
 
     GFileOutputStream *out = NULL;
-    out = g_file_create (dest, G_FILE_CREATE_NONE, cancellable, error);
-    if (!out) {
-        g_object_unref (in);
-        return FALSE;
-    }
-    g_object_unref (out);
-
-    *error = NULL;
 
     out = g_file_replace (dest, NULL, FALSE, G_FILE_CREATE_NONE, cancellable, error);
+
     if (!out) {
         g_object_unref (in);
         return FALSE;
@@ -1605,7 +1616,9 @@ copy_move_with_sync (GFile *src,
     gboolean success = FALSE;
 
     gchar buffer[COPY_MOVE_CHUNK_SIZE];
+
     goffset copied = 0;
+
     gint64 last_sync_time = 0;
 
     while (TRUE) {
