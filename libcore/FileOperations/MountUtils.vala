@@ -273,7 +273,7 @@ namespace Files.FileOperations {
             primary_text = _("The resource '%s' is in use by other processes").printf (mount_name);
             secondary_text = _("Unmounting now might cause a process to fail or to lose data");
             var sb = new StringBuilder ("");
-            sb.append (_("Other processes using '%s' ...\n").printf (mount_name));
+            sb.append (_("Other processes using '%s'… \n").printf (mount_name));
             foreach (var pid in processes) {
                 sb.append (get_process_name_from_pid (pid));
                 sb.append ("\n");
@@ -284,7 +284,7 @@ namespace Files.FileOperations {
         }
 
         private string? get_process_name_from_pid (int pid) {
-            string process_path = "/proc/%d/exe".printf(pid);
+            string process_path = "/proc/%d/exe".printf (pid);
 
             try {
                 string path = GLib.FileUtils.read_link (process_path);
