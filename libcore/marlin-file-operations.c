@@ -1570,6 +1570,7 @@ copy_move_with_sync (GFile *src,
         g_object_unref (in);
         return FALSE;
     }
+    g_object_unref (out);
 
     *error = NULL;
 
