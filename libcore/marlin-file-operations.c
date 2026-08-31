@@ -1529,6 +1529,12 @@ copy_move_with_sync (GFile *src,
                      gpointer progress_callback_data,
                      GError **error)
 {
+    if (!do_syncs) {
+        return is_move ?
+        g_file_move (src, dest, flags, cancellable, progress_callback, progress_callback_data, error):
+        g_file_copy (src, dest, flags, cancellable, progress_callback, progress_callback_data, error);
+    }
+
     gboolean overwrite = flags & G_FILE_COPY_OVERWRITE;
 
     if (is_move) {
