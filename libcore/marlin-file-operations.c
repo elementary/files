@@ -1547,6 +1547,8 @@ copy_move_with_sync (GFile *src,
         }
     }
 
+    *error = NULL;
+
     GFileInputStream *in = g_file_read (src, cancellable, error);
     if (!in) {
         return FALSE;
@@ -1554,11 +1556,13 @@ copy_move_with_sync (GFile *src,
 
     goffset total_size = 0;
 
-    GFileInfo *info = g_file_input_stream_query_info (in, G_FILE_ATTRIBUTE_STANDARD_SIZE, cancellable, error);
+    GFileInfo *info = g_file_input_stream_query_info (in, G_FILE_ATTRIBUTE_STANDARD_SIZE, cancellable, NULL);
     if (info) {
         total_size = g_file_info_get_size (info);
         g_object_unref (info);
     }
+
+    *error = NULL;
 
     GFileOutputStream *out = NULL;
     out = g_file_create (dest, G_FILE_CREATE_NONE, cancellable, error);
@@ -1566,6 +1570,8 @@ copy_move_with_sync (GFile *src,
         g_object_unref (in);
         return FALSE;
     }
+
+    *error = NULL;
 
     out = g_file_replace (dest, NULL, FALSE, G_FILE_CREATE_NONE, cancellable, error);
     if (!out) {
@@ -1586,6 +1592,8 @@ copy_move_with_sync (GFile *src,
     gint64 last_sync_time = 0;
 
     while (TRUE) {
+        *error = NULL;
+
         gssize read = g_input_stream_read (G_INPUT_STREAM (in), buffer, COPY_MOVE_CHUNK_SIZE, cancellable, error);
 
         if (read < 0) {
@@ -1597,6 +1605,8 @@ copy_move_with_sync (GFile *src,
         }
 
         gsize written = 0;
+
+        *error = NULL;
 
         if (!g_output_stream_write_all (G_OUTPUT_STREAM (out),
                                         buffer,
@@ -1623,11 +1633,15 @@ copy_move_with_sync (GFile *src,
         }
     }
 
+    *error = NULL;
+
     if (!g_output_stream_close (G_OUTPUT_STREAM (out), cancellable, error)) {
         goto cleanup_copy_move_with_sync;
     }
 
     if (is_move && !g_file_equal(src, dest)) {
+        *error = NULL;
+
         if (!g_file_delete (src, cancellable, error)) {
             goto cleanup_copy_move_with_sync;
         }
