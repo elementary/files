@@ -274,11 +274,22 @@ namespace Files.FileOperations {
             secondary_text = _("Unmounting now might cause a process to fail or to lose data");
             var sb = new StringBuilder ("");
             foreach (var pid in processes) {
-                sb.append (pid.to_string ());
+                sb.append (get_process_name_from_pid (pid));
                 sb.append ("\n");
             }
             show_error_details (sb.str);
             show_all ();
+        }
+
+        private string? get_process_name_from_pid (int pid) {
+            string process_path = "/proc/%d/exe".printf(pid);
+
+            try {
+                string path = GLib.FileUtils.read_link (process_path);
+                return Path.get_basename (path);
+            } catch (FileError e) {
+                return _("Unknown");
+            }
         }
      }
 }
