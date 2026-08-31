@@ -1531,6 +1531,8 @@ copy_move_with_sync (GFile *src,
 {
     if (is_move) {
         gboolean overwrite = flags & G_FILE_COPY_OVERWRITE;
+        gboolean no_fallback_for_move = flags & G_FILE_COPY_NO_FALLBACK_FOR_MOVE;
+        flags |= no_fallback_for_move ? G_FILE_COPY_NONE : G_FILE_COPY_NO_FALLBACK_FOR_MOVE;
         gboolean move_success = g_file_move (src,
                                              dest,
                                              flags,
@@ -1540,7 +1542,7 @@ copy_move_with_sync (GFile *src,
                                              error);
         if (move_success) {
             return TRUE;
-        } else if (!overwrite) {
+        } else if ((!overwrite || no_fallback_for_move) && !do_syncs) {
             return FALSE;
         }
     }
@@ -1558,7 +1560,14 @@ copy_move_with_sync (GFile *src,
         g_object_unref (info);
     }
 
-    GFileOutputStream *out = g_file_replace (dest, NULL, FALSE, G_FILE_CREATE_NONE, cancellable, error);
+    GFileOutputStream *out = NULL;
+    out = g_file_create (dest, G_FILE_CREATE_NONE, cancellable, error);
+    if (!out) {
+        g_object_unref (in);
+        return FALSE;
+    }
+
+    out = g_file_replace (dest, NULL, FALSE, G_FILE_CREATE_NONE, cancellable, error);
     if (!out) {
         g_object_unref (in);
         return FALSE;
