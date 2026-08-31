@@ -1663,6 +1663,10 @@ copy_move_with_sync (GFile *src,
         }
     }
 
+    if (fd >= 0) {
+        g_fsync (fd);
+    }
+
     *error = NULL;
 
     if (!g_output_stream_close (G_OUTPUT_STREAM (out), cancellable, error)) {
