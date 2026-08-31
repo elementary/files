@@ -1538,21 +1538,15 @@ copy_move_with_sync (GFile *src,
     gboolean overwrite = flags & G_FILE_COPY_OVERWRITE;
 
     if (is_move) {
-        *error = NULL;
-
-        gboolean no_fallback_for_move = flags & G_FILE_COPY_NO_FALLBACK_FOR_MOVE;
-
-        gboolean move_success = g_file_move (src,
+        gboolean atomic_move_success = g_file_move (src,
                                              dest,
                                              flags | G_FILE_COPY_NO_FALLBACK_FOR_MOVE,
                                              cancellable,
                                              progress_callback,
                                              progress_callback_data,
-                                             error);
-        if (move_success) {
+                                             NULL);
+        if (atomic_move_success) {
             return TRUE;
-        } else if ((!overwrite || no_fallback_for_move) && !do_syncs) {
-            return FALSE;
         }
     }
 
@@ -1615,7 +1609,7 @@ copy_move_with_sync (GFile *src,
 
     gint fd = -1;
 
-    if (do_syncs && G_IS_FILE_DESCRIPTOR_BASED (out)) {
+    if (G_IS_FILE_DESCRIPTOR_BASED (out)) {
         fd = g_file_descriptor_based_get_fd (G_FILE_DESCRIPTOR_BASED (out));
     }
 
