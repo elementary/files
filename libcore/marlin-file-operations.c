@@ -1651,7 +1651,7 @@ copy_move_with_sync (GFile *src,
 
         gint64 now = g_get_monotonic_time ();
 
-        if (last_sync_time == 0 || abs(now - last_sync_time) >= SYNC_INTERVAL_MICROS) {
+        if (last_sync_time == 0 || ABS(now - last_sync_time) >= SYNC_INTERVAL_MICROS) {
             if (fd >= 0) {
                 g_fsync (fd);
             }
