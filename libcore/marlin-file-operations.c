@@ -1563,10 +1563,10 @@ copy_move_with_sync (GFile *src,
                                  "copy_move_with_sync error");
             return FALSE;
         } else if (overwrite || !dest_exists) {
-            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_WOULD_RECURSE, "error");
+            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_WOULD_RECURSE, "copy_move_with_sync error");
             return FALSE;
         } else {
-            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_EXISTS, "error");
+            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_EXISTS, "copy_move_with_sync error");
             return FALSE;
         }
     } else {
