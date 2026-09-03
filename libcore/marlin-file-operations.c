@@ -1831,7 +1831,7 @@ retry:
     res = copy_move_with_sync (src,
                                dest,
                                copy_job->is_move,
-                               files_file_utils_file_can_unplug (src) || files_file_utils_file_can_unplug (dest_dir),
+                               files_file_utils_file_can_unplug_drive (src) || files_file_utils_file_can_unplug_drive (dest_dir),
                                flags,
                                job->cancellable,
                                copy_file_progress_callback,
@@ -2395,7 +2395,7 @@ retry:
     error = NULL;
     if (copy_move_with_sync (src, dest,
                      TRUE,
-                     files_file_utils_file_can_unplug (src) || files_file_utils_file_can_unplug (dest_dir),
+                     files_file_utils_file_can_unplug_drive (src) || files_file_utils_file_can_unplug_drive (dest_dir),
                      flags,
                      job->cancellable,
                      NULL,

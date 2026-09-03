@@ -1147,14 +1147,10 @@ namespace Files.FileUtils {
         }
     }
 
-    public bool file_can_unplug (GLib.File file) {
+    public bool file_can_unplug_drive (GLib.File file) {
         try {
             Mount mount = file.find_enclosing_mount (null);
-            Drive? drive = mount.get_drive ();
-            if (drive == null) {
-                return false;
-            }
-            return drive.can_eject () || drive.is_removable () || drive.is_media_removable ();
+            return FileOperations.mount_can_unplug_drive (mount);
         } catch (Error e) {
             return false;
         }
