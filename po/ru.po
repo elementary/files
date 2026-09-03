@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-03 03:11+0000\n"
-"PO-Revision-Date: 2026-07-13 07:00+0000\n"
+"PO-Revision-Date: 2026-09-04 08:01+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/files/"
 "ru/>\n"
@@ -996,16 +996,16 @@ msgstr "Не удалось подключить «%s»"
 #: libcore/FileOperations/MountUtils.vala:273
 #, c-format
 msgid "The resource '%s' is in use by other processes"
-msgstr ""
+msgstr "Ресурс «%s» используется другими процессами"
 
 #: libcore/FileOperations/MountUtils.vala:274
 msgid "Unmounting now might cause a process to fail or to lose data"
-msgstr ""
+msgstr "Его отключение может привести к сбою процесса или потере данных"
 
 #: libcore/FileOperations/MountUtils.vala:276
 #, c-format
 msgid "Other processes using '%s'… \n"
-msgstr ""
+msgstr "Другие процессы, использующие «%s»… \n"
 
 #: libcore/FileOperations/MountUtils.vala:293
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
