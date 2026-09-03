@@ -19,15 +19,18 @@
 namespace Files.FileOperations {
     public static async bool unmount_mount (Mount mount, Gtk.Window? parent) {
         if (mount.can_unmount ()) {
-            var mount_op = new Gtk.MountOperation (parent);
+            var mount_op = new UnmountOperation (parent, mount.get_name ());
             try {
-                yield mount.unmount_with_operation (
+                var success = yield mount.unmount_with_operation (
                         GLib.MountUnmountFlags.NONE,
                         mount_op,
                         null
                 );
-                return true;
+                return success;
             } catch (GLib.Error e) {
+                if (e is IOError.FAILED_HANDLED) {
+                    return false;
+                }
                 PF.Dialogs.show_error_dialog (_("Unable to unmount '%s'").printf (mount.get_name ()),
                                               e.message,
                                               null);
@@ -40,15 +43,19 @@ namespace Files.FileOperations {
 
     public static async bool eject_mount (Mount mount, Gtk.Window? parent) {
         if (mount.can_eject ()) {
-            var mount_op = new Gtk.MountOperation (parent);
+            var mount_op = new UnmountOperation (parent, mount.get_name ());
             try {
-                yield mount.eject_with_operation (
+                var success = yield mount.eject_with_operation (
                         GLib.MountUnmountFlags.NONE,
                         mount_op,
                         null
                 );
-                return true;
+                return success;
             } catch (GLib.Error e) {
+                if (e is IOError.FAILED_HANDLED) {
+                    return false;
+                }
+
                 PF.Dialogs.show_error_dialog (_("Unable to eject '%s'").printf (mount.get_name ()),
                                               e.message,
                                               null);
@@ -215,4 +222,76 @@ namespace Files.FileOperations {
 
         return false;
     }
+
+    private class UnmountOperation : Gtk.MountOperation {
+
+        public string mount_name { get; construct; }
+        private Gtk.Dialog? dialog = null;
+
+        public UnmountOperation (Gtk.Window? _parent, string _mount_name) {
+            Object (
+                parent: _parent,
+                mount_name: _mount_name
+            );
+        }
+
+        public override void show_processes (string message, Array<Pid> processes, string[] choices) {
+            if (dialog != null) {
+                return;
+            }
+
+            dialog = new BusyDialog (mount_name, processes);
+            dialog.response.connect (() => {
+                dialog.destroy ();
+                dialog = null;
+                reply (MountOperationResult.ABORTED); // Results in IOError.FAILED_HANDLED
+            });
+
+            dialog.present ();
+        }
+
+        public override void aborted () {
+            // We do not want another dialog shown
+            return;
+        }
+     }
+
+     private class BusyDialog : Granite.MessageDialog {
+        public string mount_name { get; construct; }
+        public Array<Pid> processes { get; construct; }
+        public BusyDialog (string _mount_name, Array<Pid> _processes) {
+            Object (
+                mount_name: _mount_name,
+                processes: _processes,
+                buttons: Gtk.ButtonsType.CANCEL,
+                image_icon: new ThemedIcon ("dialog-warning")
+
+            );
+        }
+
+        construct {
+            primary_text = _("The resource '%s' is in use by other processes").printf (mount_name);
+            secondary_text = _("Unmounting now might cause a process to fail or to lose data");
+            var sb = new StringBuilder ("");
+            sb.append (_("Other processes using '%s'… \n").printf (mount_name));
+            foreach (var pid in processes) {
+                sb.append (get_process_name_from_pid (pid));
+                sb.append ("\n");
+            }
+
+            show_error_details (sb.str);
+            show_all ();
+        }
+
+        private string? get_process_name_from_pid (int pid) {
+            string process_path = "/proc/%d/exe".printf (pid);
+
+            try {
+                string path = GLib.FileUtils.read_link (process_path);
+                return Path.get_basename (path);
+            } catch (FileError e) {
+                return _("Unknown");
+            }
+        }
+     }
 }
