@@ -55,13 +55,13 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
     public virtual bool can_unmount {
         get {
-            return is_mounted && mount.can_unmount ();
+            return is_mounted && (mount.can_unmount () || Files.FileOperations.mount_can_unplug_drive (mount));
         }
     }
 
     public virtual bool can_eject {
         get {
-            return is_mounted && mount.can_eject ();
+            return is_mounted && (mount.can_eject () || Files.FileOperations.mount_can_unplug_drive (mount));
         }
     }
 
