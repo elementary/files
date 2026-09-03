@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-14 15:22+0000\n"
+"POT-Creation-Date: 2026-09-03 03:11+0000\n"
 "PO-Revision-Date: 2026-03-22 15:55+0000\n"
 "Last-Translator: Jiri Grönroos <jiri.gronroos@iki.fi>\n"
 "Language-Team: Finnish <https://l10n.elementaryos.org/projects/files/files/"
@@ -985,20 +985,43 @@ msgstr "Poistetaanko roskakorin koko sisältö tästä liitoksesta?"
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "Kaikki roskakorin kohteet tästä liitoksesta poistetaan pysyvästi."
 
-#: libcore/FileOperations/MountUtils.vala:31
+#: libcore/FileOperations/MountUtils.vala:34
 #, c-format
 msgid "Unable to unmount '%s'"
 msgstr "Kohteen %s liitosta ei voi irrottaa"
 
-#: libcore/FileOperations/MountUtils.vala:52
+#: libcore/FileOperations/MountUtils.vala:59
 #, c-format
 msgid "Unable to eject '%s'"
 msgstr "Asemaa '%s' ei voi avata"
 
-#: libcore/FileOperations/MountUtils.vala:119
+#: libcore/FileOperations/MountUtils.vala:126
 #, c-format
 msgid "Unable to mount '%s'"
 msgstr "Kohdetta %s ei voi liittää"
+
+#: libcore/FileOperations/MountUtils.vala:273
+#, c-format
+msgid "The resource '%s' is in use by other processes"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:274
+msgid "Unmounting now might cause a process to fail or to lose data"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:276
+#, c-format
+msgid "Other processes using '%s'… \n"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:293
+#: src/Dialogs/AbstractPropertiesDialog.vala:152
+#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:273
+msgid "Unknown"
+msgstr "Tuntematon"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1645,14 +1668,6 @@ msgstr "Vapaana %s/%s"
 #: src/Dialogs/AbstractPropertiesDialog.vala:151
 msgid "Capacity:"
 msgstr "Tallennustila:"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:152
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
-#: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:273
-msgid "Unknown"
-msgstr "Tuntematon"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:154
 msgid "Available:"
