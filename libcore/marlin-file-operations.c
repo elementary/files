@@ -1518,179 +1518,6 @@ get_target_file_for_display_name (GFile *dir,
     return dest;
 }
 
-static gboolean
-copy_move_with_sync (GFile *src,
-                     GFile *dest,
-                     gboolean is_move,
-                     gboolean do_syncs,
-                     GFileCopyFlags flags,
-                     GCancellable *cancellable,
-                     GFileProgressCallback progress_callback,
-                     gpointer progress_callback_data,
-                     GError **error)
-{
-    if (!do_syncs) {
-        return is_move ?
-        g_file_move (src, dest, flags, cancellable, progress_callback, progress_callback_data, error):
-        g_file_copy (src, dest, flags, cancellable, progress_callback, progress_callback_data, error);
-    }
-
-    gboolean overwrite = flags & G_FILE_COPY_OVERWRITE;
-
-    if (is_move) {
-        gboolean atomic_move_success = g_file_move (src,
-                                             dest,
-                                             flags | G_FILE_COPY_NO_FALLBACK_FOR_MOVE,
-                                             cancellable,
-                                             progress_callback,
-                                             progress_callback_data,
-                                             NULL);
-        if (atomic_move_success) {
-            return TRUE;
-        }
-    }
-
-    *error = NULL;
-
-    gboolean src_is_dir = files_file_utils_file_is_dir (src);
-    gboolean dest_is_dir = files_file_utils_file_is_dir (dest);
-    gboolean dest_exists = g_file_query_exists (dest, NULL);
-
-    if (src_is_dir) {
-        if (dest_is_dir) {
-            g_set_error_literal (error, G_IO_ERROR,
-                                 overwrite ? G_IO_ERROR_WOULD_MERGE : G_IO_ERROR_EXISTS,
-                                 "copy_move_with_sync error");
-            return FALSE;
-        } else if (overwrite || !dest_exists) {
-            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_WOULD_RECURSE, "copy_move_with_sync error");
-            return FALSE;
-        } else {
-            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_EXISTS, "copy_move_with_sync error");
-            return FALSE;
-        }
-    } else {
-        if (dest_is_dir) {
-            g_set_error_literal (error, G_IO_ERROR,
-                                 overwrite ? G_IO_ERROR_IS_DIRECTORY : G_IO_ERROR_EXISTS,
-                                 "copy_move_with_sync error");
-            return FALSE;
-        } else if (!overwrite && dest_exists) {
-            g_set_error_literal (error, G_IO_ERROR, G_IO_ERROR_EXISTS, "copy_move_with_sync error");
-            return FALSE;
-        }
-    }
-
-    GFileInputStream *in = g_file_read (src, cancellable, error);
-
-    if (!in) {
-        return FALSE;
-    }
-
-    goffset total_size = 0;
-
-    GFileInfo *info = g_file_input_stream_query_info (in, G_FILE_ATTRIBUTE_STANDARD_SIZE, cancellable, NULL);
-
-    if (info) {
-        total_size = g_file_info_get_size (info);
-        g_object_unref (info);
-    }
-
-    *error = NULL;
-
-    GFileOutputStream *out = NULL;
-
-    out = g_file_replace (dest, NULL, FALSE, G_FILE_CREATE_NONE, cancellable, error);
-
-    if (!out) {
-        g_object_unref (in);
-        return FALSE;
-    }
-
-    gint fd = -1;
-
-    if (G_IS_FILE_DESCRIPTOR_BASED (out)) {
-        fd = g_file_descriptor_based_get_fd (G_FILE_DESCRIPTOR_BASED (out));
-    }
-
-    gboolean success = FALSE;
-
-    gchar buffer[COPY_MOVE_CHUNK_SIZE];
-
-    goffset copied = 0;
-
-    gint64 last_sync_time = 0;
-
-    while (TRUE) {
-        *error = NULL;
-
-        gssize read = g_input_stream_read (G_INPUT_STREAM (in), buffer, COPY_MOVE_CHUNK_SIZE, cancellable, error);
-
-        if (read < 0) {
-            goto cleanup_copy_move_with_sync;
-        }
-
-        if (read == 0) {
-            break;
-        }
-
-        gsize written = 0;
-
-        *error = NULL;
-
-        if (!g_output_stream_write_all (G_OUTPUT_STREAM (out),
-                                        buffer,
-                                        read,
-                                        &written,
-                                        cancellable,
-                                        error)) {
-            goto cleanup_copy_move_with_sync;
-        }
-
-        copied += written;
-
-        gint64 now = g_get_monotonic_time ();
-
-        if (last_sync_time == 0 || ABS(now - last_sync_time) >= SYNC_INTERVAL_MICROS) {
-            if (fd >= 0) {
-                g_fsync (fd);
-            }
-            last_sync_time = now;
-        }
-
-        if (progress_callback) {
-            progress_callback (copied, total_size, progress_callback_data);
-        }
-    }
-
-    if (fd >= 0) {
-        g_fsync (fd);
-    }
-
-    *error = NULL;
-
-    if (!g_output_stream_close (G_OUTPUT_STREAM (out), cancellable, error)) {
-        goto cleanup_copy_move_with_sync;
-    }
-
-    if (is_move && !g_file_equal(src, dest)) {
-        *error = NULL;
-
-        if (!g_file_delete (src, cancellable, error)) {
-            goto cleanup_copy_move_with_sync;
-        }
-    }
-
-    success = TRUE;
-
-cleanup_copy_move_with_sync:
-    g_input_stream_close (G_INPUT_STREAM (in), NULL, NULL);
-    g_object_unref (in);
-    g_object_unref (out);
-
-    return success;
-}
-
 /* Debuting files is non-NULL only for toplevel items */
 static void
 copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
@@ -1828,7 +1655,9 @@ retry:
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
 
-    res = copy_move_with_sync (src,
+    gint64 start = g_get_monotonic_time ();
+
+    res = marlin_file_operations_copy_move_job_copy_move_with_sync (src,
                                dest,
                                copy_job->is_move,
                                files_file_utils_file_can_unplug_drive (src) || files_file_utils_file_can_unplug_drive (dest_dir),
@@ -1836,7 +1665,14 @@ retry:
                                job->cancellable,
                                copy_file_progress_callback,
                                &pdata,
+                               NULL,
                                &error);
+
+    gint64 finish = g_get_monotonic_time ();
+
+    gint64 duration = finish - start;
+
+    g_message ("\nVJR:\nTRANSFER TIME: %d usecs\nTRANSFER SPEED: %d MBps\n", duration, pdata.source_info->num_bytes / duration * 1000000 / 1024 / 1024);
 
     /* NOTE Result is false if file being moved is a folder and the target is on a Samba share even if
      * the file is successfully copied, so the change will not be notified to the view.
@@ -2393,11 +2229,12 @@ retry:
     }
 
     error = NULL;
-    if (copy_move_with_sync (src, dest,
+    if (marlin_file_operations_copy_move_job_copy_move_with_sync (src, dest,
                      TRUE,
                      files_file_utils_file_can_unplug_drive (src) || files_file_utils_file_can_unplug_drive (dest_dir),
                      flags,
                      job->cancellable,
+                     NULL,
                      NULL,
                      NULL,
                      &error)) {

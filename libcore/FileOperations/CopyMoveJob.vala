@@ -17,6 +17,8 @@
  */
 
 public class Files.FileOperations.CopyMoveJob : CommonJob {
+    private const size_t COPY_MOVE_CHUNK_SIZE = (1024 * 1024); // 1 MiB
+    private const int64 SYNC_INTERVAL_MICROS = (500 * 1000); // 500 milliseconds
     protected bool is_move = false;
     protected GLib.List<GLib.File> files;
     protected GLib.File? destination;
@@ -41,6 +43,122 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);
         this.destination = destination;
         is_move = true;
+    }
+
+    public static bool
+    copy_move_with_sync (GLib.File src,
+                         GLib.File dest,
+                         bool is_move,
+                         bool do_syncs,
+                         FileCopyFlags flags,
+                         Cancellable? cancellable = null,
+                         FileProgressCallback? progress_callback = null,
+                         void *progress_callback_data = null) throws Error
+    {
+        message ("VJR: do_syncs is %s", do_syncs.to_string ());
+
+        if (!do_syncs) {
+            return is_move ?
+            src.move (dest, flags, cancellable, progress_callback):
+            src.copy ( dest, flags, cancellable, progress_callback);
+        }
+
+        bool overwrite = (flags & FileCopyFlags.OVERWRITE) != 0;
+
+        if (is_move) {
+            bool atomic_move_success = src.move (dest,
+                                                flags | FileCopyFlags.NO_FALLBACK_FOR_MOVE,
+                                                 cancellable,
+                                                 progress_callback);
+            if (atomic_move_success) {
+                return true;
+            }
+        }
+
+        bool src_is_dir = FileUtils.file_is_dir (src);
+        bool dest_is_dir = FileUtils.file_is_dir (dest);
+        bool dest_exists = dest.query_exists ();
+
+        int error = -1;
+
+        if (src_is_dir) {
+            if (dest_is_dir) {
+                error = overwrite ? IOError.WOULD_MERGE : IOError.EXISTS;
+            } else if (overwrite || !dest_exists) {
+                error = IOError.WOULD_RECURSE;
+            } else {
+                error = IOError.EXISTS;
+            }
+        } else {
+            if (dest_is_dir) {
+                error = overwrite ? IOError.IS_DIRECTORY : IOError.EXISTS;
+            } else if (!overwrite && dest_exists) {
+                error = IOError.EXISTS;
+            }
+        }
+
+        if (error >= 0) {
+            throw IOError.from_errno (error);
+        }
+
+        FileInputStream in = src.read (cancellable);
+        FileInfo info = in.query_info (FileAttribute.STANDARD_SIZE, cancellable);
+        int64 total_size = info.get_size ();
+        FileOutputStream out = dest.replace (null, false, FileCreateFlags.NONE, cancellable);
+
+        int fd = -1;
+
+        if (out is FileDescriptorBased) {
+            fd = out.get_fd ();
+        }
+
+        message ("VJR: FD is %d", fd);
+
+        bool success = false;
+
+        uint8 buffer[COPY_MOVE_CHUNK_SIZE];
+
+        size_t copied = 0;
+
+        int64 last_sync_time = 0;
+
+        while (true) {
+            ssize_t read = in.read (buffer, cancellable);
+
+            if (read == 0) {
+                success = true;
+                break;
+            }
+
+            size_t written = 0;
+
+            out.write_all (buffer[0:read], out written, cancellable);
+
+            copied += written;
+
+            int64 now = get_monotonic_time ();
+
+            if (last_sync_time == 0 || (now - last_sync_time).abs () >= SYNC_INTERVAL_MICROS) {
+                if (fd >= 0) {
+                    Posix.fsync (fd);
+                }
+                last_sync_time = now;
+            }
+
+            if (progress_callback != null) {
+                progress_callback (copied, total_size);
+            }
+        }
+
+        if (fd >= 0) {
+            Posix.fsync (fd);
+        }
+
+        if (is_move && !src.equal(dest)) {
+            src.delete (cancellable);
+        }
+
+        return success;
     }
 
     protected override unowned string get_scan_primary () {
