@@ -53,8 +53,8 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                          FileCopyFlags flags,
                          Cancellable? cancellable = null,
                          FileProgressCallback? progress_callback = null,
-                         void *progress_callback_data = null) throws Error
-    {
+                         void *progress_callback_data = null) throws Error {
+
         message ("VJR: do_syncs is %s", do_syncs.to_string ());
 
         if (!do_syncs) {
@@ -154,7 +154,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             Posix.fsync (fd);
         }
 
-        if (is_move && !src.equal(dest)) {
+        if (is_move && !src.equal (dest)) {
             src.delete (cancellable);
         }
 
