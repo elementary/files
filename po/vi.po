@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-14 15:22+0000\n"
+"POT-Creation-Date: 2026-09-03 03:11+0000\n"
 "PO-Revision-Date: 2017-12-30 00:08+0000\n"
 "Last-Translator: Hải Hồ <hochihai1997@gmail.com>\n"
 "Language-Team: Vietnamese <https://weblate.elementary.io/projects/files/"
@@ -991,20 +991,43 @@ msgstr "Xóa vĩnh viễn tất cả các mục khỏi Thùng rác trên gắn k
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "Tất cả các mục trong thùng rác trên gắn kết này sẽ bị xóa vĩnh viễn."
 
-#: libcore/FileOperations/MountUtils.vala:31
+#: libcore/FileOperations/MountUtils.vala:34
 #, fuzzy, c-format
 msgid "Unable to unmount '%s'"
 msgstr "Không thể chạy %s"
 
-#: libcore/FileOperations/MountUtils.vala:52
+#: libcore/FileOperations/MountUtils.vala:59
 #, fuzzy, c-format
 msgid "Unable to eject '%s'"
 msgstr "Không thể chạy %s"
 
-#: libcore/FileOperations/MountUtils.vala:119
+#: libcore/FileOperations/MountUtils.vala:126
 #, fuzzy, c-format
 msgid "Unable to mount '%s'"
 msgstr "Không thể chạy %s"
+
+#: libcore/FileOperations/MountUtils.vala:273
+#, c-format
+msgid "The resource '%s' is in use by other processes"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:274
+msgid "Unmounting now might cause a process to fail or to lose data"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:276
+#, c-format
+msgid "Other processes using '%s'… \n"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:293
+#: src/Dialogs/AbstractPropertiesDialog.vala:152
+#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:273
+msgid "Unknown"
+msgstr ""
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1642,14 +1665,6 @@ msgstr ""
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:151
 msgid "Capacity:"
-msgstr ""
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:152
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
-#: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:273
-msgid "Unknown"
 msgstr ""
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:154

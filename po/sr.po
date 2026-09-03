@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-06-14 15:22+0000\n"
+"POT-Creation-Date: 2026-09-03 03:11+0000\n"
 "PO-Revision-Date: 2021-03-12 05:56+0000\n"
 "Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <https://l10n.elementary.io/projects/files/files/sr/"
@@ -1016,20 +1016,43 @@ msgstr "Да трајно обришем све ставке из смећа н�
 msgid "All items in the trash on this mount, will be permanently deleted."
 msgstr "Све ставке из смећа на овом качењу биће трајно обрисане."
 
-#: libcore/FileOperations/MountUtils.vala:31
+#: libcore/FileOperations/MountUtils.vala:34
 #, fuzzy, c-format
 msgid "Unable to unmount '%s'"
 msgstr "Не могу да прикачим „%s“"
 
-#: libcore/FileOperations/MountUtils.vala:52
+#: libcore/FileOperations/MountUtils.vala:59
 #, fuzzy, c-format
 msgid "Unable to eject '%s'"
 msgstr "Не могу да избацим %V"
 
-#: libcore/FileOperations/MountUtils.vala:119
+#: libcore/FileOperations/MountUtils.vala:126
 #, c-format
 msgid "Unable to mount '%s'"
 msgstr "Не могу да прикачим „%s“"
+
+#: libcore/FileOperations/MountUtils.vala:273
+#, c-format
+msgid "The resource '%s' is in use by other processes"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:274
+msgid "Unmounting now might cause a process to fail or to lose data"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:276
+#, c-format
+msgid "Other processes using '%s'… \n"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:293
+#: src/Dialogs/AbstractPropertiesDialog.vala:152
+#: src/Dialogs/AbstractPropertiesDialog.vala:155
+#: src/Dialogs/AbstractPropertiesDialog.vala:158
+#: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
+#: src/View/DetailsColumn.vala:273
+msgid "Unknown"
+msgstr "Непознато"
 
 #. TRANSLATORS: %'d is a placeholder for a number. It must not be translated or removed.
 #. %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed.
@@ -1690,14 +1713,6 @@ msgstr "%s је искоришћено од %s"
 #: src/Dialogs/AbstractPropertiesDialog.vala:151
 msgid "Capacity:"
 msgstr "Капацитет:"
-
-#: src/Dialogs/AbstractPropertiesDialog.vala:152
-#: src/Dialogs/AbstractPropertiesDialog.vala:155
-#: src/Dialogs/AbstractPropertiesDialog.vala:158
-#: src/Dialogs/PropertiesWindow.vala:475 src/Dialogs/PropertiesWindow.vala:514
-#: src/View/DetailsColumn.vala:273
-msgid "Unknown"
-msgstr "Непознато"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:154
 msgid "Available:"
