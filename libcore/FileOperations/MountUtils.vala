@@ -241,11 +241,6 @@ namespace Files.FileOperations {
         }
 
         public override void show_processes (string message, Array<Pid> processes, string[] choices) {
-            Pid self = Posix.getpid ();
-            if (processes.length == 1 && processes.index (0) == self) {
-                return;
-            }
-
             if (dialog != null) {
                 return;
             }
@@ -281,16 +276,22 @@ namespace Files.FileOperations {
         }
 
         construct {
-            primary_text = _("The resource '%s' is in use by other processes").printf (mount_name);
-            secondary_text = _("Unmounting now might cause a process to fail or to lose data");
-            var sb = new StringBuilder ("");
-            sb.append (_("Other processes using '%s'… \n").printf (mount_name));
-            foreach (var pid in processes) {
-                sb.append (get_process_name_from_pid (pid));
-                sb.append ("\n");
-            }
+            Pid self = Posix.getpid ();
+            if (processes.length == 1 && processes.index (0) == self) {
+                primary_text = _("The resource '%s' is in use").printf (mount_name);
+                secondary_text = _("Please wait for it to unmount or you may cancel it");
+            } else {
+                primary_text = _("The resource '%s' is in use by other processes").printf (mount_name);
+                secondary_text = _("Unmounting now might cause a process to fail or to lose data");
+                var sb = new StringBuilder ("");
+                sb.append (_("Other processes using '%s'… \n").printf (mount_name));
+                foreach (var pid in processes) {
+                    sb.append (get_process_name_from_pid (pid));
+                    sb.append ("\n");
+                }
 
-            show_error_details (sb.str);
+                show_error_details (sb.str);
+            }
             show_all ();
         }
 
