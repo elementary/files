@@ -55,8 +55,6 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                          FileProgressCallback? progress_callback = null,
                          void *progress_callback_data = null) throws Error {
 
-        message ("VJR: do_syncs is %s", do_syncs.to_string ());
-
         if (!do_syncs) {
             return is_move ?
             src.move (dest, flags, cancellable, progress_callback):
@@ -64,8 +62,6 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         }
 
         bool overwrite = (flags & FileCopyFlags.OVERWRITE) != 0;
-
-        message ("VJR: overwrite is %s", overwrite.to_string ());
 
         if (is_move) {
             bool atomic_move_success = src.move (dest,
@@ -113,8 +109,6 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         if (out is FileDescriptorBased) {
             fd = out.get_fd ();
         }
-
-        message ("VJR: FD is %d", fd);
 
         bool success = false;
 

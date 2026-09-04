@@ -1652,8 +1652,6 @@ retry:
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
 
-    gint64 start = g_get_monotonic_time ();
-
     res = marlin_file_operations_copy_move_job_copy_move_with_sync (src,
                                dest,
                                copy_job->is_move,
@@ -1664,12 +1662,6 @@ retry:
                                &pdata,
                                NULL,
                                &error);
-
-    gint64 finish = g_get_monotonic_time ();
-
-    gint64 duration = finish - start;
-
-    g_message ("\nVJR:\nTRANSFER TIME: %d usecs\nTRANSFER SPEED: %d MBps\n", duration, pdata.source_info->num_bytes * 1000000 / 1024 / 1024 / duration);
 
     /* NOTE Result is false if file being moved is a folder and the target is on a Samba share even if
      * the file is successfully copied, so the change will not be notified to the view.
