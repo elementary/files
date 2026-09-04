@@ -100,7 +100,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         }
 
         if (error >= 0) {
-            throw IOError.from_errno (error);
+            throw new Error (IOError.quark (), error, error.to_string ());
         }
 
         FileInputStream in = src.read (cancellable);
