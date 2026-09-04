@@ -1654,8 +1654,8 @@ retry:
     res = marlin_file_operations_copy_move_job_copy_move_with_sync (src,
                                                                     dest,
                                                                     copy_job->is_move,
-                                                                    files_file_utils_file_can_unplug_drive (src) ||
-                                                                    files_file_utils_file_can_unplug_drive (dest_dir),
+                                                                    files_file_utils_can_unplug (src) ||
+                                                                    files_file_utils_can_unplug (dest_dir),
                                                                     flags,
                                                                     job->cancellable,
                                                                     copy_file_progress_callback,
@@ -2220,8 +2220,8 @@ retry:
     if (marlin_file_operations_copy_move_job_copy_move_with_sync (src,
                                                                   dest,
                                                                   TRUE,
-                                                                  files_file_utils_file_can_unplug_drive (src) ||
-                                                                  files_file_utils_file_can_unplug_drive (dest_dir),
+                                                                  files_file_utils_can_unplug (src) ||
+                                                                  files_file_utils_can_unplug (dest_dir),
                                                                   flags,
                                                                   job->cancellable,
                                                                   NULL,

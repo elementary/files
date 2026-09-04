@@ -164,7 +164,7 @@ namespace Files.FileOperations {
         return false;
     }
 
-    public static bool mount_can_unplug_drive (Mount mount) {
+    public static bool can_unplug (Mount mount) {
         Drive? drive = mount.get_drive ();
         if (drive == null) {
             return false;
