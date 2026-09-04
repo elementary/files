@@ -279,7 +279,7 @@ namespace Files.FileOperations {
             Pid self = Posix.getpid ();
             if (processes.length == 1 && processes.index (0) == self) {
                 primary_text = _("The resource '%s' is in use").printf (mount_name);
-                secondary_text = _("Please wait for it to unmount or you may cancel it");
+                secondary_text = _("Please wait or cancel unmounting it");
             } else {
                 primary_text = _("The resource '%s' is in use by other processes").printf (mount_name);
                 secondary_text = _("Unmounting now might cause a process to fail or to lose data");
