@@ -37,7 +37,6 @@
 #include <gdk/gdk.h>
 #include <gtk/gtk.h>
 #include <gio/gio.h>
-#include <gio/gfiledescriptorbased.h>
 #include <glib.h>
 
 #include "pantheon-files-core.h"
