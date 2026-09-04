@@ -60,10 +60,10 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             }
         }
 
-        bool overwrite = (flags & FileCopyFlags.OVERWRITE) != 0;
+        var overwrite = (flags & FileCopyFlags.OVERWRITE) != 0;
 
         if (is_move) {
-            bool atomic_move_success = false;
+            var atomic_move_success = false;
 
             try {
                 atomic_move_success = src.move (dest,
@@ -78,11 +78,11 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             }
         }
 
-        bool src_is_dir = FileUtils.file_is_dir (src);
-        bool dest_is_dir = FileUtils.file_is_dir (dest);
-        bool dest_exists = dest.query_exists ();
+        var src_is_dir = FileUtils.file_is_dir (src);
+        var dest_is_dir = FileUtils.file_is_dir (dest);
+        var dest_exists = dest.query_exists ();
 
-        int error = -1;
+        var error = -1;
 
         if (src_is_dir) {
             if (dest_is_dir) {
@@ -104,18 +104,18 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             throw new Error (IOError.quark (), error, error.to_string ());
         }
 
-        FileInputStream in = src.read (cancellable);
-        FileInfo info = in.query_info (FileAttribute.STANDARD_SIZE, cancellable);
-        int64 total_size = info.get_size ();
-        FileOutputStream out = dest.replace (null, false, FileCreateFlags.NONE, cancellable);
+        var in = src.read (cancellable);
+        var info = in.query_info (FileAttribute.STANDARD_SIZE, cancellable);
+        var total_size = info.get_size ();
+        var out = dest.replace (null, false, FileCreateFlags.NONE, cancellable);
 
-        int fd = -1;
+        var fd = -1;
 
         if (out is FileDescriptorBased) {
             fd = out.get_fd ();
         }
 
-        bool success = false;
+        var success = false;
 
         uint8 buffer[COPY_MOVE_CHUNK_SIZE];
 
@@ -124,7 +124,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         int64 last_sync_time = 0;
 
         while (true) {
-            ssize_t read = in.read (buffer, cancellable);
+            var read = in.read (buffer, cancellable);
 
             if (read == 0) {
                 success = true;
@@ -137,7 +137,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
 
             copied += written;
 
-            int64 now = get_monotonic_time ();
+            var now = get_monotonic_time ();
 
             if (last_sync_time == 0 || (now - last_sync_time).abs () >= SYNC_INTERVAL_MICROS) {
                 if (fd >= 0) {
