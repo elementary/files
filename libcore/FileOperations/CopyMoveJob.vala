@@ -49,10 +49,11 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
     copy_move_with_sync (GLib.File src,
                          GLib.File dest,
                          bool is_move,
-                         bool do_syncs,
                          FileCopyFlags flags,
                          Cancellable? cancellable = null,
                          FileProgressCallback? progress_callback = null) throws Error {
+
+        bool do_syncs = FileUtils.file_can_unplug_drive (src) || FileUtils.file_can_unplug_drive (dest);
 
         if (!do_syncs) {
             return is_move ?
