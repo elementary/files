@@ -63,10 +63,16 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         bool overwrite = (flags & FileCopyFlags.OVERWRITE) != 0;
 
         if (is_move) {
-            bool atomic_move_success = src.move (dest,
+            bool atomic_move_success = false;
+
+            try {
+                atomic_move_success = src.move (dest,
                                                 flags | FileCopyFlags.NO_FALLBACK_FOR_MOVE,
-                                                 cancellable,
-                                                 progress_callback);
+                                                cancellable,
+                                                progress_callback);
+            } catch (Error e) {
+            }
+
             if (atomic_move_success) {
                 return true;
             }
