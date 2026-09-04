@@ -241,6 +241,11 @@ namespace Files.FileOperations {
         }
 
         public override void show_processes (string message, Array<Pid> processes, string[] choices) {
+            Pid self = Posix.getpid ();
+            if (processes.length == 1 && processes.index (0) == self) {
+                return;
+            }
+
             if (dialog != null) {
                 return;
             }
