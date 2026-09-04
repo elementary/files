@@ -85,8 +85,35 @@ namespace Files.FileUtils {
             );
         }
 
+        /*
         foreach (var original_dir in original_dirs_hash.get_keys ()) {
             var dir_files = original_dirs_hash.take (original_dir);
+            var list_files = dir_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
+            message ("VJR: FILE LIST SIZE BEFORE = %u", dir_files.length ());
+            try {
+                yield Files.FileOperations.copy_move_link (
+                    (owned) dir_files,
+                    original_dir,
+                    Gdk.DragAction.MOVE,
+                    widget,
+                    null
+                );
+            } catch (Error e) {
+                message ("VJR: ERROR=%s", e.message);
+                continue;
+            }
+            message ("VJR: FILE LIST SIZE AFTER = %u", dir_files.length ());
+            message ("VJR: FILE LIST COPY SIZE AFTER = %u", list_files.length ());
+            foreach (var syncfile in list_files) {
+                FileUtils.sync_target (syncfile, original_dir);
+            }
+        }
+        */
+
+        foreach (var original_dir in original_dirs_hash.get_keys ()) {
+            var dir_files = original_dirs_hash.take (original_dir);
+            var list_files = dir_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
+            message ("VJR: FILE LIST SIZE BEFORE = %u", dir_files.length ());
             Files.FileOperations.copy_move_link.begin (
                 (owned) dir_files,
                 original_dir,
@@ -94,6 +121,11 @@ namespace Files.FileUtils {
                 widget,
                 null
             );
+            message ("VJR: FILE LIST SIZE AFTER = %u", dir_files.length ());
+            message ("VJR: FILE LIST COPY SIZE AFTER = %u", list_files.length ());
+            //foreach (var syncfile in list_files) {
+            //    FileUtils.sync_target (syncfile, original_dir);
+            //}
         }
     }
 

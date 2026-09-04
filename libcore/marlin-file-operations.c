@@ -227,6 +227,7 @@ retry:
 skip:
             g_error_free (error);
         } else {
+            files_file_utils_sync_parent (dir);
             files_file_changes_queue_folder_removed (dir);
             transfer_info->num_files ++;
             marlin_file_operations_delete_job_report_delete_progress (del_job, source_info, transfer_info);
@@ -258,6 +259,7 @@ delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
 
     error = NULL;
     if (g_file_delete (file, job->cancellable, &error)) {
+        files_file_utils_sync_parent (file);
         files_file_changes_queue_file_removed (file);
         transfer_info->num_files ++;
         marlin_file_operations_delete_job_report_delete_progress (del_job, source_info, transfer_info);
@@ -516,6 +518,8 @@ skip:
             g_error_free (error);
             total_files--;
         } else {
+            files_file_utils_sync_parent (file);
+
             files_file_changes_queue_file_removed (file);
 
             // Start UNDO-REDO
@@ -1221,6 +1225,7 @@ retry:
 skip:
             g_error_free (error);
         }
+        files_file_utils_sync (src);
     }
 
     if (local_skipped_file) {
@@ -1373,6 +1378,7 @@ skip2:
 
         return FALSE;
     }
+    files_file_utils_sync_parent (file);
     files_file_changes_queue_file_removed (file);
 
     return TRUE;
@@ -1685,7 +1691,8 @@ retry:
 
     if (res) {
         transfer_info->num_files ++;
-        marlin_file_operations_copy_move_job_report_copy_progress (copy_job, source_info, transfer_info);
+        //marlin_file_operations_copy_move_job_report_copy_progress (copy_job, source_info, transfer_info);
+        marlin_file_operations_copy_move_job_report_restore_progress (copy_job, source_info->num_files, transfer_info->num_files);
 
         if (debuting_files) {
             /*if (position) {
@@ -1697,6 +1704,8 @@ retry:
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
         if (copy_job->is_move) {
+            g_message ("VJR1: SYNCING MOVED FILE");
+            files_file_utils_sync (dest);
             files_file_changes_queue_file_moved (src, dest);
         } else {
            files_file_changes_queue_file_added (dest, TRUE);
@@ -1900,6 +1909,7 @@ retry:
                 g_error_free (error);
                 error = NULL;
             }
+            files_file_utils_sync_parent (dest);
             files_file_changes_queue_file_removed (dest);
         }
 
@@ -2176,6 +2186,7 @@ move_file_prepare (FilesFileOperationsCopyMoveJob *move_job,
                    char **dest_fs_type,
                    GHashTable *debuting_files,
                    GList **fallback_files,
+                   int total_files,
                    int files_left)
 {
     GFile *dest, *new_dest;
@@ -2233,6 +2244,8 @@ retry:
         flags |= G_FILE_COPY_OVERWRITE;
     }
 
+    marlin_file_operations_copy_move_job_report_restore_progress (move_job, total_files, files_left);
+
     error = NULL;
     if (g_file_move (src, dest,
                      flags,
@@ -2240,6 +2253,11 @@ retry:
                      sync_file_callback,
                      &dest,
                      &error)) {
+
+        g_message ("VJR2: SYNCING MOVED FILE");
+        files_file_utils_sync (dest);
+
+        marlin_file_operations_copy_move_job_report_restore_progress (move_job, total_files, --files_left);
 
         if (debuting_files) {
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
@@ -2412,7 +2430,8 @@ move_files_prepare (FilesFileOperationsCopyMoveJob *job,
 
     total = left = g_list_length (job->files);
 
-    marlin_file_operations_copy_move_job_report_move_progress (job, total, left);
+    //marlin_file_operations_copy_move_job_report_move_progress (job, total, left);
+    //marlin_file_operations_copy_move_job_report_restore_progress (job, total, left);
 
     i = 0;
     for (l = job->files;
@@ -2429,8 +2448,10 @@ move_files_prepare (FilesFileOperationsCopyMoveJob *job,
                            same_fs, dest_fs_type,
                            job->debuting_files,
                            fallbacks,
+                           total,
                            left);
-        marlin_file_operations_copy_move_job_report_move_progress (job, total, --left);
+        //marlin_file_operations_copy_move_job_report_move_progress (job, total, --left);
+        //marlin_file_operations_copy_move_job_report_restore_progress (job, total, --left);
         i++;
     }
 
