@@ -56,7 +56,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             if (is_move) {
                 return src.move (dest, flags, cancellable, progress_callback);
             } else {
-                return src.copy ( dest, flags, cancellable, progress_callback);
+                return src.copy (dest, flags, cancellable, progress_callback);
             }
         }
 
