@@ -62,8 +62,6 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             }
         }
 
-        var overwrite = (flags & FileCopyFlags.OVERWRITE) != 0;
-
         if (is_move) {
             var atomic_move_success = false;
             try {
@@ -73,7 +71,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                     cancellable,
                     progress_callback
                 );
-            } finally {
+            } catch (Error e) {
             }
             if (atomic_move_success) {
                 return true;
@@ -83,7 +81,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         var src_is_dir = FileUtils.file_is_dir (src);
         var dest_is_dir = FileUtils.file_is_dir (dest);
         var dest_exists = dest.query_exists ();
-
+        var overwrite = (flags & FileCopyFlags.OVERWRITE) != 0;
         var error = -1;
 
         if (src_is_dir) {
@@ -117,10 +115,8 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         }
 
         var success = false;
-
         uint8 buffer[COPY_MOVE_CHUNK_SIZE];
         size_t copied = 0;
-
         int64 last_sync_time = 0;
 
         while (true) {
