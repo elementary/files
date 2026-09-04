@@ -1669,7 +1669,7 @@ retry:
 
     gint64 duration = finish - start;
 
-    g_message ("\nVJR:\nTRANSFER TIME: %d usecs\nTRANSFER SPEED: %d MBps\n", duration, pdata.source_info->num_bytes / duration * 1000000 / 1024 / 1024);
+    g_message ("\nVJR:\nTRANSFER TIME: %d usecs\nTRANSFER SPEED: %d MBps\n", duration, pdata.source_info->num_bytes * 1000000 / 1024 / 1024 / duration);
 
     /* NOTE Result is false if file being moved is a folder and the target is on a Samba share even if
      * the file is successfully copied, so the change will not be notified to the view.

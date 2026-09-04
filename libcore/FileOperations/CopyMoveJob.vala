@@ -65,6 +65,8 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
 
         bool overwrite = (flags & FileCopyFlags.OVERWRITE) != 0;
 
+        message ("VJR: overwrite is %s", overwrite.to_string ());
+
         if (is_move) {
             bool atomic_move_success = src.move (dest,
                                                 flags | FileCopyFlags.NO_FALLBACK_FOR_MOVE,
