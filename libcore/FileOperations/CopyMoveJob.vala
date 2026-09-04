@@ -238,6 +238,21 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         progress.update_progress (transfer_info.num_bytes, total_size);
     }
 
+    protected void report_restore_progress (int total, int left) {
+        progress.take_status (_("Restoring files from trash"));
+
+        var s = ngettext (
+            "%'d file left to restore",
+            "%'d files left to restore",
+            left
+        ).printf (left);
+        progress.take_details (s);
+
+        //progress.pulse_progress ();
+
+        progress.update_progress (left, total);
+    }
+
     protected void report_move_progress (int total, int left) {
         var dest_basename = Files.FileUtils.custom_basename_from_file (destination);
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed

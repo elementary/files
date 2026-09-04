@@ -85,8 +85,35 @@ namespace Files.FileUtils {
             );
         }
 
+        /*
         foreach (var original_dir in original_dirs_hash.get_keys ()) {
             var dir_files = original_dirs_hash.take (original_dir);
+            var list_files = dir_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
+            message ("VJR: FILE LIST SIZE BEFORE = %u", dir_files.length ());
+            try {
+                yield Files.FileOperations.copy_move_link (
+                    (owned) dir_files,
+                    original_dir,
+                    Gdk.DragAction.MOVE,
+                    widget,
+                    null
+                );
+            } catch (Error e) {
+                message ("VJR: ERROR=%s", e.message);
+                continue;
+            }
+            message ("VJR: FILE LIST SIZE AFTER = %u", dir_files.length ());
+            message ("VJR: FILE LIST COPY SIZE AFTER = %u", list_files.length ());
+            foreach (var syncfile in list_files) {
+                FileUtils.sync_target (syncfile, original_dir);
+            }
+        }
+        */
+
+        foreach (var original_dir in original_dirs_hash.get_keys ()) {
+            var dir_files = original_dirs_hash.take (original_dir);
+            var list_files = dir_files.copy_deep ((GLib.CopyFunc) GLib.Object.ref);
+            message ("VJR: FILE LIST SIZE BEFORE = %u", dir_files.length ());
             Files.FileOperations.copy_move_link.begin (
                 (owned) dir_files,
                 original_dir,
@@ -94,6 +121,11 @@ namespace Files.FileUtils {
                 widget,
                 null
             );
+            message ("VJR: FILE LIST SIZE AFTER = %u", dir_files.length ());
+            message ("VJR: FILE LIST COPY SIZE AFTER = %u", list_files.length ());
+            //foreach (var syncfile in list_files) {
+            //    FileUtils.sync_target (syncfile, original_dir);
+            //}
         }
     }
 
@@ -431,6 +463,105 @@ namespace Files.FileUtils {
         }
 
         return new_path;
+    }
+
+    public bool sync_parent (GLib.File file) {
+        message ("VJR: SYNCING PARENT STARTED");
+        var parent = file.get_parent ();
+        if (parent == null) {
+            message ("VJR: NO PARENT");
+            return false;
+        }
+
+        var path = parent.get_path ();
+        if (path == null) {
+            message ("VJR: NO PARENT PATH");
+            return false;
+        }
+
+        int fd = Posix.open (path, Posix.O_RDONLY | Posix.O_DIRECTORY);
+        if (fd < 0) {
+            message ("VJR: OPEN PARENT FAILED");
+            return false;
+        }
+
+        if (Posix.fsync (fd) != 0) {
+            message ("VJR: FSYNC PARENT FAILED");
+            return false;
+        }
+
+        message ("VJR: FSYNC PARENT SUCCEEDED");
+
+        var closed = Posix.close (fd) == 0;
+
+        message ("VJR: CLOSE PARENT %s", closed ? "SUCCEEDED" : "FAILED");
+
+        return closed;
+    }
+
+    public bool sync (GLib.File file) {
+        message ("VJR: SYNCING STARTED");
+
+        var path = file.get_path ();
+        if (path == null) {
+            message ("VJR: NO PATH");
+            return false;
+        }
+
+        int fd = Posix.open (path, Posix.O_RDONLY); // | Posix.O_DIRECTORY);
+        if (fd < 0) {
+            message ("VJR: OPEN FAILED");
+            return false;
+        }
+
+        if (Posix.fsync (fd) != 0) {
+            message ("VJR: FSYNC FAILED");
+            return false;
+        }
+
+        message ("VJR: FSYNC SUCCEEDED");
+
+        var closed = Posix.close (fd) == 0;
+
+        message ("VJR: CLOSE %s", closed ? "SUCCEEDED" : "FAILED");
+
+        return closed;
+    }
+
+    public bool sync_target (GLib.File src_file, GLib.File target_dir) {
+        message ("VJR: SYNCING TARGET STARTED");
+
+        var basename = src_file.get_basename ();
+        if (basename == null) {
+            message ("VJR: NO TARGET BASENAME");
+            return false;
+        }
+
+        var file = target_dir.get_child (basename);
+        var path = file.get_path ();
+        if (path == null) {
+            message ("VJR: NO TARGET PATH");
+            return false;
+        }
+
+        int fd = Posix.open (path, Posix.O_RDONLY); // | Posix.O_DIRECTORY);
+        if (fd < 0) {
+            message ("VJR: OPEN TARGET FAILED");
+            return false;
+        }
+
+        if (Posix.fsync (fd) != 0) {
+            message ("VJR: FSYNC TARGET FAILED");
+            return false;
+        }
+
+        message ("VJR: FSYNC TARGET SUCCEEDED");
+
+        var closed = Posix.close (fd) == 0;
+
+        message ("VJR: CLOSE TARGET %s", closed ? "SUCCEEDED" : "FAILED");
+
+        return closed;
     }
 
     /** Splits the path into a protocol ending in '://"  and a path beginning "/". **/
