@@ -1651,16 +1651,18 @@ retry:
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
 
-    res = marlin_file_operations_copy_move_job_copy_move_with_sync (src,
-                                                                    dest,
-                                                                    copy_job->is_move,
-                                                                    files_file_utils_can_unplug (src) ||
-                                                                    files_file_utils_can_unplug (dest_dir),
-                                                                    flags,
-                                                                    job->cancellable,
-                                                                    copy_file_progress_callback,
-                                                                    &pdata,
-                                                                    &error);
+    res = marlin_file_operations_copy_move_job_copy_move_with_sync (
+        src,
+        dest,
+        copy_job->is_move,
+        files_file_utils_can_unplug (src) ||
+        files_file_utils_can_unplug (dest_dir),
+        flags,
+        job->cancellable,
+        copy_file_progress_callback,
+        &pdata,
+        &error
+    );
 
     /* NOTE Result is false if file being moved is a folder and the target is on a Samba share even if
      * the file is successfully copied, so the change will not be notified to the view.
@@ -2217,16 +2219,18 @@ retry:
     }
 
     error = NULL;
-    if (marlin_file_operations_copy_move_job_copy_move_with_sync (src,
-                                                                  dest,
-                                                                  TRUE,
-                                                                  files_file_utils_can_unplug (src) ||
-                                                                  files_file_utils_can_unplug (dest_dir),
-                                                                  flags,
-                                                                  job->cancellable,
-                                                                  NULL,
-                                                                  NULL,
-                                                                  &error)) {
+    if (marlin_file_operations_copy_move_job_copy_move_with_sync (
+            src,
+            dest,
+            TRUE,
+            files_file_utils_can_unplug (src) ||
+            files_file_utils_can_unplug (dest_dir),
+            flags,
+            job->cancellable,
+            NULL,
+            NULL,
+            &error
+    )) {
 
         if (debuting_files) {
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));

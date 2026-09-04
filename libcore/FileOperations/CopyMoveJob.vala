@@ -45,13 +45,15 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         is_move = true;
     }
 
-    public static bool copy_move_with_sync (GLib.File src,
-                                            GLib.File dest,
-                                            bool is_move,
-                                            bool do_syncs,
-                                            FileCopyFlags flags,
-                                            Cancellable? cancellable = null,
-                                            FileProgressCallback? progress_callback = null) throws Error {
+    public static bool copy_move_with_sync (
+        GLib.File src,
+        GLib.File dest,
+        bool is_move,
+        bool do_syncs,
+        FileCopyFlags flags,
+        Cancellable? cancellable = null,
+        FileProgressCallback? progress_callback = null
+    ) throws Error {
         if (!do_syncs) {
             if (is_move) {
                 return src.move (dest, flags, cancellable, progress_callback);
@@ -64,15 +66,15 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
 
         if (is_move) {
             var atomic_move_success = false;
-
             try {
-                atomic_move_success = src.move (dest,
-                                                flags | FileCopyFlags.NO_FALLBACK_FOR_MOVE,
-                                                cancellable,
-                                                progress_callback);
+                atomic_move_success = src.move (
+                    dest,
+                    flags | FileCopyFlags.NO_FALLBACK_FOR_MOVE,
+                    cancellable,
+                    progress_callback
+                );
             } finally {
             }
-
             if (atomic_move_success) {
                 return true;
             }
@@ -110,7 +112,6 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         var out = dest.replace (null, false, FileCreateFlags.NONE, cancellable);
 
         var fd = -1;
-
         if (out is FileDescriptorBased) {
             fd = out.get_fd ();
         }
@@ -118,27 +119,23 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         var success = false;
 
         uint8 buffer[COPY_MOVE_CHUNK_SIZE];
-
         size_t copied = 0;
 
         int64 last_sync_time = 0;
 
         while (true) {
             var read = in.read (buffer, cancellable);
-
             if (read == 0) {
                 success = true;
                 break;
             }
 
             size_t written = 0;
-
             out.write_all (buffer[0:read], out written, cancellable);
 
             copied += written;
 
             var now = get_monotonic_time ();
-
             if (last_sync_time == 0 || (now - last_sync_time).abs () >= SYNC_INTERVAL_MICROS) {
                 if (fd >= 0) {
                     Posix.fsync (fd);
