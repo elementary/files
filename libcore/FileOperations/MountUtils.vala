@@ -235,6 +235,11 @@ namespace Files.FileOperations {
             );
         }
 
+        ~UnmountOperation () {
+            dialog.close ();
+            dialog.destroy ();
+        }
+
         public override void show_processes (string message, Array<Pid> processes, string[] choices) {
             if (dialog != null) {
                 return;
@@ -242,6 +247,7 @@ namespace Files.FileOperations {
 
             dialog = new BusyDialog (mount_name, processes);
             dialog.response.connect (() => {
+                dialog.close ();
                 dialog.destroy ();
                 dialog = null;
                 reply (MountOperationResult.ABORTED); // Results in IOError.FAILED_HANDLED
@@ -270,16 +276,25 @@ namespace Files.FileOperations {
         }
 
         construct {
-            primary_text = _("The resource '%s' is in use by other processes").printf (mount_name);
-            secondary_text = _("Unmounting now might cause a process to fail or to lose data");
-            var sb = new StringBuilder ("");
-            sb.append (_("Other processes using '%s'… \n").printf (mount_name));
-            foreach (var pid in processes) {
-                sb.append (get_process_name_from_pid (pid));
-                sb.append ("\n");
-            }
+            Pid self = Posix.getpid ();
+            if (processes.length == 1 && processes.index (0) == self) {
+                primary_text = _("The resource '%s' is in use").printf (mount_name);
+                secondary_text = _("Please wait or cancel unmounting it");
+            } else {
+                primary_text = _("The resource '%s' is in use by other processes").printf (mount_name);
+                secondary_text = _("Unmounting now might cause a process to fail or to lose data");
+                var sb = new StringBuilder ("");
+                sb.append (_("Other processes using '%s'… \n").printf (mount_name));
+                foreach (var pid in processes) {
+                    if (pid == self) {
+                        continue;
+                    }
+                    sb.append (get_process_name_from_pid (pid));
+                    sb.append ("\n");
+                }
 
-            show_error_details (sb.str);
+                show_error_details (sb.str);
+            }
             show_all ();
         }
 
