@@ -286,6 +286,9 @@ namespace Files.FileOperations {
                 var sb = new StringBuilder ("");
                 sb.append (_("Other processes using '%s'… \n").printf (mount_name));
                 foreach (var pid in processes) {
+                    if (pid == self) {
+                        continue;
+                    }
                     sb.append (get_process_name_from_pid (pid));
                     sb.append ("\n");
                 }
