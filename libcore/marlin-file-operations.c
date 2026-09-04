@@ -1660,7 +1660,6 @@ retry:
                                job->cancellable,
                                copy_file_progress_callback,
                                &pdata,
-                               NULL,
                                &error);
 
     /* NOTE Result is false if file being moved is a folder and the target is on a Samba share even if
@@ -2223,7 +2222,6 @@ retry:
                      files_file_utils_file_can_unplug_drive (src) || files_file_utils_file_can_unplug_drive (dest_dir),
                      flags,
                      job->cancellable,
-                     NULL,
                      NULL,
                      NULL,
                      &error)) {

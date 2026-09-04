@@ -52,8 +52,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                          bool do_syncs,
                          FileCopyFlags flags,
                          Cancellable? cancellable = null,
-                         FileProgressCallback? progress_callback = null,
-                         void *progress_callback_data = null) throws Error {
+                         FileProgressCallback? progress_callback = null) throws Error {
 
         if (!do_syncs) {
             return is_move ?
