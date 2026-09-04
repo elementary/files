@@ -46,9 +46,6 @@
 
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
 
-#define COPY_MOVE_CHUNK_SIZE (1024 * 1024) // 1 MiB
-#define SYNC_INTERVAL_MICROS (500 * 1000) // 500 milliseconds
-
 #define IS_IO_ERROR(__error, KIND) (((__error)->domain == G_IO_ERROR && (__error)->code == G_IO_ERROR_ ## KIND))
 
 static char * query_fs_type (GFile *file,
