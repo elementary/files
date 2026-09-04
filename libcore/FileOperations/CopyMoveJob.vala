@@ -45,19 +45,19 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         is_move = true;
     }
 
-    public static bool
-    copy_move_with_sync (GLib.File src,
-                         GLib.File dest,
-                         bool is_move,
-                         bool do_syncs,
-                         FileCopyFlags flags,
-                         Cancellable? cancellable = null,
-                         FileProgressCallback? progress_callback = null) throws Error {
-
+    public static bool copy_move_with_sync (GLib.File src,
+                                            GLib.File dest,
+                                            bool is_move,
+                                            bool do_syncs,
+                                            FileCopyFlags flags,
+                                            Cancellable? cancellable = null,
+                                            FileProgressCallback? progress_callback = null) throws Error {
         if (!do_syncs) {
-            return is_move ?
-            src.move (dest, flags, cancellable, progress_callback):
-            src.copy ( dest, flags, cancellable, progress_callback);
+            if (is_move) {
+                return src.move (dest, flags, cancellable, progress_callback);
+            } else {
+                return src.copy ( dest, flags, cancellable, progress_callback);
+            }
         }
 
         bool overwrite = (flags & FileCopyFlags.OVERWRITE) != 0;
@@ -70,7 +70,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                                                 flags | FileCopyFlags.NO_FALLBACK_FOR_MOVE,
                                                 cancellable,
                                                 progress_callback);
-            } catch (Error e) {
+            } finally {
             }
 
             if (atomic_move_success) {
