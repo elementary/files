@@ -17,6 +17,8 @@
  */
 
 public class Files.FileOperations.CopyMoveJob : CommonJob {
+    private const size_t COPY_MOVE_CHUNK_SIZE = (1024 * 1024); // 1 MiB
+    private const int64 SYNC_INTERVAL_MICROS = (500 * 1000); // 500 milliseconds
     protected bool is_move = false;
     protected GLib.List<GLib.File> files;
     protected GLib.File? destination;
@@ -41,6 +43,116 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);
         this.destination = destination;
         is_move = true;
+    }
+
+    public static bool copy_move_with_sync (
+        GLib.File src,
+        GLib.File dest,
+        bool is_move,
+        bool do_syncs,
+        FileCopyFlags flags,
+        Cancellable? cancellable = null,
+        FileProgressCallback? progress_callback = null
+    ) throws Error {
+        if (!do_syncs) {
+            if (is_move) {
+                return src.move (dest, flags, cancellable, progress_callback);
+            } else {
+                return src.copy (dest, flags, cancellable, progress_callback);
+            }
+        }
+
+        if (is_move) {
+            var atomic_move_success = false;
+            try {
+                atomic_move_success = src.move (
+                    dest,
+                    flags | FileCopyFlags.NO_FALLBACK_FOR_MOVE,
+                    cancellable,
+                    progress_callback
+                );
+            } catch (Error e) {
+            }
+            if (atomic_move_success) {
+                return true;
+            }
+        }
+
+        var src_is_dir = FileUtils.file_is_dir (src);
+        var dest_is_dir = FileUtils.file_is_dir (dest);
+        var dest_exists = dest.query_exists ();
+        var overwrite = (flags & FileCopyFlags.OVERWRITE) != 0;
+        var error = -1;
+
+        if (src_is_dir) {
+            if (dest_is_dir) {
+                error = overwrite ? IOError.WOULD_MERGE : IOError.EXISTS;
+            } else if (overwrite || !dest_exists) {
+                error = IOError.WOULD_RECURSE;
+            } else {
+                error = IOError.EXISTS;
+            }
+        } else {
+            if (dest_is_dir) {
+                error = overwrite ? IOError.IS_DIRECTORY : IOError.EXISTS;
+            } else if (!overwrite && dest_exists) {
+                error = IOError.EXISTS;
+            }
+        }
+
+        if (error >= 0) {
+            throw new Error (IOError.quark (), error, error.to_string ());
+        }
+
+        var in = src.read (cancellable);
+        var info = in.query_info (FileAttribute.STANDARD_SIZE, cancellable);
+        var total_size = info.get_size ();
+        var out = dest.replace (null, false, FileCreateFlags.NONE, cancellable);
+
+        var fd = -1;
+        if (out is FileDescriptorBased) {
+            fd = out.get_fd ();
+        }
+
+        var success = false;
+        uint8 buffer[COPY_MOVE_CHUNK_SIZE];
+        size_t copied = 0;
+        int64 last_sync_time = 0;
+
+        while (true) {
+            var read = in.read (buffer, cancellable);
+            if (read == 0) {
+                success = true;
+                break;
+            }
+
+            size_t written = 0;
+            out.write_all (buffer[0:read], out written, cancellable);
+
+            copied += written;
+
+            var now = get_monotonic_time ();
+            if (last_sync_time == 0 || (now - last_sync_time).abs () >= SYNC_INTERVAL_MICROS) {
+                if (fd >= 0) {
+                    Posix.fsync (fd);
+                }
+                last_sync_time = now;
+            }
+
+            if (progress_callback != null) {
+                progress_callback (copied, total_size);
+            }
+        }
+
+        if (fd >= 0) {
+            Posix.fsync (fd);
+        }
+
+        if (is_move && !src.equal (dest)) {
+            src.delete (cancellable);
+        }
+
+        return success;
     }
 
     protected override unowned string get_scan_primary () {

@@ -1147,6 +1147,15 @@ namespace Files.FileUtils {
         }
     }
 
+    public bool can_unplug (GLib.File file) {
+        try {
+            Mount mount = file.find_enclosing_mount (null);
+            return FileOperations.can_unplug (mount);
+        } catch (Error e) {
+            return false;
+        }
+    }
+
     // Return enough of @path to distinguish it from @conflict_path
     // Currently, differences in some parts of uri are ignored, only scheme and path are used.
     public string disambiguate_uri (string uri, string conflict_uri) {

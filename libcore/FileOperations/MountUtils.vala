@@ -164,6 +164,17 @@ namespace Files.FileOperations {
         return false;
     }
 
+    public static bool can_unplug (Mount mount) {
+        if (mount.can_eject () || mount.can_unmount ()) {
+            return true;
+        }
+        Drive? drive = mount.get_drive ();
+        if (drive == null) {
+            return false;
+        }
+        return drive.can_eject () || drive.is_removable () || drive.is_media_removable ();
+    }
+
     public static GLib.List<GLib.File> get_trash_dirs_for_mount (GLib.Mount mount) {
         var list = new GLib.List<GLib.File> ();
         var root = mount.get_root ();
