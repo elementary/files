@@ -441,7 +441,7 @@ namespace Files.FileUtils {
         if (path == null) {
             return;
         }
-        int fd = Posix.open (path, Posix.O_RDONLY);
+        int fd = Posix.open (path, Posix.O_RDONLY | (file_is_dir (file) ? Posix.O_DIRECTORY : 0));
         if (fd < 0) {
             return;
         }

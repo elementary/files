@@ -518,6 +518,9 @@ skip:
             g_error_free (error);
             total_files--;
         } else {
+            GFile *parent = g_file_get_parent(file);
+            files_file_utils_sync (parent);
+
             files_file_changes_queue_file_removed (file);
 
             // Start UNDO-REDO
