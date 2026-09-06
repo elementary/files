@@ -238,21 +238,23 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         progress.update_progress (transfer_info.num_bytes, total_size);
     }
 
-    protected void report_move_progress (int total, int left) {
+    protected void report_move_progress (int total_files, int files_left) {
         var dest_basename = Files.FileUtils.custom_basename_from_file (destination);
+
         /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
         /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        var s = _("Preparing to move to \"%s\"").printf (dest_basename);
+        progress.take_status (ngettext (
+            "Moving %'d file to \"%s\"",
+            "Moving %'d files to \"%s\"",
+            total_files
+        ).printf (total_files, dest_basename));
 
-        progress.take_status (s);
-        progress.take_details (
-            ngettext (
-                "Preparing to move %'d file",
-                "Preparing to move %'d files",
-                left
-            ).printf (left)
-        );
+        progress.take_details (ngettext (
+            "%'d file left to move",
+            "%'d files left to move",
+            files_left
+        ).printf (files_left));
 
-        progress.pulse_progress ();
+        progress.update_progress (total_files - files_left, total_files);
     }
 }
