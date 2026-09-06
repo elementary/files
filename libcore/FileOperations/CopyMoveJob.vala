@@ -18,6 +18,7 @@
 
 public class Files.FileOperations.CopyMoveJob : CommonJob {
     protected bool is_move = false;
+    protected bool is_restore_from_trash = false;
     protected GLib.List<GLib.File> files;
     protected GLib.File? destination;
     protected GLib.HashTable<GLib.File,bool> debuting_files = new GLib.HashTable<GLib.File,bool> (GLib.File.hash, GLib.File.equal);
@@ -41,6 +42,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);
         this.destination = destination;
         is_move = true;
+        is_restore_from_trash = files.length () > 0 && files.nth_data (0).has_uri_scheme ("trash");
     }
 
     protected override unowned string get_scan_primary () {
@@ -241,20 +243,34 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
     protected void report_move_progress (int total_files, int files_left) {
         var dest_basename = Files.FileUtils.custom_basename_from_file (destination);
 
-        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-        progress.take_status (ngettext (
-            "Moving %'d file to \"%s\"",
-            "Moving %'d files to \"%s\"",
-            total_files
-        ).printf (total_files, dest_basename));
+        string status, details;
 
-        progress.take_details (ngettext (
-            "%'d file left to move",
-            "%'d files left to move",
-            files_left
-        ).printf (files_left));
+        if (is_restore_from_trash) {
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+            status = ngettext (
+                "Restoring %'d file from trash to \"%s\"",
+                "Restoring %'d files from trash to \"%s\"",
+                total_files
+            ).printf (total_files, dest_basename);
+            details = ngettext ("%'d file left to restore", "%'d files left to restore", files_left).printf (files_left);
+        } else {
+            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+            status = ngettext (
+                "Moving %'d file to \"%s\"",
+                "Moving %'d files to \"%s\"",
+                total_files
+            ).printf (total_files, dest_basename);
 
+            details = ngettext (
+                "%'d file left to move",
+                "%'d files left to move",
+                files_left
+            ).printf (files_left);
+        }
+        progress.take_status (status);
+        progress.take_details (details);
         progress.update_progress (total_files - files_left, total_files);
     }
 }
