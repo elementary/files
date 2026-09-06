@@ -1692,7 +1692,7 @@ retry:
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
         if (copy_job->is_move) {
-            g_message ("VJR1: SYNCING MOVED FILE");
+            //g_message ("VJR1: SYNCING MOVED FILE");
             files_file_utils_sync (dest);
             files_file_changes_queue_file_moved (src, dest);
         } else {
@@ -2242,7 +2242,7 @@ retry:
                      NULL,
                      &error)) {
 
-        g_message ("VJR2: SYNCING MOVED FILE");
+        //g_message ("VJR2: SYNCING MOVED FILE");
         files_file_utils_sync (dest);
 
         marlin_file_operations_copy_move_job_report_restore_progress (move_job, total_files, --files_left);
