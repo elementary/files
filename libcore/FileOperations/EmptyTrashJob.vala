@@ -65,6 +65,7 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
         if (delete_file) {
             try {
                 yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
+                report_empty_trash_progress ();
             } catch (GLib.Error e) {
                 debug (e.message);
                 return;
@@ -115,6 +116,12 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
         } else {
             internal_empty_trash.begin ();
         }
+    }
+
+    private void report_empty_trash_progress () {
+        progress.take_status (_("Emptying trash"));
+        progress.take_details ("");
+        progress.pulse_progress ();
     }
 
     private async void internal_empty_trash () {
