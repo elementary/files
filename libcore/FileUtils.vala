@@ -433,6 +433,19 @@ namespace Files.FileUtils {
         return new_path;
     }
 
+    public void sync (GLib.File file) {
+        var path = file.get_path ();
+        if (path == null) {
+            return;
+        }
+        int fd = Posix.open (path, Posix.O_RDONLY);
+        if (fd < 0) {
+            return;
+        }
+        Posix.fsync (fd);
+        Posix.close (fd);
+    }
+
     /** Splits the path into a protocol ending in '://"  and a path beginning "/". **/
     public void split_protocol_from_path (string path, out string protocol, out string new_path) {
         protocol = "";
