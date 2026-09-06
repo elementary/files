@@ -65,7 +65,6 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
         if (delete_file) {
             try {
                 yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
-                FileUtils.sync_parent (file);
             } catch (GLib.Error e) {
                 debug (e.message);
                 return;
