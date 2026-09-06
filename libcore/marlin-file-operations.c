@@ -41,8 +41,6 @@
 
 #include "pantheon-files-core.h"
 
-#define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
-//#define NSEC_PER_SEC 1000000000
 #define NSEC_PER_MSEC 1000000
 
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
@@ -1386,6 +1384,7 @@ typedef struct {
     goffset last_size;
     SourceInfo *source_info;
     TransferInfo *transfer_info;
+    GFile *file_to_sync;
 } ProgressData;
 
 static void
@@ -1397,6 +1396,7 @@ copy_file_progress_callback (goffset current_num_bytes,
     goffset new_size;
 
     pdata = user_data;
+    files_file_utils_sync (pdata->file_to_sync);
 
     new_size = current_num_bytes - pdata->last_size;
 
@@ -1652,6 +1652,7 @@ retry:
     pdata.last_size = 0;
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
+    pdata.file_to_sync = dest;
 
     if (copy_job->is_move) {
         res = g_file_move (src, dest,
@@ -1674,6 +1675,8 @@ retry:
      * The view will need to be refreshed anyway */
 
     if (res) {
+        files_file_utils_sync (pdata.file_to_sync);
+
         transfer_info->num_files ++;
         marlin_file_operations_copy_move_job_report_copy_progress (copy_job, source_info, transfer_info);
 
