@@ -17,10 +17,11 @@
  */
 
 public class Files.FileOperations.DeleteJob : CommonJob {
-    protected GLib.List<GLib.File> files;
-    protected bool try_trash;
+    public bool try_trash;
     protected bool user_cancel;
     protected bool delete_all;
+
+    private unowned GLib.List<GLib.File> files;
 
     ~DeleteJob () {
         Files.FileChanges.consume_changes (true);
@@ -33,10 +34,25 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     }
 
     public DeleteJob (Gtk.Window? parent_window, GLib.List<GLib.File> files, bool try_trash) {
-        base (parent_window);
-        this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);
-        this.try_trash = try_trash;
-        this.user_cancel = false;
+            this.parent_window = parent_window;
+            this.try_trash = try_trash;
+
+        user_cancel = false;
+        // this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);
+        this.files = files;
+
+        if (try_trash) {
+            undo_redo_data = new Files.UndoActionData (MOVETOTRASH, (int) files.length ());
+            undo_redo_data.set_src_dir (
+                files.data.get_parent ()
+            );
+        }
+
+        inhibit_power_manager (try_trash ? _("Trashing Files") : _("Deleting Files"));
+        // base (parent_window);
+        // this.files =
+        // this.try_trash = try_trash;
+        // this.user_cancel = false;
     }
 
     protected override unowned string get_scan_primary () {
@@ -163,6 +179,33 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
         if (total_files != 0) {
             progress.update_progress (files_trashed, total_files);
+        }
+    }
+
+    public async void delete_files (
+        Cancellable? cancellable
+    ) {
+        GLib.File? file = files.data;
+        unowned List<GLib.File> next_files = files.first ();
+
+        while (file != null) {
+            delete_file (file, cancellable);
+            next_files = next_files.next;
+            file = next_files != null ? next_files.data : null;
+        }
+    }
+
+    private async void trash_files (
+        DeleteJob job
+    ) {
+
+    }
+
+    private void delete_file (GLib.File file, Cancellable? cancellable) {
+        try {
+            file.@delete (cancellable);
+        } catch (Error e) {
+            warning ("could not delete %s, %s", file.get_path (), e.message);
         }
     }
 }

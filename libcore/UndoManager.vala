@@ -287,12 +287,16 @@ namespace Files {
                 case Files.UndoActionType.DUPLICATE:
                 case Files.UndoActionType.CREATELINK:
                     var uris = new GLib.List<GLib.File> ();
-                    action.destinations.foreach ((uri) => uris.prepend (action.dest_dir.get_child (uri)));
+                    var n_files = 0;
+                    action.destinations.foreach ((uri) => {
+                        uris.prepend (action.dest_dir.get_child (uri));
+                        n_files++;
+                    });
                     uris.reverse (); // Deleting must be done in reverse
                     if (uris != null && confirm_delete) {
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, false, cancellable
+                            yield Files.FileOperations.Manager.get_instance ().@delete (
+                                      uris, n_files, widget.get_toplevel () as Gtk.Window, false, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
@@ -344,8 +348,9 @@ namespace Files {
                     uris.prepend (GLib.File.new_for_uri (action.target_uri));
                     if (uris != null && confirm_delete) {
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, false, cancellable
+                            yield Files.FileOperations.Manager.get_instance ().@delete (
+                            // yield Files.FileOperations.@delete (
+                                      uris, 1, widget.get_toplevel () as Gtk.Window, false, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
@@ -386,11 +391,15 @@ namespace Files {
                     break;
                 case Files.UndoActionType.RESTOREFROMTRASH:
                     var uris = new GLib.List<GLib.File> ();
-                    action.destinations.foreach ((uri) => uris.prepend (action.dest_dir.get_child (uri)));
+                    var n_files = 0;
+                    action.destinations.foreach ((uri) => {
+                        uris.prepend (action.dest_dir.get_child (uri));
+                        n_files++;
+                    });
                     if (uris != null ) {
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, true, cancellable
+                            yield Files.FileOperations.Manager.get_instance ().@delete (
+                                      uris, n_files, widget.get_toplevel () as Gtk.Window, true, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
@@ -520,11 +529,15 @@ namespace Files {
                     if (action.trashed.size () > 0) {
                         var uri_to_trash = action.trashed.get_keys ();
                         var uris = new GLib.List<GLib.File> ();
-                        uri_to_trash.foreach ((uri) => uris.prepend (GLib.File.new_for_uri (uri)));
+                        var n_files = 0;
+                        uri_to_trash.foreach ((uri) => {
+                            uris.prepend (GLib.File.new_for_uri (uri));
+                            n_files++;
+                        });
 
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, true, cancellable
+                            yield Files.FileOperations.Manager.get_instance ().@delete (
+                                      uris, n_files, widget.get_toplevel () as Gtk.Window, true, cancellable
                                   );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);

@@ -935,13 +935,16 @@ namespace Files {
                                             bool delete_immediately) {
 
             GLib.List<GLib.File> locations = null;
+            uint n_files = 0;
             if (in_recent) {
                 file_list.@foreach ((file) => {
                     locations.prepend (GLib.File.new_for_uri (file.get_display_target_uri ()));
+                    n_files++;
                 });
             } else {
                 file_list.@foreach ((file) => {
                     locations.prepend (file.location);
+                    n_files++;
                 });
             }
 
@@ -951,14 +954,15 @@ namespace Files {
                 locations.reverse ();
 
                 slot.directory.block_monitor ();
-                FileOperations.@delete.begin (
+                FileOperations.Manager.get_instance ().@delete.begin (
                     locations,
+                    n_files,
                     window as Gtk.Window,
                     !delete_immediately,
                     null,
                     (obj, res) => {
                         try {
-                            FileOperations.@delete.end (res);
+                            FileOperations.Manager.get_instance ().@delete.end (res);
                         } catch (Error e) {
                             debug (e.message);
                         }

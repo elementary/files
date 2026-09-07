@@ -45,7 +45,7 @@ public class Files.FileOperations.CommonJob {
         internal int last_reported_files_left;
     }
 
-    protected unowned Gtk.Window? parent_window;
+    public Gtk.Window? parent_window;
     protected uint inhibit_cookie;
     protected unowned GLib.Cancellable? cancellable;
     protected PF.Progress.Info progress;
@@ -54,8 +54,9 @@ public class Files.FileOperations.CommonJob {
     protected bool skip_all_error;
     private GLib.GenericSet<GLib.File>? skip_readdir_error_set;
     protected GLib.GenericSet<GLib.File>? skip_files;
-    protected CommonJob (Gtk.Window? parent_window = null) {
-        this.parent_window = parent_window;
+
+    public CommonJob (Gtk.Window? parent_window = null) {
+        parent_window = parent_window;
         inhibit_cookie = 0;
         progress = new PF.Progress.Info ();
         cancellable = progress.cancellable;
@@ -80,7 +81,7 @@ public class Files.FileOperations.CommonJob {
         GLib.warn_if_reached ();
     }
 
-    protected void inhibit_power_manager (string message) {
+    public void inhibit_power_manager (string message) {
         weak Gtk.Application app = (Gtk.Application) GLib.Application.get_default ();
         inhibit_cookie = app.inhibit (
             parent_window,
