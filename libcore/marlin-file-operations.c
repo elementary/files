@@ -1684,8 +1684,6 @@ retry:
      * The view will need to be refreshed anyway */
 
     if (res) {
-        files_file_utils_sync (pdata.file_to_sync);
-
         transfer_info->num_files ++;
         marlin_file_operations_copy_move_job_report_copy_progress (copy_job, source_info, transfer_info);
 
@@ -2242,8 +2240,6 @@ retry:
                      sync_file_callback,
                      &dest,
                      &error)) {
-
-        files_file_utils_sync (dest);
 
         if (debuting_files) {
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
@@ -3181,7 +3177,6 @@ retry:
                                &error);
             // Start UNDO-REDO
             if (res) {
-                files_file_utils_sync (dest);
                 files_undo_action_data_set_create_data(common->undo_redo_data,
                                                          g_file_get_uri(dest),
                                                          g_file_get_uri(job->src));
