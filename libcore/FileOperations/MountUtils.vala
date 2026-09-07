@@ -278,11 +278,9 @@ namespace Files.FileOperations {
         construct {
             Pid self = Posix.getpid ();
             if (processes.length == 1 && processes.index (0) == self) {
-                primary_text = _("The resource '%s' is in use").printf (mount_name);
-                secondary_text = _("Please wait or cancel unmounting it");
+                primary_text = _("Please wait. The resource '%s' is in use").printf (mount_name);
             } else {
-                primary_text = _("The resource '%s' is in use by other processes").printf (mount_name);
-                secondary_text = _("Unmounting now might cause a process to fail or to lose data");
+                primary_text = _("Please wait. The resource '%s' is in use by other processes").printf (mount_name);
                 var sb = new StringBuilder ("");
                 sb.append (_("Other processes using '%s'… \n").printf (mount_name));
                 foreach (var pid in processes) {
@@ -295,6 +293,7 @@ namespace Files.FileOperations {
 
                 show_error_details (sb.str);
             }
+            secondary_text = _("It will unmount when the operation finishes. Unmounting now might cause a process to fail or to lose data");
             show_all ();
         }
 
