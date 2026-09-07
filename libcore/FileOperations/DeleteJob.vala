@@ -204,6 +204,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     private void delete_file (GLib.File file, Cancellable? cancellable) {
         try {
             file.@delete (cancellable);
+            FileChanges.queue_file_removed (file); // We have to notify as monitor is
         } catch (Error e) {
             warning ("could not delete %s, %s", file.get_path (), e.message);
         }
