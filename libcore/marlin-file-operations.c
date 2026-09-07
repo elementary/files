@@ -1409,6 +1409,15 @@ copy_file_progress_callback (goffset current_num_bytes,
     }
 }
 
+static void
+sync_file_callback (
+    goffset current_num_bytes,
+    goffset total_num_bytes,
+    gpointer file_to_sync
+) {
+    files_file_utils_sync (*(GFile **)file_to_sync);
+}
+
 static gboolean
 test_dir_is_parent (GFile *child, GFile *root)
 {
@@ -2230,9 +2239,11 @@ retry:
     if (g_file_move (src, dest,
                      flags,
                      job->cancellable,
-                     NULL,
-                     NULL,
+                     sync_file_callback,
+                     &dest,
                      &error)) {
+
+        files_file_utils_sync (dest);
 
         if (debuting_files) {
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
@@ -3165,10 +3176,12 @@ retry:
                                dest,
                                G_FILE_COPY_NONE,
                                common->cancellable,
-                               NULL, NULL,
+                               sync_file_callback,
+                               &dest,
                                &error);
             // Start UNDO-REDO
             if (res) {
+                files_file_utils_sync (dest);
                 files_undo_action_data_set_create_data(common->undo_redo_data,
                                                          g_file_get_uri(dest),
                                                          g_file_get_uri(job->src));
