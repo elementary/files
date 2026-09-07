@@ -21,7 +21,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     protected bool user_cancel;
     protected bool delete_all;
 
-    private unowned GLib.List<GLib.File> files;
+    private GLib.List<GLib.File> files;
 
     ~DeleteJob () {
         Files.FileChanges.consume_changes (true);
@@ -38,8 +38,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             this.try_trash = try_trash;
 
         user_cancel = false;
-        // this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);
-        this.files = files;
+        this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);
 
         if (try_trash) {
             undo_redo_data = new Files.UndoActionData (MOVETOTRASH, (int) files.length ());
@@ -185,14 +184,26 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     public async void delete_files (
         Cancellable? cancellable
     ) {
+        var source_info = scan_sources (files);
+        var transfer_info = new TransferInfo ();
         GLib.File? file = files.data;
         unowned List<GLib.File> next_files = files.first ();
 
+        progress.started (); // Bypass delay
         while (file != null) {
-            delete_file (file, cancellable);
+            if (should_skip_file (file)) {
+                //TODO What do we do with skipped files?
+                warning ("skipping");
+            } else if (yield delete_file_async (file, cancellable)) {
+                FileChanges.queue_file_removed (file); // We have to notify as monitor is
+                transfer_info.num_files++;
+                report_delete_progress (source_info, transfer_info);
+            }
+
             next_files = next_files.next;
             file = next_files != null ? next_files.data : null;
         }
+        progress.finished ();
     }
 
     private async void trash_files (
@@ -201,12 +212,12 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
     }
 
-    private void delete_file (GLib.File file, Cancellable? cancellable) {
+    private async bool delete_file_async (GLib.File file, Cancellable? cancellable) {
         try {
-            file.@delete (cancellable);
-            FileChanges.queue_file_removed (file); // We have to notify as monitor is
+            return yield file.delete_async (Priority.DEFAULT, cancellable);
         } catch (Error e) {
             warning ("could not delete %s, %s", file.get_path (), e.message);
         }
+        return false;
     }
 }

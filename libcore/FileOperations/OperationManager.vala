@@ -31,8 +31,6 @@
             }
 
             var job = new DeleteJob (parent_window, files, try_trash);
-            var common = (CommonJob) job;
-
 
             jobs.append (job);
             yield job.delete_files (cancellable);

@@ -961,12 +961,7 @@ namespace Files {
                     !delete_immediately,
                     null,
                     (obj, res) => {
-                        try {
-                            FileOperations.Manager.get_instance ().@delete.end (res);
-                        } catch (Error e) {
-                            debug (e.message);
-                        }
-
+                        FileOperations.Manager.get_instance ().@delete.end (res);
                         after_trash_or_delete ();
                     }
                 );
@@ -1100,7 +1095,6 @@ namespace Files {
                 unblock_directory_monitor ();
                 return GLib.Source.REMOVE;
             });
-
         }
 
         private void unblock_directory_monitor () {
