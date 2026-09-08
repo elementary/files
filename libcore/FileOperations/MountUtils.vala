@@ -263,19 +263,21 @@ namespace Files.FileOperations {
      }
 
      private class BusyDialog : Granite.MessageDialog {
+        private const string CANCEL_TEXT = _("Do Not Unmount");
         public string mount_name { get; construct; }
         public Array<Pid> processes { get; construct; }
         public BusyDialog (string _mount_name, Array<Pid> _processes) {
             Object (
                 mount_name: _mount_name,
                 processes: _processes,
-                buttons: Gtk.ButtonsType.CANCEL,
+                buttons: Gtk.ButtonsType.NONE,
                 image_icon: new ThemedIcon ("dialog-warning")
 
             );
         }
 
         construct {
+            add_button (CANCEL_TEXT, -1);
             Pid self = Posix.getpid ();
             if (processes.length == 1 && processes.index (0) == self) {
                 primary_text = _("Please wait. The resource '%s' is in use").printf (mount_name);
@@ -293,7 +295,14 @@ namespace Files.FileOperations {
 
                 show_error_details (sb.str);
             }
-            secondary_text = _("It will unmount when the operation finishes. Unmounting now might cause a process to fail or to lose data");
+            secondary_text = _(
+"""
+Unmounting now might cause a process to fail or to lose data.
+
+If you wait, the resource will unmount when all processes finish using it.
+
+Otherwise choose '%s'"""
+            ).printf (CANCEL_TEXT);
             show_all ();
         }
 
