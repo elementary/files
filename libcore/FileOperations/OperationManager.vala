@@ -33,7 +33,7 @@
             var job = new DeleteJob (parent_window, files, try_trash);
 
             jobs.append (job);
-            yield job.delete_files (cancellable);
+            yield job.trash_or_delete_files (cancellable);
             jobs.remove (job);
         }
 

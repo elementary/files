@@ -181,7 +181,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         }
     }
 
-    public async void delete_files (
+    public async void trash_or_delete_files (
         Cancellable? cancellable
     ) {
         var source_info = scan_sources (files);
@@ -190,14 +190,19 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         unowned List<GLib.File> next_files = files.first ();
 
         progress.started (); // Bypass delay
+
         while (file != null) {
             if (should_skip_file (file)) {
                 //TODO What do we do with skipped files?
                 warning ("skipping");
-            } else if (yield delete_file_async (file, cancellable)) {
-                FileChanges.queue_file_removed (file); // We have to notify as monitor is
-                transfer_info.num_files++;
-                report_delete_progress (source_info, transfer_info);
+            } else if (!try_trash) {
+                if (yield delete_file_async (file, cancellable)) {
+                    FileChanges.queue_file_removed (file); // We have to notify as monitor is
+                    transfer_info.num_files++;
+                    report_delete_progress (source_info, transfer_info);
+                }
+            } else {
+                // Try trash
             }
 
             next_files = next_files.next;
