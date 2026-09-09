@@ -19,16 +19,20 @@
 namespace Files.FileOperations {
     public static async bool unmount_mount (Mount mount, Gtk.Window? parent) {
         if (mount.can_unmount ()) {
-            var mount_op = new UnmountOperation (parent, mount.get_name ());
+            var mount_op = new UnmountOperation (parent, mount);
             try {
                 var success = yield mount.unmount_with_operation (
                         GLib.MountUnmountFlags.NONE,
                         mount_op,
-                        null
+                        mount_op.cancellable
                 );
                 return success;
             } catch (GLib.Error e) {
-                if (e is IOError.FAILED_HANDLED) {
+                if (
+                    e is IOError.FAILED_HANDLED ||
+                    e is IOError.CANCELLED ||
+                    e is IOError.PENDING
+                ) {
                     return false;
                 }
                 PF.Dialogs.show_error_dialog (_("Unable to unmount '%s'").printf (mount.get_name ()),
@@ -43,16 +47,20 @@ namespace Files.FileOperations {
 
     public static async bool eject_mount (Mount mount, Gtk.Window? parent) {
         if (mount.can_eject ()) {
-            var mount_op = new UnmountOperation (parent, mount.get_name ());
+            var mount_op = new UnmountOperation (parent, mount);
             try {
                 var success = yield mount.eject_with_operation (
                         GLib.MountUnmountFlags.NONE,
                         mount_op,
-                        null
+                        mount_op.cancellable
                 );
                 return success;
             } catch (GLib.Error e) {
-                if (e is IOError.FAILED_HANDLED) {
+                if (
+                    e is IOError.FAILED_HANDLED ||
+                    e is IOError.CANCELLED ||
+                    e is IOError.PENDING
+                ) {
                     return false;
                 }
 
@@ -223,21 +231,59 @@ namespace Files.FileOperations {
         return false;
     }
 
-    private class UnmountOperation : Gtk.MountOperation {
+    public class UnmountOperation : Gtk.MountOperation {
+        private static HashTable<string, Cancellable?> cancellables;
 
-        public string mount_name { get; construct; }
+        static construct {
+            cancellables = new HashTable<string, Cancellable?> (GLib.str_hash, GLib.str_equal);
+        }
+
+        public Mount mount { get; construct; }
         private Gtk.Dialog? dialog = null;
 
-        public UnmountOperation (Gtk.Window? _parent, string _mount_name) {
+        public Cancellable? cancellable { get; private set; }
+
+        public UnmountOperation (Gtk.Window? _parent, Mount _mount) {
             Object (
                 parent: _parent,
-                mount_name: _mount_name
+                mount: _mount
             );
         }
 
+        construct {
+            cancellable = new Cancellable ();
+            cancellable.cancelled.connect (() => {
+                if (dialog != null) {
+                    dialog.close ();
+                    dialog.destroy ();
+                    dialog = null;
+                }
+            });
+            string? mount_uuid = mount.get_uuid ();
+            cancellables.insert (mount_uuid == null ? "(unknown)" : mount_uuid, cancellable);
+        }
+
         ~UnmountOperation () {
+            string? mount_uuid = mount.get_uuid ();
+            mount_uuid = mount_uuid == null ? "(unknown)" : mount_uuid;
+            cancellables.remove (mount_uuid);
+
+            if (dialog == null) {
+                return;
+            }
+
             dialog.close ();
             dialog.destroy ();
+        }
+
+        public static void cancel_mount_operation (Mount mount) {
+            string? mount_uuid = mount.get_uuid ();
+            mount_uuid = mount_uuid == null ? "(unknown)" : mount_uuid;
+            Cancellable? cancellable = cancellables.get (mount_uuid);
+            if (cancellable != null && !cancellable.is_cancelled ()) {
+                cancellable.cancel ();
+            }
+            cancellables.remove (mount_uuid);
         }
 
         public override void show_processes (string message, Array<Pid> processes, string[] choices) {
@@ -245,7 +291,7 @@ namespace Files.FileOperations {
                 return;
             }
 
-            dialog = new BusyDialog (mount_name, processes);
+            dialog = new BusyDialog (mount.get_name (), processes);
             dialog.response.connect (() => {
                 dialog.close ();
                 dialog.destroy ();
@@ -257,6 +303,11 @@ namespace Files.FileOperations {
         }
 
         public override void aborted () {
+            if (dialog != null) {
+                dialog.close ();
+                dialog.destroy ();
+                dialog = null;
+            }
             // We do not want another dialog shown
             return;
         }

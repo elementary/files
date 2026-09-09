@@ -1653,6 +1653,9 @@ retry:
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
 
+    job->src_mount = src;
+    job->dest_mount = dest;
+
     if (copy_job->is_move) {
         res = g_file_move (src, dest,
                            flags,
@@ -2222,6 +2225,9 @@ retry:
     if (overwrite) {
         flags |= G_FILE_COPY_OVERWRITE;
     }
+
+    job->src_mount = src;
+    job->dest_mount = dest;
 
     error = NULL;
     if (g_file_move (src, dest,
@@ -3158,6 +3164,9 @@ retry:
         // End UNDO-REDO
     } else {
         if (job->src) {
+            common->src_mount = job->src;
+            common->dest_mount = dest;
+
             res = g_file_copy (job->src,
                                dest,
                                G_FILE_COPY_NONE,

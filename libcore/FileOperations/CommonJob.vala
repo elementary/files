@@ -48,6 +48,8 @@ public class Files.FileOperations.CommonJob {
     protected unowned Gtk.Window? parent_window;
     protected uint inhibit_cookie;
     protected unowned GLib.Cancellable? cancellable;
+    public unowned GLib.File? src_mount = null;
+    public unowned GLib.File? dest_mount = null;
     protected PF.Progress.Info progress;
     protected Files.UndoActionData? undo_redo_data;
     protected GLib.Timer time;
@@ -59,6 +61,7 @@ public class Files.FileOperations.CommonJob {
         inhibit_cookie = 0;
         progress = new PF.Progress.Info ();
         cancellable = progress.cancellable;
+        cancellable.cancelled.connect (cancel_mount_operation);
         undo_redo_data = null;
         time = new GLib.Timer ();
     }
@@ -68,6 +71,28 @@ public class Files.FileOperations.CommonJob {
         uninhibit_power_manager ();
         if (undo_redo_data != null) {
             Files.UndoManager.instance ().add_action ((owned) undo_redo_data);
+        }
+    }
+
+    private void cancel_mount_operation () {
+        try {
+            if (src_mount != null) {
+                Mount mount = src_mount.find_enclosing_mount (null);
+                UnmountOperation.cancel_mount_operation (mount);
+            }
+        } catch (Error e) {
+        } finally {
+            src_mount = null;
+        }
+
+        try {
+            if (dest_mount != null) {
+                Mount mount = dest_mount.find_enclosing_mount (null);
+                UnmountOperation.cancel_mount_operation (mount);
+            }
+        } catch (Error e) {
+        } finally {
+            dest_mount = null;
         }
     }
 
