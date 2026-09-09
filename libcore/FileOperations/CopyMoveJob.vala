@@ -102,6 +102,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         int64 now = GLib.get_monotonic_time () * 1000; // in ns
 
         if (transfer_info.last_report_time != 0 &&
+            (source_info.num_files - transfer_info.num_files) > 1 &&
             ((int64)transfer_info.last_report_time - now).abs () < 100 * CommonJob.NSEC_PER_MSEC) {
             return;
         }
@@ -199,6 +200,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         }
 
         var total_size = int64.max (source_info.num_bytes, transfer_info.num_bytes);
+        var size_left = total_size - transfer_info.num_bytes;
 
         double elapsed = time.elapsed ();
         double transfer_rate = 0;
@@ -207,11 +209,18 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         }
 
         if (elapsed < CommonJob.SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE &&
+            size_left > 0 &&
             transfer_rate > 0) {
             var num_bytes_format = GLib.format_size (transfer_info.num_bytes);
             var total_size_format = GLib.format_size (total_size);
             /// TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
             progress.take_details (_("%s of %s").printf (num_bytes_format, total_size_format));
+        } else if (size_left == 0) {
+            progress.take_details (
+                is_move ?
+                _("Please wait, finishing move\u2026") :
+                _("Please wait, finishing copy\u2026")
+            );
         } else {
             var num_bytes_format = GLib.format_size (transfer_info.num_bytes);
             var total_size_format = GLib.format_size (total_size);
