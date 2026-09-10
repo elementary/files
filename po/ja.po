@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-03 03:11+0000\n"
-"PO-Revision-Date: 2026-05-21 22:56+0000\n"
+"PO-Revision-Date: 2026-09-09 16:01+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/files/"
 "ja/>\n"
@@ -983,16 +983,18 @@ msgstr "'%s' をマウントできません"
 #: libcore/FileOperations/MountUtils.vala:273
 #, c-format
 msgid "The resource '%s' is in use by other processes"
-msgstr ""
+msgstr "リソース '%s' は他のプロセスによって使用されています"
 
 #: libcore/FileOperations/MountUtils.vala:274
 msgid "Unmounting now might cause a process to fail or to lose data"
 msgstr ""
+"今すぐアンマウントすることで、処理の失敗やデータの損失につながる可能性があり"
+"ます"
 
 #: libcore/FileOperations/MountUtils.vala:276
 #, c-format
 msgid "Other processes using '%s'… \n"
-msgstr ""
+msgstr "'%s' を使用している他のプロセス… \n"
 
 #: libcore/FileOperations/MountUtils.vala:293
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
