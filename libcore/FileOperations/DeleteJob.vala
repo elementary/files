@@ -17,10 +17,11 @@
  */
 
 public class Files.FileOperations.DeleteJob : CommonJob {
-    protected GLib.List<GLib.File> files;
-    protected bool try_trash;
+    public bool try_trash;
     protected bool user_cancel;
     protected bool delete_all;
+
+    private GLib.List<GLib.File> files;
 
     ~DeleteJob () {
         Files.FileChanges.consume_changes (true);
@@ -33,10 +34,24 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     }
 
     public DeleteJob (Gtk.Window? parent_window, GLib.List<GLib.File> files, bool try_trash) {
-        base (parent_window);
+            this.parent_window = parent_window;
+            this.try_trash = try_trash;
+
+        user_cancel = false;
         this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);
-        this.try_trash = try_trash;
-        this.user_cancel = false;
+
+        if (try_trash) {
+            undo_redo_data = new Files.UndoActionData (MOVETOTRASH, (int) files.length ());
+            undo_redo_data.set_src_dir (
+                files.data.get_parent ()
+            );
+        }
+
+        inhibit_power_manager (try_trash ? _("Trashing Files") : _("Deleting Files"));
+        // base (parent_window);
+        // this.files =
+        // this.try_trash = try_trash;
+        // this.user_cancel = false;
     }
 
     protected override unowned string get_scan_primary () {
@@ -164,5 +179,50 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         if (total_files != 0) {
             progress.update_progress (files_trashed, total_files);
         }
+    }
+
+    public async void trash_or_delete_files (
+        Cancellable? cancellable
+    ) {
+        var source_info = scan_sources (files);
+        var transfer_info = new TransferInfo ();
+        GLib.File? file = files.data;
+        unowned List<GLib.File> next_files = files.first ();
+
+        progress.started (); // Bypass delay
+
+        while (file != null) {
+            if (should_skip_file (file)) {
+                //TODO What do we do with skipped files?
+                warning ("skipping");
+            } else if (!try_trash) {
+                if (yield delete_file_async (file, cancellable)) {
+                    FileChanges.queue_file_removed (file); // We have to notify as monitor is
+                    transfer_info.num_files++;
+                    report_delete_progress (source_info, transfer_info);
+                }
+            } else {
+                // Try trash
+            }
+
+            next_files = next_files.next;
+            file = next_files != null ? next_files.data : null;
+        }
+        progress.finished ();
+    }
+
+    private async void trash_files (
+        DeleteJob job
+    ) {
+
+    }
+
+    private async bool delete_file_async (GLib.File file, Cancellable? cancellable) {
+        try {
+            return yield file.delete_async (Priority.DEFAULT, cancellable);
+        } catch (Error e) {
+            warning ("could not delete %s, %s", file.get_path (), e.message);
+        }
+        return false;
     }
 }

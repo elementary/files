@@ -92,12 +92,14 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                         job.empty_trash.begin ();
                     } else {
                         GLib.List<GLib.File> to_delete = null;
+                        var n_files = 0;
                         foreach (Files.File gof in view.get_selected_files ()) {
                             to_delete.prepend (gof.location);
+                            n_files++;
                         }
 
                         if (to_delete != null) {
-                            Files.FileOperations.@delete.begin (to_delete, window, false);
+                            Files.FileOperations.Manager.get_instance ().@delete.begin (to_delete, n_files, window, false);
                         }
                     }
                 });
