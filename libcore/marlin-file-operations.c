@@ -518,6 +518,9 @@ skip:
             g_error_free (error);
             total_files--;
         } else {
+            GFile *parent = g_file_get_parent(file);
+            files_file_utils_sync (parent);
+
             files_file_changes_queue_file_removed (file);
 
             // Start UNDO-REDO
@@ -2234,6 +2237,8 @@ retry:
         if (debuting_files) {
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
+
+        files_file_utils_sync (dest);
 
         files_file_changes_queue_file_moved (src, dest);
 
