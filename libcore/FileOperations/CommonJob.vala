@@ -56,7 +56,7 @@ public class Files.FileOperations.CommonJob {
     protected GLib.GenericSet<GLib.File>? skip_files;
 
     public CommonJob (Gtk.Window? parent_window = null) {
-        parent_window = parent_window;
+        this.parent_window = parent_window;
         inhibit_cookie = 0;
         progress = new PF.Progress.Info ();
         cancellable = progress.cancellable;
