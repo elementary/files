@@ -210,12 +210,12 @@ namespace Files {
             new_group_name_or_id = new_group;
         }
 
-        internal GLib.HashTable<GLib.File, string>? retrieve_files_to_restore () {
+        internal GLib.HashTable<GLib.File, string> retrieve_files_to_restore () {
+            var to_restore = new GLib.HashTable<GLib.File, string> (direct_hash, direct_equal);
             if (trashed.size () <= 0) {
-                return null;
+                return to_restore;
             }
 
-            var to_restore = new GLib.HashTable<GLib.File, string> (direct_hash, direct_equal);
             var trash = GLib.File.new_for_uri ("trash:");
             try {
                 var enumerator = trash.enumerate_children (GLib.FileAttribute.STANDARD_NAME + "," +
