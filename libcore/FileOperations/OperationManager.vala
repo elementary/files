@@ -19,7 +19,7 @@
         }
 
         public async void @delete (
-            List<GLib.File> files,
+            Gee.LinkedList<string> files,
             uint n_files,
             Gtk.Window parent_window,
             bool try_trash,
@@ -29,6 +29,8 @@
             if (files == null || n_files == 0) {
                 return;
             }
+
+            warning ("delete/trash %u files, %s", n_files, files.first ());
 
             var job = new DeleteJob (parent_window, files, try_trash);
 

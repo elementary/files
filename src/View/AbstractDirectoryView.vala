@@ -934,24 +934,24 @@ namespace Files {
                                             bool delete_if_already_in_trash,
                                             bool delete_immediately) {
 
-            GLib.List<GLib.File> locations = null;
+            var locations = new Gee.LinkedList<string> ();
             uint n_files = 0;
             if (in_recent) {
                 file_list.@foreach ((file) => {
-                    locations.prepend (GLib.File.new_for_uri (file.get_display_target_uri ()));
+                    locations.insert (0, file.get_display_target_uri ());
                     n_files++;
                 });
             } else {
                 file_list.@foreach ((file) => {
-                    locations.prepend (file.location);
+                    locations.insert (0, file.uri);
                     n_files++;
                 });
             }
 
             deleted_path = model.get_path_for_first_file (file_list.first ().data);
 
+
             if (locations != null) {
-                locations.reverse ();
 
                 slot.directory.block_monitor ();
                 FileOperations.Manager.get_instance ().@delete.begin (

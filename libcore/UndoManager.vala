@@ -286,13 +286,12 @@ namespace Files {
                 case Files.UndoActionType.COPY:
                 case Files.UndoActionType.DUPLICATE:
                 case Files.UndoActionType.CREATELINK:
-                    var uris = new GLib.List<GLib.File> ();
+                    var uris = new Gee.LinkedList<string> ();
                     var n_files = 0;
                     action.destinations.foreach ((uri) => {
-                        uris.prepend (action.dest_dir.get_child (uri));
+                        uris.add (uri);
                         n_files++;
                     });
-                    uris.reverse (); // Deleting must be done in reverse
                     if (uris != null && confirm_delete) {
                         try {
                             yield Files.FileOperations.Manager.get_instance ().@delete (
@@ -303,7 +302,8 @@ namespace Files {
                             throw e;
                         }
                     } else {
-                        foreach (unowned GLib.File file in uris) {
+                        foreach (var uri in uris) {
+                            var file = GLib.File.new_for_uri (uri);
                             yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
                             Files.FileChanges.queue_file_removed (file);
                         }
@@ -344,8 +344,8 @@ namespace Files {
                 case Files.UndoActionType.CREATEEMPTYFILE:
                 case Files.UndoActionType.CREATEFOLDER:
                 case Files.UndoActionType.CREATEFILEFROMTEMPLATE:
-                    var uris = new GLib.List<GLib.File> ();
-                    uris.prepend (GLib.File.new_for_uri (action.target_uri));
+                    var uris = new Gee.LinkedList<string> ();
+                    uris.add (action.target_uri);
                     if (uris != null && confirm_delete) {
                         try {
                             yield Files.FileOperations.Manager.get_instance ().@delete (
@@ -357,7 +357,8 @@ namespace Files {
                             throw e;
                         }
                     } else {
-                        foreach (unowned GLib.File file in uris) {
+                        foreach (var uri in uris) {
+                            var file = GLib.File.new_for_uri (uri);
                             yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
                             Files.FileChanges.queue_file_removed (file);
                         }
@@ -390,10 +391,10 @@ namespace Files {
                     undo_redo_done_transfer (action);
                     break;
                 case Files.UndoActionType.RESTOREFROMTRASH:
-                    var uris = new GLib.List<GLib.File> ();
+                    var uris = new Gee.LinkedList<string> ();
                     var n_files = 0;
                     action.destinations.foreach ((uri) => {
-                        uris.prepend (action.dest_dir.get_child (uri));
+                        uris.add (uri);
                         n_files++;
                     });
                     if (uris != null ) {
@@ -528,10 +529,10 @@ namespace Files {
                 case Files.UndoActionType.MOVETOTRASH:
                     if (action.trashed.size () > 0) {
                         var uri_to_trash = action.trashed.get_keys ();
-                        var uris = new GLib.List<GLib.File> ();
+                        var uris = new Gee.LinkedList<string> ();
                         var n_files = 0;
                         uri_to_trash.foreach ((uri) => {
-                            uris.prepend (GLib.File.new_for_uri (uri));
+                            uris.add (uri);
                             n_files++;
                         });
 
