@@ -152,7 +152,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     protected void report_trash_progress (int files_trashed, int total_files) {
         var files_left = total_files - files_trashed;
 
-        progress.take_status (_("Moving files to trash"));
+        progress.take_status (ngettext (
+            "Moving %'d file to trash",
+            "Moving %'d files to trash",
+            total_files
+        ).printf (total_files));
 
         var s = ngettext (
             "%'d file left to trash",
