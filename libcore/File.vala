@@ -87,7 +87,7 @@ public class Files.File : GLib.Object {
     public int sort_column_id = Files.ListModel.ColumnID.FILENAME;
     public Gtk.SortType sort_order = Gtk.SortType.ASCENDING;
     public GLib.FileType file_type;
-    private string ? _content_type = null;
+    private string? _content_type = null;
     public string content_type {
         get {
             if (_content_type != null) {
@@ -318,7 +318,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_desktop_file = false;
-        if (content_type != UNKNOWN_CONTENT) {
+        if (content_type != UNKNOWN_CONTENT && _content_type != null) {
             is_desktop_file = GLib.ContentType.is_mime_type (content_type, "application/x-desktop");
         }
 
@@ -331,7 +331,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_image = false;
-        if (content_type != UNKNOWN_CONTENT) {
+        if (content_type != UNKNOWN_CONTENT && _content_type != null) {
             is_image = GLib.ContentType.is_mime_type (content_type, "image/*");
         }
 
@@ -344,7 +344,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_text = false;
-        if (content_type != UNKNOWN_CONTENT) {
+        if (content_type != UNKNOWN_CONTENT && _content_type != null) {
             is_text = GLib.ContentType.is_mime_type (content_type, "text/*") ||
                 GLib.ContentType.is_mime_type (content_type, "application/sql");
         }
@@ -358,7 +358,7 @@ public class Files.File : GLib.Object {
         }
 
         bool is_pdf = false;
-        if (content_type != UNKNOWN_CONTENT) {
+        if (content_type != UNKNOWN_CONTENT && _content_type != null) {
             // https://stackoverflow.com/questions/312230/proper-mime-media-type-for-pdf-files#312258
             is_pdf = GLib.ContentType.is_mime_type (content_type, "application/pdf") ||
                 GLib.ContentType.is_mime_type (content_type, "application/x-pdf");
@@ -414,7 +414,7 @@ public class Files.File : GLib.Object {
         }
 
         if (info.get_attribute_boolean (GLib.FileAttribute.ACCESS_CAN_EXECUTE)) {
-            if (content_type != UNKNOWN_CONTENT &&
+            if (content_type != UNKNOWN_CONTENT && _content_type != null &&
                 ContentType.is_a (content_type, "application/x-executable")) {
                 return true;
             }
@@ -665,7 +665,7 @@ public class Files.File : GLib.Object {
         } else if (info.get_file_type () == GLib.FileType.MOUNTABLE) {
             icon = new GLib.ThemedIcon.with_default_fallbacks ("folder-remote");
         } else {
-            if (content_type != UNKNOWN_CONTENT && icon == null) {
+            if (content_type != null && icon == null) {
                 icon = GLib.ContentType.get_icon (content_type);
             }
         }
@@ -939,7 +939,7 @@ public class Files.File : GLib.Object {
     }
 
     public GLib.AppInfo? get_default_handler () {
-        if (content_type != UNKNOWN_CONTENT) {
+        if (content_type != UNKNOWN_CONTENT && _content_type != null) {
             return AppInfo.get_default_for_type (
                 content_type,
                 location.get_path () == null
@@ -1247,7 +1247,7 @@ public class Files.File : GLib.Object {
     }
 
     private void update_formated_type () {
-        if (content_type != null) {
+        if (content_type != UNKNOWN_CONTENT && _content_type != null) {
             if (is_symlink ()) {
                 formated_type = _("link to %s").printf (GLib.ContentType.get_description (content_type));
             } else {
