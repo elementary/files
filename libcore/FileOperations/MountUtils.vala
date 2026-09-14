@@ -295,6 +295,7 @@ namespace Files.FileOperations {
 
                 show_error_details (sb.str);
             }
+
             secondary_text = _(
 """
 Unmounting now might cause a process to fail or to lose data.
