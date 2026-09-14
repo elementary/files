@@ -1280,7 +1280,7 @@ public class Files.View.PropertiesWindow : AbstractPropertiesDialog {
         string files_txt = "";
 
         if (folders > 0) {
-            folders_txt = (ngettext ("1 folder", "%u folders", folders)).printf (folders);
+            folders_txt = (ngettext ("%u folder", "%u folders", folders)).printf (folders);
         }
 
         if (files > 0) {
