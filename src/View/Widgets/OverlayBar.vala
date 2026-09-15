@@ -167,7 +167,7 @@ namespace Files.View {
                 }
             } else { /* Multiple selection. */
                 var fsize = format_size (files_size);
-                str = (ngettext ("%u folder", "%u folders", folders_count)).printf (folders_count);
+                str = ngettext ("%u folder", "%u folders", folders_count).printf (folders_count);
                 if (folders_count > 1) {
                     if (files_count > 0) {
                         str += ngettext (" and %u other item (%s) selected",
