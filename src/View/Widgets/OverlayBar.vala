@@ -139,7 +139,7 @@ namespace Files.View {
         }
 
         private string update_status () {
-            string str = "";
+            var str = "";
             label = "";
             if (goffile != null) { /* A single file is selected. */
                 if (goffile.is_network_uri_scheme () || goffile.is_root_network_folder ()) {
@@ -151,9 +151,13 @@ namespace Files.View {
                     if (goffile.format_size == "" ) { /* No need to keep recalculating the formatted size. */
                         goffile.format_size = format_size (PropertiesWindow.file_real_size (goffile));
                     }
-                    str = "%s - %s (%s)".printf (goffile.info.get_name (),
-                                                 goffile.formated_type,
-                                                 goffile.format_size);
+
+                    ///TRANSLATORS positional arguments are filename, formatted filetype, formatted filesize
+                    str = _("%1$s - %2$s (%3$s)").printf (
+                        goffile.info.get_name (),
+                        goffile.formated_type,
+                        goffile.format_size
+                    );
 
                     if (type != null && type.substring (0, 6) == "image/" &&     /* File is an image and */
                         (goffile.width > 0 ||                                    /* resolution has already been determined or */
@@ -162,30 +166,32 @@ namespace Files.View {
                         load_resolution.begin (goffile);
                     }
                 } else { /* This is a folder. */
-                    str = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
+                    ///TRANSLATORS positional arguments are (1) filename, (2) formatted filetype
+                    str = _("%1$s - %2$s").printf (
+                        goffile.info.get_name (),
+                        goffile.formated_type
+                    );
                     schedule_deep_count ();
                 }
             } else { /* Multiple selection. */
                 var fsize = format_size (files_size);
-                str = ngettext ("%u folder", "%u folders", folders_count).printf (folders_count);
-                if (folders_count > 1) {
-                    if (files_count > 0) {
-                        str += ngettext (" and %u other item (%s) selected",
-                                         " and %u other items (%s) selected",
-                                         files_count).printf (files_count, fsize);
-                    } else {
-                        str += _(" selected");
-                    }
-                } else if (folders_count == 1) {
-                    if (files_count > 0) {
-                        str += ngettext (" and %u other item (%s) selected",
-                                         " and %u other items (%s) selected",
-                                         files_count).printf (files_count, fsize);
-                    } else {
-                        str += _(" selected");
-                    }
-                } else { /* folder_count = 0 and files_count > 0 */
-                    str = _("%u items selected (%s)").printf (files_count, fsize);
+                if (folders_count == 0) {
+                    ///TRANSLATORS positional arguments are (1) number of files, (2) formatted total filesize
+                    str = ngettext ("%1$u file selected (%2$s)", "%1$u files selected (%2$s)", files_count).printf (
+                        files_count,
+                        fsize
+                    );
+                } else if (files_count == 0) {
+                  str = ngettext ("%1$u folder selected", "%1$u folders selected", folders_count).printf (
+                        folders_count
+                    );
+                } else {
+                    ///TRANSLATORS positional arguments are (1) formatted number of folders, (2) formatted number of files
+                    /// formatted parameters are in the form "<number> files" (translated with ngettext)
+                    str = _("%1$s and %2$s selected").printf (
+                        ngettext ("%u folder ", "%u folders", folders_count).printf (folders_count),
+                        ngettext ("%u file", "%u files", files_count).printf (files_count)
+                    );
                 }
             }
 
