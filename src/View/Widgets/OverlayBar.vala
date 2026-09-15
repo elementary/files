@@ -334,7 +334,14 @@ namespace Files.View {
             image_size_loaded = true;
             goffile.width = width;
             goffile.height = height;
-            label = "%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height);
+
+            ///TRANSLATORS positional arguments are format string, size string, width and height of an image file
+            label = _("%1$s (%2$s — %3$i × %4$i)").printf (
+                goffile.formated_type,
+                goffile.format_size,
+                width,
+                height
+            );
         }
 
         private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream,
