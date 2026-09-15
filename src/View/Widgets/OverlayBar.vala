@@ -167,8 +167,8 @@ namespace Files.View {
                 }
             } else { /* Multiple selection. */
                 var fsize = format_size (files_size);
+                str = ngettext ("%u folder", "%u folders", folders_count).printf (folders_count);
                 if (folders_count > 1) {
-                    str = _("%u folders").printf (folders_count);
                     if (files_count > 0) {
                         str += ngettext (" and %u other item (%s) selected",
                                          " and %u other items (%s) selected",
@@ -177,9 +177,7 @@ namespace Files.View {
                         str += _(" selected");
                     }
                 } else if (folders_count == 1) {
-                    str = _("%u folder").printf (folders_count);
                     if (files_count > 0) {
-
                         str += ngettext (" and %u other item (%s) selected",
                                          " and %u other items (%s) selected",
                                          files_count).printf (files_count, fsize);
