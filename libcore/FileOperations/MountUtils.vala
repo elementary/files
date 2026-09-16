@@ -246,6 +246,11 @@ namespace Files.FileOperations {
             );
         }
 
+        ~UnmountOperation () {
+            dialog.close ();
+            dialog.destroy ();
+        }
+
         public override void show_processes (string message, Array<Pid> processes, string[] choices) {
             if (dialog != null) {
                 return;
@@ -253,6 +258,7 @@ namespace Files.FileOperations {
 
             dialog = new BusyDialog (mount_name, processes);
             dialog.response.connect (() => {
+                dialog.close ();
                 dialog.destroy ();
                 dialog = null;
                 reply (MountOperationResult.ABORTED); // Results in IOError.FAILED_HANDLED
@@ -268,29 +274,49 @@ namespace Files.FileOperations {
      }
 
      private class BusyDialog : Granite.MessageDialog {
+        private const string CANCEL_TEXT = N_("Do Not Unmount");
+        private const string SECONDARY_TEXT1 = N_("Unmounting now might cause a process to fail or to lose data");
+        private const string SECONDARY_TEXT2 = N_("If you wait, the resource will unmount when all processes finish using it");
+        private const string SECONDARY_TEXT3 = N_("Otherwise choose '%s'");
+
         public string mount_name { get; construct; }
         public Array<Pid> processes { get; construct; }
         public BusyDialog (string _mount_name, Array<Pid> _processes) {
             Object (
                 mount_name: _mount_name,
                 processes: _processes,
-                buttons: Gtk.ButtonsType.CANCEL,
+                buttons: Gtk.ButtonsType.NONE,
                 image_icon: new ThemedIcon ("dialog-warning")
 
             );
         }
 
         construct {
-            primary_text = _("The resource '%s' is in use by other processes").printf (mount_name);
-            secondary_text = _("Unmounting now might cause a process to fail or to lose data");
-            var sb = new StringBuilder ("");
-            sb.append (_("Other processes using '%s'… \n").printf (mount_name));
-            foreach (var pid in processes) {
-                sb.append (get_process_name_from_pid (pid));
-                sb.append ("\n");
+            add_button (_(CANCEL_TEXT), -1);
+            Pid self = Posix.getpid ();
+            if (processes.length == 1 && processes.index (0) == self) {
+                primary_text = _("Please wait. The resource '%s' is in use").printf (mount_name);
+            } else {
+                primary_text = _("Please wait. The resource '%s' is in use by other processes").printf (mount_name);
+                var sb = new StringBuilder ("");
+                sb.append (_("Other processes using '%s'… \n").printf (mount_name));
+                foreach (var pid in processes) {
+                    if (pid == self) {
+                        continue;
+                    }
+                    sb.append (get_process_name_from_pid (pid));
+                    sb.append ("\n");
+                }
+
+                show_error_details (sb.str);
             }
 
-            show_error_details (sb.str);
+            secondary_text = string.join (
+                "\n\n",
+                _(SECONDARY_TEXT1),
+                _(SECONDARY_TEXT2),
+                _(SECONDARY_TEXT3).printf (_(CANCEL_TEXT))
+            );
             show_all ();
         }
 
