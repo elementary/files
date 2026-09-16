@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-03 03:11+0000\n"
+"POT-Creation-Date: 2026-09-14 12:53+0000\n"
 "PO-Revision-Date: 2022-08-07 19:15+0000\n"
 "Last-Translator: Jung-Kyu Park <bagjunggyu@gmail.com>\n"
 "Language-Team: Korean <https://l10n.elementary.io/projects/files/files/ko/>\n"
@@ -1008,21 +1008,42 @@ msgstr "'%s' 꺼낼 수 없습니다"
 msgid "Unable to mount '%s'"
 msgstr "%s 장치를 마운트할 수 없습니다"
 
-#: libcore/FileOperations/MountUtils.vala:273
-#, c-format
-msgid "The resource '%s' is in use by other processes"
-msgstr ""
+#: libcore/FileOperations/MountUtils.vala:266
+#, fuzzy
+#| msgid "Not mounted"
+msgid "Do Not Unmount"
+msgstr "마운트 안 됨"
 
-#: libcore/FileOperations/MountUtils.vala:274
+#: libcore/FileOperations/MountUtils.vala:267
 msgid "Unmounting now might cause a process to fail or to lose data"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:276
+#: libcore/FileOperations/MountUtils.vala:268
+msgid ""
+"If you wait, the resource will unmount when all processes finish using it"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:269
+#, c-format
+msgid "Otherwise choose '%s'"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:287
+#, c-format
+msgid "Please wait. The resource '%s' is in use"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:289
+#, c-format
+msgid "Please wait. The resource '%s' is in use by other processes"
+msgstr ""
+
+#: libcore/FileOperations/MountUtils.vala:291
 #, c-format
 msgid "Other processes using '%s'… \n"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:293
+#: libcore/FileOperations/MountUtils.vala:319
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
