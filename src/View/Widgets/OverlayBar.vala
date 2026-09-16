@@ -243,12 +243,17 @@ namespace Files.View {
             /// TRANSLATORS: 'size' refers to the disk space used by the selected folder
             var size_s = _("unknown size");
             if (fsize > 0) {
-                /// TRANSLATORS: %s will be substituted by the approximate disk space used by the selected folder
-                size_s = _("At least %s used").printf (format_size (fsize));
+                if (unread_count > 0) {
+                    /// TRANSLATORS: %s will be substituted by the approximate disk space used by the selected folder
+                    size_s = _("more than %s used").printf (format_size (fsize));
+                } else {
+                    /// TRANSLATORS: %s will be substituted by the disk space used by the selected folder
+                    size_s = _("%s used").printf (format_size (fsize));
+                }
             }
 
             if (unread_count > 0) {
-                ///TRANSLATORS positional arguments are (1) filename, (2) filetype, subfolder count, file count, unreadable file counf, diskspace
+                ///TRANSLATORS positional arguments are (1) filename, (2) filetype, subfolder count, file count, unreadable file count, diskspace
                 /// The file and folder counts are in the form "<number> files" translated with ngettext
                 label = _("%1$s - %2$s (%3$s, %4$s, %5$s) - %6$s").printf (
                     goffile.info.get_name (),
