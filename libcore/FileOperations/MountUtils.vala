@@ -236,6 +236,9 @@ namespace Files.FileOperations {
         }
 
         ~UnmountOperation () {
+            if (dialog == null) {
+                return;
+            }
             dialog.close ();
             dialog.destroy ();
         }
