@@ -34,14 +34,13 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     }
 
     public DeleteJob (Gtk.Window? parent_window, Gee.LinkedList<string> uris, bool try_trash) {
-            this.parent_window = parent_window;
-            this.try_trash = try_trash;
-
-        user_cancel = false;
+        this.parent_window = parent_window;
+        this.try_trash = try_trash;
         foreach (var uri in uris) {
             this.files.prepend (GLib.File.new_for_uri (uri));
         }
 
+        user_cancel = false;
         if (try_trash) {
             undo_redo_data = new Files.UndoActionData (MOVETOTRASH, (int) uris.size);
             undo_redo_data.set_src_dir (
@@ -50,10 +49,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         }
 
         inhibit_power_manager (try_trash ? _("Trashing Files") : _("Deleting Files"));
-        // base (parent_window);
-        // this.files =
-        // this.try_trash = try_trash;
-        // this.user_cancel = false;
     }
 
     protected override unowned string get_scan_primary () {
