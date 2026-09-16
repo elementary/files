@@ -167,7 +167,7 @@ namespace Files.View {
                     }
                 } else { /* This is a folder. */
                     ///TRANSLATORS positional arguments are (1) filename, (2) formatted filetype
-                    str = _("%1$s - %2$s").printf (
+                    label = _("%1$s - %2$s").printf (
                         goffile.info.get_name (),
                         goffile.formated_type
                     );
@@ -176,7 +176,8 @@ namespace Files.View {
             } else { /* Multiple selection. */
                 var fsize = format_size (files_size);
                 if (folders_count == 0) {
-                    ///TRANSLATORS positional arguments are (1) number of files, (2) formatted total filesize
+                    ///TRANSLATORS positional arguments are (1) file count, (2) total filesize
+                    /// The count is in the form "<number> files" (translated with ngettext)
                     str = ngettext ("%1$u file selected (%2$s)", "%1$u files selected (%2$s)", files_count).printf (
                         files_count,
                         fsize
@@ -186,8 +187,8 @@ namespace Files.View {
                         folders_count
                     );
                 } else {
-                    ///TRANSLATORS positional arguments are (1) formatted number of folders, (2) formatted number of files
-                    /// formatted parameters are in the form "<number> files" (translated with ngettext)
+                    ///TRANSLATORS positional arguments are (1) folder count (2) file count
+                    /// The counts are in the form "<number> files" (translated with ngettext)
                     str = _("%1$s and %2$s selected").printf (
                         ngettext ("%u folder ", "%u folders", folders_count).printf (folders_count),
                         ngettext ("%u file", "%u files", files_count).printf (files_count)
@@ -226,42 +227,47 @@ namespace Files.View {
             });
         }
 
-        private void update_status_after_deep_count () {
+        private void update_status_after_deep_count () requires (goffile != null) {
             string str;
             cancellable = null;
             active = false;
 
-            label = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
+            if (deep_count_cancel == null) {
+                return;
+            }
 
-            if (deep_counter != null) {
-                if (deep_counter.dirs_count > 0) {
-                    /// TRANSLATORS: %u will be substituted by the number of sub folders
-                    str = ngettext ("%u sub-folder, ", "%u sub-folders, ", deep_counter.dirs_count);
-                    label += str.printf (deep_counter.dirs_count);
-                }
+            var folders_count = deep_counter.dirs_count;
+            var files_count = deep_counter.files_count;
+            var unread_count = deep_counter.file_not_read;
+            var fsize = deep_counter.total_size;
+            /// TRANSLATORS: 'size' refers to the disk space used by the selected folder
+            var size_s = _("unknown size");
+            if (fsize > 0) {
+                /// TRANSLATORS: %s will be substituted by the approximate disk space used by the selected folder
+                size_s = _("At least %s used").printf (format_size (fsize));
+            }
 
-                if (deep_counter.files_count > 0 || deep_counter.file_not_read == 0) {
-                    /// TRANSLATORS: %u will be substituted by the number of readable files
-                    str = ngettext ("%u file, ", "%u files, ", deep_counter.files_count);
-                    label += str.printf (deep_counter.files_count);
-                }
-
-                if (deep_counter.file_not_read == 0) {
-                    label += format_size (deep_counter.total_size);
-                    label += ")";
-                } else {
-                    if (deep_counter.total_size > 0) {
-                        /// TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-                        label += _("%s approx.").printf (format_size (deep_counter.total_size));
-                    } else {
-                        /// TRANSLATORS: 'size' refers to disk space
-                        label += _("unknown size");
-                    }
-                    label += ") ";
-                    /// TRANSLATORS: %u will be substituted by the number of unreadable files
-                    str = ngettext ("%u file not readable", "%u files not readable", deep_counter.file_not_read);
-                    label += str.printf (deep_counter.file_not_read);
-                }
+            if (unread_count > 0) {
+                ///TRANSLATORS positional arguments are (1) filename, (2) filetype, subfolder count, file count, unreadable file counf, diskspace
+                /// The file and folder counts are in the form "<number> files" translated with ngettext
+                label = _("%1$s - %2$s (%3$s, %4$s, %5$s) - %6$s").printf (
+                    goffile.info.get_name (),
+                    goffile.formated_type,
+                    ngettext ("%u accessible sub-folder", "%u accessible sub-folders", folders_count).printf (folders_count),
+                    ngettext ("%u accessible file", "%u accessible files", files_count).printf (files_count),
+                    ngettext ("%u inaccessible file", "%u inaccessible files", unread_count).printf (unread_count),
+                    size_s
+                );
+            } else {
+                ///TRANSLATORS positional arguments are (1) filename, (2) filetype, subfolder count, file count, diskspace
+                /// The file and folder counts are in the form "<number> files" translated with ngettext
+                label = _("%1$s - %2$s (%3$s, %4$s) - %5$s").printf (
+                    goffile.info.get_name (),
+                    goffile.formated_type,
+                    ngettext ("%u sub-folder", "%u sub-folders", folders_count).printf (folders_count),
+                    ngettext ("%u file", "%u files", files_count).printf (files_count),
+                    size_s
+                );
             }
         }
 
