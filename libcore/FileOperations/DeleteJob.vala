@@ -190,6 +190,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         var transfer_info = new TransferInfo ();
         List<GLib.File> skipped_trash = null;
         List<GLib.File> skipped_deletion = null;
+        List<GLib.File> to_delete = null;
 
         if (try_trash) {
             if (yield trash_files (source_info, transfer_info, cancellable, out skipped_trash)) {
@@ -220,6 +221,20 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 skipped_deletion.prepend (file);
                 warning ("skipping deletion");
             } else {
+                to_delete.prepend (file);
+            }
+
+            next_files = next_files.next;
+            file = next_files != null ? next_files.data : null;
+        }
+
+        file = to_delete.data;
+        next_files = to_delete.first ();
+        // Permanent deletion is always confirmed except for certain schemes which are never confirmed
+        // We can assume selection is always from the same folder (scheme). There is no way in Files to select from
+        // different folders.
+        if (can_delete_without_confirm (file) || confirm_delete_directly (to_delete)) {
+            while (file != null) {
                 if (yield delete_file_async (file, cancellable)) {
                     FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
                     transfer_info.num_files++;
@@ -227,10 +242,10 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 } else {
                     skipped_deletion.prepend (file);
                 }
-            }
 
-            next_files = next_files.next;
-            file = next_files != null ? next_files.data : null;
+                next_files = next_files.next;
+                file = next_files != null ? next_files.data : null;
+            }
         }
 
         progress.finished ();
