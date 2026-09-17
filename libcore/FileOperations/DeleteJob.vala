@@ -191,7 +191,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
         var transfer_info = new TransferInfo ();
         List<GLib.File> skipped_trash = null;
-        List<GLib.File> skipped_deletion = null;
         List<GLib.File> to_delete = null;
 
         if (try_trash) {
@@ -200,7 +199,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             }
         }
 
-        // Delete files or skipped files
+        // Delete files or skipped trash files
         //TODO Confirm deletion
 
         GLib.File? file = null;
