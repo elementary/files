@@ -21,7 +21,10 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     protected bool user_cancel;
     protected bool delete_all;
 
+
     private GLib.List<GLib.File> files;
+    private CommonJob.SourceInfo? source_info;
+    private CommonJob.TransferInfo? transfer_info;
 
     ~DeleteJob () {
         Files.FileChanges.consume_changes (true);
@@ -183,25 +186,26 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     ) {
         // Build a list of files that cannot be operated on due to lack of permission
         // or inaccessible information and the user chose to skip rather than abort.
-        var source_info = scan_sources (files);
+        source_info = scan_sources (files);
         if (aborted ()) {
             // There were problematic files and the user chose to cancel
             return;
         }
-
-        var transfer_info = new TransferInfo ();
+        transfer_info = new TransferInfo ();
         List<GLib.File> skipped_trash = null;
         List<GLib.File> to_delete = null;
 
         if (try_trash) {
-            if (yield trash_files (source_info, transfer_info, cancellable, out skipped_trash)) {
+            if (aborted ()) {
+                // There were problematic files and the user chose to cancel
+                return;
+            }
+            if (yield trash_files (cancellable, out skipped_trash)) {
                 return; // All files successfully trashed - finish now
             }
         }
 
         // Delete files or skipped trash files
-        //TODO Confirm deletion
-
         GLib.File? file = null;
         unowned List<GLib.File> next_files = null;
 
@@ -249,8 +253,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     }
 
     private async bool trash_files (
-        CommonJob.SourceInfo source_info,
-        CommonJob.TransferInfo transfer_info,
         Cancellable? cancellable,
         out List<GLib.File> skipped
     ) {
@@ -290,21 +292,61 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         return success;
     }
 
+    // This function calls and is may be called by delete_file_async
+    private async bool delete_non_empty_dir (GLib.File dir, Cancellable? cancellable) {
+        warning ("delete dir");
+        GLib.FileEnumerator? enumerator = null;
+        try {
+            enumerator = dir.enumerate_children (
+                FileAttribute.STANDARD_NAME,
+                FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                cancellable
+            );
+        } catch (Error e) {
+            warning ("error getting enumerator %s", e.message);
+            return false;
+        }
+
+        try {
+            unowned GLib.FileInfo? info = null;
+            while ((info = enumerator.next_file (cancellable)) != null) {
+                var file = dir.get_child (info.get_name ());
+                var success = yield delete_file_async (file, cancellable);
+                warning ("success deleting %s, %s", file.get_uri (), success.to_string ());
+                if (!success) {
+                    return false;
+                }
+            }
+
+        } catch (Error e) {
+            warning ("error deleting file %s", e.message);
+            //TODO handle some errors further?
+            return false;
+        }
+
+        return yield delete_file_async (dir, cancellable);
+    }
+
+    // This function may call and is called by delete_non_empty_dir
     private async bool delete_file_async (GLib.File file, Cancellable? cancellable) {
         try {
             return yield file.delete_async (Priority.DEFAULT, cancellable);
         } catch (Error e) {
             warning ("could not delete %s, %s", file.get_path (), e.message);
+            if (e is IOError.NOT_EMPTY) {
+                return yield delete_non_empty_dir (file, cancellable);
+            }
         }
+
         return false;
     }
 
     private async bool trash_file_async (GLib.File file, Cancellable? cancellable) {
-        warning ("TRASH FILE %s", file.get_path ());
         try {
             return yield file.trash_async (Priority.DEFAULT, cancellable);
         } catch (Error e) {
-            warning ("could not trash %s, %s", file.get_path (), e.message);
+            warning ("error trashing %s, %s", file.get_uri (), e.message);
+            //TODO handle some errors further
         }
 
         return false;
