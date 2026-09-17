@@ -15,58 +15,24 @@
     with this program.  If not, see <http://www.gnu.org/licenses/>.
 ***/
 
-[DBus (name = "io.elementary.files.db")]
-interface MarlinDaemon : Object {
-    public abstract async Variant get_uri_infos (string raw_uri) throws GLib.DBusError, GLib.IOError;
-    public abstract async bool record_uris (Variant[] entries) throws GLib.DBusError, GLib.IOError;
-    public abstract async bool delete_entry (string uri) throws GLib.DBusError, GLib.IOError;
-
-}
-
 public class Files.Plugins.CTags : Files.Plugins.Base {
     /* May be used by more than one directory simultaneously so do not make assumptions */
-    private MarlinDaemon daemon;
     private Cancellable cancellable;
     private GLib.List<Files.File> current_selected_files;
 
     public CTags () {
         cancellable = new Cancellable ();
-
-        try {
-            daemon = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files.db",
-                                         "/io/elementary/files/db");
-        } catch (IOError e) {
-            stderr.printf ("%s\n", e.message);
-        }
     }
 
     private async void rreal_update_file_info (Files.File file) {
         try {
-            if (!file.exists || file.color >= 0) {
-                // Delete the entry if file no longer exists or we obtained color info from metadata
-                yield daemon.delete_entry (file.uri);
+            if (file.color >= 0) {
                 return;
             }
 
             var info = yield file.location.query_info_async ("metadata::color-tag", FileQueryInfoFlags.NONE);
             if (info.has_attribute ("metadata::color-tag")) {
                 file.color = int.parse (info.get_attribute_string ("metadata::color-tag"));
-            } else {
-                // Look for color in Files daemon database
-                var rc = yield daemon.get_uri_infos (file.uri);
-
-                VariantIter iter = rc.iterator ();
-                assert (iter.n_children () == 1);
-                VariantIter row_iter = iter.next_value ().iterator ();
-
-                if (row_iter.n_children () == 3) {
-                    /* Only interested in color tag */
-                    int64.parse (row_iter.next_value ().get_string ()); // Skip modified date
-                    row_iter.next_value ().get_string (); // Skip file type
-                    file.color = int.parse (row_iter.next_value ().get_string ());
-                    file.location.set_attribute_string ("metadata::color-tag", file.color.to_string (), FileQueryInfoFlags.NONE);
-                    yield daemon.delete_entry (file.uri);
-                }
             }
         } catch (Error err) {
             warning ("%s", err.message);
