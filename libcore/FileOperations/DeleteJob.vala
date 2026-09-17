@@ -181,7 +181,14 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     public async void trash_or_delete_files (
         Cancellable? cancellable
     ) {
+        // Build a list of files that cannot be operated on due to lack of permission
+        // or inaccessible information and the user chose to skip rather than abort.
         var source_info = scan_sources (files);
+        if (aborted ()) {
+            // There were problematic files and the user chose to cancel
+            return;
+        }
+
         var transfer_info = new TransferInfo ();
         List<GLib.File> skipped_trash = null;
         List<GLib.File> skipped_deletion = null;
