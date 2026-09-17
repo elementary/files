@@ -236,8 +236,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
                     transfer_info.num_files++;
                     report_delete_progress (source_info, transfer_info);
-                } else {
-                    skipped_deletion.prepend (file);
                 }
 
                 next_files = next_files.next;
@@ -266,9 +264,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         progress.started (); // Bypass delay
         var success = true;
         while (file != null) {
-            if (should_skip_file (file)) { // Scan sources builds list of skip files
-                // Do nothing for now
-            } else {
+            if (!should_skip_file (file)) {
                 var mtime = Files.FileUtils.get_file_modification_time (file);
                 if (yield trash_file_async (file, cancellable)) {
                     FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
