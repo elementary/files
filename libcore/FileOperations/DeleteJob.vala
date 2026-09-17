@@ -218,11 +218,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         progress.started (); // Bypass delay
 
         while (file != null) {
-            if (should_skip_file (file)) {
-                //TODO What do we do with skipped files?
-                skipped_deletion.prepend (file);
-                warning ("skipping deletion");
-            } else {
+            if (!should_skip_file (file)) {
                 to_delete.prepend (file);
             }
 
