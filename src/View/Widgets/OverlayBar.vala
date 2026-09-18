@@ -152,9 +152,9 @@ namespace Files.View {
                         goffile.format_size = format_size (PropertiesWindow.file_real_size (goffile));
                     }
 
-                    ///TRANSLATORS positional arguments are filename, formatted filetype, formatted filesize
+                    ///TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
                     /// filetype is formatted by GLib.ContentType.get_description ()
-                    str = _("%1$s - %2$s (%3$s)").printf (
+                    str = _("%s - %s (%s)").printf (
                         goffile.info.get_name (),
                         goffile.formated_type,
                         goffile.format_size
@@ -167,9 +167,9 @@ namespace Files.View {
                         load_resolution.begin (goffile);
                     }
                 } else { /* This is a folder. */
-                    ///TRANSLATORS positional arguments are (1) filename, (2) formatted filetype
+                    ///TRANSLATORS arguments are in order: filename, formatted filetype
                     /// filetype is formatted by GLib.ContentType.get_description ()
-                    label = _("%1$s - %2$s").printf (
+                    label = _("%s - %s").printf (
                         goffile.info.get_name (),
                         goffile.formated_type
                     );
@@ -178,24 +178,24 @@ namespace Files.View {
             } else { /* Multiple selection. */
                 var fsize = format_size (files_size);
                 if (folders_count == 0) {
-                    ///TRANSLATORS positional arguments are (1) file count, (2) diskspace used
+                    ///TRANSLATORS arguments are in order: file count, diskspace used
                     /// The count is in the form "<number> files" (translated with ngettext)
                     /// The diskspace is formatted with GLib.format_size
-                    str = ngettext ("%1$u file selected (%2$s)", "%1$u files selected (%2$s)", files_count).printf (
+                    str = ngettext ("%u file selected (%s)", "%u files selected (%s)", files_count).printf (
                         files_count,
                         fsize
                     );
                 } else if (files_count == 0) {
-                    ///TRANSLATORS positional arguments are (1) folder count, (2) diskspace used
+                    ///TRANSLATORS arguments are in order: folder count, diskspace used
                     /// The count is in the form "<number> folders" (translated with ngettext)
                     /// The diskspace is formatted with GLib.format_size
-                  str = ngettext ("%1$u folder selected", "%1$u folders selected", folders_count).printf (
+                  str = ngettext ("%u folder selected", "%u folders selected", folders_count).printf (
                         folders_count
                     );
                 } else {
-                    ///TRANSLATORS positional arguments are (1) folder count (2) file count
+                    ///TRANSLATOR arguments are folder count, file count
                     /// The counts are in the form "<number> files" (translated with ngettext)
-                    str = _("%1$s and %2$s selected").printf (
+                    str = _("%s and %s selected").printf (
                         ngettext ("%u folder ", "%u folders", folders_count).printf (folders_count),
                         ngettext ("%u file", "%u files", files_count).printf (files_count)
                     );
@@ -261,11 +261,11 @@ namespace Files.View {
             }
 
             if (unread_count > 0) {
-                ///TRANSLATORS positional arguments are (1) filename, (2) filetype, subfolder count, file count, unreadable file count, diskspace used
+                ///TRANSLATOR arguments are in order: filename, filetype, subfolder count, file count, unreadable file count, diskspace used
                 /// The file and folder counts are in the form "<number> files" translated with ngettext
                 /// filetype is formatted by GLib.ContentType.get_description ()
                 /// The diskspace is formatted with GLib.format_size
-                label = _("%1$s - %2$s (%3$s, %4$s, %5$s) - %6$s").printf (
+                label = _("%s - %s (%s, %s, %s) - %s").printf (
                     goffile.info.get_name (),
                     goffile.formated_type,
                     ngettext ("%u accessible sub-folder", "%u accessible sub-folders", folders_count).printf (folders_count),
@@ -274,11 +274,11 @@ namespace Files.View {
                     size_s
                 );
             } else {
-                ///TRANSLATORS positional arguments are (1) filename, (2) filetype, subfolder count, file count, diskspace
+                ///TRANSLATORS arguments are in order: filename, filetype, subfolder count, file count, diskspace
                 /// The file and folder counts are in the form "<number> files" translated with ngettext
                 /// filetype is formatted by GLib.ContentType.get_description ()
                 /// The diskspace is formatted with GLib.format_size
-                label = _("%1$s - %2$s (%3$s, %4$s) - %5$s").printf (
+                label = _("%s - %s (%s, %s) - %s").printf (
                     goffile.info.get_name (),
                     goffile.formated_type,
                     ngettext ("%u sub-folder", "%u sub-folders", folders_count).printf (folders_count),
@@ -364,10 +364,10 @@ namespace Files.View {
             goffile.width = width;
             goffile.height = height;
 
-            ///TRANSLATORS positional arguments are format string, formatted filesize, width and height of an image file
+            ///TRANSLATORS arguments are in order: format string, formatted filesize, width, height (of an image file)
             /// format is from GLib.ContentType.get_description ()
             /// size is from GLib.format_size ()
-            label = _("%1$s (%2$s — %3$i × %4$i)").printf (
+            label = _("%s (%s — %i × %i)").printf (
                 goffile.formated_type,
                 goffile.format_size,
                 width,
