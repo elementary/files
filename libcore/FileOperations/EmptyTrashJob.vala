@@ -127,8 +127,6 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
     }
 
     private void report_empty_trash_progress () {
-        progress.take_status (_("Emptying trash"));
-
         progress.take_status (ngettext (
             "Emptying %'d file from trash",
             "Emptying %'d files from trash",
@@ -141,9 +139,7 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
             files_left
         ).printf (files_left));
 
-        if (total_files != 0) {
-            progress.update_progress (total_files - files_left, total_files);
-        }
+        progress.update_progress (total_files - files_left, total_files);
     }
 
     private async void internal_empty_trash () {

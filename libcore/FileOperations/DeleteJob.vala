@@ -165,8 +165,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         ).printf (files_left);
         progress.take_details (s);
 
-        if (total_files != 0) {
-            progress.update_progress (files_trashed, total_files);
-        }
+        progress.update_progress (files_trashed, total_files);
     }
 }
