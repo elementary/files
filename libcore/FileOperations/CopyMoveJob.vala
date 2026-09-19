@@ -149,13 +149,25 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                     /// %'d is a placeholder for a number. It must not be translated or removed.
                     /// Placeholders must appear in the same order but otherwise may change position.
                     s = (is_move ?
-                            _("Moving %d files (in \"%s\") to \"%s\"") :
-                            _("Copying %d files (in \"%s\") to \"%s\"")
-                        ).printf (source_info.num_files, srcname, destname);
+                            ngettext (
+                                "Moving %'d file (in \"%s\") to \"%s\"",
+                                "Moving %'d files (in \"%s\") to \"%s\"",
+                                files_left
+                            ) :
+                            ngettext (
+                                "Copying %'d file (in \"%s\") to \"%s\"",
+                                "Copying %'d files (in \"%s\") to \"%s\"",
+                                files_left
+                            )
+                        ).printf (files_left, srcname, destname);
                 } else {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-                    s = _("Duplicating %d files (in \"%s\")").printf (source_info.num_files, srcname);
+                    s = ngettext (
+                        "Duplicating %'d file (in \"%s\")",
+                        "Duplicating %'d files (in \"%s\")",
+                        files_left
+                    ).printf (files_left, srcname);
                 }
             } else {
                 if (destination != null) {
@@ -164,11 +176,23 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                     /// %'d is a placeholder for a number. It must not be translated or removed.
                     /// Placeholders must appear in the same order but otherwise may change position.
                     s = (is_move ?
-                        _("Moving %d files to \"%s\"") :
-                        _("Copying %d files to \"%s\"")
-                    ).printf (source_info.num_files, destname);
+                        ngettext (
+                            "Moving %'d file to \"%s\"",
+                            "Moving %'d files to \"%s\"",
+                            files_left
+                        ) :
+                        ngettext (
+                            "Copying %'d file to \"%s\"",
+                            "Copying %'d files to \"%s\"",
+                            files_left
+                        )
+                    ).printf (files_left, destname);
                 } else {
-                    s = _("Duplicating %d files").printf (source_info.num_files);
+                    s = ngettext (
+                        "Duplicating %'d file",
+                        "Duplicating %'d files",
+                        files_left
+                    ).printf (files_left);
                 }
             }
 
