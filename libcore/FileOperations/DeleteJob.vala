@@ -22,9 +22,9 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     protected bool delete_all;
 
 
-    private GLib.List<GLib.File> files;
-    private CommonJob.SourceInfo? source_info;
-    private CommonJob.TransferInfo? transfer_info;
+    protected GLib.List<GLib.File> files;
+    protected CommonJob.SourceInfo? source_info;
+    protected CommonJob.TransferInfo? transfer_info;
 
     ~DeleteJob () {
         Files.FileChanges.consume_changes (true);
@@ -36,11 +36,13 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             file.has_uri_scheme ("trash");
     }
 
-    public DeleteJob (Gtk.Window? parent_window, Gee.LinkedList<string> uris, bool try_trash) {
+    public DeleteJob (Gtk.Window? parent_window, Gee.LinkedList<string>? uris, bool try_trash) {
         this.parent_window = parent_window;
         this.try_trash = try_trash;
-        foreach (var uri in uris) {
-            this.files.prepend (GLib.File.new_for_uri (uri));
+        if (uris != null) {
+            foreach (var uri in uris) {
+                this.files.prepend (GLib.File.new_for_uri (uri));
+            }
         }
 
         user_cancel = false;
@@ -114,7 +116,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         transfer_info.last_report_time = now;
 
         int files_left = source_info.num_files - transfer_info.num_files;
-
         /* Races and whatnot could cause this to be negative... */
         if (files_left < 0) {
             files_left = 1;
