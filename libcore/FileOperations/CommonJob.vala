@@ -18,7 +18,7 @@
 
 public class Files.FileOperations.CommonJob {
     protected const int NSEC_PER_MSEC = 1000000;
-    protected const int SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE = 15;
+    protected const int SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE = 3;
 
     [Compact]
     [CCode (cname = "SourceInfo")]
