@@ -1648,6 +1648,7 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
         goto out;
     }
 
+    copy_job->destination = dest_dir;
 
 retry:
 
