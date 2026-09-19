@@ -19,7 +19,7 @@
 public class Files.FileOperations.CopyMoveJob : CommonJob {
     protected bool is_move = false;
     protected GLib.List<GLib.File> files;
-    protected GLib.File? destination;
+    protected unowned GLib.File? destination;
     protected GLib.HashTable<GLib.File,bool> debuting_files = new GLib.HashTable<GLib.File,bool> (GLib.File.hash, GLib.File.equal);
     protected bool replace_all = false;
     protected bool merge_all = false;
