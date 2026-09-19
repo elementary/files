@@ -223,7 +223,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                 files_left
             ).printf (num_bytes_format, total_size_format, files_left);
             progress.take_details (details);
-        } else if (size_left == 0) {
+        } else if (size_left == 0 || transfer_info.num_bytes == 0) {
             progress.take_details (
                 is_move ?
                 _("Please wait, finishing move\u2026") :
