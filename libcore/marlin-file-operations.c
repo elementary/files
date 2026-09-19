@@ -2248,8 +2248,6 @@ retry:
             g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
         }
 
-        files_file_utils_sync (dest);
-
         files_file_changes_queue_file_moved (src, dest);
 
         /*if (position) {
