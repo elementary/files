@@ -189,7 +189,7 @@ namespace Files.View {
                     ///TRANSLATORS arguments are in order: folder count, diskspace used
                     /// The count is in the form "<number> folders" (translated with ngettext)
                     /// The diskspace is formatted with GLib.format_size
-                  str = ngettext ("%u folder selected", "%u folders selected", folders_count).printf (
+                    str = ngettext ("%u folder selected", "%u folders selected", folders_count).printf (
                         folders_count
                     );
                 } else {
