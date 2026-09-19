@@ -196,7 +196,7 @@ namespace Files.View {
                     ///TRANSLATOR arguments are folder count, file count
                     /// The counts are in the form "<number> files" (translated with ngettext)
                     str = _("%s and %s selected").printf (
-                        ngettext ("%u folder ", "%u folders", folders_count).printf (folders_count),
+                        ngettext ("%u folder", "%u folders", folders_count).printf (folders_count),
                         ngettext ("%u file", "%u files", files_count).printf (files_count)
                     );
                 }
