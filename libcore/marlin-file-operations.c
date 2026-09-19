@@ -1400,7 +1400,6 @@ copy_file_progress_callback (goffset current_num_bytes,
     goffset new_size;
 
     pdata = user_data;
-    files_file_utils_sync (pdata->file_to_sync);
 
     new_size = current_num_bytes - pdata->last_size;
 
@@ -1411,6 +1410,8 @@ copy_file_progress_callback (goffset current_num_bytes,
                               pdata->source_info,
                               pdata->transfer_info);
     }
+
+    files_file_utils_sync (pdata->file_to_sync);
 }
 
 static void
