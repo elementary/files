@@ -109,12 +109,15 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
 
         /* See https://github.com/elementary/files/issues/464. The job data may become invalid, possibly
          * due to a race. */
-        if (files.data == null || destination == null) {
+        if (files.data == null) {
             return;
         }
 
         var srcname = FileUtils.custom_basename_from_file (files.data);
-        var destname = FileUtils.custom_basename_from_file (destination);
+        var destname = "";
+        if (destination != null) {
+            destname = FileUtils.custom_basename_from_file (destination);
+        }
 
         transfer_info.last_report_time = now;
 
