@@ -56,21 +56,20 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
                 empty_button.get_style_context ().add_class (Gtk.STYLE_CLASS_DESTRUCTIVE_ACTION);
 
                 message_dialog.response.connect ((response) => {
-                    if (response == Gtk.ResponseType.YES) {
-                        internal_empty_trash.begin ();
-                    }
-
                     message_dialog.destroy ();
+                    if (response == Gtk.ResponseType.YES) {
+                        internal_empty_trash ();
+                    }
                 });
 
                 message_dialog.present ();
             }
         } else {
-            internal_empty_trash.begin ();
+            internal_empty_trash ();
         }
     }
 
-    private async void internal_empty_trash () {
+    private void internal_empty_trash () {
         source_info = scan_sources (files);
         if (aborted ()) {
             // There were problematic files and the user chose to cancel
@@ -86,7 +85,7 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
             }
 
             // Only delete children of dir
-            if (!yield delete_dir_children (dir, cancellable)) {
+            if (!delete_dir_children (dir, cancellable)) {
                 warning ("delete non empty dir failed for %s", dir.get_uri ());
                 some_not_deleted = true;
             }

@@ -203,7 +203,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 // There were problematic files and the user chose to cancel
                 return false;
             }
-            if (yield trash_files (cancellable, out skipped_trash)) {
+            if (trash_files (cancellable, out skipped_trash)) {
                 return true; // All files successfully trashed - finish now
             }
         }
@@ -241,7 +241,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         if (can_delete_without_confirm (file) || confirm_delete_directly (to_delete)) {
             some_not_deleted = false;
             while (file != null) {
-                if (yield delete_file_async (file, cancellable)) {
+                if (delete_file (file, cancellable)) {
                     FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
                     transfer_info.num_files++;
                     report_delete_progress ();
@@ -261,7 +261,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         return !some_not_deleted;
     }
 
-    private async bool trash_files (
+    private bool trash_files (
         Cancellable? cancellable,
         out List<GLib.File> skipped
     ) {
@@ -277,7 +277,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         while (file != null) {
             if (!should_skip_file (file)) {
                 var mtime = Files.FileUtils.get_file_modification_time (file);
-                if (yield trash_file_async (file, cancellable)) {
+                if (trash_file (file, cancellable)) {
                     FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
                     undo_redo_data.add_trashed_file (
                         file,
@@ -302,16 +302,16 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     }
 
     // This function calls and is may be called by delete_file_async
-    private async bool delete_non_empty_dir (GLib.File dir, Cancellable? cancellable) {
-        if (yield delete_dir_children (dir, cancellable)) {
-            return yield delete_file_async (dir, cancellable);
+    private bool delete_non_empty_dir (GLib.File dir, Cancellable? cancellable) {
+        if (delete_dir_children (dir, cancellable)) {
+            return delete_file (dir, cancellable);
         }
 
         return false;
     }
 
     // This function calls and is may be called by delete_file_async
-    protected async bool delete_dir_children (GLib.File dir, Cancellable? cancellable) {
+    protected bool delete_dir_children (GLib.File dir, Cancellable? cancellable) {
         GLib.FileEnumerator? enumerator = null;
         try {
             enumerator = dir.enumerate_children (
@@ -329,7 +329,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             unowned GLib.FileInfo? info = null;
             while ((info = enumerator.next_file (cancellable)) != null) {
                 var file = dir.get_child (info.get_name ());
-                if (!yield delete_file_async (file, cancellable)) {
+                if (delete_file (file, cancellable)) {
                     success = false; //Should we return immediatly?
                 } else {
                     transfer_info.num_files++;
@@ -346,13 +346,13 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     }
 
     // This function may call and is called by delete_non_empty_dir
-    private async bool delete_file_async (GLib.File file, Cancellable? cancellable) {
+    private bool delete_file (GLib.File file, Cancellable? cancellable) {
         var success = true;
         try {
-            success = yield file.delete_async (Priority.DEFAULT, cancellable);
+            success = file.@delete (cancellable);
         } catch (Error e) {
             if (e is IOError.NOT_EMPTY) {
-                success = yield delete_non_empty_dir (file, cancellable);
+                success = delete_non_empty_dir (file, cancellable);
             } else {
                 warning ("DJ could not delete %s, %s", file.get_uri (), e.message);
                 success = false;
@@ -364,10 +364,10 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         return success;
     }
 
-    private async bool trash_file_async (GLib.File file, Cancellable? cancellable) {
+    private bool trash_file (GLib.File file, Cancellable? cancellable) {
         var success = true;
         try {
-            success = yield file.trash_async (Priority.DEFAULT, cancellable);
+            success = file.trash (cancellable);
         } catch (Error e) {
             warning ("error trashing %s, %s", file.get_uri (), e.message);
             success = false; //Ignore some errors?
