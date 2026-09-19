@@ -1048,6 +1048,10 @@ copy_move_directory (FilesFileOperationsCopyMoveJob *copy_job,
     dest_fs_type = NULL;
 
     skip_error = marlin_file_operations_common_job_should_skip_readdir_error (job, src);
+
+    /* Do not count the copied directory as a file */
+    source_info->num_files --;
+
 retry:
     error = NULL;
     enumerator = g_file_enumerate_children (src,
