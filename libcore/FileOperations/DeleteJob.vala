@@ -17,10 +17,14 @@
  */
 
 public class Files.FileOperations.DeleteJob : CommonJob {
-    protected GLib.List<GLib.File> files;
-    protected bool try_trash;
+    public bool try_trash;
     protected bool user_cancel;
     protected bool delete_all;
+
+
+    protected GLib.List<GLib.File> files;
+    protected CommonJob.SourceInfo? source_info;
+    protected CommonJob.TransferInfo? transfer_info;
 
     ~DeleteJob () {
         Files.FileChanges.consume_changes (true);
@@ -32,11 +36,24 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             file.has_uri_scheme ("trash");
     }
 
-    public DeleteJob (Gtk.Window? parent_window, GLib.List<GLib.File> files, bool try_trash) {
-        base (parent_window);
-        this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);
+    public DeleteJob (Gtk.Window? parent_window, Gee.LinkedList<string>? uris, bool try_trash) {
+        this.parent_window = parent_window;
         this.try_trash = try_trash;
-        this.user_cancel = false;
+        if (uris != null) {
+            foreach (var uri in uris) {
+                this.files.prepend (GLib.File.new_for_uri (uri));
+            }
+        }
+
+        user_cancel = false;
+        if (try_trash) {
+            undo_redo_data = new Files.UndoActionData (MOVETOTRASH, (int) uris.size);
+            undo_redo_data.set_src_dir (
+                files.data.get_parent ()
+            );
+        }
+
+        inhibit_power_manager (try_trash ? _("Trashing Files") : _("Deleting Files"));
     }
 
     protected override unowned string get_scan_primary () {
@@ -89,7 +106,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                             CANCEL, DELETE) == 1;
     }
 
-    protected void report_delete_progress (CommonJob.SourceInfo source_info, CommonJob.TransferInfo transfer_info) {
+    protected void report_delete_progress () requires (source_info != null && transfer_info != null) {
         int64 now = GLib.get_monotonic_time () * 1000; // in ns
         if (transfer_info.last_report_time != 0 &&
             ((int64)transfer_info.last_report_time - now).abs () < 100 * CommonJob.NSEC_PER_MSEC) {
@@ -99,7 +116,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         transfer_info.last_report_time = now;
 
         int files_left = source_info.num_files - transfer_info.num_files;
-
         /* Races and whatnot could cause this to be negative... */
         if (files_left < 0) {
             files_left = 1;
@@ -149,7 +165,9 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         progress.pulse_progress ();
     }
 
-    protected void report_trash_progress (int files_trashed, int total_files) {
+    private void report_trash_progress () {
+        var total_files = source_info.num_files;
+        var files_trashed = transfer_info.num_files;
         var files_left = total_files - files_trashed;
 
         progress.take_status (_("Moving files to trash"));
@@ -164,5 +182,200 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         if (total_files != 0) {
             progress.update_progress (files_trashed, total_files);
         }
+    }
+
+    public async bool trash_or_delete_files (
+        Cancellable? cancellable
+    ) {
+        // Build a list of files that cannot be operated on due to lack of permission
+        // or inaccessible information and the user chose to skip rather than abort.
+        source_info = scan_sources (files);
+        if (aborted ()) {
+            // There were problematic files and the user chose to cancel
+            return false;
+        }
+        transfer_info = new TransferInfo ();
+        List<GLib.File> skipped_trash = null;
+        List<GLib.File> to_delete = null;
+
+        if (try_trash) {
+            if (aborted ()) {
+                // There were problematic files and the user chose to cancel
+                return false;
+            }
+            if (trash_files (cancellable, out skipped_trash)) {
+                return true; // All files successfully trashed - finish now
+            }
+        }
+
+        // Delete files or skipped trash files
+        GLib.File? file = null;
+        unowned List<GLib.File> next_files = null;
+
+        if (!try_trash) {
+            warning ("immediate delete");
+            file = files.data;
+            next_files = files.first ();
+        } else if (skipped_trash.data != null) {
+            file = skipped_trash.data;
+            next_files = skipped_trash.first ();
+        }
+
+        progress.started (); // Bypass delay
+
+        while (file != null) {
+            if (!should_skip_file (file)) {
+                to_delete.prepend (file);
+            }
+
+            next_files = next_files.next;
+            file = next_files != null ? next_files.data : null;
+        }
+
+        file = to_delete.data;
+        next_files = to_delete.first ();
+        // Permanent deletion is always confirmed except for certain schemes which are never confirmed
+        // We can assume selection is always from the same folder (scheme). There is no way in Files to select from
+        // different folders.
+        var some_not_deleted = true;
+        if (can_delete_without_confirm (file) || confirm_delete_directly (to_delete)) {
+            some_not_deleted = false;
+            while (file != null) {
+                if (delete_file (file, cancellable)) {
+                    FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
+                    transfer_info.num_files++;
+                    report_delete_progress ();
+                } else {
+                    some_not_deleted = true;
+                }
+
+                next_files = next_files.next;
+                file = next_files != null ? next_files.data : null;
+            }
+        }
+
+        progress.finished ();
+
+        //TODO Warn of any files that were not trash or deleted
+
+        return !some_not_deleted;
+    }
+
+    private bool trash_files (
+        Cancellable? cancellable,
+        out List<GLib.File> skipped
+    ) {
+
+        GLib.File? file = null;
+        unowned List<GLib.File> next_files = null;
+        skipped = null;
+        file = files.data;
+        next_files = files.first ();
+
+        progress.started (); // Bypass delay
+        var success = true;
+        while (file != null) {
+            if (!should_skip_file (file)) {
+                var mtime = Files.FileUtils.get_file_modification_time (file);
+                if (trash_file (file, cancellable)) {
+                    FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
+                    undo_redo_data.add_trashed_file (
+                        file,
+                        mtime
+                    );
+                    transfer_info.num_files++;
+                    report_trash_progress ();
+                } else {
+                    skipped.prepend (file);
+                    warning ("skipping trash");
+                    success = false;
+                }
+            }
+
+            next_files = next_files.next;
+            file = next_files != null ? next_files.data : null;
+        }
+
+        progress.finished ();
+
+        return success;
+    }
+
+    // This function calls and is may be called by delete_file_async
+    private bool delete_non_empty_dir (GLib.File dir, Cancellable? cancellable) {
+        if (delete_dir_children (dir, cancellable)) {
+            return delete_file (dir, cancellable);
+        }
+
+        return false;
+    }
+
+    // This function calls and is may be called by delete_file_async
+    protected bool delete_dir_children (GLib.File dir, Cancellable? cancellable) {
+        GLib.FileEnumerator? enumerator = null;
+        try {
+            enumerator = dir.enumerate_children (
+                FileAttribute.STANDARD_NAME,
+                FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                cancellable
+            );
+        } catch (Error e) {
+            warning ("error getting enumerator %s", e.message);
+            return false;
+        }
+
+        var success = true;
+        try {
+            unowned GLib.FileInfo? info = null;
+            while ((info = enumerator.next_file (cancellable)) != null) {
+                var file = dir.get_child (info.get_name ());
+                if (delete_file (file, cancellable)) {
+                    success = false; //Should we return immediatly?
+                } else {
+                    transfer_info.num_files++;
+                    report_delete_progress ();
+                }
+            }
+        } catch (Error e) {
+            warning ("DJ error deleting file %s", e.message);
+            //TODO handle some errors further?
+            success = false;
+        }
+
+        return success;
+    }
+
+    // This function may call and is called by delete_non_empty_dir
+    private bool delete_file (GLib.File file, Cancellable? cancellable) {
+        var success = true;
+        try {
+            success = file.@delete (cancellable);
+        } catch (Error e) {
+            if (e is IOError.NOT_EMPTY) {
+                success = delete_non_empty_dir (file, cancellable);
+            } else {
+                warning ("DJ could not delete %s, %s", file.get_uri (), e.message);
+                success = false;
+            }
+        } finally {
+            report_delete_progress ();
+        }
+
+        return success;
+    }
+
+    private bool trash_file (GLib.File file, Cancellable? cancellable) {
+        var success = true;
+        try {
+            success = file.trash (cancellable);
+        } catch (Error e) {
+            warning ("error trashing %s, %s", file.get_uri (), e.message);
+            success = false; //Ignore some errors?
+            //TODO handle some errors further
+        } finally {
+            report_trash_progress ();
+        }
+
+        return success;
     }
 }

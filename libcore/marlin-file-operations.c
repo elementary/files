@@ -72,597 +72,597 @@ delete_dir (FilesFileOperationsDeleteJob *del_job, GFile *dir,
             TransferInfo *transfer_info,
             gboolean toplevel)
 {
-    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
-    GFileInfo *info;
-    GError *error;
-    GFile *file;
-    GFileEnumerator *enumerator;
-    char *primary, *secondary, *details;
-    int response;
-    gboolean skip_error;
-    gboolean local_skipped_file;
+//     FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
+//     GFileInfo *info;
+//     GError *error;
+//     GFile *file;
+//     GFileEnumerator *enumerator;
+//     char *primary, *secondary, *details;
+//     int response;
+//     gboolean skip_error;
+//     gboolean local_skipped_file;
 
-    local_skipped_file = FALSE;
+//     local_skipped_file = FALSE;
 
-    skip_error = marlin_file_operations_common_job_should_skip_readdir_error (job, dir);
-retry:
-    error = NULL;
-    enumerator = g_file_enumerate_children (dir,
-                                            G_FILE_ATTRIBUTE_STANDARD_NAME,
-                                            G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
-                                            job->cancellable,
-                                            &error);
-    if (enumerator) {
-        error = NULL;
+//     skip_error = marlin_file_operations_common_job_should_skip_readdir_error (job, dir);
+// retry:
+//     error = NULL;
+//     enumerator = g_file_enumerate_children (dir,
+//                                             G_FILE_ATTRIBUTE_STANDARD_NAME,
+//                                             G_FILE_QUERY_INFO_NOFOLLOW_SYMLINKS,
+//                                             job->cancellable,
+//                                             &error);
+//     if (enumerator) {
+//         error = NULL;
 
-        while (!marlin_file_operations_common_job_aborted (job) &&
-               (info = g_file_enumerator_next_file (enumerator, job->cancellable, skip_error?NULL:&error)) != NULL) {
-            file = g_file_get_child (dir,
-                                     g_file_info_get_name (info));
-            delete_file (del_job, file, &local_skipped_file, source_info, transfer_info, FALSE);
-            g_object_unref (file);
-            g_object_unref (info);
-        }
-        g_file_enumerator_close (enumerator, job->cancellable, NULL);
-        g_object_unref (enumerator);
+//         while (!marlin_file_operations_common_job_aborted (job) &&
+//                (info = g_file_enumerator_next_file (enumerator, job->cancellable, skip_error?NULL:&error)) != NULL) {
+//             file = g_file_get_child (dir,
+//                                      g_file_info_get_name (info));
+//             delete_file (del_job, file, &local_skipped_file, source_info, transfer_info, FALSE);
+//             g_object_unref (file);
+//             g_object_unref (info);
+//         }
+//         g_file_enumerator_close (enumerator, job->cancellable, NULL);
+//         g_object_unref (enumerator);
 
-        if (error && IS_IO_ERROR (error, CANCELLED)) {
-            g_error_free (error);
-        } else if (error) {
-            gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
-            primary = g_strdup (_("Error while deleting."));
-            details = NULL;
+//         if (error && IS_IO_ERROR (error, CANCELLED)) {
+//             g_error_free (error);
+//         } else if (error) {
+//             gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
+//             primary = g_strdup (_("Error while deleting."));
+//             details = NULL;
 
-            if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = g_strdup_printf (_("Files in the folder \"%s\" cannot be deleted because you do "
-                                             "not have permissions to see them."), dir_basename);
-            } else {
-                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = g_strdup_printf (_("There was an error getting information about the files in the folder \"%s\"."), dir_basename);
-                details = error->message;
-            }
+//             if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
+//                 /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+//                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+//                 secondary = g_strdup_printf (_("Files in the folder \"%s\" cannot be deleted because you do "
+//                                              "not have permissions to see them."), dir_basename);
+//             } else {
+//                 /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+//                 /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+//                 secondary = g_strdup_printf (_("There was an error getting information about the files in the folder \"%s\"."), dir_basename);
+//                 details = error->message;
+//             }
 
-            g_free (dir_basename);
-            response = marlin_file_operations_common_job_run_warning (
-                job,
-                primary,
-                secondary,
-                details,
-                FALSE,
-                CANCEL, _("_Skip files"),
-                NULL);
+//             g_free (dir_basename);
+//             response = marlin_file_operations_common_job_run_warning (
+//                 job,
+//                 primary,
+//                 secondary,
+//                 details,
+//                 FALSE,
+//                 CANCEL, _("_Skip files"),
+//                 NULL);
 
-            g_error_free (error);
+//             g_error_free (error);
 
-            if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                marlin_file_operations_common_job_abort_job (job);
-            } else if (response == 1) {
-                /* Skip: Do Nothing */
-                local_skipped_file = TRUE;
-            } else {
-                g_assert_not_reached ();
-            }
-        }
+//             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
+//                 marlin_file_operations_common_job_abort_job (job);
+//             } else if (response == 1) {
+//                 /* Skip: Do Nothing */
+//                 local_skipped_file = TRUE;
+//             } else {
+//                 g_assert_not_reached ();
+//             }
+//         }
 
-    } else if (IS_IO_ERROR (error, CANCELLED)) {
-        g_error_free (error);
-    } else {
-        gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
-        primary = g_strdup (_("Error while deleting."));
-        details = NULL;
-        if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
-            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = g_strdup_printf (_("The folder \"%s\" cannot be deleted because you do not have "
-                             "permissions to read it."), dir_basename);
-        } else {
-            /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-            /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-            secondary = g_strdup_printf (_("There was an error reading the folder \"%s\"."), dir_basename);
-            details = error->message;
-        }
+//     } else if (IS_IO_ERROR (error, CANCELLED)) {
+//         g_error_free (error);
+//     } else {
+//         gchar *dir_basename = files_file_utils_custom_basename_from_file (dir);
+//         primary = g_strdup (_("Error while deleting."));
+//         details = NULL;
+//         if (IS_IO_ERROR (error, PERMISSION_DENIED)) {
+//             /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+//             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+//             secondary = g_strdup_printf (_("The folder \"%s\" cannot be deleted because you do not have "
+//                              "permissions to read it."), dir_basename);
+//         } else {
+//             /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+//             /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+//             secondary = g_strdup_printf (_("There was an error reading the folder \"%s\"."), dir_basename);
+//             details = error->message;
+//         }
 
-        g_free (dir);
-        response = marlin_file_operations_common_job_run_warning (
-            job,
-            primary,
-            secondary,
-            details,
-            FALSE,
-            CANCEL, SKIP, RETRY,
-            NULL);
+//         g_free (dir);
+//         response = marlin_file_operations_common_job_run_warning (
+//             job,
+//             primary,
+//             secondary,
+//             details,
+//             FALSE,
+//             CANCEL, SKIP, RETRY,
+//             NULL);
 
-        g_error_free (error);
+//         g_error_free (error);
 
-        if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            marlin_file_operations_common_job_abort_job (job);
-        } else if (response == 1) {
-            /* Skip: Do Nothing  */
-            local_skipped_file = TRUE;
-        } else if (response == 2) {
-            goto retry;
-        } else {
-            g_assert_not_reached ();
-        }
-    }
+//         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
+//             marlin_file_operations_common_job_abort_job (job);
+//         } else if (response == 1) {
+//             /* Skip: Do Nothing  */
+//             local_skipped_file = TRUE;
+//         } else if (response == 2) {
+//             goto retry;
+//         } else {
+//             g_assert_not_reached ();
+//         }
+//     }
 
-    if (!marlin_file_operations_common_job_aborted (job) &&
-        /* Don't delete dir if there was a skipped file */
-        !local_skipped_file) {
-        if (!g_file_delete (dir, job->cancellable, &error)) {
-            gchar *dir_basename;
-            if (job->skip_all_error) {
-                goto skip;
-            }
+//     if (!marlin_file_operations_common_job_aborted (job) &&
+//         /* Don't delete dir if there was a skipped file */
+//         !local_skipped_file) {
+//         if (!g_file_delete (dir, job->cancellable, &error)) {
+//             gchar *dir_basename;
+//             if (job->skip_all_error) {
+//                 goto skip;
+//             }
 
-            primary = g_strdup (_("Error while deleting."));
-            dir_basename = files_file_utils_custom_basename_from_file (dir);
-            /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-            secondary = g_strdup_printf (_("Could not remove the folder %s."), dir_basename);
-            g_free (dir_basename);
+//             primary = g_strdup (_("Error while deleting."));
+//             dir_basename = files_file_utils_custom_basename_from_file (dir);
+//             /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+//             secondary = g_strdup_printf (_("Could not remove the folder %s."), dir_basename);
+//             g_free (dir_basename);
 
-            details = error->message;
+//             details = error->message;
 
-            response = marlin_file_operations_common_job_run_warning (
-                job,
-                primary,
-                secondary,
-                details,
-                (source_info->num_files - transfer_info->num_files) > 1,
-                CANCEL, SKIP_ALL, SKIP,
-                NULL);
+//             response = marlin_file_operations_common_job_run_warning (
+//                 job,
+//                 primary,
+//                 secondary,
+//                 details,
+//                 (source_info->num_files - transfer_info->num_files) > 1,
+//                 CANCEL, SKIP_ALL, SKIP,
+//                 NULL);
 
-            if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                marlin_file_operations_common_job_abort_job (job);
-            } else if (response == 1) { /* skip all */
-                job->skip_all_error = TRUE;
-                local_skipped_file = TRUE;
-            } else if (response == 2) { /* skip */
-                local_skipped_file = TRUE;
-            } else {
-                g_assert_not_reached ();
-            }
+//             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
+//                 marlin_file_operations_common_job_abort_job (job);
+//             } else if (response == 1) { /* skip all */
+//                 job->skip_all_error = TRUE;
+//                 local_skipped_file = TRUE;
+//             } else if (response == 2) { /* skip */
+//                 local_skipped_file = TRUE;
+//             } else {
+//                 g_assert_not_reached ();
+//             }
 
-skip:
-            g_error_free (error);
-        } else {
-            files_file_changes_queue_folder_removed (dir);
-            transfer_info->num_files ++;
-            marlin_file_operations_delete_job_report_delete_progress (del_job, source_info, transfer_info);
-            return;
-        }
-    }
+// skip:
+//             g_error_free (error);
+//         } else {
+//             files_file_changes_queue_folder_removed (dir);
+//             transfer_info->num_files ++;
+//             marlin_file_operations_delete_job_report_delete_progress (del_job, source_info, transfer_info);
+//             return;
+//         }
+//     }
 
-    if (local_skipped_file) {
-        *skipped_file = TRUE;
-    }
+//     if (local_skipped_file) {
+//         *skipped_file = TRUE;
+//     }
 }
 
-static void
-delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
-             gboolean *skipped_file,
-             SourceInfo *source_info,
-             TransferInfo *transfer_info,
-             gboolean toplevel)
-{
-    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
-    GError *error;
-    char *primary, *secondary, *details;
-    int response;
+// static void
+// delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
+//              gboolean *skipped_file,
+//              SourceInfo *source_info,
+//              TransferInfo *transfer_info,
+//              gboolean toplevel)
+// {
+//     FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
+//     GError *error;
+//     char *primary, *secondary, *details;
+//     int response;
 
-    if (marlin_file_operations_common_job_should_skip_file (job, file)) {
-        *skipped_file = TRUE;
-        return;
-    }
+//     if (marlin_file_operations_common_job_should_skip_file (job, file)) {
+//         *skipped_file = TRUE;
+//         return;
+//     }
 
-    error = NULL;
-    if (g_file_delete (file, job->cancellable, &error)) {
-        files_file_changes_queue_file_removed (file);
-        transfer_info->num_files ++;
-        marlin_file_operations_delete_job_report_delete_progress (del_job, source_info, transfer_info);
-        return;
-    }
+//     error = NULL;
+//     if (g_file_delete (file, job->cancellable, &error)) {
+//         files_file_changes_queue_file_removed (file);
+//         transfer_info->num_files ++;
+//         marlin_file_operations_delete_job_report_delete_progress (del_job, source_info, transfer_info);
+//         return;
+//     }
 
-    if (IS_IO_ERROR (error, NOT_EMPTY)) {
-        g_error_free (error);
-        delete_dir (del_job, file,
-                    skipped_file,
-                    source_info, transfer_info,
-                    toplevel);
-        return;
+//     if (IS_IO_ERROR (error, NOT_EMPTY)) {
+//         g_error_free (error);
+//         delete_dir (del_job, file,
+//                     skipped_file,
+//                     source_info, transfer_info,
+//                     toplevel);
+//         return;
 
-    } else if (IS_IO_ERROR (error, CANCELLED)) {
-        g_error_free (error);
+//     } else if (IS_IO_ERROR (error, CANCELLED)) {
+//         g_error_free (error);
 
-    } else {
-        gchar *dir_basename;
-        if (job->skip_all_error) {
-            goto skip;
-        }
-        primary = g_strdup (_("Error while deleting."));
-        dir_basename = files_file_utils_custom_basename_from_file (file);
-        /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-        secondary = g_strdup_printf (_("There was an error deleting %s."), dir_basename);
-        g_free (dir_basename);
-        details = error->message;
+//     } else {
+//         gchar *dir_basename;
+//         if (job->skip_all_error) {
+//             goto skip;
+//         }
+//         primary = g_strdup (_("Error while deleting."));
+//         dir_basename = files_file_utils_custom_basename_from_file (file);
+//         /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+//         secondary = g_strdup_printf (_("There was an error deleting %s."), dir_basename);
+//         g_free (dir_basename);
+//         details = error->message;
 
-        response = marlin_file_operations_common_job_run_warning (
-            job,
-            primary,
-            secondary,
-            details,
-            (source_info->num_files - transfer_info->num_files) > 1,
-            CANCEL, SKIP_ALL, SKIP,
-            NULL);
+//         response = marlin_file_operations_common_job_run_warning (
+//             job,
+//             primary,
+//             secondary,
+//             details,
+//             (source_info->num_files - transfer_info->num_files) > 1,
+//             CANCEL, SKIP_ALL, SKIP,
+//             NULL);
 
-        if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-            marlin_file_operations_common_job_abort_job (job);
-        } else if (response == 1) { /* skip all */
-            job->skip_all_error = TRUE;
-        } else if (response == 2) { /* skip */
-            /* do nothing */
-        } else {
-            g_assert_not_reached ();
-        }
-skip:
-        g_error_free (error);
-    }
+//         if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
+//             marlin_file_operations_common_job_abort_job (job);
+//         } else if (response == 1) { /* skip all */
+//             job->skip_all_error = TRUE;
+//         } else if (response == 2) { /* skip */
+//             /* do nothing */
+//         } else {
+//             g_assert_not_reached ();
+//         }
+// skip:
+//         g_error_free (error);
+//     }
 
-    *skipped_file = TRUE;
-}
+//     *skipped_file = TRUE;
+// }
 
-static void
-delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_skipped)
-{
-    GList *l;
-    GFile *file;
-    SourceInfo *source_info = NULL;;
-    TransferInfo transfer_info;
-    gboolean skipped_file;
-    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
+// static void
+// delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_skipped)
+// {
+//     GList *l;
+//     GFile *file;
+//     SourceInfo *source_info = NULL;;
+//     TransferInfo transfer_info;
+//     gboolean skipped_file;
+//     FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
 
-    if (marlin_file_operations_common_job_aborted (job)) {
-        return;
-    }
+//     if (marlin_file_operations_common_job_aborted (job)) {
+//         return;
+//     }
 
-    source_info = marlin_file_operations_common_job_scan_sources (job, files);
-    if (marlin_file_operations_common_job_aborted (job)) {
-        g_clear_pointer (&source_info, marlin_file_operations_common_job_source_info_free);
-        return;
-    }
+//     source_info = marlin_file_operations_common_job_scan_sources (job, files);
+//     if (marlin_file_operations_common_job_aborted (job)) {
+//         g_clear_pointer (&source_info, marlin_file_operations_common_job_source_info_free);
+//         return;
+//     }
 
-    g_timer_start (job->time);
+//     g_timer_start (job->time);
 
-    memset (&transfer_info, 0, sizeof (transfer_info));
-    marlin_file_operations_delete_job_report_delete_progress (del_job, source_info, &transfer_info);
+//     memset (&transfer_info, 0, sizeof (transfer_info));
+//     marlin_file_operations_delete_job_report_delete_progress (del_job, source_info, &transfer_info);
 
-    for (l = files;
-         l != NULL && !marlin_file_operations_common_job_aborted (job);
-         l = l->next) {
-        file = l->data;
+//     for (l = files;
+//          l != NULL && !marlin_file_operations_common_job_aborted (job);
+//          l = l->next) {
+//         file = l->data;
 
-        skipped_file = FALSE;
-        delete_file (del_job, file,
-                     &skipped_file,
-                     source_info, &transfer_info,
-                     TRUE);
-        if (skipped_file) {
-            (*files_skipped)++;
-        }
-    }
+//         skipped_file = FALSE;
+//         delete_file (del_job, file,
+//                      &skipped_file,
+//                      source_info, &transfer_info,
+//                      TRUE);
+//         if (skipped_file) {
+//             (*files_skipped)++;
+//         }
+//     }
 
-    g_clear_pointer (&source_info, marlin_file_operations_common_job_source_info_free);
+//     g_clear_pointer (&source_info, marlin_file_operations_common_job_source_info_free);
 
-    PFSoundManager *sm;
-    sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
-    pf_sound_manager_play_delete_sound (sm);
-}
+//     PFSoundManager *sm;
+//     sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
+//     pf_sound_manager_play_delete_sound (sm);
+// }
 
 
 static void
 trash_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_skipped)
 {
-    GList *l;
-    GFile *file;
-    GList *to_delete;
-    GError *error;
-    GFileInfo *info;
-    GFileInfo *parent_info;
-    GFileInfo *fsinfo;
-    FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
-    int total_files, files_trashed;
-    char *primary, *secondary, *details;
-    int response;
-    guint64 mtime;
-    gboolean can_delete;
-    gboolean can_write;
-    gboolean is_folder;
-    gboolean parent_can_write;
-    gboolean readonly_fs;
-    gboolean have_info;
-    gboolean have_parent_info;
-    gboolean have_filesystem_info;
+//     GList *l;
+//     GFile *file;
+//     GList *to_delete;
+//     GError *error;
+//     GFileInfo *info;
+//     GFileInfo *parent_info;
+//     GFileInfo *fsinfo;
+//     FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
+//     int total_files, files_trashed;
+//     char *primary, *secondary, *details;
+//     int response;
+//     guint64 mtime;
+//     gboolean can_delete;
+//     gboolean can_write;
+//     gboolean is_folder;
+//     gboolean parent_can_write;
+//     gboolean readonly_fs;
+//     gboolean have_info;
+//     gboolean have_parent_info;
+//     gboolean have_filesystem_info;
 
-    if (marlin_file_operations_common_job_aborted (job)) {
-        return;
-    }
+//     if (marlin_file_operations_common_job_aborted (job)) {
+//         return;
+//     }
 
-    total_files = g_list_length (files);
-    files_trashed = 0;
+//     total_files = g_list_length (files);
+//     files_trashed = 0;
 
-    marlin_file_operations_delete_job_report_trash_progress (del_job, files_trashed, total_files);
+//     marlin_file_operations_delete_job_report_trash_progress (del_job, files_trashed, total_files);
 
-    to_delete = NULL;
-    for (l = files;
-         l != NULL && !marlin_file_operations_common_job_aborted (job);
-         l = l->next) {
-        file = l->data;
+//     to_delete = NULL;
+//     for (l = files;
+//          l != NULL && !marlin_file_operations_common_job_aborted (job);
+//          l = l->next) {
+//         file = l->data;
 
-        error = NULL;
-        if (!G_IS_FILE (file)) {
-            (*files_skipped)++;
-            goto skip;
-        }
+//         error = NULL;
+//         if (!G_IS_FILE (file)) {
+//             (*files_skipped)++;
+//             goto skip;
+//         }
 
-        mtime = files_file_utils_get_file_modification_time (file);
+//         mtime = files_file_utils_get_file_modification_time (file);
 
-        if (!g_file_trash (file, job->cancellable, &error)) {
-            if (job->skip_all_error) {
-                (*files_skipped)++;
-                goto skip;
-            }
+//         if (!g_file_trash (file, job->cancellable, &error)) {
+//             if (job->skip_all_error) {
+//                 (*files_skipped)++;
+//                 goto skip;
+//             }
 
-            if (del_job->delete_all) {
-                to_delete = g_list_prepend (to_delete, file);
-                goto skip;
-            }
+//             if (del_job->delete_all) {
+//                 to_delete = g_list_prepend (to_delete, file);
+//                 goto skip;
+//             }
 
-            info = g_file_query_info (file, "access::can-write,standard::type", 0, NULL, NULL);
-            parent_info = g_file_query_info (g_file_get_parent (file), "access::can-write", 0, NULL, NULL);
-            fsinfo = g_file_query_filesystem_info (file, "filesystem::readonly", NULL, NULL);
+//             info = g_file_query_info (file, "access::can-write,standard::type", 0, NULL, NULL);
+//             parent_info = g_file_query_info (g_file_get_parent (file), "access::can-write", 0, NULL, NULL);
+//             fsinfo = g_file_query_filesystem_info (file, "filesystem::readonly", NULL, NULL);
 
-            if (info != NULL) {
-                can_write = g_file_info_get_attribute_boolean (info, "access::can-write");
-                is_folder = (g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY);
-                have_info = TRUE;
-                g_object_unref (info);
-            } else
-                have_info = FALSE;
+//             if (info != NULL) {
+//                 can_write = g_file_info_get_attribute_boolean (info, "access::can-write");
+//                 is_folder = (g_file_info_get_file_type (info) == G_FILE_TYPE_DIRECTORY);
+//                 have_info = TRUE;
+//                 g_object_unref (info);
+//             } else
+//                 have_info = FALSE;
 
-            if (parent_info != NULL) {
-                parent_can_write = g_file_info_get_attribute_boolean (parent_info, "access::can-write");
-                have_parent_info = TRUE;
-                g_object_unref (parent_info);
-            } else
-                have_parent_info = FALSE;
+//             if (parent_info != NULL) {
+//                 parent_can_write = g_file_info_get_attribute_boolean (parent_info, "access::can-write");
+//                 have_parent_info = TRUE;
+//                 g_object_unref (parent_info);
+//             } else
+//                 have_parent_info = FALSE;
 
-            if (fsinfo != NULL) {
-                readonly_fs = g_file_info_get_attribute_boolean (fsinfo, "filesystem::readonly");
-                have_filesystem_info = TRUE;
-                g_object_unref (fsinfo);
-            } else
-                have_filesystem_info = FALSE;
+//             if (fsinfo != NULL) {
+//                 readonly_fs = g_file_info_get_attribute_boolean (fsinfo, "filesystem::readonly");
+//                 have_filesystem_info = TRUE;
+//                 g_object_unref (fsinfo);
+//             } else
+//                 have_filesystem_info = FALSE;
 
-            if (have_info) {
-                can_delete = FALSE;
-                if (have_filesystem_info && readonly_fs) {
-                    primary = g_strdup (_("Cannot move file to trash or delete it"));
-                    secondary = g_strdup (_("It is not permitted to trash or delete files on a read only filesystem."));
-                } else if (have_parent_info && !parent_can_write) {
-                    primary = g_strdup (_("Cannot move file to trash or delete it"));
-                    secondary = g_strdup (_("It is not permitted to trash or delete files inside folders for which you do not have write privileges."));
-                } else if (is_folder && !can_write ) {
-                    primary = g_strdup (_("Cannot move file to trash or delete it"));
-                    secondary = g_strdup (_("It is not permitted to trash or delete folders for which you do not have write privileges."));
-                } else {
-                    primary = g_strdup (_("Cannot move file to trash. Try to delete it immediately?"));
-                    secondary = g_strdup (_("This file could not be moved to trash. See details below for further information."));
-                    can_delete = TRUE;
-                }
-            } else {
-                primary = g_strdup (_("Cannot move file to trash. Try to delete it?"));
-                secondary = g_strdup (_("This file could not be moved to trash. You may not be able to delete it either."));
-                can_delete = TRUE;
-            }
+//             if (have_info) {
+//                 can_delete = FALSE;
+//                 if (have_filesystem_info && readonly_fs) {
+//                     primary = g_strdup (_("Cannot move file to trash or delete it"));
+//                     secondary = g_strdup (_("It is not permitted to trash or delete files on a read only filesystem."));
+//                 } else if (have_parent_info && !parent_can_write) {
+//                     primary = g_strdup (_("Cannot move file to trash or delete it"));
+//                     secondary = g_strdup (_("It is not permitted to trash or delete files inside folders for which you do not have write privileges."));
+//                 } else if (is_folder && !can_write ) {
+//                     primary = g_strdup (_("Cannot move file to trash or delete it"));
+//                     secondary = g_strdup (_("It is not permitted to trash or delete folders for which you do not have write privileges."));
+//                 } else {
+//                     primary = g_strdup (_("Cannot move file to trash. Try to delete it immediately?"));
+//                     secondary = g_strdup (_("This file could not be moved to trash. See details below for further information."));
+//                     can_delete = TRUE;
+//                 }
+//             } else {
+//                 primary = g_strdup (_("Cannot move file to trash. Try to delete it?"));
+//                 secondary = g_strdup (_("This file could not be moved to trash. You may not be able to delete it either."));
+//                 can_delete = TRUE;
+//             }
 
-            if (can_delete) {
-                gchar *old_secondary = g_steal_pointer (&secondary);
-                secondary = g_strconcat (old_secondary, _("\n Deleting a file removes it permanently"), NULL);
-                g_free (old_secondary);
-            }
+//             if (can_delete) {
+//                 gchar *old_secondary = g_steal_pointer (&secondary);
+//                 secondary = g_strconcat (old_secondary, _("\n Deleting a file removes it permanently"), NULL);
+//                 g_free (old_secondary);
+//             }
 
-            details = NULL;
-            details = error->message;
+//             details = NULL;
+//             details = error->message;
 
-            /* Note primary and secondary text is freed by run_simple_dialog_va */
-            if (can_delete) {
-                response = marlin_file_operations_common_job_run_question (
-                    job,
-                    primary,
-                    secondary,
-                    details,
-                    (total_files - files_trashed) > 1,
-                    CANCEL, SKIP_ALL, SKIP, DELETE_ALL, DELETE,
-                    NULL);
-            } else {
-                response = marlin_file_operations_common_job_run_question (
-                    job,
-                    primary,
-                    secondary,
-                    details,
-                    (total_files - files_trashed) > 1,
-                    CANCEL, SKIP_ALL, SKIP,
-                    NULL);
+//             /* Note primary and secondary text is freed by run_simple_dialog_va */
+//             if (can_delete) {
+//                 response = marlin_file_operations_common_job_run_question (
+//                     job,
+//                     primary,
+//                     secondary,
+//                     details,
+//                     (total_files - files_trashed) > 1,
+//                     CANCEL, SKIP_ALL, SKIP, DELETE_ALL, DELETE,
+//                     NULL);
+//             } else {
+//                 response = marlin_file_operations_common_job_run_question (
+//                     job,
+//                     primary,
+//                     secondary,
+//                     details,
+//                     (total_files - files_trashed) > 1,
+//                     CANCEL, SKIP_ALL, SKIP,
+//                     NULL);
 
-            }
+//             }
 
-            if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
-                del_job->user_cancel = TRUE;
-                marlin_file_operations_common_job_abort_job (job);
-            } else if (response == 1) { /* skip all */
-                (*files_skipped)++;
-                job->skip_all_error = TRUE;
-            } else if (response == 2) { /* skip */
-                (*files_skipped)++;
-            } else if (response == 3) { /* delete all */
-                to_delete = g_list_prepend (to_delete, file);
-                del_job->delete_all = TRUE;
-            } else if (response == 4) { /* delete */
-                to_delete = g_list_prepend (to_delete, file);
-            }
+//             if (response == 0 || response == GTK_RESPONSE_DELETE_EVENT) {
+//                 del_job->user_cancel = TRUE;
+//                 marlin_file_operations_common_job_abort_job (job);
+//             } else if (response == 1) { /* skip all */
+//                 (*files_skipped)++;
+//                 job->skip_all_error = TRUE;
+//             } else if (response == 2) { /* skip */
+//                 (*files_skipped)++;
+//             } else if (response == 3) { /* delete all */
+//                 to_delete = g_list_prepend (to_delete, file);
+//                 del_job->delete_all = TRUE;
+//             } else if (response == 4) { /* delete */
+//                 to_delete = g_list_prepend (to_delete, file);
+//             }
 
-skip:
-            g_error_free (error);
-            total_files--;
-        } else {
-            files_file_changes_queue_file_removed (file);
+// skip:
+//             g_error_free (error);
+//             total_files--;
+//         } else {
+//             files_file_changes_queue_file_removed (file);
 
-            // Start UNDO-REDO
-            files_undo_action_data_add_trashed_file (job->undo_redo_data, file, mtime);
-            // End UNDO-REDO
+//             // Start UNDO-REDO
+//             files_undo_action_data_add_trashed_file (job->undo_redo_data, file, mtime);
+//             // End UNDO-REDO
 
-            files_trashed++;
-            marlin_file_operations_delete_job_report_trash_progress (del_job, files_trashed, total_files);
-        }
-    }
+//             files_trashed++;
+//             marlin_file_operations_delete_job_report_trash_progress (del_job, files_trashed, total_files);
+//         }
+//     }
 
-    if (to_delete) {
-        to_delete = g_list_reverse (to_delete);
-        delete_files (del_job, to_delete, files_skipped);
-        g_list_free (to_delete);
-    }
+//     if (to_delete) {
+//         to_delete = g_list_reverse (to_delete);
+//         delete_files (del_job, to_delete, files_skipped);
+//         g_list_free (to_delete);
+//     }
 }
 
-static void
-delete_job (GTask *task,
-            gpointer source_object,
-            gpointer task_data,
-            GCancellable *cancellable)
-{
-    FilesFileOperationsDeleteJob *job = task_data;
-    GList *to_trash_files;
-    GList *to_delete_files;
-    GList *l;
-    GFile *file;
-    gboolean confirmed;
-    FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-    gboolean must_confirm_delete_in_trash;
-    gboolean must_confirm_delete;
-    int files_skipped;
-    int job_files;
+// static void
+// delete_job (GTask *task,
+//             gpointer source_object,
+//             gpointer task_data,
+//             GCancellable *cancellable)
+// {
+//     FilesFileOperationsDeleteJob *job = task_data;
+//     GList *to_trash_files;
+//     GList *to_delete_files;
+//     GList *l;
+//     GFile *file;
+//     gboolean confirmed;
+//     FilesFileOperationsCommonJob *common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
+//     gboolean must_confirm_delete_in_trash;
+//     gboolean must_confirm_delete;
+//     int files_skipped;
+//     int job_files;
 
-    pf_progress_info_start (common->progress);
+//     pf_progress_info_start (common->progress);
 
-    to_trash_files = NULL;
-    to_delete_files = NULL;
+//     to_trash_files = NULL;
+//     to_delete_files = NULL;
 
-    must_confirm_delete_in_trash = FALSE;
-    must_confirm_delete = FALSE;
-    files_skipped = 0;
-    job_files = 0;
+//     must_confirm_delete_in_trash = FALSE;
+//     must_confirm_delete = FALSE;
+//     files_skipped = 0;
+//     job_files = 0;
 
-    for (l = job->files; l != NULL; l = l->next) {
-        file = l->data;
+//     for (l = job->files; l != NULL; l = l->next) {
+//         file = l->data;
 
-        job_files++;
+//         job_files++;
 
-        if (job->try_trash && g_file_has_uri_scheme (file, "trash")) {
-            must_confirm_delete_in_trash = TRUE;
-            to_delete_files = g_list_prepend (to_delete_files, file);
-        } else if (marlin_file_operations_delete_job_can_delete_without_confirm (file)) {
-            to_delete_files = g_list_prepend (to_delete_files, file);
-        } else {
-            if (job->try_trash &&
-                !g_file_has_uri_scheme (file, "smb")) {
-                to_trash_files = g_list_prepend (to_trash_files, file);
-            } else {
-                must_confirm_delete = TRUE;
-                to_delete_files = g_list_prepend (to_delete_files, file);
-            }
-        }
-    }
+//         if (job->try_trash && g_file_has_uri_scheme (file, "trash")) {
+//             must_confirm_delete_in_trash = TRUE;
+//             to_delete_files = g_list_prepend (to_delete_files, file);
+//         } else if (marlin_file_operations_delete_job_can_delete_without_confirm (file)) {
+//             to_delete_files = g_list_prepend (to_delete_files, file);
+//         } else {
+//             if (job->try_trash &&
+//                 !g_file_has_uri_scheme (file, "smb")) {
+//                 to_trash_files = g_list_prepend (to_trash_files, file);
+//             } else {
+//                 must_confirm_delete = TRUE;
+//                 to_delete_files = g_list_prepend (to_delete_files, file);
+//             }
+//         }
+//     }
 
-    if (to_delete_files != NULL) {
-        to_delete_files = g_list_reverse (to_delete_files);
-        confirmed = TRUE;
-        if (must_confirm_delete_in_trash) {
-            confirmed = !should_confirm_trash () || marlin_file_operations_delete_job_confirm_delete_from_trash (job, to_delete_files);
-        } else if (must_confirm_delete) {
-            confirmed = marlin_file_operations_delete_job_confirm_delete_directly (job, to_delete_files);
-        }
+//     if (to_delete_files != NULL) {
+//         to_delete_files = g_list_reverse (to_delete_files);
+//         confirmed = TRUE;
+//         if (must_confirm_delete_in_trash) {
+//             confirmed = !should_confirm_trash () || marlin_file_operations_delete_job_confirm_delete_from_trash (job, to_delete_files);
+//         } else if (must_confirm_delete) {
+//             confirmed = marlin_file_operations_delete_job_confirm_delete_directly (job, to_delete_files);
+//         }
 
-        if (confirmed) {
-            delete_files (job, to_delete_files, &files_skipped);
-        } else {
-            job->user_cancel = TRUE;
-        }
-    }
+//         if (confirmed) {
+//             delete_files (job, to_delete_files, &files_skipped);
+//         } else {
+//             job->user_cancel = TRUE;
+//         }
+//     }
 
-    if (to_trash_files != NULL) {
-        to_trash_files = g_list_reverse (to_trash_files);
+//     if (to_trash_files != NULL) {
+//         to_trash_files = g_list_reverse (to_trash_files);
 
-        trash_files (job, to_trash_files, &files_skipped);
-    }
+//         trash_files (job, to_trash_files, &files_skipped);
+//     }
 
-    g_list_free (to_trash_files);
-    g_list_free (to_delete_files);
+//     g_list_free (to_trash_files);
+//     g_list_free (to_delete_files);
 
-    if (files_skipped == job_files) {
-        /* User has skipped all files, report user cancel */
-        job->user_cancel = TRUE;
-    }
+//     if (files_skipped == job_files) {
+//         /* User has skipped all files, report user cancel */
+//         job->user_cancel = TRUE;
+//     }
 
-    g_task_return_boolean (task, TRUE);
-}
+//     g_task_return_boolean (task, TRUE);
+// }
 
-void
-marlin_file_operations_delete (GList               *files,
-                               GtkWindow           *parent_window,
-                               gboolean             try_trash,
-                               GCancellable        *cancellable,
-                               GAsyncReadyCallback  callback,
-                               gpointer             user_data)
-{
-    g_return_if_fail (files != NULL);
+// void
+// marlin_file_operations_delete (GList               *files,
+//                                GtkWindow           *parent_window,
+//                                gboolean             try_trash,
+//                                GCancellable        *cancellable,
+//                                GAsyncReadyCallback  callback,
+//                                gpointer             user_data)
+// {
+//     g_return_if_fail (files != NULL);
 
-    GTask *task;
-    FilesFileOperationsDeleteJob *job;
-    FilesFileOperationsCommonJob *common;
+//     GTask *task;
+//     FilesFileOperationsDeleteJob *job;
+//     FilesFileOperationsCommonJob *common;
 
-    /* TODO: special case desktop icon link files ... */
+//     /* TODO: special case desktop icon link files ... */
 
-    job = marlin_file_operations_delete_job_new (parent_window, files, try_trash);
-    common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
+//     job = marlin_file_operations_delete_job_new (parent_window, files, try_trash);
+//     common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
-    if (try_trash) {
-        marlin_file_operations_common_job_inhibit_power_manager (common, _("Trashing Files"));
-    } else {
-        marlin_file_operations_common_job_inhibit_power_manager (common, _("Deleting Files"));
-    }
+//     if (try_trash) {
+//         marlin_file_operations_common_job_inhibit_power_manager (common, _("Trashing Files"));
+//     } else {
+//         marlin_file_operations_common_job_inhibit_power_manager (common, _("Deleting Files"));
+//     }
 
-    if (try_trash) {
-        common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
-        GFile* src_dir = g_file_get_parent (files->data);
-        files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
-    }
+//     if (try_trash) {
+//         common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
+//         GFile* src_dir = g_file_get_parent (files->data);
+//         files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
+//     }
 
-    task = g_task_new (NULL, cancellable, callback, user_data);
-    g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
-    g_task_run_in_thread (task, delete_job);
-    g_object_unref (task);
-}
+//     task = g_task_new (NULL, cancellable, callback, user_data);
+//     g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
+//     g_task_run_in_thread (task, delete_job);
+//     g_object_unref (task);
+// }
 
-gboolean
-marlin_file_operations_delete_finish (GAsyncResult  *result,
-                                      GError       **error)
-{
-    g_return_val_if_fail (g_task_is_valid (result, NULL), FALSE);
+// gboolean
+// marlin_file_operations_delete_finish (GAsyncResult  *result,
+//                                       GError       **error)
+// {
+//     g_return_val_if_fail (g_task_is_valid (result, NULL), FALSE);
 
-    return g_task_propagate_boolean (G_TASK (result), error);
-}
+//     return g_task_propagate_boolean (G_TASK (result), error);
+// }
 
 static GFile *
 get_unique_target_file (GFile *src,
@@ -2846,24 +2846,24 @@ marlin_file_operations_duplicate_finish (GAsyncResult  *result,
     return g_task_propagate_boolean (G_TASK (result), error);
 }
 
-void
-copy_move_link_delete_finish (GObject *source_object,
-                              GAsyncResult *res,
-                              gpointer user_data)
-{
-    GTask *task = user_data;
-    GError *error = NULL;
-    gboolean result;
+// void
+// copy_move_link_delete_finish (GObject *source_object,
+//                               GAsyncResult *res,
+//                               gpointer user_data)
+// {
+//     GTask *task = user_data;
+//     GError *error = NULL;
+//     gboolean result;
 
-    result = marlin_file_operations_delete_finish (res, &error);
-    if (error != NULL) {
-        g_task_return_error (task, g_steal_pointer (&error));
-    } else {
-        g_task_return_boolean (task, result);
-    }
+//     result = marlin_file_operations_delete_finish (res, &error);
+//     if (error != NULL) {
+//         g_task_return_error (task, g_steal_pointer (&error));
+//     } else {
+//         g_task_return_boolean (task, result);
+//     }
 
-    g_clear_object (&task);
-}
+//     g_clear_object (&task);
+// }
 
 static void
 copy_move_link_duplicate_finish (GObject *source_object,
@@ -3036,12 +3036,12 @@ marlin_file_operations_copy_move_link (GList               *files,
         if (g_file_has_uri_scheme (target_dir, "trash")) {
             /* done_callback is (or should be) a DeleteCallBack or null in this case */
 
-            marlin_file_operations_delete (files,
-                                           parent_window,
-                                           TRUE,
-                                           cancellable,
-                                           copy_move_link_delete_finish,
-                                           g_steal_pointer (&task));
+            // marlin_file_operations_delete (files,
+            //                                parent_window,
+            //                                TRUE,
+            //                                cancellable,
+            //                                copy_move_link_delete_finish,
+            //                                g_steal_pointer (&task));
         } else {
             /* done_callback is (or should be) a CopyCallBack or null in this case */
             marlin_file_operations_move (files,
