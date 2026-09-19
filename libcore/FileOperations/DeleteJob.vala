@@ -104,7 +104,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                             CANCEL, DELETE) == 1;
     }
 
-    protected void report_delete_progress (CommonJob.SourceInfo source_info, CommonJob.TransferInfo transfer_info) {
+    protected void report_delete_progress () requires (source_info != null && transfer_info != null) {
         int64 now = GLib.get_monotonic_time () * 1000; // in ns
         if (transfer_info.last_report_time != 0 &&
             ((int64)transfer_info.last_report_time - now).abs () < 100 * CommonJob.NSEC_PER_MSEC) {
@@ -164,7 +164,9 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         progress.pulse_progress ();
     }
 
-    protected void report_trash_progress (int files_trashed, int total_files) {
+    private void report_trash_progress () {
+        var total_files = source_info.num_files;
+        var files_trashed = transfer_info.num_files;
         var files_left = total_files - files_trashed;
 
         progress.take_status (_("Moving files to trash"));
@@ -239,7 +241,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 if (yield delete_file_async (file, cancellable)) {
                     FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
                     transfer_info.num_files++;
-                    report_delete_progress (source_info, transfer_info);
+                    report_delete_progress ();
                 }
 
                 next_files = next_files.next;
@@ -275,7 +277,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                         mtime
                     );
                     transfer_info.num_files++;
-                    report_delete_progress (source_info, transfer_info);
+                    report_trash_progress ();
                 } else {
                     skipped.prepend (file);
                     warning ("skipping trash");
