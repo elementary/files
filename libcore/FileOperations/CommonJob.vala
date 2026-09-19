@@ -375,6 +375,7 @@ public class Files.FileOperations.CommonJob {
     private void scan_file (GLib.File file, SourceInfo source_info, GLib.Queue<GLib.File> dirs = new GLib.Queue<GLib.File> ()) {
         try {
             var info = file.query_info (GLib.FileAttribute.STANDARD_TYPE + "," + GLib.FileAttribute.STANDARD_SIZE, NOFOLLOW_SYMLINKS, cancellable);
+            // Only files with info are counted
             count_file (info, source_info);
             if (info.get_file_type () == GLib.FileType.DIRECTORY) {
                 dirs.push_head (file);
@@ -430,7 +431,6 @@ public class Files.FileOperations.CommonJob {
 
     protected SourceInfo scan_sources (GLib.List<GLib.File> files) {
         var source_info = new SourceInfo ();
-
         report_count_progress (source_info);
         foreach (var file in files) {
             if (aborted ()) {

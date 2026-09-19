@@ -16,67 +16,65 @@
  * Boston, MA 02110-1301, USA.
  */
 
-public class Files.FileOperations.EmptyTrashJob : CommonJob {
-    private GLib.List<GLib.File> trash_dirs;
+public class Files.FileOperations.EmptyTrashJob : DeleteJob {
+    // private GLib.List<GLib.File> trash_dirs;
 
     public EmptyTrashJob (Gtk.Window? parent_window = null, owned GLib.List<GLib.File>? trash_dirs = null) {
-        base (parent_window);
+        base (parent_window, null, false);
         if (trash_dirs != null) {
-            this.trash_dirs = (owned) trash_dirs;
+            this.files = (owned) trash_dirs;
         } else {
-            this.trash_dirs = new GLib.List<GLib.File> ();
-            this.trash_dirs.prepend (GLib.File.new_for_uri ("trash:"));
+            this.files.prepend (GLib.File.new_for_uri ("trash:"));
         }
     }
 
-    private async void delete_trash_file (GLib.File file, bool delete_file = true, bool delete_children = true) {
-        if (aborted ()) {
-            return;
-        }
+    // private async void delete_trash_file (GLib.File file, bool delete_file = true, bool delete_children = true) {
+    //     if (aborted ()) {
+    //         return;
+    //     }
 
-        if (delete_children) {
-            try {
-                const string ATTRIBUTES = GLib.FileAttribute.STANDARD_NAME + "," + GLib.FileAttribute.STANDARD_TYPE;
-                var enumerator = yield file.enumerate_children_async (
-                    ATTRIBUTES,
-                    GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
-                    GLib.Priority.DEFAULT, cancellable
-                );
+    //     if (delete_children) {
+    //         try {
+    //             const string ATTRIBUTES = GLib.FileAttribute.STANDARD_NAME + "," + GLib.FileAttribute.STANDARD_TYPE;
+    //             var enumerator = yield file.enumerate_children_async (
+    //                 ATTRIBUTES,
+    //                 GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+    //                 GLib.Priority.DEFAULT, cancellable
+    //             );
 
-                var infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
-                while (infos.nth_data (0) != null) {
-                    foreach (unowned GLib.FileInfo info in infos) {
-                        var child = file.get_child (info.get_name ());
-                        yield delete_trash_file (child, true, info.get_file_type () == GLib.FileType.DIRECTORY);
-                    }
+    //             var infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
+    //             while (infos.nth_data (0) != null) {
+    //                 foreach (unowned GLib.FileInfo info in infos) {
+    //                     var child = file.get_child (info.get_name ());
+    //                     yield delete_trash_file (child, true, info.get_file_type () == GLib.FileType.DIRECTORY);
+    //                 }
 
-                    infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
-                }
-            } catch (GLib.Error e) {
-                debug (e.message);
-                return;
-            }
-        }
+    //                 infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
+    //             }
+    //         } catch (GLib.Error e) {
+    //             debug (e.message);
+    //             return;
+    //         }
+    //     }
 
-        if (aborted ()) {
-            return;
-        }
+    //     if (aborted ()) {
+    //         return;
+    //     }
 
-        if (delete_file) {
-            try {
-                yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
-            } catch (GLib.Error e) {
-                debug (e.message);
-                return;
-            }
-        }
-    }
+    //     if (delete_file) {
+    //         try {
+    //             yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
+    //         } catch (GLib.Error e) {
+    //             debug (e.message);
+    //             return;
+    //         }
+    //     }
+    // }
 
     public async void empty_trash () {
-        inhibit_power_manager (_("Emptying Trash"));
 
         if (Files.Preferences.get_default ().confirm_trash) {
-            unowned GLib.File? first_dir = trash_dirs.nth_data (0);
+            unowned GLib.File? first_dir = files.nth_data (0);
             if (first_dir != null) {
                 unowned string primary = null;
                 unowned string secondary = null;
@@ -118,13 +116,30 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
     }
 
     private async void internal_empty_trash () {
-        progress.start ();
-        foreach (unowned GLib.File dir in trash_dirs) {
+        source_info = scan_sources (files);
+        if (aborted ()) {
+            // There were problematic files and the user chose to cancel
+            return;
+        }
+
+        transfer_info = new TransferInfo ();
+        var some_not_deleted = false;
+        foreach (unowned GLib.File dir in files) {
             if (aborted ()) {
+                some_not_deleted = true;
                 break;
             }
 
-            yield delete_trash_file (dir, false, true);
+            if (!yield delete_non_empty_dir (dir, cancellable, true)) {
+                warning ("delete non empty dir failed for %s", dir.get_uri ());
+                some_not_deleted = true;
+            }
+        }
+
+        if (some_not_deleted) {
+            warning ("Some not deleted");
+            //TODO inform user or return false
+            return;
         }
 
         /* There is no job callback after emptying trash */
