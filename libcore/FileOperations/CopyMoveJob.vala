@@ -152,22 +152,22 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                             ngettext (
                                 "Moving %'d file (in \"%s\") to \"%s\"",
                                 "Moving %'d files (in \"%s\") to \"%s\"",
-                                files_left
+                                source_info.num_files
                             ) :
                             ngettext (
                                 "Copying %'d file (in \"%s\") to \"%s\"",
                                 "Copying %'d files (in \"%s\") to \"%s\"",
-                                files_left
+                                source_info.num_files
                             )
-                        ).printf (files_left, srcname, destname);
+                        ).printf (source_info.num_files, srcname, destname);
                 } else {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
                     s = ngettext (
                         "Duplicating %'d file (in \"%s\")",
                         "Duplicating %'d files (in \"%s\")",
-                        files_left
-                    ).printf (files_left, srcname);
+                        source_info.num_files
+                    ).printf (source_info.num_files, srcname);
                 }
             } else {
                 if (destination != null) {
@@ -179,20 +179,20 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                         ngettext (
                             "Moving %'d file to \"%s\"",
                             "Moving %'d files to \"%s\"",
-                            files_left
+                            source_info.num_files
                         ) :
                         ngettext (
                             "Copying %'d file to \"%s\"",
                             "Copying %'d files to \"%s\"",
-                            files_left
+                            source_info.num_files
                         )
-                    ).printf (files_left, destname);
+                    ).printf (source_info.num_files, destname);
                 } else {
                     s = ngettext (
                         "Duplicating %'d file",
                         "Duplicating %'d files",
-                        files_left
-                    ).printf (files_left);
+                        source_info.num_files
+                    ).printf (source_info.num_files);
                 }
             }
 
