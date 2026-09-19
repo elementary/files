@@ -183,7 +183,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         }
     }
 
-    public async void trash_or_delete_files (
+    public async bool trash_or_delete_files (
         Cancellable? cancellable
     ) {
         // Build a list of files that cannot be operated on due to lack of permission
@@ -191,7 +191,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         source_info = scan_sources (files);
         if (aborted ()) {
             // There were problematic files and the user chose to cancel
-            return;
+            return false;
         }
         transfer_info = new TransferInfo ();
         List<GLib.File> skipped_trash = null;
@@ -200,10 +200,10 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         if (try_trash) {
             if (aborted ()) {
                 // There were problematic files and the user chose to cancel
-                return;
+                return false;
             }
             if (yield trash_files (cancellable, out skipped_trash)) {
-                return; // All files successfully trashed - finish now
+                return true; // All files successfully trashed - finish now
             }
         }
 
@@ -236,12 +236,16 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         // Permanent deletion is always confirmed except for certain schemes which are never confirmed
         // We can assume selection is always from the same folder (scheme). There is no way in Files to select from
         // different folders.
+        var some_not_deleted = true;
         if (can_delete_without_confirm (file) || confirm_delete_directly (to_delete)) {
+            some_not_deleted = false;
             while (file != null) {
                 if (yield delete_file_async (file, cancellable)) {
                     FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
                     transfer_info.num_files++;
                     report_delete_progress ();
+                } else {
+                    some_not_deleted = true;
                 }
 
                 next_files = next_files.next;
@@ -252,6 +256,8 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         progress.finished ();
 
         //TODO Warn of any files that were not trash or deleted
+
+        return !some_not_deleted;
     }
 
     private async bool trash_files (
@@ -295,8 +301,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     }
 
     // This function calls and is may be called by delete_file_async
-    private async bool delete_non_empty_dir (GLib.File dir, Cancellable? cancellable) {
-        warning ("delete dir");
+    protected async bool delete_non_empty_dir (GLib.File dir, Cancellable? cancellable, bool children_only = false) {
         GLib.FileEnumerator? enumerator = null;
         try {
             enumerator = dir.enumerate_children (
@@ -309,34 +314,47 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             return false;
         }
 
+        var some_not_deleted = false;
         try {
             unowned GLib.FileInfo? info = null;
             while ((info = enumerator.next_file (cancellable)) != null) {
                 var file = dir.get_child (info.get_name ());
                 var success = yield delete_file_async (file, cancellable);
-                warning ("success deleting %s, %s", file.get_uri (), success.to_string ());
                 if (!success) {
-                    return false;
+                    some_not_deleted = true;
+                } else {
+                    transfer_info.num_files++;
+                    report_delete_progress ();
                 }
             }
 
         } catch (Error e) {
             warning ("error deleting file %s", e.message);
             //TODO handle some errors further?
-            return false;
+            some_not_deleted = true;
         }
 
-        return yield delete_file_async (dir, cancellable);
+        if (children_only) {
+            return some_not_deleted;
+        }
+
+        return some_not_deleted ? false : yield delete_file_async (dir, cancellable);
     }
 
     // This function may call and is called by delete_non_empty_dir
     private async bool delete_file_async (GLib.File file, Cancellable? cancellable) {
         try {
-            return yield file.delete_async (Priority.DEFAULT, cancellable);
+            var res = yield file.delete_async (Priority.DEFAULT, cancellable);
+            if (!res) {
+                warning ("file.delete_async failed without error for %s", file.get_uri ());
+            }
+
+            return res;
         } catch (Error e) {
-            warning ("could not delete %s, %s", file.get_path (), e.message);
             if (e is IOError.NOT_EMPTY) {
                 return yield delete_non_empty_dir (file, cancellable);
+            } else {
+                warning ("could not delete %s, %s", file.get_uri (), e.message);
             }
         }
 
@@ -345,7 +363,9 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
     private async bool trash_file_async (GLib.File file, Cancellable? cancellable) {
         try {
-            return yield file.trash_async (Priority.DEFAULT, cancellable);
+            var res = yield file.trash_async (Priority.DEFAULT, cancellable);
+            report_trash_progress ();
+            return res;
         } catch (Error e) {
             warning ("error trashing %s, %s", file.get_uri (), e.message);
             //TODO handle some errors further
