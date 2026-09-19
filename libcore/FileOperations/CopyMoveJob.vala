@@ -169,7 +169,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                         "Duplicating %'d file (in \"%s\")",
                         "Duplicating %'d files (in \"%s\")",
                         files_left
-                    ).printf (files_left, srcname);
+                    ).printf (files_left, destname);
                 }
             } else {
                 if (destination != null) {
