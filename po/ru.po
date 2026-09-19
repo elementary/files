@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-14 12:53+0000\n"
-"PO-Revision-Date: 2026-09-04 08:01+0000\n"
+"PO-Revision-Date: 2026-09-17 17:03+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/files/"
 "ru/>\n"
@@ -994,10 +994,8 @@ msgid "Unable to mount '%s'"
 msgstr "Не удалось подключить «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:266
-#, fuzzy
-#| msgid "Not mounted"
 msgid "Do Not Unmount"
-msgstr "не подключён"
+msgstr "Не отключать"
 
 #: libcore/FileOperations/MountUtils.vala:267
 msgid "Unmounting now might cause a process to fail or to lose data"
@@ -1007,23 +1005,23 @@ msgstr "Его отключение может привести к сбою пр
 msgid ""
 "If you wait, the resource will unmount when all processes finish using it"
 msgstr ""
+"Если вы подождёте, ресурс будет отключён, когда процессы завершает его "
+"использовать"
 
 #: libcore/FileOperations/MountUtils.vala:269
 #, c-format
 msgid "Otherwise choose '%s'"
-msgstr ""
+msgstr "В противном случае, нажмите «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:287
-#, fuzzy, c-format
-#| msgid "The resource '%s' is in use by other processes"
+#, c-format
 msgid "Please wait. The resource '%s' is in use"
-msgstr "Ресурс «%s» используется другими процессами"
+msgstr "Ресурс «%s» сейчас используется"
 
 #: libcore/FileOperations/MountUtils.vala:289
-#, fuzzy, c-format
-#| msgid "The resource '%s' is in use by other processes"
+#, c-format
 msgid "Please wait. The resource '%s' is in use by other processes"
-msgstr "Ресурс «%s» используется другими процессами"
+msgstr "Ресурс «%s» сейчас используется другими процессами"
 
 #: libcore/FileOperations/MountUtils.vala:291
 #, c-format
