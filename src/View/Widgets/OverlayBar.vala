@@ -178,23 +178,15 @@ namespace Files.View {
             } else { /* Multiple selection. */
                 var fsize = format_size (files_size);
                 if (folders_count == 0) {
-                    ///TRANSLATORS arguments are in order: file count, diskspace used
-                    /// The count is in the form "<number> files" (translated with ngettext)
-                    /// The diskspace is formatted with GLib.format_size
                     str = ngettext ("%u file selected (%s)", "%u files selected (%s)", files_count).printf (
                         files_count,
                         fsize
                     );
                 } else if (files_count == 0) {
-                    ///TRANSLATORS arguments are in order: folder count, diskspace used
-                    /// The count is in the form "<number> folders" (translated with ngettext)
-                    /// The diskspace is formatted with GLib.format_size
-                    str = ngettext ("%u folder selected", "%u folders selected", folders_count).printf (
+                  str = ngettext ("%u folder selected", "%u folders selected", folders_count).printf (
                         folders_count
                     );
                 } else {
-                    ///TRANSLATOR arguments are folder count, file count
-                    /// The counts are in the form "<number> files" (translated with ngettext)
                     str = _("%s and %s selected").printf (
                         ngettext ("%u folder", "%u folders", folders_count).printf (folders_count),
                         ngettext ("%u file", "%u files", files_count).printf (files_count)
