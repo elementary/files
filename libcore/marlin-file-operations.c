@@ -1645,7 +1645,10 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
         goto out;
     }
 
-    copy_job->destination = dest_dir;
+    if (copy_job->destination == NULL) {
+        copy_job->destination = dest_dir;
+        g_object_ref (dest_dir);
+    }
 
 retry:
 
