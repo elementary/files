@@ -41,8 +41,6 @@
 
 #include "pantheon-files-core.h"
 
-#define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
-//#define NSEC_PER_SEC 1000000000
 #define NSEC_PER_MSEC 1000000
 
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
@@ -1050,6 +1048,10 @@ copy_move_directory (FilesFileOperationsCopyMoveJob *copy_job,
     dest_fs_type = NULL;
 
     skip_error = marlin_file_operations_common_job_should_skip_readdir_error (job, src);
+
+    /* Do not count the copied directory as a file */
+    source_info->num_files --;
+
 retry:
     error = NULL;
     enumerator = g_file_enumerate_children (src,
@@ -1386,6 +1388,7 @@ typedef struct {
     goffset last_size;
     SourceInfo *source_info;
     TransferInfo *transfer_info;
+    GFile *file_to_sync;
 } ProgressData;
 
 static void
@@ -1407,6 +1410,17 @@ copy_file_progress_callback (goffset current_num_bytes,
                               pdata->source_info,
                               pdata->transfer_info);
     }
+
+    files_file_utils_sync (pdata->file_to_sync);
+}
+
+static void
+sync_file_callback (
+    goffset current_num_bytes,
+    goffset total_num_bytes,
+    gpointer file_to_sync
+) {
+    files_file_utils_sync (*(GFile **)file_to_sync);
 }
 
 static gboolean
@@ -1636,8 +1650,9 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
         goto out;
     }
 
-
 retry:
+    gpointer previous_job_dest = copy_job->destination;
+    copy_job->destination = dest_dir;
 
     error = NULL;
     flags = G_FILE_COPY_NOFOLLOW_SYMLINKS;
@@ -1652,6 +1667,7 @@ retry:
     pdata.last_size = 0;
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
+    pdata.file_to_sync = dest;
 
     if (copy_job->is_move) {
         res = g_file_move (src, dest,
@@ -1668,6 +1684,8 @@ retry:
                            &pdata,
                            &error);
     }
+
+    copy_job->destination = previous_job_dest;
 
     /* NOTE Result is false if file being moved is a folder and the target is on a Samba share even if
      * the file is successfully copied, so the change will not be notified to the view.
@@ -2227,8 +2245,8 @@ retry:
     if (g_file_move (src, dest,
                      flags,
                      job->cancellable,
-                     NULL,
-                     NULL,
+                     sync_file_callback,
+                     &dest,
                      &error)) {
 
         if (debuting_files) {
@@ -3162,7 +3180,8 @@ retry:
                                dest,
                                G_FILE_COPY_NONE,
                                common->cancellable,
-                               NULL, NULL,
+                               sync_file_callback,
+                               &dest,
                                &error);
             // Start UNDO-REDO
             if (res) {

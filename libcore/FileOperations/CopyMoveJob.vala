@@ -19,7 +19,7 @@
 public class Files.FileOperations.CopyMoveJob : CommonJob {
     protected bool is_move = false;
     protected GLib.List<GLib.File> files;
-    protected GLib.File? destination;
+    protected unowned GLib.File? destination = null;
     protected GLib.HashTable<GLib.File,bool> debuting_files = new GLib.HashTable<GLib.File,bool> (GLib.File.hash, GLib.File.equal);
     protected bool replace_all = false;
     protected bool merge_all = false;
@@ -102,18 +102,22 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         int64 now = GLib.get_monotonic_time () * 1000; // in ns
 
         if (transfer_info.last_report_time != 0 &&
+            (source_info.num_files - transfer_info.num_files) > 1 &&
             ((int64)transfer_info.last_report_time - now).abs () < 100 * CommonJob.NSEC_PER_MSEC) {
             return;
         }
 
         /* See https://github.com/elementary/files/issues/464. The job data may become invalid, possibly
          * due to a race. */
-        if (files.data == null || destination == null) {
+        if (files.data == null) {
             return;
         }
 
         var srcname = FileUtils.custom_basename_from_file (files.data);
-        var destname = FileUtils.custom_basename_from_file (destination);
+        var destname = "";
+        if (destination != null) {
+            destname = FileUtils.custom_basename_from_file (destination);
+        }
 
         transfer_info.last_report_time = now;
 
@@ -151,22 +155,22 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                             ngettext (
                                 "Moving %'d file (in \"%s\") to \"%s\"",
                                 "Moving %'d files (in \"%s\") to \"%s\"",
-                                files_left
+                                source_info.num_files
                             ) :
                             ngettext (
                                 "Copying %'d file (in \"%s\") to \"%s\"",
                                 "Copying %'d files (in \"%s\") to \"%s\"",
-                                files_left
+                                source_info.num_files
                             )
-                        ).printf (files_left, srcname, destname);
+                        ).printf (source_info.num_files, srcname, destname);
                 } else {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
                     s = ngettext (
                         "Duplicating %'d file (in \"%s\")",
                         "Duplicating %'d files (in \"%s\")",
-                        files_left
-                    ).printf (files_left, destname);
+                        source_info.num_files
+                    ).printf (source_info.num_files, srcname);
                 }
             } else {
                 if (destination != null) {
@@ -178,20 +182,20 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                         ngettext (
                             "Moving %'d file to \"%s\"",
                             "Moving %'d files to \"%s\"",
-                            files_left
+                            source_info.num_files
                         ) :
                         ngettext (
                             "Copying %'d file to \"%s\"",
                             "Copying %'d files to \"%s\"",
-                            files_left
+                            source_info.num_files
                         )
-                    ).printf (files_left, destname);
+                    ).printf (source_info.num_files, destname);
                 } else {
                     s = ngettext (
                         "Duplicating %'d file",
                         "Duplicating %'d files",
-                        files_left
-                    ).printf (files_left);
+                        source_info.num_files
+                    ).printf (source_info.num_files);
                 }
             }
 
@@ -199,6 +203,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         }
 
         var total_size = int64.max (source_info.num_bytes, transfer_info.num_bytes);
+        var size_left = total_size - transfer_info.num_bytes;
 
         double elapsed = time.elapsed ();
         double transfer_rate = 0;
@@ -207,11 +212,23 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         }
 
         if (elapsed < CommonJob.SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE &&
+            size_left > 0 &&
             transfer_rate > 0) {
             var num_bytes_format = GLib.format_size (transfer_info.num_bytes);
             var total_size_format = GLib.format_size (total_size);
             /// TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
-            progress.take_details (_("%s of %s").printf (num_bytes_format, total_size_format));
+            string details = ngettext (
+                "%s of %s and %d file left",
+                "%s of %s and %d files left",
+                files_left
+            ).printf (num_bytes_format, total_size_format, files_left);
+            progress.take_details (details);
+        } else if (size_left == 0 || transfer_info.num_bytes == 0) {
+            progress.take_details (
+                is_move ?
+                _("Please wait, finishing move\u2026") :
+                _("Please wait, finishing copy\u2026")
+            );
         } else {
             var num_bytes_format = GLib.format_size (transfer_info.num_bytes);
             var total_size_format = GLib.format_size (total_size);
@@ -228,10 +245,10 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             /// The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
             /// The order in which %s appear can be changed by using the right positional specifier.
             var s = ngettext (
-                "%s of %s \xE2\x80\x94 %s left (%s/sec)",
-                "%s of %s \xE2\x80\x94 %s left (%s/sec)",
+                "%s of %s \xE2\x80\x94 %s and %d files left (%s/sec)",
+                "%s of %s \xE2\x80\x94 %s and %d files left (%s/sec)",
                 formated_time_unit
-            ).printf (num_bytes_format, total_size_format, formated_remaining_time, transfer_rate_format); //FIXME Remove opaque hex
+            ).printf (num_bytes_format, total_size_format, formated_remaining_time, files_left, transfer_rate_format); //FIXME Remove opaque hex
             progress.take_details ((owned) s);
         }
 
