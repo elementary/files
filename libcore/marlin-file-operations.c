@@ -41,8 +41,6 @@
 
 #include "pantheon-files-core.h"
 
-#define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
-//#define NSEC_PER_SEC 1000000000
 #define NSEC_PER_MSEC 1000000
 
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
@@ -1389,6 +1387,7 @@ typedef struct {
     goffset last_size;
     SourceInfo *source_info;
     TransferInfo *transfer_info;
+    GFile *file_to_sync;
 } ProgressData;
 
 static void
@@ -1400,6 +1399,7 @@ copy_file_progress_callback (goffset current_num_bytes,
     goffset new_size;
 
     pdata = user_data;
+    files_file_utils_sync (pdata->file_to_sync);
 
     new_size = current_num_bytes - pdata->last_size;
 
@@ -1410,6 +1410,15 @@ copy_file_progress_callback (goffset current_num_bytes,
                               pdata->source_info,
                               pdata->transfer_info);
     }
+}
+
+static void
+sync_file_callback (
+    goffset current_num_bytes,
+    goffset total_num_bytes,
+    gpointer file_to_sync
+) {
+    files_file_utils_sync (*(GFile **)file_to_sync);
 }
 
 static gboolean
@@ -1655,6 +1664,7 @@ retry:
     pdata.last_size = 0;
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
+    pdata.file_to_sync = dest;
 
     if (copy_job->is_move) {
         res = g_file_move (src, dest,
@@ -2230,8 +2240,8 @@ retry:
     if (g_file_move (src, dest,
                      flags,
                      job->cancellable,
-                     NULL,
-                     NULL,
+                     sync_file_callback,
+                     &dest,
                      &error)) {
 
         if (debuting_files) {
@@ -3167,7 +3177,8 @@ retry:
                                dest,
                                G_FILE_COPY_NONE,
                                common->cancellable,
-                               NULL, NULL,
+                               sync_file_callback,
+                               &dest,
                                &error);
             // Start UNDO-REDO
             if (res) {
