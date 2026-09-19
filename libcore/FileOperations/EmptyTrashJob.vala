@@ -16,9 +16,9 @@
  * Boston, MA 02110-1301, USA.
  */
 
+// Used to empty a trash folder entirely.  Deleting selected files in trash uses a DeleteJob
+// TODO Move into OperationsManager?
 public class Files.FileOperations.EmptyTrashJob : DeleteJob {
-    // private GLib.List<GLib.File> trash_dirs;
-
     public EmptyTrashJob (Gtk.Window? parent_window = null, owned GLib.List<GLib.File>? trash_dirs = null) {
         base (parent_window, null, false);
         if (trash_dirs != null) {
@@ -28,56 +28,11 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
         }
     }
 
-    // private async void delete_trash_file (GLib.File file, bool delete_file = true, bool delete_children = true) {
-    //     if (aborted ()) {
-    //         return;
-    //     }
-
-    //     if (delete_children) {
-    //         try {
-    //             const string ATTRIBUTES = GLib.FileAttribute.STANDARD_NAME + "," + GLib.FileAttribute.STANDARD_TYPE;
-    //             var enumerator = yield file.enumerate_children_async (
-    //                 ATTRIBUTES,
-    //                 GLib.FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
-    //                 GLib.Priority.DEFAULT, cancellable
-    //             );
-
-    //             var infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
-    //             while (infos.nth_data (0) != null) {
-    //                 foreach (unowned GLib.FileInfo info in infos) {
-    //                     var child = file.get_child (info.get_name ());
-    //                     yield delete_trash_file (child, true, info.get_file_type () == GLib.FileType.DIRECTORY);
-    //                 }
-
-    //                 infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
-    //             }
-    //         } catch (GLib.Error e) {
-    //             debug (e.message);
-    //             return;
-    //         }
-    //     }
-
-    //     if (aborted ()) {
-    //         return;
-    //     }
-
-    //     if (delete_file) {
-    //         try {
-    //             yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
-    //         } catch (GLib.Error e) {
-    //             debug (e.message);
-    //             return;
-    //         }
-    //     }
-    // }
-
     public async void empty_trash () {
-
         if (Files.Preferences.get_default ().confirm_trash) {
             unowned GLib.File? first_dir = files.nth_data (0);
             if (first_dir != null) {
-                unowned string primary = null;
-                unowned string secondary = null;
+                unowned string primary, secondary;
                 if (first_dir.has_uri_scheme ("trash")) {
                     /* Empty all trash */
                     primary = _("Permanently delete all items from Trash?");
@@ -130,14 +85,15 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
                 break;
             }
 
-            if (!yield delete_non_empty_dir (dir, cancellable, true)) {
+            // Only delete children of dir
+            if (!yield delete_dir_children (dir, cancellable)) {
                 warning ("delete non empty dir failed for %s", dir.get_uri ());
                 some_not_deleted = true;
             }
         }
 
         if (some_not_deleted) {
-            warning ("Some not deleted");
+            warning ("EJB Some not deleted");
             //TODO inform user or return false
             return;
         }

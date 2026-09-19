@@ -302,7 +302,16 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     }
 
     // This function calls and is may be called by delete_file_async
-    protected async bool delete_non_empty_dir (GLib.File dir, Cancellable? cancellable, bool children_only = false) {
+    private async bool delete_non_empty_dir (GLib.File dir, Cancellable? cancellable) {
+        if (yield delete_dir_children (dir, cancellable)) {
+            return yield delete_file_async (dir, cancellable);
+        }
+
+        return false;
+    }
+
+    // This function calls and is may be called by delete_file_async
+    protected async bool delete_dir_children (GLib.File dir, Cancellable? cancellable) {
         GLib.FileEnumerator? enumerator = null;
         try {
             enumerator = dir.enumerate_children (
@@ -315,63 +324,58 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             return false;
         }
 
-        var some_not_deleted = false;
+        var success = true;
         try {
             unowned GLib.FileInfo? info = null;
             while ((info = enumerator.next_file (cancellable)) != null) {
                 var file = dir.get_child (info.get_name ());
-                var success = yield delete_file_async (file, cancellable);
-                if (!success) {
-                    some_not_deleted = true;
+                if (!yield delete_file_async (file, cancellable)) {
+                    success = false; //Should we return immediatly?
                 } else {
                     transfer_info.num_files++;
                     report_delete_progress ();
                 }
             }
-
         } catch (Error e) {
-            warning ("error deleting file %s", e.message);
+            warning ("DJ error deleting file %s", e.message);
             //TODO handle some errors further?
-            some_not_deleted = true;
+            success = false;
         }
 
-        if (children_only) {
-            return some_not_deleted;
-        }
-
-        return some_not_deleted ? false : yield delete_file_async (dir, cancellable);
+        return success;
     }
 
     // This function may call and is called by delete_non_empty_dir
     private async bool delete_file_async (GLib.File file, Cancellable? cancellable) {
+        var success = true;
         try {
-            var res = yield file.delete_async (Priority.DEFAULT, cancellable);
-            if (!res) {
-                warning ("file.delete_async failed without error for %s", file.get_uri ());
-            }
-
-            return res;
+            success = yield file.delete_async (Priority.DEFAULT, cancellable);
         } catch (Error e) {
             if (e is IOError.NOT_EMPTY) {
-                return yield delete_non_empty_dir (file, cancellable);
+                success = yield delete_non_empty_dir (file, cancellable);
             } else {
-                warning ("could not delete %s, %s", file.get_uri (), e.message);
+                warning ("DJ could not delete %s, %s", file.get_uri (), e.message);
+                success = false;
             }
+        } finally {
+            report_delete_progress ();
         }
 
-        return false;
+        return success;
     }
 
     private async bool trash_file_async (GLib.File file, Cancellable? cancellable) {
+        var success = true;
         try {
-            var res = yield file.trash_async (Priority.DEFAULT, cancellable);
-            report_trash_progress ();
-            return res;
+            success = yield file.trash_async (Priority.DEFAULT, cancellable);
         } catch (Error e) {
             warning ("error trashing %s, %s", file.get_uri (), e.message);
+            success = false; //Ignore some errors?
             //TODO handle some errors further
+        } finally {
+            report_trash_progress ();
         }
 
-        return false;
+        return success;
     }
 }
