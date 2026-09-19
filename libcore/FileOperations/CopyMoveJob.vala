@@ -20,7 +20,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
     protected bool is_move = false;
     protected bool is_restore_from_trash = false;
     protected GLib.List<GLib.File> files;
-    protected unowned GLib.File? destination;
+    protected unowned GLib.File? destination = null;
     protected GLib.HashTable<GLib.File,bool> debuting_files = new GLib.HashTable<GLib.File,bool> (GLib.File.hash, GLib.File.equal);
     protected bool replace_all = false;
     protected bool merge_all = false;
@@ -111,12 +111,15 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
 
         /* See https://github.com/elementary/files/issues/464. The job data may become invalid, possibly
          * due to a race. */
-        if (files.data == null || destination == null) {
+        if (files.data == null) {
             return;
         }
 
         var srcname = FileUtils.custom_basename_from_file (files.data);
-        var destname = FileUtils.custom_basename_from_file (destination);
+        var destname = "";
+        if (destination != null) {
+            destname = FileUtils.custom_basename_from_file (destination);
+        }
 
         transfer_info.last_report_time = now;
 
@@ -222,7 +225,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                 files_left
             ).printf (num_bytes_format, total_size_format, files_left);
             progress.take_details (details);
-        } else if (size_left == 0) {
+        } else if (size_left == 0 || transfer_info.num_bytes == 0) {
             progress.take_details (
                 is_move ?
                 _("Please wait, finishing move\u2026") :

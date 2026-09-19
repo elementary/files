@@ -1403,7 +1403,6 @@ copy_file_progress_callback (goffset current_num_bytes,
     goffset new_size;
 
     pdata = user_data;
-    files_file_utils_sync (pdata->file_to_sync);
 
     new_size = current_num_bytes - pdata->last_size;
 
@@ -1414,6 +1413,8 @@ copy_file_progress_callback (goffset current_num_bytes,
                               pdata->source_info,
                               pdata->transfer_info);
     }
+
+    files_file_utils_sync (pdata->file_to_sync);
 }
 
 static void
@@ -1652,9 +1653,9 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
         goto out;
     }
 
-    copy_job->destination = dest_dir;
-
 retry:
+    gpointer previous_job_dest = copy_job->destination;
+    copy_job->destination = dest_dir;
 
     error = NULL;
     flags = G_FILE_COPY_NOFOLLOW_SYMLINKS;
@@ -1686,6 +1687,8 @@ retry:
                            &pdata,
                            &error);
     }
+
+    copy_job->destination = previous_job_dest;
 
     /* NOTE Result is false if file being moved is a folder and the target is on a Samba share even if
      * the file is successfully copied, so the change will not be notified to the view.
