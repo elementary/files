@@ -183,7 +183,7 @@ namespace Files.View {
                         fsize
                     );
                 } else if (files_count == 0) {
-                  str = ngettext ("%u folder selected", "%u folders selected", folders_count).printf (
+                    str = ngettext ("%u folder selected", "%u folders selected", folders_count).printf (
                         folders_count
                     );
                 } else {
