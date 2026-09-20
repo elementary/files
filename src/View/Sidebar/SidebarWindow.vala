@@ -9,6 +9,7 @@
 public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     private static Settings app_preferences;
 
+    public Hdy.HeaderBar headerbar { get; private set; }
     private Gtk.ScrolledWindow scrolled_window;
     private BookmarkListBox bookmark_listbox;
     private DeviceListBox device_listbox;
@@ -29,6 +30,12 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     }
 
     construct {
+        headerbar = new Hdy.HeaderBar () {
+            show_close_button = true,
+            custom_title = new Gtk.Label (null)
+        };
+        headerbar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+
         bookmark_listbox = new BookmarkListBox (this);
         device_listbox = new DeviceListBox (this);
         network_listbox = new NetworkListBox (this);
@@ -96,6 +103,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
 
         width_request = app_preferences.get_int ("minimum-sidebar-width");
         get_style_context ().add_class (Gtk.STYLE_CLASS_SIDEBAR);
+        add (headerbar);
         add (scrolled_window);
 
         //For now hide action bar when admin. This might need revisiting if other actions are added

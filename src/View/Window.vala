@@ -81,7 +81,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
     private Gtk.MenuButton tab_history_button;
     private Gtk.Paned lside_pane;
     private Hdy.HeaderBar headerbar;
-    private SidebarInterface sidebar;
+    private Sidebar.SidebarWindow sidebar;
 
     private unowned UndoManager undo_manager;
 
@@ -173,6 +173,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             }
         }
 
+        set_hide_titlebar_when_maximized (false);
         build_window ();
 
         int width, height;
@@ -279,14 +280,23 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             position = app_preferences.get_int ("sidebar-width")
         };
         lside_pane.pack1 (sidebar, false, false);
-        lside_pane.pack2 (tab_box, true, true);
 
-        var grid = new Gtk.Grid ();
-        grid.attach (headerbar, 0, 0);
-        grid.attach (lside_pane, 0, 1);
-        grid.show_all ();
+        var content_box = new Gtk.Box (VERTICAL, 0);
+        content_box.add (headerbar);
+        content_box.add (tab_box);
 
-        add (grid);
+        lside_pane.pack2 (content_box, true, true);
+
+        var header_group = new Hdy.HeaderGroup ();
+        header_group.add_header_bar (sidebar.headerbar);
+        header_group.add_header_bar (headerbar);
+        var size_group = new Gtk.SizeGroup (Gtk.SizeGroupMode.VERTICAL);
+        size_group.add_widget (sidebar.headerbar);
+        size_group.add_widget (headerbar);
+
+
+        lside_pane.show_all ();
+        add (lside_pane);
 
         button_forward.slow_press.connect (() => {
             get_action_group ("win").activate_action ("forward", new Variant.int32 (1));
