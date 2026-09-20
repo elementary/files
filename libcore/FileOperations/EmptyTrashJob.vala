@@ -155,6 +155,7 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
             count_only = true;
             yield delete_trash_file (dir, false, true);
             count_only = false;
+            report_empty_trash_progress ();
             yield delete_trash_file (dir, false, true);
         }
 
