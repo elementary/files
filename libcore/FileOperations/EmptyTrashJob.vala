@@ -49,12 +49,13 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
                 var infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
                 while (infos.nth_data (0) != null) {
                     foreach (unowned GLib.FileInfo info in infos) {
-                        if (count_only) {
+                        var is_directory = info.get_file_type () == GLib.FileType.DIRECTORY;
+                        if (count_only && !is_directory) {
                             total_files++;
                             files_left++;
                         }
                         var child = file.get_child (info.get_name ());
-                        yield delete_trash_file (child, true, info.get_file_type () == GLib.FileType.DIRECTORY);
+                        yield delete_trash_file (child, true, is_directory);
                     }
 
                     infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
