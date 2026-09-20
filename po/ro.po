@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-14 12:53+0000\n"
+"POT-Creation-Date: 2026-09-20 10:25+0000\n"
 "PO-Revision-Date: 2017-01-24 11:56+0000\n"
 "Last-Translator: Marius Albina <marius.albina@gmail.com>\n"
 "Language-Team: Romanian <ro@li.org>\n"
@@ -1051,42 +1051,42 @@ msgstr "Nu s-a putut scoate %V"
 msgid "Unable to mount '%s'"
 msgstr "Nu s-a putut monta %s"
 
-#: libcore/FileOperations/MountUtils.vala:266
+#: libcore/FileOperations/MountUtils.vala:268
 #, fuzzy
 #| msgid "_Unmount"
 msgid "Do Not Unmount"
 msgstr "Demontează"
 
-#: libcore/FileOperations/MountUtils.vala:267
+#: libcore/FileOperations/MountUtils.vala:269
 msgid "Unmounting now might cause a process to fail or to lose data"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:268
+#: libcore/FileOperations/MountUtils.vala:270
 msgid ""
 "If you wait, the resource will unmount when all processes finish using it"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:269
+#: libcore/FileOperations/MountUtils.vala:271
 #, c-format
 msgid "Otherwise choose '%s'"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:287
+#: libcore/FileOperations/MountUtils.vala:289
 #, c-format
 msgid "Please wait. The resource '%s' is in use"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:289
+#: libcore/FileOperations/MountUtils.vala:291
 #, c-format
 msgid "Please wait. The resource '%s' is in use by other processes"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:291
+#: libcore/FileOperations/MountUtils.vala:293
 #, c-format
 msgid "Other processes using '%s'… \n"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:319
+#: libcore/FileOperations/MountUtils.vala:321
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
@@ -2009,7 +2009,8 @@ msgstr[1] "%u subdosare"
 msgstr[2] "%u subdosare"
 
 #: src/Dialogs/PropertiesWindow.vala:1265
-#: src/Dialogs/PropertiesWindow.vala:1287
+#: src/Dialogs/PropertiesWindow.vala:1287 src/View/Widgets/OverlayBar.vala:192
+#: src/View/Widgets/OverlayBar.vala:277
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -2017,7 +2018,7 @@ msgstr[0] "%u fişier"
 msgstr[1] "%u fişiere"
 msgstr[2] "%u fişiere"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:180
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:191
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2715,65 +2716,123 @@ msgstr "Reîncarcă acest dosar"
 msgid "Searching…"
 msgstr "Se încarcă..."
 
-#: src/View/Widgets/OverlayBar.vala:171
-#, c-format
-msgid "%u folders"
-msgstr "%u dosare"
-
-#: src/View/Widgets/OverlayBar.vala:173 src/View/Widgets/OverlayBar.vala:183
+#. TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#: src/View/Widgets/OverlayBar.vala:157
 #, fuzzy, c-format
-msgid " and %u other item (%s) selected"
-msgid_plural " and %u other items (%s) selected"
-msgstr[0] " și %u alt element (%s) selectat"
-msgstr[1] " și %u alt element (%s) selectat"
-msgstr[2] " și %u alt element (%s) selectat"
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s)"
+msgstr "%s (%s, %s)"
 
-#: src/View/Widgets/OverlayBar.vala:177 src/View/Widgets/OverlayBar.vala:187
-msgid " selected"
-msgstr " selectat"
+#. TRANSLATORS arguments are in order: filename, formatted filetype
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#: src/View/Widgets/OverlayBar.vala:172
+#, c-format
+msgid "%s - %s"
+msgstr ""
+
+#: src/View/Widgets/OverlayBar.vala:181
+#, fuzzy, c-format
+#| msgid "%u items selected (%s)"
+msgid "%u file selected (%s)"
+msgid_plural "%u files selected (%s)"
+msgstr[0] "%u elemente selectate (%s)"
+msgstr[1] "%u elemente selectate (%s)"
+msgstr[2] "%u elemente selectate (%s)"
+
+#: src/View/Widgets/OverlayBar.vala:186
+#, fuzzy, c-format
+#| msgid "%u folders"
+msgid "%u folder selected"
+msgid_plural "%u folders selected"
+msgstr[0] "%u dosare"
+msgstr[1] "%u dosare"
+msgstr[2] "%u dosare"
 
 #: src/View/Widgets/OverlayBar.vala:190
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "%u elemente selectate (%s)"
-
-#. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:235
 #, fuzzy, c-format
-msgid "%u sub-folder, "
-msgid_plural "%u sub-folders, "
+#| msgid " selected"
+msgid "%s and %s selected"
+msgstr " selectat"
+
+#. TRANSLATORS: 'size' refers to the disk space used by the selected folder
+#: src/View/Widgets/OverlayBar.vala:242
+msgid "unknown size"
+msgstr "mărime necunoscută"
+
+#. TRANSLATORS: %s will be substituted by the approximate disk space used by the selected folder
+#. The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:247
+#, c-format
+msgid "more than %s used"
+msgstr ""
+
+#. TRANSLATORS: %s will be substituted by the disk space used by the selected folder
+#. The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:251
+#, fuzzy, c-format
+msgid "%s used"
+msgstr "%S din %S"
+
+#: src/View/Widgets/OverlayBar.vala:260
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s, %s, %s) - %s"
+msgstr "%s (%s, %s)"
+
+#: src/View/Widgets/OverlayBar.vala:263
+#, fuzzy, c-format
+msgid "%u accessible sub-folder"
+msgid_plural "%u accessible sub-folders"
 msgstr[0] "%u sub-dosar, "
 msgstr[1] "%u sub-dosar, "
 msgstr[2] "%u sub-dosar, "
 
-#. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:241
+#: src/View/Widgets/OverlayBar.vala:264
 #, fuzzy, c-format
-msgid "%u file, "
-msgid_plural "%u files, "
-msgstr[0] "%u fişier, "
-msgstr[1] "%u fişier, "
-msgstr[2] "%u fişier, "
+#| msgid "Inaccessible"
+msgid "%u accessible file"
+msgid_plural "%u accessible files"
+msgstr[0] "Inaccesibil"
+msgstr[1] "Inaccesibil"
+msgstr[2] "Inaccesibil"
 
-#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:251
-#, c-format
-msgid "%s approx."
-msgstr "%s aproximativ."
-
-#. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:254
-msgid "unknown size"
-msgstr "mărime necunoscută"
-
-#. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:258
+#: src/View/Widgets/OverlayBar.vala:265
 #, fuzzy, c-format
-msgid "%u file not readable"
-msgid_plural "%u files not readable"
-msgstr[0] "%u fișier nu se poate citi"
-msgstr[1] "%u fișier nu se poate citi"
-msgstr[2] "%u fișier nu se poate citi"
+#| msgid "Inaccessible"
+msgid "%u inaccessible file"
+msgid_plural "%u inaccessible files"
+msgstr[0] "Inaccesibil"
+msgstr[1] "Inaccesibil"
+msgstr[2] "Inaccesibil"
+
+#. TRANSLATORS arguments are in order: filename, filetype, subfolder count, file count, diskspace
+#.  The file and folder counts are in the form "<number> files" translated with ngettext
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#.  The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:273
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s, %s) - %s"
+msgstr "%s (%s, %s)"
+
+#: src/View/Widgets/OverlayBar.vala:276
+#, fuzzy, c-format
+#| msgid "%u subfolder"
+#| msgid_plural "%u subfolders"
+msgid "%u sub-folder"
+msgid_plural "%u sub-folders"
+msgstr[0] "%u subdosar"
+msgstr[1] "%u subdosare"
+msgstr[2] "%u subdosare"
+
+#. TRANSLATORS arguments are in order: format string, formatted filesize, width, height (of an image file)
+#.  format is from GLib.ContentType.get_description ()
+#.  size is from GLib.format_size ()
+#: src/View/Widgets/OverlayBar.vala:362
+#, fuzzy, c-format
+msgid "%s (%s — %i × %i)"
+msgstr "%S din %S — %T rămas (%S/s)"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
@@ -2804,6 +2863,31 @@ msgstr "În acest dosar"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Recent"
+
+#, fuzzy, c-format
+#~ msgid " and %u other item (%s) selected"
+#~ msgid_plural " and %u other items (%s) selected"
+#~ msgstr[0] " și %u alt element (%s) selectat"
+#~ msgstr[1] " și %u alt element (%s) selectat"
+#~ msgstr[2] " și %u alt element (%s) selectat"
+
+#, fuzzy, c-format
+#~ msgid "%u file, "
+#~ msgid_plural "%u files, "
+#~ msgstr[0] "%u fişier, "
+#~ msgstr[1] "%u fişier, "
+#~ msgstr[2] "%u fişier, "
+
+#, c-format
+#~ msgid "%s approx."
+#~ msgstr "%s aproximativ."
+
+#, fuzzy, c-format
+#~ msgid "%u file not readable"
+#~ msgid_plural "%u files not readable"
+#~ msgstr[0] "%u fișier nu se poate citi"
+#~ msgstr[1] "%u fișier nu se poate citi"
+#~ msgstr[2] "%u fișier nu se poate citi"
 
 #~ msgid "This Folder Is Empty"
 #~ msgstr "Acest dosar este gol"
