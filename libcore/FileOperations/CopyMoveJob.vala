@@ -144,7 +144,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                 } else {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-                    s = _("Duplicating \"%s\"").printf (srcname);
+                    s = _("Copying \"%s\"").printf (srcname);
                 }
             } else if (files != null && files.next == null) {
                 if (destination_for_progress_dialog != null) {
@@ -168,8 +168,8 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
                     s = ngettext (
-                        "Duplicating %'d file (in \"%s\")",
-                        "Duplicating %'d files (in \"%s\")",
+                        "Copying %'d file (in \"%s\")",
+                        "Copying %'d files (in \"%s\")",
                         source_info.num_files
                     ).printf (source_info.num_files, srcname);
                 }
@@ -193,8 +193,8 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                     ).printf (source_info.num_files, destname);
                 } else {
                     s = ngettext (
-                        "Duplicating %'d file",
-                        "Duplicating %'d files",
+                        "Copying %'d file",
+                        "Copying %'d files",
                         source_info.num_files
                     ).printf (source_info.num_files);
                 }
