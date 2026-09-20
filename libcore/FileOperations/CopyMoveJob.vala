@@ -234,7 +234,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             var num_bytes_format = GLib.format_size (transfer_info.num_bytes);
             var total_size_format = GLib.format_size (total_size);
             var transfer_rate_format = GLib.format_size ((uint64) transfer_rate);
-            int remaining_time = (int )((total_size - transfer_info.num_bytes) / transfer_rate);
+            int remaining_time = (int )((total_size - transfer_info.num_bytes) / transfer_rate) + 1;
             int formated_time_unit;
             var formated_remaining_time = FileUtils.format_time (remaining_time, out formated_time_unit);
 
