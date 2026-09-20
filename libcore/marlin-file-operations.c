@@ -1652,8 +1652,8 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
 
 retry:
 
-    if (!g_file_equal(g_file_get_parent(src), dest_dir)) {
-        copy_job->destination_for_progress_dialog = dest_dir;
+    if (!g_file_equal(g_file_get_parent(src), g_file_get_parent(dest))) {
+        copy_job->destination_for_progress_dialog = g_file_get_parent(dest);
     }
 
     error = NULL;
@@ -2460,8 +2460,6 @@ move_files (FilesFileOperationsCopyMoveJob *job,
     int i;
     gboolean skipped_file;
     MoveFileCopyFallback *fallback;
-
-    marlin_file_operations_copy_move_job_report_copy_progress (job, source_info, transfer_info);
 
     i = 0;
     for (l = fallbacks;
