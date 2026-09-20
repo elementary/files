@@ -330,10 +330,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             while ((info = enumerator.next_file (cancellable)) != null) {
                 var file = dir.get_child (info.get_name ());
                 if (delete_file (file, cancellable)) {
-                    success = false; //Should we return immediatly?
-                } else {
                     transfer_info.num_files++;
                     report_delete_progress ();
+                } else {
+                    success = false;
+                    // Continue to delete as many files as possible?
                 }
             }
         } catch (Error e) {

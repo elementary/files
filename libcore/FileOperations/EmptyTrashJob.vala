@@ -77,22 +77,22 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
         }
 
         transfer_info = new TransferInfo ();
-        var some_not_deleted = false;
+        var success = true;
         foreach (unowned GLib.File dir in files) {
             if (aborted ()) {
-                some_not_deleted = true;
+                success = false;
                 break;
             }
 
             // Only delete children of dir
             if (!delete_dir_children (dir, cancellable)) {
                 warning ("delete non empty dir failed for %s", dir.get_uri ());
-                some_not_deleted = true;
+                success = false;
             }
         }
 
-        if (some_not_deleted) {
-            warning ("EJB Some not deleted");
+        if (!success) {
+            warning ("EJB Some failed");
             //TODO inform user or return false
             return;
         }
