@@ -22,7 +22,9 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
     public EmptyTrashJob (Gtk.Window? parent_window = null, owned GLib.List<GLib.File>? trash_dirs = null) {
         base (parent_window, null, false);
         if (trash_dirs != null) {
-            this.files = (owned) trash_dirs;
+            foreach (var dir in trash_dirs) {
+                files.prepend (dir);
+            }
         } else {
             this.files.prepend (GLib.File.new_for_uri ("trash:"));
         }
@@ -86,7 +88,6 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
 
             // Only delete children of dir
             if (!delete_dir_children (dir, cancellable)) {
-                warning ("delete non empty dir failed for %s", dir.get_uri ());
                 success = false;
             }
         }

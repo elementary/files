@@ -351,6 +351,9 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         var success = true;
         try {
             success = file.@delete (cancellable);
+            if (!success) {
+                warning ("file.@delete failed for %s", file.get_uri ());
+            }
         } catch (Error e) {
             if (e is IOError.NOT_EMPTY) {
                 success = delete_non_empty_dir (file, cancellable);
