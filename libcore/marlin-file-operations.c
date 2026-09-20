@@ -1650,10 +1650,11 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
         goto out;
     }
 
+
 retry:
 
-    if (!g_file_equal(g_file_get_parent(src), g_file_get_parent(dest))) {
-        copy_job->destination_for_progress_dialog = g_file_get_parent(dest);
+    if (!g_file_equal(g_file_get_parent(src), dest_dir)) {
+        copy_job->destination_for_progress_dialog = dest_dir;
     }
 
     error = NULL;
