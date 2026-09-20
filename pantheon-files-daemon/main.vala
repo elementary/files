@@ -19,16 +19,6 @@
              Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 
-    void on_bus_aquired (DBusConnection conn, string n) {
-        try {
-            string name = "/io/elementary/files/db";
-            var object = new MarlinTags ();
-            conn.register_object (name, object);
-            debug ("MarlinTags object registered with dbus connection name %s", name);
-        } catch (IOError e) {
-            error ("Could not register MarlinTags service");
-        }
-    }
 
     void on_fm1_bus_aquired (DBusConnection conn, string n) {
         try {
@@ -50,10 +40,6 @@
     }
 
     void main () {
-        Bus.own_name (BusType.SESSION, "io.elementary.files.db", BusNameOwnerFlags.NONE,
-                      on_bus_aquired,
-                      () => {},
-                      on_name_lost);
 
         Bus.own_name (BusType.SESSION, "org.freedesktop.FileManager1", BusNameOwnerFlags.REPLACE,
                       on_fm1_bus_aquired,
