@@ -72,9 +72,9 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
 
         if (delete_file && !count_only) {
             try {
-                yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
                 report_empty_trash_progress ();
                 files_left--;
+                yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
             } catch (GLib.Error e) {
                 debug (e.message);
                 return;
