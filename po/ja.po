@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-14 12:53+0000\n"
-"PO-Revision-Date: 2026-09-09 16:01+0000\n"
+"POT-Creation-Date: 2026-09-20 10:25+0000\n"
+"PO-Revision-Date: 2026-09-20 10:21+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/files/"
 "ja/>\n"
@@ -980,46 +980,44 @@ msgstr "'%s' を取り出せません"
 msgid "Unable to mount '%s'"
 msgstr "'%s' をマウントできません"
 
-#: libcore/FileOperations/MountUtils.vala:266
-#, fuzzy
-#| msgid "Not mounted"
+#: libcore/FileOperations/MountUtils.vala:268
 msgid "Do Not Unmount"
-msgstr "マウントされていません"
+msgstr "アンマウントしないでください"
 
-#: libcore/FileOperations/MountUtils.vala:267
+#: libcore/FileOperations/MountUtils.vala:269
 msgid "Unmounting now might cause a process to fail or to lose data"
 msgstr ""
 "今すぐアンマウントすることで、処理の失敗やデータの損失につながる可能性があり"
 "ます"
 
-#: libcore/FileOperations/MountUtils.vala:268
+#: libcore/FileOperations/MountUtils.vala:270
 msgid ""
 "If you wait, the resource will unmount when all processes finish using it"
 msgstr ""
+"待機すると、すべてのプロセスが使用を終了した時にリソースがアンマウントされま"
+"す"
 
-#: libcore/FileOperations/MountUtils.vala:269
+#: libcore/FileOperations/MountUtils.vala:271
 #, c-format
 msgid "Otherwise choose '%s'"
-msgstr ""
-
-#: libcore/FileOperations/MountUtils.vala:287
-#, fuzzy, c-format
-#| msgid "The resource '%s' is in use by other processes"
-msgid "Please wait. The resource '%s' is in use"
-msgstr "リソース '%s' は他のプロセスによって使用されています"
+msgstr "待機しない場合は '%s' を選択してください"
 
 #: libcore/FileOperations/MountUtils.vala:289
-#, fuzzy, c-format
-#| msgid "The resource '%s' is in use by other processes"
-msgid "Please wait. The resource '%s' is in use by other processes"
-msgstr "リソース '%s' は他のプロセスによって使用されています"
+#, c-format
+msgid "Please wait. The resource '%s' is in use"
+msgstr "お待ちください。リソース '%s' は使用中です"
 
 #: libcore/FileOperations/MountUtils.vala:291
+#, c-format
+msgid "Please wait. The resource '%s' is in use by other processes"
+msgstr "お待ちください。リソース '%s' は他のプロセスによって使用中です"
+
+#: libcore/FileOperations/MountUtils.vala:293
 #, c-format
 msgid "Other processes using '%s'… \n"
 msgstr "'%s' を使用している他のプロセス… \n"
 
-#: libcore/FileOperations/MountUtils.vala:319
+#: libcore/FileOperations/MountUtils.vala:321
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
@@ -1868,13 +1866,14 @@ msgid_plural "%u subfolders"
 msgstr[0] "%u 個のサブフォルダー"
 
 #: src/Dialogs/PropertiesWindow.vala:1265
-#: src/Dialogs/PropertiesWindow.vala:1287
+#: src/Dialogs/PropertiesWindow.vala:1287 src/View/Widgets/OverlayBar.vala:192
+#: src/View/Widgets/OverlayBar.vala:277
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u 個のファイル"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:180
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:191
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2523,57 +2522,116 @@ msgstr "このフォルダーを再読み込みします"
 msgid "Searching…"
 msgstr "検索しています…"
 
-#: src/View/Widgets/OverlayBar.vala:171
-#, c-format
-msgid "%u folders"
-msgstr "%u 個のフォルダー"
+#. TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#: src/View/Widgets/OverlayBar.vala:157
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s)"
+msgstr "%s (%s、%s)"
 
-#: src/View/Widgets/OverlayBar.vala:173 src/View/Widgets/OverlayBar.vala:183
+#. TRANSLATORS arguments are in order: filename, formatted filetype
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#: src/View/Widgets/OverlayBar.vala:172
 #, c-format
-msgid " and %u other item (%s) selected"
-msgid_plural " and %u other items (%s) selected"
-msgstr[0] " と %u 個の他の項目を選択 (%s)"
+msgid "%s - %s"
+msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:177 src/View/Widgets/OverlayBar.vala:187
-msgid " selected"
-msgstr " を選択"
+#: src/View/Widgets/OverlayBar.vala:181
+#, fuzzy, c-format
+#| msgid "%u items selected (%s)"
+msgid "%u file selected (%s)"
+msgid_plural "%u files selected (%s)"
+msgstr[0] "%u 個の項目を選択 (%s)"
+
+#: src/View/Widgets/OverlayBar.vala:186
+#, fuzzy, c-format
+#| msgid "%u folders"
+msgid "%u folder selected"
+msgid_plural "%u folders selected"
+msgstr[0] "%u 個のフォルダー"
 
 #: src/View/Widgets/OverlayBar.vala:190
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "%u 個の項目を選択 (%s)"
+#, fuzzy, c-format
+#| msgid " selected"
+msgid "%s and %s selected"
+msgstr " を選択"
 
-#. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:235
-#, c-format
-msgid "%u sub-folder, "
-msgid_plural "%u sub-folders, "
-msgstr[0] "%u 個のサブフォルダー、 "
-
-#. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:241
-#, c-format
-msgid "%u file, "
-msgid_plural "%u files, "
-msgstr[0] "%u 個のファイル、 "
-
-#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:251
-#, c-format
-msgid "%s approx."
-msgstr "約 %s"
-
-#. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:254
+#. TRANSLATORS: 'size' refers to the disk space used by the selected folder
+#: src/View/Widgets/OverlayBar.vala:242
 msgid "unknown size"
 msgstr "不明なサイズ"
 
-#. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:258
+#. TRANSLATORS: %s will be substituted by the approximate disk space used by the selected folder
+#. The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:247
 #, c-format
-msgid "%u file not readable"
-msgid_plural "%u files not readable"
-msgstr[0] "%u 個のファイルが読み込めません"
+msgid "more than %s used"
+msgstr ""
+
+#. TRANSLATORS: %s will be substituted by the disk space used by the selected folder
+#. The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:251
+#, fuzzy, c-format
+#| msgid "%s used of %s"
+msgid "%s used"
+msgstr "%2$s 中 %1$s 使用済み"
+
+#: src/View/Widgets/OverlayBar.vala:260
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s, %s, %s) - %s"
+msgstr "%s (%s、%s)"
+
+#: src/View/Widgets/OverlayBar.vala:263
+#, fuzzy, c-format
+#| msgid "%u sub-folder, "
+#| msgid_plural "%u sub-folders, "
+msgid "%u accessible sub-folder"
+msgid_plural "%u accessible sub-folders"
+msgstr[0] "%u 個のサブフォルダー、 "
+
+#: src/View/Widgets/OverlayBar.vala:264
+#, fuzzy, c-format
+#| msgid "Inaccessible"
+msgid "%u accessible file"
+msgid_plural "%u accessible files"
+msgstr[0] "アクセスできません"
+
+#: src/View/Widgets/OverlayBar.vala:265
+#, fuzzy, c-format
+#| msgid "Inaccessible"
+msgid "%u inaccessible file"
+msgid_plural "%u inaccessible files"
+msgstr[0] "アクセスできません"
+
+#. TRANSLATORS arguments are in order: filename, filetype, subfolder count, file count, diskspace
+#.  The file and folder counts are in the form "<number> files" translated with ngettext
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#.  The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:273
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s, %s) - %s"
+msgstr "%s (%s、%s)"
+
+#: src/View/Widgets/OverlayBar.vala:276
+#, fuzzy, c-format
+#| msgid "%u subfolder"
+#| msgid_plural "%u subfolders"
+msgid "%u sub-folder"
+msgid_plural "%u sub-folders"
+msgstr[0] "%u 個のサブフォルダー"
+
+#. TRANSLATORS arguments are in order: format string, formatted filesize, width, height (of an image file)
+#.  format is from GLib.ContentType.get_description ()
+#.  size is from GLib.format_size ()
+#: src/View/Widgets/OverlayBar.vala:362
+#, fuzzy, c-format
+#| msgid "%s of %s — %s left (%s/sec)"
+#| msgid_plural "%s of %s — %s left (%s/sec)"
+msgid "%s (%s — %i × %i)"
+msgstr "%s / %s — 残り %s (%s/秒)"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
@@ -2602,6 +2660,25 @@ msgstr "このフォルダー以下"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "最近使用した項目"
+
+#, c-format
+#~ msgid " and %u other item (%s) selected"
+#~ msgid_plural " and %u other items (%s) selected"
+#~ msgstr[0] " と %u 個の他の項目を選択 (%s)"
+
+#, c-format
+#~ msgid "%u file, "
+#~ msgid_plural "%u files, "
+#~ msgstr[0] "%u 個のファイル、 "
+
+#, c-format
+#~ msgid "%s approx."
+#~ msgstr "約 %s"
+
+#, c-format
+#~ msgid "%u file not readable"
+#~ msgid_plural "%u files not readable"
+#~ msgstr[0] "%u 個のファイルが読み込めません"
 
 #~ msgid "This Folder Is Empty"
 #~ msgstr "このフォルダーは空です"
