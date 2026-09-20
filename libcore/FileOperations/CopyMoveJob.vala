@@ -20,7 +20,8 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
     protected bool is_move = false;
     protected bool is_restore_from_trash = false;
     protected GLib.List<GLib.File> files;
-    protected unowned GLib.File? destination = null;
+    protected unowned GLib.File destination;
+    protected unowned GLib.File destination_for_progress_dialog;
     protected GLib.HashTable<GLib.File,bool> debuting_files = new GLib.HashTable<GLib.File,bool> (GLib.File.hash, GLib.File.equal);
     protected bool replace_all = false;
     protected bool merge_all = false;
@@ -117,8 +118,8 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
 
         var srcname = FileUtils.custom_basename_from_file (files.data);
         var destname = "";
-        if (destination != null) {
-            destname = FileUtils.custom_basename_from_file (destination);
+        if (destination_for_progress_dialog != null) {
+            destname = FileUtils.custom_basename_from_file (destination_for_progress_dialog);
         }
 
         transfer_info.last_report_time = now;
@@ -138,17 +139,17 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             transfer_info.last_reported_files_left = files_left;
 
             if (source_info.num_files == 1) {
-                if (destination != null) {
+                if (destination_for_progress_dialog != null) {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
                     s = (is_move ? _("Moving \"%s\" to \"%s\"") : _("Copying \"%s\" to \"%s\"")).printf (srcname, destname);
                 } else {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
-                    s = _("Duplicating \"%s\"").printf (srcname);
+                    s = _("Copying \"%s\"").printf (srcname);
                 }
             } else if (files != null && files.next == null) {
-                if (destination != null) {
+                if (destination_for_progress_dialog != null) {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
                     /// %'d is a placeholder for a number. It must not be translated or removed.
@@ -169,13 +170,13 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
                     s = ngettext (
-                        "Duplicating %'d file (in \"%s\")",
-                        "Duplicating %'d files (in \"%s\")",
+                        "Copying %'d file (in \"%s\")",
+                        "Copying %'d files (in \"%s\")",
                         source_info.num_files
                     ).printf (source_info.num_files, srcname);
                 }
             } else {
-                if (destination != null) {
+                if (destination_for_progress_dialog != null) {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
                     /// %'d is a placeholder for a number. It must not be translated or removed.
@@ -194,8 +195,8 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                     ).printf (source_info.num_files, destname);
                 } else {
                     s = ngettext (
-                        "Duplicating %'d file",
-                        "Duplicating %'d files",
+                        "Copying %'d file",
+                        "Copying %'d files",
                         source_info.num_files
                     ).printf (source_info.num_files);
                 }
@@ -235,7 +236,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             var num_bytes_format = GLib.format_size (transfer_info.num_bytes);
             var total_size_format = GLib.format_size (total_size);
             var transfer_rate_format = GLib.format_size ((uint64) transfer_rate);
-            int remaining_time = (int )((total_size - transfer_info.num_bytes) / transfer_rate);
+            int remaining_time = (int )((total_size - transfer_info.num_bytes) / transfer_rate) + 1;
             int formated_time_unit;
             var formated_remaining_time = FileUtils.format_time (remaining_time, out formated_time_unit);
 
@@ -247,8 +248,8 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             /// The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
             /// The order in which %s appear can be changed by using the right positional specifier.
             var s = ngettext (
-                "%s of %s \xE2\x80\x94 %s and %d files left (%s/sec)",
-                "%s of %s \xE2\x80\x94 %s and %d files left (%s/sec)",
+                "%s of %s \xE2\x80\x94 %s and %d file(s) left (%s/sec)",
+                "%s of %s \xE2\x80\x94 %s and %d file(s) left (%s/sec)",
                 formated_time_unit
             ).printf (num_bytes_format, total_size_format, formated_remaining_time, files_left, transfer_rate_format); //FIXME Remove opaque hex
             progress.take_details ((owned) s);

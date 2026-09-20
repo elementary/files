@@ -1653,9 +1653,12 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
         goto out;
     }
 
+
 retry:
-    gpointer previous_job_dest = copy_job->destination;
-    copy_job->destination = dest_dir;
+
+    if (!g_file_equal(g_file_get_parent(src), dest_dir)) {
+        copy_job->destination_for_progress_dialog = dest_dir;
+    }
 
     error = NULL;
     flags = G_FILE_COPY_NOFOLLOW_SYMLINKS;
@@ -1687,8 +1690,6 @@ retry:
                            &pdata,
                            &error);
     }
-
-    copy_job->destination = previous_job_dest;
 
     /* NOTE Result is false if file being moved is a folder and the target is on a Samba share even if
      * the file is successfully copied, so the change will not be notified to the view.
@@ -2004,8 +2005,6 @@ copy_files (FilesFileOperationsCopyMoveJob *job,
 
     dest_fs_type = NULL;
     readonly_source_fs = FALSE;
-
-    marlin_file_operations_copy_move_job_report_copy_progress (job, source_info, transfer_info);
 
     /* Query the source dir, not the file because if its a symlink we'll follow it */
     source_dir = g_file_get_parent ((GFile *) job->files->data);
@@ -2465,8 +2464,6 @@ move_files (FilesFileOperationsCopyMoveJob *job,
     int i;
     gboolean skipped_file;
     MoveFileCopyFallback *fallback;
-
-    marlin_file_operations_copy_move_job_report_copy_progress (job, source_info, transfer_info);
 
     i = 0;
     for (l = fallbacks;
