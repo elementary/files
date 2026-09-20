@@ -231,9 +231,9 @@ public class Files.View.Window : Hdy.ApplicationWindow {
             show_close_button = true,
             custom_title = new Gtk.Label (null)
         };
+        headerbar.pack_start (view_switcher);
         headerbar.pack_start (button_back);
         headerbar.pack_start (button_forward);
-        headerbar.pack_start (view_switcher);
         headerbar.pack_start (location_bar);
         headerbar.pack_end (menu_button);
 
