@@ -93,7 +93,6 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
         }
 
         if (!success) {
-            warning ("EJB Some failed");
             //TODO inform user or return false
             return;
         }

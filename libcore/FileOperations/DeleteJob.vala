@@ -339,9 +339,20 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 }
             }
         } catch (Error e) {
-            warning ("DJ error deleting file %s", e.message);
-            //TODO handle some errors further?
-            success = false;
+            if (e is IOError.CANCELLED) {
+                abort_job ();
+            } else {
+                // Most (all?) other errors should already have been caught by scan_sources
+                // Do we need to check again here?
+                // Just use a simple dialog for now and return failure
+                PF.Dialogs.show_warning_dialog (
+                    _("Files in the folder '%s' cannot be deleted").printf (dir.get_basename ()),
+                    _("There was an error getting information about the files in the folder"),
+                    parent_window
+                );
+            }
+
+            return false;
         }
 
         return success;
@@ -352,10 +363,12 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         var success = true;
         try {
             success = file.@delete (cancellable);
-            if (!success) {
-                warning ("file.@delete failed for %s", file.get_uri ());
-            }
         } catch (Error e) {
+            if (e is IOError.CANCELLED) {
+                abort_job ();
+                return false;
+            }
+
             if (e is IOError.NOT_EMPTY) {
                 success = delete_non_empty_dir (file, cancellable);
             } else {
