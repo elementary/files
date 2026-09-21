@@ -21,6 +21,9 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
     protected bool is_restore_from_trash = false;
     protected GLib.List<GLib.File> files;
     protected unowned GLib.File destination;
+    // Use separate destination_for_progress_dialog variable to avoid interacting with the existing
+    // destination variable which is set and checked at various places in marlin-file-operations.c
+    // This separate variable is used here to improve the progress dialog behaviour and info shown.
     protected unowned GLib.File destination_for_progress_dialog;
     protected GLib.HashTable<GLib.File,bool> debuting_files = new GLib.HashTable<GLib.File,bool> (GLib.File.hash, GLib.File.equal);
     protected bool replace_all = false;
