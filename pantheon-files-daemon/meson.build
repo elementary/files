@@ -1,7 +1,6 @@
 pantheon_files_daemon_files = files(
     'main.vala',
     'FileManager1.vala',
-    'marlind-tagging.vala'
 )
 
 executable(

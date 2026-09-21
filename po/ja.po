@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-20 10:25+0000\n"
-"PO-Revision-Date: 2026-09-20 10:21+0000\n"
+"PO-Revision-Date: 2026-09-21 00:46+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/files/"
 "ja/>\n"
@@ -896,7 +896,7 @@ msgstr ""
 #: libcore/FileOperations/CommonJob.vala:226
 #, c-format
 msgid "There is %s available, but %s is required."
-msgstr "利用可能な容量は %s ですが、%s が必要です。"
+msgstr "使用可能な容量は %s ですが、%s が必要です。"
 
 #: libcore/FileOperations/CommonJob.vala:254
 msgid "The destination is read-only."
@@ -1653,11 +1653,11 @@ msgstr "容量:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:154
 msgid "Available:"
-msgstr "利用可能:"
+msgstr "使用可能:"
 
 #: src/Dialogs/AbstractPropertiesDialog.vala:157
 msgid "Used:"
-msgstr "使用済み:"
+msgstr "使用中:"
 
 #: src/Dialogs/BulkRenamer/RenamerDialog.vala:21
 msgid "Original filename"
@@ -2313,12 +2313,12 @@ msgstr "アンマウント(_U)"
 #: src/View/Sidebar/AbstractMountableRow.vala:331
 #, c-format
 msgid "%s free"
-msgstr "%s 利用可能"
+msgstr "%s が使用可能"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:332
 #, c-format
 msgid "%s used of %s"
-msgstr "%2$s 中 %1$s 使用済み"
+msgstr "%2$s 中 %1$s を使用中"
 
 #: src/View/Sidebar/AbstractMountableRow.vala:362
 #: src/View/Sidebar/NetworkRow.vala:50 src/View/Sidebar/VolumeRow.vala:80
@@ -2525,37 +2525,33 @@ msgstr "検索しています…"
 #. TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:157
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s)"
-msgstr "%s (%s、%s)"
+msgstr "%s - %s (%s)"
 
 #. TRANSLATORS arguments are in order: filename, formatted filetype
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:172
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #: src/View/Widgets/OverlayBar.vala:181
-#, fuzzy, c-format
-#| msgid "%u items selected (%s)"
+#, c-format
 msgid "%u file selected (%s)"
 msgid_plural "%u files selected (%s)"
-msgstr[0] "%u 個の項目を選択 (%s)"
+msgstr[0] "%u 個のファイルを選択しました (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:186
-#, fuzzy, c-format
-#| msgid "%u folders"
+#, c-format
 msgid "%u folder selected"
 msgid_plural "%u folders selected"
-msgstr[0] "%u 個のフォルダー"
+msgstr[0] "%u 個のフォルダーを選択しました"
 
 #: src/View/Widgets/OverlayBar.vala:190
-#, fuzzy, c-format
-#| msgid " selected"
+#, c-format
 msgid "%s and %s selected"
-msgstr " を選択"
+msgstr "%sと%sを選択しました"
 
 #. TRANSLATORS: 'size' refers to the disk space used by the selected folder
 #: src/View/Widgets/OverlayBar.vala:242
@@ -2567,58 +2563,49 @@ msgstr "不明なサイズ"
 #: src/View/Widgets/OverlayBar.vala:247
 #, c-format
 msgid "more than %s used"
-msgstr ""
+msgstr "%s 以上を使用中"
 
 #. TRANSLATORS: %s will be substituted by the disk space used by the selected folder
 #. The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:251
-#, fuzzy, c-format
-#| msgid "%s used of %s"
+#, c-format
 msgid "%s used"
-msgstr "%2$s 中 %1$s 使用済み"
+msgstr "%s を使用中"
 
 #: src/View/Widgets/OverlayBar.vala:260
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s, %s) - %s"
-msgstr "%s (%s、%s)"
+msgstr "%s - %s (%s、%s、%s) - %s"
 
 #: src/View/Widgets/OverlayBar.vala:263
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
-#| msgid_plural "%u sub-folders, "
+#, c-format
 msgid "%u accessible sub-folder"
 msgid_plural "%u accessible sub-folders"
-msgstr[0] "%u 個のサブフォルダー、 "
+msgstr[0] "%u 個のアクセス可能なサブフォルダー"
 
 #: src/View/Widgets/OverlayBar.vala:264
-#, fuzzy, c-format
-#| msgid "Inaccessible"
+#, c-format
 msgid "%u accessible file"
 msgid_plural "%u accessible files"
-msgstr[0] "アクセスできません"
+msgstr[0] "%u 個のアクセス可能なファイル"
 
 #: src/View/Widgets/OverlayBar.vala:265
-#, fuzzy, c-format
-#| msgid "Inaccessible"
+#, c-format
 msgid "%u inaccessible file"
 msgid_plural "%u inaccessible files"
-msgstr[0] "アクセスできません"
+msgstr[0] "%u 個のアクセス不可能なファイル"
 
 #. TRANSLATORS arguments are in order: filename, filetype, subfolder count, file count, diskspace
 #.  The file and folder counts are in the form "<number> files" translated with ngettext
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #.  The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:273
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s) - %s"
-msgstr "%s (%s、%s)"
+msgstr "%s - %s (%s、%s) - %s"
 
 #: src/View/Widgets/OverlayBar.vala:276
-#, fuzzy, c-format
-#| msgid "%u subfolder"
-#| msgid_plural "%u subfolders"
+#, c-format
 msgid "%u sub-folder"
 msgid_plural "%u sub-folders"
 msgstr[0] "%u 個のサブフォルダー"
@@ -2627,11 +2614,9 @@ msgstr[0] "%u 個のサブフォルダー"
 #.  format is from GLib.ContentType.get_description ()
 #.  size is from GLib.format_size ()
 #: src/View/Widgets/OverlayBar.vala:362
-#, fuzzy, c-format
-#| msgid "%s of %s — %s left (%s/sec)"
-#| msgid_plural "%s of %s — %s left (%s/sec)"
+#, c-format
 msgid "%s (%s — %i × %i)"
-msgstr "%s / %s — 残り %s (%s/秒)"
+msgstr "%s (%s — %i × %i)"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
