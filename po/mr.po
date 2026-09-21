@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-14 12:53+0000\n"
+"POT-Creation-Date: 2026-09-20 10:25+0000\n"
 "PO-Revision-Date: 2021-06-19 20:04+0000\n"
 "Last-Translator: Prachi Joshi <josprachi@yahoo.com>\n"
 "Language-Team: Marathi <https://l10n.elementary.io/projects/files/files/mr/"
@@ -1022,42 +1022,42 @@ msgstr "%V बाहेर काढण्यात अक्षम"
 msgid "Unable to mount '%s'"
 msgstr "'%s' माउंट करण्यास अक्षम"
 
-#: libcore/FileOperations/MountUtils.vala:266
+#: libcore/FileOperations/MountUtils.vala:268
 #, fuzzy
 #| msgid "_Unmount"
 msgid "Do Not Unmount"
 msgstr "(_U)अनमाउंट करा"
 
-#: libcore/FileOperations/MountUtils.vala:267
+#: libcore/FileOperations/MountUtils.vala:269
 msgid "Unmounting now might cause a process to fail or to lose data"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:268
+#: libcore/FileOperations/MountUtils.vala:270
 msgid ""
 "If you wait, the resource will unmount when all processes finish using it"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:269
+#: libcore/FileOperations/MountUtils.vala:271
 #, c-format
 msgid "Otherwise choose '%s'"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:287
+#: libcore/FileOperations/MountUtils.vala:289
 #, c-format
 msgid "Please wait. The resource '%s' is in use"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:289
+#: libcore/FileOperations/MountUtils.vala:291
 #, c-format
 msgid "Please wait. The resource '%s' is in use by other processes"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:291
+#: libcore/FileOperations/MountUtils.vala:293
 #, c-format
 msgid "Other processes using '%s'… \n"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:319
+#: libcore/FileOperations/MountUtils.vala:321
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
@@ -1937,14 +1937,15 @@ msgstr[0] "%u सबफोल्डर"
 msgstr[1] "%u सबफोल्डर"
 
 #: src/Dialogs/PropertiesWindow.vala:1265
-#: src/Dialogs/PropertiesWindow.vala:1287
+#: src/Dialogs/PropertiesWindow.vala:1287 src/View/Widgets/OverlayBar.vala:192
+#: src/View/Widgets/OverlayBar.vala:277
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
 msgstr[0] "%u फाईल"
 msgstr[1] "%u फायली"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:180
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:191
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2628,61 +2629,122 @@ msgstr "हे फोल्डर रीलोड करा"
 msgid "Searching…"
 msgstr "शोधत आहे…"
 
-#: src/View/Widgets/OverlayBar.vala:171
-#, c-format
-msgid "%u folders"
-msgstr "%u फोल्डर"
+#. TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#: src/View/Widgets/OverlayBar.vala:157
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s)"
+msgstr "%s (%s, %s)"
 
-#: src/View/Widgets/OverlayBar.vala:173 src/View/Widgets/OverlayBar.vala:183
+#. TRANSLATORS arguments are in order: filename, formatted filetype
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#: src/View/Widgets/OverlayBar.vala:172
 #, c-format
-msgid " and %u other item (%s) selected"
-msgid_plural " and %u other items (%s) selected"
-msgstr[0] " आणि निवडलेला %u अन्य आयटम (%s)"
-msgstr[1] " आणि निवडलेले %u अन्य आयटम (%s)"
+msgid "%s - %s"
+msgstr ""
 
-#: src/View/Widgets/OverlayBar.vala:177 src/View/Widgets/OverlayBar.vala:187
-msgid " selected"
-msgstr " निवडले"
+#: src/View/Widgets/OverlayBar.vala:181
+#, fuzzy, c-format
+#| msgid "%u items selected (%s)"
+msgid "%u file selected (%s)"
+msgid_plural "%u files selected (%s)"
+msgstr[0] "%u आयटम निवडले (%s)"
+msgstr[1] "%u आयटम निवडले (%s)"
+
+#: src/View/Widgets/OverlayBar.vala:186
+#, fuzzy, c-format
+#| msgid "%u folders"
+msgid "%u folder selected"
+msgid_plural "%u folders selected"
+msgstr[0] "%u फोल्डर"
+msgstr[1] "%u फोल्डर"
 
 #: src/View/Widgets/OverlayBar.vala:190
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "%u आयटम निवडले (%s)"
+#, fuzzy, c-format
+#| msgid " selected"
+msgid "%s and %s selected"
+msgstr " निवडले"
 
-#. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:235
-#, c-format
-msgid "%u sub-folder, "
-msgid_plural "%u sub-folders, "
-msgstr[0] "%u सब-फोल्डर, "
-msgstr[1] "%u सब-फोल्डर, "
-
-#. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:241
-#, c-format
-msgid "%u file, "
-msgid_plural "%u files, "
-msgstr[0] "%u फाईल, "
-msgstr[1] "%u फायली, "
-
-#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:251
-#, c-format
-msgid "%s approx."
-msgstr "%s साधारण."
-
-#. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:254
+#. TRANSLATORS: 'size' refers to the disk space used by the selected folder
+#: src/View/Widgets/OverlayBar.vala:242
 msgid "unknown size"
 msgstr "अज्ञात आकार"
 
-#. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:258
+#. TRANSLATORS: %s will be substituted by the approximate disk space used by the selected folder
+#. The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:247
 #, c-format
-msgid "%u file not readable"
-msgid_plural "%u files not readable"
-msgstr[0] "%u फाइल वाचनीय नाही"
-msgstr[1] "%u फायली वाचनीय नाहीत"
+msgid "more than %s used"
+msgstr ""
+
+#. TRANSLATORS: %s will be substituted by the disk space used by the selected folder
+#. The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:251
+#, fuzzy, c-format
+#| msgid "%s used of %s"
+msgid "%s used"
+msgstr "%s पैकी %s वापरात"
+
+#: src/View/Widgets/OverlayBar.vala:260
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s, %s, %s) - %s"
+msgstr "%s (%s, %s)"
+
+#: src/View/Widgets/OverlayBar.vala:263
+#, fuzzy, c-format
+#| msgid "%u sub-folder, "
+#| msgid_plural "%u sub-folders, "
+msgid "%u accessible sub-folder"
+msgid_plural "%u accessible sub-folders"
+msgstr[0] "%u सब-फोल्डर, "
+msgstr[1] "%u सब-फोल्डर, "
+
+#: src/View/Widgets/OverlayBar.vala:264
+#, fuzzy, c-format
+#| msgid "Inaccessible"
+msgid "%u accessible file"
+msgid_plural "%u accessible files"
+msgstr[0] "मिळविण्यास अशक्य"
+msgstr[1] "मिळविण्यास अशक्य"
+
+#: src/View/Widgets/OverlayBar.vala:265
+#, fuzzy, c-format
+#| msgid "Inaccessible"
+msgid "%u inaccessible file"
+msgid_plural "%u inaccessible files"
+msgstr[0] "मिळविण्यास अशक्य"
+msgstr[1] "मिळविण्यास अशक्य"
+
+#. TRANSLATORS arguments are in order: filename, filetype, subfolder count, file count, diskspace
+#.  The file and folder counts are in the form "<number> files" translated with ngettext
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#.  The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:273
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s, %s) - %s"
+msgstr "%s (%s, %s)"
+
+#: src/View/Widgets/OverlayBar.vala:276
+#, fuzzy, c-format
+#| msgid "%u subfolder"
+#| msgid_plural "%u subfolders"
+msgid "%u sub-folder"
+msgid_plural "%u sub-folders"
+msgstr[0] "%u सबफोल्डर"
+msgstr[1] "%u सबफोल्डर"
+
+#. TRANSLATORS arguments are in order: format string, formatted filesize, width, height (of an image file)
+#.  format is from GLib.ContentType.get_description ()
+#.  size is from GLib.format_size ()
+#: src/View/Widgets/OverlayBar.vala:362
+#, fuzzy, c-format
+#| msgid "%s of %s — %s left (%s/sec)"
+#| msgid_plural "%s of %s — %s left (%s/sec)"
+msgid "%s (%s — %i × %i)"
+msgstr "%s पैकी %s — %s बाकी (%s/sec)"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
@@ -2711,6 +2773,28 @@ msgstr "या फोल्डर खाली"
 #: src/View/Widgets/SearchResults.vala:305
 msgid "Recently Used"
 msgstr "अलीकडे वापरलेले"
+
+#, c-format
+#~ msgid " and %u other item (%s) selected"
+#~ msgid_plural " and %u other items (%s) selected"
+#~ msgstr[0] " आणि निवडलेला %u अन्य आयटम (%s)"
+#~ msgstr[1] " आणि निवडलेले %u अन्य आयटम (%s)"
+
+#, c-format
+#~ msgid "%u file, "
+#~ msgid_plural "%u files, "
+#~ msgstr[0] "%u फाईल, "
+#~ msgstr[1] "%u फायली, "
+
+#, c-format
+#~ msgid "%s approx."
+#~ msgstr "%s साधारण."
+
+#, c-format
+#~ msgid "%u file not readable"
+#~ msgid_plural "%u files not readable"
+#~ msgstr[0] "%u फाइल वाचनीय नाही"
+#~ msgstr[1] "%u फायली वाचनीय नाहीत"
 
 #~ msgid "This Folder Is Empty"
 #~ msgstr "हे फोल्डर रिकामे आहे"

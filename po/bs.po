@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-14 12:53+0000\n"
+"POT-Creation-Date: 2026-09-20 10:25+0000\n"
 "PO-Revision-Date: 2022-09-19 03:03+0000\n"
 "Last-Translator: Issa1553 <fairfull.playing@gmail.com>\n"
 "Language-Team: Bosnian <https://l10n.elementary.io/projects/files/files/bs/"
@@ -1047,42 +1047,42 @@ msgstr "Nije moguće izbaciti %V"
 msgid "Unable to mount '%s'"
 msgstr "Nije moguće montirati %s"
 
-#: libcore/FileOperations/MountUtils.vala:266
+#: libcore/FileOperations/MountUtils.vala:268
 #, fuzzy
 #| msgid "_Unmount"
 msgid "Do Not Unmount"
 msgstr "_Demontiraj"
 
-#: libcore/FileOperations/MountUtils.vala:267
+#: libcore/FileOperations/MountUtils.vala:269
 msgid "Unmounting now might cause a process to fail or to lose data"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:268
+#: libcore/FileOperations/MountUtils.vala:270
 msgid ""
 "If you wait, the resource will unmount when all processes finish using it"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:269
+#: libcore/FileOperations/MountUtils.vala:271
 #, c-format
 msgid "Otherwise choose '%s'"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:287
+#: libcore/FileOperations/MountUtils.vala:289
 #, c-format
 msgid "Please wait. The resource '%s' is in use"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:289
+#: libcore/FileOperations/MountUtils.vala:291
 #, c-format
 msgid "Please wait. The resource '%s' is in use by other processes"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:291
+#: libcore/FileOperations/MountUtils.vala:293
 #, c-format
 msgid "Other processes using '%s'… \n"
 msgstr ""
 
-#: libcore/FileOperations/MountUtils.vala:319
+#: libcore/FileOperations/MountUtils.vala:321
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
 #: src/Dialogs/AbstractPropertiesDialog.vala:155
 #: src/Dialogs/AbstractPropertiesDialog.vala:158
@@ -1991,7 +1991,8 @@ msgstr[1] "%u podfascikle"
 msgstr[2] "%u podfascikli"
 
 #: src/Dialogs/PropertiesWindow.vala:1265
-#: src/Dialogs/PropertiesWindow.vala:1287
+#: src/Dialogs/PropertiesWindow.vala:1287 src/View/Widgets/OverlayBar.vala:192
+#: src/View/Widgets/OverlayBar.vala:277
 #, c-format
 msgid "%u file"
 msgid_plural "%u files"
@@ -1999,7 +2000,7 @@ msgstr[0] "%u datoteka"
 msgstr[1] "%u datoteke"
 msgstr[2] "%u datoteka"
 
-#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:180
+#: src/Dialogs/PropertiesWindow.vala:1283 src/View/Widgets/OverlayBar.vala:191
 #, c-format
 msgid "%u folder"
 msgid_plural "%u folders"
@@ -2698,65 +2699,123 @@ msgstr "Ponovo učitaj ovu fasciklu"
 msgid "Searching…"
 msgstr "Traženje…"
 
-#: src/View/Widgets/OverlayBar.vala:171
-#, c-format
-msgid "%u folders"
-msgstr "%u fascikli"
-
-#: src/View/Widgets/OverlayBar.vala:173 src/View/Widgets/OverlayBar.vala:183
+#. TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#: src/View/Widgets/OverlayBar.vala:157
 #, fuzzy, c-format
-msgid " and %u other item (%s) selected"
-msgid_plural " and %u other items (%s) selected"
-msgstr[0] " i %u ostalih stavki (%s) označeno"
-msgstr[1] " i %u ostalih stavki (%s) označeno"
-msgstr[2] " i %u ostalih stavki (%s) označeno"
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s)"
+msgstr "%s (%s, %s)"
 
-#: src/View/Widgets/OverlayBar.vala:177 src/View/Widgets/OverlayBar.vala:187
-msgid " selected"
-msgstr " označeno"
+#. TRANSLATORS arguments are in order: filename, formatted filetype
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#: src/View/Widgets/OverlayBar.vala:172
+#, c-format
+msgid "%s - %s"
+msgstr ""
+
+#: src/View/Widgets/OverlayBar.vala:181
+#, fuzzy, c-format
+#| msgid "%u items selected (%s)"
+msgid "%u file selected (%s)"
+msgid_plural "%u files selected (%s)"
+msgstr[0] "%u stavki izabrano (%s)"
+msgstr[1] "%u stavki izabrano (%s)"
+msgstr[2] "%u stavki izabrano (%s)"
+
+#: src/View/Widgets/OverlayBar.vala:186
+#, fuzzy, c-format
+#| msgid "%u folders"
+msgid "%u folder selected"
+msgid_plural "%u folders selected"
+msgstr[0] "%u fascikli"
+msgstr[1] "%u fascikli"
+msgstr[2] "%u fascikli"
 
 #: src/View/Widgets/OverlayBar.vala:190
-#, c-format
-msgid "%u items selected (%s)"
-msgstr "%u stavki izabrano (%s)"
-
-#. TRANSLATORS: %u will be substituted by the number of sub folders
-#: src/View/Widgets/OverlayBar.vala:235
 #, fuzzy, c-format
-msgid "%u sub-folder, "
-msgid_plural "%u sub-folders, "
+#| msgid " selected"
+msgid "%s and %s selected"
+msgstr " označeno"
+
+#. TRANSLATORS: 'size' refers to the disk space used by the selected folder
+#: src/View/Widgets/OverlayBar.vala:242
+msgid "unknown size"
+msgstr "nepoznata veličina"
+
+#. TRANSLATORS: %s will be substituted by the approximate disk space used by the selected folder
+#. The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:247
+#, c-format
+msgid "more than %s used"
+msgstr ""
+
+#. TRANSLATORS: %s will be substituted by the disk space used by the selected folder
+#. The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:251
+#, fuzzy, c-format
+msgid "%s used"
+msgstr "%S od %S"
+
+#: src/View/Widgets/OverlayBar.vala:260
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s, %s, %s) - %s"
+msgstr "%s (%s, %s)"
+
+#: src/View/Widgets/OverlayBar.vala:263
+#, fuzzy, c-format
+msgid "%u accessible sub-folder"
+msgid_plural "%u accessible sub-folders"
 msgstr[0] "%u podfascikli, "
 msgstr[1] "%u podfascikli, "
 msgstr[2] "%u podfascikli, "
 
-#. TRANSLATORS: %u will be substituted by the number of readable files
-#: src/View/Widgets/OverlayBar.vala:241
+#: src/View/Widgets/OverlayBar.vala:264
 #, fuzzy, c-format
-msgid "%u file, "
-msgid_plural "%u files, "
-msgstr[0] "%u datoteka, "
-msgstr[1] "%u datoteka, "
-msgstr[2] "%u datoteka, "
+#| msgid "Inaccessible"
+msgid "%u accessible file"
+msgid_plural "%u accessible files"
+msgstr[0] "Nedostupno"
+msgstr[1] "Nedostupno"
+msgstr[2] "Nedostupno"
 
-#. TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-#: src/View/Widgets/OverlayBar.vala:251
-#, c-format
-msgid "%s approx."
-msgstr "%s približno."
-
-#. TRANSLATORS: 'size' refers to disk space
-#: src/View/Widgets/OverlayBar.vala:254
-msgid "unknown size"
-msgstr "nepoznata veličina"
-
-#. TRANSLATORS: %u will be substituted by the number of unreadable files
-#: src/View/Widgets/OverlayBar.vala:258
+#: src/View/Widgets/OverlayBar.vala:265
 #, fuzzy, c-format
-msgid "%u file not readable"
-msgid_plural "%u files not readable"
-msgstr[0] "%u datoteka nije čitljiva"
-msgstr[1] "%u datoteka nije čitljiva"
-msgstr[2] "%u datoteka nije čitljiva"
+#| msgid "Inaccessible"
+msgid "%u inaccessible file"
+msgid_plural "%u inaccessible files"
+msgstr[0] "Nedostupno"
+msgstr[1] "Nedostupno"
+msgstr[2] "Nedostupno"
+
+#. TRANSLATORS arguments are in order: filename, filetype, subfolder count, file count, diskspace
+#.  The file and folder counts are in the form "<number> files" translated with ngettext
+#.  filetype is formatted by GLib.ContentType.get_description ()
+#.  The diskspace is formatted with GLib.format_size
+#: src/View/Widgets/OverlayBar.vala:273
+#, fuzzy, c-format
+#| msgid "%s (%s, %s)"
+msgid "%s - %s (%s, %s) - %s"
+msgstr "%s (%s, %s)"
+
+#: src/View/Widgets/OverlayBar.vala:276
+#, fuzzy, c-format
+#| msgid "%u subfolder"
+#| msgid_plural "%u subfolders"
+msgid "%u sub-folder"
+msgid_plural "%u sub-folders"
+msgstr[0] "%u podfascikla"
+msgstr[1] "%u podfascikle"
+msgstr[2] "%u podfascikli"
+
+#. TRANSLATORS arguments are in order: format string, formatted filesize, width, height (of an image file)
+#.  format is from GLib.ContentType.get_description ()
+#.  size is from GLib.format_size ()
+#: src/View/Widgets/OverlayBar.vala:362
+#, fuzzy, c-format
+msgid "%s (%s — %i × %i)"
+msgstr "%S od %S — još %T (%S/sek)"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
@@ -2786,6 +2845,31 @@ msgstr "Ispod ove fascikle"
 #, fuzzy
 msgid "Recently Used"
 msgstr "Nedavno korišteno"
+
+#, fuzzy, c-format
+#~ msgid " and %u other item (%s) selected"
+#~ msgid_plural " and %u other items (%s) selected"
+#~ msgstr[0] " i %u ostalih stavki (%s) označeno"
+#~ msgstr[1] " i %u ostalih stavki (%s) označeno"
+#~ msgstr[2] " i %u ostalih stavki (%s) označeno"
+
+#, fuzzy, c-format
+#~ msgid "%u file, "
+#~ msgid_plural "%u files, "
+#~ msgstr[0] "%u datoteka, "
+#~ msgstr[1] "%u datoteka, "
+#~ msgstr[2] "%u datoteka, "
+
+#, c-format
+#~ msgid "%s approx."
+#~ msgstr "%s približno."
+
+#, fuzzy, c-format
+#~ msgid "%u file not readable"
+#~ msgid_plural "%u files not readable"
+#~ msgstr[0] "%u datoteka nije čitljiva"
+#~ msgstr[1] "%u datoteka nije čitljiva"
+#~ msgstr[2] "%u datoteka nije čitljiva"
 
 #~ msgid "This Folder Is Empty"
 #~ msgstr "Ova fascikla je prazna"

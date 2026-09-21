@@ -236,8 +236,10 @@ namespace Files.FileOperations {
         }
 
         ~UnmountOperation () {
-            dialog.close ();
-            dialog.destroy ();
+            if (dialog != null) {
+                dialog.close ();
+                dialog.destroy ();
+            }
         }
 
         public override void show_processes (string message, Array<Pid> processes, string[] choices) {
