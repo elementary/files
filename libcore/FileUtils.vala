@@ -87,6 +87,7 @@ namespace Files.FileUtils {
 
         foreach (var original_dir in original_dirs_hash.get_keys ()) {
             var dir_files = original_dirs_hash.take (original_dir);
+            // Destination known not to be trash:///
             Files.FileOperations.copy_move_link.begin (
                 (owned) dir_files,
                 original_dir,

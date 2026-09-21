@@ -314,6 +314,8 @@ namespace Files {
                     undo_redo_done_transfer (action);
                     break;
                 case Files.UndoActionType.MOVE:
+                    // The destination is known not to be trash:///
+                    // Moving back into trash, the destination is ~/.local/Trash/files
                     var uris = new GLib.List<GLib.File> ();
                     action.destinations.foreach ((uri) => uris.prepend (action.dest_dir.get_child (uri)));
                     if (uris != null) { /*Cancelled operation may result in empty list */
@@ -439,6 +441,7 @@ namespace Files {
             switch (action.action_type) {
                 case Files.UndoActionType.COPY:
                 case Files.UndoActionType.DUPLICATE:
+                    // The destination is known not to be trash:///
                     var uris = new GLib.List<GLib.File> ();
                     action.sources.foreach ((uri) => uris.prepend (action.src_dir.get_child (uri)));
                     if (uris != null) {
@@ -455,6 +458,7 @@ namespace Files {
                     undo_redo_done_transfer (action);
                     break;
                 case Files.UndoActionType.CREATELINK:
+                    // The destination is known not to be trash:///
                     var uris = new GLib.List<GLib.File> ();
                     action.sources.foreach ((uri) => uris.prepend (action.src_dir.get_child (uri)));
                     if (uris != null) {

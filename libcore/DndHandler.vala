@@ -34,6 +34,7 @@ namespace Files {
 
             if (drop_target.is_folder ()) {
                 var scheme = drop_target.get_target_location ().get_uri_scheme ();
+                // Handle trash destination with OperationManager.vala
                 if (scheme.has_prefix ("trash")) {
                     var uris = new Gee.LinkedList<string> ();
                     var n_files = 0;
@@ -49,17 +50,15 @@ namespace Files {
                         true, // Try trash
                         null // cancellable
                     );
-
-                    return true;
+                } else {
+                    Files.FileOperations.copy_move_link.begin (
+                        drop_file_list,
+                        drop_target.get_target_location (),
+                        action,
+                        widget,
+                        null
+                    );
                 }
-
-                Files.FileOperations.copy_move_link.begin (
-                    drop_file_list,
-                    drop_target.get_target_location (),
-                    action,
-                    widget,
-                    null
-                );
 
                 return true;
             } else if (drop_target.is_executable ()) {
