@@ -246,8 +246,8 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             /// The singular/plural form will be used depending on the remaining time (i.e. the "%s left" part).
             /// The order in which %s appear can be changed by using the right positional specifier.
             var s = ngettext (
-                "%s of %s \xE2\x80\x94 %s and %d file(s) left (%s/sec)",
-                "%s of %s \xE2\x80\x94 %s and %d file(s) left (%s/sec)",
+                "%s of %s \xE2\x80\x94 %s and %d files left (%s/sec)",
+                "%s of %s \xE2\x80\x94 %s and %d files left (%s/sec)",
                 formated_time_unit
             ).printf (num_bytes_format, total_size_format, formated_remaining_time, files_left, transfer_rate_format); //FIXME Remove opaque hex
             progress.take_details ((owned) s);
