@@ -2950,6 +2950,11 @@ marlin_file_operations_copy_move_link (GList               *files,
                                        GAsyncReadyCallback  callback,
                                        gpointer             user_data)
 {
+    if (g_file_has_uri_scheme (target_dir, "trash")) {
+        g_critical ("Unexpected destination trash:///. Not handled");
+        return;
+    }
+
     GTask *task;
     GList *p;
     GFile *src_dir;
@@ -2957,8 +2962,10 @@ marlin_file_operations_copy_move_link (GList               *files,
     gboolean target_is_mapping;
     gboolean have_nonmapping_source;
 
+
     target_is_mapping = FALSE;
     have_nonmapping_source = FALSE;
+
 
     if (g_file_has_uri_scheme (target_dir, "burn")) {
         target_is_mapping = TRUE;
@@ -2994,21 +3001,6 @@ marlin_file_operations_copy_move_link (GList               *files,
     }
 
     if (copy_action == GDK_ACTION_COPY) {
-        if (g_file_has_uri_scheme (target_dir, "trash")) {
-            char *primary = g_strdup (_("Cannot copy into trash."));
-            char *secondary = g_strdup (_("It is not permitted to copy files into the trash"));
-            pf_dialogs_show_error_dialog (primary,
-                                          secondary,
-                                          parent_window);
-
-            g_task_return_new_error (task,
-                                     G_IO_ERROR,
-                                     G_IO_ERROR_FAILED,
-                                     _("It is not permitted to copy files into the trash"));
-            g_clear_object (&task);
-            return;
-        }
-
         /* done_callback is (or should be) a CopyCallBack or null in this case */
         src_dir = g_file_get_parent (files->data);
         if (target_dir == NULL ||
@@ -3033,27 +3025,13 @@ marlin_file_operations_copy_move_link (GList               *files,
         }
 
     } else if (copy_action == GDK_ACTION_MOVE) {
-        if (g_file_has_uri_scheme (target_dir, "trash")) {
-            /* done_callback is (or should be) a DeleteCallBack or null in this case */
-            g_message ("copy action move to trash - should call OperationsManager directly");
-
-            // job = marlin_file_operations_copy_move_job_new (parent_window, files, target_dir);
-            // common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
-            // marlin_file_operations_delete (files,
-            //                                parent_window,
-            //                                TRUE,
-            //                                cancellable,
-            //                                copy_move_link_delete_finish,
-            //                                g_steal_pointer (&task));
-        } else {
-            /* done_callback is (or should be) a CopyCallBack or null in this case */
-            marlin_file_operations_move (files,
-                                         target_dir,
-                                         parent_window,
-                                         cancellable,
-                                         copy_move_link_move_finish,
-                                         g_steal_pointer (&task));
-        }
+        /* done_callback is (or should be) a CopyCallBack or null in this case */
+        marlin_file_operations_move (files,
+                                     target_dir,
+                                     parent_window,
+                                     cancellable,
+                                     copy_move_link_move_finish,
+                                     g_steal_pointer (&task));
     } else {
         marlin_file_operations_link (files,
                                      target_dir,
