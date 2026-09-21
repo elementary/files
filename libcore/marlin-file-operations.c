@@ -65,13 +65,13 @@ static void delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
                          TransferInfo *transfer_info,
                          gboolean toplevel);
 
-static void
-delete_dir (FilesFileOperationsDeleteJob *del_job, GFile *dir,
-            gboolean *skipped_file,
-            SourceInfo *source_info,
-            TransferInfo *transfer_info,
-            gboolean toplevel)
-{
+// static void
+// delete_dir (FilesFileOperationsDeleteJob *del_job, GFile *dir,
+//             gboolean *skipped_file,
+//             SourceInfo *source_info,
+//             TransferInfo *transfer_info,
+//             gboolean toplevel)
+// {
 //     FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
 //     GFileInfo *info;
 //     GError *error;
@@ -239,7 +239,7 @@ delete_dir (FilesFileOperationsDeleteJob *del_job, GFile *dir,
 //     if (local_skipped_file) {
 //         *skipped_file = TRUE;
 //     }
-}
+// }
 
 // static void
 // delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
@@ -362,9 +362,9 @@ delete_dir (FilesFileOperationsDeleteJob *del_job, GFile *dir,
 // }
 
 
-static void
-trash_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_skipped)
-{
+// static void
+// trash_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_skipped)
+// {
 //     GList *l;
 //     GFile *file;
 //     GList *to_delete;
@@ -534,7 +534,7 @@ trash_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_ski
 //         delete_files (del_job, to_delete, files_skipped);
 //         g_list_free (to_delete);
 //     }
-}
+// }
 
 // static void
 // delete_job (GTask *task,
@@ -626,33 +626,33 @@ trash_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_ski
 //                                GAsyncReadyCallback  callback,
 //                                gpointer             user_data)
 // {
-//     g_return_if_fail (files != NULL);
+    // g_return_if_fail (files != NULL);
 
-//     GTask *task;
-//     FilesFileOperationsDeleteJob *job;
-//     FilesFileOperationsCommonJob *common;
+    // GTask *task;
+    // FilesFileOperationsDeleteJob *job;
+    // FilesFileOperationsCommonJob *common;
 
-//     /* TODO: special case desktop icon link files ... */
+    // /* TODO: special case desktop icon link files ... */
 
-//     job = marlin_file_operations_delete_job_new (parent_window, files, try_trash);
-//     common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
+    // job = marlin_file_operations_delete_job_new (parent_window, files, try_trash);
+    // common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
 
-//     if (try_trash) {
-//         marlin_file_operations_common_job_inhibit_power_manager (common, _("Trashing Files"));
-//     } else {
-//         marlin_file_operations_common_job_inhibit_power_manager (common, _("Deleting Files"));
-//     }
+    // if (try_trash) {
+    //     marlin_file_operations_common_job_inhibit_power_manager (common, _("Trashing Files"));
+    // } else {
+    //     marlin_file_operations_common_job_inhibit_power_manager (common, _("Deleting Files"));
+    // }
 
-//     if (try_trash) {
-//         common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
-//         GFile* src_dir = g_file_get_parent (files->data);
-//         files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
-//     }
+    // if (try_trash) {
+    //     common->undo_redo_data = files_undo_action_data_new (MARLIN_UNDO_MOVETOTRASH, g_list_length(files));
+    //     GFile* src_dir = g_file_get_parent (files->data);
+    //     files_undo_action_data_set_src_dir (common->undo_redo_data, src_dir);
+    // }
 
-//     task = g_task_new (NULL, cancellable, callback, user_data);
-//     g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
-//     g_task_run_in_thread (task, delete_job);
-//     g_object_unref (task);
+    // task = g_task_new (NULL, cancellable, callback, user_data);
+    // g_task_set_task_data (task, job, (GDestroyNotify) marlin_file_operations_common_job_unref);
+    // g_task_run_in_thread (task, delete_job);
+    // g_object_unref (task);
 // }
 
 // gboolean
@@ -3035,7 +3035,10 @@ marlin_file_operations_copy_move_link (GList               *files,
     } else if (copy_action == GDK_ACTION_MOVE) {
         if (g_file_has_uri_scheme (target_dir, "trash")) {
             /* done_callback is (or should be) a DeleteCallBack or null in this case */
+            g_message ("copy action move to trash - should call OperationsManager directly");
 
+            // job = marlin_file_operations_copy_move_job_new (parent_window, files, target_dir);
+            // common = MARLIN_FILE_OPERATIONS_COMMON_JOB (job);
             // marlin_file_operations_delete (files,
             //                                parent_window,
             //                                TRUE,

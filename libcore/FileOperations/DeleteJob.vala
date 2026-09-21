@@ -287,6 +287,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     report_trash_progress ();
                 } else {
                     skipped.prepend (file);
+                    // Should we try to delete all skipped files?
                     warning ("skipping trash");
                     success = false;
                 }
@@ -376,6 +377,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             warning ("error trashing %s, %s", file.get_uri (), e.message);
             success = false; //Ignore some errors?
             //TODO handle some errors further
+            if (skip_all_error) { // maybe set by scan files
+                return false;
+            } else {
+
+            }
         } finally {
             report_trash_progress ();
         }
