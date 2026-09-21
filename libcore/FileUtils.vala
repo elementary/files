@@ -437,14 +437,17 @@ namespace Files.FileUtils {
         if (file == null) {
             return;
         }
+
         var path = file.get_path ();
         if (path == null) {
             return;
         }
+
         int fd = Posix.open (path, Posix.O_RDONLY);
         if (fd < 0) {
             return;
         }
+
         Posix.fsync (fd);
         Posix.close (fd);
     }
