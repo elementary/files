@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-20 10:25+0000\n"
-"PO-Revision-Date: 2026-09-11 22:01+0000\n"
+"PO-Revision-Date: 2026-09-21 00:46+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementaryos.org/projects/files/files/"
 "uk/>\n"
@@ -1004,10 +1004,8 @@ msgid "Unable to mount '%s'"
 msgstr "Неможливо змонтувати «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:268
-#, fuzzy
-#| msgid "Not mounted"
 msgid "Do Not Unmount"
-msgstr "Не змонтовано"
+msgstr "Не від'єднано"
 
 #: libcore/FileOperations/MountUtils.vala:269
 msgid "Unmounting now might cause a process to fail or to lose data"
@@ -1018,23 +1016,23 @@ msgstr ""
 msgid ""
 "If you wait, the resource will unmount when all processes finish using it"
 msgstr ""
+"Якщо ви зачекаєте, ресурс буде від’єднано, коли всі процеси завершать його "
+"використання"
 
 #: libcore/FileOperations/MountUtils.vala:271
 #, c-format
 msgid "Otherwise choose '%s'"
-msgstr ""
+msgstr "В іншому випадку оберіть «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:289
-#, fuzzy, c-format
-#| msgid "The resource '%s' is in use by other processes"
+#, c-format
 msgid "Please wait. The resource '%s' is in use"
-msgstr "Ресурс «%s» використовується іншим процесом"
+msgstr "Будь ласка, зачекайте. Ресурс «%s» використовується"
 
 #: libcore/FileOperations/MountUtils.vala:291
-#, fuzzy, c-format
-#| msgid "The resource '%s' is in use by other processes"
+#, c-format
 msgid "Please wait. The resource '%s' is in use by other processes"
-msgstr "Ресурс «%s» використовується іншим процесом"
+msgstr "Будь ласка, зачекайте. Ресурс «%s» використовується іншим процесом"
 
 #: libcore/FileOperations/MountUtils.vala:293
 #, c-format
@@ -2602,41 +2600,37 @@ msgstr "Пошук…"
 #. TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:157
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s - %s (%s)"
 
 #. TRANSLATORS arguments are in order: filename, formatted filetype
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:172
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #: src/View/Widgets/OverlayBar.vala:181
-#, fuzzy, c-format
-#| msgid "%u items selected (%s)"
+#, c-format
 msgid "%u file selected (%s)"
 msgid_plural "%u files selected (%s)"
-msgstr[0] "%u елементів вибрано (%s)"
-msgstr[1] "%u елементів вибрано (%s)"
-msgstr[2] "%u елементів вибрано (%s)"
+msgstr[0] "Вибрано %u файл (%s)"
+msgstr[1] "Вибрано %u файли (%s)"
+msgstr[2] "Вибрано %u файлів (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:186
-#, fuzzy, c-format
-#| msgid "%u folders"
+#, c-format
 msgid "%u folder selected"
 msgid_plural "%u folders selected"
-msgstr[0] "%u теки"
-msgstr[1] "%u теки"
-msgstr[2] "%u теки"
+msgstr[0] "Вибрано %u теку"
+msgstr[1] "Вибрано %u теки"
+msgstr[2] "Вибрано %u тек"
 
 #: src/View/Widgets/OverlayBar.vala:190
-#, fuzzy, c-format
-#| msgid " selected"
+#, c-format
 msgid "%s and %s selected"
-msgstr " вибрано"
+msgstr "Вибрано %s і %s"
 
 #. TRANSLATORS: 'size' refers to the disk space used by the selected folder
 #: src/View/Widgets/OverlayBar.vala:242
@@ -2648,64 +2642,55 @@ msgstr "невідомий розмір"
 #: src/View/Widgets/OverlayBar.vala:247
 #, c-format
 msgid "more than %s used"
-msgstr ""
+msgstr "Використано більше ніж %s"
 
 #. TRANSLATORS: %s will be substituted by the disk space used by the selected folder
 #. The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:251
-#, fuzzy, c-format
-#| msgid "%s used of %s"
+#, c-format
 msgid "%s used"
-msgstr "Використано %s з %s"
+msgstr "Використано %s"
 
 #: src/View/Widgets/OverlayBar.vala:260
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s, %s) - %s"
-msgstr "%s (%s, %s)"
+msgstr "%s - %s (%s, %s, %s) - %s"
 
 #: src/View/Widgets/OverlayBar.vala:263
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
-#| msgid_plural "%u sub-folders, "
+#, c-format
 msgid "%u accessible sub-folder"
 msgid_plural "%u accessible sub-folders"
-msgstr[0] "%u вкладена тека, "
-msgstr[1] "%u вкладених теки, "
-msgstr[2] "%u вкладених тек, "
+msgstr[0] "Доступна %u вкладена тека"
+msgstr[1] "Доступні %u вкладені теки"
+msgstr[2] "Доступні %u вкладених тек"
 
 #: src/View/Widgets/OverlayBar.vala:264
-#, fuzzy, c-format
-#| msgid "Inaccessible"
+#, c-format
 msgid "%u accessible file"
 msgid_plural "%u accessible files"
-msgstr[0] "Недоступно"
-msgstr[1] "Недоступно"
-msgstr[2] "Недоступно"
+msgstr[0] "Доступний %u файл"
+msgstr[1] "Доступні %u файли"
+msgstr[2] "Доступні %u файлів"
 
 #: src/View/Widgets/OverlayBar.vala:265
-#, fuzzy, c-format
-#| msgid "Inaccessible"
+#, c-format
 msgid "%u inaccessible file"
 msgid_plural "%u inaccessible files"
-msgstr[0] "Недоступно"
-msgstr[1] "Недоступно"
-msgstr[2] "Недоступно"
+msgstr[0] "Недоступний %u файл"
+msgstr[1] "Недоступні %u файли"
+msgstr[2] "Недоступні %u файлів"
 
 #. TRANSLATORS arguments are in order: filename, filetype, subfolder count, file count, diskspace
 #.  The file and folder counts are in the form "<number> files" translated with ngettext
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #.  The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:273
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s) - %s"
-msgstr "%s (%s, %s)"
+msgstr "%s - %s (%s, %s) - %s"
 
 #: src/View/Widgets/OverlayBar.vala:276
-#, fuzzy, c-format
-#| msgid "%u subfolder"
-#| msgid_plural "%u subfolders"
+#, c-format
 msgid "%u sub-folder"
 msgid_plural "%u sub-folders"
 msgstr[0] "%u вкладена тека"
@@ -2716,11 +2701,9 @@ msgstr[2] "%u вкладених тек"
 #.  format is from GLib.ContentType.get_description ()
 #.  size is from GLib.format_size ()
 #: src/View/Widgets/OverlayBar.vala:362
-#, fuzzy, c-format
-#| msgid "%s of %s — %s left (%s/sec)"
-#| msgid_plural "%s of %s — %s left (%s/sec)"
+#, c-format
 msgid "%s (%s — %i × %i)"
-msgstr "%s з %s — залишилась %s (%s/с)"
+msgstr "%s (%s — %i × %i)"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
