@@ -54,6 +54,8 @@ public class Files.FileOperations.CommonJob {
     protected bool skip_all_error;
     private GLib.GenericSet<GLib.File>? skip_readdir_error_set;
     protected GLib.GenericSet<GLib.File>? skip_files;
+    protected CommonJob.SourceInfo? source_info;
+    protected CommonJob.TransferInfo? transfer_info;
 
     public CommonJob (Gtk.Window? parent_window = null) {
         this.parent_window = parent_window;
@@ -430,11 +432,14 @@ public class Files.FileOperations.CommonJob {
     }
 
     protected SourceInfo scan_sources (GLib.List<GLib.File> files) {
-        var source_info = new SourceInfo ();
+        // Continue to return a (copy) source_info for now as it is needed
+        // by marlin_file_operations. Not needed by Vala DeleteJob and EmptyTrashJob
+        // Ensure start with fresh info
+        source_info = new SourceInfo ();
         report_count_progress (source_info);
         foreach (var file in files) {
             if (aborted ()) {
-                return source_info;
+                return source_info.copy ();
             }
 
             scan_file (file, source_info);
@@ -442,7 +447,7 @@ public class Files.FileOperations.CommonJob {
 
         /* Make sure we report the final count */
         report_count_progress (source_info);
-        return source_info;
+        return source_info.copy ();
     }
 
 

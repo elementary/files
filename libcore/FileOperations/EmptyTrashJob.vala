@@ -72,7 +72,7 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
     }
 
     private void internal_empty_trash () {
-        source_info = scan_sources (files);
+        scan_sources (files);
         if (aborted ()) {
             // There were problematic files and the user chose to cancel
             return;
