@@ -285,7 +285,7 @@ public class Files.View.Window : Hdy.ApplicationWindow {
         content_box.add (headerbar);
         content_box.add (tab_box);
 
-        lside_pane.pack2 (content_box, true, true);
+        lside_pane.pack2 (content_box, true, false);
 
         var header_group = new Hdy.HeaderGroup ();
         header_group.add_header_bar (sidebar.headerbar);
