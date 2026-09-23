@@ -2995,11 +2995,7 @@ namespace Files {
 
                 case Gdk.Key.Delete:
                 case Gdk.Key.KP_Delete:
-                    if (!is_writable) {
-                        PF.Dialogs.show_warning_dialog (_("Cannot remove files from here"),
-                                                        _("You do not have permission to change this location"),
-                                                        window as Gtk.Window);
-                    } else if (!renaming) {
+                    if (!renaming) {
                         trash_or_delete_selected_files (in_trash || Files.is_admin () || only_shift_pressed);
                         res = true;
                     }
