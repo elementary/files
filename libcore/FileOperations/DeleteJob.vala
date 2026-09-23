@@ -184,74 +184,99 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         Cancellable? cancellable
     ) {
         int n_skipped = 0;
-        List<GLib.File> to_delete = null;
+        List<GLib.File> delete_instead_of_trash = null;
+        unowned List<GLib.File> to_delete = null;
+        // List<GLib.File> to_trash = null;
 
-        if (try_trash && trash_files (cancellable, out n_skipped, out to_delete)) {
-            return true; // All files successfully trashed - finish now
-        } else if (aborted ()) {
-            return false;
+        // Check whether we can trash and whether must confirm delete_all
+        // Note: Some of these checks have already been done in e.g AbstractDirecoryView
+        // Port C code as is for now
+        //TODO: Deduplicate checks
+        var must_confirm_delete = true;
+        var must_confirm_delete_in_trash = true;
+        GLib.File? file = files.data;
+        // We can assume all files in a selection have the same uri scheme so just check first
+        if (try_trash && file.has_uri_scheme ("trash")) {
+            must_confirm_delete_in_trash = true;
+            try_trash = false;
+        } else if (can_delete_without_confirm (file)) {
+            must_confirm_delete = false;
+            try_trash = false;
+        } else if (try_trash && file.has_uri_scheme ("smb")) {
+            must_confirm_delete = true;
+            try_trash = false;
         }
 
-        scan_sources (files);
+        if (try_trash) {
+            if (trash_files (cancellable, out n_skipped, out delete_instead_of_trash)) {
+                return true; // All files successfully trashed - finish now
+            } else if (aborted ()) {
+                return false;
+            } else {
+                warning ("%i files skipped trash", n_skipped);
+            }
+
+            transfer_info.reset ();
+            source_info.reset ();
+        }
+
+        // Try to delete files or failed trash files
+        // unowned List<GLib.File> next_files = null;
+        if (!try_trash) {
+            to_delete = files;
+        } else {
+            to_delete = delete_instead_of_trash;
+        }
+
+        int n_not_deleted;
+        delete_files (to_delete, cancellable, out n_not_deleted);
+        progress.finished ();
+
+        //TODO Warn of any files that were not trash or deleted
+
+        return n_not_deleted > 0;
+    }
+
+    private bool delete_files (
+        List<GLib.File> to_delete,
+        Cancellable? cancellable,
+        out int n_not_deleted
+    ) {
+        // Recursively check all files info available
+        // Calculate number of files and number of bytes to transfer
+        scan_sources (to_delete);
         if (aborted ()) {
             // There were problematic files (info unavailable) and the user chose to cancel
             return false;
         }
 
-        transfer_info.reset ();
-
-        // Try to Delete files or skipped trash files
-        GLib.File? file = null;
-        unowned List<GLib.File> next_files = null;
-
-        if (!try_trash) {
-            warning ("immediate delete");
-            file = files.data;
-            next_files = files.first ();
-        } else if (to_delete.data != null) {
-            // Some files could not be trashed and the user chose to delete instead
-            file = to_delete.data;
-            next_files = to_delete.first ();
-        }
-
+        //TODO Can we restart progress after finished in trash files?
         progress.started (); // Bypass delay
 
-        while (file != null) {
-            if (!should_skip_file (file)) {
-                to_delete.prepend (file);
-            }
-
-            next_files = next_files.next;
-            file = next_files != null ? next_files.data : null;
-        }
-
-        file = to_delete.data;
-        next_files = to_delete.first ();
+        GLib.File file = to_delete.data;
+        unowned List<GLib.File> next_files = to_delete.first ();
         // Permanent deletion is always confirmed except for certain schemes which are never confirmed
         // We can assume selection is always from the same folder (scheme). There is no way in Files to select from
         // different folders.
-        var some_not_deleted = true;
+        n_not_deleted = 0;
         if (can_delete_without_confirm (file) || confirm_delete_directly (to_delete)) {
-            some_not_deleted = false;
             while (file != null) {
-                if (delete_file (file, cancellable)) {
+                if (!should_skip_file (file) && delete_file (file, cancellable)) {
                     FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
                     transfer_info.num_files++;
                     report_delete_progress ();
                 } else {
-                    some_not_deleted = true;
+                    n_not_deleted++;
                 }
 
                 next_files = next_files.next;
                 file = next_files != null ? next_files.data : null;
             }
+        } else {
+            n_not_deleted = (int) to_delete.length ();
         }
 
-        progress.finished ();
-
-        //TODO Warn of any files that were not trash or deleted
-
-        return !some_not_deleted;
+        return n_not_deleted > 0;
     }
 
     private bool trash_files (
@@ -262,6 +287,8 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         // We haven't scanned sources so prepare infos
         source_info.reset ();
         transfer_info.reset ();
+
+        // We always try to trash all files in the selection
         source_info.num_files = (int) files.length ();
 
         GLib.File? file = null;
