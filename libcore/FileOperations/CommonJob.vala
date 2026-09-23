@@ -34,6 +34,12 @@ public class Files.FileOperations.CommonJob {
                 num_files_since_progress = this.num_files_since_progress,
             };
         }
+
+        public void reset () {
+            num_files = 0;
+            num_bytes = 0;
+            num_files_since_progress = 0;
+        }
     }
 
     [Compact]
@@ -43,6 +49,13 @@ public class Files.FileOperations.CommonJob {
         internal int64 num_bytes;
         internal uint64 last_report_time;
         internal int last_reported_files_left;
+
+        public void reset () {
+            num_files = 0;
+            num_bytes = 0;
+            last_report_time = 0;
+            last_reported_files_left = -1;
+        }
     }
 
     public Gtk.Window? parent_window;
@@ -60,6 +73,8 @@ public class Files.FileOperations.CommonJob {
     public CommonJob (Gtk.Window? parent_window = null) {
         this.parent_window = parent_window;
         inhibit_cookie = 0;
+        source_info = new SourceInfo ();
+        transfer_info = new TransferInfo ();
         progress = new PF.Progress.Info ();
         cancellable = progress.cancellable;
         undo_redo_data = null;
@@ -433,13 +448,13 @@ public class Files.FileOperations.CommonJob {
 
     // Build a list of files that cannot be operated on due to lack of permission
     // or inaccessible information and the user chose to skip rather than abort.
-    protected SourceInfo scan_sources (GLib.List<GLib.File> files) {
+    protected SourceInfo scan_sources (GLib.List<GLib.File> files) requires (source_info.num_files == 0) {
         // Continue to return a (copy) source_info for now as it is needed
         // by marlin_file_operations copy & move jobs.
         // Not needed by Vala DeleteJob and EmptyTrashJob
 
         // Ensure start with fresh info
-        source_info = new SourceInfo ();
+        source_info.reset (); //TODO Is this necessary? Scan sources should only be called once
         report_count_progress (source_info);
         foreach (var file in files) {
             if (aborted ()) {

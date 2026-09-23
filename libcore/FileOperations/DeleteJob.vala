@@ -198,7 +198,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             return false;
         }
 
-        transfer_info = new TransferInfo ();
+        transfer_info.reset ();
 
         // Try to Delete files or skipped trash files
         GLib.File? file = null;
@@ -260,9 +260,9 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         out List<GLib.File> to_delete
     ) {
         // We haven't scanned sources so prepare infos
-        source_info = new SourceInfo ();
+        source_info.reset ();
+        transfer_info.reset ();
         source_info.num_files = (int) files.length ();
-        transfer_info = new TransferInfo ();
 
         GLib.File? file = null;
         unowned List<GLib.File> next_files = null;

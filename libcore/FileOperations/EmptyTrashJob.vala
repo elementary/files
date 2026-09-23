@@ -78,7 +78,6 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
             return;
         }
 
-        transfer_info = new TransferInfo ();
         var success = true;
         foreach (unowned GLib.File dir in files) {
             if (aborted ()) {
