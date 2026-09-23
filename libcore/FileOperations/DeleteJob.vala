@@ -276,6 +276,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         GLib.File? file = null;
         unowned List<GLib.File> next_files = null;
         skipped = 0;
+        to_delete = null;
         file = files.data;
         next_files = files.first ();
 
@@ -302,7 +303,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 } else {
                     // Try to get infos to determine why trashing failed
                     // Note: scan_sources is not called in advance for trashing
-                    bool? can_write, parent_can_write, readonly_fs, is_folder = null;
+                    bool? can_write, parent_can_write, readonly_fs, is_folder;
                     var have_info = get_info_for_trash_file_fail (
                         file,
                         out can_write,
@@ -417,6 +418,10 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     ) {
 
         var have_info = false;
+        can_write = null;
+        is_folder = null;
+        parent_can_write = null;
+        readonly_fs = null;
         try {
             var info = file.query_info (
                 FileAttribute.ACCESS_CAN_WRITE + "," + FileAttribute.STANDARD_TYPE,
