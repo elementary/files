@@ -1399,6 +1399,7 @@ namespace Files {
         }
 
         private void on_directory_file_deleted (Directory dir, Files.File file) {
+            warning ("on dir file deleted");
             /* The deleted file could be the whole directory, which is not in the model but that
              * that does not matter.  */
             file.exists = false;

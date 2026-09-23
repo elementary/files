@@ -325,13 +325,16 @@ namespace Files {
 
         // For scrolling
         protected override void freeze_child_notify () {
+            warning ("freeze notify");
             tree.freeze_child_notify ();
         }
 
         protected override void thaw_child_notify () {
             // Do not prematurely thaw tree when loading
+            warning ("thaw notify");
             if (!tree_frozen) {
                 tree.thaw_child_notify ();
+                queue_draw ();
             }
 
         }
