@@ -431,9 +431,13 @@ public class Files.FileOperations.CommonJob {
         }
     }
 
+    // Build a list of files that cannot be operated on due to lack of permission
+    // or inaccessible information and the user chose to skip rather than abort.
     protected SourceInfo scan_sources (GLib.List<GLib.File> files) {
         // Continue to return a (copy) source_info for now as it is needed
-        // by marlin_file_operations. Not needed by Vala DeleteJob and EmptyTrashJob
+        // by marlin_file_operations copy & move jobs.
+        // Not needed by Vala DeleteJob and EmptyTrashJob
+
         // Ensure start with fresh info
         source_info = new SourceInfo ();
         report_count_progress (source_info);

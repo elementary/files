@@ -17,12 +17,10 @@
  */
 
 public class Files.FileOperations.DeleteJob : CommonJob {
-    public bool try_trash;
-    // protected bool user_cancel;
-    protected bool delete_all;
-
-
     protected GLib.List<GLib.File> files;
+
+    private bool try_trash;
+    private bool delete_all;
 
     ~DeleteJob () {
         Files.FileChanges.consume_changes (true);
@@ -35,7 +33,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     }
 
     public DeleteJob (Gtk.Window? parent_window, Gee.LinkedList<string>? uris, bool try_trash) {
-        this.parent_window = parent_window;
+        base (parent_window);
         this.try_trash = try_trash;
         if (uris != null) {
             foreach (var uri in uris) {
@@ -43,7 +41,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             }
         }
 
-        // user_cancel = false;
         if (try_trash) {
             undo_redo_data = new Files.UndoActionData (MOVETOTRASH, (int) uris.size);
             undo_redo_data.set_src_dir (
@@ -51,11 +48,8 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             );
         }
 
+        // Will be uninhibited in CommonJob destructor
         inhibit_power_manager (try_trash ? _("Trashing Files") : _("Deleting Files"));
-
-        source_info = new SourceInfo ();
-        transfer_info = new TransferInfo ();
-
     }
 
     protected override unowned string get_scan_primary () {
@@ -189,9 +183,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     public async bool trash_or_delete_files (
         Cancellable? cancellable
     ) {
-        // Build a list of files that cannot be operated on due to lack of permission
-        // or inaccessible information and the user chose to skip rather than abort.
-
         int n_skipped = 0;
         List<GLib.File> to_delete = null;
 
@@ -203,7 +194,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
         scan_sources (files);
         if (aborted ()) {
-            // There were problematic files and the user chose to cancel
+            // There were problematic files (info unavailable) and the user chose to cancel
             return false;
         }
 
