@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-22 11:16+0000\n"
-"PO-Revision-Date: 2026-09-22 11:16+0000\n"
+"PO-Revision-Date: 2026-09-24 01:03+0000\n"
 "Last-Translator: David M <rbndavid@gmail.com>\n"
 "Language-Team: Catalan <https://l10n.elementaryos.org/projects/files/files/"
 "ca/>\n"
@@ -1155,11 +1155,11 @@ msgstr "%s de %s"
 
 #: libcore/FileOperations/CopyMoveJob.vala:228
 msgid "Please wait, finishing move…"
-msgstr ""
+msgstr "Si us plau, espereu; s'acaba el desplaçament…"
 
 #: libcore/FileOperations/CopyMoveJob.vala:229
 msgid "Please wait, finishing copy…"
-msgstr ""
+msgstr "Si us plau, espereu; s'acaba la còpia…"
 
 #. TRANSLATORS: The two first %s and the last %s will expand to a size
 #. like "2 bytes" or "3 MB", the third %s to a time duration like
