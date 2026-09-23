@@ -50,18 +50,18 @@
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
 
-/* Since this happens on a thread we can't use the global prefs object */
-static gboolean
-should_confirm_trash (void)
-{
-    return files_preferences_get_confirm_trash (files_preferences_get_default ());
-}
+// /* Since this happens on a thread we can't use the global prefs object */
+// static gboolean
+// should_confirm_trash (void)
+// {
+//     return files_preferences_get_confirm_trash (files_preferences_get_default ());
+// }
 
-static void delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
-                         gboolean *skipped_file,
-                         SourceInfo *source_info,
-                         TransferInfo *transfer_info,
-                         gboolean toplevel);
+// static void delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
+//                          gboolean *skipped_file,
+//                          SourceInfo *source_info,
+//                          TransferInfo *transfer_info,
+//                          gboolean toplevel);
 
 // static void
 // delete_dir (FilesFileOperationsDeleteJob *del_job, GFile *dir,
