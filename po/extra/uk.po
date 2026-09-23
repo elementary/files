@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-20 10:25+0000\n"
+"POT-Creation-Date: 2026-09-22 11:16+0000\n"
 "PO-Revision-Date: 2026-09-21 00:46+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementaryos.org/projects/files/extra/"
@@ -184,8 +184,8 @@ msgstr "Можливість встановити типовий застосу�
 #: data/files.metainfo.xml.in.in:133
 msgid "The scrollbar no longer overlays the modification date in List view"
 msgstr ""
-"Смуга прокрутки більше не перекриває дату редагування в режимі перегляду «"
-"Список»"
+"Смуга прокрутки більше не перекриває дату редагування в режимі перегляду "
+"«Список»"
 
 #: data/files.metainfo.xml.in.in:150
 msgid "Navigation within the Trash folder now works properly"
@@ -193,7 +193,8 @@ msgstr "Навігація в теці «Кошик» тепер працює н
 
 #: data/files.metainfo.xml.in.in:151
 msgid "The view now refreshes properly after permanent deletion of a folder"
-msgstr "Тепер вікно оновлюється належним чином після остаточного видалення теки"
+msgstr ""
+"Тепер вікно оновлюється належним чином після остаточного видалення теки"
 
 #: data/files.metainfo.xml.in.in:152
 msgid ""
