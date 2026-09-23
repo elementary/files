@@ -931,7 +931,6 @@ namespace Files {
         }
 
         private void trash_or_delete_files (GLib.List<Files.File> file_list,
-                                            bool delete_if_already_in_trash,
                                             bool delete_immediately) {
 
             var locations = new Gee.LinkedList<string> ();
@@ -1113,7 +1112,7 @@ namespace Files {
          */
             GLib.List<Files.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
-                trash_or_delete_files (selection, true, delete_immediately);
+                trash_or_delete_files (selection, delete_immediately);
             }
         }
 
