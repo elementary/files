@@ -60,19 +60,20 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
                 message_dialog.response.connect ((response) => {
                     message_dialog.destroy ();
                     if (response == Gtk.ResponseType.YES) {
-                        internal_empty_trash ();
+                        internal_empty_trash.begin ();
                     }
                 });
 
                 message_dialog.present ();
             }
         } else {
-            internal_empty_trash ();
+            internal_empty_trash.begin ();
         }
     }
 
-    private void internal_empty_trash () {
+    private async void internal_empty_trash () {
         scan_sources (files);
+        progress.started ();
         if (aborted ()) {
             // There were problematic files and the user chose to cancel
             return;
@@ -86,10 +87,12 @@ public class Files.FileOperations.EmptyTrashJob : DeleteJob {
             }
 
             // Only delete children of dir
-            if (!delete_dir_children (dir, cancellable)) {
+            if (!(yield delete_dir_children (dir, cancellable))) {
                 success = false;
             }
         }
+
+        progress.finished ();
 
         if (!success) {
             //TODO inform user or return false

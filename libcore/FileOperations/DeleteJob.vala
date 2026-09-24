@@ -231,14 +231,14 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
         warning ("%u files to delete", to_delete.length ());
         int n_not_deleted;
-        delete_files (to_delete, cancellable, out n_not_deleted);
+        yield delete_files (to_delete, cancellable, out n_not_deleted);
         progress.finished ();
         //TODO Warn of any files that were not trash or deleted
 
         return n_not_deleted == 0;
     }
 
-    private bool delete_files (
+    private async bool delete_files (
         List<GLib.File> to_delete,
         Cancellable? cancellable,
         out int n_not_deleted
@@ -276,7 +276,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 continue;
             }
 
-            if (!delete_file (file, cancellable)) {
+            if (!(yield delete_file (file, cancellable))) {
                 n_not_deleted++;
             }
 
@@ -289,7 +289,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     }
 
     // Returns true if the file was actually deleted
-    private bool delete_file (
+    private async bool delete_file (
         GLib.File file,
         Cancellable? cancellable
     ) {
@@ -306,7 +306,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 abort_job ();
                 return false;
             } else if (e is IOError.NOT_EMPTY) {
-                return delete_non_empty_dir (file, cancellable);
+                return yield delete_non_empty_dir (file, cancellable);
                 // success = delete_non_empty_dir (file, cancellable);
             } else if (skip_all_error) {
                 return false;
@@ -568,15 +568,15 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         return have_info;
     }
     // This function calls and may be called back by delete_file
-    private bool delete_non_empty_dir (GLib.File dir, Cancellable? cancellable) {
-        if (delete_dir_children (dir, cancellable)) {
-            return delete_file (dir, cancellable);
+    private async bool delete_non_empty_dir (GLib.File dir, Cancellable? cancellable) {
+        if (yield delete_dir_children (dir, cancellable)) {
+            return yield delete_file (dir, cancellable);
         }
 
         return false;
     }
 
-    protected bool delete_dir_children (GLib.File dir, Cancellable? cancellable) {
+    protected async bool delete_dir_children (GLib.File dir, Cancellable? cancellable) {
         GLib.FileEnumerator? enumerator = null;
         try {
             enumerator = dir.enumerate_children (
@@ -616,7 +616,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     /* Skip: Do nothing, do not abort */
                     return false;
                 } else if (response == 2) {
-                    return delete_dir_children (dir, cancellable);
+                    return yield delete_dir_children (dir, cancellable);
                 } else {
                     assert_not_reached ();
                 }
@@ -630,7 +630,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             while ((info = enumerator.next_file (cancellable)) != null) {
                 var file = dir.get_child (info.get_name ());
                 // if fail to delete file than cannot delete folder so abandon  now
-                if (!delete_file (file, cancellable)) {  // This updates transfer_info and progress
+                if (!(yield delete_file (file, cancellable))) {  // This updates transfer_info and reports progress
                     return false;
                 }
             }
