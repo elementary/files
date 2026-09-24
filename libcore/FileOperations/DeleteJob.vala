@@ -594,9 +594,10 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 abort_job ();
                 return false;
             } else {
-                //TODO Do we need this - permission and other info related errors already picked up by
-                //scan sources before deleting?
                 var primary = (_("Error while deleting"));
+                //TODO Do we need this? - permission and other info related errors already picked up by
+                //scan sources or AbstractDirectoryView before deleting?
+                //Ported from marlin_file_operations for now
                 string secondary;
                 if (e is IOError.PERMISSION_DENIED) {
                     ///TRANSLATORS: %s is a placeholder for the basename of a file.

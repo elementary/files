@@ -61,15 +61,17 @@ static char * query_fs_type (GFile *file,
 //                          gboolean *skipped_file,
 //                          SourceInfo *source_info,
 //                          TransferInfo *transfer_info,
-//                          gboolean toplevel);
+//                          gboolean toplevel); //Moved to DeleteJob.delete_file ()
 
 // static void
 // delete_dir (FilesFileOperationsDeleteJob *del_job, GFile *dir,
 //             gboolean *skipped_file,
 //             SourceInfo *source_info,
 //             TransferInfo *transfer_info,
-//             gboolean toplevel)
-// {
+//             gboolean toplevel); // Moved functionality to DeleteJob.delete_non_empty+_dir () and associated functions
+
+
+
 //     FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
 //     GFileInfo *info;
 //     GError *error;

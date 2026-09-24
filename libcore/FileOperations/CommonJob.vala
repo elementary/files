@@ -448,6 +448,7 @@ public class Files.FileOperations.CommonJob {
 
     // Build a list of files that cannot be operated on due to lack of permission
     // or inaccessible information and the user chose to skip rather than abort.
+    // Only used by delete and empty trash operations
     protected SourceInfo scan_sources (GLib.List<GLib.File> files) requires (source_info.num_files == 0) {
         // Continue to return a (copy) source_info for now as it is needed
         // by marlin_file_operations copy & move jobs.
