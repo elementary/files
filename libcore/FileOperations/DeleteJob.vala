@@ -208,7 +208,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         }
 
         if (try_trash) {
-            if (trash_files (cancellable, out n_skipped, out delete_instead_of_trash)) {
+            if (yield trash_files (cancellable, out n_skipped, out delete_instead_of_trash)) {
                 warning ("all trashed OK");
                 return true; // All files successfully trashed - finish now
             } else if (aborted ()) {
@@ -348,12 +348,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         return true;
     }
 
-    private bool trash_files (
+    private async bool trash_files (
         Cancellable? cancellable,
         out int skipped,
         out List<GLib.File> to_delete
     ) {
-
         source_info.reset ();
         transfer_info.reset ();
 
@@ -371,12 +370,13 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         while (file != null) {
             var mtime = Files.FileUtils.get_file_modification_time (file);
             try {
-                file.trash (cancellable);
-                FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
-                undo_redo_data.add_trashed_file (
-                    file,
-                    mtime
-                );
+                if (yield file.trash_async (Priority.DEFAULT, cancellable)) {
+                    FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
+                    undo_redo_data.add_trashed_file (
+                        file,
+                        mtime
+                    );
+                }
             } catch (Error e) {
                 if (e is IOError.CANCELLED) {
                     abort_job ();
@@ -424,6 +424,10 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             } finally {
                 transfer_info.num_files++;
                 report_trash_progress ();
+            }
+
+            if (aborted ()) { // Due to progresswidget button pressed
+                break;
             }
 
             next_files = next_files.next;
