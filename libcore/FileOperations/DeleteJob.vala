@@ -590,8 +590,41 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 cancellable
             );
         } catch (Error e) {
-            warning ("error getting enumerator %s", e.message);
-            return false;
+            if (e is IOError.CANCELLED) {
+                abort_job ();
+                return false;
+            } else {
+                //TODO Do we need this - permission and other info related errors already picked up by
+                //scan sources before deleting?
+                var primary = (_("Error while deleting"));
+                string secondary;
+                if (e is IOError.PERMISSION_DENIED) {
+                    ///TRANSLATORS: %s is a placeholder for the basename of a file.
+                    secondary = _("The folder '%s' cannot be deleted because you do not have permissions to read it").printf (dir.get_basename ());
+                } else {
+                    secondary = _("There was an error reading the folder '%s'").printf (dir.get_basename ());
+                }
+
+                var response = run_warning (
+                    primary,
+                    secondary,
+                    e.message,
+                    false,
+                    CANCEL, SKIP, RETRY
+                );
+
+                if (response <= 0) { // Cancel button or close dialog
+                    abort_job ();
+                    return false;
+                } else if (response == 1) {
+                    /* Skip: Do nothing, do not abort */
+                    return false;
+                } else if (response == 2) {
+                    return delete_dir_children (dir, cancellable);
+                } else {
+                    assert_not_reached ();
+                }
+            }
         }
 
         var success = true;
