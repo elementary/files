@@ -342,7 +342,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 } else if (response == 2) { /* skip */
                     // Just continue
                     return false;
-                }
+                } //TODO Offer RETRY?
             }
         } finally {
             report_delete_progress ();
@@ -599,7 +599,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 //scan sources or AbstractDirectoryView before deleting?
                 //Ported from marlin_file_operations for now
                 string secondary;
-                if (e is IOError.PERMISSION_DENIED) {
+                if (e is IOError.PERMISSION_DENIED) { // Includes permissions on children
                     ///TRANSLATORS: %s is a placeholder for the basename of a file.
                     secondary = _("The folder '%s' cannot be deleted because you do not have permissions to read it").printf (dir.get_basename ());
                 } else {
@@ -628,29 +628,40 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             }
         }
 
-        var success = true;
+        //Note: Individual files may not be able to be deleted even when the parent directory has
+        //the required permissions. e.g. due to an "immutable" flag being set.
         try {
             unowned GLib.FileInfo? info = null;
             while ((info = enumerator.next_file (cancellable)) != null) {
                 var file = dir.get_child (info.get_name ());
-                success = delete_file (file, cancellable); // This updates transfer_info and progress
+                // if fail to delete file than cannot delete folder so abandon  now
+                if (!delete_file (file, cancellable)) {  // This updates transfer_info and progress
+                    return false;
+                }
             }
         } catch (Error e) {
+            //This only gets errors from enumerator.next_file (). The other contained functions do not throw errors
             if (e is IOError.CANCELLED) {
                 abort_job ();
             } else {
-                // Most other errors other than enushould already have been caught by scan_sources
+                // Most other errors other than enushould already have been handled by scan_sources
                 // or delete file. Just use a simple dialog for now and return failure
-                PF.Dialogs.show_warning_dialog (
-                    _("Files in the folder '%s' cannot be deleted").printf (dir.get_basename ()),
-                    _("There was an error getting information about the files in the folder"),
-                    parent_window
+                var primary = _("Files in the folder '%s' cannot be deleted").printf (dir.get_basename ());
+                var secondary = _("There was an error getting information about the files in the folder");
+
+                // For consistency use run_warning
+                var response = run_warning (
+                    primary,
+                    secondary,
+                    e.message,
+                    false,
+                    CANCEL
                 );
             }
 
             return false;
         }
 
-        return success;
+        return true;
     }
 }
