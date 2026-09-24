@@ -23,7 +23,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     private bool delete_all;
 
     ~DeleteJob () {
-        warning ("consuming changes");
         Files.FileChanges.consume_changes (true);
     }
 
@@ -408,7 +407,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                         e.message
                     );
 
-                    warning ("response %i", response);
                     if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
                         abort_job ();
                     } else if (response == 1) { /* skip all */
@@ -435,7 +433,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         progress.finished ();
 
         if (skipped == source_info.num_files) {
-            warning ("Skipped all files");
             abort_job ();
         }
 

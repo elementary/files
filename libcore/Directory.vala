@@ -950,7 +950,6 @@ public class Files.Directory : Object {
         this.file_hash.remove (gof.location);
 
         if (!gof.is_hidden || Preferences.get_default ().show_hidden_files) {
-            warning ("signal file deleted");
             file_deleted (gof);
         }
 
@@ -996,7 +995,6 @@ public class Files.Directory : Object {
 
     private void real_directory_changed (GLib.File _file, GLib.File? other_file, FileMonitorEvent event) {
         // Ignore events from transient streams
-        warning ("real dire chang");
         if (_file.get_basename ().has_prefix (".goutputstream")) {
             return;
         }
@@ -1159,21 +1157,14 @@ public class Files.Directory : Object {
 
     // Can we assume all from same parent location??
     public static void notify_files_removed (List<GLib.File> files) {
-    warning ("notify files removed");
-            warning ("number of files %u", files.length ());
-            warning ("first file %s", files.data.get_uri ());
         bool files_removed = false;
         Directory? first_dir = cache_lookup_parent (files.data);
         if (first_dir != null) {
-            warning ("first dir not null - %s", first_dir.file.uri);
 
             foreach (unowned var loc in files) {
                 Files.File? gof = first_dir.file_hash.lookup (loc);
-                warning ("lookup %s", loc.get_uri ());
                 if (gof != null) {
-                    warning ("got gof");
                     files_removed = true;
-                    warning ("notify dir removed %s", gof.uri);
                     first_dir.notify_file_removed (gof);
                 }
             }
@@ -1186,7 +1177,6 @@ public class Files.Directory : Object {
                 }
             }
         } else {
-            warning ("no first dir");
             Directory? parent_dir = null;
             var first_parent = files.data.get_parent ();
             parent_dir = cache_lookup_parent (first_parent);
