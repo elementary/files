@@ -277,20 +277,13 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 continue;
             }
 
-            if (delete_file (file, cancellable)) {
-                // We have to notify as monitor is blocked
-                // Only top level files are recorded
-                FileChanges.queue_file_removed (file);
-                transfer_info.num_files++;
-            } else {
+            if (!delete_file (file, cancellable)) {
                 n_not_deleted++;
             }
 
             if (aborted ()) {
                 break;
             }
-            // next_files = next_files.next;
-            // file = next_files != null ? next_files.data : null;
         }
 
         return n_not_deleted == 0;
@@ -305,6 +298,10 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             if (!file.@delete (cancellable)) {
                 return false;
             }
+
+            // We have to notify as monitor is blocked
+            // Only top level files are recorded
+            FileChanges.queue_file_removed (file);
         } catch (Error e) {
             if (e is IOError.CANCELLED) {
                 abort_job ();
@@ -344,7 +341,8 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     return false;
                 } //TODO Offer RETRY?
             }
-        } finally {
+        } finally { // Runs even if return early inside try-catch?
+            transfer_info.num_files++; // Increment files dealt with, not necessarily transferred
             report_delete_progress ();
         }
 
@@ -380,7 +378,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     file,
                     mtime
                 );
-                transfer_info.num_files++;
             } catch (Error e) {
                 if (e is IOError.CANCELLED) {
                     abort_job ();
@@ -427,6 +424,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     }
                 }
             } finally {
+                transfer_info.num_files++;
                 report_trash_progress ();
             }
 
