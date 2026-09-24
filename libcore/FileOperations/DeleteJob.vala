@@ -294,7 +294,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         Cancellable? cancellable
     ) {
         try {
-            if (!file.@delete (cancellable)) {
+            if (!(yield file.delete_async (Priority.DEFAULT, cancellable))) {
                 return false;
             }
 
