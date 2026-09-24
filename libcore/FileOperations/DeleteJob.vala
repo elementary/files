@@ -247,6 +247,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         n_not_deleted = 0;
         // Recursively check all files info available
         // Calculate number of files and number of bytes to transfer
+        // Make a list of files the user chose to skip
         scan_sources (to_delete);
         if (aborted ()) {
             // There were problematic files (info unavailable) and the user chose to cancel
@@ -261,7 +262,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         // Permanent deletion is always confirmed except for certain schemes which are never confirmed
         // We can assume selection is always from the same folder (scheme). There is no way in Files to select from
         // different folders.
-
         if (!can_delete_without_confirm (file) && !confirm_delete_directly (to_delete)) {
             n_not_deleted = (int) to_delete.length ();
             return false;
