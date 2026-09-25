@@ -244,6 +244,9 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         out int n_not_deleted
     ) {
         n_not_deleted = 0;
+        // Reset infos in case used be trash attempt
+        source_info.reset ();
+        transfer_info.reset ();
         // Recursively check all files info available
         // Calculate number of files and number of bytes to transfer
         // Make a list of files the user chose to skip
@@ -348,14 +351,12 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         return true;
     }
 
+    // Must always be called before any other use of source_info
     private async bool trash_files (
         Cancellable? cancellable,
         out int skipped,
         out List<GLib.File> to_delete
-    ) {
-        source_info.reset ();
-        transfer_info.reset ();
-
+    ) requires (source_info.num_files == 0 && transfer_info.num_files == 0) {
         // We always try to trash all files in the selection
         // scan_sources has not been run
         source_info.num_files = (int) files.length ();

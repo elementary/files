@@ -454,8 +454,7 @@ public class Files.FileOperations.CommonJob {
         // by marlin_file_operations copy & move jobs.
         // Not needed by Vala DeleteJob and EmptyTrashJob
 
-        // Ensure start with fresh info
-        source_info.reset (); //TODO Is this necessary? Scan sources should only be called once
+
         report_count_progress (source_info);
         foreach (var file in files) {
             if (aborted ()) {
