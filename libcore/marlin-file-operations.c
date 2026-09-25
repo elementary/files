@@ -50,57 +50,6 @@
 static char * query_fs_type (GFile *file,
                              GCancellable *cancellable);
 
-// /* Since this happens on a thread we can't use the global prefs object */
-// static gboolean
-// should_confirm_trash (void)
-// {
-//     return files_preferences_get_confirm_trash (files_preferences_get_default ());
-// }
-
-// static void delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
-//                          gboolean *skipped_file,
-//                          SourceInfo *source_info,
-//                          TransferInfo *transfer_info,
-//                          gboolean toplevel); //Moved to DeleteJob.delete_file ()
-
-// static void
-// delete_dir (FilesFileOperationsDeleteJob *del_job, GFile *dir,
-//             gboolean *skipped_file,
-//             SourceInfo *source_info,
-//             TransferInfo *transfer_info,
-//             gboolean toplevel); // Moved functionality to DeleteJob.delete_non_empty+_dir () and associated functions
-
-
-// static void
-// delete_file (FilesFileOperationsDeleteJob *del_job, GFile *file,
-//              gboolean *skipped_file,
-//              SourceInfo *source_info,
-//              TransferInfo *transfer_info,
-//              gboolean toplevel); //Moved functionality to DeleteJob.delete_file
-
-
-// static void
-// delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_skipped); Moved to DeleteJob
-
-
-
-// static void
-// trash_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_skipped); // Moved to DeleteJob
-
-// static void
-// delete_job (GTask *task,
-//             gpointer source_object,
-//             gpointer task_data,
-//             GCancellable *cancellable); Moved to DeleteJob
-
-// void
-// marlin_file_operations_delete (GList               *files,
-//                                GtkWindow           *parent_window,
-//                                gboolean             try_trash,
-//                                GCancellable        *cancellable,
-//                                GAsyncReadyCallback  callback,
-//                                gpointer             user_data); Moved to OperationsManager
-
 static GFile *
 get_unique_target_file (GFile *src,
                         GFile *dest_dir,
