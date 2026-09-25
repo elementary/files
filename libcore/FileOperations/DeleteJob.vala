@@ -368,13 +368,13 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         report_trash_progress ();
 
         GLib.File? file = null;
-        unowned List<GLib.File> next_files = null;
+        unowned List<GLib.File> next_files = files.first ();
         skipped = 0;
         to_delete = null;
-        file = files.data;
-        next_files = files.first ();
 
-        while (file != null) {
+        while (next_files != null && (file = next_files.data) != null) {
+            next_files = next_files.next;
+
             var mtime = Files.FileUtils.get_file_modification_time (file);
             try {
                 if (yield file.trash_async (Priority.DEFAULT, cancellable)) {
@@ -438,8 +438,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 break;
             }
 
-            next_files = next_files.next;
-            file = next_files != null ? next_files.data : null;
+
         }
 
         progress.finished ();
