@@ -18,9 +18,9 @@
 
 public class Files.FileOperations.DeleteJob : CommonJob {
     protected GLib.List<GLib.File> files;
-    protected bool try_trash;
-    protected bool user_cancel;
-    protected bool delete_all;
+
+    private bool try_trash;
+    private bool delete_all;
 
     ~DeleteJob () {
         Files.FileChanges.consume_changes (true);
@@ -32,11 +32,24 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             file.has_uri_scheme ("trash");
     }
 
-    public DeleteJob (Gtk.Window? parent_window, GLib.List<GLib.File> files, bool try_trash) {
+    public DeleteJob (Gtk.Window? parent_window, Gee.LinkedList<string>? uris, bool try_trash) {
         base (parent_window);
-        this.files = files.copy_deep ((GLib.CopyFunc<GLib.File>) GLib.Object.ref);
         this.try_trash = try_trash;
-        this.user_cancel = false;
+        if (uris != null) {
+            foreach (var uri in uris) {
+                this.files.prepend (GLib.File.new_for_uri (uri));
+            }
+        }
+
+        if (try_trash) {
+            undo_redo_data = new Files.UndoActionData (MOVETOTRASH, (int) uris.size);
+            undo_redo_data.set_src_dir (
+                files.data.get_parent ()
+            );
+        }
+
+        // Will be uninhibited in CommonJob destructor
+        inhibit_power_manager (try_trash ? _("Trashing Files") : _("Deleting Files"));
     }
 
     protected override unowned string get_scan_primary () {
@@ -89,7 +102,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                             CANCEL, DELETE) == 1;
     }
 
-    protected void report_delete_progress (CommonJob.SourceInfo source_info, CommonJob.TransferInfo transfer_info) {
+    protected void report_delete_progress () requires (source_info != null && transfer_info != null) {
         int64 now = GLib.get_monotonic_time () * 1000; // in ns
         if (transfer_info.last_report_time != 0 &&
             ((int64)transfer_info.last_report_time - now).abs () < 100 * CommonJob.NSEC_PER_MSEC) {
@@ -99,7 +112,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         transfer_info.last_report_time = now;
 
         int files_left = source_info.num_files - transfer_info.num_files;
-
         /* Races and whatnot could cause this to be negative... */
         if (files_left < 0) {
             files_left = 1;
@@ -149,7 +161,12 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         progress.pulse_progress ();
     }
 
-    protected void report_trash_progress (int files_trashed, int total_files) {
+    private void report_trash_progress () {
+        //This differs from report_delete_progress as we did not scan sources and do not know
+        //The number of bytes involved. Therefore we cannot calculate time left and do not need
+        //to use the timer
+        var total_files = source_info.num_files;
+        var files_trashed = transfer_info.num_files;
         var files_left = total_files - files_trashed;
 
         progress.take_status (_("Moving files to trash"));
@@ -164,5 +181,488 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         if (total_files != 0) {
             progress.update_progress (files_trashed, total_files);
         }
+    }
+
+    public async bool trash_or_delete_files (
+        Cancellable? cancellable
+    ) {
+        int n_skipped = 0;
+        List<GLib.File> delete_instead_of_trash = null;
+        unowned List<GLib.File> to_delete = null;
+
+        // Check whether we can trash and whether must confirm delete_all
+        // Note: Some of these checks have already been done in e.g AbstractDirecoryView
+        // Port C code as is for now
+        //TODO: Deduplicate checks
+        var must_confirm_delete = true;
+        var must_confirm_delete_in_trash = true;
+        GLib.File? file = files.data;
+        // We can assume all files in a selection have the same uri scheme so just check first
+        if (try_trash && file.has_uri_scheme ("trash")) {
+            must_confirm_delete_in_trash = true;
+            try_trash = false;
+        } else if (can_delete_without_confirm (file)) {
+            must_confirm_delete = false;
+            try_trash = false;
+        } else if (try_trash && file.has_uri_scheme ("smb")) {
+            must_confirm_delete = true;
+            try_trash = false;
+        }
+
+        if (try_trash) {
+            if (yield trash_files (cancellable, out n_skipped, out delete_instead_of_trash)) {
+                return true; // All files successfully trashed - finish now
+            } else if (aborted ()) {
+                return false;
+            } else {
+                warning ("%i files skipped trash", n_skipped);
+            }
+
+            transfer_info.reset ();
+            source_info.reset ();
+        }
+
+        // Try to delete files or failed trash files
+        // unowned List<GLib.File> next_files = null;
+        if (!try_trash) {
+            to_delete = files;
+        } else {
+            to_delete = delete_instead_of_trash;
+        }
+
+        int n_not_deleted;
+        yield delete_files (to_delete, cancellable, out n_not_deleted);
+        progress.finished ();
+        //TODO Warn of any files that were not trash or deleted
+
+        return n_not_deleted == 0;
+    }
+
+    private async bool delete_files (
+        List<GLib.File> to_delete,
+        Cancellable? cancellable,
+        out int n_not_deleted
+    ) {
+        n_not_deleted = 0;
+        // Reset infos in case used be trash attempt
+        source_info.reset ();
+        transfer_info.reset ();
+        // Recursively check all files info available
+        // Calculate number of files and number of bytes to transfer
+        // Make a list of files the user chose to skip
+        scan_sources (to_delete);
+        if (aborted ()) {
+            // There were problematic files (info unavailable) and the user chose to cancel
+            return false;
+        }
+
+        GLib.File file = to_delete.data;
+        // Permanent deletion is always confirmed except for certain schemes which are never confirmed
+        // We can assume selection is always from the same folder (scheme). There is no way in Files to select from
+        // different folders.
+        if (!can_delete_without_confirm (file) && !confirm_delete_directly (to_delete)) {
+            n_not_deleted = (int) to_delete.length ();
+            return false;
+        }
+
+        //TODO Can we restart progress after finished in trash files?
+        progress.started (); // Bypass delay
+        time.start (); // This will reset the time if it was used be trash or scan sources
+        report_delete_progress (); //TODO Needed?
+
+        unowned List<GLib.File> next_files = to_delete.first ();
+        while (next_files != null && next_files.data != null) {
+            file = next_files.data;
+            next_files = next_files.next;
+
+            if (should_skip_file (file)) {
+                n_not_deleted++;
+                continue;
+            }
+
+            if (!(yield delete_file (file, cancellable))) {
+                n_not_deleted++;
+            }
+
+            if (aborted ()) {
+                break;
+            }
+        }
+
+        return n_not_deleted == 0;
+    }
+
+    // Returns true if the file was actually deleted
+    private async bool delete_file (
+        GLib.File file,
+        Cancellable? cancellable
+    ) {
+        try {
+            if (!(yield file.delete_async (Priority.DEFAULT, cancellable))) {
+                return false;
+            }
+
+            // We have to notify as monitor is blocked
+            // Only top level files are recorded
+            FileChanges.queue_file_removed (file);
+        } catch (Error e) {
+            if (e is IOError.CANCELLED) {
+                abort_job ();
+                return false;
+            } else if (e is IOError.NOT_EMPTY) {
+                return yield delete_non_empty_dir (file, cancellable);
+                // success = delete_non_empty_dir (file, cancellable);
+            } else if (skip_all_error) {
+                return false;
+            } else {
+                // Files where info is unavailable are already skipped by scan sources
+                bool? can_write, parent_can_write, readonly_fs, is_folder;
+                var have_info = get_info_for_trash_delete_file_fail (
+                    file,
+                    out can_write,
+                    out is_folder,
+                    out parent_can_write,
+                    out readonly_fs
+                );
+
+                // Choose suitable message strings and get response
+                 var response = show_delete_fail_dialog (
+                    have_info,
+                    can_write ?? true,
+                    is_folder ?? false,
+                    parent_can_write ?? true,
+                    readonly_fs ?? false,
+                    e.message
+                );
+
+                if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
+                    abort_job ();
+                } else if (response == 1) { /* skip all */
+                    skip_all_error = true;
+                } else if (response == 2) { /* skip */
+                    // Just continue
+                    return false;
+                } //TODO Offer RETRY?
+            }
+        } finally { // Runs even if return early inside try-catch?
+            transfer_info.num_files++; // Increment files dealt with, not necessarily transferred
+            report_delete_progress ();
+        }
+
+        return true;
+    }
+
+    // Must always be called before any other use of source_info
+    private async bool trash_files (
+        Cancellable? cancellable,
+        out int skipped,
+        out List<GLib.File> to_delete
+    ) requires (source_info.num_files == 0 && transfer_info.num_files == 0) {
+        // We always try to trash all files in the selection
+        // scan_sources has not been run
+        source_info.num_files = (int) files.length ();
+        progress.started (); // Bypass delay
+        report_trash_progress ();
+
+        GLib.File? file = null;
+        unowned List<GLib.File> next_files = files.first ();
+        skipped = 0;
+        to_delete = null;
+
+        while (next_files != null && (file = next_files.data) != null) {
+            next_files = next_files.next;
+
+            var mtime = Files.FileUtils.get_file_modification_time (file);
+            try {
+                if (yield file.trash_async (Priority.DEFAULT, cancellable)) {
+                    FileChanges.queue_file_removed (file); // We have to notify as monitor is blocked
+                    undo_redo_data.add_trashed_file (
+                        file,
+                        mtime
+                    );
+                }
+            } catch (Error e) {
+                if (e is IOError.CANCELLED) {
+                    abort_job ();
+                    break;
+                } else if (skip_all_error) {
+                    skipped++;
+                } else if (delete_all) {
+                    to_delete.prepend (file);
+                } else {
+                    // Try to get infos to determine why trashing failed
+                    // Note: scan_sources is not called in advance for trashing so
+                    // getting this info may fail and return false
+                    bool? can_write, parent_can_write, readonly_fs, is_folder;
+                    var have_info = get_info_for_trash_delete_file_fail (
+                        file,
+                        out can_write,
+                        out is_folder,
+                        out parent_can_write,
+                        out readonly_fs
+                    );
+
+                    // Choose suitable message strings and get response
+                     var response = show_trash_fail_dialog (
+                        have_info,
+                        can_write ?? true,
+                        is_folder ?? false,
+                        parent_can_write ?? true,
+                        readonly_fs ?? false,
+                        e.message
+                    );
+
+                    if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
+                        abort_job ();
+                    } else if (response == 1) { /* skip all */
+                        skipped++;
+                        skip_all_error = true;
+                    } else if (response == 2) { /* skip */
+                        skipped++;
+                    } else if (response == 3) { /* delete all */
+                        to_delete.prepend (file);
+                        delete_all = true;
+                    } else if (response == 4) { /* delete */
+                        to_delete.prepend (file);
+                    }
+                }
+            } finally {
+                transfer_info.num_files++;
+                report_trash_progress ();
+            }
+
+            if (aborted ()) { // Due to progresswidget button pressed
+                break;
+            }
+        }
+
+        progress.finished ();
+
+        if (skipped == source_info.num_files) {
+            abort_job ();
+        }
+
+        return to_delete == null;
+    }
+
+    private int show_delete_fail_dialog (
+        bool have_info,
+        bool can_write,
+        bool is_folder,
+        bool parent_can_write,
+        bool readonly_fs,
+        string error_message
+    ) {
+        var primary = _("Cannot delete file");
+        var secondary = "";
+        if (readonly_fs) {
+            secondary = _("It is not permitted to delete files on a read only filesystem.");
+        } else if (parent_can_write) {
+            secondary = _("It is not permitted to delete files inside folders for which you do not have write privileges.");
+        } else if (is_folder && !can_write) {
+            secondary = _("It is not permitted to delete folders for which you do not have write privileges.");
+        } else {
+            secondary = _("This file could not be deleted. See details below for further information.");
+        }
+
+        int response = run_question (
+            primary,
+            secondary,
+            error_message,
+            (source_info.num_files - transfer_info.num_files) > 1,
+            CANCEL, SKIP_ALL, SKIP,
+            null
+        );
+
+        return response;
+    }
+
+    private int show_trash_fail_dialog (
+        bool have_info,
+        bool can_write,
+        bool is_folder,
+        bool parent_can_write,
+        bool readonly_fs,
+        string error_message
+    ) {
+        var primary = "";
+        var secondary = "";
+        bool can_delete = false;
+        if (readonly_fs) {
+            primary = _("Cannot move file to trash or delete it");
+            secondary = _("It is not permitted to trash or delete files on a read only filesystem.");
+        } else if (parent_can_write) {
+            primary = _("Cannot move file to trash or delete it");
+            secondary = _("It is not permitted to trash or delete files inside folders for which you do not have write privileges.");
+        } else if (is_folder && !can_write) {
+            primary = _("Cannot move file to trash or delete it");
+            secondary = _("It is not permitted to trash or delete folders for which you do not have write privileges.");
+        } else {
+            primary = _("Cannot move file to trash. Try to delete it immediately?");
+            if (have_info) {
+                secondary = _("This file could not be moved to trash. See details below for further information.");
+            } else { // Cannot tell if possible to delete (but try anyway)
+                secondary = _("This file could not be moved to trash. You may not be able to delete it either.");
+            }
+
+            can_delete = true;
+        }
+
+        int response;
+        if (can_delete) {
+            ///TRANSLATORS %s represents a complete translated sentence
+            secondary = _("%s\n Deleting a file removes it permanently").printf (secondary);
+            response = run_question (
+                primary,
+                secondary,
+                error_message,
+                (source_info.num_files - transfer_info.num_files) > 1,
+                CANCEL, SKIP_ALL, SKIP, DELETE_ALL, DELETE,
+                null);
+        } else {
+            response = run_question (
+                primary,
+                secondary,
+                error_message,
+                (source_info.num_files - transfer_info.num_files) > 1,
+                CANCEL, SKIP_ALL, SKIP,
+                null);
+        }
+
+        return response;
+    }
+
+    private bool get_info_for_trash_delete_file_fail (
+        GLib.File file,
+        out bool? can_write,
+        out bool? is_folder,
+        out bool? parent_can_write,
+        out bool? readonly_fs
+    ) {
+
+        var have_info = false;
+        can_write = null;
+        is_folder = null;
+        parent_can_write = null;
+        readonly_fs = null;
+        try {
+            var info = file.query_info (
+                FileAttribute.ACCESS_CAN_WRITE + "," + FileAttribute.STANDARD_TYPE,
+                0,
+                null
+            );
+
+            have_info = info != null;
+            if (have_info) {
+                can_write = info.get_attribute_boolean (FileAttribute.ACCESS_CAN_WRITE);
+                is_folder = info.get_file_type () == FileType.DIRECTORY;
+            }
+
+            var parent_info = file.get_parent ().query_info (FileAttribute.ACCESS_CAN_WRITE, 0, null);
+            if (parent_info != null) {
+                parent_can_write = parent_info.get_attribute_boolean (FileAttribute.ACCESS_CAN_WRITE);
+            }
+
+            var fsinfo = file.query_filesystem_info (FileAttribute.FILESYSTEM_READONLY, null);
+            if (fsinfo != null) {
+                fsinfo.get_attribute_boolean (FileAttribute.FILESYSTEM_READONLY);
+            }
+        } catch (Error e) {
+            warning ("unable to get info about trash failure");
+        }
+
+        return have_info;
+    }
+    // This function calls and may be called back by delete_file
+    private async bool delete_non_empty_dir (GLib.File dir, Cancellable? cancellable) {
+        if (yield delete_dir_children (dir, cancellable)) {
+            return yield delete_file (dir, cancellable);
+        }
+
+        return false;
+    }
+
+    protected async bool delete_dir_children (GLib.File dir, Cancellable? cancellable) {
+        GLib.FileEnumerator? enumerator = null;
+        try {
+            enumerator = dir.enumerate_children (
+                FileAttribute.STANDARD_NAME,
+                FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                cancellable
+            );
+        } catch (Error e) {
+            if (e is IOError.CANCELLED) {
+                abort_job ();
+                return false;
+            } else {
+                var primary = (_("Error while deleting"));
+                //TODO Do we need this? - permission and other info related errors already picked up by
+                //scan sources or AbstractDirectoryView before deleting?
+                //Ported from marlin_file_operations for now
+                string secondary;
+                if (e is IOError.PERMISSION_DENIED) { // Includes permissions on children
+                    ///TRANSLATORS: %s is a placeholder for the basename of a file.
+                    secondary = _("The folder '%s' cannot be deleted because you do not have permissions to read it").printf (dir.get_basename ());
+                } else {
+                    secondary = _("There was an error reading the folder '%s'").printf (dir.get_basename ());
+                }
+
+                var response = run_warning (
+                    primary,
+                    secondary,
+                    e.message,
+                    false,
+                    CANCEL, SKIP, RETRY
+                );
+
+                if (response <= 0) { // Cancel button or close dialog
+                    abort_job ();
+                    return false;
+                } else if (response == 1) {
+                    /* Skip: Do nothing, do not abort */
+                    return false;
+                } else if (response == 2) {
+                    return yield delete_dir_children (dir, cancellable);
+                } else {
+                    assert_not_reached ();
+                }
+            }
+        }
+
+        //Note: Individual files may not be able to be deleted even when the parent directory has
+        //the required permissions. e.g. due to an "immutable" flag being set.
+        try {
+            unowned GLib.FileInfo? info = null;
+            while ((info = enumerator.next_file (cancellable)) != null) {
+                var file = dir.get_child (info.get_name ());
+                // if fail to delete file than cannot delete folder so abandon  now
+                if (!(yield delete_file (file, cancellable))) {  // This updates transfer_info and reports progress
+                    return false;
+                }
+            }
+        } catch (Error e) {
+            //This only gets errors from enumerator.next_file (). The other contained functions do not throw errors
+            if (e is IOError.CANCELLED) {
+                abort_job ();
+            } else {
+                // Most other errors other than enushould already have been handled by scan_sources
+                // or delete file. Just use a simple dialog for now and return failure
+                var primary = _("Files in the folder '%s' cannot be deleted").printf (dir.get_basename ());
+                var secondary = _("There was an error getting information about the files in the folder");
+
+                // For consistency use run_warning
+                run_warning (
+                    primary,
+                    secondary,
+                    e.message,
+                    false,
+                    CANCEL
+                );
+            }
+
+            return false;
+        }
+
+        return true;
     }
 }
