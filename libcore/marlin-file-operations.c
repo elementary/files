@@ -80,51 +80,8 @@ static char * query_fs_type (GFile *file,
 
 
 // static void
-// delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_skipped)
-// {
-//     GList *l;
-//     GFile *file;
-//     SourceInfo *source_info = NULL;;
-//     TransferInfo transfer_info;
-//     gboolean skipped_file;
-//     FilesFileOperationsCommonJob *job = MARLIN_FILE_OPERATIONS_COMMON_JOB (del_job);
+// delete_files (FilesFileOperationsDeleteJob *del_job, GList *files, int *files_skipped); Moved to DeleteJob
 
-//     if (marlin_file_operations_common_job_aborted (job)) {
-//         return;
-//     }
-
-//     source_info = marlin_file_operations_common_job_scan_sources (job, files);
-//     if (marlin_file_operations_common_job_aborted (job)) {
-//         g_clear_pointer (&source_info, marlin_file_operations_common_job_source_info_free);
-//         return;
-//     }
-
-//     g_timer_start (job->time);
-
-//     memset (&transfer_info, 0, sizeof (transfer_info));
-//     marlin_file_operations_delete_job_report_delete_progress (del_job, source_info, &transfer_info);
-
-//     for (l = files;
-//          l != NULL && !marlin_file_operations_common_job_aborted (job);
-//          l = l->next) {
-//         file = l->data;
-
-//         skipped_file = FALSE;
-//         delete_file (del_job, file,
-//                      &skipped_file,
-//                      source_info, &transfer_info,
-//                      TRUE);
-//         if (skipped_file) {
-//             (*files_skipped)++;
-//         }
-//     }
-
-//     g_clear_pointer (&source_info, marlin_file_operations_common_job_source_info_free);
-
-//     PFSoundManager *sm;
-//     sm = pf_sound_manager_get_instance (); /* returns unowned instance - no need to unref */
-//     pf_sound_manager_play_delete_sound (sm);
-// }
 
 
 // static void
