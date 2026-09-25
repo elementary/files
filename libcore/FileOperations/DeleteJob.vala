@@ -357,6 +357,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         transfer_info.reset ();
 
         // We always try to trash all files in the selection
+        // scan_sources has not been run
         source_info.num_files = (int) files.length ();
 
         GLib.File? file = null;
@@ -387,7 +388,8 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     to_delete.prepend (file);
                 } else {
                     // Try to get infos to determine why trashing failed
-                    // Note: scan_sources is not called in advance for trashing
+                    // Note: scan_sources is not called in advance for trashing so
+                    // getting this info may fail and return false
                     bool? can_write, parent_can_write, readonly_fs, is_folder;
                     var have_info = get_info_for_trash_delete_file_fail (
                         file,
@@ -649,7 +651,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 var secondary = _("There was an error getting information about the files in the folder");
 
                 // For consistency use run_warning
-                var response = run_warning (
+                run_warning (
                     primary,
                     secondary,
                     e.message,

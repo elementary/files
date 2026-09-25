@@ -475,7 +475,7 @@ public class Files.FileOperations.CommonJob {
                                       owned string primary_text,
                                       owned string secondary_text,
                                       string? details_text,
-                                      bool show_all,
+                                      bool show_all,  //TODO this appears to be unused now, lose at some stage
                                       va_list varargs) {
         int result = 0;
         time.stop ();
