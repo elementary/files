@@ -295,8 +295,8 @@ namespace Files {
                     if (uris != null && confirm_delete) {
                         try {
                             yield Files.FileOperations.Manager.get_instance ().@delete (
-                                      uris, n_files, widget.get_toplevel () as Gtk.Window, false, cancellable
-                                  );
+                                uris, n_files, widget.get_toplevel () as Gtk.Window, false, cancellable
+                            );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
@@ -351,9 +351,8 @@ namespace Files {
                     if (uris != null && confirm_delete) {
                         try {
                             yield Files.FileOperations.Manager.get_instance ().@delete (
-                            // yield Files.FileOperations.@delete (
-                                      uris, 1, widget.get_toplevel () as Gtk.Window, false, cancellable
-                                  );
+                                uris, 1, widget.get_toplevel () as Gtk.Window, false, cancellable
+                            );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
@@ -402,8 +401,8 @@ namespace Files {
                     if (uris != null ) {
                         try {
                             yield Files.FileOperations.Manager.get_instance ().@delete (
-                                      uris, n_files, widget.get_toplevel () as Gtk.Window, true, cancellable
-                                  );
+                                uris, n_files, widget.get_toplevel () as Gtk.Window, true, cancellable
+                            );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
@@ -542,8 +541,8 @@ namespace Files {
 
                         try {
                             yield Files.FileOperations.Manager.get_instance ().@delete (
-                                      uris, n_files, widget.get_toplevel () as Gtk.Window, true, cancellable
-                                  );
+                                uris, n_files, widget.get_toplevel () as Gtk.Window, true, cancellable
+                            );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;

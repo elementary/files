@@ -949,9 +949,7 @@ namespace Files {
 
             deleted_path = model.get_path_for_first_file (file_list.first ().data);
 
-
             if (locations != null) {
-
                 slot.directory.block_monitor ();
                 FileOperations.Manager.get_instance ().@delete.begin (
                     locations,
