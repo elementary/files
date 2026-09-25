@@ -1160,7 +1160,6 @@ public class Files.Directory : Object {
         bool files_removed = false;
         Directory? first_dir = cache_lookup_parent (files.data);
         if (first_dir != null) {
-
             foreach (unowned var loc in files) {
                 Files.File? gof = first_dir.file_hash.lookup (loc);
                 if (gof != null) {
