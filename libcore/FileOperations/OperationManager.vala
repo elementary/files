@@ -1,43 +1,38 @@
 /*
- * SPDX-FileCopyrightText: 2015-2025 elementary, Inc. (https://elementary.io)
+ * SPDX-FileCopyrightText: 2026 elementary, Inc. (https://elementary.io)
  * SPDX-License-Identifier: GPL-3.0-or-later
- *
- * Authors : Lucas Baudin <xapantu@gmail.com>
- *           Jeremy Wootten <jeremywootten@gmail.com>
  */
 
  public class Files.FileOperations.Manager : Object {
-        public static Manager get_instance () {
-            return instance.once (() => new Manager ());
+    public static Manager get_instance () {
+        return instance.once (() => new Manager ());
+    }
+
+    private static Once<Manager> instance;
+    private List<CommonJob> jobs;
+
+    construct {
+        jobs = new List<CommonJob> ();
+    }
+
+    public async void @delete (
+        Gee.LinkedList<string> files,
+        uint n_files,
+        Gtk.Window parent_window,
+        bool try_trash,
+        Cancellable? cancellable = null
+    ) throws GLib.Error {
+
+        if (files == null || n_files == 0) {
+            return;
         }
 
-        private static Once<Manager> instance;
-        private List<CommonJob> jobs;
+        warning ("delete/trash %u files, %s", n_files, files.first ());
 
-        construct {
-            jobs = new List<CommonJob> ();
-        }
+        var job = new DeleteJob (parent_window, files, try_trash);
 
-        public async void @delete (
-            Gee.LinkedList<string> files,
-            uint n_files,
-            Gtk.Window parent_window,
-            bool try_trash,
-            Cancellable? cancellable = null
-        ) throws GLib.Error {
-
-            if (files == null || n_files == 0) {
-                return;
-            }
-
-            warning ("delete/trash %u files, %s", n_files, files.first ());
-
-            var job = new DeleteJob (parent_window, files, try_trash);
-
-            jobs.append (job);
-            yield job.trash_or_delete_files (cancellable);
-            jobs.remove (job);
-        }
-
-
+        jobs.append (job);
+        yield job.trash_or_delete_files (cancellable);
+        jobs.remove (job);
+    }
  }

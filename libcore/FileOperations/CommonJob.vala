@@ -454,7 +454,6 @@ public class Files.FileOperations.CommonJob {
         // by marlin_file_operations copy & move jobs.
         // Not needed by Vala DeleteJob and EmptyTrashJob
 
-
         report_count_progress (source_info);
         foreach (var file in files) {
             if (aborted ()) {

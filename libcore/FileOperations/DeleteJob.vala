@@ -189,7 +189,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         int n_skipped = 0;
         List<GLib.File> delete_instead_of_trash = null;
         unowned List<GLib.File> to_delete = null;
-        // List<GLib.File> to_trash = null;
 
         // Check whether we can trash and whether must confirm delete_all
         // Note: Some of these checks have already been done in e.g AbstractDirecoryView
@@ -212,7 +211,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
         if (try_trash) {
             if (yield trash_files (cancellable, out n_skipped, out delete_instead_of_trash)) {
-                warning ("all trashed OK");
                 return true; // All files successfully trashed - finish now
             } else if (aborted ()) {
                 return false;
@@ -232,7 +230,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             to_delete = delete_instead_of_trash;
         }
 
-        warning ("%u files to delete", to_delete.length ());
         int n_not_deleted;
         yield delete_files (to_delete, cancellable, out n_not_deleted);
         progress.finished ();
@@ -437,8 +434,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             if (aborted ()) { // Due to progresswidget button pressed
                 break;
             }
-
-
         }
 
         progress.finished ();
