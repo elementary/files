@@ -41,8 +41,6 @@
 
 #include "pantheon-files-core.h"
 
-#define MICROS_PER_MILLIS 1000
-
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
 
 #define IS_IO_ERROR(__error, KIND) (((__error)->domain == G_IO_ERROR && (__error)->code == G_IO_ERROR_ ## KIND))
@@ -1389,22 +1387,7 @@ typedef struct {
     SourceInfo *source_info;
     TransferInfo *transfer_info;
     GFile *file_to_sync;
-    gint64 last_sync_time;
 } ProgressData;
-
-typedef struct {
-    GFile *file_to_sync;
-    gint64 last_sync_time;
-} SyncData;
-
-static gboolean throttle (gint64 milliseconds, gint64 *last_sync_time) {
-    gint64 now = g_get_monotonic_time ();
-    if (*last_sync_time != 0 && (now - *last_sync_time) < milliseconds * MICROS_PER_MILLIS) {
-        return TRUE;
-    }
-    *last_sync_time = now;
-    return FALSE;
-}
 
 static void
 copy_file_progress_callback (goffset current_num_bytes,
@@ -1426,26 +1409,20 @@ copy_file_progress_callback (goffset current_num_bytes,
                               pdata->transfer_info);
     }
 
-    if (throttle (1000, &pdata->last_sync_time)) {
-        return;
+    if (new_size == 0) {
+        files_file_utils_sync (pdata->file_to_sync);
     }
-
-    files_file_utils_sync (pdata->file_to_sync);
 }
 
 static void
 sync_file_callback (
     goffset current_num_bytes,
     goffset total_num_bytes,
-    gpointer user_data
+    gpointer file_to_sync
 ) {
-    SyncData *sdata = user_data;
-
-    if (throttle (1000, &sdata->last_sync_time)) {
-        return;
+    if (total_num_bytes - current_num_bytes == 0) {
+        files_file_utils_sync (*(GFile **)file_to_sync);
     }
-
-    files_file_utils_sync (sdata->file_to_sync);
 }
 
 static gboolean
@@ -1696,7 +1673,6 @@ retry:
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
     pdata.file_to_sync = dest;
-    pdata.last_sync_time = 0;
 
     if (copy_job->is_move) {
         res = g_file_move (src, dest,
@@ -2266,16 +2242,12 @@ retry:
         flags |= G_FILE_COPY_OVERWRITE;
     }
 
-    SyncData sdata;
-    sdata.file_to_sync = dest;
-    sdata.last_sync_time = 0;
-
     error = NULL;
     if (g_file_move (src, dest,
                      flags,
                      job->cancellable,
                      sync_file_callback,
-                     &sdata,
+                     &dest,
                      &error)) {
 
         if (debuting_files) {
@@ -3203,16 +3175,12 @@ retry:
         // End UNDO-REDO
     } else {
         if (job->src) {
-            SyncData sdata;
-            sdata.file_to_sync = dest;
-            sdata.last_sync_time = 0;
-
             res = g_file_copy (job->src,
                                dest,
                                G_FILE_COPY_NONE,
                                common->cancellable,
                                sync_file_callback,
-                               &sdata,
+                               &dest,
                                &error);
             // Start UNDO-REDO
             if (res) {
