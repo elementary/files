@@ -162,6 +162,9 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     }
 
     private void report_trash_progress () {
+        //This differs from report_delete_progress as we did not scan sources and do not know
+        //The number of bytes involved. Therefore we cannot calculate time left and do not need
+        //to use the timer
         var total_files = source_info.num_files;
         var files_trashed = transfer_info.num_files;
         var files_left = total_files - files_trashed;
@@ -256,11 +259,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             return false;
         }
 
-        //TODO Can we restart progress after finished in trash files?
-        progress.started (); // Bypass delay
-
         GLib.File file = to_delete.data;
-
         // Permanent deletion is always confirmed except for certain schemes which are never confirmed
         // We can assume selection is always from the same folder (scheme). There is no way in Files to select from
         // different folders.
@@ -268,6 +267,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             n_not_deleted = (int) to_delete.length ();
             return false;
         }
+
+        //TODO Can we restart progress after finished in trash files?
+        progress.started (); // Bypass delay
+        time.start (); // This will reset the time if it was used be trash or scan sources
+        report_delete_progress (); //TODO Needed?
 
         unowned List<GLib.File> next_files = to_delete.first ();
         while (next_files != null && next_files.data != null) {
@@ -360,6 +364,8 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         // We always try to trash all files in the selection
         // scan_sources has not been run
         source_info.num_files = (int) files.length ();
+        progress.started (); // Bypass delay
+        report_trash_progress ();
 
         GLib.File? file = null;
         unowned List<GLib.File> next_files = null;
@@ -368,7 +374,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         file = files.data;
         next_files = files.first ();
 
-        progress.started (); // Bypass delay
         while (file != null) {
             var mtime = Files.FileUtils.get_file_modification_time (file);
             try {
