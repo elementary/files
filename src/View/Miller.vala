@@ -157,7 +157,7 @@ namespace Files.View {
                 draw_file_details_timeout_id = Timeout.add (200, () => {
                     draw_file_details_timeout_id = 0;
                     details = new View.DetailsColumn (file, view);
-                    add_side_widget (details, false, true); // Shrink but not resize
+                    add_side_widget (details, true, false); // Resize (expand) but not shrink
                     // Preview pane not part of slot list so no need to update width
                     // but need to scroll according to new available space
                     schedule_scroll_to_slot (last_slot, true);
