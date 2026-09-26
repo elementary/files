@@ -19,7 +19,12 @@
 public class Files.FileOperations.CopyMoveJob : CommonJob {
     protected bool is_move = false;
     protected GLib.List<GLib.File> files;
-    protected GLib.File? destination;
+    protected unowned GLib.File destination;
+    // Use separate destination_for_progress_dialog variable to avoid interacting with the existing
+    // destination variable which is set and checked at various places in marlin-file-operations.c
+    // This separate variable is used here to improve the progress dialog behaviour and info shown.
+    protected unowned GLib.File destination_for_progress_dialog;
+    protected GLib.HashTable<GLib.File,bool> debuting_files = new GLib.HashTable<GLib.File,bool> (GLib.File.hash, GLib.File.equal);
     protected bool replace_all = false;
     protected bool merge_all = false;
     protected bool keep_all_newest = false;
@@ -101,18 +106,22 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         int64 now = GLib.get_monotonic_time () * 1000; // in ns
 
         if (transfer_info.last_report_time != 0 &&
+            (source_info.num_files - transfer_info.num_files) > 1 &&
             ((int64)transfer_info.last_report_time - now).abs () < 100 * CommonJob.NSEC_PER_MSEC) {
             return;
         }
 
         /* See https://github.com/elementary/files/issues/464. The job data may become invalid, possibly
          * due to a race. */
-        if (files.data == null || destination == null) {
+        if (files.data == null) {
             return;
         }
 
         var srcname = FileUtils.custom_basename_from_file (files.data);
-        var destname = FileUtils.custom_basename_from_file (destination);
+        var destname = "";
+        if (destination_for_progress_dialog != null) {
+            destname = FileUtils.custom_basename_from_file (destination_for_progress_dialog);
+        }
 
         transfer_info.last_report_time = now;
 
@@ -131,7 +140,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
             transfer_info.last_reported_files_left = files_left;
 
             if (source_info.num_files == 1) {
-                if (destination != null) {
+                if (destination_for_progress_dialog != null) {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
                     s = (is_move ? _("Moving \"%s\" to \"%s\"") : _("Copying \"%s\" to \"%s\"")).printf (srcname, destname);
@@ -141,7 +150,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                     s = _("Duplicating \"%s\"").printf (srcname);
                 }
             } else if (files != null && files.next == null) {
-                if (destination != null) {
+                if (destination_for_progress_dialog != null) {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
                     /// %'d is a placeholder for a number. It must not be translated or removed.
@@ -150,25 +159,25 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                             ngettext (
                                 "Moving %'d file (in \"%s\") to \"%s\"",
                                 "Moving %'d files (in \"%s\") to \"%s\"",
-                                files_left
+                                source_info.num_files
                             ) :
                             ngettext (
                                 "Copying %'d file (in \"%s\") to \"%s\"",
                                 "Copying %'d files (in \"%s\") to \"%s\"",
-                                files_left
+                                source_info.num_files
                             )
-                        ).printf (files_left, srcname, destname);
+                        ).printf (source_info.num_files, srcname, destname);
                 } else {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
                     s = ngettext (
                         "Duplicating %'d file (in \"%s\")",
                         "Duplicating %'d files (in \"%s\")",
-                        files_left
-                    ).printf (files_left, destname);
+                        source_info.num_files
+                    ).printf (source_info.num_files, srcname);
                 }
             } else {
-                if (destination != null) {
+                if (destination_for_progress_dialog != null) {
                     /// TRANSLATORS: \"%s\" is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed.
                     /// \" is an escaped quotation mark.  This may be replaced with another suitable character (escaped if necessary).
                     /// %'d is a placeholder for a number. It must not be translated or removed.
@@ -177,20 +186,20 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
                         ngettext (
                             "Moving %'d file to \"%s\"",
                             "Moving %'d files to \"%s\"",
-                            files_left
+                            source_info.num_files
                         ) :
                         ngettext (
                             "Copying %'d file to \"%s\"",
                             "Copying %'d files to \"%s\"",
-                            files_left
+                            source_info.num_files
                         )
-                    ).printf (files_left, destname);
+                    ).printf (source_info.num_files, destname);
                 } else {
                     s = ngettext (
                         "Duplicating %'d file",
                         "Duplicating %'d files",
-                        files_left
-                    ).printf (files_left);
+                        source_info.num_files
+                    ).printf (source_info.num_files);
                 }
             }
 
@@ -198,6 +207,7 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         }
 
         var total_size = int64.max (source_info.num_bytes, transfer_info.num_bytes);
+        var size_left = total_size - transfer_info.num_bytes;
 
         double elapsed = time.elapsed ();
         double transfer_rate = 0;
@@ -206,16 +216,23 @@ public class Files.FileOperations.CopyMoveJob : CommonJob {
         }
 
         if (elapsed < CommonJob.SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE &&
+            size_left > 0 &&
             transfer_rate > 0) {
             var num_bytes_format = GLib.format_size (transfer_info.num_bytes);
             var total_size_format = GLib.format_size (total_size);
             /// TRANSLATORS: %s is a placeholder for a size like "2 bytes" or "3 MB".  It must not be translated or removed. So this represents something like "4 kb of 4 MB".
             progress.take_details (_("%s of %s").printf (num_bytes_format, total_size_format));
+        } else if (size_left == 0 || transfer_info.num_bytes == 0) {
+            progress.take_details (
+                is_move ?
+                _("Please wait, finishing move\u2026") :
+                _("Please wait, finishing copy\u2026")
+            );
         } else {
             var num_bytes_format = GLib.format_size (transfer_info.num_bytes);
             var total_size_format = GLib.format_size (total_size);
             var transfer_rate_format = GLib.format_size ((uint64) transfer_rate);
-            int remaining_time = (int )((total_size - transfer_info.num_bytes) / transfer_rate);
+            int remaining_time = (int )((total_size - transfer_info.num_bytes) / transfer_rate) + 1;
             int formated_time_unit;
             var formated_remaining_time = FileUtils.format_time (remaining_time, out formated_time_unit);
 
