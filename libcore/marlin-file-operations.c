@@ -41,8 +41,6 @@
 
 #include "pantheon-files-core.h"
 
-#define NSEC_PER_MSEC 1000000
-
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
 
 #define IS_IO_ERROR(__error, KIND) (((__error)->domain == G_IO_ERROR && (__error)->code == G_IO_ERROR_ ## KIND))
@@ -1411,7 +1409,9 @@ copy_file_progress_callback (goffset current_num_bytes,
                               pdata->transfer_info);
     }
 
-    files_file_utils_sync (pdata->file_to_sync);
+    if (new_size == 0) {
+        files_file_utils_sync (pdata->file_to_sync);
+    }
 }
 
 static void
@@ -1420,7 +1420,9 @@ sync_file_callback (
     goffset total_num_bytes,
     gpointer file_to_sync
 ) {
-    files_file_utils_sync (*(GFile **)file_to_sync);
+    if (total_num_bytes - current_num_bytes == 0) {
+        files_file_utils_sync (*(GFile **)file_to_sync);
+    }
 }
 
 static gboolean
