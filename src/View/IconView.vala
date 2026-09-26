@@ -243,11 +243,21 @@ public class Files.IconView : Files.AbstractDirectoryView {
 
     /* Override native Gtk.IconView cursor handling */
     protected override bool move_cursor (uint keyval, bool only_shift_pressed, bool control_pressed) {
+        uint prev_key;
+        uint next_key;
+        if (Gtk.StateFlags.DIR_RTL in get_style_context ().get_state ()) {
+            prev_key = Gdk.Key.Right;
+            next_key = Gdk.Key.Left;
+        } else {
+            prev_key = Gdk.Key.Left;
+            next_key = Gdk.Key.Right;
+        }
+
         Gtk.TreePath? path = get_path_at_cursor ();
         if (path != null) {
-            if (keyval == Gdk.Key.Right) {
+            if (keyval == next_key) {
                 path.next (); /* Does not check if path is valid */
-            } else if (keyval == Gdk.Key.Left) {
+            } else if (keyval == prev_key) {
                 path.prev ();
             } else if (keyval == Gdk.Key.Up) {
                 path = up (path);

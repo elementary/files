@@ -1,74 +1,27 @@
-/***
-    Copyright (c) ammonkey 2011 <am.monkeyd@gmail.com>
-
-    Marlin is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by the
-    Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    Marlin is distributed in the hope that it will be useful, but
-    WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-    See the GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License along
-    with this program.  If not, see <http://www.gnu.org/licenses/>.
-***/
-
-[DBus (name = "io.elementary.files.db")]
-interface MarlinDaemon : Object {
-    public abstract async Variant get_uri_infos (string raw_uri) throws GLib.DBusError, GLib.IOError;
-    public abstract async bool record_uris (Variant[] entries) throws GLib.DBusError, GLib.IOError;
-    public abstract async bool delete_entry (string uri) throws GLib.DBusError, GLib.IOError;
-
-}
+/*
+ * Copyright (c) 2014-2026 elementary Inc. <https://elementary.io>
+ * Copyright (c) ammonkey 2011 <am.monkeyd@gmail.com>
+ *SPDX-License-Identifier: GPL-3.0-or-later
+*/
 
 public class Files.Plugins.CTags : Files.Plugins.Base {
     /* May be used by more than one directory simultaneously so do not make assumptions */
-    private MarlinDaemon daemon;
     private Cancellable cancellable;
     private GLib.List<Files.File> current_selected_files;
 
     public CTags () {
         cancellable = new Cancellable ();
-
-        try {
-            daemon = Bus.get_proxy_sync (BusType.SESSION, "io.elementary.files.db",
-                                         "/io/elementary/files/db");
-        } catch (IOError e) {
-            stderr.printf ("%s\n", e.message);
-        }
     }
 
     private async void rreal_update_file_info (Files.File file) {
         try {
-            if (!file.exists || file.color >= 0) {
-                // Delete the entry if file no longer exists or we obtained color info from metadata
-                yield daemon.delete_entry (file.uri);
+            if (file.color >= 0) {
                 return;
             }
 
             var info = yield file.location.query_info_async ("metadata::color-tag", FileQueryInfoFlags.NONE);
             if (info.has_attribute ("metadata::color-tag")) {
                 file.color = int.parse (info.get_attribute_string ("metadata::color-tag"));
-                file.icon_changed ();
-            } else {
-                // Look for color in Files daemon database
-                var rc = yield daemon.get_uri_infos (file.uri);
-
-                VariantIter iter = rc.iterator ();
-                assert (iter.n_children () == 1);
-                VariantIter row_iter = iter.next_value ().iterator ();
-
-                if (row_iter.n_children () == 3) {
-                    /* Only interested in color tag */
-                    int64.parse (row_iter.next_value ().get_string ()); // Skip modified date
-                    row_iter.next_value ().get_string (); // Skip file type
-                    file.color = int.parse (row_iter.next_value ().get_string ());
-                    file.location.set_attribute_string ("metadata::color-tag", file.color.to_string (), FileQueryInfoFlags.NONE);
-                    file.icon_changed (); /* Just need to trigger redraw - the underlying GFile has not changed */
-                    yield daemon.delete_entry (file.uri);
-                }
             }
         } catch (Error err) {
             warning ("%s", err.message);
@@ -124,7 +77,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             if (target_file.color != n) {
                 target_file.color = n;
                 target_file.location.set_attribute_string ("metadata::color-tag", n.to_string (), FileQueryInfoFlags.NONE);
-                target_file.icon_changed ();
             }
         }
 
@@ -134,7 +86,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             foreach (unowned Files.File file in files) {
                 if (file.location.has_uri_scheme ("recent")) {
                     file.color = n;
-                    file.icon_changed (); /* Just need to trigger redraw */
                 }
             }
         }

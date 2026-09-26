@@ -1,6 +1,6 @@
 /***
     Copyright (c) 2012 ammonkey <am.monkeyd@gmail.com>
-                  2015-2018 elementary LLC <https://elementary.io>
+                  2015-2026 elementary LLC <https://elementary.io>
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,8 +29,6 @@ namespace Files.View {
         private Files.File? goffile = null;
         private GLib.List<unowned Files.File>? selected_files = null;
         private uint8 [] buffer;
-        private GLib.FileInputStream? stream;
-        private Gdk.PixbufLoader loader;
         private uint update_timeout_id = 0;
         private DeepCount? deep_counter = null;
         private uint deep_count_timeout_id = 0;
@@ -141,21 +139,26 @@ namespace Files.View {
         }
 
         private string update_status () {
-            string str = "";
+            var str = "";
             label = "";
             if (goffile != null) { /* A single file is selected. */
                 if (goffile.is_network_uri_scheme () || goffile.is_root_network_folder ()) {
                     str = goffile.get_display_target_uri ();
                 } else if (!goffile.is_folder ()) {
                     /* If we have an image, see if we can get its resolution. */
-                    string? type = goffile.get_ftype ();
+                    string? type = goffile.content_type;
 
                     if (goffile.format_size == "" ) { /* No need to keep recalculating the formatted size. */
                         goffile.format_size = format_size (PropertiesWindow.file_real_size (goffile));
                     }
-                    str = "%s - %s (%s)".printf (goffile.info.get_name (),
-                                                 goffile.formated_type,
-                                                 goffile.format_size);
+
+                    ///TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
+                    /// filetype is formatted by GLib.ContentType.get_description ()
+                    str = _("%s - %s (%s)").printf (
+                        goffile.info.get_name (),
+                        goffile.formated_type,
+                        goffile.format_size
+                    );
 
                     if (type != null && type.substring (0, 6) == "image/" &&     /* File is an image and */
                         (goffile.width > 0 ||                                    /* resolution has already been determined or */
@@ -164,32 +167,30 @@ namespace Files.View {
                         load_resolution.begin (goffile);
                     }
                 } else { /* This is a folder. */
-                    str = "%s - %s".printf (goffile.info.get_name (), goffile.formated_type);
+                    ///TRANSLATORS arguments are in order: filename, formatted filetype
+                    /// filetype is formatted by GLib.ContentType.get_description ()
+                    label = _("%s - %s").printf (
+                        goffile.info.get_name (),
+                        goffile.formated_type
+                    );
                     schedule_deep_count ();
                 }
             } else { /* Multiple selection. */
                 var fsize = format_size (files_size);
-                if (folders_count > 1) {
-                    str = _("%u folders").printf (folders_count);
-                    if (files_count > 0) {
-                        str += ngettext (" and %u other item (%s) selected",
-                                         " and %u other items (%s) selected",
-                                         files_count).printf (files_count, fsize);
-                    } else {
-                        str += _(" selected");
-                    }
-                } else if (folders_count == 1) {
-                    str = _("%u folder").printf (folders_count);
-                    if (files_count > 0) {
-
-                        str += ngettext (" and %u other item (%s) selected",
-                                         " and %u other items (%s) selected",
-                                         files_count).printf (files_count, fsize);
-                    } else {
-                        str += _(" selected");
-                    }
-                } else { /* folder_count = 0 and files_count > 0 */
-                    str = _("%u items selected (%s)").printf (files_count, fsize);
+                if (folders_count == 0) {
+                    str = ngettext ("%u file selected (%s)", "%u files selected (%s)", files_count).printf (
+                        files_count,
+                        fsize
+                    );
+                } else if (files_count == 0) {
+                    str = ngettext ("%u folder selected", "%u folders selected", folders_count).printf (
+                        folders_count
+                    );
+                } else {
+                    str = _("%s and %s selected").printf (
+                        ngettext ("%u folder", "%u folders", folders_count).printf (folders_count),
+                        ngettext ("%u file", "%u files", files_count).printf (files_count)
+                    );
                 }
             }
 
@@ -224,42 +225,58 @@ namespace Files.View {
             });
         }
 
-        private void update_status_after_deep_count () {
+        private void update_status_after_deep_count () requires (goffile != null) {
             string str;
             cancellable = null;
             active = false;
 
-            label = "%s - %s (".printf (goffile.info.get_name (), goffile.formated_type);
+            if (deep_count_cancel == null) {
+                return;
+            }
 
-            if (deep_counter != null) {
-                if (deep_counter.dirs_count > 0) {
-                    /// TRANSLATORS: %u will be substituted by the number of sub folders
-                    str = ngettext ("%u sub-folder, ", "%u sub-folders, ", deep_counter.dirs_count);
-                    label += str.printf (deep_counter.dirs_count);
-                }
-
-                if (deep_counter.files_count > 0 || deep_counter.file_not_read == 0) {
-                    /// TRANSLATORS: %u will be substituted by the number of readable files
-                    str = ngettext ("%u file, ", "%u files, ", deep_counter.files_count);
-                    label += str.printf (deep_counter.files_count);
-                }
-
-                if (deep_counter.file_not_read == 0) {
-                    label += format_size (deep_counter.total_size);
-                    label += ")";
+            var folders_count = deep_counter.dirs_count;
+            var files_count = deep_counter.files_count;
+            var unread_count = deep_counter.file_not_read;
+            var fsize = deep_counter.total_size;
+            /// TRANSLATORS: 'size' refers to the disk space used by the selected folder
+            var size_s = _("unknown size");
+            if (fsize > 0) {
+                if (unread_count > 0) {
+                    /// TRANSLATORS: %s will be substituted by the approximate disk space used by the selected folder
+                    /// The diskspace is formatted with GLib.format_size
+                    size_s = _("more than %s used").printf (format_size (fsize));
                 } else {
-                    if (deep_counter.total_size > 0) {
-                        /// TRANSLATORS: %s will be substituted by the approximate disk space used by the folder
-                        label += _("%s approx.").printf (format_size (deep_counter.total_size));
-                    } else {
-                        /// TRANSLATORS: 'size' refers to disk space
-                        label += _("unknown size");
-                    }
-                    label += ") ";
-                    /// TRANSLATORS: %u will be substituted by the number of unreadable files
-                    str = ngettext ("%u file not readable", "%u files not readable", deep_counter.file_not_read);
-                    label += str.printf (deep_counter.file_not_read);
+                    /// TRANSLATORS: %s will be substituted by the disk space used by the selected folder
+                    /// The diskspace is formatted with GLib.format_size
+                    size_s = _("%s used").printf (format_size (fsize));
                 }
+            }
+
+            if (unread_count > 0) {
+                ///TRANSLATOR arguments are in order: filename, filetype, subfolder count, file count, unreadable file count, diskspace used
+                /// The file and folder counts are in the form "<number> files" translated with ngettext
+                /// filetype is formatted by GLib.ContentType.get_description ()
+                /// The diskspace is formatted with GLib.format_size
+                label = _("%s - %s (%s, %s, %s) - %s").printf (
+                    goffile.info.get_name (),
+                    goffile.formated_type,
+                    ngettext ("%u accessible sub-folder", "%u accessible sub-folders", folders_count).printf (folders_count),
+                    ngettext ("%u accessible file", "%u accessible files", files_count).printf (files_count),
+                    ngettext ("%u inaccessible file", "%u inaccessible files", unread_count).printf (unread_count),
+                    size_s
+                );
+            } else {
+                ///TRANSLATORS arguments are in order: filename, filetype, subfolder count, file count, diskspace
+                /// The file and folder counts are in the form "<number> files" translated with ngettext
+                /// filetype is formatted by GLib.ContentType.get_description ()
+                /// The diskspace is formatted with GLib.format_size
+                label = _("%s - %s (%s, %s) - %s").printf (
+                    goffile.info.get_name (),
+                    goffile.formated_type,
+                    ngettext ("%u sub-folder", "%u sub-folders", folders_count).printf (folders_count),
+                    ngettext ("%u file", "%u files", files_count).printf (files_count),
+                    size_s
+                );
             }
         }
 
@@ -290,6 +307,8 @@ namespace Files.View {
             }
 
             var file = goffile.location;
+            Gdk.PixbufLoader? loader = null;
+            GLib.FileInputStream? stream = null;
             image_size_loaded = false;
 
             try {
@@ -298,7 +317,7 @@ namespace Files.View {
                     error ("Could not read image file's size data");
                 }
 
-                loader = new Gdk.PixbufLoader.with_mime_type (goffile.get_ftype ());
+                loader = new Gdk.PixbufLoader.with_mime_type (goffile.content_type);
                 loader.size_prepared.connect (on_size_prepared);
 
                 cancel_cancellable ();
@@ -309,16 +328,22 @@ namespace Files.View {
                 warning ("Error loading image resolution in OverlayBar: %s", e.message);
             }
             /* Gdk wants us to always close the loader, so we are nice to it. */
-            try {
-                stream.close ();
-            } catch (GLib.Error e) {
-                debug ("Error closing stream in load resolution: %s", e.message);
+            if (stream != null) {
+                try {
+                    stream.close ();
+                } catch (GLib.Error e) {
+                    critical ("Error closing stream in load resolution: %s", e.message);
+                }
             }
-            try {
-                loader.close ();
-            } catch (GLib.Error e) { /* Errors expected because may not load whole image. */
-                debug ("Error closing loader in load resolution: %s", e.message);
+
+            if (loader != null) {
+                try {
+                    loader.close ();
+                } catch (GLib.Error e) { /* Errors expected because may not load whole image. */
+                    critical ("Error closing loader in load resolution: %s", e.message);
+                }
             }
+
             cancellable = null;
         }
 
@@ -326,16 +351,27 @@ namespace Files.View {
             if (goffile == null) { /* This can occur during rapid rubberband selection. */
                 return;
             }
+
             image_size_loaded = true;
             goffile.width = width;
             goffile.height = height;
-            label = "%s (%s — %i × %i)".printf (goffile.formated_type, goffile.format_size, width, height);
+
+            ///TRANSLATORS arguments are in order: format string, formatted filesize, width, height (of an image file)
+            /// format is from GLib.ContentType.get_description ()
+            /// size is from GLib.format_size ()
+            label = _("%s (%s — %i × %i)").printf (
+                goffile.formated_type,
+                goffile.format_size,
+                width,
+                height
+            );
         }
 
         private async void read_image_stream (Gdk.PixbufLoader loader, FileInputStream stream,
                                               Cancellable cancellable) {
             ssize_t read = 1;
             uint count = 0;
+
             while (!image_size_loaded && read > 0 && !cancellable.is_cancelled ()) {
                 try {
                     read = yield stream.read_async (buffer, 0, cancellable);
@@ -345,7 +381,7 @@ namespace Files.View {
                         goffile.height = -1;
                         /* Note that Gdk.PixbufLoader seems to leak memory with some file types.
                          * Any file type that causes this error should be added to the Files.SKIP_IMAGES array. */
-                        critical ("Could not determine resolution of file type %s", goffile.get_ftype ());
+                        critical ("Could not determine resolution of file type %s", goffile.content_type);
                         break;
                     }
 

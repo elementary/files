@@ -433,6 +433,25 @@ namespace Files.FileUtils {
         return new_path;
     }
 
+    public void sync (GLib.File? file) {
+        if (file == null) {
+            return;
+        }
+
+        var path = file.get_path ();
+        if (path == null) {
+            return;
+        }
+
+        int fd = Posix.open (path, Posix.O_RDONLY);
+        if (fd < 0) {
+            return;
+        }
+
+        Posix.fsync (fd);
+        Posix.close (fd);
+    }
+
     /** Splits the path into a protocol ending in '://"  and a path beginning "/". **/
     public void split_protocol_from_path (string path, out string protocol, out string new_path) {
         protocol = "";
@@ -589,7 +608,8 @@ namespace Files.FileUtils {
     public string get_formatted_time_attribute_from_info (
         FileInfo info,
         string attr,
-        DateFormatMode format = Files.Preferences.get_default ().date_format
+        DateFormatMode format = Files.Preferences.get_default ().date_format,
+        bool pad = true
     ) {
         DateTime? dt = null;
         switch (attr) {
@@ -619,32 +639,36 @@ namespace Files.FileUtils {
                 break;
         }
 
-        return get_formatted_date_time (dt, format);
+        return get_formatted_date_time (dt, format, pad);
     }
 
-    private string get_formatted_date_time (DateTime? dt, DateFormatMode format) {
+    private string get_formatted_date_time (DateTime? dt, DateFormatMode format, bool pad = true) {
         if (dt == null) {
             return "";
         }
 
         switch (format) {
             case DateFormatMode.LOCALE:
-                return emspace_pad (dt.format ("%c"));
+                return emspace_pad (dt.format ("%c"), pad);
             case DateFormatMode.ISO:
-                return emspace_pad (dt.format ("%Y-%m-%d %H:%M:%S"));
+                return emspace_pad (dt.format ("%Y-%m-%d %H:%M:%S"), pad);
             case DateFormatMode.COMPACT :
                 var locale_format_string = Posix.nl_langinfo (D_FMT);
                 var compact_format = string.join (" ", locale_format_string.down (), "%H:%M");
-                return emspace_pad (dt.format (compact_format));
+                return emspace_pad (dt.format (compact_format), pad);
             default:
-                return emspace_pad (get_informal_date_time (dt));
+                return emspace_pad (get_informal_date_time (dt), pad);
         }
     }
 
     // We add a fixed-width space as both prefix and suffix to ensure date is not obscured by the scrollbar (unless hovered)
     // regardless of the text direction
     // See https://github.com/elementary/files/issues/1538
-    private string emspace_pad (string s) {
+    private string emspace_pad (string s, bool pad) {
+        if (!pad) {
+            return s;
+        }
+
         var sb = new StringBuilder (s);
         sb.prepend_unichar (' '); //Unichar emspace (U2003);
         sb.append_unichar (' '); //Unichar emspace (U2003);

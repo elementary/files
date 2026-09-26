@@ -204,7 +204,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected async bool unmount_mount () {
-        if (working || !valid || permanent) {
+        if (!can_unmount || working || !valid || permanent) {
             return false;
         }
 
@@ -216,7 +216,7 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     }
 
     protected async bool eject_mount () {
-        if (working || !valid || permanent) {
+        if (!can_eject || working || !valid || permanent) {
             return false;
         }
 

@@ -18,6 +18,8 @@
 
 namespace Files.View {
     public class Miller : Files.AbstractSlot {
+        private const int END_GAP = 120; // Space for manually expanding last slot
+        private const int ANIMATION_RATE_MSEC = 1000 / 60 ;
         public unowned View.ViewContainer ctab { get; construct; }
 
         /* Need private copy of initial location as Miller
@@ -29,6 +31,8 @@ namespace Files.View {
         private uint scroll_to_slot_timeout_id = 0;
 
         private Gtk.ScrolledWindow scrolled_window;
+        private double page_size;
+
         private Gtk.Viewport viewport;
         public Gtk.Adjustment hadj;
         public unowned View.Slot? current_slot;
@@ -40,7 +44,7 @@ namespace Files.View {
         public GLib.List<View.Slot> slot_list = null;
         public int total_width = 0;
 
-        private View.DetailsColumn details;
+        private View.DetailsColumn? details = null;
 
         public override bool is_frozen {
             set {
@@ -86,10 +90,17 @@ namespace Files.View {
             };
 
             hadj = scrolled_window.get_hadjustment ();
+            hadj.notify["page-size"].connect (() => {
+                // Ignore many notififications where page_size has not changed
+                if ((hadj.page_size - page_size).abs () > 12) {
+                    this.page_size = hadj.page_size;
+                    schedule_scroll_to_slot (current_slot);
+                }
+            });
 
-            add_overlay (scrolled_window);
+            add_overlay_widget (scrolled_window);
 
-            content_box.show_all ();
+            content_grid.show_all ();
 
             current_slot = null;
             add_location (root_location, null); /* current slot gets set by this */
@@ -109,7 +120,7 @@ namespace Files.View {
             path_changed ();
             guest.slot_number = (host != null) ? host.slot_number + 1 : 0;
             guest.colpane = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0);
-            guest.colpane.set_size_request (guest.width, -1);
+            guest.colpane.width_request = 2 * guest.width;
             guest.hpane = new Gtk.Paned (Gtk.Orientation.HORIZONTAL) {
                 hexpand = true
             };
@@ -130,10 +141,9 @@ namespace Files.View {
             }
 
             slot_list.append (guest); // Must add to list before scrolling
+            update_total_width ();
             // Must set the new slot to be  active here as the tab does not change (which normally sets its slot active)
             guest.set_active_state (true, true);
-
-            update_total_width ();
         }
 
         private uint draw_file_details_timeout_id = 0;
@@ -147,9 +157,11 @@ namespace Files.View {
                 draw_file_details_timeout_id = Timeout.add (200, () => {
                     draw_file_details_timeout_id = 0;
                     details = new View.DetailsColumn (file, view);
-                    last_slot.colpane.pack_start (details, false, false);
-                    last_slot.hpane.show_all ();
-                    update_total_width ();
+                    add_side_widget (details, false, true); // Shrink but not resize
+                    // Preview pane not part of slot list so no need to update width
+                    // but need to scroll according to new available space
+                    schedule_scroll_to_slot (last_slot, true);
+
                     return Source.REMOVE;
                 });
             }
@@ -157,9 +169,8 @@ namespace Files.View {
 
         public void clear_file_details () {
             if (details is Gtk.Widget) {
-                last_slot.colpane.remove (details);
-                last_slot.hpane.show_all ();
-                update_total_width ();
+                details.destroy ();
+                schedule_scroll_to_slot (last_slot, true);
             }
         }
 
@@ -188,10 +199,15 @@ namespace Files.View {
         }
 
         private void calculate_total_width () {
-            total_width = 100; // Extra space to allow increasing the size of columns by dragging the edge
+             // Extra space to allow increasing the size of columns by dragging the edge
+             // Also without it, the scrolled window page size increases unnecessarily for non-obvious
+             // reasons
+            total_width = END_GAP;
             slot_list.@foreach ((slot) => {
                 total_width += slot.width;
             });
+
+            this.colpane.width_request = total_width;
         }
 
         private uint total_width_timeout_id = 0;
@@ -347,7 +363,6 @@ namespace Files.View {
          **/
         private void on_slot_active (Files.AbstractSlot aslot, bool scroll = true, bool animate = true) {
             View.Slot slot;
-
             if (!(aslot is View.Slot)) {
                 return;
             } else {
@@ -369,6 +384,7 @@ namespace Files.View {
             }
             /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();
+            plugins.directory_loaded (this.ctab.window, this, slot.directory.file);
         }
 
         private void show_hidden_files_changed (bool show_hidden) {
@@ -408,59 +424,61 @@ namespace Files.View {
 
             View.Slot? to_activate = null;
             var prefs = Files.Preferences.get_default ();
-            switch (keyval) {
-                case Gdk.Key.Left:
-                    if (current_position > 0) {
-                        if (prefs.show_file_preview) {
-                            clear_file_details ();
-                        }
 
-                        to_activate = slot_list.nth_data (current_position - 1);
+            uint up_key;
+            uint down_key;
+
+            // Determine which key is the "drill down" key based on the layout direction
+            if (Gtk.StateFlags.DIR_RTL in scrolled_window.get_style_context ().get_state ()) {
+                up_key = Gdk.Key.Right;
+                down_key = Gdk.Key.Left;
+            } else {
+                up_key = Gdk.Key.Left;
+                down_key = Gdk.Key.Right;
+            }
+
+            if (keyval == up_key) {
+                if (current_position > 0) {
+                    if (prefs.show_file_preview) {
+                        clear_file_details ();
                     }
 
-                    break;
+                    to_activate = slot_list.nth_data (current_position - 1);
+                }
 
-                case Gdk.Key.Right:
-                    if (current_slot.get_selected_files () == null) {
-                        return true;
-                    }
+            } else if (keyval == down_key) {
+                if (current_slot.get_selected_files () == null) {
+                    return true;
+                }
 
-                    Files.File? selected_file = current_slot.get_selected_files ().data;
-                    if (selected_file == null) {
-                        return true;
-                    }
+                Files.File? selected_file = current_slot.get_selected_files ().data;
+                if (selected_file == null) {
+                    return true;
+                }
 
-                    GLib.File current_location = selected_file.location;
-                    GLib.File? next_location = null;
-                    if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
-                        next_location = slot_list.nth_data (current_position + 1).location;
-                    }
+                GLib.File current_location = selected_file.location;
+                GLib.File? next_location = null;
+                if (current_position < slot_list.length () - 1) { //Can be assumed to limited in length
+                    next_location = slot_list.nth_data (current_position + 1).location;
+                }
 
-                    if (next_location != null && next_location.equal (current_location)) {
-                        to_activate = slot_list.nth_data (current_position + 1);
-                    } else if (selected_file.is_folder ()) {
-                        add_location (current_location, current_slot);
-                        return true;
-                    }
+                if (next_location != null && next_location.equal (current_location)) {
+                    to_activate = slot_list.nth_data (current_position + 1);
+                } else if (selected_file.is_folder ()) {
+                    add_location (current_location, current_slot);
+                    return true;
+                }
+            } else if (keyval == Gdk.Key.BackSpace) {
+                if (current_position > 0) {
+                    truncate_list_after_slot (slot_list.nth_data (current_position - 1));
+                } else {
+                    ctab.go_up ();
+                    return true;
+                }
 
-                    break;
-
-                case Gdk.Key.BackSpace:
-                        if (current_position > 0) {
-                            truncate_list_after_slot (slot_list.nth_data (current_position - 1));
-                        } else {
-                            ctab.go_up ();
-                            return true;
-                        }
-
-                        if (prefs.show_file_preview) {
-                            clear_file_details ();
-                        }
-
-                    break;
-
-                default:
-                    break;
+                if (prefs.show_file_preview) {
+                    clear_file_details ();
+                }
             }
 
             if (to_activate != null) {
@@ -474,6 +492,7 @@ namespace Files.View {
         private void on_slot_selection_changed (AbstractSlot source, GLib.List<Files.File> files) {
             if (source == current_slot) {
                 clear_file_details ();
+
                 if (Files.Preferences.get_default ().show_file_preview &&
                     files.length () == 1) {
 
@@ -518,20 +537,24 @@ namespace Files.View {
                 }
 
                 // Calculate position to scroll to
-                int total_width_before = 0; /* left edge of active slot */
+                double total_width_before = 0; /* left edge of active slot */
                 slot_list.@foreach ((abs) => {
                     if (abs.slot_number < slot.slot_number) {
                         total_width_before += abs.width;
                     }
                 });
 
-                int hadj_value = (int) this.hadj.get_value ();
-                int offset = total_width_before - hadj_value;
+                var hadj_value = hadj.get_value ();
+                var offset = total_width_before - hadj_value;
                 if (offset < 0) { /*scroll until left hand edge of active slot is in view*/
                     hadj_value += offset;
                 }
 
-                offset = total_width_before + slot.width - hadj_value - viewport.get_view_window ().get_width ();
+                offset = total_width_before +
+                         (double) slot.width -
+                         hadj_value -
+                         (double) viewport.get_view_window ().get_width ();
+
                 if (offset > 0) { /*scroll  until right hand edge of active slot is in view*/
                     hadj_value += offset;
                 }
@@ -635,27 +658,26 @@ namespace Files.View {
         /* Animation functions */
 
         private uint animation_timeout_source_id = 0;
-        private void smooth_adjustment_to (Gtk.Adjustment adj, int final) {
+        private void smooth_adjustment_to (Gtk.Adjustment adj, double final) {
             cancel_animation ();
 
             var initial = adj.value;
             var to_do = final - initial;
 
-            int factor;
-            (to_do > 0) ? factor = 1 : factor = -1;
-            to_do = (double) (((int) to_do).abs () + 1);
+            double factor;
+            var to_do_abs = to_do.abs ();
 
-            var newvalue = 0;
+            double newvalue = 0;
             var old_adj_value = adj.value;
 
-            animation_timeout_source_id = Timeout.add (1000 / 60, () => {
+            animation_timeout_source_id = Timeout.add (ANIMATION_RATE_MSEC, () => {
                 /* If the user move it at the same time, just stop the animation */
                 if (old_adj_value != adj.value) {
                     animation_timeout_source_id = 0;
                     return GLib.Source.REMOVE;
                 }
 
-                if (newvalue >= to_do - 10) {
+                if (newvalue >= to_do_abs) {
                     /* to be sure that there is not a little problem */
                     adj.value = final;
                     animation_timeout_source_id = 0;
@@ -663,9 +685,8 @@ namespace Files.View {
                 }
 
                 newvalue += 10;
-
-                adj.value = initial + factor *
-                            Math.sin (((double) newvalue / (double) to_do) * Math.PI / 2) * to_do;
+                adj.value = initial +
+                            Math.sin ((newvalue / to_do_abs) * Math.PI / 2) * to_do;
 
                 old_adj_value = adj.value;
                 return GLib.Source.CONTINUE;

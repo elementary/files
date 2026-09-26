@@ -5,7 +5,7 @@
  * Authors : Andres Mendez <shiruken@gmail.com>
  */
 
-public class Files.View.DetailsColumn : Gtk.Box {
+public class Files.View.DetailsColumn : Gtk.Bin {
     public int width {
         get {
             return PREVIEW_SIZE + 2 * PREVIEW_H_MARGIN;
@@ -135,7 +135,9 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
         var time_created = FileUtils.get_formatted_time_attribute_from_info (
             file.info,
-            FileAttribute.TIME_CREATED
+            FileAttribute.TIME_CREATED,
+            Files.Preferences.get_default ().date_format,
+            false
         );
 
         int n = 5;
@@ -149,7 +151,9 @@ public class Files.View.DetailsColumn : Gtk.Box {
 
         var time_modified = FileUtils.get_formatted_time_attribute_from_info (
             file.info,
-            FileAttribute.TIME_MODIFIED
+            FileAttribute.TIME_MODIFIED,
+            Files.Preferences.get_default ().date_format,
+            false
         );
 
         if (time_modified != "") {
@@ -163,7 +167,9 @@ public class Files.View.DetailsColumn : Gtk.Box {
         if (file.is_trashed ()) {
             var deletion_date = FileUtils.get_formatted_time_attribute_from_info (
                 file.info,
-                FileAttribute.TRASH_DELETION_DATE
+                FileAttribute.TRASH_DELETION_DATE,
+                Files.Preferences.get_default ().date_format,
+                false
             );
 
             if (deletion_date != "") {
@@ -212,10 +218,12 @@ public class Files.View.DetailsColumn : Gtk.Box {
             halign = END
         };
 
-        var info_window = new Gtk.ScrolledWindow (null, null) {
-            child = info_grid,
-            propagate_natural_height = true,
-            hscrollbar_policy = Gtk.PolicyType.NEVER
+        var box = new Gtk.Box (VERTICAL, 12) {
+            halign = CENTER,
+            margin_top = 12,
+            margin_bottom = 12,
+            margin_start = 12,
+            margin_end = 12,
         };
 
         if (previewing_text) {
@@ -227,20 +235,21 @@ public class Files.View.DetailsColumn : Gtk.Box {
                 max_content_width = PREVIEW_SIZE
             };
 
-            add (text_window);
+            box.add (text_window);
         } else {
-            add (file_image);
+            box.add (file_image);
         }
 
-        orientation = VERTICAL;
-        spacing = 12;
-        margin_top = 12;
-        margin_bottom = 12;
-        margin_start = 12;
-        margin_end = 12;
-        add (info_window);
-        add (more_info_button);
+        box.add (info_grid);
+        box.add (more_info_button);
 
+        var scrolled = new Gtk.ScrolledWindow (null, null) {
+            child = box,
+            propagate_natural_height = true,
+            hscrollbar_policy = NEVER
+        };
+
+        child = scrolled;
         show_all ();
 
         more_info_button.clicked.connect (() => {
@@ -265,17 +274,7 @@ public class Files.View.DetailsColumn : Gtk.Box {
     }
 
     public static string filetype (Files.File file) {
-        string ftype = file.get_ftype ();
-        if (ftype != null) {
-            return ftype;
-        } else {
-            /* show list of mimetypes only if we got a default application in common */
-            if (MimeActions.get_default_application_for_file (file) != null) {
-                return file.get_ftype ();
-            }
-        }
-
-        return _("Unknown");
+        return file.content_type;
     }
 
     private async void get_resolution (Files.File goffile) {
