@@ -292,11 +292,15 @@ namespace Files {
                         uris.add (uri);
                         n_files++;
                     });
-                    if (uris != null && confirm_delete) {
+                    if (n_files > 0 && confirm_delete) {
                         try {
-                            yield Files.FileOperations.Manager.get_instance ().@delete (
-                                uris, n_files, widget.get_toplevel () as Gtk.Window, false, cancellable
+                            var job = new FileOperations.DeleteJob (
+                                widget.get_toplevel () as Gtk.Window,
+                                uris,
+                                false
                             );
+
+                            yield job.trash_or_delete_files (cancellable);
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
@@ -348,11 +352,15 @@ namespace Files {
                 case Files.UndoActionType.CREATEFILEFROMTEMPLATE:
                     var uris = new Gee.LinkedList<string> ();
                     uris.add (action.target_uri);
-                    if (uris != null && confirm_delete) {
+                    if (confirm_delete) {
                         try {
-                            yield Files.FileOperations.Manager.get_instance ().@delete (
-                                uris, 1, widget.get_toplevel () as Gtk.Window, false, cancellable
+                            var job = new FileOperations.DeleteJob (
+                                widget.get_toplevel () as Gtk.Window,
+                                uris,
+                                false
                             );
+
+                            yield job.trash_or_delete_files (cancellable);
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
@@ -400,9 +408,13 @@ namespace Files {
                     });
                     if (uris != null ) {
                         try {
-                            yield Files.FileOperations.Manager.get_instance ().@delete (
-                                uris, n_files, widget.get_toplevel () as Gtk.Window, true, cancellable
+                            var job = new FileOperations.DeleteJob (
+                                widget.get_toplevel () as Gtk.Window,
+                                uris,
+                                true
                             );
+
+                            yield job.trash_or_delete_files (cancellable);
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
@@ -540,9 +552,13 @@ namespace Files {
                         });
 
                         try {
-                            yield Files.FileOperations.Manager.get_instance ().@delete (
-                                uris, n_files, widget.get_toplevel () as Gtk.Window, true, cancellable
+                            var job = new FileOperations.DeleteJob (
+                                widget.get_toplevel () as Gtk.Window,
+                                uris,
+                                true
                             );
+
+                            yield job.trash_or_delete_files (cancellable);
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;

@@ -43,13 +43,14 @@ namespace Files {
                         n_files++;
                     }
 
-                    FileOperations.Manager.get_instance ().@delete.begin (
-                        uris,
-                        n_files,
+                    var job = new FileOperations.DeleteJob (
                         (Gtk.Window) widget.get_toplevel (),
-                        true, // Try trash
-                        null // cancellable
+                        uris,
+                        true
                     );
+
+                    job.trash_or_delete_files.begin (null);
+
                 } else {
                     Files.FileOperations.copy_move_link.begin (
                         drop_file_list,

@@ -190,13 +190,14 @@ namespace Files {
                         n_files++;
                     }
 
-                    FileOperations.Manager.get_instance ().@delete.begin (
-                        uris,
-                        n_files,
+                    var job = new FileOperations.DeleteJob (
                         (Gtk.Window) widget.get_toplevel (),
-                        true,
-                        null
+                        uris,
+                        true
                     );
+
+                    yield job.trash_or_delete_files (null);
+
                 } else {
                     try {
                         yield FileOperations.copy_move_link (file_list,

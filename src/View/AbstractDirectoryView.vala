@@ -951,17 +951,17 @@ namespace Files {
 
             if (locations != null) {
                 slot.directory.block_monitor ();
-                FileOperations.Manager.get_instance ().@delete.begin (
+                var job = new FileOperations.DeleteJob (
+                    window,
                     locations,
-                    n_files,
-                    window as Gtk.Window,
-                    !delete_immediately,
-                    null,
-                    (obj, res) => {
-                        FileOperations.Manager.get_instance ().@delete.end (res);
-                        after_trash_or_delete ();
-                    }
+                    !delete_immediately
                 );
+
+                job.trash_or_delete_files.begin (null, (obj, res) => {
+                    job.trash_or_delete_files.end (res);
+                    after_trash_or_delete ();
+                });
+
             }
 
             /* If in recent "folder" we need to refresh the view. */

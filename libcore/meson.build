@@ -49,7 +49,6 @@ pantheon_files_core_vala_files = files(
     'FileOperations/DeleteJob.vala',
     'FileOperations/EmptyTrashJob.vala',
     'FileOperations/MountUtils.vala',
-    'FileOperations/OperationManager.vala',
 
     'Interfaces/SidebarInterface.vala',
     'Interfaces/LocatableInterface.vala',

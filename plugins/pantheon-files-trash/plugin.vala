@@ -99,7 +99,13 @@ public class Files.Plugins.Trash : Files.Plugins.Base {
                         }
 
                         if (to_delete != null) {
-                            Files.FileOperations.Manager.get_instance ().@delete.begin (to_delete, n_files, window, false);
+                            var job = new FileOperations.DeleteJob (
+                                window,
+                                to_delete,
+                                false
+                            );
+
+                            job.trash_or_delete_files.begin (null);
                         }
                     }
                 });
