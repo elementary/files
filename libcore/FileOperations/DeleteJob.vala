@@ -165,4 +165,233 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             progress.update_progress (files_trashed, total_files);
         }
     }
+
+    public static void delete_dir (
+        DeleteJob del_job,
+        GLib.File dir,
+        ref bool skipped_file,
+        CommonJob.SourceInfo source_info,
+        CommonJob.TransferInfo transfer_info,
+        bool toplevel
+    ) {
+        var job = (CommonJob) del_job;
+        FileInfo? info = null;
+        GLib.File file;
+        FileEnumerator? enumerator = null;
+
+        var local_skipped_file = false;
+        var skip_error = job.should_skip_readdir_error (dir);
+        var retry = true;
+        while (retry) {
+        retry = false;
+        try {
+            enumerator = dir.enumerate_children (
+                FileAttribute.STANDARD_NAME,
+                FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                job.cancellable
+            );
+        } catch (Error e) {
+            if (e is IOError.CANCELLED) {
+            } else if (skip_error) {
+            } else {
+                var dir_basename = FileUtils.custom_basename_from_file (dir);
+                var primary = _("Error while deleting.");
+                string secondary;
+                string? details = null;
+                if (e is IOError.PERMISSION_DENIED) {
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+                    secondary = _("The folder \"%s\" cannot be deleted because you do not have permissions to read it.").printf (dir_basename);
+                } else {
+                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+                    secondary = _("There was an error reading the folder \"%s\".").printf (dir_basename);
+                    details = e.message;
+                }
+
+                var response = job.run_warning (
+                    primary,
+                    secondary,
+                    details,
+                    false,
+                    CANCEL, SKIP, RETRY);
+
+                if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
+                    job.abort_job ();
+                } else if (response == 1) {
+                    /* Skip: Do Nothing  */
+                    local_skipped_file = true;
+                } else if (response == 2) {
+                    retry = true;
+                    continue;
+                } else {
+                    assert_not_reached ();
+                }
+            }
+        }
+        }
+
+        if (enumerator != null) {
+            try {
+                while (!job.aborted () &&
+                   (info = enumerator.next_file (job.cancellable)) != null) {
+
+                    file = dir.get_child (
+                        info.get_name ()
+                    );
+
+                    DeleteJob.delete_file (
+                        del_job,
+                        file,
+                        ref local_skipped_file,
+                        source_info,
+                        transfer_info,
+                        false
+                    );
+                }
+            } catch (Error e) {
+                if (e is IOError.CANCELLED) {
+                } else {
+                    var dir_basename = FileUtils.custom_basename_from_file (dir);
+                    var primary = _("Error while deleting.");
+                    string secondary;
+                    string? details = null;
+
+                    if (e is IOError.PERMISSION_DENIED) {
+                        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+                        secondary = _("Files in the folder \"%s\" cannot be deleted because you do not have permissions to see them.").printf (dir_basename);
+                    } else {
+                        /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
+                        /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
+                        secondary = _("There was an error getting information about the files in the folder \"%s\".").printf (dir_basename);
+                        details = e.message;
+                    }
+
+                    var response = job.run_warning (
+                        primary,
+                        secondary,
+                        details,
+                        false,
+                        CANCEL, _("_Skip files"));
+
+                    if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
+                        job.abort_job ();
+                    } else if (response == 1) {
+                        /* Skip: Do Nothing */
+                        local_skipped_file = true;
+                    } else {
+                        assert_not_reached ();
+                    }
+                }
+            }
+        }
+
+        if (!job.aborted () &&
+            /* Don't delete dir if there was a skipped file */
+            !local_skipped_file) {
+
+            try {
+                dir.@delete (job.cancellable);
+                FileChanges.queue_folder_removed (dir);
+                transfer_info.num_files ++;
+                del_job.report_delete_progress (source_info, transfer_info);
+                return;
+            } catch (Error e) {
+                var primary = _("Error while deleting.");
+                var dir_basename = FileUtils.custom_basename_from_file (dir);
+                /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+                var secondary = _("Could not remove the folder %s.").printf (dir_basename);
+
+                var details = e.message;
+
+                var response = job.run_warning (
+                    primary,
+                    secondary,
+                    details,
+                    (source_info.num_files - transfer_info.num_files) > 1,
+                    CANCEL, SKIP_ALL, SKIP);
+
+                if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
+                    job.abort_job ();
+                } else if (response == 1) { /* skip all */
+                    job.skip_all_error = true;
+                    local_skipped_file = true;
+                } else if (response == 2) { /* skip */
+                    local_skipped_file = true;
+                } else {
+                    assert_not_reached ();
+                }
+            }
+        }
+
+        if (local_skipped_file) {
+            skipped_file = true;
+        }
+    }
+
+    public static void delete_file (
+        DeleteJob del_job,
+        GLib.File file,
+        ref bool skipped_file,
+        CommonJob.SourceInfo source_info,
+        CommonJob.TransferInfo transfer_info,
+        bool toplevel
+    ) {
+        var job = (CommonJob) del_job;
+        if (job.should_skip_file (file)) {
+            skipped_file = true;
+            return;
+        }
+
+        try {
+            if (file.@delete (job.cancellable)) {
+                FileChanges.queue_file_removed (file);
+                transfer_info.num_files ++;
+                del_job.report_delete_progress (source_info, transfer_info);
+                return;
+            }
+        } catch (Error e) {
+            if (e is IOError.NOT_EMPTY) {
+                DeleteJob.delete_dir (
+                    del_job,
+                    file,
+                    ref skipped_file,
+                    source_info, transfer_info,
+                    toplevel
+                );
+                return;
+            } else if (e is IOError.CANCELLED) {
+
+            } else {
+                if (job.skip_all_error) {
+                } else {
+                    var primary = _("Error while deleting.");
+                    string dir_basename = FileUtils.custom_basename_from_file (file);
+                    /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+                    var secondary = _("There was an error deleting %s.").printf (dir_basename);
+                    var details = e.message;
+
+                    var response = job.run_warning (
+                        primary,
+                        secondary,
+                        details,
+                        (source_info.num_files - transfer_info.num_files) > 1,
+                        CANCEL, SKIP_ALL, SKIP);
+
+                    if (response == 0 || response == Gtk.ResponseType.DELETE_EVENT) {
+                        job.abort_job ();
+                    } else if (response == 1) { /* skip all */
+                        job.skip_all_error = true;
+                    } else if (response == 2) { /* skip */
+                        /* do nothing */
+                    } else {
+                        assert_not_reached ();
+                    }
+                }
+
+                skipped_file = true;
+            }
+        }
+    }
 }
