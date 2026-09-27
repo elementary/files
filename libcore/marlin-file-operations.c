@@ -1409,7 +1409,7 @@ copy_file_progress_callback (goffset current_num_bytes,
                               pdata->transfer_info);
     }
 
-    if (new_size == 0) {
+    if (files_file_utils_can_unplug(pdata->file_to_sync)) {
         files_file_utils_sync (pdata->file_to_sync);
     }
 }
@@ -1420,7 +1420,7 @@ sync_file_callback (
     goffset total_num_bytes,
     gpointer file_to_sync
 ) {
-    if (total_num_bytes - current_num_bytes == 0) {
+    if (files_file_utils_can_unplug(*(GFile **)file_to_sync)) {
         files_file_utils_sync (*(GFile **)file_to_sync);
     }
 }
