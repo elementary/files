@@ -62,6 +62,24 @@
   <update_contact>contact_at_elementary.io</update_contact>
 
   <releases>
+    <release version="7.3.3" date="2026-10-09" urgency="medium">
+      <description>
+        <p>Improvements:</p>
+        <ul>
+          <li>Displays an informative dialog on attempting to unmount a device still in use instead of crashing</li>
+          <li>Shows a realistic progress rate when copy or moving data to a slow device instead of cache speed</li>
+        </ul>
+        <p>Minor updates:</p>
+        <ul>
+          <li>Updated translations</li>
+        </ul>
+      </description>
+      <issues>
+        <issue url="https://github.com/elementary/files/issues/2818">Transfer progress bar finishes too fast</issue>
+        <issue url="https://github.com/elementary/files/issues/2821">App crashes when trying to unmount a volume being used by another app
+</issue>
+      </issues>
+    </release>
     <release version="7.3.2" date="2026-08-03" urgency="medium">
       <description>
         <p>Improvements:</p>
