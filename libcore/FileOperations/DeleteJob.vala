@@ -19,8 +19,8 @@
 public class Files.FileOperations.DeleteJob : CommonJob {
     protected GLib.List<GLib.File> files;
 
-    private bool try_trash;
-    private bool delete_all;
+    protected bool try_trash;
+    protected bool delete_all;
 
     ~DeleteJob () {
         Files.FileChanges.consume_changes (true);
