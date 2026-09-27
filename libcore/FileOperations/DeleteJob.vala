@@ -185,7 +185,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
     public async bool trash_or_delete_files (
         Cancellable? cancellable
-    ) {
+    ) throws GLib.Error { //Continue to throw error for consistency
         int n_skipped = 0;
         List<GLib.File> delete_instead_of_trash = null;
         unowned List<GLib.File> to_delete = null;
@@ -210,12 +210,12 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         }
 
         if (try_trash) {
-            if (yield trash_files (cancellable, out n_skipped, out delete_instead_of_trash)) {
+            if (yield trash_files (
+                cancellable,
+                out n_skipped,
+                out delete_instead_of_trash
+            )) {
                 return true; // All files successfully trashed - finish now
-            } else if (aborted ()) {
-                return false;
-            } else {
-                warning ("%i files skipped trash", n_skipped);
             }
 
             transfer_info.reset ();
@@ -230,10 +230,22 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             to_delete = delete_instead_of_trash;
         }
 
-        int n_not_deleted;
-        yield delete_files (to_delete, cancellable, out n_not_deleted);
+        int n_not_deleted = 0;
+        if (!aborted ()) {
+            yield delete_files (to_delete, cancellable, out n_not_deleted);
+        }
         progress.finished ();
-        //TODO Warn of any files that were not trash or deleted
+        if (n_not_deleted > 0) {
+            var message = ngettext (
+                "%i file not trashed or deleted",
+                "%i files not trashed or deleted",
+                n_not_deleted
+            ).printf (n_not_deleted);
+            throw new IOError.FAILED (message);
+        } else if (aborted ()) {
+            var message = "Undo cancelled by user";
+            throw new IOError.CANCELLED (message);
+        }
 
         return n_not_deleted == 0;
     }
