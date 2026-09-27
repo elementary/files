@@ -1409,9 +1409,7 @@ copy_file_progress_callback (goffset current_num_bytes,
                               pdata->transfer_info);
     }
 
-    if (files_file_utils_can_unplug(pdata->file_to_sync)) {
-        files_file_utils_sync (pdata->file_to_sync);
-    }
+    files_file_utils_sync (pdata->file_to_sync);
 }
 
 static void
@@ -1420,9 +1418,7 @@ sync_file_callback (
     goffset total_num_bytes,
     gpointer file_to_sync
 ) {
-    if (files_file_utils_can_unplug(*(GFile **)file_to_sync)) {
-        files_file_utils_sync (*(GFile **)file_to_sync);
-    }
+    files_file_utils_sync (*(GFile **)file_to_sync);
 }
 
 static gboolean
@@ -1672,7 +1668,10 @@ retry:
     pdata.last_size = 0;
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
-    pdata.file_to_sync = dest;
+    pdata.file_to_sync = NULL;
+    if (files_file_utils_can_unplug (src) || files_file_utils_can_unplug (dest_dir)) {
+        pdata.file_to_sync = dest;
+    }
 
     if (copy_job->is_move) {
         res = g_file_move (src, dest,
@@ -2242,12 +2241,17 @@ retry:
         flags |= G_FILE_COPY_OVERWRITE;
     }
 
+    GFile *file_to_sync = NULL;
+    if (files_file_utils_can_unplug (src) || files_file_utils_can_unplug (dest_dir)) {
+        file_to_sync = dest;
+    }
+
     error = NULL;
     if (g_file_move (src, dest,
                      flags,
                      job->cancellable,
                      sync_file_callback,
-                     &dest,
+                     &file_to_sync,
                      &error)) {
 
         if (debuting_files) {
@@ -3161,6 +3165,11 @@ create_job (GTask *task,
 
 retry:
 
+    GFile *file_to_sync = NULL;
+    if (files_file_utils_can_unplug (job->src) || files_file_utils_can_unplug (job->dest_dir)) {
+        file_to_sync = dest;
+    }
+
     error = NULL;
     if (job->make_dir) {
         res = g_file_make_directory (dest,
@@ -3180,7 +3189,7 @@ retry:
                                G_FILE_COPY_NONE,
                                common->cancellable,
                                sync_file_callback,
-                               &dest,
+                               &file_to_sync,
                                &error);
             // Start UNDO-REDO
             if (res) {
