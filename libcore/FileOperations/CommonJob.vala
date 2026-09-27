@@ -58,7 +58,7 @@ public class Files.FileOperations.CommonJob {
         }
     }
 
-    public Gtk.Window? parent_window;
+    protected Gtk.Window? parent_window;
     protected uint inhibit_cookie;
     protected unowned GLib.Cancellable? cancellable;
     protected PF.Progress.Info progress;
@@ -70,7 +70,7 @@ public class Files.FileOperations.CommonJob {
     protected CommonJob.SourceInfo? source_info;
     protected CommonJob.TransferInfo? transfer_info;
 
-    public CommonJob (Gtk.Window? parent_window = null) {
+    protected CommonJob (Gtk.Window? parent_window = null) {
         this.parent_window = parent_window;
         inhibit_cookie = 0;
         source_info = new SourceInfo ();
