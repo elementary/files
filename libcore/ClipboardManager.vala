@@ -176,13 +176,37 @@ namespace Files {
             var file_list = FileUtils.files_from_escaped_uris (text);
 
             if (file_list != null) {
-                try {
-                    yield FileOperations.copy_move_link (file_list,
-                                                         target_file,
-                                                         action,
-                                                         widget);
-                } catch (Error e) {
-                    throw e;
+                if (target_file.has_uri_scheme ("trash")) {
+                    if (action != Gdk.DragAction.MOVE) {
+                        var primary = _("Operation not permitted in trash");
+                        var secondary = _("It is not permitted to copy or link files into the trash");
+                        PF.Dialogs.show_error_dialog (primary, secondary, (Gtk.Window) widget.get_toplevel ());
+                        return;
+                    }
+                    var uris = new Gee.LinkedList<string> ();
+                    var n_files = 0;
+                    foreach (var file in file_list) {
+                        uris.add (file.get_uri ());
+                        n_files++;
+                    }
+
+                    var job = new FileOperations.DeleteJob (
+                        (Gtk.Window) widget.get_toplevel (),
+                        uris,
+                        true
+                    );
+
+                    yield job.trash_or_delete_files (null);
+
+                } else {
+                    try {
+                        yield FileOperations.copy_move_link (file_list,
+                                                             target_file,
+                                                             action,
+                                                             widget);
+                    } catch (Error e) {
+                        throw e;
+                    }
                 }
             }
 
