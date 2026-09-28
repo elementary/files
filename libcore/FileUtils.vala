@@ -1179,7 +1179,7 @@ namespace Files.FileUtils {
         }
     }
 
-    public bool should_throttle_if_below_duration (int64 milliseconds, ref int64 last_time) {
+    public bool elapsed_time_is_less_than_duration (int64 milliseconds, ref int64 last_time) {
         int64 now = get_monotonic_time ();
 
         if (
@@ -1194,7 +1194,7 @@ namespace Files.FileUtils {
         return false;
     }
 
-    public bool should_throttle_if_above_speed (
+    public bool transfer_rate_is_above_speed (
         int64 bytes_per_second,
         int64 current_bytes,
         int64 total_bytes,

@@ -1417,7 +1417,7 @@ copy_file_progress_callback (goffset current_num_bytes,
     // This is the first callback (pdata->last_size == 0) or
     // This is the last callback (total_num_bytes -  current_num_bytes == 0) or
     // Transfer speed is under MAXIMUM_BYTES_PER_SECOND_TO_SYNC.
-    gboolean do_sync = !files_file_utils_should_throttle_if_above_speed (
+    gboolean do_sync = !files_file_utils_transfer_rate_is_above_speed (
         MAXIMUM_BYTES_PER_SECOND_TO_SYNC,
         current_num_bytes,
         total_num_bytes,
@@ -1451,7 +1451,7 @@ sync_file_callback (
     // This is the first callback (sdata->last_size == 0) or
     // This is the last callback (total_num_bytes -  current_num_bytes == 0) or
     // Transfer speed is under MAXIMUM_BYTES_PER_SECOND_TO_SYNC.
-    gboolean do_sync = !files_file_utils_should_throttle_if_above_speed (
+    gboolean do_sync = !files_file_utils_transfer_rate_is_above_speed (
         MAXIMUM_BYTES_PER_SECOND_TO_SYNC,
         current_num_bytes,
         total_num_bytes,
