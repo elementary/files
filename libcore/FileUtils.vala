@@ -16,6 +16,10 @@
     Authors : Jeremy Wootten <jeremywootten@gmail.com>
 ***/
 namespace Files.FileUtils {
+    const uint MICROS_PER_SECOND = 1000 * 1000;
+    const uint MICROS_PER_MILLISECOND = 1000;
+    const uint SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE = 3;
+
     const string RESERVED_CHARS = (GLib.Uri.RESERVED_CHARS_GENERIC_DELIMITERS +
                                    GLib.Uri.RESERVED_CHARS_SUBCOMPONENT_DELIMITERS + " ");
 
@@ -1173,6 +1177,37 @@ namespace Files.FileUtils {
         } catch (Error e) {
             return false;
         }
+    }
+
+    public bool should_throttle_if_below_duration (int64 milliseconds, ref int64 last_time) {
+        int64 now = get_monotonic_time ();
+
+        if (
+            last_time != 0 &&
+            (now - last_time).abs () < milliseconds * MICROS_PER_MILLISECOND
+        ) {
+            return true;
+        }
+
+        last_time = now;
+
+        return false;
+    }
+
+    public bool should_throttle_if_above_speed (
+        int64 bytes_per_second,
+        int64 current_bytes,
+        int64 total_bytes,
+        int64 start_time
+    ) {
+        int64 now = GLib.get_monotonic_time ();
+        int64 elapsed = (now - start_time).abs ();
+
+        if (elapsed < SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE * MICROS_PER_SECOND) {
+            return false;
+        }
+
+        return current_bytes / (elapsed / MICROS_PER_SECOND + 1) > bytes_per_second;
     }
 
     // Return enough of @path to distinguish it from @conflict_path
