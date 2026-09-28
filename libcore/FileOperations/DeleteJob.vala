@@ -197,7 +197,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 }
 
                 var dir_basename = FileUtils.custom_basename_from_file (dir);
-                string secondary
+                string secondary;
                 string? details = null;
                 if (e is IOError.PERMISSION_DENIED) {
                     /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
@@ -225,7 +225,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                         break;
                     case 1: /*SKIP*/
                         break;
-                    case: /*RETRY*/
+                    case 2: /*RETRY*/
                         retry = true;
                         continue;
                     default:
@@ -257,7 +257,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         } catch (Error e) {
             if (e is IOError.CANCELLED) {
                 skipped_file = true;
-                abort_job ();
+                job.abort_job ();
                 return;
             }
 
@@ -285,17 +285,16 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             );
 
             switch (response) {
-                case 0:
+                case 0: /*CANCEL*/
                 case Gtk.ResponseType.DELETE_EVENT:
                     job.abort_job ();
                     break;
-                case 1:
+                case 1: /*Skip files*/
                     local_skipped_file = true;
                     break;
                 default:
                     assert_not_reached ();
             }
-
         }
 
         if (job.aborted () || local_skipped_file) {
@@ -306,7 +305,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         try {
             dir.@delete (job.cancellable);
             FileChanges.queue_folder_removed (dir);
-            transfer_info.num_files ++;
+            transfer_info.num_files++;
             del_job.report_delete_progress (source_info, transfer_info);
         } catch (Error e) {
             var dir_basename = FileUtils.custom_basename_from_file (dir);
@@ -362,6 +361,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 del_job.report_delete_progress (source_info, transfer_info);
             }
         } catch (Error e) {
+            if ((e is IOError.CANCELLED) || job.skip_all_error) {
+                skipped_file = true; // Original C code does not abort on a CANCELLED error here
+                return;
+            }
+
             if (e is IOError.NOT_EMPTY) {
                 DeleteJob.delete_dir (
                     del_job,
@@ -371,31 +375,32 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     transfer_info,
                     toplevel
                 );
-            } else if (!(e is IOError.CANCELLED) && !job.skip_all_error) {
-                string dir_basename = FileUtils.custom_basename_from_file (file);
-                /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-                var secondary = _("There was an error deleting %s.").printf (dir_basename);
-                var response = job.run_warning (
-                    _("Error while deleting."),
-                    secondary,
-                    e.message,
-                    (source_info.num_files - transfer_info.num_files) > 1,
-                    CANCEL, SKIP_ALL, SKIP
-                );
+                return;
+            }
 
-                switch (response) {
-                    case 0:
-                    case Gtk.ResponseType.DELETE_EVENT:
-                        job.abort_job ();
-                        break;
-                    case 1:  /* skip all */
-                        job.skip_all_error = true;
-                        break;
-                    case 2: /* skip */
-                        break;
-                    default:
-                        assert_not_reached ();
-                }
+            string dir_basename = FileUtils.custom_basename_from_file (file);
+            /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+            var secondary = _("There was an error deleting %s.").printf (dir_basename);
+            var response = job.run_warning (
+                _("Error while deleting."),
+                secondary,
+                e.message,
+                (source_info.num_files - transfer_info.num_files) > 1,
+                CANCEL, SKIP_ALL, SKIP
+            );
+
+            switch (response) {
+                case 0:
+                case Gtk.ResponseType.DELETE_EVENT:
+                    job.abort_job ();
+                    break;
+                case 1:  /* skip all */
+                    job.skip_all_error = true;
+                    break;
+                case 2: /* skip */
+                    break;
+                default:
+                    assert_not_reached ();
             }
 
             skipped_file = true;
