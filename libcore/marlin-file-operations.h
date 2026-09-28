@@ -29,16 +29,6 @@
 #include <gio/gio.h>
 
 /* Sidebar uses Marlin.FileOperations to mount volumes but handles unmounting itself */
-
-void marlin_file_operations_delete (GList               *files,
-                                    GtkWindow           *parent_window,
-                                    gboolean             try_trash,
-                                    GCancellable        *cancellable,
-                                    GAsyncReadyCallback  callback,
-                                    gpointer             user_data);
-gboolean marlin_file_operations_delete_finish (GAsyncResult  *result,
-                                               GError       **error);
-
 void marlin_file_operations_copy_move_link (GList               *files,
                                             GFile               *target_dir,
                                             GdkDragAction        copy_action,
