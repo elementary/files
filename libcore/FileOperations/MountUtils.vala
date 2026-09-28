@@ -119,10 +119,7 @@ namespace Files.FileOperations {
 
     public static bool can_unplug (Mount mount) {
         Drive? drive = mount.get_drive ();
-        if (drive == null) {
-            return false;
-        }
-        return drive.is_removable ();
+        return drive != null && drive.is_removable ();
     }
 
     public static async bool mount_volume_full (GLib.Volume volume, Gtk.Window? parent_window = null) {
