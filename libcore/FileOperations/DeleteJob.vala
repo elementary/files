@@ -271,13 +271,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 }
 
                 var dir_basename = FileUtils.custom_basename_from_file (dir);
-                var file_basename = file != null ? FileUtils.custom_basename_from_file (file) : _("unknown");
                 string secondary;
                 string? details = null;
-
                 if (e is IOError.PERMISSION_DENIED) {
                     /// TRANSLATORS: %s is a placeholder for the basename of a file.
-                    secondary = _("You do not have permissions to read '%s'").printf (file_basename);
+                    secondary = _("You do not have permissions to see files in this folder");
                 } else {
                     /// TRANSLATORS: %s is a placeholder for the basename of a file.
                     secondary = _("See details below for further information.");
@@ -285,7 +283,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 }
 
                 var response = job.run_warning (
-                    _("Could not remove a file in folder '%s'").printf (dir_basename),
+                    _("Could not remove files in folder '%s'").printf (dir_basename),
                     secondary,
                     details,
                     false,
