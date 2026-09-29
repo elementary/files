@@ -169,7 +169,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     public static void delete_dir (
         DeleteJob del_job,
         GLib.File dir,
-        ref bool skipped_file,
+        ref bool skipped_dir,
         CommonJob.SourceInfo source_info,
         CommonJob.TransferInfo transfer_info,
         bool toplevel
@@ -181,6 +181,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         FileEnumerator? enumerator = null;
         while (retry) {
             retry = false;
+            skipped_dir = false;
             try {
                 enumerator = dir.enumerate_children (
                     FileAttribute.STANDARD_NAME,
@@ -229,7 +230,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         } /*End of while (retry) */
 
         if (enumerator == null) {
-            skipped_file = true;
+            skipped_dir = true;
             return;
         }
 
@@ -249,7 +250,12 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     transfer_info,
                     false
                 );
+                if (local_skipped_file) {
+                    skipped_dir = true; /*Will not be able to delete this directory*/
+                    local_skipped_file = false; /*Delete as many children as possible, unless aborted*/
+                }
             } catch (Error e) {
+                skipped_dir = true; /*Must skip or abort on error*/
                 if (e is IOError.CANCELLED) {
                     skipped_file = true;
                     job.abort_job ();
@@ -296,8 +302,8 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             }
         } /*End of while get child ()*/
 
-        if (job.aborted () || local_skipped_file) {
-            skipped_file = local_skipped_file;
+        /* Check if a file was skipped or job aborted without enumerator error */
+        if (job.aborted () || skipped_dir) {
             return; // No need to try to delete dir if aborted or a child file was skipped
         }
 
@@ -307,6 +313,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             transfer_info.num_files++;
             del_job.report_delete_progress (source_info, transfer_info);
         } catch (Error e) {
+            skipped_dir = true; /*This dir was not deleted*/
             // We know the dir is empty and readable at this point so an error is unexpected
             var dir_basename = FileUtils.custom_basename_from_file (dir);
             var response = job.run_warning (
