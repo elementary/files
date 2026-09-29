@@ -175,7 +175,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         bool toplevel
     ) {
         var job = (CommonJob) del_job;
-        var local_skipped_file = false;
         var skip_read_error = job.should_skip_readdir_error (dir); /*Skip all errors reading directory children*/
         var retry = true;
         FileEnumerator? enumerator = null;
@@ -235,6 +234,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         }
 
         FileInfo? info = null;
+        var local_skipped_file = false;
         while (
             !job.aborted () && !local_skipped_file
         ) {
@@ -246,7 +246,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 }
 
                 file = dir.get_child (info.get_name ());
-                DeleteJob.delete_file (
+                DeleteJob.delete_file ( /*this handles errors already*/
                     del_job,
                     file,
                     ref local_skipped_file,
@@ -254,6 +254,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     transfer_info,
                     false
                 );
+
                 if (local_skipped_file) {
                     skipped_dir = true; /*Will not be able to delete this directory*/
                     local_skipped_file = false; /*Delete as many children as possible, unless aborted*/
@@ -261,7 +262,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             } catch (Error e) {
                 skipped_dir = true; /*Must skip or abort on error*/
                 if (e is IOError.CANCELLED) {
-                    skipped_file = true;
                     job.abort_job ();
                     return;
                 }
@@ -293,14 +293,16 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 switch (response) {
                     case 0: /*CANCEL*/
                     case Gtk.ResponseType.DELETE_EVENT:
-                        job.abort_job (); // loop will end
+                        job.abort_job ();
                         break;
                     case 1: /*Skip files*/
-                        local_skipped_file = true; // loop will continue
                         break;
                     default:
                         assert_not_reached ();
                 }
+
+                /*Return now as there was an enumerator error*/
+                return;
             }
         } /*End of while get_next_file ()*/
 
@@ -309,6 +311,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             return; // No need to try to delete dir if aborted or a child file was skipped
         }
 
+        // We know the dir is empty and readable at this point so an error is not expected
         try {
             dir.@delete (job.cancellable);
             FileChanges.queue_folder_removed (dir);
@@ -316,7 +319,6 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             del_job.report_delete_progress (source_info, transfer_info);
         } catch (Error e) {
             skipped_dir = true; /*This dir was not deleted*/
-            // We know the dir is empty and readable at this point so an error is unexpected
             var dir_basename = FileUtils.custom_basename_from_file (dir);
             var response = job.run_warning (
                 /// TRANSLATORS: %s is a placeholder for the basename of a file.
@@ -334,10 +336,8 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     break;
                 case 1: /*SKIP_ALL*/
                     job.skip_all_error = true;
-                    skipped_file = true;
                     break;
                 case 2: /*SKIP*/
-                    skipped_file = true;
                     break;
                 default:
                     assert_not_reached ();
