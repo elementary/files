@@ -175,13 +175,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
         bool toplevel
     ) {
         var job = (CommonJob) del_job;
-        FileInfo? info = null;
-        GLib.File? file = null;
-        FileEnumerator? enumerator = null;
-
         var local_skipped_file = false;
         var skip_error = job.should_skip_readdir_error (dir);
+
         var retry = true;
+        FileEnumerator? enumerator = null;
         while (retry) {
             retry = false;
             try {
@@ -229,18 +227,20 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                         assert_not_reached ();
                 }
             }
-        }
+        } /*End of while (retry) */
 
         if (enumerator == null) {
             skipped_file = true;
             return;
         }
 
-        try {
-            while (
-                !job.aborted () &&
-                (info = enumerator.next_file (job.cancellable)) != null
-            ) {
+        FileInfo? info = null;
+        while (
+            !job.aborted () &&
+            (info = enumerator.next_file (job.cancellable)) != null
+        ) {
+            GLib.File? file = null;
+            try {
                 file = dir.get_child (info.get_name ());
                 DeleteJob.delete_file (
                     del_job,
@@ -250,52 +250,52 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     transfer_info,
                     false
                 );
-            }
-        } catch (Error e) {
-            if (e is IOError.CANCELLED) {
-                skipped_file = true;
-                job.abort_job ();
-                return;
-            }
-
-            var dir_basename = FileUtils.custom_basename_from_file (dir);
-            var file_basename = file != null ? FileUtils.custom_basename_from_file (file) : _("unknown");
-            string secondary;
-            string? details = null;
-
-            if (e is IOError.PERMISSION_DENIED) {
-                /// TRANSLATORS: %s is a placeholder for the basename of a file.
-                secondary = _("You do not have permissions to read '%s'").printf (file_basename);
-            } else {
-                /// TRANSLATORS: %s is a placeholder for the basename of a file.
-                secondary = _("See details below for further information.");
-                details = e.message;
-            }
-
-            var response = job.run_warning (
-                _("Could not remove a file in folder '%s'").printf (dir_basename),
-                secondary,
-                details,
-                false,
-                CANCEL, _("_Skip files")
-            );
-
-            switch (response) {
-                case 0: /*CANCEL*/
-                case Gtk.ResponseType.DELETE_EVENT:
+            } catch (Error e) {
+                if (e is IOError.CANCELLED) {
+                    skipped_file = true;
                     job.abort_job ();
-                    break;
-                case 1: /*Skip files*/
-                    local_skipped_file = true; //TODO Should we continue to delete other files inside folder?
-                    break;
-                default:
-                    assert_not_reached ();
+                    return;
+                }
+
+                var dir_basename = FileUtils.custom_basename_from_file (dir);
+                var file_basename = file != null ? FileUtils.custom_basename_from_file (file) : _("unknown");
+                string secondary;
+                string? details = null;
+
+                if (e is IOError.PERMISSION_DENIED) {
+                    /// TRANSLATORS: %s is a placeholder for the basename of a file.
+                    secondary = _("You do not have permissions to read '%s'").printf (file_basename);
+                } else {
+                    /// TRANSLATORS: %s is a placeholder for the basename of a file.
+                    secondary = _("See details below for further information.");
+                    details = e.message;
+                }
+
+                var response = job.run_warning (
+                    _("Could not remove a file in folder '%s'").printf (dir_basename),
+                    secondary,
+                    details,
+                    false,
+                    CANCEL, _("_Skip files")
+                );
+
+                switch (response) {
+                    case 0: /*CANCEL*/
+                    case Gtk.ResponseType.DELETE_EVENT:
+                        job.abort_job (); // loop will end
+                        break;
+                    case 1: /*Skip files*/
+                        local_skipped_file = true; // loop will continue
+                        break;
+                    default:
+                        assert_not_reached ();
+                }
             }
-        }
+        } /*End of while get child ()*/
 
         if (job.aborted () || local_skipped_file) {
             skipped_file = local_skipped_file;
-            return;
+            return; // No need to try to delete dir if aborted or a child file was skipped
         }
 
         try {
@@ -304,8 +304,8 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             transfer_info.num_files++;
             del_job.report_delete_progress (source_info, transfer_info);
         } catch (Error e) {
+            // We know the dir is empty and readable at this point so an error is unexpected
             var dir_basename = FileUtils.custom_basename_from_file (dir);
-            //TODO Give more info?  Usually because not empty?
             var response = job.run_warning (
                 /// TRANSLATORS: %s is a placeholder for the basename of a file.
                 _("Could not remove the folder '%s'").printf (dir_basename),
@@ -322,17 +322,15 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     break;
                 case 1: /*SKIP_ALL*/
                     job.skip_all_error = true;
-                    local_skipped_file = true;
+                    skipped_file = true;
                     break;
                 case 2: /*SKIP*/
-                    local_skipped_file = true;
+                    skipped_file = true;
                     break;
                 default:
                     assert_not_reached ();
             }
         }
-
-        skipped_file = local_skipped_file;
     }
 
     public static void delete_file (
