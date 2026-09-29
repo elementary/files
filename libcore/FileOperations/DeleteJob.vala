@@ -236,11 +236,15 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
         FileInfo? info = null;
         while (
-            !job.aborted () &&
-            (info = enumerator.next_file (job.cancellable)) != null
+            !job.aborted () && !local_skipped_file
         ) {
             GLib.File? file = null;
             try {
+                info = enumerator.next_file (job.cancellable); /* this can throw an error */
+                if (info == null) { /*Error not thrown at end of enumeration*/
+                    break;
+                }
+
                 file = dir.get_child (info.get_name ());
                 DeleteJob.delete_file (
                     del_job,
@@ -300,7 +304,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                         assert_not_reached ();
                 }
             }
-        } /*End of while get child ()*/
+        } /*End of while get_next_file ()*/
 
         /* Check if a file was skipped or job aborted without enumerator error */
         if (job.aborted () || skipped_dir) {
