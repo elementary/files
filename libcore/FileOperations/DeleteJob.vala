@@ -176,7 +176,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     ) {
         var job = (CommonJob) del_job;
         FileInfo? info = null;
-        GLib.File file;
+        GLib.File? file = null;
         FileEnumerator? enumerator = null;
 
         var local_skipped_file = false;
@@ -200,18 +200,15 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 string secondary;
                 string? details = null;
                 if (e is IOError.PERMISSION_DENIED) {
-                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                    secondary = _("The folder \"%s\" cannot be deleted because you do not have permissions to read it.").printf (dir_basename);
+                    secondary = _("You do not have permission to read this folder.");
                 } else {
-                    /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                    /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                    secondary = _("There was an error reading the folder \"%s\".").printf (dir_basename);
+                    secondary = _("See details below for further information.");
                     details = e.message;
                 }
 
                 var response = job.run_warning (
-                    _("Error while deleting."),
+                    /// TRANSLATORS: %s is a placeholder for the basename of a file.
+                    _("Could not remove the folder '%s'").printf (dir_basename),
                     secondary,
                     details,
                     false,
@@ -262,22 +259,21 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             }
 
             var dir_basename = FileUtils.custom_basename_from_file (dir);
+            var file_basename = file != null ? FileUtils.custom_basename_from_file (file) : _("unknown");
             string secondary;
             string? details = null;
 
             if (e is IOError.PERMISSION_DENIED) {
-                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = _("Files in the folder \"%s\" cannot be deleted because you do not have permissions to see them.").printf (dir_basename);
+                /// TRANSLATORS: %s is a placeholder for the basename of a file.
+                secondary = _("You do not have permissions to read '%s'").printf (file_basename);
             } else {
-                /// TRANSLATORS: '\"%s\"' is a placeholder for the quoted basename of a file.  It may change position but must not be translated or removed
-                /// '\"' is an escaped quoted mark.  This may be replaced with another suitable character (escaped if necessary)
-                secondary = _("There was an error getting information about the files in the folder \"%s\".").printf (dir_basename);
+                /// TRANSLATORS: %s is a placeholder for the basename of a file.
+                secondary = _("See details below for further information.");
                 details = e.message;
             }
 
             var response = job.run_warning (
-                _("Error while deleting."),
+                _("Could not remove a file in folder '%s'").printf (dir_basename),
                 secondary,
                 details,
                 false,
@@ -290,7 +286,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     job.abort_job ();
                     break;
                 case 1: /*Skip files*/
-                    local_skipped_file = true;
+                    local_skipped_file = true; //TODO Should we continue to delete other files inside folder?
                     break;
                 default:
                     assert_not_reached ();
@@ -309,12 +305,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             del_job.report_delete_progress (source_info, transfer_info);
         } catch (Error e) {
             var dir_basename = FileUtils.custom_basename_from_file (dir);
-            /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-            var secondary = _("Could not remove the folder %s.").printf (dir_basename);
-
+            //TODO Give more info?  Usually because not empty?
             var response = job.run_warning (
-                _("Error while deleting."),
-                secondary,
+                /// TRANSLATORS: %s is a placeholder for the basename of a file.
+                _("Could not remove the folder '%s'").printf (dir_basename),
+                _("See details below for further information."),
                 e.message,
                 (source_info.num_files - transfer_info.num_files) > 1,
                 CANCEL, SKIP_ALL, SKIP
@@ -378,12 +373,11 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 return;
             }
 
-            string dir_basename = FileUtils.custom_basename_from_file (file);
-            /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-            var secondary = _("There was an error deleting %s.").printf (dir_basename);
+            string file_basename = FileUtils.custom_basename_from_file (file);
             var response = job.run_warning (
-                _("Error while deleting."),
-                secondary,
+                /// TRANSLATORS: %s is a placeholder for the basename of a file.
+                _("Could not remove the file '%s'").printf (file_basename),
+                _("See details below for further information."),
                 e.message,
                 (source_info.num_files - transfer_info.num_files) > 1,
                 CANCEL, SKIP_ALL, SKIP
