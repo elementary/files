@@ -176,8 +176,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
     ) {
         var job = (CommonJob) del_job;
         var local_skipped_file = false;
-        var skip_error = job.should_skip_readdir_error (dir);
-
+        var skip_read_error = job.should_skip_readdir_error (dir); /*Skip all errors reading directory children*/
         var retry = true;
         FileEnumerator? enumerator = null;
         while (retry) {
@@ -189,8 +188,8 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     job.cancellable
                 );
             } catch (Error e) {
-                if ((e is IOError.CANCELLED) || skip_error) {
-                    skipped_file = true;
+                skipped_dir = true;
+                if ((e is IOError.CANCELLED) || skip_read_error) {
                     return;
                 }
 
@@ -255,6 +254,10 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                     skipped_file = true;
                     job.abort_job ();
                     return;
+                }
+
+                if ((e is IOError.PERMISSION_DENIED) && skip_read_error) {
+                    continue;
                 }
 
                 var dir_basename = FileUtils.custom_basename_from_file (dir);
