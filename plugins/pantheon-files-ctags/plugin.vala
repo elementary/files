@@ -90,11 +90,11 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
         /* Check the colors currently set */
         foreach (Files.File gof in current_selected_files) {
-            color_menu_item.check_color_index (gof.color);
+            color_menu_item.check_color ((TagColor) gof.color);
         }
 
-        color_menu_item.color_changed.connect ((ncolor) => {
-            set_color.begin (current_selected_files, ncolor);
+        color_menu_item.color_changed.connect ((color) => {
+            set_color.begin (current_selected_files, color);
         });
 
         add_menuitem (menu, new Gtk.SeparatorMenuItem ());
@@ -106,7 +106,9 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
         menu_item.show ();
     }
 
-    private async void set_color (GLib.List<Files.File> files, int n) throws Error {
+    private async void set_color (GLib.List<Files.File> files, TagColor color) throws Error {
+        var n = (int) color; // Maintain existing interface
+
         foreach (unowned Files.File file in files) {
             if (!(file is Files.File)) {
                 continue;
@@ -138,18 +140,15 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
     private class ColorButton : Gtk.CheckButton {
         private static Gtk.CssProvider css_provider;
-        public string color_name { get; construct; }
-        public int index { get; construct; } // Corresponding index into Preferences TAG_COLORS
-
+        public TagColor color { get; construct; }
         static construct {
             css_provider = new Gtk.CssProvider ();
             css_provider.load_from_resource ("io/elementary/files/ColorButton.css");
         }
 
-        public ColorButton (string color_name, int index) {
+        public ColorButton (TagColor color) {
             Object (
-                color_name: color_name,
-                index: index
+                color: color
             );
         }
 
@@ -157,30 +156,30 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             var style_context = get_style_context ();
             style_context.add_provider (css_provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             style_context.add_class (Granite.STYLE_CLASS_COLOR_BUTTON);
-            style_context.add_class (color_name);
+            style_context.add_class (color.get_css_name ());
         }
     }
 
     private class ColorWidget : Gtk.MenuItem {
-        public signal void color_changed (int ncolor);
+        public signal void color_changed (TagColor color);
         private Gee.ArrayList<ColorButton> color_buttons;
         private Gtk.Grid colorbox;
         private const int COLORBOX_SPACING = 3;
 
         construct {
             color_buttons = new Gee.ArrayList<ColorButton> ();
-            color_buttons.add (new ColorButton ("none", 0));
-            color_buttons.add (new ColorButton ("blue", 1));
-            color_buttons.add (new ColorButton ("mint", 2));
-            color_buttons.add (new ColorButton ("green", 3));
-            color_buttons.add (new ColorButton ("yellow", 4));
-            color_buttons.add (new ColorButton ("orange", 5));
-            color_buttons.add (new ColorButton ("red", 6));
-            color_buttons.add (new ColorButton ("pink", 7));
-            color_buttons.add (new ColorButton ("purple", 8));
-            color_buttons.add (new ColorButton ("latte", 11));
-            color_buttons.add (new ColorButton ("brown", 9));
-            color_buttons.add (new ColorButton ("slate", 10));
+            color_buttons.add (new ColorButton (NONE));
+            color_buttons.add (new ColorButton (BLUE));
+            color_buttons.add (new ColorButton (MINT));
+            color_buttons.add (new ColorButton (GREEN));
+            color_buttons.add (new ColorButton (YELLOW));
+            color_buttons.add (new ColorButton (ORANGE));
+            color_buttons.add (new ColorButton (RED));
+            color_buttons.add (new ColorButton (PINK));
+            color_buttons.add (new ColorButton (PURPLE));
+            color_buttons.add (new ColorButton (LATTE));
+            color_buttons.add (new ColorButton (BROWN));
+            color_buttons.add (new ColorButton (SLATE));
 
             colorbox = new Gtk.Grid () {
                 column_spacing = COLORBOX_SPACING,
@@ -213,13 +212,12 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
             button_press_event.connect (button_pressed_cb);
         }
 
-        public void check_color_index (int index, bool clear_others = false) {
+        // Check the button with the color of the parameter
+        // Do not change other buttons
+        public void check_color (TagColor color) {
             foreach (var button in color_buttons) {
-                if (button.index == index) {
+                if (button.color == color) {
                     button.active = true;
-                } else if (clear_others) {
-                    button.active = false;
-                } else {
                     return;
                 }
             }
@@ -237,9 +235,15 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 button_index = color_buttons.size - 1 - button_index;
             }
 
-            var color_index = color_buttons[button_index].index;
-            color_changed (color_index);
-            check_color_index (color_index, true);
+            var button_pressed = color_buttons[button_index];
+            color_changed (button_pressed.color);
+
+            // Set all selected items to the pressed button's color.
+            foreach (var button in color_buttons) {
+                button.active = false;
+            }
+
+            button_pressed.active = true;
 
             return true;
         }

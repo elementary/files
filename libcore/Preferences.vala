@@ -16,26 +16,88 @@
 ***/
 
 namespace Files {
-
     public static Preferences? preferences = null;
+    public enum TagColor {
+        NONE,
+        BLUE,
+        MINT,
+        GREEN,
+        YELLOW,
+        ORANGE,
+        RED,
+        PINK,
+        PURPLE,
+        BROWN,
+        SLATE,
+        LATTE,
+        LAST_COLOR;
+
+        /* We have to hard code the colors while we are using renderers - cannot use css */
+        public string? get_rgb_string () {
+            switch (this) {
+                case NONE:
+                    return null;
+                case BLUE:
+                    return "#64baff"; //(Elementary Blueberry 300)
+                case MINT:
+                    return "#43d6b5"; //(Elementary Mint 300)
+                case GREEN:
+                    return "#9bdb4d"; //(Elementary Lime 300)
+                case YELLOW:
+                    return "#ffe16b"; //(Elementary Banana 300)
+                case ORANGE:
+                    return "#ffc27d"; //(Elementary Orange 100)
+                case RED:
+                    return "#ff8c82"; //(Elementary Strawberry 100)
+                case PINK:
+                    return "#f4679d"; //(Elementary Bubblegum 300)
+                case PURPLE:
+                    return "#cd9ef7"; //(Elementary Grape 300)
+                case BROWN:
+                    return "#a3907c"; //(Elementary Cocoa 100)
+                case SLATE:
+                    return "#95a3ab"; //(Elementary Slate 100)
+                case LATTE:
+                    return "#efdfc4"; //(Elementary Latte 100)
+                default:
+                    return null;
+            }
+        }
+
+        // Used for styling buttons in the menu
+        public string get_css_name () {
+            switch (this) {
+                case NONE:
+                    return "none";
+                case BLUE:
+                    return "blue"; //(Elementary Blueberry 300)
+                case MINT:
+                    return "mint"; //(Elementary Mint 300)
+                case GREEN:
+                    return "green"; //(Elementary Lime 300)
+                case YELLOW:
+                    return "yellow"; //(Elementary Banana 300)
+                case ORANGE:
+                    return "orange"; //(Elementary Orange 100)
+                case RED:
+                    return "red"; //(Elementary Strawberry 100)
+                case PINK:
+                    return "pink"; //(Elementary Bubblegum 300)
+                case PURPLE:
+                    return "purple"; //(Elementary Grape 300)
+                case BROWN:
+                    return "brown"; //(Elementary Cocoa 100)
+                case SLATE:
+                    return "slate"; //(Elementary Slate 100)
+                case LATTE:
+                    return "latte"; //(Elementary Latte 100)
+                default:
+                    return "none";
+            }
+        }
+    }
 
     public class Preferences : Object {
-        /* We have to hard code the colors while we are using renderers - cannot use css */
-        public const string?[] TAGS_COLORS = {
-            null,       // No color set
-            "#64baff",  // CSS name "blue" (Elementary Blueberry 300)
-            "#43d6b5",  // CSS name "mint" (Elementary Mint 300)
-            "#9bdb4d",  // CSS name "green" (Elementary Lime 300)
-            "#ffe16b",  // CSS name "yellow" (Elementary Banana 300)
-            "#ffc27d",  // CSS name "orange" (Elementary Orange 100)
-            "#ff8c82",  // CSS name "red" (Elementary Strawberry 100)
-            "#f4679d",  // CSS name "pink" (Elementary Bubblegum 300)
-            "#cd9ef7",  // CSS name "purple" (Elementary Grape 300)
-            "#a3907c",  // CSS name "brown" (Elementary Cocoa 100)
-            "#95a3ab",  // CSS name "slate" (Elementary Slate 100)
-            "#efdfc4",   // CSS name "latte" (Elementary Latte 100)
-            null
-        };
 
         public bool show_hidden_files {get; set; default = false;}
         public bool show_file_preview {set; get; default = true;}
