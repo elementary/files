@@ -41,9 +41,12 @@
 
 #include "pantheon-files-core.h"
 
-#define SECONDS_NEEDED_FOR_RELIABLE_TRANSFER_RATE 15
-//#define NSEC_PER_SEC 1000000000
-#define NSEC_PER_MSEC 1000000
+
+// Choose the speed 300 MiB/s as the file transfer sync threshold because it's
+// the presumed crossover speed for internal versus external storage considering
+// today's internal (NVMe, SATA) storage speeds versus external (USB) storage speeds.
+// Exceptions are older, slower internal HDDs or newer, faster external SATA/NVMe storage.
+#define MAXIMUM_BYTES_PER_SECOND_TO_SYNC (300 * 1024 * 1024) // 300 MiB/s
 
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
 
@@ -1050,6 +1053,10 @@ copy_move_directory (FilesFileOperationsCopyMoveJob *copy_job,
     dest_fs_type = NULL;
 
     skip_error = marlin_file_operations_common_job_should_skip_readdir_error (job, src);
+
+    /* Do not count the copied directory as a file */
+    source_info->num_files --;
+
 retry:
     error = NULL;
     enumerator = g_file_enumerate_children (src,
@@ -1383,10 +1390,18 @@ skip2:
 
 typedef struct {
     FilesFileOperationsCopyMoveJob *job;
-    goffset last_size;
     SourceInfo *source_info;
     TransferInfo *transfer_info;
+    gint64 start_time;
+    goffset last_size;
+    GFile *file_to_sync;
 } ProgressData;
+
+typedef struct {
+    gint64 start_time;
+    goffset last_size;
+    GFile *file_to_sync;
+} SyncData;
 
 static void
 copy_file_progress_callback (goffset current_num_bytes,
@@ -1398,6 +1413,17 @@ copy_file_progress_callback (goffset current_num_bytes,
 
     pdata = user_data;
 
+    // Do sync if:
+    // This is the first callback (pdata->last_size == 0) or
+    // This is the last callback (total_num_bytes -  current_num_bytes == 0) or
+    // Transfer speed is under MAXIMUM_BYTES_PER_SECOND_TO_SYNC.
+    gboolean do_sync = !files_file_utils_transfer_rate_is_above_speed (
+        MAXIMUM_BYTES_PER_SECOND_TO_SYNC,
+        current_num_bytes,
+        total_num_bytes,
+        pdata->start_time
+    ) || pdata->last_size == 0 || total_num_bytes -  current_num_bytes == 0;
+
     new_size = current_num_bytes - pdata->last_size;
 
     if (new_size > 0) {
@@ -1406,6 +1432,35 @@ copy_file_progress_callback (goffset current_num_bytes,
         marlin_file_operations_copy_move_job_report_copy_progress (pdata->job,
                               pdata->source_info,
                               pdata->transfer_info);
+    }
+
+    if (do_sync) {
+        files_file_utils_sync (pdata->file_to_sync);
+    }
+}
+
+static void
+sync_file_callback (
+    goffset current_num_bytes,
+    goffset total_num_bytes,
+    gpointer user_data
+) {
+    SyncData *sdata = user_data;
+
+    // Do sync if:
+    // This is the first callback (sdata->last_size == 0) or
+    // This is the last callback (total_num_bytes -  current_num_bytes == 0) or
+    // Transfer speed is under MAXIMUM_BYTES_PER_SECOND_TO_SYNC.
+    gboolean do_sync = !files_file_utils_transfer_rate_is_above_speed (
+        MAXIMUM_BYTES_PER_SECOND_TO_SYNC,
+        current_num_bytes,
+        total_num_bytes,
+        sdata->start_time
+    ) || sdata->last_size == 0 || total_num_bytes -  current_num_bytes == 0;
+
+    if (do_sync) {
+        sdata->last_size = current_num_bytes;
+        files_file_utils_sync (sdata->file_to_sync);
     }
 }
 
@@ -1639,6 +1694,10 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
 
 retry:
 
+    if (!g_file_equal(g_file_get_parent(src), dest_dir)) {
+        copy_job->destination_for_progress_dialog = dest_dir;
+    }
+
     error = NULL;
     flags = G_FILE_COPY_NOFOLLOW_SYMLINKS;
     if (overwrite) {
@@ -1649,9 +1708,16 @@ retry:
     }
 
     pdata.job = copy_job;
-    pdata.last_size = 0;
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
+    pdata.last_size = 0;
+    pdata.start_time = g_get_monotonic_time ();
+    pdata.file_to_sync = NULL;
+
+    // Allow syncs only if source and/or destination are removable storage.
+    if (files_file_utils_can_unplug (src) || files_file_utils_can_unplug (dest_dir)) {
+        pdata.file_to_sync = dest;
+    }
 
     if (copy_job->is_move) {
         res = g_file_move (src, dest,
@@ -1984,8 +2050,6 @@ copy_files (FilesFileOperationsCopyMoveJob *job,
     dest_fs_type = NULL;
     readonly_source_fs = FALSE;
 
-    marlin_file_operations_copy_move_job_report_copy_progress (job, source_info, transfer_info);
-
     /* Query the source dir, not the file because if its a symlink we'll follow it */
     source_dir = g_file_get_parent ((GFile *) job->files->data);
     if (source_dir) {
@@ -2223,12 +2287,22 @@ retry:
         flags |= G_FILE_COPY_OVERWRITE;
     }
 
+    SyncData sdata;
+    sdata.last_size = 0;
+    sdata.start_time = g_get_monotonic_time ();
+    sdata.file_to_sync = NULL;
+
+    // Allow syncs only if source and/or destination are removable storage.
+    if (files_file_utils_can_unplug (src) || files_file_utils_can_unplug (dest_dir)) {
+        sdata.file_to_sync = dest;
+    }
+
     error = NULL;
     if (g_file_move (src, dest,
                      flags,
                      job->cancellable,
-                     NULL,
-                     NULL,
+                     sync_file_callback,
+                     &sdata,
                      &error)) {
 
         if (debuting_files) {
@@ -2444,8 +2518,6 @@ move_files (FilesFileOperationsCopyMoveJob *job,
     int i;
     gboolean skipped_file;
     MoveFileCopyFallback *fallback;
-
-    marlin_file_operations_copy_move_job_report_copy_progress (job, source_info, transfer_info);
 
     i = 0;
     for (l = fallbacks;
@@ -3158,11 +3230,22 @@ retry:
         // End UNDO-REDO
     } else {
         if (job->src) {
+            SyncData sdata;
+            sdata.last_size = 0;
+            sdata.start_time = g_get_monotonic_time ();
+            sdata.file_to_sync = NULL;
+
+            // Allow syncs only if source and/or destination are removable storage.
+            if (files_file_utils_can_unplug (job->src) || files_file_utils_can_unplug (job->dest_dir)) {
+                sdata.file_to_sync = dest;
+            }
+
             res = g_file_copy (job->src,
                                dest,
                                G_FILE_COPY_NONE,
                                common->cancellable,
-                               NULL, NULL,
+                               sync_file_callback,
+                               &sdata,
                                &error);
             // Start UNDO-REDO
             if (res) {
