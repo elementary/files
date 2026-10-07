@@ -1378,9 +1378,9 @@ public class Files.File : GLib.Object {
         } else {
             /* Only compare sizes for regular files */
             if (size < other.size) {
-                return -1;
-            } else if (size > other.size) {
                 return 1;
+            } else if (size > other.size) {
+                return -1;
             }
         }
 
