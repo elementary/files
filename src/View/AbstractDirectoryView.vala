@@ -931,41 +931,37 @@ namespace Files {
         }
 
         private void trash_or_delete_files (GLib.List<Files.File> file_list,
-                                            bool delete_if_already_in_trash,
                                             bool delete_immediately) {
 
-            GLib.List<GLib.File> locations = null;
+            var locations = new Gee.LinkedList<string> ();
+            uint n_files = 0;
             if (in_recent) {
                 file_list.@foreach ((file) => {
-                    locations.prepend (GLib.File.new_for_uri (file.get_display_target_uri ()));
+                    locations.insert (0, file.get_display_target_uri ());
+                    n_files++;
                 });
             } else {
                 file_list.@foreach ((file) => {
-                    locations.prepend (file.location);
+                    locations.insert (0, file.uri);
+                    n_files++;
                 });
             }
 
             deleted_path = model.get_path_for_first_file (file_list.first ().data);
 
             if (locations != null) {
-                locations.reverse ();
-
                 slot.directory.block_monitor ();
-                FileOperations.@delete.begin (
+                var job = new FileOperations.DeleteJob (
+                    window,
                     locations,
-                    window as Gtk.Window,
-                    !delete_immediately,
-                    null,
-                    (obj, res) => {
-                        try {
-                            FileOperations.@delete.end (res);
-                        } catch (Error e) {
-                            debug (e.message);
-                        }
-
-                        after_trash_or_delete ();
-                    }
+                    !delete_immediately
                 );
+
+                job.trash_or_delete_files.begin (null, (obj, res) => {
+                    job.trash_or_delete_files.end (res);
+                    after_trash_or_delete ();
+                });
+
             }
 
             /* If in recent "folder" we need to refresh the view. */
@@ -1096,7 +1092,6 @@ namespace Files {
                 unblock_directory_monitor ();
                 return GLib.Source.REMOVE;
             });
-
         }
 
         private void unblock_directory_monitor () {
@@ -1115,7 +1110,7 @@ namespace Files {
          */
             GLib.List<Files.File> selection = get_selected_files_for_transfer ();
             if (selection != null) {
-                trash_or_delete_files (selection, true, delete_immediately);
+                trash_or_delete_files (selection, delete_immediately);
             }
         }
 
