@@ -25,7 +25,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     public Gtk.ListBox list_box { get; set construct; }
 
     private Files.BookmarkList bookmark_list;
-    private unowned Files.TrashMonitor trash_monitor;
+    private BookmarkRow? trash_row;
 
     public BookmarkListBox (Files.SidebarInterface sidebar) {
         Object (sidebar: sidebar);
@@ -39,7 +39,11 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
         add (list_box);
 
-        trash_monitor = Files.TrashMonitor.get_default ();
+        unowned var trash_monitor = Files.TrashMonitor.get_default ();
+        trash_monitor.notify["is-empty"].connect (() => {
+            trash_row?.update_icon (Files.TrashMonitor.get_default ().get_icon ());
+        });
+
         bookmark_list = Files.BookmarkList.get_instance ();
         bookmark_list.loaded.connect (() => {
             refresh ();
@@ -169,24 +173,16 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         }
 
         if (!Files.is_admin ()) {
-            row = add_bookmark (
+            trash_row = add_bookmark (
                 _("Trash"),
                 _(Files.TRASH_URI),
-                trash_monitor.get_icon (),
+                Files.TrashMonitor.get_default ().get_icon (),
                 true,
                 true
             );
-
-            row.set_tooltip_markup (
-                Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash"))
-            );
-
-            row.can_insert_before = true;
-            row.can_insert_after = false;
-
-            trash_monitor.notify["is-empty"].connect (() => {
-                row.update_icon (trash_monitor.get_icon ());
-            });
+            trash_row.set_tooltip_markup (Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash")));
+            trash_row.can_insert_before = true;
+            trash_row.can_insert_after = false;
         }
     }
 
