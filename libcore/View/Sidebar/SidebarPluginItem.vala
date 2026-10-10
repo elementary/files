@@ -30,6 +30,7 @@ public class Files.SidebarPluginItem : Object {
     public bool can_eject { get; set; }
     public string? tooltip { get; set; }
     public Icon? action_icon { get; set; }
+    public string action_tooltip { get; set; }
     public bool show_spinner { get; set; default = false; }
     public uint64 free_space { get; set; default = 0; }
     public uint64 disk_size { get; set; default = 0; }
