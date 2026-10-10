@@ -117,6 +117,11 @@ namespace Files.FileOperations {
         }
     }
 
+    public static bool can_unplug (Mount mount) {
+        Drive? drive = mount.get_drive ();
+        return drive != null && drive.is_removable ();
+    }
+
     public static async bool mount_volume_full (GLib.Volume volume, Gtk.Window? parent_window = null) {
         var mount_operation = new Gtk.MountOperation (parent_window);
         mount_operation.password_save = GLib.PasswordSave.FOR_SESSION;

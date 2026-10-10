@@ -41,7 +41,12 @@
 
 #include "pantheon-files-core.h"
 
-#define NSEC_PER_MSEC 1000000
+
+// Choose the speed 300 MiB/s as the file transfer sync threshold because it's
+// the presumed crossover speed for internal versus external storage considering
+// today's internal (NVMe, SATA) storage speeds versus external (USB) storage speeds.
+// Exceptions are older, slower internal HDDs or newer, faster external SATA/NVMe storage.
+#define MAXIMUM_BYTES_PER_SECOND_TO_SYNC (300 * 1024 * 1024) // 300 MiB/s
 
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
 
@@ -1377,11 +1382,18 @@ skip2:
 
 typedef struct {
     FilesFileOperationsCopyMoveJob *job;
-    goffset last_size;
     SourceInfo *source_info;
     TransferInfo *transfer_info;
+    gint64 start_time;
+    goffset last_size;
     GFile *file_to_sync;
 } ProgressData;
+
+typedef struct {
+    gint64 start_time;
+    goffset last_size;
+    GFile *file_to_sync;
+} SyncData;
 
 static void
 copy_file_progress_callback (goffset current_num_bytes,
@@ -1393,6 +1405,17 @@ copy_file_progress_callback (goffset current_num_bytes,
 
     pdata = user_data;
 
+    // Do sync if:
+    // This is the first callback (pdata->last_size == 0) or
+    // This is the last callback (total_num_bytes -  current_num_bytes == 0) or
+    // Transfer speed is under MAXIMUM_BYTES_PER_SECOND_TO_SYNC.
+    gboolean do_sync = !files_file_utils_transfer_rate_is_above_speed (
+        MAXIMUM_BYTES_PER_SECOND_TO_SYNC,
+        current_num_bytes,
+        total_num_bytes,
+        pdata->start_time
+    ) || pdata->last_size == 0 || total_num_bytes -  current_num_bytes == 0;
+
     new_size = current_num_bytes - pdata->last_size;
 
     if (new_size > 0) {
@@ -1403,16 +1426,34 @@ copy_file_progress_callback (goffset current_num_bytes,
                               pdata->transfer_info);
     }
 
-    files_file_utils_sync (pdata->file_to_sync);
+    if (do_sync) {
+        files_file_utils_sync (pdata->file_to_sync);
+    }
 }
 
 static void
 sync_file_callback (
     goffset current_num_bytes,
     goffset total_num_bytes,
-    gpointer file_to_sync
+    gpointer user_data
 ) {
-    files_file_utils_sync (*(GFile **)file_to_sync);
+    SyncData *sdata = user_data;
+
+    // Do sync if:
+    // This is the first callback (sdata->last_size == 0) or
+    // This is the last callback (total_num_bytes -  current_num_bytes == 0) or
+    // Transfer speed is under MAXIMUM_BYTES_PER_SECOND_TO_SYNC.
+    gboolean do_sync = !files_file_utils_transfer_rate_is_above_speed (
+        MAXIMUM_BYTES_PER_SECOND_TO_SYNC,
+        current_num_bytes,
+        total_num_bytes,
+        sdata->start_time
+    ) || sdata->last_size == 0 || total_num_bytes -  current_num_bytes == 0;
+
+    if (do_sync) {
+        sdata->last_size = current_num_bytes;
+        files_file_utils_sync (sdata->file_to_sync);
+    }
 }
 
 static gboolean
@@ -1658,10 +1699,16 @@ retry:
     }
 
     pdata.job = copy_job;
-    pdata.last_size = 0;
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
-    pdata.file_to_sync = dest;
+    pdata.last_size = 0;
+    pdata.start_time = g_get_monotonic_time ();
+    pdata.file_to_sync = NULL;
+
+    // Allow syncs only if source and/or destination are removable storage.
+    if (files_file_utils_can_unplug (src) || files_file_utils_can_unplug (dest_dir)) {
+        pdata.file_to_sync = dest;
+    }
 
     if (copy_job->is_move) {
         res = g_file_move (src, dest,
@@ -2221,12 +2268,22 @@ retry:
         flags |= G_FILE_COPY_OVERWRITE;
     }
 
+    SyncData sdata;
+    sdata.last_size = 0;
+    sdata.start_time = g_get_monotonic_time ();
+    sdata.file_to_sync = NULL;
+
+    // Allow syncs only if source and/or destination are removable storage.
+    if (files_file_utils_can_unplug (src) || files_file_utils_can_unplug (dest_dir)) {
+        sdata.file_to_sync = dest;
+    }
+
     error = NULL;
     if (g_file_move (src, dest,
                      flags,
                      job->cancellable,
                      sync_file_callback,
-                     &dest,
+                     &sdata,
                      &error)) {
 
 
@@ -3145,12 +3202,22 @@ retry:
         // End UNDO-REDO
     } else {
         if (job->src) {
+            SyncData sdata;
+            sdata.last_size = 0;
+            sdata.start_time = g_get_monotonic_time ();
+            sdata.file_to_sync = NULL;
+
+            // Allow syncs only if source and/or destination are removable storage.
+            if (files_file_utils_can_unplug (job->src) || files_file_utils_can_unplug (job->dest_dir)) {
+                sdata.file_to_sync = dest;
+            }
+
             res = g_file_copy (job->src,
                                dest,
                                G_FILE_COPY_NONE,
                                common->cancellable,
                                sync_file_callback,
-                               &dest,
+                               &sdata,
                                &error);
             // Start UNDO-REDO
             if (res) {
