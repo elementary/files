@@ -118,7 +118,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return bm; // Should not be null (either an existing bookmark or a new one)
     }
 
-    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
+    public uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name,
                                  plugin_item.uri,
                                  plugin_item.icon,

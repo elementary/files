@@ -10,16 +10,14 @@ public interface Sidebar.SidebarListInterface : Object {
     public abstract Gtk.ListBox list_box { get; set construct; }
 
     public abstract void unselect_all_items ();
-    public abstract void refresh (); //Clear and recreate all rows
+    public abstract void refresh (); // Clear and recreate all rows
+    public abstract void select_uri (string uri);
+    public abstract uint32 add_plugin_item (Files.SidebarPluginItem plugin_item);
 
     public virtual void refresh_info () {} //Update all rows without recreating them
     public virtual void rename_bookmark_by_uri (string uri, string new_name) {}
     public virtual void open_item (SidebarItemInterface item, Files.OpenFlag flag = DEFAULT) {
         sidebar.path_change_request (item.uri, flag);
-    }
-
-    public virtual uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
-        return 0;
     }
 
     public virtual void clear () {
@@ -51,8 +49,6 @@ public interface Sidebar.SidebarListInterface : Object {
 
         return false;
     }
-
-    public abstract void select_uri (string uri);
 
     // Returns true if item was both found and removed
     public virtual bool remove_item_by_id (uint32 id) {

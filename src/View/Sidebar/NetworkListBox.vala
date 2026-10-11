@@ -78,7 +78,7 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return (BookmarkRow) row;
     }
 
-    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
+    public uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name,
                                 plugin_item.uri,
                                 plugin_item.icon,
