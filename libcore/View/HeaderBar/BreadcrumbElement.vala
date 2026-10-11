@@ -51,28 +51,17 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
     public bool can_shrink = true;
     public bool pressed = false;
 
-    public bool text_is_displayed = true;
-    private string _text_for_display = "";
-    public string? text_for_display {
-        set {
-            _text_for_display = value;
-            update_text_width ();
-        }
-
-        get {
-            return _text_for_display;
-        }
-    }
+    public bool text_is_displayed { private get; set; default = true; }
+    public string? _text_for_display;
 
     private Gtk.Border padding;
     private Pango.Layout layout;
-    private Gtk.Widget widget;
 
     public BreadcrumbElement (string text_, Gtk.Widget widget_, Gtk.StyleContext button_context) {
         text = text_;
-        widget = widget_;
+        set_text_for_display (Uri.unescape_string (text), widget_);
+
         padding = button_context.get_padding (button_context.get_state ());
-        text_for_display = Uri.unescape_string (text);
     }
 
     public void set_icon (BreadcrumbIconInfo icon_info) {
@@ -336,8 +325,14 @@ public class Files.View.Chrome.BreadcrumbElement : Object {
         return x;
     }
 
-    private void update_text_width () {
-        layout = widget.create_pango_layout (_text_for_display);
+    public string? get_text_for_display () {
+        return _text_for_display;
+    }
+
+    public void set_text_for_display (string new_text_for_display, Gtk.Widget parent_widget) {
+        _text_for_display = new_text_for_display;
+
+        layout = parent_widget.create_pango_layout (new_text_for_display);
         layout.set_ellipsize (Pango.EllipsizeMode.MIDDLE);
 
         int width, height;
