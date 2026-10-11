@@ -9,7 +9,6 @@ public interface Sidebar.SidebarListInterface : Object {
     public abstract Files.SidebarInterface sidebar { get; set construct; }
     public abstract Gtk.ListBox list_box { get; set construct; }
 
-    public abstract void select_item (Gtk.ListBoxRow? item);
     public abstract void unselect_all_items ();
     public abstract void refresh (); //Clear and recreate all rows
 
@@ -53,16 +52,7 @@ public interface Sidebar.SidebarListInterface : Object {
         return false;
     }
 
-    public virtual bool select_uri (string uri) {
-        unselect_all_items ();
-        Gtk.ListBoxRow? row = null;
-        if (has_uri (uri, out row)) {
-            select_item (row);
-            return true;
-        }
-
-        return false;
-    }
+    public abstract void select_uri (string uri);
 
     // Returns true if item was both found and removed
     public virtual bool remove_item_by_id (uint32 id) {
