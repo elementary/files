@@ -17,10 +17,6 @@ public interface Sidebar.SidebarListInterface : Object {
         sidebar.path_change_request (item.uri, flag);
     }
 
-    public virtual uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
-        return 0;
-    }
-
     protected void clear () {
         Gtk.ListBoxRow? row = list_box.get_row_at_index (0);
         while (row != null) {
