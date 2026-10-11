@@ -1,22 +1,11 @@
 /*
- *   Copyright (c)  1999, 2000 Eazel, Inc.
- *                  2015-2026 elementary, Inc <https://elementary.io>
+ * SPDX-FileCopyrightText: 1999-2000 Eazel, Inc.
+ *                         2015-2025 elementary, Inc. (https://elementary.io)
+ * SPDX-License-Identifier: LGPL-3.0
  *
- *    This program is free software: you can redistribute it and/or modify it
- *    under the terms of the GNU Lesser General Public License version 3, as published
- *   by the Free Software Foundation, Inc.,.
- *
- *    This program is distributed in the hope that it will be useful, but
- *    WITHOUT ANY WARRANTY; without even the implied warranties of
- *    MERCHANTABILITY, SATISFACTORY QUALITY, or FITNESS FOR A PARTICULAR
- *    PURPOSE. See the GNU General Public License for more details.
- *
- *    You should have received a copy of the GNU General Public License along
- *    with this program. If not, see <http://www.gnu.org/licenses/>.
- *
- *    Authors : John Sullivan <sullivan@eazel.com>
- *              ammonkey <am.monkeyd@gmail.com>
- *              Jeremy Wootten <jeremywootten@gmail.com>
+ * Authors : John Sullivan <sullivan@eazel.com>
+ *           ammonkey <am.monkeyd@gmail.com>
+ *           Jeremy Wootten <jeremywootten@gmail.com>
  */
 
 public class Files.BookmarkList : GLib.Object {
