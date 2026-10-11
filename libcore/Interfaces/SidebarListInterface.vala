@@ -9,7 +9,6 @@ public interface Sidebar.SidebarListInterface : Object {
     public abstract Files.SidebarInterface sidebar { get; set construct; }
     public abstract Gtk.ListBox list_box { get; set construct; }
 
-    public abstract void unselect_all_items ();
     public abstract void refresh (); //Clear and recreate all rows
 
     public virtual void refresh_info () {} //Update all rows without recreating them
