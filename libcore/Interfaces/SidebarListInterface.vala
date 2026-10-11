@@ -21,7 +21,7 @@ public interface Sidebar.SidebarListInterface : Object {
         return 0;
     }
 
-    public virtual void clear () {
+    protected void clear () {
         Gtk.ListBoxRow? row = list_box.get_row_at_index (0);
         while (row != null) {
             list_box.remove (row);
