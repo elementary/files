@@ -236,7 +236,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     }
 
     public void focus () {
-        bookmark_listbox.focus ();
+        bookmark_listbox.grab_focus ();
     }
 
     private class SidebarExpander : Gtk.ToggleButton {

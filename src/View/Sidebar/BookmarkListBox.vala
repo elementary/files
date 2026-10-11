@@ -256,4 +256,13 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     public virtual bool is_drop_target () { return true; }
+
+    public override void grab_focus () {
+        var focus_row = list_box.get_selected_row ();
+        if (focus_row == null) {
+            focus_row = list_box.get_row_at_index (0);
+        }
+
+        focus_row.grab_focus ();
+    }
 }
