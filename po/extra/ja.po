@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-26 17:12+0000\n"
-"PO-Revision-Date: 2026-09-20 09:02+0000\n"
+"PO-Revision-Date: 2026-10-06 13:59+0000\n"
 "Last-Translator: Ryo Nakano <ryonakaknock3@gmail.com>\n"
 "Language-Team: Japanese <https://l10n.elementaryos.org/projects/files/extra/"
 "ja/>\n"
@@ -86,12 +86,16 @@ msgid ""
 "Displays an informative dialog on attempting to unmount a device still in "
 "use instead of crashing"
 msgstr ""
+"使用中のデバイスをアンマウントしようとした際に、クラッシュするのではなく情報"
+"ダイアログを表示するように修正"
 
 #: data/files.metainfo.xml.in.in:70
 msgid ""
 "Shows a realistic progress rate when copy or moving data to a slow device "
 "instead of cache speed"
 msgstr ""
+"低速なデバイスにデータをコピーまたは移動する際に、キャッシュ速度ではなく現実"
+"に即した進捗率を表示するように修正"
 
 #: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:90
 #: data/files.metainfo.xml.in.in:113 data/files.metainfo.xml.in.in:126
