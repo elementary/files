@@ -26,9 +26,6 @@ public interface Sidebar.SidebarListInterface : Object {
         Gtk.ListBoxRow? row = list_box.get_row_at_index (0);
         while (row != null) {
             list_box.remove (row);
-            if (row is SidebarItemInterface) {
-                ((SidebarItemInterface)row).destroy_bookmark ();
-            }
 
             row = list_box.get_row_at_index (0);
         }
@@ -67,7 +64,6 @@ public interface Sidebar.SidebarListInterface : Object {
                         return false;
                     } else {
                         list_box.remove (child);
-                        row.destroy_bookmark ();
                         return true;
                     }
                 }
