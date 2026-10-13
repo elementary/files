@@ -24,7 +24,6 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 file.color = int.parse (info.get_attribute_string ("metadata::color-tag"));
             }
         } catch (Error err) {
-            warning ("CTAGS PLUGIN error");
             warning ("%s", err.message);
         }
     }
