@@ -15,7 +15,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
 
     private async void rreal_update_file_info (Files.File file) {
         try {
-            if (file.color >= 0) {
+            if (file.color >= 0 || !file.exists) {
                 return;
             }
 
@@ -24,6 +24,7 @@ public class Files.Plugins.CTags : Files.Plugins.Base {
                 file.color = int.parse (info.get_attribute_string ("metadata::color-tag"));
             }
         } catch (Error err) {
+            warning ("CTAGS PLUGIN error");
             warning ("%s", err.message);
         }
     }
