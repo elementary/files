@@ -309,7 +309,7 @@ namespace Files.View.Chrome {
 
             var el = get_element_from_coordinates (x);
             if (el != null && !hide_breadcrumbs) {
-                set_tooltip_markup (_("Go to %s").printf (el.text_for_display));
+                set_tooltip_markup (_("Go to %s").printf (el.get_text_for_display ()));
                 set_entry_cursor ("default");
             } else {
                 set_entry_cursor ("text");
@@ -537,7 +537,7 @@ namespace Files.View.Chrome {
             foreach (BreadcrumbIconInfo icon in breadcrumb_icons.get_list ()) {
                 if (icon.protocol && protocol.has_prefix (icon.path)) {
                     newelements[0].set_icon (icon);
-                    newelements[0].text_for_display = icon.text_displayed;
+                    newelements[0].set_text_for_display (icon.text_displayed, this);
                     newelements[0].text_is_displayed = (icon.text_displayed != null);
                     break;
                 } else if (!icon.protocol && icon.exploded.length <= newelements.size) {
@@ -561,7 +561,7 @@ namespace Files.View.Chrome {
                         newelements[h].display = true;
                         newelements[h].set_icon (icon);
                         newelements[h].text_is_displayed = (icon.text_displayed != null) || !icon.break_loop;
-                        newelements[h].text_for_display = icon.text_displayed;
+                        newelements[h].set_text_for_display (icon.text_displayed, this);
 
                         if (icon.break_loop) {
                             break;

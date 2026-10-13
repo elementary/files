@@ -49,11 +49,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
             }
         });
 
-        list_box.row_selected.connect ((row) => {
-            if (row is BookmarkRow) {
-                select_item (row);
-            }
-        });
+        list_box.row_selected.connect (list_box.select_row);
 
         list_box.set_sort_func (device_sort_func);
     }
@@ -172,7 +168,10 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         }
     }
 
-    public override void refresh_info () {
+    /**
+     * Update all rows without recreating them.
+     */
+    public void refresh_info () {
         int index = 0;
         Gtk.ListBoxRow? row = list_box.get_row_at_index (index);
         while (row != null) {
@@ -274,11 +273,11 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         }
     }
 
-    public void select_item (Gtk.ListBoxRow? item) {
-        if (item != null && item is AbstractMountableRow) {
-            list_box.select_row (item);
-        } else {
-            unselect_all_items ();
+    public void select_uri (string uri) {
+        unselect_all_items ();
+        Gtk.ListBoxRow? row = null;
+        if (has_uri (uri, out row)) {
+            list_box.select_row (row);
         }
     }
 }
