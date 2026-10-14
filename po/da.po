@@ -7,16 +7,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-22 11:16+0000\n"
-"PO-Revision-Date: 2021-06-05 20:46+0000\n"
-"Last-Translator: Rantyrant <diseasemonger@gmail.com>\n"
-"Language-Team: Danish <https://l10n.elementary.io/projects/files/files/da/>\n"
+"POT-Creation-Date: 2026-09-26 17:12+0000\n"
+"PO-Revision-Date: 2026-10-13 13:03+0000\n"
+"Last-Translator: CodeBeats <nicholai67@hotmail.com>\n"
+"Language-Team: Danish <https://l10n.elementaryos.org/projects/files/files/"
+"da/>\n"
 "Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.4.2\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:25+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:206
@@ -41,22 +42,20 @@ msgstr "Annuller"
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open Files as Read Only"
-msgstr ""
+msgstr "Åbn Filer som skrivebeskyttede"
 
 #: filechooser-portal/FileChooserDialog.vala:126
 #: filechooser-portal/FileChooserDialog.vala:132
 msgid "Open File as Read Only"
-msgstr ""
+msgstr "Åbn Filer som skrivebeskyttede"
 
 #: filechooser-portal/FileChooserDialog.vala:378
-#, fuzzy
 msgid "Enter new filename"
-msgstr "ny fil"
+msgstr "Indtast nyt filnavn"
 
 #: filechooser-portal/Main.vala:107
-#, fuzzy
 msgid "Select"
-msgstr " valgt"
+msgstr "Vælg"
 
 #: filechooser-portal/Main.vala:107 src/View/Sidebar/BookmarkRow.vala:313
 msgid "Open"
@@ -64,7 +63,7 @@ msgstr "Åbn"
 
 #: filechooser-portal/Main.vala:222 filechooser-portal/Main.vala:379
 msgid "Save"
-msgstr ""
+msgstr "Gem"
 
 #: filechooser-portal/Main.vala:454
 #, c-format
@@ -73,7 +72,7 @@ msgstr ""
 
 #: filechooser-portal/Main.vala:457
 msgid "This file is a link."
-msgstr ""
+msgstr "Denne fil er et link."
 
 #: filechooser-portal/Main.vala:460
 #, fuzzy
@@ -82,9 +81,9 @@ msgid ""
 msgstr "Ved erstatning vil dens indhold blive overskrevet."
 
 #: filechooser-portal/Main.vala:462
-#, fuzzy, c-format
+#, c-format
 msgid "Replace “%s”?"
-msgstr "Erstat filen \"%s\"?"
+msgstr "Erstat \"%s\"?"
 
 #: filechooser-portal/Main.vala:463
 #, fuzzy

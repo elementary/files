@@ -49,11 +49,7 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
             }
         });
 
-        list_box.row_selected.connect ((row) => {
-            if (row is BookmarkRow) {
-                select_item (row);
-            }
-        });
+        list_box.row_selected.connect (list_box.select_row);
 
         list_box.set_sort_func (device_sort_func);
     }
@@ -122,21 +118,6 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return bm; // Should not be null (either an existing bookmark or a new one)
     }
 
-    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
-        var row = add_bookmark (plugin_item.name,
-                                 plugin_item.uri,
-                                 plugin_item.icon,
-                                 null,
-                                 plugin_item.drive,
-                                 plugin_item.volume,
-                                 plugin_item.mount,
-                                 true,
-                                 true);
-
-        row.update_plugin_data (plugin_item);
-        return row.id;
-    }
-
     public void refresh () {
         clear ();
 
@@ -172,7 +153,10 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         }
     }
 
-    public override void refresh_info () {
+    /**
+     * Update all rows without recreating them.
+     */
+    public void refresh_info () {
         int index = 0;
         Gtk.ListBoxRow? row = list_box.get_row_at_index (index);
         while (row != null) {
@@ -262,23 +246,12 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return null;
     }
 
-    public void unselect_all_items () {
-        int index = 0;
-        Gtk.ListBoxRow? child = list_box.get_row_at_index (index);
-        while (child != null) {
-            if (child is AbstractMountableRow) {
-                list_box.unselect_row (child);
-            }
+    public void select_uri (string uri) {
+        list_box.unselect_all ();
 
-            child = list_box.get_row_at_index (++index);
-        }
-    }
-
-    public void select_item (Gtk.ListBoxRow? item) {
-        if (item != null && item is AbstractMountableRow) {
-            list_box.select_row (item);
-        } else {
-            unselect_all_items ();
+        Gtk.ListBoxRow? row = null;
+        if (has_uri (uri, out row)) {
+            list_box.select_row (row);
         }
     }
 }

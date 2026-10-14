@@ -41,7 +41,12 @@
 
 #include "pantheon-files-core.h"
 
-#define NSEC_PER_MSEC 1000000
+
+// Choose the speed 300 MiB/s as the file transfer sync threshold because it's
+// the presumed crossover speed for internal versus external storage considering
+// today's internal (NVMe, SATA) storage speeds versus external (USB) storage speeds.
+// Exceptions are older, slower internal HDDs or newer, faster external SATA/NVMe storage.
+#define MAXIMUM_BYTES_PER_SECOND_TO_SYNC (300 * 1024 * 1024) // 300 MiB/s
 
 #define MAXIMUM_DISPLAYED_FILE_NAME_LENGTH 50
 
@@ -874,7 +879,6 @@ static void copy_move_file (FilesFileOperationsCopyMoveJob *job,
                             char **dest_fs_type,
                             SourceInfo *source_info,
                             TransferInfo *transfer_info,
-                            GHashTable *debuting_files,
                             gboolean overwrite,
                             gboolean *skipped_file,
                             gboolean readonly_source_fs);
@@ -1004,7 +1008,6 @@ copy_move_directory (FilesFileOperationsCopyMoveJob *copy_job,
                      char **parent_dest_fs_type,
                      SourceInfo *source_info,
                      TransferInfo *transfer_info,
-                     GHashTable *debuting_files,
                      gboolean *skipped_file,
                      gboolean readonly_source_fs)
 {
@@ -1038,9 +1041,6 @@ copy_move_directory (FilesFileOperationsCopyMoveJob *copy_job,
             break;
         }
 
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (*dest), GINT_TO_POINTER (TRUE));
-        }
 
     }
 
@@ -1067,7 +1067,7 @@ retry:
             src_file = g_file_get_child (src,
                                          g_file_info_get_name (info));
             copy_move_file (copy_job, src_file, *dest, same_fs, FALSE, &dest_fs_type,
-                            source_info, transfer_info, NULL, FALSE, &local_skipped_file,
+                            source_info, transfer_info, FALSE, &local_skipped_file,
                             readonly_source_fs);
             g_object_unref (src_file);
             g_object_unref (info);
@@ -1125,9 +1125,6 @@ retry:
         transfer_info->num_files ++;
         marlin_file_operations_copy_move_job_report_copy_progress (copy_job, source_info, transfer_info);
 
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (*dest), GINT_TO_POINTER (create_dest));
-        }
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
@@ -1385,11 +1382,18 @@ skip2:
 
 typedef struct {
     FilesFileOperationsCopyMoveJob *job;
-    goffset last_size;
     SourceInfo *source_info;
     TransferInfo *transfer_info;
+    gint64 start_time;
+    goffset last_size;
     GFile *file_to_sync;
 } ProgressData;
+
+typedef struct {
+    gint64 start_time;
+    goffset last_size;
+    GFile *file_to_sync;
+} SyncData;
 
 static void
 copy_file_progress_callback (goffset current_num_bytes,
@@ -1401,6 +1405,17 @@ copy_file_progress_callback (goffset current_num_bytes,
 
     pdata = user_data;
 
+    // Do sync if:
+    // This is the first callback (pdata->last_size == 0) or
+    // This is the last callback (total_num_bytes -  current_num_bytes == 0) or
+    // Transfer speed is under MAXIMUM_BYTES_PER_SECOND_TO_SYNC.
+    gboolean do_sync = !files_file_utils_transfer_rate_is_above_speed (
+        MAXIMUM_BYTES_PER_SECOND_TO_SYNC,
+        current_num_bytes,
+        total_num_bytes,
+        pdata->start_time
+    ) || pdata->last_size == 0 || total_num_bytes -  current_num_bytes == 0;
+
     new_size = current_num_bytes - pdata->last_size;
 
     if (new_size > 0) {
@@ -1411,16 +1426,34 @@ copy_file_progress_callback (goffset current_num_bytes,
                               pdata->transfer_info);
     }
 
-    files_file_utils_sync (pdata->file_to_sync);
+    if (do_sync) {
+        files_file_utils_sync (pdata->file_to_sync);
+    }
 }
 
 static void
 sync_file_callback (
     goffset current_num_bytes,
     goffset total_num_bytes,
-    gpointer file_to_sync
+    gpointer user_data
 ) {
-    files_file_utils_sync (*(GFile **)file_to_sync);
+    SyncData *sdata = user_data;
+
+    // Do sync if:
+    // This is the first callback (sdata->last_size == 0) or
+    // This is the last callback (total_num_bytes -  current_num_bytes == 0) or
+    // Transfer speed is under MAXIMUM_BYTES_PER_SECOND_TO_SYNC.
+    gboolean do_sync = !files_file_utils_transfer_rate_is_above_speed (
+        MAXIMUM_BYTES_PER_SECOND_TO_SYNC,
+        current_num_bytes,
+        total_num_bytes,
+        sdata->start_time
+    ) || sdata->last_size == 0 || total_num_bytes -  current_num_bytes == 0;
+
+    if (do_sync) {
+        sdata->last_size = current_num_bytes;
+        files_file_utils_sync (sdata->file_to_sync);
+    }
 }
 
 static gboolean
@@ -1540,7 +1573,6 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
                 char **dest_fs_type,
                 SourceInfo *source_info,
                 TransferInfo *transfer_info,
-                GHashTable *debuting_files,
                 gboolean overwrite,
                 gboolean *skipped_file,
                 gboolean readonly_source_fs)
@@ -1667,10 +1699,16 @@ retry:
     }
 
     pdata.job = copy_job;
-    pdata.last_size = 0;
     pdata.source_info = source_info;
     pdata.transfer_info = transfer_info;
-    pdata.file_to_sync = dest;
+    pdata.last_size = 0;
+    pdata.start_time = g_get_monotonic_time ();
+    pdata.file_to_sync = NULL;
+
+    // Allow syncs only if source and/or destination are removable storage.
+    if (files_file_utils_can_unplug (src) || files_file_utils_can_unplug (dest_dir)) {
+        pdata.file_to_sync = dest;
+    }
 
     if (copy_job->is_move) {
         res = g_file_move (src, dest,
@@ -1696,15 +1734,7 @@ retry:
         transfer_info->num_files ++;
         marlin_file_operations_copy_move_job_report_copy_progress (copy_job, source_info, transfer_info);
 
-        if (debuting_files) {
-            /*if (position) {
-                //files_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
-            } else {
-                //files_file_changes_queue_schedule_position_remove (dest);
-            }*/
 
-            g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
-        }
         if (copy_job->is_move) {
             files_file_changes_queue_file_moved (src, dest);
         } else {
@@ -1924,7 +1954,7 @@ retry:
         if (!copy_move_directory (copy_job, src, &dest, same_fs,
                                   would_recurse, dest_fs_type,
                                   source_info, transfer_info,
-                                  debuting_files, skipped_file,
+                                  skipped_file,
                                   readonly_source_fs)) {
             /* destination changed, since it was an invalid file name */
             g_assert (*dest_fs_type != NULL);
@@ -2039,7 +2069,6 @@ copy_files (FilesFileOperationsCopyMoveJob *job,
                             same_fs, unique_names,
                             &dest_fs_type,  //dest_fs_type always null?
                             source_info, transfer_info,
-                            job->debuting_files,
                             FALSE, &skipped_file,
                             readonly_source_fs);
             g_object_unref (dest);
@@ -2181,7 +2210,6 @@ move_file_prepare (FilesFileOperationsCopyMoveJob *move_job,
                    GFile *dest_dir,
                    gboolean same_fs,
                    char **dest_fs_type,
-                   GHashTable *debuting_files,
                    GList **fallback_files,
                    int files_left)
 {
@@ -2240,17 +2268,24 @@ retry:
         flags |= G_FILE_COPY_OVERWRITE;
     }
 
+    SyncData sdata;
+    sdata.last_size = 0;
+    sdata.start_time = g_get_monotonic_time ();
+    sdata.file_to_sync = NULL;
+
+    // Allow syncs only if source and/or destination are removable storage.
+    if (files_file_utils_can_unplug (src) || files_file_utils_can_unplug (dest_dir)) {
+        sdata.file_to_sync = dest;
+    }
+
     error = NULL;
     if (g_file_move (src, dest,
                      flags,
                      job->cancellable,
                      sync_file_callback,
-                     &dest,
+                     &sdata,
                      &error)) {
 
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
-        }
 
         files_file_changes_queue_file_moved (src, dest);
 
@@ -2434,7 +2469,6 @@ move_files_prepare (FilesFileOperationsCopyMoveJob *job,
 
         move_file_prepare (job, src, job->destination,
                            same_fs, dest_fs_type,
-                           job->debuting_files,
                            fallbacks,
                            left);
         marlin_file_operations_copy_move_job_report_move_progress (job, total, --left);
@@ -2480,7 +2514,6 @@ move_files (FilesFileOperationsCopyMoveJob *job,
         copy_move_file (job, src, job->destination,
                         same_fs, FALSE, dest_fs_type,
                         source_info, transfer_info,
-                        job->debuting_files,
                         fallback->overwrite, &skipped_file, FALSE);
         i++;
     }
@@ -2599,7 +2632,6 @@ static void
 link_file (FilesFileOperationsCopyMoveJob *job,
            GFile *src, GFile *dest_dir,
            char **dest_fs_type,
-           GHashTable *debuting_files,
            int files_left)
 {
     GFile *src_dir, *dest, *new_dest;
@@ -2643,9 +2675,6 @@ retry:
 
         g_free (path);
 
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
-        }
        files_file_changes_queue_file_added (dest, TRUE);
 
         g_object_unref (dest);
@@ -2773,7 +2802,7 @@ link_job (GTask *task,
 
 
         link_file (job, src, job->destination,
-                   &dest_fs_type, job->debuting_files,
+                   &dest_fs_type,
                    left);
         marlin_file_operations_copy_move_job_report_link_progress (job, total, --left);
         i++;
@@ -3173,12 +3202,22 @@ retry:
         // End UNDO-REDO
     } else {
         if (job->src) {
+            SyncData sdata;
+            sdata.last_size = 0;
+            sdata.start_time = g_get_monotonic_time ();
+            sdata.file_to_sync = NULL;
+
+            // Allow syncs only if source and/or destination are removable storage.
+            if (files_file_utils_can_unplug (job->src) || files_file_utils_can_unplug (job->dest_dir)) {
+                sdata.file_to_sync = dest;
+            }
+
             res = g_file_copy (job->src,
                                dest,
                                G_FILE_COPY_NONE,
                                common->cancellable,
                                sync_file_callback,
-                               &dest,
+                               &sdata,
                                &error);
             // Start UNDO-REDO
             if (res) {

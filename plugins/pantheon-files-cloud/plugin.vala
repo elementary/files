@@ -93,8 +93,7 @@ public class Files.Plugins.Cloud.Plugin : Files.Plugins.Base {
     void add_account_to_sidebar (CloudProviders.Account account, CloudProviders.Provider provider) {
         //  Fix menu loading with wrong order by forcing dbus to cache menu_model
         account.menu_model.get_n_items ();
-        var reference = sidebar.add_plugin_item (adapt_plugin_item (provider, account),
-                                                 Files.PlaceType.NETWORK_CATEGORY);
+        var reference = sidebar.add_network_plugin_item (adapt_plugin_item (provider, account));
 
         //  Update sidebar representation of the cloudprovider account on it's properties changes
         account.notify.connect (() => {
