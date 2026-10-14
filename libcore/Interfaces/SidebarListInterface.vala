@@ -12,7 +12,6 @@ public interface Sidebar.SidebarListInterface : Object {
     public abstract void unselect_all_items ();
     public abstract void refresh (); //Clear and recreate all rows
 
-    public virtual void refresh_info () {} //Update all rows without recreating them
     public virtual void rename_bookmark_by_uri (string uri, string new_name) {}
     public virtual void open_item (SidebarItemInterface item, Files.OpenFlag flag = DEFAULT) {
         sidebar.path_change_request (item.uri, flag);
