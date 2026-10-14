@@ -44,7 +44,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
         ).next_int ();
 
         item_map_lock = Mutex ();
-        item_id_map = new Gee.HashMap<uint32, SidebarItemInterface> ();
+        item_id_map = new Gee.HashMap<uint32, weak SidebarItemInterface> ();
     }
 
     public SidebarListInterface list { get; set construct; }
@@ -85,7 +85,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     private SimpleAction empty_all_trash_action;
     private string? drop_text = null;
     private bool drop_occurred = false;
-    private bool valid = true; //Set to false if scheduled for removal
 
     public BookmarkRow (string _custom_name,
                         string uri,
@@ -102,6 +101,12 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
             pinned: pinned,
             permanent: permanent
         );
+    }
+
+    ~BookmarkRow () {
+        item_map_lock.@lock ();
+        item_id_map.unset (id);
+        item_map_lock.unlock ();
     }
 
     construct {
@@ -223,7 +228,7 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
         custom_name = item.name;
         uri = item.uri;
-        update_icon (item.icon);
+        gicon = item.icon;
         menu_model = item.menu_model;
         action_group = item.action_group;
         action_group_namespace = item.action_group_namespace;
@@ -240,15 +245,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     protected void cancel_rename () {
         label_stack.visible_child_name = "label";
         grab_focus ();
-    }
-
-    public void destroy_bookmark () {
-        /* We destroy all bookmarks - even permanent ones when refreshing */
-        valid = false;
-        item_map_lock.@lock ();
-        item_id_map.unset (id);
-        item_map_lock.unlock ();
-        base.destroy ();
     }
 
     protected virtual bool on_key_press_event (uint keyval, uint keycode, Gdk.ModifierType state) {
@@ -269,10 +265,6 @@ public class Sidebar.BookmarkRow : Gtk.ListBoxRow, SidebarItemInterface {
     }
 
     protected virtual void on_button_release_event (int n_press, double x, double y) {
-        if (!valid) { //Ignore if in the process of being removed
-            return;
-        }
-
         if (label_stack.visible_child_name == "editable") { //Do not interfere with renaming
             return;
         }

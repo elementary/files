@@ -11,7 +11,6 @@ public interface Sidebar.SidebarListInterface : Object {
 
     public abstract void refresh (); //Clear and recreate all rows
 
-    public virtual void refresh_info () {} //Update all rows without recreating them
     public virtual void rename_bookmark_by_uri (string uri, string new_name) {}
     public virtual void open_item (SidebarItemInterface item, Files.OpenFlag flag = DEFAULT) {
         sidebar.path_change_request (item.uri, flag);
@@ -21,9 +20,6 @@ public interface Sidebar.SidebarListInterface : Object {
         Gtk.ListBoxRow? row = list_box.get_row_at_index (0);
         while (row != null) {
             list_box.remove (row);
-            if (row is SidebarItemInterface) {
-                ((SidebarItemInterface)row).destroy_bookmark ();
-            }
 
             row = list_box.get_row_at_index (0);
         }
@@ -62,7 +58,6 @@ public interface Sidebar.SidebarListInterface : Object {
                         return false;
                     } else {
                         list_box.remove (child);
-                        row.destroy_bookmark ();
                         return true;
                     }
                 }

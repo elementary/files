@@ -153,7 +153,10 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         }
     }
 
-    public override void refresh_info () {
+    /**
+     * Update all rows without recreating them.
+     */
+    public void refresh_info () {
         int index = 0;
         Gtk.ListBoxRow? row = list_box.get_row_at_index (index);
         while (row != null) {
