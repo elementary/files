@@ -41,7 +41,9 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
         unowned var trash_monitor = Files.TrashMonitor.get_default ();
         trash_monitor.notify["is-empty"].connect (() => {
-            trash_row?.update_icon (Files.TrashMonitor.get_default ().get_icon ());
+            if (trash_row != null) {
+                trash_row.gicon = Files.TrashMonitor.get_default ().get_icon ();
+            }
         });
 
         bookmark_list = Files.BookmarkList.get_instance ();
