@@ -154,26 +154,8 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     }
 
     /* SidebarInterface */
-    public uint32 add_plugin_item (Files.SidebarPluginItem plugin_item, Files.PlaceType category) {
-        uint32 id = 0;
-        switch (category) {
-            case Files.PlaceType.BOOKMARKS_CATEGORY:
-                id = bookmark_listbox.add_plugin_item (plugin_item);
-                break;
-
-            case Files.PlaceType.STORAGE_CATEGORY:
-                id = device_listbox.add_plugin_item (plugin_item);
-                break;
-
-            case Files.PlaceType.NETWORK_CATEGORY:
-                id = network_listbox.add_plugin_item (plugin_item);
-                break;
-
-            default:
-                break;
-        }
-
-        return id;
+    public uint32 add_network_plugin_item (Files.SidebarPluginItem plugin_item) {
+        return network_listbox.add_plugin_item (plugin_item);
     }
 
     public bool update_plugin_item (Files.SidebarPluginItem item, uint32 item_id) {
@@ -236,7 +218,7 @@ public class Sidebar.SidebarWindow : Gtk.Box, Files.SidebarInterface {
     }
 
     public void focus () {
-        bookmark_listbox.focus ();
+        bookmark_listbox.grab_focus ();
     }
 
     private class SidebarExpander : Gtk.ToggleButton {

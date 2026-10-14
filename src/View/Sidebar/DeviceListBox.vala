@@ -118,21 +118,6 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return bm; // Should not be null (either an existing bookmark or a new one)
     }
 
-    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
-        var row = add_bookmark (plugin_item.name,
-                                 plugin_item.uri,
-                                 plugin_item.icon,
-                                 null,
-                                 plugin_item.drive,
-                                 plugin_item.volume,
-                                 plugin_item.mount,
-                                 true,
-                                 true);
-
-        row.update_plugin_data (plugin_item);
-        return row.id;
-    }
-
     public void refresh () {
         clear ();
 
@@ -261,20 +246,9 @@ public class Sidebar.DeviceListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return null;
     }
 
-    public void unselect_all_items () {
-        int index = 0;
-        Gtk.ListBoxRow? child = list_box.get_row_at_index (index);
-        while (child != null) {
-            if (child is AbstractMountableRow) {
-                list_box.unselect_row (child);
-            }
-
-            child = list_box.get_row_at_index (++index);
-        }
-    }
-
     public void select_uri (string uri) {
-        unselect_all_items ();
+        list_box.unselect_all ();
+
         Gtk.ListBoxRow? row = null;
         if (has_uri (uri, out row)) {
             list_box.select_row (row);

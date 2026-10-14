@@ -78,7 +78,7 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return (BookmarkRow) row;
     }
 
-    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
+    public uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
         var row = add_bookmark (plugin_item.name,
                                 plugin_item.uri,
                                 plugin_item.icon,
@@ -141,12 +141,9 @@ public class Sidebar.NetworkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         }
     }
 
-    public void unselect_all_items () {
-        list_box.unselect_all ();
-    }
-
     public void select_uri (string uri) {
-        unselect_all_items ();
+        list_box.unselect_all ();
+
         Gtk.ListBoxRow? row = null;
         if (has_uri (uri, out row)) {
             list_box.select_row (row);
