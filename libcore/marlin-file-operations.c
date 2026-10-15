@@ -625,7 +625,6 @@ static void copy_move_file (FilesFileOperationsCopyMoveJob *job,
                             char **dest_fs_type,
                             SourceInfo *source_info,
                             TransferInfo *transfer_info,
-                            GHashTable *debuting_files,
                             gboolean overwrite,
                             gboolean *skipped_file,
                             gboolean readonly_source_fs);
@@ -755,7 +754,6 @@ copy_move_directory (FilesFileOperationsCopyMoveJob *copy_job,
                      char **parent_dest_fs_type,
                      SourceInfo *source_info,
                      TransferInfo *transfer_info,
-                     GHashTable *debuting_files,
                      gboolean *skipped_file,
                      gboolean readonly_source_fs)
 {
@@ -789,9 +787,6 @@ copy_move_directory (FilesFileOperationsCopyMoveJob *copy_job,
             break;
         }
 
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (*dest), GINT_TO_POINTER (TRUE));
-        }
 
     }
 
@@ -818,7 +813,7 @@ retry:
             src_file = g_file_get_child (src,
                                          g_file_info_get_name (info));
             copy_move_file (copy_job, src_file, *dest, same_fs, FALSE, &dest_fs_type,
-                            source_info, transfer_info, NULL, FALSE, &local_skipped_file,
+                            source_info, transfer_info, FALSE, &local_skipped_file,
                             readonly_source_fs);
             g_object_unref (src_file);
             g_object_unref (info);
@@ -876,9 +871,6 @@ retry:
         transfer_info->num_files ++;
         marlin_file_operations_copy_move_job_report_copy_progress (copy_job, source_info, transfer_info);
 
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (*dest), GINT_TO_POINTER (create_dest));
-        }
     } else if (IS_IO_ERROR (error, CANCELLED)) {
         g_error_free (error);
     } else {
@@ -1327,7 +1319,6 @@ copy_move_file (FilesFileOperationsCopyMoveJob *copy_job,
                 char **dest_fs_type,
                 SourceInfo *source_info,
                 TransferInfo *transfer_info,
-                GHashTable *debuting_files,
                 gboolean overwrite,
                 gboolean *skipped_file,
                 gboolean readonly_source_fs)
@@ -1489,15 +1480,7 @@ retry:
         transfer_info->num_files ++;
         marlin_file_operations_copy_move_job_report_copy_progress (copy_job, source_info, transfer_info);
 
-        if (debuting_files) {
-            /*if (position) {
-                //files_file_changes_queue_schedule_position_set (dest, *position, job->screen_num);
-            } else {
-                //files_file_changes_queue_schedule_position_remove (dest);
-            }*/
 
-            g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
-        }
         if (copy_job->is_move) {
             files_file_changes_queue_file_moved (src, dest);
         } else {
@@ -1717,7 +1700,7 @@ retry:
         if (!copy_move_directory (copy_job, src, &dest, same_fs,
                                   would_recurse, dest_fs_type,
                                   source_info, transfer_info,
-                                  debuting_files, skipped_file,
+                                  skipped_file,
                                   readonly_source_fs)) {
             /* destination changed, since it was an invalid file name */
             g_assert (*dest_fs_type != NULL);
@@ -1832,7 +1815,6 @@ copy_files (FilesFileOperationsCopyMoveJob *job,
                             same_fs, unique_names,
                             &dest_fs_type,  //dest_fs_type always null?
                             source_info, transfer_info,
-                            job->debuting_files,
                             FALSE, &skipped_file,
                             readonly_source_fs);
             g_object_unref (dest);
@@ -1974,7 +1956,6 @@ move_file_prepare (FilesFileOperationsCopyMoveJob *move_job,
                    GFile *dest_dir,
                    gboolean same_fs,
                    char **dest_fs_type,
-                   GHashTable *debuting_files,
                    GList **fallback_files,
                    int files_left)
 {
@@ -2051,9 +2032,6 @@ retry:
                      &sdata,
                      &error)) {
 
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
-        }
 
         files_file_changes_queue_file_moved (src, dest);
 
@@ -2237,7 +2215,6 @@ move_files_prepare (FilesFileOperationsCopyMoveJob *job,
 
         move_file_prepare (job, src, job->destination,
                            same_fs, dest_fs_type,
-                           job->debuting_files,
                            fallbacks,
                            left);
         marlin_file_operations_copy_move_job_report_move_progress (job, total, --left);
@@ -2283,7 +2260,6 @@ move_files (FilesFileOperationsCopyMoveJob *job,
         copy_move_file (job, src, job->destination,
                         same_fs, FALSE, dest_fs_type,
                         source_info, transfer_info,
-                        job->debuting_files,
                         fallback->overwrite, &skipped_file, FALSE);
         i++;
     }
@@ -2402,7 +2378,6 @@ static void
 link_file (FilesFileOperationsCopyMoveJob *job,
            GFile *src, GFile *dest_dir,
            char **dest_fs_type,
-           GHashTable *debuting_files,
            int files_left)
 {
     GFile *src_dir, *dest, *new_dest;
@@ -2446,9 +2421,6 @@ retry:
 
         g_free (path);
 
-        if (debuting_files) {
-            g_hash_table_replace (debuting_files, g_object_ref (dest), GINT_TO_POINTER (TRUE));
-        }
        files_file_changes_queue_file_added (dest, TRUE);
 
         g_object_unref (dest);
@@ -2576,7 +2548,7 @@ link_job (GTask *task,
 
 
         link_file (job, src, job->destination,
-                   &dest_fs_type, job->debuting_files,
+                   &dest_fs_type,
                    left);
         marlin_file_operations_copy_move_job_report_link_progress (job, total, --left);
         i++;

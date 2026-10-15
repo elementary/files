@@ -379,8 +379,7 @@ namespace Files.View {
                         s.inactive ();
                     }
                 });
-
-                current_slot = slot;
+                truncate_list_after_slot (slot); // This sets current slot as well
             }
             /* Always emit this signal so that UI updates (e.g. pathbar) */
             active ();

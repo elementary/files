@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-26 17:12+0000\n"
-"PO-Revision-Date: 2026-09-21 00:46+0000\n"
+"PO-Revision-Date: 2026-10-08 23:33+0000\n"
 "Last-Translator: Ihor Hordiichuk <igor_ck@outlook.com>\n"
 "Language-Team: Ukrainian <https://l10n.elementaryos.org/projects/files/extra/"
 "uk/>\n"
@@ -86,12 +86,16 @@ msgid ""
 "Displays an informative dialog on attempting to unmount a device still in "
 "use instead of crashing"
 msgstr ""
+"За спроби від'єднати пристрій, який ще використовується, замість збою "
+"системи показує інформаційне діалогове вікно"
 
 #: data/files.metainfo.xml.in.in:70
 msgid ""
 "Shows a realistic progress rate when copy or moving data to a slow device "
 "instead of cache speed"
 msgstr ""
+"Показує справжню швидкість виконання операції під час копіювання або "
+"переміщення даних на повільний пристрій, а не швидкість роботи кешу"
 
 #: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:90
 #: data/files.metainfo.xml.in.in:113 data/files.metainfo.xml.in.in:126

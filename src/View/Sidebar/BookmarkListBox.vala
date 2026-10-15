@@ -25,7 +25,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     public Gtk.ListBox list_box { get; set construct; }
 
     private Files.BookmarkList bookmark_list;
-    private unowned Files.TrashMonitor trash_monitor;
+    private BookmarkRow? trash_row;
 
     public BookmarkListBox (Files.SidebarInterface sidebar) {
         Object (sidebar: sidebar);
@@ -39,7 +39,13 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
 
         add (list_box);
 
-        trash_monitor = Files.TrashMonitor.get_default ();
+        unowned var trash_monitor = Files.TrashMonitor.get_default ();
+        trash_monitor.notify["is-empty"].connect (() => {
+            if (trash_row != null) {
+                trash_row.gicon = Files.TrashMonitor.get_default ().get_icon ();
+            }
+        });
+
         bookmark_list = Files.BookmarkList.get_instance ();
         bookmark_list.loaded.connect (() => {
             refresh ();
@@ -55,11 +61,7 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
             }
         });
 
-        list_box.row_selected.connect ((row) => {
-            if (row is BookmarkRow) {
-                select_item (row);
-            }
-        });
+        list_box.row_selected.connect (list_box.select_row);
     }
 
     private BookmarkRow? add_bookmark (string label,
@@ -92,28 +94,13 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         return row;
     }
 
-    public override uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
-        var row = add_bookmark (plugin_item.name,
-                                plugin_item.uri,
-                                plugin_item.icon,
-                                true,
-                                true);
-
-        row.update_plugin_data (plugin_item);
-        return row.id;
-    }
-
-
-    public void select_item (Gtk.ListBoxRow? item) {
-        if (item != null && item is BookmarkRow) {
-            list_box.select_row (item);
-        } else {
-            unselect_all_items ();
-        }
-    }
-
-    public void unselect_all_items () {
+    public void select_uri (string uri) {
         list_box.unselect_all ();
+
+        Gtk.ListBoxRow? row = null;
+        if (has_uri (uri, out row)) {
+            list_box.select_row (row);
+        }
     }
 
     public void refresh () {
@@ -169,24 +156,16 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
         }
 
         if (!Files.is_admin ()) {
-            row = add_bookmark (
+            trash_row = add_bookmark (
                 _("Trash"),
                 _(Files.TRASH_URI),
-                trash_monitor.get_icon (),
+                Files.TrashMonitor.get_default ().get_icon (),
                 true,
                 true
             );
-
-            row.set_tooltip_markup (
-                Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash"))
-            );
-
-            row.can_insert_before = true;
-            row.can_insert_after = false;
-
-            trash_monitor.notify["is-empty"].connect (() => {
-                row.update_icon (trash_monitor.get_icon ());
-            });
+            trash_row.set_tooltip_markup (Granite.markup_accel_tooltip ({"<Alt>T"}, _("Open the Trash")));
+            trash_row.can_insert_before = true;
+            trash_row.can_insert_after = false;
         }
     }
 
@@ -268,4 +247,13 @@ public class Sidebar.BookmarkListBox : Gtk.Box, Sidebar.SidebarListInterface {
     }
 
     public virtual bool is_drop_target () { return true; }
+
+    public override void grab_focus () {
+        var focus_row = list_box.get_selected_row ();
+        if (focus_row == null) {
+            focus_row = list_box.get_row_at_index (0);
+        }
+
+        focus_row.grab_focus ();
+    }
 }
