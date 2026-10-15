@@ -197,7 +197,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 string secondary;
                 string? details = null;
                 if (e is IOError.PERMISSION_DENIED) {
-                    secondary = _("You do not have permission to read this folder.");
+                    secondary = _("You do not have permission to read “%s”.").printf (dir_basename);
                 } else {
                     secondary = _("See details below for further information.");
                     details = e.message;
@@ -205,7 +205,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
                 var response = job.run_warning (
                     /// TRANSLATORS: %s is a placeholder for the basename of a file.
-                    _("Could not remove the folder '%s'").printf (dir_basename),
+                    _("Could not remove the folder “%s”").printf (dir_basename),
                     secondary,
                     details,
                     false,
@@ -275,7 +275,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 string? details = null;
                 if (e is IOError.PERMISSION_DENIED) {
                     /// TRANSLATORS: %s is a placeholder for the basename of a file.
-                    secondary = _("You do not have permissions to see files in this folder");
+                    secondary = _("You do not have permissions to see files in “%s”").printf (dir_basename);
                 } else {
                     /// TRANSLATORS: %s is a placeholder for the basename of a file.
                     secondary = _("See details below for further information.");
@@ -283,8 +283,9 @@ public class Files.FileOperations.DeleteJob : CommonJob {
                 }
 
                 var response = job.run_warning (
-                    _("Could not remove files in folder '%s'").printf (dir_basename),
-                    secondary,
+                    _("Could not remove files in folder “%s”").printf (dir_basename),
+                /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
+                _("Could not remove the folder %s.").printf (dir_basename);,
                     details,
                     false,
                     CANCEL, _("_Skip files")
@@ -322,7 +323,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             var dir_basename = FileUtils.custom_basename_from_file (dir);
             var response = job.run_warning (
                 /// TRANSLATORS: %s is a placeholder for the basename of a file.
-                _("Could not remove the folder '%s'").printf (dir_basename),
+                _("Could not remove the folder “%s”").printf (dir_basename),
                 _("See details below for further information."),
                 e.message,
                 (source_info.num_files - transfer_info.num_files) > 1,
@@ -386,7 +387,7 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             string file_basename = FileUtils.custom_basename_from_file (file);
             var response = job.run_warning (
                 /// TRANSLATORS: %s is a placeholder for the basename of a file.
-                _("Could not remove the file '%s'").printf (file_basename),
+                _("Could not remove the file “%s”").printf (file_basename),
                 _("See details below for further information."),
                 e.message,
                 (source_info.num_files - transfer_info.num_files) > 1,
