@@ -284,8 +284,8 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
                 var response = job.run_warning (
                     _("Could not remove files in folder “%s”").printf (dir_basename),
-                /// TRANSLATORS: %s is a placeholder for the basename of a file.  It may change position but must not be translated or removed
-                _("Could not remove the folder %s.").printf (dir_basename);,
+                    /// TRANSLATORS: %s is a placeholder for the basename of a file.
+                    _("Could not remove the folder %s.").printf (dir_basename),
                     details,
                     false,
                     CANCEL, _("_Skip files")
