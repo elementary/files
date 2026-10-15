@@ -272,21 +272,18 @@ public class Files.FileOperations.DeleteJob : CommonJob {
 
                 var dir_basename = FileUtils.custom_basename_from_file (dir);
                 string secondary;
-                string? details = null;
                 if (e is IOError.PERMISSION_DENIED) {
                     /// TRANSLATORS: %s is a placeholder for the basename of a file.
                     secondary = _("You do not have permissions to see files in “%s”").printf (dir_basename);
                 } else {
-                    /// TRANSLATORS: %s is a placeholder for the basename of a file.
-                    secondary = _("See details below for further information.");
-                    details = e.message;
+                    // Rather than a redundant secondary message, just show the error message
+                    secondary = e.message;
                 }
 
                 var response = job.run_warning (
                     _("Could not remove files in folder “%s”").printf (dir_basename),
-                    /// TRANSLATORS: %s is a placeholder for the basename of a file.
-                    _("Could not remove the folder %s.").printf (dir_basename),
-                    details,
+                    secondary,
+                    null,
                     false,
                     CANCEL, _("_Skip files")
                 );
@@ -324,8 +321,9 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             var response = job.run_warning (
                 /// TRANSLATORS: %s is a placeholder for the basename of a file.
                 _("Could not remove the folder “%s”").printf (dir_basename),
-                _("See details below for further information."),
+                // Rather than a redundant secondary message, just show the error message
                 e.message,
+                null,
                 (source_info.num_files - transfer_info.num_files) > 1,
                 CANCEL, SKIP_ALL, SKIP
             );
@@ -388,8 +386,9 @@ public class Files.FileOperations.DeleteJob : CommonJob {
             var response = job.run_warning (
                 /// TRANSLATORS: %s is a placeholder for the basename of a file.
                 _("Could not remove the file “%s”").printf (file_basename),
-                _("See details below for further information."),
+                // Rather than a redundant secondary message, just show the error message
                 e.message,
+                null,
                 (source_info.num_files - transfer_info.num_files) > 1,
                 CANCEL, SKIP_ALL, SKIP
             );
