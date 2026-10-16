@@ -304,9 +304,12 @@ public class Files.MimeActions {
      }
 
     private static void launch_with_app (GLib.List<GLib.File> files_to_open, AppInfo app, Gtk.Window? win) {
+        // A display launch context hands the app an activation token so it may take focus
+        var display = win != null ? win.get_display () : Gdk.Display.get_default ();
+        var context = display.get_app_launch_context ();
         if (app.supports_files ()) {
             try {
-                app.launch (files_to_open, null);
+                app.launch (files_to_open, context);
             } catch (GLib.Error e) {
                 PF.Dialogs.show_error_dialog (_("Failed to open files"), e.message, win);
             }
@@ -316,7 +319,7 @@ public class Files.MimeActions {
                 uris.append (file.get_uri ());
             }
             try {
-                app.launch_uris (uris, null);
+                app.launch_uris (uris, context);
             } catch (GLib.Error e) {
                 PF.Dialogs.show_error_dialog (_("Could not open URIs"), e.message, win);
             }
