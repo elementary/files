@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-26 17:12+0000\n"
-"PO-Revision-Date: 2026-01-08 12:55+0000\n"
+"PO-Revision-Date: 2026-10-18 07:07+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/files/files/"
 "sv/>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.11.4\n"
+"X-Generator: Weblate 2026.5\n"
 "X-Launchpad-Export-Date: 2017-06-11 06:28+0000\n"
 
 #: filechooser-portal/FileChooserDialog.vala:89 src/View/Window.vala:206
@@ -1002,10 +1002,8 @@ msgid "Unable to mount '%s'"
 msgstr "Det går inte att montera '%s'"
 
 #: libcore/FileOperations/MountUtils.vala:268
-#, fuzzy
-#| msgid "Not mounted"
 msgid "Do Not Unmount"
-msgstr "Inte monterad"
+msgstr "Avmontera inte"
 
 #: libcore/FileOperations/MountUtils.vala:269
 msgid "Unmounting now might cause a process to fail or to lose data"
@@ -2254,7 +2252,7 @@ msgstr "Den här mappen finns inte"
 
 #: src/View/Slot.vala:32
 msgid "Trash does not contain any files"
-msgstr ""
+msgstr "Papperskorgen är tom"
 
 #: src/View/Slot.vala:33
 msgid "There Are No Recent Files"
@@ -2583,17 +2581,16 @@ msgstr "Söker…"
 #. TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:157
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s - %s (%s)"
 
 #. TRANSLATORS arguments are in order: filename, formatted filetype
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:172
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #: src/View/Widgets/OverlayBar.vala:181
 #, fuzzy, c-format
@@ -2627,21 +2624,19 @@ msgstr "okänd storlek"
 #: src/View/Widgets/OverlayBar.vala:247
 #, c-format
 msgid "more than %s used"
-msgstr ""
+msgstr "mer än %s används"
 
 #. TRANSLATORS: %s will be substituted by the disk space used by the selected folder
 #. The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:251
-#, fuzzy, c-format
-#| msgid "%s used of %s"
+#, c-format
 msgid "%s used"
-msgstr "%s använt av %s"
+msgstr "%s används"
 
 #: src/View/Widgets/OverlayBar.vala:260
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s, %s) - %s"
-msgstr "%s (%s, %s)"
+msgstr "%s - %s (%s, %s, %s) - %s"
 
 #: src/View/Widgets/OverlayBar.vala:263
 #, fuzzy, c-format
@@ -2673,15 +2668,12 @@ msgstr[1] "Otillgänglig"
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #.  The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:273
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s) - %s"
-msgstr "%s (%s, %s)"
+msgstr "%s - %s (%s, %s) - %s"
 
 #: src/View/Widgets/OverlayBar.vala:276
-#, fuzzy, c-format
-#| msgid "%u subfolder"
-#| msgid_plural "%u subfolders"
+#, c-format
 msgid "%u sub-folder"
 msgid_plural "%u sub-folders"
 msgstr[0] "%u undermapp"
@@ -2691,11 +2683,9 @@ msgstr[1] "%u undermappar"
 #.  format is from GLib.ContentType.get_description ()
 #.  size is from GLib.format_size ()
 #: src/View/Widgets/OverlayBar.vala:362
-#, fuzzy, c-format
-#| msgid "%s of %s — %s left (%s/sec)"
-#| msgid_plural "%s of %s — %s left (%s/sec)"
+#, c-format
 msgid "%s (%s — %i × %i)"
-msgstr "%s av %s - %s återstår (%s/s)"
+msgstr "%s (%s — %i × %i)"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
