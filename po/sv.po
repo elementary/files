@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-26 17:12+0000\n"
-"PO-Revision-Date: 2026-10-19 07:46+0000\n"
+"PO-Revision-Date: 2026-10-19 08:17+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <https://l10n.elementaryos.org/projects/files/files/"
 "sv/>\n"
@@ -184,7 +184,7 @@ msgstr "ISO 8601-format - Datum och tid"
 
 #: libcore/Enums.vala:246
 msgid "Date created"
-msgstr "Skapad datum"
+msgstr "Skapad"
 
 #: libcore/Enums.vala:248
 msgid "Date Modified"
@@ -1634,7 +1634,7 @@ msgstr "Aktivera felsökningsloggning"
 
 #: src/Application.vala:77
 msgid "[URI…]"
-msgstr "[URI...]"
+msgstr "[URI…]"
 
 #: src/Application.vala:89
 msgid "Error: Running Files as root using sudo is not possible."
@@ -2156,7 +2156,7 @@ msgstr "Mall"
 
 #: src/View/AbstractDirectoryView.vala:2413
 msgid "…too many templates"
-msgstr "...för många mallar"
+msgstr "…för många mallar"
 
 #: src/View/AbstractDirectoryView.vala:2419
 msgid "New"
