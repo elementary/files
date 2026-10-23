@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-26 17:12+0000\n"
-"PO-Revision-Date: 2026-09-17 17:03+0000\n"
+"PO-Revision-Date: 2026-10-23 20:04+0000\n"
 "Last-Translator: кубик круглый <megarainbow29@gmail.com>\n"
 "Language-Team: Russian <https://l10n.elementaryos.org/projects/files/files/"
 "ru/>\n"
@@ -1153,11 +1153,11 @@ msgstr "%s из %s"
 
 #: libcore/FileOperations/CopyMoveJob.vala:228
 msgid "Please wait, finishing move…"
-msgstr ""
+msgstr "Завершение перемещения…"
 
 #: libcore/FileOperations/CopyMoveJob.vala:229
 msgid "Please wait, finishing copy…"
-msgstr ""
+msgstr "Завершение копирования…"
 
 #. TRANSLATORS: The two first %s and the last %s will expand to a size
 #. like "2 bytes" or "3 MB", the third %s to a time duration like
@@ -2599,41 +2599,37 @@ msgstr "Поиск…"
 #. TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:157
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s — %s (%s)"
 
 #. TRANSLATORS arguments are in order: filename, formatted filetype
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:172
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s — %s"
 
 #: src/View/Widgets/OverlayBar.vala:181
-#, fuzzy, c-format
-#| msgid "%u items selected (%s)"
+#, c-format
 msgid "%u file selected (%s)"
 msgid_plural "%u files selected (%s)"
-msgstr[0] "%u элементов выбрано (%s)"
-msgstr[1] "%u элементов выбрано (%s)"
-msgstr[2] "%u элементов выбрано (%s)"
+msgstr[0] "Выбран %u файл (%s)"
+msgstr[1] "Выбрано %u файла (%s)"
+msgstr[2] "Выбрано %u файлов (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:186
-#, fuzzy, c-format
-#| msgid "%u folders"
+#, c-format
 msgid "%u folder selected"
 msgid_plural "%u folders selected"
-msgstr[0] "%u папок"
-msgstr[1] "%u папок"
-msgstr[2] "%u папок"
+msgstr[0] "Выбрана %u папка"
+msgstr[1] "Выбрано %u папки"
+msgstr[2] "Выбрано %u папок"
 
 #: src/View/Widgets/OverlayBar.vala:190
-#, fuzzy, c-format
-#| msgid " selected"
+#, c-format
 msgid "%s and %s selected"
-msgstr " выбрано"
+msgstr "Выбрано %s и %s"
 
 #. TRANSLATORS: 'size' refers to the disk space used by the selected folder
 #: src/View/Widgets/OverlayBar.vala:242
@@ -2645,64 +2641,55 @@ msgstr "неизвестный размер"
 #: src/View/Widgets/OverlayBar.vala:247
 #, c-format
 msgid "more than %s used"
-msgstr ""
+msgstr "используется более %s"
 
 #. TRANSLATORS: %s will be substituted by the disk space used by the selected folder
 #. The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:251
-#, fuzzy, c-format
-#| msgid "%s used of %s"
+#, c-format
 msgid "%s used"
-msgstr "%s использовано из %s"
+msgstr "используется %s"
 
 #: src/View/Widgets/OverlayBar.vala:260
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s, %s) - %s"
-msgstr "%s (%s, %s)"
+msgstr "%s — %s (%s, %s, %s) — %s"
 
 #: src/View/Widgets/OverlayBar.vala:263
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
-#| msgid_plural "%u sub-folders, "
+#, c-format
 msgid "%u accessible sub-folder"
 msgid_plural "%u accessible sub-folders"
-msgstr[0] "%u подпапка, "
-msgstr[1] "%u подпапки, "
-msgstr[2] "%u подпапок, "
+msgstr[0] "%u доступная подпапка"
+msgstr[1] "%u доступных подпапки"
+msgstr[2] "%u доступных подпапок"
 
 #: src/View/Widgets/OverlayBar.vala:264
-#, fuzzy, c-format
-#| msgid "Inaccessible"
+#, c-format
 msgid "%u accessible file"
 msgid_plural "%u accessible files"
-msgstr[0] "Недоступно"
-msgstr[1] "Недоступно"
-msgstr[2] "Недоступно"
+msgstr[0] "%u доступный файл"
+msgstr[1] "%u доступных файла"
+msgstr[2] "%u доступных файлов"
 
 #: src/View/Widgets/OverlayBar.vala:265
-#, fuzzy, c-format
-#| msgid "Inaccessible"
+#, c-format
 msgid "%u inaccessible file"
 msgid_plural "%u inaccessible files"
-msgstr[0] "Недоступно"
-msgstr[1] "Недоступно"
-msgstr[2] "Недоступно"
+msgstr[0] "%u недоступный файл"
+msgstr[1] "%u недоступных файла"
+msgstr[2] "%u недоступных файлов"
 
 #. TRANSLATORS arguments are in order: filename, filetype, subfolder count, file count, diskspace
 #.  The file and folder counts are in the form "<number> files" translated with ngettext
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #.  The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:273
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s) - %s"
-msgstr "%s (%s, %s)"
+msgstr "%s — %s (%s, %s) — %s"
 
 #: src/View/Widgets/OverlayBar.vala:276
-#, fuzzy, c-format
-#| msgid "%u subfolder"
-#| msgid_plural "%u subfolders"
+#, c-format
 msgid "%u sub-folder"
 msgid_plural "%u sub-folders"
 msgstr[0] "%u подпапка"
@@ -2713,11 +2700,9 @@ msgstr[2] "%u подпапок"
 #.  format is from GLib.ContentType.get_description ()
 #.  size is from GLib.format_size ()
 #: src/View/Widgets/OverlayBar.vala:362
-#, fuzzy, c-format
-#| msgid "%s of %s — %s left (%s/sec)"
-#| msgid_plural "%s of %s — %s left (%s/sec)"
+#, c-format
 msgid "%s (%s — %i × %i)"
-msgstr "%s из %s — осталась %s (%s/сек)"
+msgstr "%s (%s — %i × %i)"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"
