@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-26 17:12+0000\n"
-"PO-Revision-Date: 2026-08-03 20:01+0000\n"
+"PO-Revision-Date: 2026-10-19 07:46+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "l10n.elementaryos.org/projects/files/files/zh_TW/>\n"
@@ -964,39 +964,37 @@ msgid "Unable to mount '%s'"
 msgstr "無法掛載「%s」"
 
 #: libcore/FileOperations/MountUtils.vala:268
-#, fuzzy
-#| msgid "Not mounted"
 msgid "Do Not Unmount"
-msgstr "未掛載"
+msgstr "不要卸載"
 
 #: libcore/FileOperations/MountUtils.vala:269
 msgid "Unmounting now might cause a process to fail or to lose data"
-msgstr ""
+msgstr "現在卸載可能會導致處理程序失敗或喪失資料"
 
 #: libcore/FileOperations/MountUtils.vala:270
 msgid ""
 "If you wait, the resource will unmount when all processes finish using it"
-msgstr ""
+msgstr "如您繼續等待，資源會等所有程序皆結束使用它的時候卸載"
 
 #: libcore/FileOperations/MountUtils.vala:271
 #, c-format
 msgid "Otherwise choose '%s'"
-msgstr ""
+msgstr "如不等待則請選取「%s」"
 
 #: libcore/FileOperations/MountUtils.vala:289
 #, c-format
 msgid "Please wait. The resource '%s' is in use"
-msgstr ""
+msgstr "請稍候。資源「%s」目前使用中"
 
 #: libcore/FileOperations/MountUtils.vala:291
 #, c-format
 msgid "Please wait. The resource '%s' is in use by other processes"
-msgstr ""
+msgstr "請稍候。資源「%s」正被其他程序使用中"
 
 #: libcore/FileOperations/MountUtils.vala:293
 #, c-format
 msgid "Other processes using '%s'… \n"
-msgstr ""
+msgstr "正在使用「%s」的處理程序… \n"
 
 #: libcore/FileOperations/MountUtils.vala:321
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
@@ -1105,11 +1103,11 @@ msgstr "%s / %s"
 
 #: libcore/FileOperations/CopyMoveJob.vala:228
 msgid "Please wait, finishing move…"
-msgstr ""
+msgstr "請稍候，正在完成移動…"
 
 #: libcore/FileOperations/CopyMoveJob.vala:229
 msgid "Please wait, finishing copy…"
-msgstr ""
+msgstr "請稍候，正在完成複製…"
 
 #. TRANSLATORS: The two first %s and the last %s will expand to a size
 #. like "2 bytes" or "3 MB", the third %s to a time duration like
@@ -2508,37 +2506,33 @@ msgstr "搜尋中…"
 #. TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:157
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s)"
-msgstr "%s (%s，%s)"
+msgstr "%s - %s (%s)"
 
 #. TRANSLATORS arguments are in order: filename, formatted filetype
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:172
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #: src/View/Widgets/OverlayBar.vala:181
-#, fuzzy, c-format
-#| msgid "%u items selected (%s)"
+#, c-format
 msgid "%u file selected (%s)"
 msgid_plural "%u files selected (%s)"
-msgstr[0] "已選取 %u 個項目（%s）"
+msgstr[0] "已選取 %u 個檔案（%s）"
 
 #: src/View/Widgets/OverlayBar.vala:186
-#, fuzzy, c-format
-#| msgid "%u folders"
+#, c-format
 msgid "%u folder selected"
 msgid_plural "%u folders selected"
-msgstr[0] "%u 個資料夾"
+msgstr[0] "已選取 %u 個資料夾"
 
 #: src/View/Widgets/OverlayBar.vala:190
-#, fuzzy, c-format
-#| msgid " selected"
+#, c-format
 msgid "%s and %s selected"
-msgstr " 已選取"
+msgstr "已選取 %s 和 %s"
 
 #. TRANSLATORS: 'size' refers to the disk space used by the selected folder
 #: src/View/Widgets/OverlayBar.vala:242
@@ -2550,58 +2544,49 @@ msgstr "未知大小"
 #: src/View/Widgets/OverlayBar.vala:247
 #, c-format
 msgid "more than %s used"
-msgstr ""
+msgstr "使用超過 %s"
 
 #. TRANSLATORS: %s will be substituted by the disk space used by the selected folder
 #. The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:251
-#, fuzzy, c-format
-#| msgid "%s used of %s"
+#, c-format
 msgid "%s used"
-msgstr "%2$s 當中已使用 %1$s"
+msgstr "使用 %s"
 
 #: src/View/Widgets/OverlayBar.vala:260
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s, %s) - %s"
-msgstr "%s (%s，%s)"
+msgstr "%s - %s (%s、%s、%s) - %s"
 
 #: src/View/Widgets/OverlayBar.vala:263
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
-#| msgid_plural "%u sub-folders, "
+#, c-format
 msgid "%u accessible sub-folder"
 msgid_plural "%u accessible sub-folders"
-msgstr[0] "%u 個子資料夾， "
+msgstr[0] "%u 個可存取的子資料夾"
 
 #: src/View/Widgets/OverlayBar.vala:264
-#, fuzzy, c-format
-#| msgid "Inaccessible"
+#, c-format
 msgid "%u accessible file"
 msgid_plural "%u accessible files"
-msgstr[0] "無法存取"
+msgstr[0] "%u 個可存取的檔案"
 
 #: src/View/Widgets/OverlayBar.vala:265
-#, fuzzy, c-format
-#| msgid "Inaccessible"
+#, c-format
 msgid "%u inaccessible file"
 msgid_plural "%u inaccessible files"
-msgstr[0] "無法存取"
+msgstr[0] "%u 個無法存取的檔案"
 
 #. TRANSLATORS arguments are in order: filename, filetype, subfolder count, file count, diskspace
 #.  The file and folder counts are in the form "<number> files" translated with ngettext
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #.  The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:273
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s) - %s"
-msgstr "%s (%s，%s)"
+msgstr "%s - %s (%s、%s) - %s"
 
 #: src/View/Widgets/OverlayBar.vala:276
-#, fuzzy, c-format
-#| msgid "%u subfolder"
-#| msgid_plural "%u subfolders"
+#, c-format
 msgid "%u sub-folder"
 msgid_plural "%u sub-folders"
 msgstr[0] "%u 個子資料夾"
@@ -2610,11 +2595,9 @@ msgstr[0] "%u 個子資料夾"
 #.  format is from GLib.ContentType.get_description ()
 #.  size is from GLib.format_size ()
 #: src/View/Widgets/OverlayBar.vala:362
-#, fuzzy, c-format
-#| msgid "%s of %s — %s left (%s/sec)"
-#| msgid_plural "%s of %s — %s left (%s/sec)"
+#, c-format
 msgid "%s (%s — %i × %i)"
-msgstr "%s / %s — 剩餘 %s (%s/秒)"
+msgstr "%s (%s — %i × %i)"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"

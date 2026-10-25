@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: marlin\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-26 17:12+0000\n"
-"PO-Revision-Date: 2026-06-30 23:56+0000\n"
+"PO-Revision-Date: 2026-10-20 21:04+0000\n"
 "Last-Translator: Italo Felipe Capasso Ballesteros <italo@gp-mail.com>\n"
 "Language-Team: Spanish <https://l10n.elementaryos.org/projects/files/files/"
 "es/>\n"
@@ -1006,39 +1006,41 @@ msgid "Unable to mount '%s'"
 msgstr "No se puede montar «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:268
-#, fuzzy
-#| msgid "Not mounted"
 msgid "Do Not Unmount"
-msgstr "Sin montar"
+msgstr "No desmontar"
 
 #: libcore/FileOperations/MountUtils.vala:269
 msgid "Unmounting now might cause a process to fail or to lose data"
 msgstr ""
+"Desmontar el dispositivo ahora puede provocar una falla en algún proceso o "
+"una pérdida datos"
 
 #: libcore/FileOperations/MountUtils.vala:270
 msgid ""
 "If you wait, the resource will unmount when all processes finish using it"
 msgstr ""
+"Si decide esperar, el recurso se desmontará cuando todos los procesos "
+"terminen de usarlo"
 
 #: libcore/FileOperations/MountUtils.vala:271
 #, c-format
 msgid "Otherwise choose '%s'"
-msgstr ""
+msgstr "De lo contrario, elija «%s»"
 
 #: libcore/FileOperations/MountUtils.vala:289
 #, c-format
 msgid "Please wait. The resource '%s' is in use"
-msgstr ""
+msgstr "Por favor espere. El recurso «%s» está en uso"
 
 #: libcore/FileOperations/MountUtils.vala:291
 #, c-format
 msgid "Please wait. The resource '%s' is in use by other processes"
-msgstr ""
+msgstr "Por favor espere. El recurso «%s» está en uso por otros procesos"
 
 #: libcore/FileOperations/MountUtils.vala:293
 #, c-format
 msgid "Other processes using '%s'… \n"
-msgstr ""
+msgstr "Otros procesos usando «%s»… \n"
 
 #: libcore/FileOperations/MountUtils.vala:321
 #: src/Dialogs/AbstractPropertiesDialog.vala:152
@@ -1156,11 +1158,11 @@ msgstr "%s de %s"
 
 #: libcore/FileOperations/CopyMoveJob.vala:228
 msgid "Please wait, finishing move…"
-msgstr ""
+msgstr "Por favor espere, finalizando mover…"
 
 #: libcore/FileOperations/CopyMoveJob.vala:229
 msgid "Please wait, finishing copy…"
-msgstr ""
+msgstr "Por favor espere, finalizando copiar…"
 
 #. TRANSLATORS: The two first %s and the last %s will expand to a size
 #. like "2 bytes" or "3 MB", the third %s to a time duration like
@@ -2590,39 +2592,35 @@ msgstr "Buscando…"
 #. TRANSLATORS arguments are in order: filename, formatted filetype, formatted filesize
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:157
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s)"
-msgstr "%s (%s, %s)"
+msgstr "%s - %s (%s)"
 
 #. TRANSLATORS arguments are in order: filename, formatted filetype
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #: src/View/Widgets/OverlayBar.vala:172
 #, c-format
 msgid "%s - %s"
-msgstr ""
+msgstr "%s - %s"
 
 #: src/View/Widgets/OverlayBar.vala:181
-#, fuzzy, c-format
-#| msgid "%u items selected (%s)"
+#, c-format
 msgid "%u file selected (%s)"
 msgid_plural "%u files selected (%s)"
-msgstr[0] "%u elementos seleccionados (%s)"
-msgstr[1] "%u elementos seleccionados (%s)"
+msgstr[0] "%u archivo seleccionado (%s)"
+msgstr[1] "%u archivos seleccionados (%s)"
 
 #: src/View/Widgets/OverlayBar.vala:186
-#, fuzzy, c-format
-#| msgid "%u folders"
+#, c-format
 msgid "%u folder selected"
 msgid_plural "%u folders selected"
-msgstr[0] "%u carpetas"
-msgstr[1] "%u carpetas"
+msgstr[0] "%u carpeta seleccionada"
+msgstr[1] "%u carpetas seleccionadas"
 
 #: src/View/Widgets/OverlayBar.vala:190
-#, fuzzy, c-format
-#| msgid " selected"
+#, c-format
 msgid "%s and %s selected"
-msgstr " seleccionados"
+msgstr "%s y %s seleccionados"
 
 #. TRANSLATORS: 'size' refers to the disk space used by the selected folder
 #: src/View/Widgets/OverlayBar.vala:242
@@ -2634,75 +2632,64 @@ msgstr "tamaño desconocido"
 #: src/View/Widgets/OverlayBar.vala:247
 #, c-format
 msgid "more than %s used"
-msgstr ""
+msgstr "más de %s usados"
 
 #. TRANSLATORS: %s will be substituted by the disk space used by the selected folder
 #. The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:251
-#, fuzzy, c-format
-#| msgid "%s used of %s"
+#, c-format
 msgid "%s used"
-msgstr "Se utilizan %s de %s"
+msgstr "%s usados"
 
 #: src/View/Widgets/OverlayBar.vala:260
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s, %s) - %s"
-msgstr "%s (%s, %s)"
+msgstr "%s - %s (%s, %s, %s) - %s"
 
 #: src/View/Widgets/OverlayBar.vala:263
-#, fuzzy, c-format
-#| msgid "%u sub-folder, "
-#| msgid_plural "%u sub-folders, "
+#, c-format
 msgid "%u accessible sub-folder"
 msgid_plural "%u accessible sub-folders"
-msgstr[0] "%u subcarpeta, "
-msgstr[1] "%u subcarpetas, "
+msgstr[0] "%u subcarpeta accesible"
+msgstr[1] "%u subcarpetas accesibles"
 
 #: src/View/Widgets/OverlayBar.vala:264
-#, fuzzy, c-format
-#| msgid "Inaccessible"
+#, c-format
 msgid "%u accessible file"
 msgid_plural "%u accessible files"
-msgstr[0] "Inaccesible"
-msgstr[1] "Inaccesible"
+msgstr[0] "%u archivo accesible"
+msgstr[1] "%u archivos accesibles"
 
 #: src/View/Widgets/OverlayBar.vala:265
-#, fuzzy, c-format
-#| msgid "Inaccessible"
+#, c-format
 msgid "%u inaccessible file"
 msgid_plural "%u inaccessible files"
-msgstr[0] "Inaccesible"
-msgstr[1] "Inaccesible"
+msgstr[0] "%u archivo inaccesible"
+msgstr[1] "%u archivos inaccesibles"
 
 #. TRANSLATORS arguments are in order: filename, filetype, subfolder count, file count, diskspace
 #.  The file and folder counts are in the form "<number> files" translated with ngettext
 #.  filetype is formatted by GLib.ContentType.get_description ()
 #.  The diskspace is formatted with GLib.format_size
 #: src/View/Widgets/OverlayBar.vala:273
-#, fuzzy, c-format
-#| msgid "%s (%s, %s)"
+#, c-format
 msgid "%s - %s (%s, %s) - %s"
-msgstr "%s (%s, %s)"
+msgstr "%s - %s (%s, %s) - %s"
 
 #: src/View/Widgets/OverlayBar.vala:276
-#, fuzzy, c-format
-#| msgid "%u subfolder"
-#| msgid_plural "%u subfolders"
+#, c-format
 msgid "%u sub-folder"
 msgid_plural "%u sub-folders"
-msgstr[0] "%u subcarpeta"
-msgstr[1] "%u subcarpetas"
+msgstr[0] "%u sub-carpeta"
+msgstr[1] "%u sub-carpetas"
 
 #. TRANSLATORS arguments are in order: format string, formatted filesize, width, height (of an image file)
 #.  format is from GLib.ContentType.get_description ()
 #.  size is from GLib.format_size ()
 #: src/View/Widgets/OverlayBar.vala:362
-#, fuzzy, c-format
-#| msgid "%s of %s — %s left (%s/sec)"
-#| msgid_plural "%s of %s — %s left (%s/sec)"
+#, c-format
 msgid "%s (%s — %i × %i)"
-msgstr "%s de %s; queda %s (%s/s)"
+msgstr "%s (%s — %i × %i)"
 
 #: src/View/Widgets/PermissionButton.vala:53
 msgid "Read"

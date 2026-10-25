@@ -9,7 +9,6 @@ public interface Sidebar.SidebarListInterface : Object {
     public abstract Files.SidebarInterface sidebar { get; set construct; }
     public abstract Gtk.ListBox list_box { get; set construct; }
 
-    public abstract void unselect_all_items ();
     public abstract void refresh (); //Clear and recreate all rows
 
     public virtual void rename_bookmark_by_uri (string uri, string new_name) {}
@@ -17,17 +16,10 @@ public interface Sidebar.SidebarListInterface : Object {
         sidebar.path_change_request (item.uri, flag);
     }
 
-    public virtual uint32 add_plugin_item (Files.SidebarPluginItem plugin_item) {
-        return 0;
-    }
-
-    public virtual void clear () {
+    protected void clear () {
         Gtk.ListBoxRow? row = list_box.get_row_at_index (0);
         while (row != null) {
             list_box.remove (row);
-            if (row is SidebarItemInterface) {
-                ((SidebarItemInterface)row).destroy_bookmark ();
-            }
 
             row = list_box.get_row_at_index (0);
         }
@@ -66,7 +58,6 @@ public interface Sidebar.SidebarListInterface : Object {
                         return false;
                     } else {
                         list_box.remove (child);
-                        row.destroy_bookmark ();
                         return true;
                     }
                 }
@@ -95,14 +86,5 @@ public interface Sidebar.SidebarListInterface : Object {
     // Whether can drop rows or uris onto list itself (as opposed to onto rows in list)
     public virtual bool is_drop_target () {
         return false;
-    }
-
-    public void focus () {
-        var focus_row = list_box.get_selected_row ();
-        if (focus_row == null) {
-            focus_row = list_box.get_row_at_index (0);
-        }
-
-        focus_row.grab_focus ();
     }
 }

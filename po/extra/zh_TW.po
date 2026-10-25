@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pantheon-files\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-09-26 17:12+0000\n"
-"PO-Revision-Date: 2026-08-03 20:01+0000\n"
+"PO-Revision-Date: 2026-10-19 07:46+0000\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://"
 "l10n.elementaryos.org/projects/files/extra/zh_TW/>\n"
@@ -83,13 +83,13 @@ msgstr "改善項目："
 msgid ""
 "Displays an informative dialog on attempting to unmount a device still in "
 "use instead of crashing"
-msgstr ""
+msgstr "嘗試卸載尚在使用中的檔案時以對話框提示而非崩潰"
 
 #: data/files.metainfo.xml.in.in:70
 msgid ""
 "Shows a realistic progress rate when copy or moving data to a slow device "
 "instead of cache speed"
-msgstr ""
+msgstr "修正複製或移動資料到較慢的裝置時顯示的是快取速度而非實際進度的速度的問題"
 
 #: data/files.metainfo.xml.in.in:72 data/files.metainfo.xml.in.in:90
 #: data/files.metainfo.xml.in.in:113 data/files.metainfo.xml.in.in:126

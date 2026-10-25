@@ -24,7 +24,7 @@
 public interface Sidebar.SidebarItemInterface : Object {
     /* Non constant static members must be initialised in implementing class */
     protected static uint32 row_id;
-    protected static Gee.HashMap<uint32, SidebarItemInterface> item_id_map;
+    protected static Gee.HashMap<uint32, weak SidebarItemInterface> item_id_map;
     protected static Mutex item_map_lock;
 
     protected static uint32 get_next_item_id () {
@@ -58,11 +58,6 @@ public interface Sidebar.SidebarItemInterface : Object {
     public abstract MenuModel? menu_model {get; set; default = null;}
     public abstract ActionGroup? action_group {get; set; default = null;}
     public abstract string? action_group_namespace { get; set; default = null;}
-
-    public abstract void destroy_bookmark ();
-    public virtual void update_icon (Icon icon) {
-        gicon = icon;
-    }
 
     public virtual void add_extra_menu_items (GLib.Menu menu) {}
     public virtual void update_plugin_data (Files.SidebarPluginItem item) {}
