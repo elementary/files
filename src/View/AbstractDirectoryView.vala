@@ -3746,7 +3746,7 @@ namespace Files {
                 return;
             }
 
-            /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting the
+            /* Ignore changes in model sort order while tree frozen (i.e. while still loading) to avoid resetting
              * the directory file metadata incorrectly (bug 1511307). Also ignore when the model may temporarily
              * become unsorted.
              */
@@ -3754,32 +3754,32 @@ namespace Files {
                 return;
             }
 
-            var info = new GLib.FileInfo ();
             var dir = slot.directory;
-            unowned string sort_col_s = ((Files.ListModel.ColumnID) sort_column_id).to_string ();
-            unowned string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
-            info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
-            info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
-
-            /* Make sure directory file info matches metadata (bug 1511307).*/
-            dir.file.info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
-            dir.file.info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
             dir.file.sort_column_id = sort_column_id;
             dir.file.sort_order = sort_order;
 
-            if (!Files.is_admin ()) {
-                dir.location.set_attributes_async.begin (info,
-                                                   GLib.FileQueryInfoFlags.NONE,
-                                                   GLib.Priority.DEFAULT,
-                                                   null,
-                                                   (obj, res) => {
-                    try {
-                        GLib.FileInfo inf;
-                        dir.location.set_attributes_async.end (res, out inf);
-                    } catch (GLib.Error e) {
-                        warning ("Could not set file attributes: %s", e.message);
+            if (dir.file.ensure_query_info ()) {
+                unowned string sort_col_s = ((Files.ListModel.ColumnID) sort_column_id).to_string ();
+                unowned string sort_order_s = (sort_order == Gtk.SortType.DESCENDING ? "true" : "false");
+
+                /* Make sure directory file info matches metadata (bug 1511307).*/
+                dir.file.info.set_attribute_string ("metadata::marlin-sort-column-id", sort_col_s);
+                dir.file.info.set_attribute_string ("metadata::marlin-sort-reversed", sort_order_s);
+
+                dir.location.set_attributes_async.begin (
+                    dir.file.info,
+                    GLib.FileQueryInfoFlags.NONE,
+                    GLib.Priority.DEFAULT,
+                    null,
+                    (obj, res) => {
+                        try {
+                            GLib.FileInfo inf;
+                            dir.location.set_attributes_async.end (res, out inf);
+                        } catch (GLib.Error e) {
+                            // Expected to fail for some locations such as trash:///
+                        }
                     }
-                });
+                );
             }
         }
 
