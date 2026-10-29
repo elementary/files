@@ -996,7 +996,7 @@ public class Files.File : GLib.Object {
         }
 
         try {
-            app_info.launch (files, null);
+            app_info.launch (files, Gdk.Display.get_default ().get_app_launch_context ());
         } catch (GLib.Error e) {
             GLib.Error prefixed_error;
             GLib.Error.propagate_prefixed (out prefixed_error, e, _("Unable to Launch Desktop File: "));
