@@ -18,6 +18,9 @@
 
 public class Files.FileOperations.EmptyTrashJob : CommonJob {
     private GLib.List<GLib.File> trash_dirs;
+    private int total_files;
+    private int files_left;
+    private bool count_only;
 
     public EmptyTrashJob (Gtk.Window? parent_window = null, owned GLib.List<GLib.File>? trash_dirs = null) {
         base (parent_window);
@@ -46,8 +49,13 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
                 var infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
                 while (infos.nth_data (0) != null) {
                     foreach (unowned GLib.FileInfo info in infos) {
+                        var is_directory = info.get_file_type () == GLib.FileType.DIRECTORY;
+                        if (count_only && !is_directory) {
+                            total_files++;
+                            files_left++;
+                        }
                         var child = file.get_child (info.get_name ());
-                        yield delete_trash_file (child, true, info.get_file_type () == GLib.FileType.DIRECTORY);
+                        yield delete_trash_file (child, true, is_directory);
                     }
 
                     infos = yield enumerator.next_files_async (10, GLib.Priority.DEFAULT, cancellable);
@@ -62,8 +70,10 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
             return;
         }
 
-        if (delete_file) {
+        if (delete_file && !count_only) {
             try {
+                report_empty_trash_progress ();
+                files_left--;
                 yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
             } catch (GLib.Error e) {
                 debug (e.message);
@@ -117,13 +127,35 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
         }
     }
 
+    private void report_empty_trash_progress () {
+        progress.take_status (ngettext (
+            "Emptying %'d file from trash",
+            "Emptying %'d files from trash",
+            total_files
+        ).printf (total_files));
+
+        progress.take_details (ngettext (
+            "%'d file left to trash",
+            "%'d files left to trash",
+            files_left
+        ).printf (files_left));
+
+        progress.update_progress (total_files - files_left, total_files);
+    }
+
     private async void internal_empty_trash () {
+        total_files = 0;
+        files_left = 0;
         progress.start ();
         foreach (unowned GLib.File dir in trash_dirs) {
             if (aborted ()) {
                 break;
             }
 
+            count_only = true;
+            yield delete_trash_file (dir, false, true);
+            count_only = false;
+            report_empty_trash_progress ();
             yield delete_trash_file (dir, false, true);
         }
 
