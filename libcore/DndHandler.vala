@@ -33,13 +33,32 @@ namespace Files {
         ) requires (drop_target != null && drop_file_list != null) {
 
             if (drop_target.is_folder ()) {
-                Files.FileOperations.copy_move_link.begin (
-                    drop_file_list,
-                    drop_target.get_target_location (),
-                    action,
-                    widget,
-                    null
-                );
+                var scheme = drop_target.get_target_location ().get_uri_scheme ();
+                // Handle trash destination with OperationManager.vala
+                if (scheme.has_prefix ("trash")) {
+                    var uris = new Gee.LinkedList<string> ();
+                    var n_files = 0;
+                    foreach (var file in drop_file_list) {
+                        uris.add (file.get_uri ());
+                        n_files++;
+                    }
+
+                    FileOperations.Manager.get_instance ().@delete.begin (
+                        uris,
+                        n_files,
+                        (Gtk.Window) widget.get_toplevel (),
+                        true, // Try trash
+                        null // cancellable
+                    );
+                } else {
+                    Files.FileOperations.copy_move_link.begin (
+                        drop_file_list,
+                        drop_target.get_target_location (),
+                        action,
+                        widget,
+                        null
+                    );
+                }
 
                 return true;
             } else if (drop_target.is_executable ()) {

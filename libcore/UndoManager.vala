@@ -286,20 +286,24 @@ namespace Files {
                 case Files.UndoActionType.COPY:
                 case Files.UndoActionType.DUPLICATE:
                 case Files.UndoActionType.CREATELINK:
-                    var uris = new GLib.List<GLib.File> ();
-                    action.destinations.foreach ((uri) => uris.prepend (action.dest_dir.get_child (uri)));
-                    uris.reverse (); // Deleting must be done in reverse
+                    var uris = new Gee.LinkedList<string> ();
+                    var n_files = 0;
+                    action.destinations.foreach ((uri) => {
+                        uris.add (uri);
+                        n_files++;
+                    });
                     if (uris != null && confirm_delete) {
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, false, cancellable
-                                  );
+                            yield Files.FileOperations.Manager.get_instance ().@delete (
+                                uris, n_files, widget.get_toplevel () as Gtk.Window, false, cancellable
+                            );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
                         }
                     } else {
-                        foreach (unowned GLib.File file in uris) {
+                        foreach (var uri in uris) {
+                            var file = GLib.File.new_for_uri (uri);
                             yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
                             Files.FileChanges.queue_file_removed (file);
                         }
@@ -310,6 +314,8 @@ namespace Files {
                     undo_redo_done_transfer (action);
                     break;
                 case Files.UndoActionType.MOVE:
+                    // The destination is known not to be trash:///
+                    // Moving back into trash, the destination is ~/.local/Trash/files
                     var uris = new GLib.List<GLib.File> ();
                     action.destinations.foreach ((uri) => uris.prepend (action.dest_dir.get_child (uri)));
                     if (uris != null) { /*Cancelled operation may result in empty list */
@@ -340,19 +346,20 @@ namespace Files {
                 case Files.UndoActionType.CREATEEMPTYFILE:
                 case Files.UndoActionType.CREATEFOLDER:
                 case Files.UndoActionType.CREATEFILEFROMTEMPLATE:
-                    var uris = new GLib.List<GLib.File> ();
-                    uris.prepend (GLib.File.new_for_uri (action.target_uri));
+                    var uris = new Gee.LinkedList<string> ();
+                    uris.add (action.target_uri);
                     if (uris != null && confirm_delete) {
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, false, cancellable
-                                  );
+                            yield Files.FileOperations.Manager.get_instance ().@delete (
+                                uris, 1, widget.get_toplevel () as Gtk.Window, false, cancellable
+                            );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
                         }
                     } else {
-                        foreach (unowned GLib.File file in uris) {
+                        foreach (var uri in uris) {
+                            var file = GLib.File.new_for_uri (uri);
                             yield file.delete_async (GLib.Priority.DEFAULT, cancellable);
                             Files.FileChanges.queue_file_removed (file);
                         }
@@ -385,13 +392,17 @@ namespace Files {
                     undo_redo_done_transfer (action);
                     break;
                 case Files.UndoActionType.RESTOREFROMTRASH:
-                    var uris = new GLib.List<GLib.File> ();
-                    action.destinations.foreach ((uri) => uris.prepend (action.dest_dir.get_child (uri)));
+                    var uris = new Gee.LinkedList<string> ();
+                    var n_files = 0;
+                    action.destinations.foreach ((uri) => {
+                        uris.add (uri);
+                        n_files++;
+                    });
                     if (uris != null ) {
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, true, cancellable
-                                  );
+                            yield Files.FileOperations.Manager.get_instance ().@delete (
+                                uris, n_files, widget.get_toplevel () as Gtk.Window, true, cancellable
+                            );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;
@@ -429,6 +440,7 @@ namespace Files {
             switch (action.action_type) {
                 case Files.UndoActionType.COPY:
                 case Files.UndoActionType.DUPLICATE:
+                    // The destination is known not to be trash:///
                     var uris = new GLib.List<GLib.File> ();
                     action.sources.foreach ((uri) => uris.prepend (action.src_dir.get_child (uri)));
                     if (uris != null) {
@@ -445,6 +457,7 @@ namespace Files {
                     undo_redo_done_transfer (action);
                     break;
                 case Files.UndoActionType.CREATELINK:
+                    // The destination is known not to be trash:///
                     var uris = new GLib.List<GLib.File> ();
                     action.sources.foreach ((uri) => uris.prepend (action.src_dir.get_child (uri)));
                     if (uris != null) {
@@ -519,13 +532,17 @@ namespace Files {
                 case Files.UndoActionType.MOVETOTRASH:
                     if (action.trashed.size () > 0) {
                         var uri_to_trash = action.trashed.get_keys ();
-                        var uris = new GLib.List<GLib.File> ();
-                        uri_to_trash.foreach ((uri) => uris.prepend (GLib.File.new_for_uri (uri)));
+                        var uris = new Gee.LinkedList<string> ();
+                        var n_files = 0;
+                        uri_to_trash.foreach ((uri) => {
+                            uris.add (uri);
+                            n_files++;
+                        });
 
                         try {
-                            yield Files.FileOperations.@delete (
-                                      uris, widget.get_toplevel () as Gtk.Window, true, cancellable
-                                  );
+                            yield Files.FileOperations.Manager.get_instance ().@delete (
+                                uris, n_files, widget.get_toplevel () as Gtk.Window, true, cancellable
+                            );
                         } catch (Error e) {
                             undo_redo_done_transfer (action);
                             throw e;

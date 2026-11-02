@@ -34,6 +34,12 @@ public class Files.FileOperations.CommonJob {
                 num_files_since_progress = this.num_files_since_progress,
             };
         }
+
+        public void reset () {
+            num_files = 0;
+            num_bytes = 0;
+            num_files_since_progress = 0;
+        }
     }
 
     [Compact]
@@ -43,9 +49,16 @@ public class Files.FileOperations.CommonJob {
         internal int64 num_bytes;
         internal uint64 last_report_time;
         internal int last_reported_files_left;
+
+        public void reset () {
+            num_files = 0;
+            num_bytes = 0;
+            last_report_time = 0;
+            last_reported_files_left = -1;
+        }
     }
 
-    protected unowned Gtk.Window? parent_window;
+    public Gtk.Window? parent_window;
     protected uint inhibit_cookie;
     protected unowned GLib.Cancellable? cancellable;
     protected PF.Progress.Info progress;
@@ -54,9 +67,14 @@ public class Files.FileOperations.CommonJob {
     protected bool skip_all_error;
     private GLib.GenericSet<GLib.File>? skip_readdir_error_set;
     protected GLib.GenericSet<GLib.File>? skip_files;
-    protected CommonJob (Gtk.Window? parent_window = null) {
+    protected CommonJob.SourceInfo? source_info;
+    protected CommonJob.TransferInfo? transfer_info;
+
+    public CommonJob (Gtk.Window? parent_window = null) {
         this.parent_window = parent_window;
         inhibit_cookie = 0;
+        source_info = new SourceInfo ();
+        transfer_info = new TransferInfo ();
         progress = new PF.Progress.Info ();
         cancellable = progress.cancellable;
         undo_redo_data = null;
@@ -80,7 +98,7 @@ public class Files.FileOperations.CommonJob {
         GLib.warn_if_reached ();
     }
 
-    protected void inhibit_power_manager (string message) {
+    public void inhibit_power_manager (string message) {
         weak Gtk.Application app = (Gtk.Application) GLib.Application.get_default ();
         inhibit_cookie = app.inhibit (
             parent_window,
@@ -374,6 +392,7 @@ public class Files.FileOperations.CommonJob {
     private void scan_file (GLib.File file, SourceInfo source_info, GLib.Queue<GLib.File> dirs = new GLib.Queue<GLib.File> ()) {
         try {
             var info = file.query_info (GLib.FileAttribute.STANDARD_TYPE + "," + GLib.FileAttribute.STANDARD_SIZE, NOFOLLOW_SYMLINKS, cancellable);
+            // Only files with info are counted
             count_file (info, source_info);
             if (info.get_file_type () == GLib.FileType.DIRECTORY) {
                 dirs.push_head (file);
@@ -427,13 +446,18 @@ public class Files.FileOperations.CommonJob {
         }
     }
 
-    protected SourceInfo scan_sources (GLib.List<GLib.File> files) {
-        var source_info = new SourceInfo ();
+    // Build a list of files that cannot be operated on due to lack of permission
+    // or inaccessible information and the user chose to skip rather than abort.
+    // Only used by delete and empty trash operations
+    protected SourceInfo scan_sources (GLib.List<GLib.File> files) requires (source_info.num_files == 0) {
+        // Continue to return a (copy) source_info for now as it is needed
+        // by marlin_file_operations copy & move jobs.
+        // Not needed by Vala DeleteJob and EmptyTrashJob
 
         report_count_progress (source_info);
         foreach (var file in files) {
             if (aborted ()) {
-                return source_info;
+                return source_info.copy ();
             }
 
             scan_file (file, source_info);
@@ -441,7 +465,7 @@ public class Files.FileOperations.CommonJob {
 
         /* Make sure we report the final count */
         report_count_progress (source_info);
-        return source_info;
+        return source_info.copy ();
     }
 
 
@@ -449,7 +473,7 @@ public class Files.FileOperations.CommonJob {
                                       owned string primary_text,
                                       owned string secondary_text,
                                       string? details_text,
-                                      bool show_all,
+                                      bool show_all,  //TODO this appears to be unused now, lose at some stage
                                       va_list varargs) {
         int result = 0;
         time.stop ();

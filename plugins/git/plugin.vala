@@ -166,7 +166,7 @@ public class Files.Plugins.Git : Files.Plugins.Base {
     public override void update_file_info (Files.File gof) {
         /* Ignore e.g. .git and .github folders, but include e.g. .travis.yml file */
         //TODO Rely on .gitignore to exclude unwanted tracking
-        if (gof.is_hidden && gof.is_directory) {
+        if (gof == null || gof.directory == null || (gof.is_hidden && gof.is_directory)) {
             return;
         }
 
