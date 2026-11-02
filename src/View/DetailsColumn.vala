@@ -246,7 +246,7 @@ public class Files.View.DetailsColumn : Gtk.Bin {
         var scrolled = new Gtk.ScrolledWindow (null, null) {
             child = box,
             propagate_natural_height = true,
-            hscrollbar_policy = NEVER
+            hscrollbar_policy = AUTOMATIC
         };
 
         child = scrolled;
