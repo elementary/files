@@ -18,6 +18,7 @@
 
 public class Files.FileOperations.EmptyTrashJob : CommonJob {
     private GLib.List<GLib.File> trash_dirs;
+    private ViewWindowInterface? view_window = null;
 
     public EmptyTrashJob (Gtk.Window? parent_window = null, owned GLib.List<GLib.File>? trash_dirs = null) {
         base (parent_window);
@@ -75,6 +76,13 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
     public async void empty_trash () {
         inhibit_power_manager (_("Emptying Trash"));
 
+        view_window = null;
+        if (parent_window is ViewWindowInterface) { // Should always be the case?
+            view_window = (ViewWindowInterface) parent_window;
+        } else {
+            warning ("parent window not Files.View.Window");
+        }
+
         if (Files.Preferences.get_default ().confirm_trash) {
             unowned GLib.File? first_dir = trash_dirs.nth_data (0);
             if (first_dir != null) {
@@ -104,16 +112,25 @@ public class Files.FileOperations.EmptyTrashJob : CommonJob {
 
                 message_dialog.response.connect ((response) => {
                     if (response == Gtk.ResponseType.YES) {
-                        internal_empty_trash.begin ();
+                        internal_empty_trash.begin ((obj, res) => {
+                            internal_empty_trash.end (res);
+                            after_emptying_trash ();
+                        });
                     }
-
                     message_dialog.destroy ();
                 });
 
                 message_dialog.present ();
             }
         } else {
-            internal_empty_trash.begin ();
+            yield internal_empty_trash ();
+            after_emptying_trash ();
+        }
+    }
+
+    private void after_emptying_trash () {
+        if (view_window != null) {
+            view_window.free_space_change ();
         }
     }
 

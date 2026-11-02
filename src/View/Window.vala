@@ -21,10 +21,12 @@
 *              ammonkey <am.monkeyd@gmail.com>
 */
 
-public class Files.View.Window : Hdy.ApplicationWindow {
+public class Files.View.Window : Hdy.ApplicationWindow, Files.ViewWindowInterface {
     public signal void loading_uri (string location);
     public signal void folder_deleted (GLib.File location);
-    public signal void free_space_change ();
+    /* Defined ViewWindowInterface
+     * public signal void free_space_change ();
+     */
 
     public Files.Application marlin_app { get; construct; }
     public uint window_number { get; construct; }
