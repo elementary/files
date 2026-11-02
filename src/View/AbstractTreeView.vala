@@ -20,6 +20,7 @@ namespace Files {
     /* Implement common features of ColumnView and ListView */
     public abstract class AbstractTreeView : AbstractDirectoryView {
         protected Files.TreeView tree;
+        private bool child_notify_frozen = false;
         protected Gtk.TreeViewColumn name_column;
 
         protected AbstractTreeView (View.Slot _slot) {
@@ -325,15 +326,17 @@ namespace Files {
 
         // For scrolling
         protected override void freeze_child_notify () {
-            tree.freeze_child_notify ();
+            if (!child_notify_frozen) {
+                tree.freeze_child_notify ();
+                child_notify_frozen = true;
+            }
         }
 
         protected override void thaw_child_notify () {
-            // Do not prematurely thaw tree when loading
-            if (!tree_frozen) {
+            if (child_notify_frozen) {
                 tree.thaw_child_notify ();
+                child_notify_frozen = false;
             }
-
         }
     }
 

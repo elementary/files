@@ -18,6 +18,7 @@
 
 public class Files.IconView : Files.AbstractDirectoryView {
     protected new Gtk.IconView tree;
+    private bool child_notify_frozen = false;
     /* support for linear selection mode in icon view, overriding native behaviour of Gtk.IconView */
     protected bool previous_selection_was_linear = false;
     protected Gtk.TreePath? previous_linear_selection_path = null;
@@ -333,13 +334,16 @@ public class Files.IconView : Files.AbstractDirectoryView {
 
     // For scrolling
     protected override void freeze_child_notify () {
-        tree.freeze_child_notify ();
+        if (!child_notify_frozen) {
+            tree.freeze_child_notify ();
+            child_notify_frozen = true;
+        }
     }
 
     protected override void thaw_child_notify () {
-        //Do not prematurely thaw tree while loading
-        if (!tree_frozen) {
+        if (child_notify_frozen) {
             tree.thaw_child_notify ();
+            child_notify_frozen = false;
         }
     }
 
