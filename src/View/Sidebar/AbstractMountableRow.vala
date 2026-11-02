@@ -43,6 +43,8 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
     public Mount? mount { get; set construct; default = null; }
     public Drive? drive { get; construct; default = null; }
+    public Icon status_icon { get; set; default = null; }
+    public string status_tooltip { get; set; default = ""; }
 
     protected bool valid = true;
     public string? uuid { get; set construct; }
@@ -134,6 +136,11 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
 
         content_grid.attach (unmount_eject_working_stack, 1, 0);
 
+        var status_image = new Gtk.Image ();
+        bind_property ("status-icon", status_image, "gicon");
+        bind_property ("status-tooltip", status_image, "tooltip-text");
+        content_grid.attach (status_image, 2, 0);
+
         storage_levelbar = new Gtk.LevelBar () {
             value = 0.5,
             hexpand = true,
@@ -201,6 +208,10 @@ public abstract class Sidebar.AbstractMountableRow : Sidebar.BookmarkRow, Sideba
     protected override void update_plugin_data (Files.SidebarPluginItem item) {
         base.update_plugin_data (item);
         working = item.show_spinner;
+        if (this is NetworkRow) {
+            status_icon = item.action_icon;
+            status_tooltip = item.action_tooltip;
+        }
     }
 
     protected async bool unmount_mount () {
