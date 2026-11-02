@@ -18,6 +18,7 @@
 
 namespace Files {
     public class ColumnView : AbstractTreeView {
+        protected static Settings column_view_preferences;
         /** Miller View support */
         bool awaiting_double_click = false;
         uint double_click_timeout_id = 0;
@@ -26,6 +27,10 @@ namespace Files {
             base (_slot);
             /* We do not need to load the directory - this is done by Miller View*/
             /* We do not need to connect to "row-activated" signal - we handle left-clicks ourselves */
+        }
+
+        static construct {
+            column_view_preferences = new Settings ("io.elementary.files.column-view");
         }
 
         protected override void set_up_icon_renderer () {
@@ -61,7 +66,7 @@ namespace Files {
         }
 
         public override Settings? get_view_settings () {
-            return Files.column_view_settings;
+            return column_view_preferences;
         }
 
         protected override Gtk.Widget? create_view () {
