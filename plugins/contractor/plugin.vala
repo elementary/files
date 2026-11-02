@@ -23,12 +23,11 @@
 
 public class Files.Plugins.Contractor : Files.Plugins.Base {
     private Gtk.Menu menu;
-    private Files.File current_directory = null;
 
     public Contractor () {
     }
 
-    public override void context_menu (Gtk.Widget widget, List<Files.File> gof_files) {
+    public override void context_menu (Gtk.Widget widget, List<Files.File> gof_files, Files.File source_folder) {
         menu = widget as Gtk.Menu;
 
         GLib.File[] files = null;
@@ -36,16 +35,13 @@ public class Files.Plugins.Contractor : Files.Plugins.Base {
 
         try {
             if (gof_files == null) {
-                if (current_directory == null) {
-                    return;
-                }
-
+                // We compress all the files in the source folder (which cannot be null)
                 files = new GLib.File[0];
-                files += current_directory.location;
+                files += source_folder.location;
 
-                string? mimetype = current_directory.content_type;
+                string? mimetype = source_folder.content_type;
 
-                if (mimetype == null) {
+                if (mimetype == null || mimetype != "inode/directory") {
                     return;
                 }
 
@@ -94,10 +90,6 @@ public class Files.Plugins.Contractor : Files.Plugins.Base {
         } catch (Error e) {
             warning (e.message);
         }
-    }
-
-    public override void directory_loaded (Gtk.ApplicationWindow window, Files.AbstractSlot view, Files.File directory) {
-        current_directory = directory;
     }
 
     private void add_menuitem (Gtk.Menu menu, Gtk.MenuItem menu_item) {
