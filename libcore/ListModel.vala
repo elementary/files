@@ -182,11 +182,11 @@ public class Files.ListModel : Gtk.TreeStore, Gtk.TreeModel {
                 if (
                     file != null &&
                     file.color >= 0 &&
-                    file.color < Files.Preferences.TAGS_COLORS.length
+                    file.color < TagColor.LAST_COLOR
                 ) {
-                    value.set_string (Files.Preferences.TAGS_COLORS[file.color]);
+                    value.set_string (((TagColor) (file.color)).get_rgb_string ());
                 } else {
-                    value.set_string (Files.Preferences.TAGS_COLORS[0]);
+                    value.set_string (TagColor.NONE.get_rgb_string ());
                 }
 
                 break;
