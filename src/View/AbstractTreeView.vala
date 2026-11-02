@@ -332,6 +332,7 @@ namespace Files {
             // Do not prematurely thaw tree when loading
             if (!tree_frozen) {
                 tree.thaw_child_notify ();
+                queue_draw ();
             }
 
         }
