@@ -13,5 +13,6 @@
     <file alias="scalable/status/permission-read-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/permission-read.svg</file>
     <file alias="scalable/status/permission-write-prevent-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/permission-write-prevent.svg</file>
     <file alias="scalable/status/permission-write-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/permission-write.svg</file>
+    <file alias="scalable/status/radio-mixed-symbolic.svg" compressed="true" preprocess="xml-stripblanks">icons/radio-mixed-symbolic.svg</file>
   </gresource>
 </gresources>
